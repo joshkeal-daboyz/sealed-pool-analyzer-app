@@ -2,6 +2,7 @@
 
 What the Architect learned from merged tickets. One line each, newest first. Read before writing any ticket.
 
+- 2026-11-03 SPA-012: A warning threshold is a statistical claim. Derive it from the generating distribution, and state its false-positive rate in the ticket. SPA-005's hand-picked rare range flagged one genuine kit in seven, and three of its four kit warnings needed fixing later.
 - 2026-11-03 SPA-009: The command line was the first end-to-end run of the whole engine, and it surfaced a defect from three tickets earlier (SPA-005's kit warning). When a goal has an integration ticket, bring it as early as the dependencies allow, and have its Developer report anything odd in upstream output.
 - 2026-11-03 SPA-009: A README sentence like "Errors are one line on stderr" is a contract too. Either make it an acceptance criterion or leave it out.
 - 2026-11-03 SPA-008: Derive every pinned value from the actual template or data by script, not from what a flag's name suggests. `basicLandsSupplied` led to pinning 0 basics per kit, while the Land slot gives about 5. This is the second ticket bounced for a hand-derived pin (after SPA-004).
