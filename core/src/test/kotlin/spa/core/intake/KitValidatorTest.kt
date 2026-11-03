@@ -3,6 +3,7 @@ package spa.core.intake
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
+import spa.core.brief.BoosterSlot
 import spa.core.brief.BriefLoader
 import spa.core.brief.KitTemplate
 import spa.core.brief.SlotKind
@@ -30,17 +31,43 @@ class KitValidatorTest {
         (1..5).map { syn("$it").copy(scryfallId = "test-variant-$it", collectorNumber = "${it}v") }
 
     /**
-     * A pool that matches the kit: five rares once each and twenty commons and uncommons four times
-     * each (85 non-basic cards), plus three Forests that the count leaves out.
+     * A pool that matches the kit: seven rares and mythics (two each of syn 12 and 13, one each of
+     * the rest), the twenty commons and uncommons four times each except syn 11 twice (85 non-basic
+     * cards), plus three Forests that the count leaves out.
      */
     private fun kitPool(): MutableMap<Printing, Int> {
         val pool = linkedMapOf<Printing, Int>()
         rares.forEach { pool[syn(it)] = 1 }
+        pool[syn("12")] = 2
+        pool[syn("13")] = 2
         others.forEach { pool[syn(it)] = 4 }
+        pool[syn("11")] = 2
         variants.forEach { pool[it] = 4 }
         pool[syn("25")] = 3
         return pool
     }
+
+    /**
+     * An 85-card pool with exactly [rareCount] rares and mythics, spread over syn's five rares, and
+     * the rest commons and uncommons at most four copies each, so only the rare count can warn.
+     */
+    private fun rarePool(rareCount: Int): Map<Printing, Int> {
+        val pool = linkedMapOf<Printing, Int>()
+        (0 until rareCount).forEach {
+            val rare = syn(rares[it % rares.size])
+            pool[rare] = (pool[rare] ?: 0) + 1
+        }
+        var left = 85 - rareCount
+        (others.map { syn(it) } + variants).forEach {
+            val copies = minOf(KitValidator.MAX_COPIES, left)
+            if (copies > 0) pool[it] = copies
+            left -= copies
+        }
+        assertEquals(0, left)
+        return pool
+    }
+
+    private val trk = BriefLoader.load(briefFixturesDir.resolve("trk.json")).kitTemplate
 
     private fun validate(pool: Map<Printing, Int>, template: KitTemplate = kit) =
         KitValidator.validate(
@@ -100,7 +127,6 @@ class KitValidatorTest {
 
     @Test
     fun `the syn and trk kits hold 85 cards, 6 of them booster basic slots`() {
-        val trk = BriefLoader.load(briefFixturesDir.resolve("trk.json")).kitTemplate
         listOf(kit, trk).forEach {
             assertEquals(85, KitValidator.kitTotal(it))
             assertEquals(6, KitValidator.boosterBasicSlots(it))
@@ -199,44 +225,89 @@ class KitValidatorTest {
     }
 
     @Test
-    fun `too few rares is a rare-count warning`() {
-        val pool =
-            kitPool().apply {
-                remove(syn("20"))
-                this[syn("6").copy(scryfallId = "test-extra-6", collectorNumber = "6v")] = 1
-            }
+    fun `the trk and syn kits hold 7 to 13 rares and mythics`() {
+        listOf(trk, kit).forEach {
+            assertEquals(7, KitRareCounts.guaranteedRares(it))
+            assertEquals(13, KitRareCounts.rareCountMax(it))
+            assertEquals(7..13, KitValidator.expectedRareCount(it))
+        }
+    }
 
-        val warnings = validate(pool)
+    @Test
+    fun `the trk rare-count distribution matches the exact values`() {
+        val dist = KitRareCounts.rareCountDistribution(trk)
+        val atMost = { k: Int -> dist.take(k + 1).sum() }
+
+        assertEquals(1.0, dist.sum(), 1e-9)
+        assertEquals(0.0, dist.take(7).sum(), 1e-12)
+        assertEquals(0.24707, dist[7], 0.00001)
+        assertEquals(0.99889, atMost(12), 0.00001)
+        assertEquals(0.99987, atMost(13), 0.00001)
+    }
+
+    @Test
+    fun `each kit position's rare chance counts rare, mythic and bonus-sheet weights`() {
+        val chances = KitRareCounts.rareChances(trk)
+
+        assertEquals(85, chances.size)
+        assertEquals(7, chances.count { it == 1.0 })
+        assertEquals(6, chances.count { it == 1.0 / 64 })
+        assertEquals(12, chances.count { it == 7.0 / 68 })
+        assertEquals(60, chances.count { it == 0.0 })
+    }
+
+    @Test
+    fun `a single rare slot, one booster and no promo derives 1 to 1`() {
+        val single =
+            kit.copy(
+                boosters = 1,
+                cardsPerBooster = 1,
+                slots = listOf(BoosterSlot("Rare", 1, weights = mapOf(SlotKind.RARE to 1.0))),
+                promo = null,
+            )
+
+        assertEquals(1..1, KitValidator.expectedRareCount(single))
+    }
+
+    @Test
+    fun `a slot with no weights never yields a rare`() {
+        val empty = kit.copy(slots = listOf(BoosterSlot("Empty", 1, weights = emptyMap())))
+
+        assertEquals(List(6) { 0.0 } + 1.0, KitRareCounts.rareChances(empty))
+        assertEquals(1..1, KitValidator.expectedRareCount(empty))
+    }
+
+    @Test
+    fun `syn, 7 rares and mythics is no warning`() {
+        assertEquals(emptyList(), validate(rarePool(7)))
+    }
+
+    @Test
+    fun `syn, 13 rares and mythics is no warning`() {
+        assertEquals(emptyList(), validate(rarePool(13)))
+    }
+
+    @Test
+    fun `syn, 6 rares and mythics is a rare-count warning`() {
+        val warnings = validate(rarePool(6))
 
         assertEquals(listOf(KitWarningCode.RARE_COUNT), warnings.map { it.code })
         assertEquals("rare-count", warnings[0].code.code)
-        assertEquals(5..9, warnings[0].expected)
-        assertEquals(4, warnings[0].actual)
+        assertEquals(7..13, warnings[0].expected)
+        assertEquals(6, warnings[0].actual)
         assertEquals(
-            "The pool has 4 rares and mythics; a kit of 6 boosters holds 5 to 9.",
+            "The pool has 6 rares and mythics; a kit of 6 boosters holds 7 to 13.",
             warnings[0].message,
         )
     }
 
     @Test
-    fun `too many rares is a rare-count warning and nine is still fine`() {
-        val nine =
-            kitPool().apply {
-                this[syn("12")] = 3
-                this[syn("13")] = 2
-                this[syn("14")] = 2
-                listOf("1", "2", "3", "4").forEach { this[syn(it)] = 3 }
-            }
-        assertEquals(emptyList(), validate(nine))
-
-        val ten = nine.apply {
-            this[syn("15")] = 2
-            this[syn("5")] = 3
-        }
-        val warnings = validate(ten)
+    fun `syn, 14 rares and mythics is a rare-count warning`() {
+        val warnings = validate(rarePool(14))
 
         assertEquals(listOf(KitWarningCode.RARE_COUNT), warnings.map { it.code })
-        assertEquals(10, warnings[0].actual)
+        assertEquals(7..13, warnings[0].expected)
+        assertEquals(14, warnings[0].actual)
     }
 
     @Test
@@ -257,6 +328,28 @@ class KitValidatorTest {
             "The pool has 5 copies of Llanowar Elves (syn 7); a kit rarely holds more than 4.",
             warnings[0].message,
         )
+    }
+
+    @Test
+    fun `30 copies of one basic land printing is no high-count warning`() {
+        val pool = kitPool().apply { this[syn("25")] = 30 }
+
+        assertTrue(syn("25").card.isBasicLand)
+        assertEquals(emptyList(), validate(pool))
+        val notSupplied = validate(pool, kit.copy(basicLandsSupplied = false))
+        assertEquals(listOf(KitWarningCode.CARD_COUNT), notSupplied.map { it.code })
+    }
+
+    @Test
+    fun `3 copies each of two printings of one nonbasic card is no high-count warning`() {
+        val pool =
+            kitPool().apply {
+                this[syn("1")] = 3
+                this[variants[0]] = 3
+            }
+
+        assertEquals(syn("1").card, variants[0].card)
+        assertEquals(emptyList(), validate(pool).filter { it.code == KitWarningCode.HIGH_COUNT })
     }
 
     @Test
