@@ -2,6 +2,10 @@
 
 What the Architect learned from merged tickets. One line each, newest first. Read before writing any ticket.
 
+- 2026-11-03 SPA-004: Compute every pinned number with a script before it goes into a ticket, and say in the criterion how it was computed. Two hand-computed probabilities were wrong, and the Developer had to bounce the ticket before writing any code.
+- 2026-11-03 SPA-002/SPA-004: Two tickets running in parallel that both need a shared type will each define one. Give the type to exactly one ticket, and tell the other to leave it alone, or put the reconciliation into the first ticket that depends on both.
+- 2026-11-03 SPA-002: For a rule that derives a field (layout rules), require a test case where the rule's answer differs from the obvious default. Otherwise a test can pass with the rule broken. The Inspector added three such tests.
+- 2026-11-03 SPA-002: Scryfall rate-limited at about 4 requests a second in practice. The fetcher waits 500 ms, and live-fetch scenarios take a while.
 - 2026-11-03 SPA-001: The gate does not find a JDK on its own, and sessions launched by the desktop app can predate the JDK install. Every ticket's background says how to set `JAVA_HOME` (README, Toolchain section).
 - 2026-11-03 SPA-001: When one input drives two behaviours (ticket id `none` sets both the dependency rule and coverage threshold 0), give each behaviour its own test-plan row; the Inspector found the second one untested because the plan named only the resolver.
 - 2026-11-03 SPA-001: The gate's `ui-tests` step fails once an `:app` project exists. The ticket that creates the app module must also implement that step, and say so in its scope.
