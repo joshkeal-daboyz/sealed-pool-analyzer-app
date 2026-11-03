@@ -1,0 +1,200 @@
+---
+id: G-002
+title: First installable app, a pool and its metrics on the phone
+status: draft
+owner: human
+target_set_code: trk
+companion_set_codes: [sds]
+depends_on: [G-001]
+---
+
+# G-002: First installable app
+
+Build the first Android app on top of the finished G-001 engine: an APK the owner sideloads on their phone that takes a pool (a ManaBox CSV first, or pasted text, or a collector-number list), runs the existing intake, metric engine, and set baseline on the device, and shows every number beside its typical value for a `trk` pool. This is the "pool entry screen" and "metrics dashboard" half of step 9 (Interface) in the design brief, built on steps 1 to 4. Nothing in it calls a model, so the app needs no account, no key, and no connection.
+
+This is a draft for the owner to approve. The open questions at the end must be answered first.
+
+## Why this goal next
+
+- It is the first goal with a screen, so it exercises the pipeline roles G-001 skipped: the Designer, the gate's `ui-tests` step (Compose UI and snapshot tests), and the Acceptance Tester's screenshot pass on an emulator.
+- It puts the engine in the owner's hand at the table. The metric layer is free and instant, so it is useful before any agent exists, and it is what every later goal builds on.
+- It keeps the risk small: `core/` is already tested against 26 golden files, so "the app shows the same numbers as `spa analyze`" is checkable by data, not by judgement.
+
+## Before this goal starts
+
+Everything below is done by hand, by the owner, on the Windows 11 development PC and on the phone. Nothing in the pipeline can do these steps, and the first ticket stops if any is missing. Allow about 10 GB of free disk space (SDK, one emulator image, Gradle caches).
+
+Run the PowerShell commands in a normal (not administrator) window unless the step says otherwise. After step 3, close and reopen every terminal and every Claude Code session, including the desktop app: a session started before the install does not see the new variables (the same trap as `JAVA_HOME` in G-001, see `tickets/lessons.md`, SPA-001).
+
+**1. Install the Android SDK command-line tools.** Choose one route.
+
+Route A (recommended, no IDE). Downloads the command-line tools, checks the file against the SHA-256 published on https://developer.android.com/studio (Command line tools only, build 15859902 on 2026-11-03), and unpacks them where Android Studio would put them:
+
+```powershell
+$sdk = "$env:LOCALAPPDATA\Android\Sdk"
+New-Item -ItemType Directory -Force "$sdk\cmdline-tools" | Out-Null
+$zip = "$env:TEMP\commandlinetools-win.zip"
+Invoke-WebRequest "https://dl.google.com/android/repository/commandlinetools-win-15859902_latest.zip" -OutFile $zip
+(Get-FileHash $zip -Algorithm SHA256).Hash -eq "90ae805d20434428bffcb699c290860f19bb5f66a67e6b330067e3de801fb04a"
+Expand-Archive $zip -DestinationPath "$sdk\cmdline-tools" -Force
+Rename-Item "$sdk\cmdline-tools\cmdline-tools" "latest"
+```
+
+The fourth line must print `True`. If the page lists a newer build, use its file name and hash instead.
+
+Route B (Android Studio). `winget install --id Google.AndroidStudio -e`, open it once, finish the setup wizard (it installs the SDK to `%LOCALAPPDATA%\Android\Sdk` and asks you to accept the licenses), then in Settings > Languages & Frameworks > Android SDK > SDK Tools tick "Android SDK Command-line Tools (latest)" and apply. The agents need the command-line tools either way.
+
+**2. Point the tools at the SDK.** Sets `ANDROID_HOME` and puts `sdkmanager`, `adb`, and `emulator` on your user `PATH`:
+
+```powershell
+$sdk = "$env:LOCALAPPDATA\Android\Sdk"
+[Environment]::SetEnvironmentVariable("ANDROID_HOME", $sdk, "User")
+$path = [Environment]::GetEnvironmentVariable("Path", "User")
+[Environment]::SetEnvironmentVariable("Path", "$path;$sdk\cmdline-tools\latest\bin;$sdk\platform-tools;$sdk\emulator", "User")
+```
+
+**3. Install the SDK packages.** Open a new PowerShell window first, then:
+
+```powershell
+sdkmanager --install "platform-tools" "emulator" "system-images;android-36;google_apis;x86_64"
+```
+
+Gradle downloads the SDK platform and build tools the app module asks for on its first build, once the licenses below are accepted, so they are not listed here. `android-36` (Android 16) is the suggested emulator image; if your phone runs a different Android version, use that version's image instead (open question 3).
+
+**4. Accept the SDK licenses.** Only you can do this; no agent may accept a license for you:
+
+```powershell
+sdkmanager --licenses
+```
+
+Read each license and answer `y`. Gradle refuses to download SDK packages until this is done.
+
+**5. Turn on emulator acceleration.** The emulator needs CPU virtualization. Check it:
+
+```powershell
+emulator -accel-check
+```
+
+If it does not report that acceleration is usable, turn on Windows Hypervisor Platform from an **administrator** PowerShell window and reboot:
+
+```powershell
+Enable-WindowsOptionalFeature -Online -FeatureName HypervisorPlatform -All
+```
+
+If it still fails after the reboot, virtualization is off in the PC's firmware settings (often called Intel VT-x, AMD-V, or SVM), which only you can change.
+
+**6. Create the emulator the Acceptance Tester uses.** The name `spa-test` is what the tickets will cite:
+
+```powershell
+avdmanager create avd -n spa-test -k "system-images;android-36;google_apis;x86_64" -d pixel_7
+emulator -avd spa-test
+```
+
+The second command should boot an emulated phone in a window. Close it when it reaches the home screen; the agents start it themselves (headless, with `-no-window`).
+
+**7. Check everything from Git Bash.** The gate runs in Git Bash, so check there too, in a new window:
+
+```bash
+echo "$ANDROID_HOME" && adb version && sdkmanager.bat --version && java -version
+```
+
+Each should print a path or a version, and `java` should still report 21. (Git Bash needs the `.bat` on `sdkmanager`; PowerShell does not.)
+
+**8. On the phone: allow installing the APK.** Android blocks apps that do not come from a store until you allow the app that opens the file. Pick one route.
+
+- Copy the file over (no cable needed later). Copy `app-debug.apk` to the phone (USB, Google Drive, or email to yourself), tap it in the Files app (or Chrome's downloads), and when Android asks, allow that app: Settings > Apps > Special app access > Install unknown apps > Files (or Chrome) > Allow. The menu names differ slightly by manufacturer. Google Play Protect may warn that the app is from an unknown developer; choose "Install anyway". Turn the permission off again afterwards if you like.
+- Install over USB with `adb`. On the phone: Settings > About phone > tap Build number seven times, then Settings > System > Developer options > USB debugging on. Connect the cable, accept the "Allow USB debugging" prompt on the phone, then on the PC run `adb devices` (the phone should be listed as `device`) and `adb install -r app\build\outputs\apk\debug\app-debug.apk`.
+
+**9. Answer the open questions at the end of this file** and change `status` to `open`.
+
+## Deliverables
+
+0. **Design spec, before any app ticket.** The Designer (`pipeline/roles/designer.md`) writes one spec in `design/` for this goal's feature: screen inventory, navigation, every state per screen (empty, loading, error, offline, and the pool-specific ones: unresolved lines, kit warnings, wrong set, an empty or unreadable file), the Compose component map, the accessibility checklist, and the snapshot list. The Architect writes no app ticket until that file is merged, and every app ticket cites it in `design_ref`. A ticket that only touches the build or the gate (deliverable 1) may come first.
+1. **Android toolchain and the gate's UI step.** An `:app` module (Kotlin, Jetpack Compose, one Activity) that depends on the `:core` project directly, plus the gate changes an app needs, in the same ticket that creates the module (`tickets/lessons.md`, SPA-001): the `ui-tests` step runs Compose UI tests and snapshot tests on the JVM (no emulator in the gate), the `lint` step adds Android Lint with its accessibility checks, the `format` and `lint` steps cover `app/`, the `coverage` step covers `app/src/main/kotlin`, the dependency audit covers the new catalog entries, and the CI workflow gives the gate an Android SDK. Green on an app module that shows one empty screen before anything else in this goal is dispatched.
+2. **Set data in the APK.** The `trk` and `sds` Scryfall caches, `fixtures/briefs/trk.json`, and `fixtures/baselines/trk.json` packaged into the APK at build time, straight from `fixtures/` (one source of truth, no hand-made copies), and loaded on the device through `core`'s existing loaders. The app reads no network.
+3. **Pool entry.** Three ways in, all on the first screen:
+   - Open a CSV with the system file picker.
+   - Share a CSV to the app from another app (ManaBox, Files, Drive, Gmail), as the design brief requires: the app registers as a share target and as an "Open with" handler for CSV files.
+   - Paste text into a box: a ManaBox CSV, a text list with counts, or a collector-number list. The format is detected the way `spa analyze` detects it, with a manual override for the three formats.
+4. **Results.** For the pool: the totals, cards per color, removal and interaction, fixing sources, and for each of the ten color pairs its cards, playables, creatures, curve, splash candidates, and land recommendation, each number beside its typical `trk` value from the baseline (median, and the p10 to p90 range). Unresolved lines (line number, text, reason) and kit warnings (with the expected range) are shown before the numbers, never hidden. What is on which screen, and in what order, is the Designer's call.
+5. **About.** Scryfall attribution and the Wizards of the Coast Fan Content notice, in the same words as the README's Card data section, reachable from the first screen, plus the app version and the date of the bundled Scryfall snapshot.
+6. **README.** How to build the APK, install it on a phone (both routes in "Before this goal starts"), and run the app's tests, with the toolchain section extended to the Android SDK. Every promise the README makes about the app is an acceptance criterion of the ticket that writes it, or it is left out (`tickets/lessons.md`, SPA-009).
+
+## Goal-level acceptance criteria
+
+1. **Gate.** `pipeline/gate/run.sh` exits 0 on a fresh clone of `main`, and the CI workflow shows the same result on the pull request. In `gate-verdict.json` the `ui-tests` step is `pass` with a note that is not `skipped: no app module`, and the run includes at least one Compose UI test and every snapshot on the Designer's snapshot list.
+2. **One command to an APK.** On a machine with only the prerequisites in "Before this goal starts", `./gradlew :app:assembleDebug` from a fresh clone exits 0 and writes `app/build/outputs/apk/debug/app-debug.apk`. The README names this command.
+3. **The engine is reused, not copied.** `git diff <G-002 start commit> main -- core/src/main` is empty at goal close (unless the owner approves a core change under open question 4 or 5, which then names its own ticket). `./gradlew :core:dependencies --configuration runtimeClasspath` lists no `com.android` or `androidx` coordinate. The app depends on `project(":core")`; no source file of `core` is duplicated under `app/`.
+4. **Same numbers as the command line, for every fixture.** For each of the 26 pools in `fixtures/pools/manifest.json`, a JVM test feeds the file to the app's own import path (not to `core` directly) and checks that every value the results screens display equals the value at the same JSON pointer in `fixtures/golden/<file>.json`, and every typical value displayed equals the matching `fixtures/baselines/trk.json` entry (or `syn.json` for the `syn` fixtures, if the app bundles `syn`; see open question 6). The expected values are read from those files, never typed into the test (`tickets/lessons.md`, SPA-004 and SPA-008).
+5. **ManaBox import on an emulator.** On the `spa-test` emulator, with the APK installed by `adb install -r` and the 11 ManaBox fixtures pushed by `adb push fixtures/pools/trk-manabox-*.csv /sdcard/Download/`, opening each through the system file picker shows the same total cards, entries, unresolved count, removal total, interaction total, and, for each of the ten pairs, creature count and land recommendation, as `spa analyze <file> --set trk` prints for it. The Acceptance Tester records a screenshot per pool and compares the spec's states against them.
+6. **Share and Open with.** On the emulator, sharing `trk-manabox-01.csv` from the Files app to the app, and choosing the app from "Open with" for the same file, each lands on its results with the same numbers as criterion 5.
+7. **Pasted pools.** On the emulator, pasting the contents of each `trk-text-*.txt` and `trk-collector-*.txt` fixture shows the format `spa analyze` detects for it and the same totals as criterion 5 lists. Choosing a different format by hand shows the same result `spa analyze --format <format>` gives for that file.
+8. **Problems are shown.** For `trk-text-misspelled-01.txt`, `trk-manabox-wrong-set-01.csv`, and `trk-collector-bad-number-01.txt`, every entry of `pool.unresolved` that `spa analyze` prints appears on screen with its line number, text, and reason, before any metric. A pool with kit warnings shows each one with its expected range. An empty file, a file that is not a pool, and a file the app cannot read each show the error state the design spec gives them, and the app does not crash.
+9. **Offline by construction.** `aapt2 dump permissions app/build/outputs/apk/debug/app-debug.apk` (from the SDK build tools) lists no `android.permission.INTERNET`, and the emulator with networking off (`adb shell cmd connectivity airplane-mode enable`) passes criterion 5 for `trk-manabox-01.csv`. This also proves the app makes no model call and sends no data anywhere.
+10. **No key, anywhere.** The app has no field, setting, or file for an API key. `git grep -nE "sk-ant-|ANTHROPIC_API_KEY"` on `main` at goal close prints nothing outside this goal file and `CLAUDE.md`.
+11. **Attribution.** The About screen shows the README's Scryfall attribution and Fan Content notice word for word and the bundled snapshot's fetch date from `fixtures/scryfall/trk/fetched-at.txt`. It is on the snapshot list, and a Compose UI test reaches it from the first screen in one tap.
+12. **Accessibility.** Android Lint's accessibility checks are errors in the gate and pass. Every item of the design spec's accessibility checklist has a named test or Acceptance Tester scenario in some ticket's test plan, and the snapshot list includes the results screen at 200 percent font scale.
+13. **Fast enough at the table.** On the `spa-test` emulator, with the app already open, the time from confirming `trk-manabox-01.csv` in the file picker to the results screen showing is under 3 seconds, as the median of 5 runs, timed from the app's own log lines (the ticket names them). A cold start to the first screen is under 5 seconds, by the same method.
+14. **The owner's phone.** The owner installs `app-debug.apk` built from `main` at goal close on their own phone by one of the routes in "Before this goal starts", imports one real or fixture ManaBox CSV, and sees the same numbers as `spa analyze`. This is the one criterion only the human can check.
+15. **The pipeline ran in order.** The design spec in `design/` merged before the first ticket with a `design_ref` was dispatched (checkable in `git log`), and every ticket that changes a file under `app/src/main` has a `design_ref`.
+
+## Constraints
+
+- `core/` is pure Kotlin with no Android dependencies, tested on the JVM, and reused as it is. The app calls the same `core` functions `spa analyze` calls (`CardIndex.load`, `BriefLoader`, `PoolParser.parse`, `MetricEngine.compute`, `Baseline.decode`). If an app ticket finds it needs a change in `core`, that is a bounce to the Architect and a question to the owner, not part of the app ticket.
+- No model calls anywhere in this goal, and nothing in the repository or the APK embeds an API key. Users supply their own key in a later goal.
+- Card data is Scryfall's and carries its attribution in the app (deliverable 5) as well as the README. The tool is free; the app has no ads, payments, or analytics.
+- One set: `trk` with its companion `sds`. The bundled data is the committed snapshot in `fixtures/scryfall/`; the app does not refresh it.
+- The development machine is Windows 11 with JDK 21 (Temurin), git, and Git Bash, and the Android SDK as set up in "Before this goal starts". The gate is the same script locally and in CI. CI runs on `ubuntu-latest`, whose image ships an Android SDK; the toolchain ticket says how the workflow finds it and how licenses are handled there.
+- Every new dependency (the Android Gradle plugin, the Compose compiler plugin, Compose, Activity, the test and snapshot libraries) goes in `gradle/libs.versions.toml` and is listed in its ticket's scope, per the README's Dependencies section.
+- The APK is a debug build, signed with the build machine's default debug key. Nothing goes to a store.
+
+### Technical risks the toolchain ticket must settle first
+
+These are for the Architect to turn into criteria of the first ticket; none needs the owner unless it ends in a `core` change.
+
+- `core` is compiled with `jvmToolchain(21)`. The ticket proves the Android build tools dex `core`'s Java 21 bytecode, or escalates (open question 5).
+- `core`'s loaders take `java.nio.file.Path`, so the app's `minSdk` is at least 26, and the bundled data must be real files on the device (for example, copied from the APK's assets to app storage on first launch) because assets are not paths.
+- `core`'s Scryfall fetcher uses `java.net.http`, which Android does not have. The app never calls it; the build must not fail or crash because the class is present.
+- The pre-push gate runs on Windows and CI runs on Linux. Snapshot libraries render fonts differently by OS, so the ticket proves one stored baseline verifies on both, or says how the gate keeps local and CI results identical. The gate's principle is that a Developer never sees a CI failure the local run would not have shown.
+- The Kotlin version in the catalog (2.4.21) must be one the chosen Android Gradle plugin supports.
+- The first end-to-end import (a file in, numbers on screen) should land as early as the dependencies allow, so upstream surprises show up before the screens are polished (`tickets/lessons.md`, SPA-009).
+
+## Known issues carried from G-001
+
+Only the ones the app exposes are carried. None blocks the goal.
+
+- **Collector numbers are matched case-sensitively after one lowercase retry.** Exposed: phone keyboards type lowercase, so a pasted `1701d` does not resolve, while `1701D` does. In `trk` and `sds` only one printing (`1701D`) has a letter in its collector number, so the effect is one card. It shows as an unresolved line, not a wrong number. The fix is in `core` (open question 4).
+- **The tagger does not tag Guidance Failure's "target creature or Spacecraft ... top or bottom of their library" as BOUNCE.** Exposed: the app displays the removal and interaction counts, so a pool holding Guidance Failure shows the same undercount `spa analyze` does. Fixing it changes goldens, and criterion 4 pins the app to the goldens, so a fix belongs in its own `core` ticket that updates both together.
+
+Not exposed, so not carried: the Thriving-land FIXING gap (no `trk` card uses that wording), `fetch-set`'s multi-line errors and "null" network message (the app does not fetch), and the untested default `--data` path and IOException branch (command line only).
+
+## Where this draft departs from the design brief
+
+The brief describes the finished product. This goal is one phase of it, and these are the deliberate gaps:
+
+- **Fuzzy name matching.** The brief's pool ingestion "resolve[s] names fuzzily against the set". G-001 reports unresolved lines and never guesses, and this goal keeps that: a misspelled name shows as unresolved. Fuzzy matching is a later `core` goal.
+- **Unresolved lines stop the run.** In the brief's orchestration, unresolved lines go back to the user before anything runs. That rule is for the agent run. Here, as in `spa analyze`, the numbers are shown with the unresolved lines listed first, so the owner sees both.
+- **Arena and MTGO exports.** The brief lists them under pool ingestion. G-001 did not build them, so the app does not offer them.
+- **Room database, saved pools, downloadable set bundles.** The brief puts the set's cards and the user's pools in SQLite (Room) and serves per-set bundles from a static host. This goal bundles one set in the APK and does not save pools between launches (open question 2).
+- **Pilot verification.** The brief verifies the interface with five people at a prerelease. This goal is verified by the owner alone (criterion 14); the five-person pilot is at the following set's prerelease, as the brief's roadmap says.
+
+## Out of scope for this goal
+
+Card grading, the analysis agents, deck building, ranked deck candidates, written rationale, sideboard plans, the Judge's disagreements view, and the per-card "which agent said what" drill-down. Any model call, the API-key entry screen, and the Android Keystore. Photo and OCR capture. Arena and MTGO import. Fuzzy name matching. Saving pools or history, user-recorded match results, and the 17Lands backtest. More than one set, set selection, and refreshing card data on the device. Release signing, a Play Store listing, and iOS. Card images (the app shows names and numbers only; Scryfall images are a later decision with its own attribution terms).
+
+## Metrics to report when the goal closes
+
+The same as G-001 so the two goals compare: gate green on first push, bounces per merged ticket by source, tokens per merged ticket by role, re-plans, escalations to the human, lead time per ticket, and share of criteria proven by deterministic tests. Add three for the first UI goal: Acceptance Tester screenshot-pass bounces, states the Acceptance Tester found that the design spec never described (each one should have become a spec update), and snapshot baselines changed on purpose. Append them here as a short table.
+
+## Open questions for the owner
+
+Answer these before changing `status` to `open`. Each has the draft's default in brackets.
+
+1. **Is the scope right?** One set (`trk`), three ways in (file picker, share and Open with, paste), results beside the baseline, About, and nothing saved. Anything to add or cut before tickets are written? [As written.]
+2. **Keep the last pool?** Should the app remember the last pool across launches, so a closed app does not lose the pool at the table? It is small, but it is storage the brief puts in Room. [No: out of scope, re-import is one tap.]
+3. **Which phone?** What Android version does your phone run, and is it a 64-bit device? This sets the emulator image (step 3 and 6) and confirms the app's `minSdk` (at least 26) covers it. [Android 16, `android-36` image.]
+4. **Fix the collector-number case bug now?** It is one `core` change and one card (`1701D`), and it touches `core`, which this goal otherwise keeps unchanged. [No: carry it, and fix it in the cleanup ticket with the other G-001 known issues.]
+5. **May `core`'s build target change if Android needs it?** If the Android tools cannot dex Java 21 bytecode, the fix is a one-line change to `core/build.gradle.kts` (a lower `jvmTarget`), with no change to `core`'s sources. Approve that in advance, or have it escalate to you? [Approve in advance, recorded in the ticket's change note.]
+6. **Bundle `syn` in the APK?** `syn` is a synthetic test set. Bundling it lets criterion 4 cover all 26 fixtures through the app; leaving it out keeps the app to `trk` and criterion 4 covers the 23 `trk` fixtures. [Leave it out of the APK; test the 3 `syn` fixtures in JVM tests only.]
+7. **Real pools from 2026-11-06.** The ManaBox header in the fixtures is provisional until a real export from the event. If real pools arrive before this goal starts, should adding them to `fixtures/pools/` (and their goldens) be this goal's first ticket, so the app is tested on real exports? [Yes, if they arrive in time; otherwise its own ticket later.]
+8. **Debug key.** The APK is signed with the build machine's debug key. An APK built on another machine (or in CI) will not install over one built on your PC without uninstalling first. Is building on your PC only acceptable for this goal? [Yes.]
