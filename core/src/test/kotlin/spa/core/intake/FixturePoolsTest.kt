@@ -7,6 +7,9 @@ import kotlin.io.path.readText
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
+import spa.core.brief.BriefLoader
+import spa.core.brief.KitTemplate
+import spa.core.brief.briefFixturesDir
 import spa.core.cards.CardIndex
 import spa.core.cards.fixturesDir
 import spa.core.sim.ExpectedUnresolved
@@ -20,6 +23,11 @@ class FixturePoolsTest {
     private val indexes = mutableMapOf<String, CardIndex>()
 
     private fun index(set: String) = indexes.getOrPut(set) { CardIndex.load(fixturesDir, set) }
+
+    private val kits = mutableMapOf<String, KitTemplate>()
+
+    private fun kit(set: String) =
+        kits.getOrPut(set) { BriefLoader.load(briefFixturesDir.resolve("$set.json")).kitTemplate }
 
     private fun parse(entry: FixtureEntry): ParseResult =
         PoolParser.parse(
@@ -126,6 +134,39 @@ class FixturePoolsTest {
                 names.any { name -> doubleFaced.any { it.faces.first().name == name } },
                 file,
             )
+        }
+    }
+
+    @Test
+    fun `card-count warnings follow the kit template for every fixture`() {
+        // Computed by script from the fixture files, the Scryfall caches, and the ticket's rule.
+        val short =
+            mapOf(
+                "trk-collector-bad-number-01.txt" to 76,
+                "trk-manabox-wrong-set-01.csv" to 78,
+                "trk-text-misspelled-01.txt" to 76,
+            )
+        val sampled = manifest.fixtures.filter { it.seed != null }.map { it.file }
+        assertEquals(23, sampled.size)
+        assertEquals((sampled + short.keys).sorted(), manifest.fixtures.map { it.file }.sorted())
+        manifest.fixtures.forEach { entry ->
+            val kit = kit(entry.set)
+            val result =
+                PoolParser.parse(
+                    poolFixturesDir.resolve(entry.file).readText(),
+                    index(entry.set),
+                    entry.poolFormat,
+                    kit,
+                )
+            val cardCount = result.warnings.filter { it.code == KitWarningCode.CARD_COUNT }
+            val actual = short[entry.file]
+            if (actual == null) {
+                assertEquals(emptyList(), cardCount, entry.file)
+            } else {
+                val warning = cardCount.single()
+                assertEquals(79..85, warning.expected, entry.file)
+                assertEquals(actual, warning.actual, entry.file)
+            }
         }
     }
 
