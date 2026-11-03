@@ -44,7 +44,9 @@ internal class PoolBuilder(private val format: PoolFormat, private val index: Ca
 /** Shared line handling for the line-based formats. */
 internal object PoolLines {
     /** The byte-order mark U+FEFF, which an export may start with. */
-    val BOM: String = Char(0xFEFF).toString()
+    val BOM: String = Char(BOM_CODE_POINT).toString()
+
+    private const val BOM_CODE_POINT = 0xFEFF
 
     /**
      * [text]'s lines without a leading byte-order mark, split on CRLF, LF, or CR. A final line

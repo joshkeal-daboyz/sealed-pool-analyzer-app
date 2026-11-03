@@ -9,6 +9,12 @@ import spa.core.cards.CardIndex
  * set. Lines starting with `#` or `//` are comments.
  */
 object CollectorListParser {
+    // The grammar's groups: a count before, a set code, the number, a count after.
+    private const val COUNT_BEFORE = 1
+    private const val SET = 2
+    private const val NUMBER = 3
+    private const val COUNT_AFTER = 4
+
     private val grammar =
         Regex(
             """^(?:(\d+)(?:\s*[xX])?\s+)?(?:([A-Za-z0-9]*[A-Za-z][A-Za-z0-9]*)\s+)?""" +
@@ -33,7 +39,10 @@ object CollectorListParser {
             builder.unresolved(lineNumber, raw, UnresolvedReason.UNPARSED)
             return
         }
-        val (before, setText, number, after) = match.destructured
+        val before = match.groupValues[COUNT_BEFORE]
+        val setText = match.groupValues[SET]
+        val number = match.groupValues[NUMBER]
+        val after = match.groupValues[COUNT_AFTER]
         val setCode = setText.ifEmpty { index.setCodes.first() }.lowercase(Locale.ROOT)
         val count =
             if (before.isNotEmpty() && after.isNotEmpty()) null
