@@ -1,6 +1,7 @@
 package spa.core.cards
 
 import kotlinx.serialization.json.JsonObject
+import spa.core.text.Color
 
 /**
  * Turns verbatim Scryfall card objects into [Printing]s and [Card]s.

@@ -7,6 +7,7 @@ import kotlin.test.assertNull
 import kotlin.test.assertSame
 import kotlin.test.assertTrue
 import kotlinx.serialization.json.jsonPrimitive
+import spa.core.text.Color
 
 class CardIndexTest {
     private val syn = CardIndex.load(fixturesDir, "syn")

@@ -5,9 +5,9 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
-import spa.core.cards.Color.G
-import spa.core.cards.Color.R
-import spa.core.cards.Color.U
+import spa.core.text.Color.G
+import spa.core.text.Color.R
+import spa.core.text.Color.U
 
 /**
  * Added by the Test Inspector: layout-rule clauses where the resource cards give the same answer

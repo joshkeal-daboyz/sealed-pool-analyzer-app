@@ -7,11 +7,12 @@ import kotlin.test.assertFalse
 import kotlin.test.assertNull
 import kotlin.test.assertSame
 import kotlin.test.assertTrue
-import spa.core.cards.Color.B
-import spa.core.cards.Color.G
-import spa.core.cards.Color.R
-import spa.core.cards.Color.U
-import spa.core.cards.Color.W
+import spa.core.text.Color
+import spa.core.text.Color.B
+import spa.core.text.Color.G
+import spa.core.text.Color.R
+import spa.core.text.Color.U
+import spa.core.text.Color.W
 
 /** One test per layout rule, each on a real Scryfall card object from test resources. */
 class CardNormalizerTest {
