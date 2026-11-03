@@ -1,0 +1,243 @@
+{
+  "fixtures": [
+    {
+      "file": "trk-manabox-01.csv",
+      "set": "trk",
+      "format": "manabox",
+      "seed": 1001,
+      "expectedCards": 85,
+      "expectedUnresolved": []
+    },
+    {
+      "file": "trk-manabox-02.csv",
+      "set": "trk",
+      "format": "manabox",
+      "seed": 1002,
+      "expectedCards": 85,
+      "expectedUnresolved": []
+    },
+    {
+      "file": "trk-manabox-03.csv",
+      "set": "trk",
+      "format": "manabox",
+      "seed": 1003,
+      "expectedCards": 85,
+      "expectedUnresolved": []
+    },
+    {
+      "file": "trk-manabox-04.csv",
+      "set": "trk",
+      "format": "manabox",
+      "seed": 1004,
+      "expectedCards": 85,
+      "expectedUnresolved": []
+    },
+    {
+      "file": "trk-manabox-05.csv",
+      "set": "trk",
+      "format": "manabox",
+      "seed": 1005,
+      "expectedCards": 85,
+      "expectedUnresolved": []
+    },
+    {
+      "file": "trk-manabox-06.csv",
+      "set": "trk",
+      "format": "manabox",
+      "seed": 1006,
+      "expectedCards": 85,
+      "expectedUnresolved": []
+    },
+    {
+      "file": "trk-manabox-07.csv",
+      "set": "trk",
+      "format": "manabox",
+      "seed": 1007,
+      "expectedCards": 85,
+      "expectedUnresolved": []
+    },
+    {
+      "file": "trk-manabox-08.csv",
+      "set": "trk",
+      "format": "manabox",
+      "seed": 1008,
+      "expectedCards": 85,
+      "expectedUnresolved": []
+    },
+    {
+      "file": "trk-manabox-09.csv",
+      "set": "trk",
+      "format": "manabox",
+      "seed": 1009,
+      "expectedCards": 85,
+      "expectedUnresolved": []
+    },
+    {
+      "file": "trk-manabox-10.csv",
+      "set": "trk",
+      "format": "manabox",
+      "seed": 1010,
+      "expectedCards": 85,
+      "expectedUnresolved": []
+    },
+    {
+      "file": "trk-text-01.txt",
+      "set": "trk",
+      "format": "text",
+      "seed": 2019,
+      "expectedCards": 85,
+      "expectedUnresolved": []
+    },
+    {
+      "file": "trk-text-02.txt",
+      "set": "trk",
+      "format": "text",
+      "seed": 2020,
+      "expectedCards": 85,
+      "expectedUnresolved": []
+    },
+    {
+      "file": "trk-text-03.txt",
+      "set": "trk",
+      "format": "text",
+      "seed": 2021,
+      "expectedCards": 85,
+      "expectedUnresolved": []
+    },
+    {
+      "file": "trk-text-04.txt",
+      "set": "trk",
+      "format": "text",
+      "seed": 2022,
+      "expectedCards": 85,
+      "expectedUnresolved": []
+    },
+    {
+      "file": "trk-text-05.txt",
+      "set": "trk",
+      "format": "text",
+      "seed": 2023,
+      "expectedCards": 85,
+      "expectedUnresolved": []
+    },
+    {
+      "file": "trk-collector-01.txt",
+      "set": "trk",
+      "format": "collector",
+      "seed": 3013,
+      "expectedCards": 85,
+      "expectedUnresolved": []
+    },
+    {
+      "file": "trk-collector-02.txt",
+      "set": "trk",
+      "format": "collector",
+      "seed": 3014,
+      "expectedCards": 85,
+      "expectedUnresolved": []
+    },
+    {
+      "file": "trk-collector-03.txt",
+      "set": "trk",
+      "format": "collector",
+      "seed": 3015,
+      "expectedCards": 85,
+      "expectedUnresolved": []
+    },
+    {
+      "file": "trk-collector-04.txt",
+      "set": "trk",
+      "format": "collector",
+      "seed": 3016,
+      "expectedCards": 85,
+      "expectedUnresolved": []
+    },
+    {
+      "file": "trk-collector-05.txt",
+      "set": "trk",
+      "format": "collector",
+      "seed": 3017,
+      "expectedCards": 85,
+      "expectedUnresolved": []
+    },
+    {
+      "file": "syn-text-01.txt",
+      "set": "syn",
+      "format": "text",
+      "seed": 4003,
+      "expectedCards": 85,
+      "expectedUnresolved": []
+    },
+    {
+      "file": "syn-text-02.txt",
+      "set": "syn",
+      "format": "text",
+      "seed": 4004,
+      "expectedCards": 85,
+      "expectedUnresolved": []
+    },
+    {
+      "file": "syn-collector-01.txt",
+      "set": "syn",
+      "format": "collector",
+      "seed": 5001,
+      "expectedCards": 85,
+      "expectedUnresolved": []
+    },
+    {
+      "file": "trk-collector-bad-number-01.txt",
+      "set": "trk",
+      "format": "collector",
+      "seed": null,
+      "expectedCards": 82,
+      "expectedUnresolved": [
+        {
+          "line": 2,
+          "reason": "unknown-collector-number"
+        },
+        {
+          "line": 6,
+          "reason": "unknown-collector-number"
+        }
+      ]
+    },
+    {
+      "file": "trk-manabox-wrong-set-01.csv",
+      "set": "trk",
+      "format": "manabox",
+      "seed": null,
+      "expectedCards": 83,
+      "expectedUnresolved": [
+        {
+          "line": 5,
+          "reason": "wrong-set"
+        },
+        {
+          "line": 9,
+          "reason": "wrong-set"
+        }
+      ]
+    },
+    {
+      "file": "trk-text-misspelled-01.txt",
+      "set": "trk",
+      "format": "text",
+      "seed": null,
+      "expectedCards": 81,
+      "expectedUnresolved": [
+        {
+          "line": 2,
+          "reason": "unknown-name"
+        },
+        {
+          "line": 10,
+          "reason": "unknown-name"
+        },
+        {
+          "line": 20,
+          "reason": "unknown-name"
+        }
+      ]
+    }
+  ]
+}
