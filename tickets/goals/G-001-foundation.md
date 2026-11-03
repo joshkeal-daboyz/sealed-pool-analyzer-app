@@ -63,3 +63,51 @@ Gate green on first push, bounces per merged ticket by source, tokens per merged
 - 2026-11-03 Re-plan: SPA-008 criterion 5 pinned 0 basic lands per trk kit, from a misreading of basicLandsSupplied. The Developer caught it before the gate ran. It is now an exact Binomial(6, 4/5) pin, median 5 (re-plan 1 of 2 for SPA-008).
 - 2026-11-03 Re-plan: added SPA-011, which corrects the kit card-count warning. SPA-005's criterion 6 left booster basics out of the count, so every sampled pool was warned as short. It runs after SPA-009 and before SPA-010, and G-001 now has 11 tickets.
 - 2026-11-03 Re-plan: added SPA-012. It derives the rare-count range from the kit template, because SPA-005's fixed range flagged 14.1 percent of genuine kits, and exempts basics from the high-count warning. It runs after SPA-011 and before SPA-010, and G-001 now has 12 tickets. Remaining known issues for a later cleanup ticket are fetch-set's multi-line Scryfall errors and its "null" network message.
+
+## Closing report (2026-11-03, Architect)
+
+All 12 tickets are integrated (SPA-001 to SPA-012; SPA-011 and SPA-012 were added during the goal). The goal-level criteria were verified on a fresh clone of `main` at 6ad6856:
+
+| Goal criterion | Result on main |
+| --- | --- |
+| 1. Gate green on a fresh clone and in CI | Pass. All seven steps green locally; CI green on 6ad6856. |
+| 2. Card count equals Scryfall's card_count; layout tests | Pass. trk 581 of 581, sds 30 of 30. Layout tests are in SPA-002. |
+| 3. Hand-written brief validates and loads | Pass. `spa validate-brief fixtures/briefs/trk.json --set trk` prints OK. The brief was built by the Architect at the human's instruction. |
+| 4. Every fixture resolves, with no silent errors | Pass. 26 pools (11 ManaBox), totals and unresolved lines matching the manifest. |
+| 5. Goldens for every pool, three hand-checked | Pass. 26 goldens; 105 hand-derived literals over three pools, recounted by both testers. |
+| 6. Baseline seeded and pinned | Pass. Rebuilding with seed 20261106 and 2000 kits leaves the tree unchanged. |
+| 7. `analyze` exits 0 with JSON on every pool | Pass. 26 of 26. |
+
+Metrics:
+
+| Ticket | Attempts | Bounces (source) | Re-plans | Inspector tests added | Dispatch to merge |
+| --- | --- | --- | --- | --- | --- |
+| SPA-001 | 1 | 0 | 0 | 0 | 52 min |
+| SPA-002 | 1 | 0 | 0 | 3 | 27 min |
+| SPA-003 | 1 | 0 | 0 | 16 cases | 28 min |
+| SPA-004 | 1 | 1 (Developer, ticket defect) | 1 | 0 | 53 min |
+| SPA-005 | 2 | 0 | 0 | 0 | 21 min |
+| SPA-006 | 2 | 0 (1 ruling) | 0 | 2 | 23 min |
+| SPA-007 | 1 | 0 | 0 | 0 | 26 min |
+| SPA-008 | 1 | 1 (Developer, ticket defect) | 1 | 0 | 21 min |
+| SPA-009 | 2 | 0 | 0 | 0 | 24 min |
+| SPA-011 | 1 | 0 | 0 | 0 | 11 min |
+| SPA-012 | 2 | 0 | 0 | 0 | 12 min |
+| SPA-010 | 1 | 0 | 0 | 0 | 16 min |
+
+- Gate green on first push: every pushed head passed CI on its first run (12 of 12). Counting local gate runs, 7 of 12 tickets were green on the first run; the five red first runs were four lint failures and one compile error, each fixed in one attempt.
+- Bounces: 2, both Developers sending a defective ticket back to the Architect before writing code. Test Inspector bounces 0. Acceptance Tester bounces 0.
+- Re-plans: 2 (SPA-004, SPA-008). Rulings on a ticket's own contradiction: 1 (SPA-006). Tickets added to fix defects found downstream: 2 (SPA-011, SPA-012, both from SPA-005's kit-warning criteria).
+- Escalations to the human: 0. Human decisions: the target set, building the brief, metrics not reading the brief, one hold.
+- Tokens by role: Test Inspector 1,239,648 total (about 103k per ticket); Acceptance Tester 1,320,940 total (about 110k per ticket), from the agents' completion notices. Developer and Architect token counts aren't available from the session tools, so they are not reported.
+- Share of criteria proven by deterministic tests: about 66 of 87 acceptance criteria (76 percent) have a unit, golden, or property test as their test-plan proof. The rest are Acceptance Tester scenarios (network, installed command, git hook, CI) or document reads.
+- Tests: 415 at close, plus 26 golden files.
+
+Known issues for a later cleanup ticket (none blocks G-001):
+- The tagger doesn't tag Guidance Failure's "target creature or Spacecraft ... top or bottom of their library" as BOUNCE. A fix changes goldens.
+- "Add ... one mana of the chosen color" (Thriving lands) isn't FIXING. No trk card uses it.
+- A typed collector number is matched case-sensitively after one lowercase retry, so `1701d` misses `1701D`.
+- `fetch-set` embeds Scryfall's multi-line error body, against the README's one-line errors, and a network failure's message ends in "null".
+- No unit test exercises the default `--data fixtures` path or an unreadable-file IOException.
+
+The Architect recommends the human close this goal.
