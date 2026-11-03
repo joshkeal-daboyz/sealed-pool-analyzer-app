@@ -1,7 +1,7 @@
 ---
 id: G-002
 title: First installable app, a pool and its metrics on the phone
-status: draft
+status: open
 owner: human
 target_set_code: trk
 companion_set_codes: [sds]
@@ -12,7 +12,7 @@ depends_on: [G-001]
 
 Build the first Android app on top of the finished G-001 engine: an APK the owner sideloads on their phone that takes a pool (a ManaBox CSV first, or pasted text, or a collector-number list), runs the existing intake, metric engine, and set baseline on the device, and shows every number beside its typical value for a `trk` pool. This is the "pool entry screen" and "metrics dashboard" half of step 9 (Interface) in the design brief, built on steps 1 to 4. Nothing in it calls a model, so the app needs no account, no key, and no connection.
 
-This is a draft for the owner to approve. The owner answered its open questions on 2026-11-03; the answers are in "Decided" at the end.
+Approved by the owner on 2026-11-03, who answered its open questions; the answers are in "Decided" at the end.
 
 ## Why this goal next
 
