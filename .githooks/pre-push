@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Runs the gate before a push and refuses the push when it is red. The verdict is left in
+# gate-verdict.json. Installed by pipeline/gate/install-hook.sh.
+#
+# A push that only deletes remote branches has nothing to check, so it skips the gate.
+only_deletes=true
+saw_ref=false
+while read -r _local_ref local_sha _remote_ref _remote_sha; do
+  saw_ref=true
+  [ -n "${local_sha//0/}" ] && only_deletes=false
+done
+if $saw_ref && $only_deletes; then
+  exit 0
+fi
+
+root="$(git rev-parse --show-toplevel)" || exit 1
+"$root/pipeline/gate/run.sh" </dev/null
+status=$?
+if [ "$status" -ne 0 ]; then
+  echo "pre-push: the gate is red, so the push was refused. Read gate-verdict.json." >&2
+fi
+exit "$status"
