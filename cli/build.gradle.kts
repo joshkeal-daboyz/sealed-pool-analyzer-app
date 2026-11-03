@@ -44,12 +44,17 @@ sourceSets.main { resources.srcDir(writeVersion) }
 
 val fixtures = rootProject.layout.projectDirectory.dir("fixtures")
 
+// `-PupdateGoldens=true` makes GoldenTest rewrite fixtures/golden from the current output.
+val updateGoldens = providers.gradleProperty("updateGoldens").orElse("false").get()
+
 tasks.test {
     useJUnitPlatform()
     // Tests run the commands in-process against the committed fixtures; they never reach the
     // network.
     inputs.dir(fixtures).withPropertyName("fixtures")
     systemProperty("spa.fixtures", fixtures.asFile.absolutePath)
+    inputs.property("updateGoldens", updateGoldens)
+    systemProperty("spa.updateGoldens", updateGoldens)
 }
 
 ktfmt { kotlinLangStyle() }
