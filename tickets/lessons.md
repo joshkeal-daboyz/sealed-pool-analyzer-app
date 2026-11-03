@@ -2,6 +2,8 @@
 
 What the Architect learned from merged tickets. One line each, newest first. Read before writing any ticket.
 
+- 2026-11-03 SPA-007: Developers counted attempts differently (one counted an uncommitted red run, one didn't). For history, an attempt is a gate run on a commit the Developer pushes. Local runs before the first push are not attempts, but the Developer still names them in the change note.
+- 2026-11-03 SPA-007: A statistical criterion should state the sample, the tolerance, and which cards count. The syn rare count sat at +8 percent against 10, and whether bonus-sheet mythics count was left open until the testers raised it.
 - 2026-11-03 SPA-006: Before adding a criterion that says "existing tests pass unmodified", read what those tests assert. Criterion 8 forbade the only way to keep CardNormalizerTest's half-symbol cases passing, and the Architect had to rule on its own contradiction.
 - 2026-11-03 SPA-006: The synthetic set lacks some cases (no BOUNCE card, no mana value 7 or more). A ticket whose rules depend on a tag or bucket should name a test case for each, rather than relying on the fixture set to happen to contain one.
 - 2026-11-03 SPA-005: Say whether a lookup is case-insensitive in the criterion itself. Collector numbers were matched exactly then lowercased, so a typed `1701d` misses trk's `1701D`. Any later ticket that touches collector-number lookup should match case-insensitively.
