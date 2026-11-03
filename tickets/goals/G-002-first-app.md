@@ -86,7 +86,7 @@ If it still fails after the reboot, virtualization is off in the PC's firmware s
 **6. Create the emulator the Acceptance Tester uses.** The name `spa-test` is what the tickets will cite:
 
 ```powershell
-avdmanager create avd -n spa-test -k "system-images;android-36;google_apis;x86_64" -d pixel_7
+avdmanager create avd -n spa-test -k "system-images;android-36;google_apis;x86_64" -d pixel_6
 emulator -avd spa-test
 ```
 
@@ -196,7 +196,7 @@ The owner answered the draft's eight open questions on 2026-11-03 ("2. remember"
 
 1. **Scope.** One set (`trk`), three ways in (file picker, share and Open with, paste), results beside the baseline, and About. Decided 2026-11-03: as written, plus the remembered pool (item 2).
 2. **Keep the last pool?** Decided 2026-11-03: yes, remember it. The app keeps one pool, the last one imported, in a private file on the phone, cleared from the app or Android's storage settings (deliverable 7, criterion 16).
-3. **Which phone?** Decided 2026-11-03: the default, Android 16, so the emulator image is `system-images;android-36;google_apis;x86_64` and `minSdk` is at least 26 ("Before this goal starts", steps 3 and 6).
+3. **Which phone?** Decided 2026-11-03: a Google Pixel 6, which is 64-bit (arm64), so the emulator uses the `pixel_6` device profile. The Android version is the default, Android 16, so the emulator image is `system-images;android-36;google_apis;x86_64` and `minSdk` is at least 26 ("Before this goal starts", steps 3 and 6). The owner confirms the phone's version under Settings > About phone > Android version. If it isn't 16, use that version's system image in steps 3 and 6 instead. `minSdk` 26 covers every version the Pixel 6 has run.
 4. **Fix the collector-number case bug now?** Decided 2026-11-03: yes, fix it in this goal, as the one `core` source change (deliverable 8, criterion 17). No golden file changes.
 5. **May `core`'s build target change if Android needs it?** Decided 2026-11-03: the default, approved in advance. Only the bytecode target in `core/build.gradle.kts` may change, with no source change, recorded in the ticket's change note (technical risks; criterion 3).
 6. **Bundle `syn` in the APK?** Decided 2026-11-03: the default, no. The app holds `trk` and `sds` only; criterion 4 runs the 23 `trk` fixtures through the app, and the 3 `syn` fixtures stay in JVM tests.
