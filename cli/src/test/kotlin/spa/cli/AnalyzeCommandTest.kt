@@ -113,12 +113,14 @@ class AnalyzeCommandTest {
 
     @Test
     fun `--brief replaces the set's brief for kit warnings`() {
-        // The same kit with five boosters instead of six holds 5 x 14 + 1 = 71 cards.
+        // The same kit with five boosters instead of six holds 5 x 14 + 1 = 71 cards, of which
+        // 5 booster slots may be basics, so 66 to 71 non-basic cards. The misspelled fixture has
+        // 76, short of the trk kit and over the five-booster one.
         val trk = Path.of(Fixtures.brief("trk")).toFile().readText()
         val fiveBoosters = trk.replace("\"boosters\": 6", "\"boosters\": 5")
         assertNotEquals(trk, fiveBoosters)
         val brief = writeFile(temp, "five.json", fiveBoosters)
-        val pool = Fixtures.pool("trk-manabox-01.csv")
+        val pool = Fixtures.pool("trk-text-misspelled-01.txt")
 
         val warnings = { run: CliRun ->
             assertEquals(ExitCode.OK, run.exit)
@@ -130,9 +132,12 @@ class AnalyzeCommandTest {
             warnings(run).single { it.getValue("code").jsonPrimitive.content == "card-count" }
         }
         val ownBrief = cardCount(analyze(pool, "--set", "trk"))
-        assertEquals(85, ownBrief.getValue("expected").jsonObject["min"]!!.jsonPrimitive.int)
+        assertEquals(79, ownBrief.getValue("expected").jsonObject["min"]!!.jsonPrimitive.int)
+        assertEquals(85, ownBrief.getValue("expected").jsonObject["max"]!!.jsonPrimitive.int)
         val given = cardCount(analyze(pool, "--set", "trk", "--brief", brief))
-        assertEquals(71, given.getValue("expected").jsonObject["min"]!!.jsonPrimitive.int)
+        assertEquals(66, given.getValue("expected").jsonObject["min"]!!.jsonPrimitive.int)
+        assertEquals(71, given.getValue("expected").jsonObject["max"]!!.jsonPrimitive.int)
+        assertEquals(76, given.getValue("actual").jsonPrimitive.int)
     }
 
     @Test
@@ -151,7 +156,7 @@ class AnalyzeCommandTest {
         assertEquals(listOf("code", "expected", "actual", "message"), warning.keys.toList())
         val expected = warning.getValue("expected").jsonObject
         assertEquals(listOf("min", "max"), expected.keys.toList())
-        assertEquals(85, expected.getValue("min").jsonPrimitive.int)
+        assertEquals(79, expected.getValue("min").jsonPrimitive.int)
         assertEquals(85, expected.getValue("max").jsonPrimitive.int)
         // The CLI reports the kit validator's warning as it is; it does not recount.
         val file = Fixtures.pool("trk-text-misspelled-01.txt")

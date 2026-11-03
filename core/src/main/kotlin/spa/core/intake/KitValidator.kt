@@ -1,12 +1,13 @@
 package spa.core.intake
 
 import spa.core.brief.KitTemplate
+import spa.core.brief.SlotKind
 import spa.core.cards.Pool
 import spa.core.cards.Rarity
 
 /** What kind of mismatch a [KitWarning] reports, with the [code] reports show. */
 enum class KitWarningCode(val code: String) {
-    /** The pool's card count is not the kit's. */
+    /** The pool's card count is outside the range the kit allows. */
     CARD_COUNT("card-count"),
 
     /** The pool's rare-plus-mythic count is outside what a kit can hold. */
@@ -44,37 +45,51 @@ object KitValidator {
     private val rareOrMythic = setOf(Rarity.RARE, Rarity.MYTHIC)
 
     fun validate(pool: Pool, kitTemplate: KitTemplate): List<KitWarning> {
-        val expectedCards =
-            kitTemplate.boosters * kitTemplate.cardsPerBooster +
-                (if (kitTemplate.promo != null) 1 else 0)
+        val total = kitTotal(kitTemplate)
         if (pool.totalCount == 0) {
-            return listOf(
-                KitWarning(
-                    KitWarningCode.EMPTY,
-                    expectedCards..expectedCards,
-                    0,
-                    "The pool is empty.",
-                )
-            )
+            return listOf(KitWarning(KitWarningCode.EMPTY, total..total, 0, "The pool is empty."))
         }
         return listOfNotNull(
-            cardCount(pool, kitTemplate, expectedCards),
+            cardCount(pool, kitTemplate),
             rareCount(pool, kitTemplate),
         ) + highCounts(pool)
     }
 
-    private fun cardCount(pool: Pool, kit: KitTemplate, expected: Int): KitWarning? {
+    /** Every card in the kit: each booster's cards plus the promo, if there is one. */
+    fun kitTotal(kit: KitTemplate): Int =
+        kit.boosters * kit.cardsPerBooster + (if (kit.promo != null) 1 else 0)
+
+    /** How many booster slots across the kit can hold a basic land. */
+    fun boosterBasicSlots(kit: KitTemplate): Int =
+        kit.boosters *
+            kit.slots.filter { (it.weights[SlotKind.BASIC_LAND] ?: 0.0) > 0.0 }.sumOf { it.count }
+
+    /**
+     * The card count a pool may have. When the event supplies basic lands, the pool's non-basic
+     * cards are counted, and boosters may have put up to [boosterBasicSlots] basics in place of
+     * them. Otherwise every card is counted and the kit total is exact.
+     */
+    fun expectedCardCount(kit: KitTemplate): IntRange {
+        val total = kitTotal(kit)
+        return if (kit.basicLandsSupplied) (total - boosterBasicSlots(kit))..total else total..total
+    }
+
+    private fun cardCount(pool: Pool, kit: KitTemplate): KitWarning? {
         val counted =
             pool.entries.filterNot { kit.basicLandsSupplied && it.printing.card.isBasicLand }
         val actual = counted.sumOf { it.count }
+        val expected = expectedCardCount(kit)
         val what = if (kit.basicLandsSupplied) "non-basic-land cards" else "cards"
-        return if (actual == expected) null
+        val holds =
+            if (expected.first == expected.last) "${expected.first}"
+            else "${expected.first} to ${expected.last}"
+        return if (actual in expected) null
         else
             KitWarning(
                 KitWarningCode.CARD_COUNT,
-                expected..expected,
+                expected,
                 actual,
-                "The pool has $actual $what; the kit holds $expected.",
+                "The pool has $actual $what; the kit holds $holds.",
             )
     }
 

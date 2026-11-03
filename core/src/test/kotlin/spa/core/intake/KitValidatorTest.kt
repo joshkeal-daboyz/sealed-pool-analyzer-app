@@ -5,6 +5,8 @@ import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import spa.core.brief.BriefLoader
 import spa.core.brief.KitTemplate
+import spa.core.brief.SlotKind
+import spa.core.brief.briefFixturesDir
 import spa.core.brief.synBriefPath
 import spa.core.cards.Pool
 import spa.core.cards.PoolEntry
@@ -62,17 +64,124 @@ class KitValidatorTest {
         assertEquals(emptyList(), validate(pool))
     }
 
-    @Test
-    fun `one card short is a card-count warning`() {
-        val pool = kitPool().apply { this[syn("1")] = 3 }
+    /** syn's basic lands, 21 to 25, then a test-only second printing of each. */
+    private val basics =
+        (21..25).map { syn("$it") } +
+            (21..25).map {
+                syn("$it").copy(scryfallId = "test-basic-$it", collectorNumber = "${it}v")
+            }
 
-        val warnings = validate(pool)
+    /** A test-only second printing of syn 6, a common, for pools past 85 non-basic cards. */
+    private val extra = syn("6").copy(scryfallId = "test-extra-6", collectorNumber = "6v")
+
+    /**
+     * The kit pool cut or padded to [nonbasic] non-basic cards, with [basicCount] basic lands
+     * spread over [basics] at most three copies each, so only the card count can warn.
+     */
+    private fun pool(nonbasic: Int, basicCount: Int): Map<Printing, Int> {
+        val pool = kitPool().apply { remove(syn("25")) }
+        others.take((85 - nonbasic).coerceAtLeast(0)).forEach { pool[syn(it)] = 3 }
+        if (nonbasic > 85) pool[extra] = nonbasic - 85
+        (0 until basicCount).forEach {
+            val basic = basics[it % basics.size]
+            pool[basic] = (pool[basic] ?: 0) + 1
+        }
+        assertEquals(
+            nonbasic,
+            pool.entries.filterNot { it.key.card.isBasicLand }.sumOf { it.value },
+        )
+        assertEquals(basicCount, pool.entries.filter { it.key.card.isBasicLand }.sumOf { it.value })
+        return pool
+    }
+
+    private fun cardCount(warnings: List<KitWarning>) = warnings.single {
+        it.code == KitWarningCode.CARD_COUNT
+    }
+
+    @Test
+    fun `the syn and trk kits hold 85 cards, 6 of them booster basic slots`() {
+        val trk = BriefLoader.load(briefFixturesDir.resolve("trk.json")).kitTemplate
+        listOf(kit, trk).forEach {
+            assertEquals(85, KitValidator.kitTotal(it))
+            assertEquals(6, KitValidator.boosterBasicSlots(it))
+            assertEquals(79..85, KitValidator.expectedCardCount(it))
+        }
+        val notSupplied = kit.copy(basicLandsSupplied = false)
+        assertEquals(85..85, KitValidator.expectedCardCount(notSupplied))
+    }
+
+    @Test
+    fun `slots without a basic-land weight, or with a zero one, hold no booster basics`() {
+        val land = kit.slots.single { SlotKind.BASIC_LAND in it.weights }
+        val zero = land.copy(weights = land.weights + (SlotKind.BASIC_LAND to 0.0))
+        val twoLands = land.copy(count = 2)
+
+        assertEquals(0, KitValidator.boosterBasicSlots(kit.copy(slots = kit.slots - land)))
+        assertEquals(0, KitValidator.boosterBasicSlots(kit.copy(slots = kit.slots - land + zero)))
+        assertEquals(
+            12,
+            KitValidator.boosterBasicSlots(kit.copy(slots = kit.slots - land + twoLands)),
+        )
+    }
+
+    @Test
+    fun `basics supplied, 79 non-basic cards and 6 booster basics is no warning`() {
+        assertEquals(emptyList(), validate(pool(nonbasic = 79, basicCount = 6)))
+    }
+
+    @Test
+    fun `basics supplied, 85 non-basic cards and no basics is no warning`() {
+        assertEquals(emptyList(), validate(pool(nonbasic = 85, basicCount = 0)))
+    }
+
+    @Test
+    fun `basics supplied, 81 non-basic cards and 30 event basics is no warning`() {
+        assertEquals(emptyList(), validate(pool(nonbasic = 81, basicCount = 30)))
+    }
+
+    @Test
+    fun `basics supplied, 78 non-basic cards is a card-count warning`() {
+        val warnings = validate(pool(nonbasic = 78, basicCount = 6))
 
         assertEquals(listOf(KitWarningCode.CARD_COUNT), warnings.map { it.code })
         assertEquals("card-count", warnings[0].code.code)
+        assertEquals(79..85, warnings[0].expected)
+        assertEquals(78, warnings[0].actual)
+        assertEquals(
+            "The pool has 78 non-basic-land cards; the kit holds 79 to 85.",
+            warnings[0].message,
+        )
+    }
+
+    @Test
+    fun `basics supplied, 86 non-basic cards is a card-count warning`() {
+        val warning = cardCount(validate(pool(nonbasic = 86, basicCount = 0)))
+
+        assertEquals(79..85, warning.expected)
+        assertEquals(86, warning.actual)
+        assertEquals(
+            "The pool has 86 non-basic-land cards; the kit holds 79 to 85.",
+            warning.message,
+        )
+    }
+
+    @Test
+    fun `basics not supplied, 85 cards including basics is no warning`() {
+        val notSupplied = kit.copy(basicLandsSupplied = false)
+
+        assertEquals(emptyList(), validate(pool(nonbasic = 82, basicCount = 3), notSupplied))
+    }
+
+    @Test
+    fun `basics not supplied, 84 cards including basics is a card-count warning`() {
+        val notSupplied = kit.copy(basicLandsSupplied = false)
+
+        val warnings = validate(pool(nonbasic = 81, basicCount = 3), notSupplied)
+
+        assertEquals(listOf(KitWarningCode.CARD_COUNT), warnings.map { it.code })
         assertEquals(85..85, warnings[0].expected)
         assertEquals(84, warnings[0].actual)
-        assertEquals("The pool has 84 non-basic-land cards; the kit holds 85.", warnings[0].message)
+        assertEquals("The pool has 84 cards; the kit holds 85.", warnings[0].message)
     }
 
     @Test
@@ -85,7 +194,7 @@ class KitValidatorTest {
         assertEquals("The pool has 88 cards; the kit holds 85.", warnings[0].message)
 
         val noPromo = validate(kitPool(), kit.copy(promo = null))
-        assertEquals(84..84, noPromo.single().expected)
+        assertEquals(78..84, noPromo.single().expected)
         assertEquals(85, noPromo.single().actual)
     }
 
