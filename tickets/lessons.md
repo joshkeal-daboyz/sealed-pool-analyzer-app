@@ -2,6 +2,8 @@
 
 What the Architect learned from merged tickets. One line each, newest first. Read before writing any ticket.
 
+- 2026-11-03 SPA-006: Before adding a criterion that says "existing tests pass unmodified", read what those tests assert. Criterion 8 forbade the only way to keep CardNormalizerTest's half-symbol cases passing, and the Architect had to rule on its own contradiction.
+- 2026-11-03 SPA-006: The synthetic set lacks some cases (no BOUNCE card, no mana value 7 or more). A ticket whose rules depend on a tag or bucket should name a test case for each, rather than relying on the fixture set to happen to contain one.
 - 2026-11-03 SPA-005: Say whether a lookup is case-insensitive in the criterion itself. Collector numbers were matched exactly then lowercased, so a typed `1701d` misses trk's `1701D`. Any later ticket that touches collector-number lookup should match case-insensitively.
 - 2026-11-03 SPA-005: The first red gate in G-001 was detekt on new code. Developers fix it in one attempt, but it is the most likely first-push failure, so tickets can keep naming it in the background.
 - 2026-11-03 SPA-003/SPA-004: When parallel tickets merge back to back, the second one's gate never ran with the first one's code. Run the gate on the combined tree (branch plus current main) before the second merge.
