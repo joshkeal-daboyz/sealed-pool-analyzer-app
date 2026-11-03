@@ -1,6 +1,5 @@
 package spa.cli
 
-import java.io.IOException
 import java.io.PrintStream
 import java.nio.file.Files
 import java.nio.file.Path
@@ -68,11 +67,9 @@ object AnalyzeCommand {
     }
 
     private fun loadBrief(path: Path): FormatBrief {
-        if (!Files.isRegularFile(path)) {
-            throw CliFailure("brief not found: $path", ExitCode.ERROR)
-        }
+        val text = Commands.readFile(path, "brief")
         return try {
-            BriefLoader.load(path)
+            BriefLoader.parse(text)
         } catch (e: BriefValidationException) {
             throw CliFailure(
                 "brief $path is invalid (${e.errors.size} error(s)); " +
@@ -80,8 +77,6 @@ object AnalyzeCommand {
                 ExitCode.ERROR,
                 e,
             )
-        } catch (e: IOException) {
-            throw CliFailure("cannot read brief $path: ${e.message}", ExitCode.ERROR, e)
         }
     }
 

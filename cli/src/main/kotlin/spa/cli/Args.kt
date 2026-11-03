@@ -27,39 +27,48 @@ private constructor(
             valueOptions: Set<String> = emptySet(),
             flagOptions: Set<String> = emptySet(),
         ): Args {
-            val positionals = mutableListOf<String>()
-            val values = mutableMapOf<String, String>()
-            val flags = mutableSetOf<String>()
-            var i = 0
-            while (i < args.size) {
-                val arg = args[i]
-                i++
-                if (!arg.startsWith("--") || arg == "--") {
-                    if (arg.startsWith("-") && arg.length > 1) usage("unknown option '$arg'")
-                    positionals += arg
-                    continue
-                }
-                val name = arg.removePrefix("--").substringBefore('=')
-                val inline = if ('=' in arg) arg.substringAfter('=') else null
-                if (name in values || name in flags) usage("option '--$name' given twice")
-                when (name) {
-                    in flagOptions ->
-                        if (inline == null) flags += name
-                        else usage("option '--$name' takes no value")
-                    in valueOptions -> {
-                        val value = inline ?: args.getOrNull(i)?.also { i++ }
-                        if (
-                            value == null ||
-                                value.isEmpty() ||
-                                inline == null && value.startsWith("--")
-                        )
-                            usage("option '--$name' needs a value")
-                        values[name] = value
-                    }
-                    else -> usage("unknown option '--$name'")
-                }
+            val parser = Parser(valueOptions, flagOptions)
+            val rest = ArrayDeque(args)
+            while (rest.isNotEmpty()) parser.take(rest.removeFirst(), rest)
+            return Args(parser.positionals, parser.values, parser.flags)
+        }
+    }
+
+    /** Collects one command line's arguments, one at a time. */
+    private class Parser(
+        private val valueOptions: Set<String>,
+        private val flagOptions: Set<String>,
+    ) {
+        val positionals = mutableListOf<String>()
+        val values = mutableMapOf<String, String>()
+        val flags = mutableSetOf<String>()
+
+        /** Takes [arg]; an option's value, when written as the next argument, comes from [rest]. */
+        fun take(arg: String, rest: ArrayDeque<String>) {
+            when {
+                !arg.startsWith("-") || arg == "-" -> positionals += arg
+                !arg.startsWith("--") || arg == "--" -> usage("unknown option '$arg'")
+                else -> option(arg, rest)
             }
-            return Args(positionals, values, flags)
+        }
+
+        private fun option(arg: String, rest: ArrayDeque<String>) {
+            val name = arg.removePrefix("--").substringBefore('=')
+            val inline = if ('=' in arg) arg.substringAfter('=') else null
+            if (name in values || name in flags) usage("option '--$name' given twice")
+            when (name) {
+                in flagOptions ->
+                    if (inline == null) flags += name else usage("option '--$name' takes no value")
+                in valueOptions -> values[name] = inline ?: nextValue(name, rest)
+                else -> usage("unknown option '--$name'")
+            }
+            if (values[name]?.isEmpty() == true) usage("option '--$name' needs a value")
+        }
+
+        private fun nextValue(name: String, rest: ArrayDeque<String>): String {
+            val next = rest.firstOrNull()
+            if (next == null || next.startsWith("--")) usage("option '--$name' needs a value")
+            return rest.removeFirst()
         }
 
         private fun usage(message: String): Nothing = throw CliFailure(message, ExitCode.USAGE)

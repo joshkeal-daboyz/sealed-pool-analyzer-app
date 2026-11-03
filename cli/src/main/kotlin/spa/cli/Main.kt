@@ -29,6 +29,8 @@ object Main {
         """
             .trimMargin()
 
+    // The ticket fixes the main class as spa.cli.Main, and the JVM entry point must be named main.
+    @Suppress("MemberNameEqualsClassName")
     @JvmStatic
     fun main(args: Array<String>) {
         val stdout = PrintStream(FileOutputStream(FileDescriptor.out), true, StandardCharsets.UTF_8)
