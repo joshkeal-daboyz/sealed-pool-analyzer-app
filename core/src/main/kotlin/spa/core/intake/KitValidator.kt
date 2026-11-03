@@ -36,12 +36,6 @@ object KitValidator {
     /** The most copies of one printing a pool holds before it looks wrong. */
     const val MAX_COPIES = 4
 
-    /** Rare-plus-mythic counts may fall this far below the booster count. */
-    const val RARES_BELOW = 1
-
-    /** Rare-plus-mythic counts may rise this far above the booster count. */
-    const val RARES_ABOVE = 3
-
     private val rareOrMythic = setOf(Rarity.RARE, Rarity.MYTHIC)
 
     fun validate(pool: Pool, kitTemplate: KitTemplate): List<KitWarning> {
@@ -93,8 +87,15 @@ object KitValidator {
             )
     }
 
+    /**
+     * The rare-plus-mythic count a pool may have: [KitRareCounts.guaranteedRares] to
+     * [KitRareCounts.rareCountMax].
+     */
+    fun expectedRareCount(kit: KitTemplate): IntRange =
+        KitRareCounts.guaranteedRares(kit)..KitRareCounts.rareCountMax(kit)
+
     private fun rareCount(pool: Pool, kit: KitTemplate): KitWarning? {
-        val allowed = (kit.boosters - RARES_BELOW)..(kit.boosters + RARES_ABOVE)
+        val allowed = expectedRareCount(kit)
         val actual = pool.entries.filter { it.printing.rarity in rareOrMythic }.sumOf { it.count }
         return if (actual in allowed) null
         else
@@ -109,7 +110,7 @@ object KitValidator {
 
     private fun highCounts(pool: Pool): List<KitWarning> =
         pool.entries
-            .filter { it.count > MAX_COPIES }
+            .filter { it.count > MAX_COPIES && !it.printing.card.isBasicLand }
             .map {
                 val printing = it.printing
                 KitWarning(
@@ -121,4 +122,58 @@ object KitValidator {
                         "than $MAX_COPIES.",
                 )
             }
+}
+
+/** The rare-plus-mythic count of a kit sampled from its template, derived exactly. */
+object KitRareCounts {
+    /** The top of the rare-count range is the count a kit reaches with at least this chance. */
+    const val COVERAGE = 0.999
+
+    /** Slack for floating-point sums when comparing chances to 1 or to [COVERAGE]. */
+    private const val TOLERANCE = 1e-9
+
+    /** Slot kinds whose cards are printed rare or mythic; bonus-sheet cards are mythic. */
+    private val rareKinds = setOf(SlotKind.RARE, SlotKind.MYTHIC, SlotKind.BONUS_SHEET)
+
+    /**
+     * The chance each card position in the kit is a rare or mythic: one entry per booster slot card
+     * (each slot's count times the boosters), then the promo if there is one.
+     */
+    fun rareChances(kit: KitTemplate): List<Double> {
+        val boosterChances =
+            kit.slots.flatMap { slot ->
+                List(slot.count * kit.boosters) { rareChance(slot.weights) }
+            }
+        val promo = kit.promo?.let { listOf(rareChance(it.weights)) } ?: emptyList()
+        return boosterChances + promo
+    }
+
+    private fun rareChance(weights: Map<SlotKind, Double>): Double {
+        val total = weights.values.sum()
+        return if (total <= 0.0) 0.0
+        else weights.filterKeys { it in rareKinds }.values.sum() / total
+    }
+
+    /**
+     * The exact distribution of a sampled kit's rare-plus-mythic count: entry `k` is the chance of
+     * exactly `k`. Each position is an independent trial with its [rareChances] chance.
+     */
+    fun rareCountDistribution(kit: KitTemplate): List<Double> =
+        rareChances(kit).fold(listOf(1.0)) { dist, p ->
+            List(dist.size + 1) { k ->
+                val miss = if (k < dist.size) dist[k] * (1 - p) else 0.0
+                val hit = if (k > 0) dist[k - 1] * p else 0.0
+                miss + hit
+            }
+        }
+
+    /** The positions that are always a rare or mythic. */
+    fun guaranteedRares(kit: KitTemplate): Int = rareChances(kit).count { it >= 1 - TOLERANCE }
+
+    /** The smallest count a sampled kit stays at or under with [COVERAGE] chance. */
+    fun rareCountMax(kit: KitTemplate): Int {
+        // The distribution sums to 1, so some cumulative chance always reaches the coverage.
+        val cumulative = rareCountDistribution(kit).runningReduce(Double::plus)
+        return cumulative.indices.first { cumulative[it] >= COVERAGE - TOLERANCE }
+    }
 }

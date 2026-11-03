@@ -11,6 +11,7 @@ import spa.core.brief.BriefLoader
 import spa.core.brief.KitTemplate
 import spa.core.brief.briefFixturesDir
 import spa.core.cards.CardIndex
+import spa.core.cards.Rarity
 import spa.core.cards.fixturesDir
 import spa.core.sim.ExpectedUnresolved
 import spa.core.sim.FixtureEntry
@@ -169,6 +170,54 @@ class FixturePoolsTest {
             }
         }
     }
+
+    private fun warnings(entry: FixtureEntry): List<KitWarning> =
+        PoolParser.parse(
+                poolFixturesDir.resolve(entry.file).readText(),
+                index(entry.set),
+                entry.poolFormat,
+                kit(entry.set),
+            )
+            .warnings
+
+    @Test
+    fun `no fixture gets a rare-count warning`() {
+        // Computed by script from the fixture files and the caches: 7 to 11 rares and mythics.
+        assertEquals(26, manifest.fixtures.size)
+        val rareCounts =
+            manifest.fixtures.map { entry ->
+                assertEquals(
+                    emptyList(),
+                    warnings(entry).filter { it.code == KitWarningCode.RARE_COUNT },
+                    entry.file,
+                )
+                parse(entry)
+                    .pool
+                    .entries
+                    .filter { it.printing.rarity in rareOrMythic }
+                    .sumOf { it.count }
+            }
+        assertEquals(7, rareCounts.min())
+        assertEquals(11, rareCounts.max())
+    }
+
+    @Test
+    fun `high-count warnings are none for trk and the pinned counts for syn`() {
+        // Computed by script: syn's 8-card common sheet puts 5 or 6 copies of a common in a kit.
+        val synCounts =
+            mapOf("syn-text-01.txt" to 9, "syn-text-02.txt" to 10, "syn-collector-01.txt" to 9)
+        assertEquals(
+            synCounts.keys,
+            manifest.fixtures.filter { it.set == "syn" }.map { it.file }.toSet(),
+        )
+        manifest.fixtures.forEach { entry ->
+            val highCount = warnings(entry).filter { it.code == KitWarningCode.HIGH_COUNT }
+            assertEquals(synCounts[entry.file] ?: 0, highCount.size, entry.file)
+            assertTrue(highCount.all { it.actual > KitValidator.MAX_COPIES }, entry.file)
+        }
+    }
+
+    private val rareOrMythic = setOf(Rarity.RARE, Rarity.MYTHIC)
 
     private fun reasons(entry: FixtureEntry) = entry.expectedUnresolved.map { it.reason }
 }
