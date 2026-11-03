@@ -1,7 +1,7 @@
 ---
 id: G-001
 title: Foundation phase of the Sealed Pool Analyzer
-status: open
+status: closed
 owner: human
 target_set_code: trk
 companion_set_codes: [sds]
@@ -111,3 +111,5 @@ Known issues for a later cleanup ticket (none blocks G-001):
 - No unit test exercises the default `--data fixtures` path or an unreadable-file IOException.
 
 The Architect recommends the human close this goal.
+
+- 2026-11-03 Owner: closed the goal on the closing report above.
