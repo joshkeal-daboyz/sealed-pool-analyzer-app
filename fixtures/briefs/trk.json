@@ -1,0 +1,239 @@
+{
+  "setCode": "trk",
+  "setName": "Star Trek",
+  "version": 1,
+  "speed": "medium",
+  "speedNotes": "Speed varies by archetype. B/R Klingons and R/W Command want to end the game early with haste and wide boards, while U/B, W/U, and G/U play longer games as Spacecraft, modal spells, and land counts come online. Treat this as a starting point until real prerelease results arrive.",
+  "companionSetCodes": [
+    "sds"
+  ],
+  "mechanics": [
+    {
+      "name": "Surveil",
+      "rulesText": "Surveil N means \"Look at the top N cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.\"",
+      "reminderText": "(Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)"
+    },
+    {
+      "name": "Station",
+      "rulesText": "Station is an activated ability of Spacecraft: \"Tap another creature you control: Put charge counters equal to its power on this permanent. Activate only as a sorcery.\" Each striation, such as 6+, grants its abilities once the permanent has that many charge counters, and a striation with a power and toughness makes it an artifact creature.",
+      "reminderText": "(Tap another creature you control: Put charge counters equal to its power on this Spacecraft. Station only as a sorcery. It's an artifact creature at 6+.)"
+    },
+    {
+      "name": "Strange new worlds",
+      "rulesText": "Strange new worlds is an ability word. Its abilities count the number of differently named lands you control."
+    },
+    {
+      "name": "Beam me up",
+      "rulesText": "Beam me up [cost] means \"You may cast this card from your graveyard by paying [cost] and returning a creature you control to its owner's hand. If you do, exile it as it leaves the stack.\" It appears on instants and sorceries, and normal timing rules still apply.",
+      "reminderText": "(You may cast this card from your graveyard for [cost] if you also return a creature you control to its owner's hand. Then exile this spell.)"
+    },
+    {
+      "name": "Landfall",
+      "rulesText": "Landfall is an ability word. Its abilities trigger whenever a land enters the battlefield under your control, whether it was played or put there by an effect."
+    },
+    {
+      "name": "Face a dilemma",
+      "rulesText": "You face a dilemma whenever you choose one or more modes for a modal spell or ability. Choosing several modes is still one dilemma. \"Whenever you face a dilemma\" triggers resolve before the spell or ability that caused them.",
+      "reminderText": "(You face a dilemma as you choose one or more modes for a spell or ability.)"
+    },
+    {
+      "name": "Federation",
+      "rulesText": "Federation is an ability word. Its abilities count the number of creature types among non-Borg creatures you control."
+    },
+    {
+      "name": "Assimilate",
+      "rulesText": "To assimilate a creature or creature card, put it onto the battlefield under your control, or gain control of it, with a +1/+1 counter. It becomes a Borg artifact creature and loses all other creature types.",
+      "reminderText": "(To assimilate a card, put it onto the battlefield under your control with a +1/+1 counter. It's a Borg artifact creature and loses all other creature types.)"
+    }
+  ],
+  "archetypes": [
+    {
+      "colors": "WU",
+      "name": "Spacecraft and Artificers",
+      "plan": "Play creatures with useful enters effects, then tap them to station Spacecraft. Hold the board while the ships come online over a turn or two.",
+      "signpostUncommons": [
+        "Constable Odo",
+        "Hemmer, Fixing What Is Broken"
+      ],
+      "keyCommons": [
+        "Interstellar Effigy"
+      ]
+    },
+    {
+      "colors": "UB",
+      "name": "Dilemma Control",
+      "plan": "Choose between proactive and reactive modes on modal spells to stay in control, then win with cards that pay off each time you face a dilemma.",
+      "signpostUncommons": [
+        "Lore, Positronic Provocateur",
+        "Seven of Nine"
+      ],
+      "keyCommons": [
+        "Consider the Prime Directive"
+      ]
+    },
+    {
+      "colors": "BR",
+      "name": "Klingons and Dies",
+      "plan": "Attack with hasty Klingon Warrior tokens, then sacrifice them or let them die for value. Some creatures want to die.",
+      "signpostUncommons": [
+        "The Duras Sisters",
+        "L'Rell, Fierce Visionary"
+      ],
+      "keyCommons": [
+        "A Good Day to Die",
+        "Starfleet Security"
+      ]
+    },
+    {
+      "colors": "RG",
+      "name": "Away Team Landfall",
+      "plan": "Put lands onto the battlefield as often as possible and turn each landfall trigger into damage or bigger creatures. Trigger doublers make it explosive.",
+      "signpostUncommons": [
+        "Cleveland Booker, Empath",
+        "Dal R'El, Augment Orphan"
+      ]
+    },
+    {
+      "colors": "WG",
+      "name": "Doctors and Counters",
+      "plan": "Grow creatures with +1/+1 counters. Payoffs that care about any kind of counter also count the charge counters on Spacecraft.",
+      "signpostUncommons": [
+        "The Doctor, EMH",
+        "Phlox, Unorthodox Doctor"
+      ],
+      "keyCommons": [
+        "Pure Energy"
+      ]
+    },
+    {
+      "colors": "WB",
+      "name": "Borg Artifact Creatures",
+      "plan": "Build a board of Borg artifact creatures, pump them together, and sacrifice artifacts you no longer need for bigger effects.",
+      "signpostUncommons": [
+        "Locutus, the One Who Speaks",
+        "Zero, Incorporeal Sensate"
+      ],
+      "keyCommons": [
+        "Vexing Drone",
+        "Assault Drone"
+      ]
+    },
+    {
+      "colors": "UR",
+      "name": "Scientists and Noncreatures",
+      "plan": "Cast cheap noncreature spells every turn to trigger Scientist payoffs. Spacecraft count as noncreature spells when cast.",
+      "signpostUncommons": [
+        "Gray and Adira, Forever Joined",
+        "Spock, Always Your Friend"
+      ]
+    },
+    {
+      "colors": "BG",
+      "name": "Archaeology Graveyard",
+      "plan": "Fill the graveyard with creatures and artifacts, surveil every turn, and bring the best cards back with reanimation and beam me up spells.",
+      "signpostUncommons": [
+        "Daniels, Temporal Agent",
+        "Vash, Freelance Archaeologist"
+      ],
+      "keyCommons": [
+        "Pattern Buffer Preservation"
+      ]
+    },
+    {
+      "colors": "RW",
+      "name": "Command",
+      "plan": "Go wide with Officer tokens until your creatures total 8 or more power, then use the command payoffs to break through blockers.",
+      "signpostUncommons": [
+        "Kirk, Commanding Officer",
+        "Worf, Honor-Bound Warrior"
+      ]
+    },
+    {
+      "colors": "UG",
+      "name": "Strange New Worlds",
+      "plan": "Play as many differently named lands as you can, including Planets and Anomalies. Off-color Planets are worth playing for their life gain and to power up strange new worlds cards.",
+      "signpostUncommons": [
+        "D'Vana Tendi, Optimistic Ensign",
+        "The Traveler"
+      ],
+      "keyCommons": [
+        "Suus Mahna Practitioner",
+        "Orion",
+        "Risa"
+      ]
+    }
+  ],
+  "genericArchetypes": [],
+  "kitTemplate": {
+    "boosters": 6,
+    "cardsPerBooster": 14,
+    "slots": [
+      {
+        "name": "Common",
+        "count": 6,
+        "weights": {
+          "common": 1
+        }
+      },
+      {
+        "name": "Common or bonus sheet",
+        "count": 1,
+        "weights": {
+          "common": 63,
+          "bonusSheet": 1
+        }
+      },
+      {
+        "name": "Uncommon",
+        "count": 3,
+        "weights": {
+          "uncommon": 1
+        }
+      },
+      {
+        "name": "Rare or mythic",
+        "count": 1,
+        "weights": {
+          "rare": 6,
+          "mythic": 1
+        }
+      },
+      {
+        "name": "Wildcard",
+        "count": 1,
+        "weights": {
+          "common": 40,
+          "uncommon": 21,
+          "rare": 6,
+          "mythic": 1
+        }
+      },
+      {
+        "name": "Foil wildcard",
+        "count": 1,
+        "foil": true,
+        "weights": {
+          "common": 40,
+          "uncommon": 21,
+          "rare": 6,
+          "mythic": 1
+        }
+      },
+      {
+        "name": "Land",
+        "count": 1,
+        "weights": {
+          "basicLand": 4,
+          "commonLand": 1
+        }
+      }
+    ],
+    "promo": {
+      "weights": {
+        "rare": 6,
+        "mythic": 1
+      }
+    },
+    "basicLandsSupplied": true
+  }
+}
