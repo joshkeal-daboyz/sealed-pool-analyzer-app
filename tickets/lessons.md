@@ -2,6 +2,7 @@
 
 What the Architect learned from merged tickets. One line each, newest first. Read before writing any ticket.
 
+- 2026-11-03 SPA-008: Derive every pinned value from the actual template or data by script, not from what a flag's name suggests. `basicLandsSupplied` led to pinning 0 basics per kit, while the Land slot gives about 5. This is the second ticket bounced for a hand-derived pin (after SPA-004).
 - 2026-11-03 SPA-007: Developers counted attempts differently (one counted an uncommitted red run, one didn't). For history, an attempt is a gate run on a commit the Developer pushes. Local runs before the first push are not attempts, but the Developer still names them in the change note.
 - 2026-11-03 SPA-007: A statistical criterion should state the sample, the tolerance, and which cards count. The syn rare count sat at +8 percent against 10, and whether bonus-sheet mythics count was left open until the testers raised it.
 - 2026-11-03 SPA-006: Before adding a criterion that says "existing tests pass unmodified", read what those tests assert. Criterion 8 forbade the only way to keep CardNormalizerTest's half-symbol cases passing, and the Architect had to rule on its own contradiction.
