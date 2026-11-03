@@ -18,6 +18,7 @@ dependencies {
 
 val scryfallFixtures = rootProject.layout.projectDirectory.dir("fixtures/scryfall")
 val briefFixtures = rootProject.layout.projectDirectory.dir("fixtures/briefs")
+val poolFixtures = rootProject.layout.projectDirectory.dir("fixtures/pools")
 
 tasks.test {
     useJUnitPlatform()
@@ -27,6 +28,9 @@ tasks.test {
     // Tests load the committed example briefs, syn.json among them.
     inputs.dir(briefFixtures).withPropertyName("briefFixtures")
     systemProperty("spa.brief.fixtures", briefFixtures.asFile.absolutePath)
+    // FixturePoolsTest parses every committed pool fixture against its manifest.
+    inputs.dir(poolFixtures).withPropertyName("poolFixtures")
+    systemProperty("spa.pool.fixtures", poolFixtures.asFile.absolutePath)
 }
 
 // ./gradlew :core:fetchSet -Pset=<code> [-PdataDir=<dir>] refreshes one set's cache from Scryfall.
@@ -43,6 +47,21 @@ tasks.register<JavaExec>("fetchSet") {
             .map { rootProject.file(it).absolutePath }
             .orElse(scryfallFixtures.asFile.absolutePath)
     argumentProviders.add(CommandLineArgumentProvider { listOf(setCode.get(), dataDir.get()) })
+}
+
+// ./gradlew :core:generateFixtures rewrites fixtures/pools/ from the seeds in
+// FixtureGenerator.plan,
+// keeping hand-edited fixtures (manifest entries with a null seed) as they are.
+tasks.register<JavaExec>("generateFixtures") {
+    group = "fixtures"
+    description = "Regenerates the sampled pool fixtures and manifest under fixtures/pools."
+    classpath = sourceSets.main.get().runtimeClasspath
+    mainClass.set("spa.core.sim.FixtureGeneratorMainKt")
+    args(
+        scryfallFixtures.asFile.absolutePath,
+        briefFixtures.asFile.absolutePath,
+        poolFixtures.asFile.absolutePath,
+    )
 }
 
 ktfmt { kotlinLangStyle() }
