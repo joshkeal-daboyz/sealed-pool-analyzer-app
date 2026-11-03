@@ -2,6 +2,8 @@
 
 What the Architect learned from merged tickets. One line each, newest first. Read before writing any ticket.
 
+- 2026-11-03 SPA-005: Say whether a lookup is case-insensitive in the criterion itself. Collector numbers were matched exactly then lowercased, so a typed `1701d` misses trk's `1701D`. Any later ticket that touches collector-number lookup should match case-insensitively.
+- 2026-11-03 SPA-005: The first red gate in G-001 was detekt on new code. Developers fix it in one attempt, but it is the most likely first-push failure, so tickets can keep naming it in the background.
 - 2026-11-03 SPA-003/SPA-004: When parallel tickets merge back to back, the second one's gate never ran with the first one's code. Run the gate on the combined tree (branch plus current main) before the second merge.
 - 2026-11-03 SPA-004: Mana-production patterns came from a list in the criterion, so anything off the list is silently not fixing. "One mana of the chosen color" (Thriving lands) is the known gap. Before a set's metric ticket, grep the set's oracle text for every `Add` wording and list each one in the criterion.
 - 2026-11-03 SPA-004: Compute every pinned number with a script before it goes into a ticket, and say in the criterion how it was computed. Two hand-computed probabilities were wrong, and the Developer had to bounce the ticket before writing any code.
