@@ -1,0 +1,21 @@
+# Pipeline
+gate-verdict.json
+
+# Gradle / Kotlin / Android (created by tickets)
+.gradle/
+build/
+*/build/
+local.properties
+.kotlin/
+*.iml
+.idea/
+
+# Scryfall cache (tickets decide what is committed under fixtures/)
+.cache/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Claude Code local state
+.claude/
