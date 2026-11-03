@@ -1,0 +1,18 @@
+{
+  "object": "set",
+  "id": "6c6374a8-d70e-410f-a3c4-978a18fdbaa0",
+  "code": "sds",
+  "tcgplayer_id": 24771,
+  "name": "Stardates",
+  "uri": "https://api.scryfall.com/sets/6c6374a8-d70e-410f-a3c4-978a18fdbaa0",
+  "scryfall_uri": "https://scryfall.com/sets/sds",
+  "search_uri": "https://api.scryfall.com/cards/search?include_extras=true&include_variations=true&order=set&q=e%3Asds&unique=prints",
+  "released_at": "2026-11-13",
+  "set_type": "masterpiece",
+  "card_count": 30,
+  "parent_set_code": "trk",
+  "digital": false,
+  "nonfoil_only": false,
+  "foil_only": false,
+  "icon_svg_uri": "https://svgs.scryfall.io/sets/sds.svg?1793595600"
+}
