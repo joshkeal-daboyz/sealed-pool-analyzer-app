@@ -1,0 +1,122 @@
+{
+  "setCode": "syn",
+  "setName": "Synthetic Test Set",
+  "version": 1,
+  "speed": "medium",
+  "speedNotes": "Most games are decided on turns seven to nine. Two-drops matter but do not win alone; the best decks curve out and then cash in Kindle cards late.",
+  "companionSetCodes": [],
+  "mechanics": [
+    {
+      "name": "Kindle",
+      "rulesText": "Kindle N means \"When this permanent enters, if you've cast another spell this turn, it deals N damage to any target.\"",
+      "reminderText": "(When this enters, if you've cast another spell this turn, it deals N damage to any target.)"
+    },
+    {
+      "name": "Tether",
+      "rulesText": "Tether is a keyword action. To tether a creature, tap it and put a tether counter on it. A creature with a tether counter doesn't untap during its controller's untap step. When it would untap, remove a tether counter from it instead.",
+      "reminderText": "(Tap it and put a tether counter on it. It doesn't untap while it has a tether counter; remove one instead.)"
+    },
+    {
+      "name": "Overgrow",
+      "rulesText": "Overgrow is an ability word. An ability with overgrow checks whether you control seven or more lands."
+    }
+  ],
+  "archetypes": [
+    {
+      "colors": "WU",
+      "name": "Tether Control",
+      "plan": "Tether the opponent's best attackers, fly over the top with evasive two- and three-drops, and win the race in the air.",
+      "signpostUncommons": ["Warden of the Cinch"],
+      "keyCommons": ["Binding Glance", "Skyline Courier"]
+    },
+    {
+      "colors": "UB",
+      "name": "Graveyard Tricksters",
+      "plan": "Fill the graveyard with self-mill and card draw, then reuse cheap creatures that come back from it.",
+      "signpostUncommons": ["Drowned Archivist"],
+      "keyCommons": ["Silt Diver", "Ink of Forgetting"]
+    },
+    {
+      "colors": "BR",
+      "name": "Sacrifice Aggro",
+      "plan": "Trade cheap creatures away for value, sacrifice them for damage, and close fast with Kindle burn.",
+      "signpostUncommons": ["Cinder Butcher"],
+      "keyCommons": ["Ashpit Recruit"]
+    },
+    {
+      "colors": "RG",
+      "name": "Big Kindle",
+      "plan": "Ramp into large Kindle creatures and cast a cheap spell first so each one enters with a burst of damage.",
+      "signpostUncommons": ["Wildfire Matriarch"],
+      "keyCommons": ["Ember Stag", "Rootcrack Shaman"]
+    },
+    {
+      "colors": "GW",
+      "name": "Counters Go-Wide",
+      "plan": "Flood the board with small creatures, spread +1/+1 counters, and attack with everything.",
+      "signpostUncommons": ["Meadow Banner-Bearer"],
+      "keyCommons": ["Hedgerow Scout"]
+    },
+    {
+      "colors": "WB",
+      "name": "Lifedrain Midrange",
+      "plan": "Gain life with every creature that enters, then spend it on removal and drain effects.",
+      "signpostUncommons": ["Sanctum Exsanguinator"],
+      "keyCommons": ["Votive Acolyte"]
+    },
+    {
+      "colors": "UR",
+      "name": "Spells Tempo",
+      "plan": "Cast two spells a turn: cheap cantrips turn on Kindle and prowess-style creatures.",
+      "signpostUncommons": ["Stormglass Adept"],
+      "keyCommons": ["Quick Study", "Sparkcaller Apprentice"]
+    },
+    {
+      "colors": "BG",
+      "name": "Overgrow Value",
+      "plan": "Ramp to seven lands with land recursion and finish with overgrow payoffs that are far above rate.",
+      "signpostUncommons": ["Mire Colossus"],
+      "keyCommons": ["Bog Forager"]
+    },
+    {
+      "colors": "RW",
+      "name": "Equipment Aggro",
+      "plan": "Curve out with two-drops, suit them up with cheap equipment, and push damage before blockers stabilize.",
+      "signpostUncommons": ["Forgeguard Captain"],
+      "keyCommons": ["Battle Harness"]
+    },
+    {
+      "colors": "GU",
+      "name": "Tether Ramp",
+      "plan": "Tether blockers to buy time while ramping, then win with large flyers and overgrow threats.",
+      "signpostUncommons": ["Tidegrove Keeper"],
+      "keyCommons": ["Reed Wader"]
+    }
+  ],
+  "genericArchetypes": [
+    {
+      "name": "Five-color Overgrow",
+      "description": "Play every fixing land and Mind Stone-style rock, take the strongest card in any color, and win the long game with overgrow bombs."
+    },
+    {
+      "name": "Mono-red Kindle",
+      "description": "A deep red pool can run sixteen or seventeen red cards and burn the opponent out before overgrow matters.",
+      "colors": "R"
+    }
+  ],
+  "kitTemplate": {
+    "boosters": 6,
+    "cardsPerBooster": 14,
+    "slots": [
+      { "name": "Common", "count": 6, "weights": { "common": 1 } },
+      { "name": "Common or bonus sheet", "count": 1, "weights": { "common": 63, "bonusSheet": 1 } },
+      { "name": "Uncommon", "count": 3, "weights": { "uncommon": 1 } },
+      { "name": "Rare or mythic", "count": 1, "weights": { "rare": 6, "mythic": 1 } },
+      { "name": "Wildcard", "count": 1, "weights": { "common": 40, "uncommon": 21, "rare": 6, "mythic": 1 } },
+      { "name": "Foil wildcard", "count": 1, "foil": true, "weights": { "common": 40, "uncommon": 21, "rare": 6, "mythic": 1 } },
+      { "name": "Land", "count": 1, "weights": { "basicLand": 4, "commonLand": 1 } }
+    ],
+    "promo": { "weights": { "rare": 6, "mythic": 1 } },
+    "basicLandsSupplied": true
+  }
+}

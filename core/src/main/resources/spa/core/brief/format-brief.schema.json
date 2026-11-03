@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spa.local/schema/format-brief.schema.json",
+  "title": "Format brief",
+  "description": "One set's limited format, written by a human: mechanics, the ten two-color archetypes, generic archetypes, the prerelease kit, and the format's speed. The loader also checks that the ten archetypes cover the ten color pairs once each and that slot counts sum to cardsPerBooster.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "setCode",
+    "setName",
+    "version",
+    "speed",
+    "speedNotes",
+    "mechanics",
+    "archetypes",
+    "genericArchetypes",
+    "kitTemplate"
+  ],
+  "properties": {
+    "setCode": { "$ref": "#/$defs/setCode" },
+    "setName": { "type": "string" },
+    "version": {
+      "description": "Bumped whenever the brief changes.",
+      "type": "integer",
+      "minimum": 1
+    },
+    "speed": { "enum": ["fast", "medium", "slow"] },
+    "speedNotes": { "type": "string" },
+    "companionSetCodes": {
+      "description": "Sets whose cards also appear in this set's sealed pools.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/setCode" }
+    },
+    "mechanics": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/mechanic" }
+    },
+    "archetypes": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": { "$ref": "#/$defs/archetype" }
+    },
+    "genericArchetypes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/genericArchetype" }
+    },
+    "kitTemplate": { "$ref": "#/$defs/kitTemplate" }
+  },
+  "$defs": {
+    "setCode": {
+      "type": "string",
+      "pattern": "^[a-z0-9]{3,5}$"
+    },
+    "cardName": { "type": "string" },
+    "mechanic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "rulesText"],
+      "properties": {
+        "name": { "type": "string" },
+        "rulesText": { "type": "string" },
+        "reminderText": { "type": "string" }
+      }
+    },
+    "archetype": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["colors", "name", "plan", "signpostUncommons"],
+      "properties": {
+        "colors": {
+          "description": "Two distinct letters from WUBRG, in either order.",
+          "type": "string",
+          "pattern": "^([WUBRG])(?!\\1)[WUBRG]$"
+        },
+        "name": { "type": "string" },
+        "plan": { "type": "string" },
+        "signpostUncommons": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/cardName" }
+        },
+        "keyCommons": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/cardName" }
+        }
+      }
+    },
+    "genericArchetype": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "description"],
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "colors": {
+          "description": "One to five distinct letters from WUBRG, when the archetype leans on colors.",
+          "type": "string",
+          "pattern": "^(?!.*(.).*\\1)[WUBRG]{1,5}$"
+        }
+      }
+    },
+    "kitTemplate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["boosters", "cardsPerBooster", "slots", "promo", "basicLandsSupplied"],
+      "properties": {
+        "boosters": { "type": "integer", "minimum": 1 },
+        "cardsPerBooster": { "type": "integer", "minimum": 1 },
+        "slots": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/boosterSlot" }
+        },
+        "promo": {
+          "description": "The kit's extra promo card, or null when the kit has none.",
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["weights"],
+          "properties": {
+            "weights": { "$ref": "#/$defs/weights" }
+          }
+        },
+        "basicLandsSupplied": { "type": "boolean" }
+      }
+    },
+    "boosterSlot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "count", "weights"],
+      "properties": {
+        "name": { "type": "string" },
+        "count": { "type": "integer", "minimum": 1 },
+        "foil": { "type": "boolean" },
+        "weights": { "$ref": "#/$defs/weights" }
+      }
+    },
+    "weights": {
+      "description": "Relative odds of each kind of card filling the slot. Values need not sum to 1.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "common": { "$ref": "#/$defs/weight" },
+        "uncommon": { "$ref": "#/$defs/weight" },
+        "rare": { "$ref": "#/$defs/weight" },
+        "mythic": { "$ref": "#/$defs/weight" },
+        "basicLand": { "$ref": "#/$defs/weight" },
+        "commonLand": { "$ref": "#/$defs/weight" },
+        "bonusSheet": { "$ref": "#/$defs/weight" }
+      }
+    },
+    "weight": { "type": "number", "exclusiveMinimum": 0 }
+  }
+}
