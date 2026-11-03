@@ -3,7 +3,8 @@ id: G-001
 title: Foundation phase of the Sealed Pool Analyzer
 status: open
 owner: human
-target_set_code: TBD
+target_set_code: trk
+companion_set_codes: [sds]
 ---
 
 # G-001: Foundation phase
@@ -48,3 +49,11 @@ The card grading layer, any agent, the deck builder, the Android app, photo capt
 ## Metrics to report when the goal closes
 
 Gate green on first push, bounces per merged ticket by source, tokens per merged ticket by role, re-plans, escalations to human, lead time per ticket, and share of criteria proven by deterministic tests. Append them here as a short table.
+
+## Architect notes (2026-11-03)
+
+- `target_set_code` set to `trk` (Star Trek, expansion, releases 2026-11-13, 581 printings and 311 distinct cards on Scryfall on 2026-11-03). The human also named `sds` (Stardates, 30-card bonus sheet, `parent_set_code: trk`), so the sealed-pool card index for `trk` covers `trk` and `sds`. The other children of `trk` on Scryfall (`trc` Commander, `ttrk` tokens, `atrk` art series) are not in a sealed pool and are excluded.
+- Scryfall has no double-faced, adventure, or split cards in `trk`. Criterion 2's layout tests and criterion 4's double-faced-card-name fixtures therefore use a small synthetic set `syn`, assembled from real Scryfall card objects of other sets (SPA-002).
+- Scryfall's `booster` flag is false on every `trk` card until release, so sealed legality is not derived from it. Every printing of the set and its companion set is indexed; metrics count distinct cards by `oracle_id`.
+- Decomposed into SPA-001 to SPA-010. The hand-written format brief `fixtures/briefs/trk.json` is a human deliverable, needed before SPA-007 and SPA-008 dispatch; SPA-003 provides the schema and a complete example to copy from.
+- `serialize_with` follows shared files: SPA-002, SPA-003, SPA-007, and SPA-008 all edit `core/build.gradle.kts`; SPA-009 and SPA-010 both edit `cli/build.gradle.kts`. SPA-001 is omitted from every list because every ticket depends on it. Wave 2 is therefore SPA-002 with SPA-004, then SPA-003.
