@@ -19,6 +19,7 @@ dependencies {
 val scryfallFixtures = rootProject.layout.projectDirectory.dir("fixtures/scryfall")
 val briefFixtures = rootProject.layout.projectDirectory.dir("fixtures/briefs")
 val poolFixtures = rootProject.layout.projectDirectory.dir("fixtures/pools")
+val baselineFixtures = rootProject.layout.projectDirectory.dir("fixtures/baselines")
 
 tasks.test {
     useJUnitPlatform()
@@ -31,6 +32,33 @@ tasks.test {
     // FixturePoolsTest parses every committed pool fixture against its manifest.
     inputs.dir(poolFixtures).withPropertyName("poolFixtures")
     systemProperty("spa.pool.fixtures", poolFixtures.asFile.absolutePath)
+    // The golden baseline tests rebuild every committed baseline and compare it byte for byte.
+    inputs.dir(baselineFixtures).withPropertyName("baselineFixtures")
+    systemProperty("spa.baseline.fixtures", baselineFixtures.asFile.absolutePath)
+}
+
+// ./gradlew :core:buildBaseline -Pset=<code> -Pseed=<seed> -Pkits=<kits> writes
+// fixtures/baselines/<code>.json from the committed Scryfall cache and brief.
+tasks.register<JavaExec>("buildBaseline") {
+    group = "fixtures"
+    description = "Samples kits for one set and writes its baseline to fixtures/baselines."
+    classpath = sourceSets.main.get().runtimeClasspath
+    mainClass.set("spa.core.baseline.BuildBaselineMainKt")
+    val setCode = providers.gradleProperty("set").orElse("")
+    val seed = providers.gradleProperty("seed").orElse("")
+    val kits = providers.gradleProperty("kits").orElse("")
+    argumentProviders.add(
+        CommandLineArgumentProvider {
+            listOf(
+                scryfallFixtures.asFile.absolutePath,
+                briefFixtures.asFile.absolutePath,
+                baselineFixtures.asFile.absolutePath,
+                setCode.get(),
+                seed.get(),
+                kits.get(),
+            )
+        }
+    )
 }
 
 // ./gradlew :core:fetchSet -Pset=<code> [-PdataDir=<dir>] refreshes one set's cache from Scryfall.
