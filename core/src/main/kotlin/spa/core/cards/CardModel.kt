@@ -1,5 +1,7 @@
 package spa.core.cards
 
+import spa.core.text.Color
+
 /**
  * One physical printing of a card in one set. Every printing of the same oracle card shares one
  * [Card] instance.
