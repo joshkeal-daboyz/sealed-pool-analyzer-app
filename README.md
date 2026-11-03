@@ -23,6 +23,10 @@ The product design and the pipeline design live in a separate repository: [seale
 
 Open a Claude Code session in this repository and paste the prompt in `pipeline/prompts/architect-kickoff.md`. The Architect reads the first goal, writes the backlog, and stops for approval before dispatching anything.
 
+## Card data
+
+Card data comes from [Scryfall](https://scryfall.com) and is used under Scryfall's terms. Sealed Pool Analyzer is unofficial Fan Content: it is not produced by, endorsed by, or affiliated with Scryfall or Wizards of the Coast, and Magic: The Gathering is a trademark of Wizards of the Coast. The card data in `fixtures/scryfall/` is a snapshot, refreshed deliberately by a ticket rather than on every build; `fixtures/scryfall/README.md` records when each set was fetched and how to refresh it.
+
 ## Toolchain
 
 **JDK.** JDK 21 is required, on `PATH` or in `JAVA_HOME`. On Windows, `winget install EclipseAdoptium.Temurin.21.JDK` installs it (from an administrator prompt); a shell opened before the install may still see an old `java` stub, so set `JAVA_HOME` to `C:\Program Files\Eclipse Adoptium\jdk-21...` if `java -version` does not report 21. Nothing else needs installing: the committed Gradle wrapper (`./gradlew`) downloads Gradle itself. On Windows, run every command below in Git Bash.

@@ -1,0 +1,8 @@
+{
+  "object": "set",
+  "code": "syn",
+  "name": "Synthetic Test Set",
+  "set_type": "expansion",
+  "card_count": 25,
+  "digital": false
+}

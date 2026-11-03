@@ -1,0 +1,19 @@
+{
+  "object": "set",
+  "id": "b47039dc-da5a-448c-8feb-e77d458108a6",
+  "code": "trk",
+  "mtgo_code": "trk",
+  "arena_code": "trk",
+  "tcgplayer_id": 24766,
+  "name": "Star Trek",
+  "uri": "https://api.scryfall.com/sets/b47039dc-da5a-448c-8feb-e77d458108a6",
+  "scryfall_uri": "https://scryfall.com/sets/trk",
+  "search_uri": "https://api.scryfall.com/cards/search?include_extras=true&include_variations=true&order=set&q=e%3Atrk&unique=prints",
+  "released_at": "2026-11-13",
+  "set_type": "expansion",
+  "card_count": 581,
+  "digital": false,
+  "nonfoil_only": false,
+  "foil_only": false,
+  "icon_svg_uri": "https://svgs.scryfall.io/sets/trk.svg?1793595600"
+}
