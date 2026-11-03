@@ -2,6 +2,8 @@
 
 What the Architect learned from merged tickets. One line each, newest first. Read before writing any ticket.
 
+- 2026-11-03 SPA-003/SPA-004: When parallel tickets merge back to back, the second one's gate never ran with the first one's code. Run the gate on the combined tree (branch plus current main) before the second merge.
+- 2026-11-03 SPA-004: Mana-production patterns came from a list in the criterion, so anything off the list is silently not fixing. "One mana of the chosen color" (Thriving lands) is the known gap. Before a set's metric ticket, grep the set's oracle text for every `Add` wording and list each one in the criterion.
 - 2026-11-03 SPA-004: Compute every pinned number with a script before it goes into a ticket, and say in the criterion how it was computed. Two hand-computed probabilities were wrong, and the Developer had to bounce the ticket before writing any code.
 - 2026-11-03 SPA-002/SPA-004: Two tickets running in parallel that both need a shared type will each define one. Give the type to exactly one ticket, and tell the other to leave it alone, or put the reconciliation into the first ticket that depends on both.
 - 2026-11-03 SPA-002: For a rule that derives a field (layout rules), require a test case where the rule's answer differs from the obvious default. Otherwise a test can pass with the rule broken. The Inspector added three such tests.
