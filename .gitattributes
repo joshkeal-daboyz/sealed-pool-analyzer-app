@@ -1,0 +1,5 @@
+# Pin line endings so ktfmt sees the same bytes on Windows and on CI.
+* text=auto eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.jar binary

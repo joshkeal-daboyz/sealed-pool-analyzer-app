@@ -1,0 +1,40 @@
+name: gate
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # The coverage and dependency steps diff against git merge-base origin/main HEAD.
+          fetch-depth: 0
+
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: gradle
+
+      - name: Run the gate
+        env:
+          # A pull request checks out a detached merge commit, so name the head branch for the
+          # ticket-id lookup (SPA-### in the branch name). On a push to main this is "main".
+          GATE_BRANCH: ${{ github.head_ref || github.ref_name }}
+        run: pipeline/gate/run.sh
+
+      - name: Upload the verdict
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: gate-verdict
+          path: gate-verdict.json
+          if-no-files-found: error
