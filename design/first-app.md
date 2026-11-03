@@ -18,7 +18,7 @@ These are the Designer's calls inside G-002's scope. Each one is used below.
 6. **A pool with no resolved entry is an error, not a results page.** Empty, wrong set, and not a pool are told apart by rule (see Pool screen states).
 7. **Clear pool asks once.** A confirmation dialog, because the pool may be the only copy the player has at the table.
 8. **Theme follows the system's light or dark setting, with fixed colours** (no dynamic Material You colour), so contrast and snapshot tests give the same result on every device.
-9. **Not shown in G-002:** `castProbability` from the engine (the goal does not ask for it and it needs wording the goal does not give). See Open questions.
+9. **Not shown in G-002:** `castProbability` from the engine (the goal does not ask for it and it needs wording the goal does not give). See Settled, item 4.
 
 ## Screen inventory
 
@@ -138,7 +138,7 @@ Top bar: back arrow; title "<pair name>", e.g. "White–Blue (WU)"; About icon. 
 1. When the pool has unresolved lines: a line "This pool has <n> lines not read; these numbers leave them out."
 2. **Lands** (heading): "<n> <basic land name>" per colour, e.g. "6 Plains" and "11 Island", each with its typical value. Basic land names: W Plains, U Island, B Swamp, R Mountain, G Forest.
 3. **Cards** (heading): metric rows Cards, Creatures, Noncreatures, Removal, Interaction, Fixing sources.
-4. **Curve** (heading): one row per mana value bucket 0 to 7, each "Mana value <mv>", then "<n> creatures, typical ..." and "<n> other, typical ...". Rows, not a grid, so it reflows at large font.
+4. **Curve** (heading): one row per mana value bucket 0 to 7, each "Mana value <mv>" (the last bucket reads "Mana value 7+", since it holds 7 or more), then "<n> creatures, typical ..." and "<n> other, typical ...". Rows, not a grid, so it reflows at large font.
 5. **Splash candidates** (heading): "<count> splash candidates, typical ..." and then one line each: card name, colour name, and the reason in words ("removal" for `REMOVAL`, "rare or mythic" for `RARE_OR_MYTHIC`, the code for anything else). When there are none: "No splash candidates".
 
 | State | What the user sees | What the user can do |
@@ -244,7 +244,7 @@ Each item names how it is checked. "UI test" means a Compose UI test on the JVM 
 **Pair detail screen**
 
 - D1. Land counts read with names, not letters. UI test: for `trk-manabox-01.csv` WU, the lands section contains "6 Plains" and "11 Island" (values read from the golden file).
-- D2. Curve rows are read one bucket per item. UI test: each `CurveRow` is a single merged node containing "Mana value <mv>".
+- D2. Curve rows are read one bucket per item. UI test: each `CurveRow` is a single merged node containing "Mana value <mv>" ("Mana value 7+" for the last bucket).
 
 **About screen**
 
@@ -285,12 +285,10 @@ Snapshots capture the whole scrollable content (not just the first viewport) whe
 
 States without a snapshot are covered by UI tests asserting their copy: Pool's other error cards (empty, wrong set, can't read, card data missing), format chosen by hand, Results' long-list "Skip to numbers", expanded colour row, Pair detail's empty pair and no-splash states.
 
-## Open questions
+## Settled (2026-11-03)
 
-These could not be settled from the goal file. Each says what this spec does until it is answered.
-
-1. **Per-pair playables do not exist in the engine.** Deliverable 4 lists "playables" for each of the ten pairs, but `metrics.pairs.<pair>` has no playables value and the baseline has no `/pairs/<pair>/playables` stat; playables exist per colour only (`/byColor/<c>/playables`). Adding one is a `core` change, which G-002's constraints send to the owner. This spec shows playables per colour (Results, Cards per colour) and not per pair. A number summed in the app would have no golden pointer for criterion 4.
-2. **What the baseline's `/fixingSources/count` counts.** The pool-level fixing number on Results must match it. It may be the number of entries in `metrics.fixingSources` or the sum of their `count` fields; in every fixture so far each `count` is 1, so the two agree. The ticket that builds Pool at a glance checks `core` and uses the same definition.
-3. **Is curve bucket 7 "7 or more"?** If `core` folds higher mana values into bucket 7, the row reads "Mana value 7+"; otherwise "Mana value 7". The Pair detail ticket checks `core` and picks the label.
-4. **`castProbability`** is in the engine output and the baseline but not in the goal's list. This spec does not show it. If the owner wants it, it goes on Pair detail under Lands, with wording the owner approves.
-5. **A size limit for imported files.** A pool is a few kilobytes. This spec does not set a limit; if the toolchain or import ticket finds that a very large file (say over 1 MB) hangs or crashes the import, it is shown as "Couldn't read this file", and this spec gains the limit.
+1. **Per-pair playables:** owner decision, dropped from G-002. Playables are shown per colour only (Results, Cards per colour); no `core` change.
+2. **Fixing count:** settled from code. `MetricFlattener` keeps a dropped list's length as `<pointer>/count`, so `/fixingSources/count` is the number of entries in `metrics.fixingSources`; Pool at a glance shows that number.
+3. **Curve bucket 7:** settled from code. `Curve.kt` has eight buckets, 0 to 6 and then 7 or more (`TOP = 7`), so the last row reads "Mana value 7+".
+4. **`castProbability`:** owner decision, not shown in G-002.
+5. **File size limit:** none. An import ticket that finds a problem with very large files adds a limit to this spec, shown as "Couldn't read this file".
