@@ -4,7 +4,6 @@ import java.io.File
 import org.gradle.api.DefaultTask
 import org.gradle.api.GradleException
 import org.gradle.api.file.DirectoryProperty
-import org.gradle.api.file.RegularFileProperty
 import org.gradle.api.provider.Property
 import org.gradle.api.services.ServiceReference
 import org.gradle.api.tasks.Internal
@@ -128,8 +127,6 @@ abstract class GateUiTestsTask : GateStepTask() {
 abstract class GateCoverageTask : GateStepTask() {
     @get:Internal abstract val ticket: Property<String>
 
-    @get:Internal abstract val koverReport: RegularFileProperty
-
     @TaskAction
     fun evaluate() {
         val id = ticket.get()
@@ -144,12 +141,18 @@ abstract class GateCoverageTask : GateStepTask() {
             logger.lifecycle("coverage: no touched files under ${Coverage.MAIN_SOURCES}")
             return
         }
-        val report = koverReport.get().asFile
-        val coverage = if (report.isFile) Coverage.parseKoverXml(report.readText()) else null
-        val sources = touched.map {
-            TouchedSource(it, Coverage.reportKey(File(it).name, File(root, it).readText()))
-        }
-        failIfAny(GateStep.COVERAGE, Coverage.failures(sources, coverage, threshold, reproduce))
+        // Each module has its own Kover report; a file is checked against its module's.
+        val failures =
+            touched.groupBy(Coverage::reportPath).flatMap { (reportPath, paths) ->
+                val report = File(root, reportPath)
+                val coverage =
+                    if (report.isFile) Coverage.parseKoverXml(report.readText()) else null
+                val sources = paths.map {
+                    TouchedSource(it, Coverage.reportKey(File(it).name, File(root, it).readText()))
+                }
+                Coverage.failures(sources, coverage, threshold, reproduce)
+            }
+        failIfAny(GateStep.COVERAGE, failures)
     }
 
     private fun threshold(id: String, reproduce: String): Double {

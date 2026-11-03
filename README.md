@@ -27,6 +27,34 @@ Open a Claude Code session in this repository and paste the prompt in `pipeline/
 
 Card data comes from [Scryfall](https://scryfall.com) and is used under Scryfall's terms. Sealed Pool Analyzer is unofficial Fan Content: it is not produced by, endorsed by, or affiliated with Scryfall or Wizards of the Coast, and Magic: The Gathering is a trademark of Wizards of the Coast. The card data in `fixtures/scryfall/` is a snapshot, refreshed deliberately by a ticket rather than on every build; `fixtures/scryfall/README.md` records when each set was fetched and how to refresh it.
 
+## Command line
+
+The `cli` module builds `spa`, the command line the metric engine is tested through until there is an app. Install it from the repository root (needs the JDK in [Toolchain](#toolchain)):
+
+```bash
+./gradlew :cli:installDist
+```
+
+This writes `cli/build/install/spa/bin/spa` and, for Windows, `spa.bat`. `spa --help` lists the commands. Every command reads its data from `--data <dir>`, default `fixtures` relative to the current directory, so run it from the repository root or pass `--data`. That directory holds Scryfall caches in `scryfall/<code>/`, briefs in `briefs/<code>.json`, and baselines in `baselines/<code>.json`. Exit codes: 0 ok, 1 an error (a missing or unreadable file, set cache, or brief, a missing `--set`, or a network error), 2 a bad command line (no command, an unknown command, or a bad flag). Errors are one line on stderr.
+
+**analyze** parses a pool file and prints one JSON document to stdout: `tool` (name and version), `set`, `pool` (the file as given, the detected or given `format`, `entries` as the count of resolved pool entries, `skippedLines`, every `unresolved` line with its `line`, `text`, and `reason`, and the brief's `kitWarnings`, each with an `expected` range written as `min` and `max`), `metrics` (the engine's numbers), and the set's `baseline`. The format is detected unless `--format manabox|text|collector` is given; `--brief <file>` replaces `briefs/<code>.json` for kit warnings. `baseline` is `null` with `--no-baseline` or when the set has no baseline file, and stderr says which. Unresolved lines and kit warnings still exit 0. Keys print in a fixed order, so the same input prints the same bytes.
+
+```bash
+cli/build/install/spa/bin/spa analyze fixtures/pools/trk-manabox-01.csv --set trk
+```
+
+**validate-brief** checks a brief against its schema and rules. A valid brief prints `OK <file>` on stdout, then one `warning: <pointer>: '<name>' is not a card in set '<code>'` line for each signpost uncommon or key common the set's cards do not include, and exits 0. An invalid brief prints `<file>: <n> error(s)` and one `error: <pointer>: <message>` line per problem on stderr, and exits 1.
+
+```bash
+cli/build/install/spa/bin/spa validate-brief fixtures/briefs/trk.json --set trk
+```
+
+**fetch-set** refreshes one set's Scryfall cache under `<data>/scryfall/<code>/` and prints `<code>: <n> cards in <dir>`. `--companions a,b` writes those codes to the set's `companions.json` and refreshes each companion's cache too; without it, an existing `companions.json` is kept and a missing one is written as `[]`. It needs the network and exits 1 on a network or Scryfall error.
+
+```bash
+cli/build/install/spa/bin/spa fetch-set trk --companions sds
+```
+
 ## Toolchain
 
 **JDK.** JDK 21 is required, on `PATH` or in `JAVA_HOME`. On Windows, `winget install EclipseAdoptium.Temurin.21.JDK` installs it (from an administrator prompt); a shell opened before the install may still see an old `java` stub, so set `JAVA_HOME` to `C:\Program Files\Eclipse Adoptium\jdk-21...` if `java -version` does not report 21. Nothing else needs installing: the committed Gradle wrapper (`./gradlew`) downloads Gradle itself. On Windows, run every command below in Git Bash.

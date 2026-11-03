@@ -9,7 +9,7 @@ The gate is code, not a model. It runs on every Developer push, locally through 
 3. Compile.
 4. Unit tests for every module, not only the files the ticket touched.
 5. Compose UI tests and snapshot tests for the screens the ticket's test plan names. A snapshot that differs from its stored baseline is red unless the ticket updates the baseline on purpose and the change note says so.
-6. Coverage threshold on the files the ticket touched. Set per ticket by the Architect; never lowered by a Developer.
+6. Coverage threshold on the files the ticket touched. Set per ticket by the Architect; never lowered by a Developer. It covers the main sources of `core` (`core/src/main/kotlin`) and `cli` (`cli/src/main/kotlin`), each file against its own module's Kover report.
 7. Dependency audit: no dependency the ticket did not name in `scope`.
 
 ## The verdict
