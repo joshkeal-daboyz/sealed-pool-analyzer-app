@@ -20,7 +20,10 @@ data class TouchedSource(val path: String, val reportKey: String)
 
 /** The `coverage` step: Kover line coverage per touched file against the ticket threshold. */
 object Coverage {
-    const val MAIN_SOURCES = "core/src/main/kotlin/"
+    /** The main source roots the step covers, each in a module with its own Kover report. */
+    val MAIN_SOURCES = listOf("core/src/main/kotlin/", "cli/src/main/kotlin/")
+
+    private const val KOVER_REPORT = "build/reports/kover/report.xml"
 
     private val packageDeclaration =
         Regex("^\\s*package\\s+([A-Za-z0-9_.`]+)", RegexOption.MULTILINE)
@@ -29,9 +32,12 @@ object Coverage {
     fun touchedMainFiles(changed: Collection<String>): List<String> =
         changed
             .map { it.trim().replace('\\', '/') }
-            .filter { it.startsWith(MAIN_SOURCES) && it.endsWith(".kt") }
+            .filter { path -> MAIN_SOURCES.any { path.startsWith(it) } && path.endsWith(".kt") }
             .distinct()
             .sorted()
+
+    /** The Kover XML report of the module that holds [path], a repository-relative source path. */
+    fun reportPath(path: String): String = "${path.substringBefore('/')}/$KOVER_REPORT"
 
     /**
      * The key Kover uses for a source file: its declared package as a path, then the file name.

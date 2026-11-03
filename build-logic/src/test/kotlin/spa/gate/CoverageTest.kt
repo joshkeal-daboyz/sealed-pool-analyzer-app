@@ -67,22 +67,37 @@ class CoverageTest {
     }
 
     @Test
-    fun `touched files are Kotlin files under core main only`() {
+    fun `touched files are Kotlin files under core main and cli main only`() {
         val changed =
             listOf(
                 "core/src/main/kotlin/spa/core/Sample.kt",
                 "core\\src\\main\\kotlin\\spa\\core\\Windows.kt",
                 "core/src/test/kotlin/spa/core/SampleTest.kt",
+                "cli/src/main/kotlin/spa/cli/Main.kt",
+                "cli/src/test/kotlin/spa/cli/MainTest.kt",
                 "build-logic/src/main/kotlin/spa/gate/Coverage.kt",
                 "core/src/main/kotlin/spa/core/notes.md",
                 "core/src/main/kotlin/spa/core/Sample.kt",
             )
         assertEquals(
             listOf(
+                "cli/src/main/kotlin/spa/cli/Main.kt",
                 "core/src/main/kotlin/spa/core/Sample.kt",
                 "core/src/main/kotlin/spa/core/Windows.kt",
             ),
             Coverage.touchedMainFiles(changed),
+        )
+    }
+
+    @Test
+    fun `each touched file is checked against its own module's Kover report`() {
+        assertEquals(
+            "core/build/reports/kover/report.xml",
+            Coverage.reportPath("core/src/main/kotlin/spa/core/Sample.kt"),
+        )
+        assertEquals(
+            "cli/build/reports/kover/report.xml",
+            Coverage.reportPath("cli/src/main/kotlin/spa/cli/Main.kt"),
         )
     }
 

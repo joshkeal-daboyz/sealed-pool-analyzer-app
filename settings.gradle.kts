@@ -14,3 +14,5 @@ dependencyResolutionManagement {
 rootProject.name = "sealed-pool-analyzer"
 
 include(":core")
+
+include(":cli")

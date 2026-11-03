@@ -45,12 +45,7 @@ abstract class GatePlugin @Inject constructor(private val listeners: BuildEvents
         project.tasks.named("check") { it.dependsOn(gate) }
 
         val ticket = ticketProvider(project)
-        steps.coverage.configure {
-            it.ticket.set(ticket)
-            it.koverReport.set(
-                project.layout.projectDirectory.file("core/build/reports/kover/report.xml")
-            )
-        }
+        steps.coverage.configure { it.ticket.set(ticket) }
         steps.dependencies.configure { it.ticket.set(ticket) }
         steps.uiTests.configure { it.hasAppModule = project.findProject(":app") != null }
 
