@@ -202,3 +202,12 @@ The owner answered the draft's eight open questions on 2026-11-03 ("2. remember"
 6. **Bundle `syn` in the APK?** Decided 2026-11-03: the default, no. The app holds `trk` and `sds` only; criterion 4 runs the 23 `trk` fixtures through the app, and the 3 `syn` fixtures stay in JVM tests.
 7. **Real pools from 2026-11-06.** Decided 2026-11-03: the default, yes. If real ManaBox exports arrive before this goal starts, adding them to `fixtures/pools/` with their goldens is the goal's first ticket; otherwise it is its own ticket later.
 8. **Debug key.** Decided 2026-11-03: the default, yes. The APK is built and signed on the owner's PC only for this goal.
+
+## Architect notes (2026-11-03)
+
+- Prerequisites checked from this PC on 2026-11-03: `ANDROID_HOME` visible in Git Bash, `adb` 1.0.41 (platform-tools 37.0.1), `sdkmanager` 22.0, emulator 37.2.13 with WHPX acceleration usable, every SDK license accepted, `system-images;android-36;google_apis;x86_64` installed, `spa-test` boots headless to Android 16 in 51 s, `java -version` Temurin 21.0.13.
+- Design spec `design/first-app.md` written by the Designer (PR #15) and approved by the owner on 2026-11-03.
+- Owner decision: per-pair playables are dropped from deliverable 4. `ColorPairMetrics` has no playables field and the baseline has no `/pairs/<pair>/playables` stat, so showing one would need a second `core` change. Playables are shown per colour (`/byColor/<c>/playables`), as the spec does.
+- Owner decision: `castProbability` is not shown in this goal.
+- Owner decision: the Claude API features (key entry, Keystore, agents, grading, deck building) stay out of G-002 and come in a later goal the owner writes. Criteria 9 and 10 stand.
+- Settled from code, for the spec's open questions: `/fixingSources/count` is the number of entries in `metrics.fixingSources` (`MetricFlattener`), and curve bucket 7 is "7 or more" (`Curve.TOP`). No file size limit unless an import ticket finds one is needed.
