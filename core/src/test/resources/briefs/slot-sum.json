@@ -1,0 +1,147 @@
+{
+  "setCode": "tst",
+  "setName": "Test Brief",
+  "version": 1,
+  "speed": "fast",
+  "speedNotes": "Short games.",
+  "mechanics": [
+    {
+      "name": "Kindle",
+      "rulesText": "Kindle rules.",
+      "reminderText": "(Kindle reminder.)"
+    },
+    {
+      "name": "Tether",
+      "rulesText": "Tether rules."
+    }
+  ],
+  "archetypes": [
+    {
+      "colors": "WU",
+      "name": "Archetype 0",
+      "plan": "Plan 0.",
+      "signpostUncommons": [
+        "Signpost 0"
+      ]
+    },
+    {
+      "colors": "UB",
+      "name": "Archetype 1",
+      "plan": "Plan 1.",
+      "signpostUncommons": [
+        "Signpost 1"
+      ]
+    },
+    {
+      "colors": "BR",
+      "name": "Archetype 2",
+      "plan": "Plan 2.",
+      "signpostUncommons": [
+        "Signpost 2"
+      ]
+    },
+    {
+      "colors": "RG",
+      "name": "Archetype 3",
+      "plan": "Plan 3.",
+      "signpostUncommons": [
+        "Signpost 3"
+      ]
+    },
+    {
+      "colors": "GW",
+      "name": "Archetype 4",
+      "plan": "Plan 4.",
+      "signpostUncommons": [
+        "Signpost 4"
+      ]
+    },
+    {
+      "colors": "WB",
+      "name": "Archetype 5",
+      "plan": "Plan 5.",
+      "signpostUncommons": [
+        "Signpost 5"
+      ]
+    },
+    {
+      "colors": "UR",
+      "name": "Archetype 6",
+      "plan": "Plan 6.",
+      "signpostUncommons": [
+        "Signpost 6"
+      ]
+    },
+    {
+      "colors": "BG",
+      "name": "Archetype 7",
+      "plan": "Plan 7.",
+      "signpostUncommons": [
+        "Signpost 7"
+      ]
+    },
+    {
+      "colors": "RW",
+      "name": "Archetype 8",
+      "plan": "Plan 8.",
+      "signpostUncommons": [
+        "Signpost 8"
+      ]
+    },
+    {
+      "colors": "GU",
+      "name": "Archetype 9",
+      "plan": "Plan 9.",
+      "signpostUncommons": [
+        "Signpost 9"
+      ]
+    }
+  ],
+  "genericArchetypes": [],
+  "kitTemplate": {
+    "boosters": 6,
+    "cardsPerBooster": 14,
+    "slots": [
+      {
+        "name": "Common",
+        "count": 7,
+        "weights": {
+          "common": 1
+        }
+      },
+      {
+        "name": "Uncommon",
+        "count": 2,
+        "weights": {
+          "uncommon": 1
+        }
+      },
+      {
+        "name": "Rare or mythic",
+        "count": 1,
+        "weights": {
+          "rare": 6,
+          "mythic": 1
+        }
+      },
+      {
+        "name": "Wildcard",
+        "count": 2,
+        "weights": {
+          "common": 2,
+          "uncommon": 1
+        }
+      },
+      {
+        "name": "Land",
+        "count": 1,
+        "weights": {
+          "basicLand": 4,
+          "commonLand": 1
+        }
+      }
+    ],
+    "promo": null,
+    "basicLandsSupplied": true
+  }
+}
