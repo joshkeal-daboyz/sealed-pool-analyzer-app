@@ -1,0 +1,3687 @@
+{
+    "tool": {
+        "name": "spa"
+    },
+    "set": "syn",
+    "pool": {
+        "format": "COLLECTOR",
+        "entries": 23,
+        "skippedLines": 0,
+        "unresolved": [],
+        "kitWarnings": [
+            {
+                "code": "high-count",
+                "expected": {
+                    "min": 1,
+                    "max": 4
+                },
+                "actual": 6,
+                "message": "The pool has 6 copies of Evolving Wilds (syn 19); a kit rarely holds more than 4."
+            },
+            {
+                "code": "high-count",
+                "expected": {
+                    "min": 1,
+                    "max": 4
+                },
+                "actual": 6,
+                "message": "The pool has 6 copies of Doom Blade (syn 5); a kit rarely holds more than 4."
+            },
+            {
+                "code": "high-count",
+                "expected": {
+                    "min": 1,
+                    "max": 4
+                },
+                "actual": 6,
+                "message": "The pool has 6 copies of Llanowar Elves (syn 7); a kit rarely holds more than 4."
+            },
+            {
+                "code": "high-count",
+                "expected": {
+                    "min": 1,
+                    "max": 4
+                },
+                "actual": 6,
+                "message": "The pool has 6 copies of Delver of Secrets // Insectile Aberration (syn 11); a kit rarely holds more than 4."
+            },
+            {
+                "code": "high-count",
+                "expected": {
+                    "min": 1,
+                    "max": 4
+                },
+                "actual": 6,
+                "message": "The pool has 6 copies of Mind Stone (syn 18); a kit rarely holds more than 4."
+            },
+            {
+                "code": "high-count",
+                "expected": {
+                    "min": 1,
+                    "max": 4
+                },
+                "actual": 6,
+                "message": "The pool has 6 copies of Gravedigger (syn 6); a kit rarely holds more than 4."
+            },
+            {
+                "code": "high-count",
+                "expected": {
+                    "min": 1,
+                    "max": 4
+                },
+                "actual": 5,
+                "message": "The pool has 5 copies of Giant Growth (syn 8); a kit rarely holds more than 4."
+            },
+            {
+                "code": "high-count",
+                "expected": {
+                    "min": 1,
+                    "max": 4
+                },
+                "actual": 6,
+                "message": "The pool has 6 copies of Grizzly Bears (syn 1); a kit rarely holds more than 4."
+            },
+            {
+                "code": "high-count",
+                "expected": {
+                    "min": 1,
+                    "max": 4
+                },
+                "actual": 5,
+                "message": "The pool has 5 copies of Wear // Tear (syn 17); a kit rarely holds more than 4."
+            }
+        ]
+    },
+    "metrics": {
+        "totalCards": 85,
+        "nonlandCards": 72,
+        "basicLands": 6,
+        "nonbasicLands": 7,
+        "byColor": {
+            "W": {
+                "cards": {
+                    "common": 0,
+                    "uncommon": 14,
+                    "rare": 0,
+                    "mythic": 0,
+                    "total": 14
+                },
+                "playables": {
+                    "common": 0,
+                    "uncommon": 2,
+                    "rare": 0,
+                    "mythic": 0,
+                    "total": 2
+                },
+                "creatures": 5,
+                "removal": 4,
+                "interaction": 0
+            },
+            "U": {
+                "cards": {
+                    "common": 6,
+                    "uncommon": 11,
+                    "rare": 0,
+                    "mythic": 0,
+                    "total": 17
+                },
+                "playables": {
+                    "common": 6,
+                    "uncommon": 8,
+                    "rare": 0,
+                    "mythic": 0,
+                    "total": 14
+                },
+                "creatures": 10,
+                "removal": 0,
+                "interaction": 4
+            },
+            "B": {
+                "cards": {
+                    "common": 12,
+                    "uncommon": 0,
+                    "rare": 1,
+                    "mythic": 1,
+                    "total": 14
+                },
+                "playables": {
+                    "common": 12,
+                    "uncommon": 0,
+                    "rare": 1,
+                    "mythic": 1,
+                    "total": 14
+                },
+                "creatures": 7,
+                "removal": 7,
+                "interaction": 0
+            },
+            "R": {
+                "cards": {
+                    "common": 0,
+                    "uncommon": 12,
+                    "rare": 4,
+                    "mythic": 0,
+                    "total": 16
+                },
+                "playables": {
+                    "common": 0,
+                    "uncommon": 0,
+                    "rare": 2,
+                    "mythic": 0,
+                    "total": 2
+                },
+                "creatures": 4,
+                "removal": 8,
+                "interaction": 0
+            },
+            "G": {
+                "cards": {
+                    "common": 17,
+                    "uncommon": 3,
+                    "rare": 2,
+                    "mythic": 0,
+                    "total": 22
+                },
+                "playables": {
+                    "common": 17,
+                    "uncommon": 0,
+                    "rare": 0,
+                    "mythic": 0,
+                    "total": 17
+                },
+                "creatures": 17,
+                "removal": 2,
+                "interaction": 5
+            },
+            "MULTI": {
+                "cards": {
+                    "common": 0,
+                    "uncommon": 15,
+                    "rare": 2,
+                    "mythic": 0,
+                    "total": 17
+                },
+                "playables": {
+                    "common": 0,
+                    "uncommon": 15,
+                    "rare": 2,
+                    "mythic": 0,
+                    "total": 17
+                },
+                "creatures": 5,
+                "removal": 6,
+                "interaction": 0
+            },
+            "COLORLESS": {
+                "cards": {
+                    "common": 6,
+                    "uncommon": 0,
+                    "rare": 0,
+                    "mythic": 0,
+                    "total": 6
+                },
+                "playables": {
+                    "common": 6,
+                    "uncommon": 0,
+                    "rare": 0,
+                    "mythic": 0,
+                    "total": 6
+                },
+                "creatures": 0,
+                "removal": 0,
+                "interaction": 0
+            }
+        },
+        "fixingSources": [
+            {
+                "name": "Temple of Mystery",
+                "colors": [
+                    "U",
+                    "G"
+                ],
+                "count": 1
+            }
+        ],
+        "removalTotal": 15,
+        "interactionTotal": 9,
+        "pairs": {
+            "WU": {
+                "cards": 22,
+                "creatures": 12,
+                "noncreatures": 10,
+                "curve": {
+                    "buckets": [
+                        {
+                            "manaValue": 0,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 1,
+                            "creatures": 6,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 2,
+                            "creatures": 0,
+                            "noncreatures": 10
+                        },
+                        {
+                            "manaValue": 3,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 4,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 5,
+                            "creatures": 6,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 6,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 7,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        }
+                    ]
+                },
+                "removal": 0,
+                "interaction": 4,
+                "fixingSources": 1,
+                "splashCandidates": [
+                    {
+                        "name": "Bonecrusher Giant // Stomp",
+                        "color": "R",
+                        "reason": "REMOVAL"
+                    },
+                    {
+                        "name": "Doom Blade",
+                        "color": "B",
+                        "reason": "REMOVAL"
+                    },
+                    {
+                        "name": "Lightning Helix",
+                        "color": "R",
+                        "reason": "REMOVAL"
+                    }
+                ],
+                "landRecommendation": {
+                    "W": 6,
+                    "U": 11
+                },
+                "castProbability": {
+                    "W": 0.8082,
+                    "U": 0.9747
+                }
+            },
+            "WB": {
+                "cards": 22,
+                "creatures": 9,
+                "noncreatures": 13,
+                "curve": {
+                    "buckets": [
+                        {
+                            "manaValue": 0,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 1,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 2,
+                            "creatures": 0,
+                            "noncreatures": 12
+                        },
+                        {
+                            "manaValue": 3,
+                            "creatures": 1,
+                            "noncreatures": 1
+                        },
+                        {
+                            "manaValue": 4,
+                            "creatures": 6,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 5,
+                            "creatures": 2,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 6,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 7,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        }
+                    ]
+                },
+                "removal": 7,
+                "interaction": 0,
+                "fixingSources": 0,
+                "splashCandidates": [
+                    {
+                        "name": "Bonecrusher Giant // Stomp",
+                        "color": "R",
+                        "reason": "REMOVAL"
+                    },
+                    {
+                        "name": "Lightning Helix",
+                        "color": "R",
+                        "reason": "REMOVAL"
+                    }
+                ],
+                "landRecommendation": {
+                    "W": 6,
+                    "B": 11
+                },
+                "castProbability": {
+                    "W": 0.8082,
+                    "B": 0.9634
+                }
+            },
+            "WR": {
+                "cards": 19,
+                "creatures": 4,
+                "noncreatures": 15,
+                "curve": {
+                    "buckets": [
+                        {
+                            "manaValue": 0,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 1,
+                            "creatures": 0,
+                            "noncreatures": 5
+                        },
+                        {
+                            "manaValue": 2,
+                            "creatures": 0,
+                            "noncreatures": 10
+                        },
+                        {
+                            "manaValue": 3,
+                            "creatures": 2,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 4,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 5,
+                            "creatures": 2,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 6,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 7,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        }
+                    ]
+                },
+                "removal": 6,
+                "interaction": 0,
+                "fixingSources": 0,
+                "splashCandidates": [
+                    {
+                        "name": "Doom Blade",
+                        "color": "B",
+                        "reason": "REMOVAL"
+                    },
+                    {
+                        "name": "Huntmaster of the Fells // Ravager of the Fells",
+                        "color": "G",
+                        "reason": "REMOVAL"
+                    }
+                ],
+                "landRecommendation": {
+                    "W": 11,
+                    "R": 6
+                },
+                "castProbability": {
+                    "W": 0.9634,
+                    "R": 0.8082
+                }
+            },
+            "WG": {
+                "cards": 28,
+                "creatures": 17,
+                "noncreatures": 11,
+                "curve": {
+                    "buckets": [
+                        {
+                            "manaValue": 0,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 1,
+                            "creatures": 6,
+                            "noncreatures": 5
+                        },
+                        {
+                            "manaValue": 2,
+                            "creatures": 6,
+                            "noncreatures": 6
+                        },
+                        {
+                            "manaValue": 3,
+                            "creatures": 3,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 4,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 5,
+                            "creatures": 2,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 6,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 7,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        }
+                    ]
+                },
+                "removal": 0,
+                "interaction": 5,
+                "fixingSources": 1,
+                "splashCandidates": [
+                    {
+                        "name": "Bonecrusher Giant // Stomp",
+                        "color": "R",
+                        "reason": "REMOVAL"
+                    },
+                    {
+                        "name": "Doom Blade",
+                        "color": "B",
+                        "reason": "REMOVAL"
+                    },
+                    {
+                        "name": "Huntmaster of the Fells // Ravager of the Fells",
+                        "color": "R",
+                        "reason": "REMOVAL"
+                    },
+                    {
+                        "name": "Lightning Helix",
+                        "color": "R",
+                        "reason": "REMOVAL"
+                    }
+                ],
+                "landRecommendation": {
+                    "W": 6,
+                    "G": 11
+                },
+                "castProbability": {
+                    "W": 0.8082,
+                    "G": 0.9747
+                }
+            },
+            "UB": {
+                "cards": 34,
+                "creatures": 17,
+                "noncreatures": 17,
+                "curve": {
+                    "buckets": [
+                        {
+                            "manaValue": 0,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 1,
+                            "creatures": 6,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 2,
+                            "creatures": 0,
+                            "noncreatures": 16
+                        },
+                        {
+                            "manaValue": 3,
+                            "creatures": 1,
+                            "noncreatures": 1
+                        },
+                        {
+                            "manaValue": 4,
+                            "creatures": 6,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 5,
+                            "creatures": 4,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 6,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 7,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        }
+                    ]
+                },
+                "removal": 7,
+                "interaction": 4,
+                "fixingSources": 1,
+                "splashCandidates": [
+                    {
+                        "name": "Bonecrusher Giant // Stomp",
+                        "color": "R",
+                        "reason": "REMOVAL"
+                    }
+                ],
+                "landRecommendation": {
+                    "U": 10,
+                    "B": 7
+                },
+                "castProbability": {
+                    "U": 0.9634,
+                    "B": 0.859
+                }
+            },
+            "UR": {
+                "cards": 25,
+                "creatures": 12,
+                "noncreatures": 13,
+                "curve": {
+                    "buckets": [
+                        {
+                            "manaValue": 0,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 1,
+                            "creatures": 6,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 2,
+                            "creatures": 0,
+                            "noncreatures": 13
+                        },
+                        {
+                            "manaValue": 3,
+                            "creatures": 2,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 4,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 5,
+                            "creatures": 4,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 6,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 7,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        }
+                    ]
+                },
+                "removal": 2,
+                "interaction": 4,
+                "fixingSources": 1,
+                "splashCandidates": [
+                    {
+                        "name": "Doom Blade",
+                        "color": "B",
+                        "reason": "REMOVAL"
+                    },
+                    {
+                        "name": "Huntmaster of the Fells // Ravager of the Fells",
+                        "color": "G",
+                        "reason": "REMOVAL"
+                    },
+                    {
+                        "name": "Lightning Helix",
+                        "color": "W",
+                        "reason": "REMOVAL"
+                    }
+                ],
+                "landRecommendation": {
+                    "U": 11,
+                    "R": 6
+                },
+                "castProbability": {
+                    "U": 0.9747,
+                    "R": 0.8082
+                }
+            },
+            "UG": {
+                "cards": 37,
+                "creatures": 22,
+                "noncreatures": 15,
+                "curve": {
+                    "buckets": [
+                        {
+                            "manaValue": 0,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 1,
+                            "creatures": 12,
+                            "noncreatures": 5
+                        },
+                        {
+                            "manaValue": 2,
+                            "creatures": 6,
+                            "noncreatures": 10
+                        },
+                        {
+                            "manaValue": 3,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 4,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 5,
+                            "creatures": 4,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 6,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 7,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        }
+                    ]
+                },
+                "removal": 0,
+                "interaction": 9,
+                "fixingSources": 1,
+                "splashCandidates": [
+                    {
+                        "name": "Bonecrusher Giant // Stomp",
+                        "color": "R",
+                        "reason": "REMOVAL"
+                    },
+                    {
+                        "name": "Doom Blade",
+                        "color": "B",
+                        "reason": "REMOVAL"
+                    },
+                    {
+                        "name": "Huntmaster of the Fells // Ravager of the Fells",
+                        "color": "R",
+                        "reason": "REMOVAL"
+                    }
+                ],
+                "landRecommendation": {
+                    "U": 10,
+                    "G": 7
+                },
+                "castProbability": {
+                    "U": 0.9634,
+                    "G": 0.8974
+                }
+            },
+            "BR": {
+                "cards": 22,
+                "creatures": 9,
+                "noncreatures": 13,
+                "curve": {
+                    "buckets": [
+                        {
+                            "manaValue": 0,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 1,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 2,
+                            "creatures": 0,
+                            "noncreatures": 12
+                        },
+                        {
+                            "manaValue": 3,
+                            "creatures": 3,
+                            "noncreatures": 1
+                        },
+                        {
+                            "manaValue": 4,
+                            "creatures": 6,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 5,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 6,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 7,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        }
+                    ]
+                },
+                "removal": 9,
+                "interaction": 0,
+                "fixingSources": 0,
+                "splashCandidates": [
+                    {
+                        "name": "Huntmaster of the Fells // Ravager of the Fells",
+                        "color": "G",
+                        "reason": "REMOVAL"
+                    },
+                    {
+                        "name": "Lightning Helix",
+                        "color": "W",
+                        "reason": "REMOVAL"
+                    }
+                ],
+                "landRecommendation": {
+                    "B": 11,
+                    "R": 6
+                },
+                "castProbability": {
+                    "B": 0.9634,
+                    "R": 0.8082
+                }
+            },
+            "BG": {
+                "cards": 37,
+                "creatures": 19,
+                "noncreatures": 18,
+                "curve": {
+                    "buckets": [
+                        {
+                            "manaValue": 0,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 1,
+                            "creatures": 6,
+                            "noncreatures": 5
+                        },
+                        {
+                            "manaValue": 2,
+                            "creatures": 6,
+                            "noncreatures": 12
+                        },
+                        {
+                            "manaValue": 3,
+                            "creatures": 1,
+                            "noncreatures": 1
+                        },
+                        {
+                            "manaValue": 4,
+                            "creatures": 6,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 5,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 6,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 7,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        }
+                    ]
+                },
+                "removal": 7,
+                "interaction": 5,
+                "fixingSources": 1,
+                "splashCandidates": [
+                    {
+                        "name": "Bonecrusher Giant // Stomp",
+                        "color": "R",
+                        "reason": "REMOVAL"
+                    },
+                    {
+                        "name": "Huntmaster of the Fells // Ravager of the Fells",
+                        "color": "R",
+                        "reason": "REMOVAL"
+                    }
+                ],
+                "landRecommendation": {
+                    "B": 9,
+                    "G": 8
+                },
+                "castProbability": {
+                    "B": 0.9263,
+                    "G": 0.9263
+                }
+            },
+            "RG": {
+                "cards": 27,
+                "creatures": 16,
+                "noncreatures": 11,
+                "curve": {
+                    "buckets": [
+                        {
+                            "manaValue": 0,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 1,
+                            "creatures": 6,
+                            "noncreatures": 5
+                        },
+                        {
+                            "manaValue": 2,
+                            "creatures": 6,
+                            "noncreatures": 6
+                        },
+                        {
+                            "manaValue": 3,
+                            "creatures": 2,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 4,
+                            "creatures": 2,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 5,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 6,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        },
+                        {
+                            "manaValue": 7,
+                            "creatures": 0,
+                            "noncreatures": 0
+                        }
+                    ]
+                },
+                "removal": 4,
+                "interaction": 5,
+                "fixingSources": 1,
+                "splashCandidates": [
+                    {
+                        "name": "Doom Blade",
+                        "color": "B",
+                        "reason": "REMOVAL"
+                    },
+                    {
+                        "name": "Lightning Helix",
+                        "color": "W",
+                        "reason": "REMOVAL"
+                    }
+                ],
+                "landRecommendation": {
+                    "R": 6,
+                    "G": 11
+                },
+                "castProbability": {
+                    "R": 0.8082,
+                    "G": 0.9747
+                }
+            }
+        }
+    },
+    "baseline": {
+        "setCode": "syn",
+        "briefVersion": 1,
+        "cacheFetchedAt": "2026-11-03T18:10:00Z",
+        "seed": 1,
+        "kits": 500,
+        "stats": {
+            "/basicLands": {
+                "median": 6.0,
+                "p10": 6.0,
+                "p90": 6.0,
+                "mean": 5.984
+            },
+            "/byColor/B/cards/common": {
+                "median": 12.0,
+                "p10": 11.0,
+                "p90": 12.0,
+                "mean": 11.754
+            },
+            "/byColor/B/cards/mythic": {
+                "median": 1.0,
+                "p10": 0.0,
+                "p90": 3.0,
+                "mean": 1.214
+            },
+            "/byColor/B/cards/rare": {
+                "median": 2.0,
+                "p10": 0.0,
+                "p90": 3.0,
+                "mean": 1.832
+            },
+            "/byColor/B/cards/total": {
+                "median": 15.0,
+                "p10": 13.0,
+                "p90": 17.0,
+                "mean": 14.8
+            },
+            "/byColor/B/cards/uncommon": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/B/creatures": {
+                "median": 8.0,
+                "p10": 6.0,
+                "p90": 9.0,
+                "mean": 7.716
+            },
+            "/byColor/B/interaction": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/B/playables/common": {
+                "median": 12.0,
+                "p10": 11.0,
+                "p90": 12.0,
+                "mean": 11.754
+            },
+            "/byColor/B/playables/mythic": {
+                "median": 1.0,
+                "p10": 0.0,
+                "p90": 3.0,
+                "mean": 1.214
+            },
+            "/byColor/B/playables/rare": {
+                "median": 2.0,
+                "p10": 0.0,
+                "p90": 3.0,
+                "mean": 1.832
+            },
+            "/byColor/B/playables/total": {
+                "median": 15.0,
+                "p10": 13.0,
+                "p90": 17.0,
+                "mean": 14.8
+            },
+            "/byColor/B/playables/uncommon": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/B/removal": {
+                "median": 8.0,
+                "p10": 6.0,
+                "p90": 9.0,
+                "mean": 7.702
+            },
+            "/byColor/COLORLESS/cards/common": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.88
+            },
+            "/byColor/COLORLESS/cards/mythic": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/COLORLESS/cards/rare": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/COLORLESS/cards/total": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.88
+            },
+            "/byColor/COLORLESS/cards/uncommon": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/COLORLESS/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/COLORLESS/interaction": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/COLORLESS/playables/common": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.88
+            },
+            "/byColor/COLORLESS/playables/mythic": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/COLORLESS/playables/rare": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/COLORLESS/playables/total": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.88
+            },
+            "/byColor/COLORLESS/playables/uncommon": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/COLORLESS/removal": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/G/cards/common": {
+                "median": 18.0,
+                "p10": 17.0,
+                "p90": 18.0,
+                "mean": 17.598
+            },
+            "/byColor/G/cards/mythic": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/G/cards/rare": {
+                "median": 2.0,
+                "p10": 1.0,
+                "p90": 3.0,
+                "mean": 1.86
+            },
+            "/byColor/G/cards/total": {
+                "median": 23.0,
+                "p10": 21.0,
+                "p90": 25.0,
+                "mean": 22.748
+            },
+            "/byColor/G/cards/uncommon": {
+                "median": 3.0,
+                "p10": 2.0,
+                "p90": 5.0,
+                "mean": 3.29
+            },
+            "/byColor/G/creatures": {
+                "median": 17.0,
+                "p10": 15.0,
+                "p90": 19.0,
+                "mean": 16.89
+            },
+            "/byColor/G/interaction": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.858
+            },
+            "/byColor/G/playables/common": {
+                "median": 18.0,
+                "p10": 17.0,
+                "p90": 18.0,
+                "mean": 17.598
+            },
+            "/byColor/G/playables/mythic": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/G/playables/rare": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/G/playables/total": {
+                "median": 18.0,
+                "p10": 17.0,
+                "p90": 18.0,
+                "mean": 17.598
+            },
+            "/byColor/G/playables/uncommon": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/G/removal": {
+                "median": 2.0,
+                "p10": 1.0,
+                "p90": 3.0,
+                "mean": 1.86
+            },
+            "/byColor/MULTI/cards/common": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/MULTI/cards/mythic": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/MULTI/cards/rare": {
+                "median": 2.0,
+                "p10": 1.0,
+                "p90": 3.0,
+                "mean": 1.86
+            },
+            "/byColor/MULTI/cards/total": {
+                "median": 15.0,
+                "p10": 12.0,
+                "p90": 18.0,
+                "mean": 15.128
+            },
+            "/byColor/MULTI/cards/uncommon": {
+                "median": 13.0,
+                "p10": 11.0,
+                "p90": 16.0,
+                "mean": 13.268
+            },
+            "/byColor/MULTI/creatures": {
+                "median": 5.0,
+                "p10": 3.0,
+                "p90": 7.0,
+                "mean": 5.15
+            },
+            "/byColor/MULTI/interaction": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/MULTI/playables/common": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/MULTI/playables/mythic": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/MULTI/playables/rare": {
+                "median": 2.0,
+                "p10": 1.0,
+                "p90": 3.0,
+                "mean": 1.86
+            },
+            "/byColor/MULTI/playables/total": {
+                "median": 15.0,
+                "p10": 12.0,
+                "p90": 18.0,
+                "mean": 15.128
+            },
+            "/byColor/MULTI/playables/uncommon": {
+                "median": 13.0,
+                "p10": 11.0,
+                "p90": 16.0,
+                "mean": 13.268
+            },
+            "/byColor/MULTI/removal": {
+                "median": 5.0,
+                "p10": 3.0,
+                "p90": 7.0,
+                "mean": 5.2
+            },
+            "/byColor/R/cards/common": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/R/cards/mythic": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/R/cards/rare": {
+                "median": 4.0,
+                "p10": 2.0,
+                "p90": 6.0,
+                "mean": 3.78
+            },
+            "/byColor/R/cards/total": {
+                "median": 14.0,
+                "p10": 11.0,
+                "p90": 17.0,
+                "mean": 13.758
+            },
+            "/byColor/R/cards/uncommon": {
+                "median": 10.0,
+                "p10": 8.0,
+                "p90": 12.0,
+                "mean": 9.978
+            },
+            "/byColor/R/creatures": {
+                "median": 4.0,
+                "p10": 2.0,
+                "p90": 6.0,
+                "mean": 3.78
+            },
+            "/byColor/R/interaction": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/R/playables/common": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/R/playables/mythic": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/R/playables/rare": {
+                "median": 2.0,
+                "p10": 0.0,
+                "p90": 3.0,
+                "mean": 1.92
+            },
+            "/byColor/R/playables/total": {
+                "median": 2.0,
+                "p10": 0.0,
+                "p90": 3.0,
+                "mean": 1.92
+            },
+            "/byColor/R/playables/uncommon": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/R/removal": {
+                "median": 7.0,
+                "p10": 5.0,
+                "p90": 9.0,
+                "mean": 7.12
+            },
+            "/byColor/U/cards/common": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.89
+            },
+            "/byColor/U/cards/mythic": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/U/cards/rare": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/U/cards/total": {
+                "median": 16.0,
+                "p10": 13.0,
+                "p90": 18.0,
+                "mean": 15.836
+            },
+            "/byColor/U/cards/uncommon": {
+                "median": 10.0,
+                "p10": 8.0,
+                "p90": 12.0,
+                "mean": 9.946
+            },
+            "/byColor/U/creatures": {
+                "median": 9.0,
+                "p10": 8.0,
+                "p90": 11.0,
+                "mean": 9.176
+            },
+            "/byColor/U/interaction": {
+                "median": 3.0,
+                "p10": 2.0,
+                "p90": 5.0,
+                "mean": 3.396
+            },
+            "/byColor/U/playables/common": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.89
+            },
+            "/byColor/U/playables/mythic": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/U/playables/rare": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/U/playables/total": {
+                "median": 13.0,
+                "p10": 10.0,
+                "p90": 15.0,
+                "mean": 12.572
+            },
+            "/byColor/U/playables/uncommon": {
+                "median": 7.0,
+                "p10": 4.0,
+                "p90": 9.0,
+                "mean": 6.682
+            },
+            "/byColor/U/removal": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/W/cards/common": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/W/cards/mythic": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/W/cards/rare": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/W/cards/total": {
+                "median": 13.0,
+                "p10": 11.0,
+                "p90": 16.0,
+                "mean": 13.34
+            },
+            "/byColor/W/cards/uncommon": {
+                "median": 13.0,
+                "p10": 11.0,
+                "p90": 16.0,
+                "mean": 13.34
+            },
+            "/byColor/W/creatures": {
+                "median": 7.0,
+                "p10": 4.0,
+                "p90": 9.0,
+                "mean": 6.626
+            },
+            "/byColor/W/interaction": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/W/playables/common": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/W/playables/mythic": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/W/playables/rare": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/byColor/W/playables/total": {
+                "median": 3.0,
+                "p10": 2.0,
+                "p90": 5.0,
+                "mean": 3.336
+            },
+            "/byColor/W/playables/uncommon": {
+                "median": 3.0,
+                "p10": 2.0,
+                "p90": 5.0,
+                "mean": 3.336
+            },
+            "/byColor/W/removal": {
+                "median": 3.0,
+                "p10": 2.0,
+                "p90": 5.0,
+                "mean": 3.34
+            },
+            "/fixingSources/count": {
+                "median": 1.0,
+                "p10": 0.0,
+                "p90": 1.0,
+                "mean": 0.888
+            },
+            "/interactionTotal": {
+                "median": 9.0,
+                "p10": 8.0,
+                "p90": 11.0,
+                "mean": 9.254
+            },
+            "/nonbasicLands": {
+                "median": 8.0,
+                "p10": 6.0,
+                "p90": 10.0,
+                "mean": 7.782
+            },
+            "/nonlandCards": {
+                "median": 71.0,
+                "p10": 69.0,
+                "p90": 73.0,
+                "mean": 71.234
+            },
+            "/pairs/BG/cards": {
+                "median": 38.0,
+                "p10": 36.0,
+                "p90": 40.0,
+                "mean": 38.278
+            },
+            "/pairs/BG/castProbability/B": {
+                "median": 0.9263,
+                "p10": 0.8974,
+                "p90": 0.9477,
+                "mean": 0.9187
+            },
+            "/pairs/BG/castProbability/G": {
+                "median": 0.9477,
+                "p10": 0.8974,
+                "p90": 0.9747,
+                "mean": 0.9417
+            },
+            "/pairs/BG/creatures": {
+                "median": 19.0,
+                "p10": 18.0,
+                "p90": 21.0,
+                "mean": 19.456
+            },
+            "/pairs/BG/curve/buckets/0/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/BG/curve/buckets/0/manaValue": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/BG/curve/buckets/0/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/BG/curve/buckets/1/creatures": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.874
+            },
+            "/pairs/BG/curve/buckets/1/manaValue": {
+                "median": 1.0,
+                "p10": 1.0,
+                "p90": 1.0,
+                "mean": 1.0
+            },
+            "/pairs/BG/curve/buckets/1/noncreatures": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.858
+            },
+            "/pairs/BG/curve/buckets/2/creatures": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.866
+            },
+            "/pairs/BG/curve/buckets/2/manaValue": {
+                "median": 2.0,
+                "p10": 2.0,
+                "p90": 2.0,
+                "mean": 2.0
+            },
+            "/pairs/BG/curve/buckets/2/noncreatures": {
+                "median": 12.0,
+                "p10": 11.0,
+                "p90": 12.0,
+                "mean": 11.75
+            },
+            "/pairs/BG/curve/buckets/3/creatures": {
+                "median": 2.0,
+                "p10": 0.0,
+                "p90": 3.0,
+                "mean": 1.832
+            },
+            "/pairs/BG/curve/buckets/3/manaValue": {
+                "median": 3.0,
+                "p10": 3.0,
+                "p90": 3.0,
+                "mean": 3.0
+            },
+            "/pairs/BG/curve/buckets/3/noncreatures": {
+                "median": 1.0,
+                "p10": 0.0,
+                "p90": 3.0,
+                "mean": 1.214
+            },
+            "/pairs/BG/curve/buckets/4/creatures": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.884
+            },
+            "/pairs/BG/curve/buckets/4/manaValue": {
+                "median": 4.0,
+                "p10": 4.0,
+                "p90": 4.0,
+                "mean": 4.0
+            },
+            "/pairs/BG/curve/buckets/4/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/BG/curve/buckets/5/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/BG/curve/buckets/5/manaValue": {
+                "median": 5.0,
+                "p10": 5.0,
+                "p90": 5.0,
+                "mean": 5.0
+            },
+            "/pairs/BG/curve/buckets/5/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/BG/curve/buckets/6/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/BG/curve/buckets/6/manaValue": {
+                "median": 6.0,
+                "p10": 6.0,
+                "p90": 6.0,
+                "mean": 6.0
+            },
+            "/pairs/BG/curve/buckets/6/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/BG/curve/buckets/7/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/BG/curve/buckets/7/manaValue": {
+                "median": 7.0,
+                "p10": 7.0,
+                "p90": 7.0,
+                "mean": 7.0
+            },
+            "/pairs/BG/curve/buckets/7/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/BG/fixingSources": {
+                "median": 2.0,
+                "p10": 0.0,
+                "p90": 4.0,
+                "mean": 1.902
+            },
+            "/pairs/BG/interaction": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.858
+            },
+            "/pairs/BG/landRecommendation/B": {
+                "median": 9.0,
+                "p10": 8.0,
+                "p90": 10.0,
+                "mean": 8.814
+            },
+            "/pairs/BG/landRecommendation/G": {
+                "median": 8.0,
+                "p10": 7.0,
+                "p90": 9.0,
+                "mean": 8.186
+            },
+            "/pairs/BG/noncreatures": {
+                "median": 19.0,
+                "p10": 18.0,
+                "p90": 20.0,
+                "mean": 18.822
+            },
+            "/pairs/BG/removal": {
+                "median": 8.0,
+                "p10": 6.0,
+                "p90": 9.0,
+                "mean": 7.702
+            },
+            "/pairs/BG/splashCandidates/count": {
+                "median": 2.0,
+                "p10": 1.0,
+                "p90": 2.0,
+                "mean": 1.802
+            },
+            "/pairs/BR/cards": {
+                "median": 23.0,
+                "p10": 20.0,
+                "p90": 25.0,
+                "mean": 22.6
+            },
+            "/pairs/BR/castProbability/B": {
+                "median": 0.9634,
+                "p10": 0.9634,
+                "p90": 0.997,
+                "mean": 0.9668
+            },
+            "/pairs/BR/castProbability/R": {
+                "median": 0.8082,
+                "p10": 0.0,
+                "p90": 0.8082,
+                "mean": 0.7258
+            },
+            "/pairs/BR/creatures": {
+                "median": 10.0,
+                "p10": 8.0,
+                "p90": 12.0,
+                "mean": 9.636
+            },
+            "/pairs/BR/curve/buckets/0/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/BR/curve/buckets/0/manaValue": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/BR/curve/buckets/0/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/BR/curve/buckets/1/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/BR/curve/buckets/1/manaValue": {
+                "median": 1.0,
+                "p10": 1.0,
+                "p90": 1.0,
+                "mean": 1.0
+            },
+            "/pairs/BR/curve/buckets/1/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/BR/curve/buckets/2/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/BR/curve/buckets/2/manaValue": {
+                "median": 2.0,
+                "p10": 2.0,
+                "p90": 2.0,
+                "mean": 2.0
+            },
+            "/pairs/BR/curve/buckets/2/noncreatures": {
+                "median": 12.0,
+                "p10": 11.0,
+                "p90": 12.0,
+                "mean": 11.75
+            },
+            "/pairs/BR/curve/buckets/3/creatures": {
+                "median": 4.0,
+                "p10": 2.0,
+                "p90": 6.0,
+                "mean": 3.752
+            },
+            "/pairs/BR/curve/buckets/3/manaValue": {
+                "median": 3.0,
+                "p10": 3.0,
+                "p90": 3.0,
+                "mean": 3.0
+            },
+            "/pairs/BR/curve/buckets/3/noncreatures": {
+                "median": 1.0,
+                "p10": 0.0,
+                "p90": 3.0,
+                "mean": 1.214
+            },
+            "/pairs/BR/curve/buckets/4/creatures": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.884
+            },
+            "/pairs/BR/curve/buckets/4/manaValue": {
+                "median": 4.0,
+                "p10": 4.0,
+                "p90": 4.0,
+                "mean": 4.0
+            },
+            "/pairs/BR/curve/buckets/4/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/BR/curve/buckets/5/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/BR/curve/buckets/5/manaValue": {
+                "median": 5.0,
+                "p10": 5.0,
+                "p90": 5.0,
+                "mean": 5.0
+            },
+            "/pairs/BR/curve/buckets/5/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/BR/curve/buckets/6/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/BR/curve/buckets/6/manaValue": {
+                "median": 6.0,
+                "p10": 6.0,
+                "p90": 6.0,
+                "mean": 6.0
+            },
+            "/pairs/BR/curve/buckets/6/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/BR/curve/buckets/7/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/BR/curve/buckets/7/manaValue": {
+                "median": 7.0,
+                "p10": 7.0,
+                "p90": 7.0,
+                "mean": 7.0
+            },
+            "/pairs/BR/curve/buckets/7/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/BR/fixingSources": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/BR/interaction": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/BR/landRecommendation/B": {
+                "median": 11.0,
+                "p10": 11.0,
+                "p90": 17.0,
+                "mean": 11.612
+            },
+            "/pairs/BR/landRecommendation/R": {
+                "median": 6.0,
+                "p10": 0.0,
+                "p90": 6.0,
+                "mean": 5.388
+            },
+            "/pairs/BR/noncreatures": {
+                "median": 13.0,
+                "p10": 12.0,
+                "p90": 14.0,
+                "mean": 12.964
+            },
+            "/pairs/BR/removal": {
+                "median": 10.0,
+                "p10": 8.0,
+                "p90": 12.0,
+                "mean": 9.622
+            },
+            "/pairs/BR/splashCandidates/count": {
+                "median": 2.0,
+                "p10": 1.0,
+                "p90": 2.0,
+                "mean": 1.9
+            },
+            "/pairs/RG/cards": {
+                "median": 27.0,
+                "p10": 25.0,
+                "p90": 29.0,
+                "mean": 27.258
+            },
+            "/pairs/RG/castProbability/G": {
+                "median": 0.9829,
+                "p10": 0.9634,
+                "p90": 0.9925,
+                "mean": 0.9805
+            },
+            "/pairs/RG/castProbability/R": {
+                "median": 0.8082,
+                "p10": 0.8082,
+                "p90": 0.8082,
+                "mean": 0.805
+            },
+            "/pairs/RG/creatures": {
+                "median": 15.0,
+                "p10": 13.0,
+                "p90": 18.0,
+                "mean": 15.52
+            },
+            "/pairs/RG/curve/buckets/0/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/RG/curve/buckets/0/manaValue": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/RG/curve/buckets/0/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/RG/curve/buckets/1/creatures": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.874
+            },
+            "/pairs/RG/curve/buckets/1/manaValue": {
+                "median": 1.0,
+                "p10": 1.0,
+                "p90": 1.0,
+                "mean": 1.0
+            },
+            "/pairs/RG/curve/buckets/1/noncreatures": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.858
+            },
+            "/pairs/RG/curve/buckets/2/creatures": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.866
+            },
+            "/pairs/RG/curve/buckets/2/manaValue": {
+                "median": 2.0,
+                "p10": 2.0,
+                "p90": 2.0,
+                "mean": 2.0
+            },
+            "/pairs/RG/curve/buckets/2/noncreatures": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.88
+            },
+            "/pairs/RG/curve/buckets/3/creatures": {
+                "median": 2.0,
+                "p10": 0.0,
+                "p90": 3.0,
+                "mean": 1.92
+            },
+            "/pairs/RG/curve/buckets/3/manaValue": {
+                "median": 3.0,
+                "p10": 3.0,
+                "p90": 3.0,
+                "mean": 3.0
+            },
+            "/pairs/RG/curve/buckets/3/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/RG/curve/buckets/4/creatures": {
+                "median": 2.0,
+                "p10": 1.0,
+                "p90": 3.0,
+                "mean": 1.86
+            },
+            "/pairs/RG/curve/buckets/4/manaValue": {
+                "median": 4.0,
+                "p10": 4.0,
+                "p90": 4.0,
+                "mean": 4.0
+            },
+            "/pairs/RG/curve/buckets/4/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/RG/curve/buckets/5/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/RG/curve/buckets/5/manaValue": {
+                "median": 5.0,
+                "p10": 5.0,
+                "p90": 5.0,
+                "mean": 5.0
+            },
+            "/pairs/RG/curve/buckets/5/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/RG/curve/buckets/6/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/RG/curve/buckets/6/manaValue": {
+                "median": 6.0,
+                "p10": 6.0,
+                "p90": 6.0,
+                "mean": 6.0
+            },
+            "/pairs/RG/curve/buckets/6/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/RG/curve/buckets/7/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/RG/curve/buckets/7/manaValue": {
+                "median": 7.0,
+                "p10": 7.0,
+                "p90": 7.0,
+                "mean": 7.0
+            },
+            "/pairs/RG/curve/buckets/7/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/RG/fixingSources": {
+                "median": 2.0,
+                "p10": 0.0,
+                "p90": 4.0,
+                "mean": 1.902
+            },
+            "/pairs/RG/interaction": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.858
+            },
+            "/pairs/RG/landRecommendation/G": {
+                "median": 11.0,
+                "p10": 11.0,
+                "p90": 11.0,
+                "mean": 11.024
+            },
+            "/pairs/RG/landRecommendation/R": {
+                "median": 6.0,
+                "p10": 6.0,
+                "p90": 6.0,
+                "mean": 5.976
+            },
+            "/pairs/RG/noncreatures": {
+                "median": 12.0,
+                "p10": 11.0,
+                "p90": 12.0,
+                "mean": 11.738
+            },
+            "/pairs/RG/removal": {
+                "median": 4.0,
+                "p10": 2.0,
+                "p90": 6.0,
+                "mean": 3.78
+            },
+            "/pairs/RG/splashCandidates/count": {
+                "median": 2.0,
+                "p10": 2.0,
+                "p90": 2.0,
+                "mean": 1.996
+            },
+            "/pairs/UB/cards": {
+                "median": 33.0,
+                "p10": 31.0,
+                "p90": 36.0,
+                "mean": 33.252
+            },
+            "/pairs/UB/castProbability/B": {
+                "median": 0.8974,
+                "p10": 0.859,
+                "p90": 0.9477,
+                "mean": 0.9047
+            },
+            "/pairs/UB/castProbability/U": {
+                "median": 0.9477,
+                "p10": 0.8974,
+                "p90": 0.9829,
+                "mean": 0.9479
+            },
+            "/pairs/UB/creatures": {
+                "median": 17.0,
+                "p10": 15.0,
+                "p90": 19.0,
+                "mean": 16.892
+            },
+            "/pairs/UB/curve/buckets/0/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UB/curve/buckets/0/manaValue": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UB/curve/buckets/0/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UB/curve/buckets/1/creatures": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.89
+            },
+            "/pairs/UB/curve/buckets/1/manaValue": {
+                "median": 1.0,
+                "p10": 1.0,
+                "p90": 1.0,
+                "mean": 1.0
+            },
+            "/pairs/UB/curve/buckets/1/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UB/curve/buckets/2/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UB/curve/buckets/2/manaValue": {
+                "median": 2.0,
+                "p10": 2.0,
+                "p90": 2.0,
+                "mean": 2.0
+            },
+            "/pairs/UB/curve/buckets/2/noncreatures": {
+                "median": 15.0,
+                "p10": 13.0,
+                "p90": 17.0,
+                "mean": 15.146
+            },
+            "/pairs/UB/curve/buckets/3/creatures": {
+                "median": 2.0,
+                "p10": 0.0,
+                "p90": 3.0,
+                "mean": 1.832
+            },
+            "/pairs/UB/curve/buckets/3/manaValue": {
+                "median": 3.0,
+                "p10": 3.0,
+                "p90": 3.0,
+                "mean": 3.0
+            },
+            "/pairs/UB/curve/buckets/3/noncreatures": {
+                "median": 1.0,
+                "p10": 0.0,
+                "p90": 3.0,
+                "mean": 1.214
+            },
+            "/pairs/UB/curve/buckets/4/creatures": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.884
+            },
+            "/pairs/UB/curve/buckets/4/manaValue": {
+                "median": 4.0,
+                "p10": 4.0,
+                "p90": 4.0,
+                "mean": 4.0
+            },
+            "/pairs/UB/curve/buckets/4/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UB/curve/buckets/5/creatures": {
+                "median": 3.0,
+                "p10": 2.0,
+                "p90": 5.0,
+                "mean": 3.286
+            },
+            "/pairs/UB/curve/buckets/5/manaValue": {
+                "median": 5.0,
+                "p10": 5.0,
+                "p90": 5.0,
+                "mean": 5.0
+            },
+            "/pairs/UB/curve/buckets/5/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UB/curve/buckets/6/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UB/curve/buckets/6/manaValue": {
+                "median": 6.0,
+                "p10": 6.0,
+                "p90": 6.0,
+                "mean": 6.0
+            },
+            "/pairs/UB/curve/buckets/6/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UB/curve/buckets/7/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UB/curve/buckets/7/manaValue": {
+                "median": 7.0,
+                "p10": 7.0,
+                "p90": 7.0,
+                "mean": 7.0
+            },
+            "/pairs/UB/curve/buckets/7/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UB/fixingSources": {
+                "median": 2.0,
+                "p10": 0.0,
+                "p90": 4.0,
+                "mean": 1.902
+            },
+            "/pairs/UB/interaction": {
+                "median": 3.0,
+                "p10": 2.0,
+                "p90": 5.0,
+                "mean": 3.396
+            },
+            "/pairs/UB/landRecommendation/B": {
+                "median": 8.0,
+                "p10": 7.0,
+                "p90": 10.0,
+                "mean": 8.402
+            },
+            "/pairs/UB/landRecommendation/U": {
+                "median": 9.0,
+                "p10": 7.0,
+                "p90": 10.0,
+                "mean": 8.598
+            },
+            "/pairs/UB/noncreatures": {
+                "median": 16.0,
+                "p10": 14.0,
+                "p90": 18.0,
+                "mean": 16.36
+            },
+            "/pairs/UB/removal": {
+                "median": 8.0,
+                "p10": 6.0,
+                "p90": 9.0,
+                "mean": 7.702
+            },
+            "/pairs/UB/splashCandidates/count": {
+                "median": 1.0,
+                "p10": 0.0,
+                "p90": 1.0,
+                "mean": 0.898
+            },
+            "/pairs/UG/cards": {
+                "median": 36.0,
+                "p10": 34.0,
+                "p90": 38.0,
+                "mean": 36.05
+            },
+            "/pairs/UG/castProbability/G": {
+                "median": 0.9477,
+                "p10": 0.8974,
+                "p90": 0.9747,
+                "mean": 0.9423
+            },
+            "/pairs/UG/castProbability/U": {
+                "median": 0.9634,
+                "p10": 0.9263,
+                "p90": 0.9829,
+                "mean": 0.9553
+            },
+            "/pairs/UG/creatures": {
+                "median": 21.0,
+                "p10": 19.0,
+                "p90": 22.0,
+                "mean": 20.916
+            },
+            "/pairs/UG/curve/buckets/0/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UG/curve/buckets/0/manaValue": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UG/curve/buckets/0/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UG/curve/buckets/1/creatures": {
+                "median": 12.0,
+                "p10": 11.0,
+                "p90": 12.0,
+                "mean": 11.764
+            },
+            "/pairs/UG/curve/buckets/1/manaValue": {
+                "median": 1.0,
+                "p10": 1.0,
+                "p90": 1.0,
+                "mean": 1.0
+            },
+            "/pairs/UG/curve/buckets/1/noncreatures": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.858
+            },
+            "/pairs/UG/curve/buckets/2/creatures": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.866
+            },
+            "/pairs/UG/curve/buckets/2/manaValue": {
+                "median": 2.0,
+                "p10": 2.0,
+                "p90": 2.0,
+                "mean": 2.0
+            },
+            "/pairs/UG/curve/buckets/2/noncreatures": {
+                "median": 9.0,
+                "p10": 8.0,
+                "p90": 11.0,
+                "mean": 9.276
+            },
+            "/pairs/UG/curve/buckets/3/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UG/curve/buckets/3/manaValue": {
+                "median": 3.0,
+                "p10": 3.0,
+                "p90": 3.0,
+                "mean": 3.0
+            },
+            "/pairs/UG/curve/buckets/3/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UG/curve/buckets/4/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UG/curve/buckets/4/manaValue": {
+                "median": 4.0,
+                "p10": 4.0,
+                "p90": 4.0,
+                "mean": 4.0
+            },
+            "/pairs/UG/curve/buckets/4/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UG/curve/buckets/5/creatures": {
+                "median": 3.0,
+                "p10": 2.0,
+                "p90": 5.0,
+                "mean": 3.286
+            },
+            "/pairs/UG/curve/buckets/5/manaValue": {
+                "median": 5.0,
+                "p10": 5.0,
+                "p90": 5.0,
+                "mean": 5.0
+            },
+            "/pairs/UG/curve/buckets/5/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UG/curve/buckets/6/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UG/curve/buckets/6/manaValue": {
+                "median": 6.0,
+                "p10": 6.0,
+                "p90": 6.0,
+                "mean": 6.0
+            },
+            "/pairs/UG/curve/buckets/6/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UG/curve/buckets/7/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UG/curve/buckets/7/manaValue": {
+                "median": 7.0,
+                "p10": 7.0,
+                "p90": 7.0,
+                "mean": 7.0
+            },
+            "/pairs/UG/curve/buckets/7/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UG/fixingSources": {
+                "median": 2.0,
+                "p10": 0.0,
+                "p90": 4.0,
+                "mean": 1.902
+            },
+            "/pairs/UG/interaction": {
+                "median": 9.0,
+                "p10": 8.0,
+                "p90": 11.0,
+                "mean": 9.254
+            },
+            "/pairs/UG/landRecommendation/G": {
+                "median": 8.0,
+                "p10": 7.0,
+                "p90": 9.0,
+                "mean": 8.126
+            },
+            "/pairs/UG/landRecommendation/U": {
+                "median": 9.0,
+                "p10": 8.0,
+                "p90": 10.0,
+                "mean": 8.874
+            },
+            "/pairs/UG/noncreatures": {
+                "median": 15.0,
+                "p10": 13.0,
+                "p90": 17.0,
+                "mean": 15.134
+            },
+            "/pairs/UG/removal": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UG/splashCandidates/count": {
+                "median": 3.0,
+                "p10": 2.0,
+                "p90": 3.0,
+                "mean": 2.802
+            },
+            "/pairs/UR/cards": {
+                "median": 24.0,
+                "p10": 21.0,
+                "p90": 26.0,
+                "mean": 23.636
+            },
+            "/pairs/UR/castProbability/R": {
+                "median": 0.8082,
+                "p10": 0.8082,
+                "p90": 0.8082,
+                "mean": 0.807
+            },
+            "/pairs/UR/castProbability/U": {
+                "median": 0.9829,
+                "p10": 0.9634,
+                "p90": 0.9925,
+                "mean": 0.9804
+            },
+            "/pairs/UR/creatures": {
+                "median": 11.0,
+                "p10": 9.0,
+                "p90": 13.0,
+                "mean": 11.096
+            },
+            "/pairs/UR/curve/buckets/0/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UR/curve/buckets/0/manaValue": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UR/curve/buckets/0/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UR/curve/buckets/1/creatures": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.89
+            },
+            "/pairs/UR/curve/buckets/1/manaValue": {
+                "median": 1.0,
+                "p10": 1.0,
+                "p90": 1.0,
+                "mean": 1.0
+            },
+            "/pairs/UR/curve/buckets/1/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UR/curve/buckets/2/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UR/curve/buckets/2/manaValue": {
+                "median": 2.0,
+                "p10": 2.0,
+                "p90": 2.0,
+                "mean": 2.0
+            },
+            "/pairs/UR/curve/buckets/2/noncreatures": {
+                "median": 13.0,
+                "p10": 10.0,
+                "p90": 14.0,
+                "mean": 12.54
+            },
+            "/pairs/UR/curve/buckets/3/creatures": {
+                "median": 2.0,
+                "p10": 0.0,
+                "p90": 3.0,
+                "mean": 1.92
+            },
+            "/pairs/UR/curve/buckets/3/manaValue": {
+                "median": 3.0,
+                "p10": 3.0,
+                "p90": 3.0,
+                "mean": 3.0
+            },
+            "/pairs/UR/curve/buckets/3/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UR/curve/buckets/4/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UR/curve/buckets/4/manaValue": {
+                "median": 4.0,
+                "p10": 4.0,
+                "p90": 4.0,
+                "mean": 4.0
+            },
+            "/pairs/UR/curve/buckets/4/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UR/curve/buckets/5/creatures": {
+                "median": 3.0,
+                "p10": 2.0,
+                "p90": 5.0,
+                "mean": 3.286
+            },
+            "/pairs/UR/curve/buckets/5/manaValue": {
+                "median": 5.0,
+                "p10": 5.0,
+                "p90": 5.0,
+                "mean": 5.0
+            },
+            "/pairs/UR/curve/buckets/5/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UR/curve/buckets/6/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UR/curve/buckets/6/manaValue": {
+                "median": 6.0,
+                "p10": 6.0,
+                "p90": 6.0,
+                "mean": 6.0
+            },
+            "/pairs/UR/curve/buckets/6/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UR/curve/buckets/7/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UR/curve/buckets/7/manaValue": {
+                "median": 7.0,
+                "p10": 7.0,
+                "p90": 7.0,
+                "mean": 7.0
+            },
+            "/pairs/UR/curve/buckets/7/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/UR/fixingSources": {
+                "median": 2.0,
+                "p10": 0.0,
+                "p90": 4.0,
+                "mean": 1.902
+            },
+            "/pairs/UR/interaction": {
+                "median": 3.0,
+                "p10": 2.0,
+                "p90": 5.0,
+                "mean": 3.396
+            },
+            "/pairs/UR/landRecommendation/R": {
+                "median": 6.0,
+                "p10": 6.0,
+                "p90": 6.0,
+                "mean": 5.996
+            },
+            "/pairs/UR/landRecommendation/U": {
+                "median": 11.0,
+                "p10": 11.0,
+                "p90": 11.0,
+                "mean": 11.004
+            },
+            "/pairs/UR/noncreatures": {
+                "median": 13.0,
+                "p10": 10.0,
+                "p90": 14.0,
+                "mean": 12.54
+            },
+            "/pairs/UR/removal": {
+                "median": 2.0,
+                "p10": 0.0,
+                "p90": 3.0,
+                "mean": 1.92
+            },
+            "/pairs/UR/splashCandidates/count": {
+                "median": 3.0,
+                "p10": 2.0,
+                "p90": 3.0,
+                "mean": 2.9
+            },
+            "/pairs/WB/cards": {
+                "median": 24.0,
+                "p10": 22.0,
+                "p90": 26.0,
+                "mean": 24.016
+            },
+            "/pairs/WB/castProbability/B": {
+                "median": 0.9634,
+                "p10": 0.9634,
+                "p90": 0.9634,
+                "mean": 0.9625
+            },
+            "/pairs/WB/castProbability/W": {
+                "median": 0.8082,
+                "p10": 0.8082,
+                "p90": 0.8082,
+                "mean": 0.8052
+            },
+            "/pairs/WB/creatures": {
+                "median": 11.0,
+                "p10": 9.0,
+                "p90": 13.0,
+                "mean": 11.052
+            },
+            "/pairs/WB/curve/buckets/0/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WB/curve/buckets/0/manaValue": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WB/curve/buckets/0/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WB/curve/buckets/1/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WB/curve/buckets/1/manaValue": {
+                "median": 1.0,
+                "p10": 1.0,
+                "p90": 1.0,
+                "mean": 1.0
+            },
+            "/pairs/WB/curve/buckets/1/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WB/curve/buckets/2/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WB/curve/buckets/2/manaValue": {
+                "median": 2.0,
+                "p10": 2.0,
+                "p90": 2.0,
+                "mean": 2.0
+            },
+            "/pairs/WB/curve/buckets/2/noncreatures": {
+                "median": 12.0,
+                "p10": 11.0,
+                "p90": 12.0,
+                "mean": 11.75
+            },
+            "/pairs/WB/curve/buckets/3/creatures": {
+                "median": 2.0,
+                "p10": 0.0,
+                "p90": 3.0,
+                "mean": 1.832
+            },
+            "/pairs/WB/curve/buckets/3/manaValue": {
+                "median": 3.0,
+                "p10": 3.0,
+                "p90": 3.0,
+                "mean": 3.0
+            },
+            "/pairs/WB/curve/buckets/3/noncreatures": {
+                "median": 1.0,
+                "p10": 0.0,
+                "p90": 3.0,
+                "mean": 1.214
+            },
+            "/pairs/WB/curve/buckets/4/creatures": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.884
+            },
+            "/pairs/WB/curve/buckets/4/manaValue": {
+                "median": 4.0,
+                "p10": 4.0,
+                "p90": 4.0,
+                "mean": 4.0
+            },
+            "/pairs/WB/curve/buckets/4/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WB/curve/buckets/5/creatures": {
+                "median": 3.0,
+                "p10": 2.0,
+                "p90": 5.0,
+                "mean": 3.336
+            },
+            "/pairs/WB/curve/buckets/5/manaValue": {
+                "median": 5.0,
+                "p10": 5.0,
+                "p90": 5.0,
+                "mean": 5.0
+            },
+            "/pairs/WB/curve/buckets/5/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WB/curve/buckets/6/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WB/curve/buckets/6/manaValue": {
+                "median": 6.0,
+                "p10": 6.0,
+                "p90": 6.0,
+                "mean": 6.0
+            },
+            "/pairs/WB/curve/buckets/6/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WB/curve/buckets/7/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WB/curve/buckets/7/manaValue": {
+                "median": 7.0,
+                "p10": 7.0,
+                "p90": 7.0,
+                "mean": 7.0
+            },
+            "/pairs/WB/curve/buckets/7/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WB/fixingSources": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WB/interaction": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WB/landRecommendation/B": {
+                "median": 11.0,
+                "p10": 11.0,
+                "p90": 11.0,
+                "mean": 10.976
+            },
+            "/pairs/WB/landRecommendation/W": {
+                "median": 6.0,
+                "p10": 6.0,
+                "p90": 6.0,
+                "mean": 6.024
+            },
+            "/pairs/WB/noncreatures": {
+                "median": 13.0,
+                "p10": 12.0,
+                "p90": 14.0,
+                "mean": 12.964
+            },
+            "/pairs/WB/removal": {
+                "median": 8.0,
+                "p10": 6.0,
+                "p90": 9.0,
+                "mean": 7.702
+            },
+            "/pairs/WB/splashCandidates/count": {
+                "median": 2.0,
+                "p10": 1.0,
+                "p90": 2.0,
+                "mean": 1.894
+            },
+            "/pairs/WG/cards": {
+                "median": 30.0,
+                "p10": 28.0,
+                "p90": 32.0,
+                "mean": 30.104
+            },
+            "/pairs/WG/castProbability/G": {
+                "median": 0.9829,
+                "p10": 0.9634,
+                "p90": 0.9925,
+                "mean": 0.9789
+            },
+            "/pairs/WG/castProbability/W": {
+                "median": 0.8082,
+                "p10": 0.8082,
+                "p90": 0.859,
+                "mean": 0.8165
+            },
+            "/pairs/WG/creatures": {
+                "median": 18.0,
+                "p10": 16.0,
+                "p90": 20.0,
+                "mean": 18.366
+            },
+            "/pairs/WG/curve/buckets/0/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WG/curve/buckets/0/manaValue": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WG/curve/buckets/0/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WG/curve/buckets/1/creatures": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.874
+            },
+            "/pairs/WG/curve/buckets/1/manaValue": {
+                "median": 1.0,
+                "p10": 1.0,
+                "p90": 1.0,
+                "mean": 1.0
+            },
+            "/pairs/WG/curve/buckets/1/noncreatures": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.858
+            },
+            "/pairs/WG/curve/buckets/2/creatures": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.866
+            },
+            "/pairs/WG/curve/buckets/2/manaValue": {
+                "median": 2.0,
+                "p10": 2.0,
+                "p90": 2.0,
+                "mean": 2.0
+            },
+            "/pairs/WG/curve/buckets/2/noncreatures": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.88
+            },
+            "/pairs/WG/curve/buckets/3/creatures": {
+                "median": 3.0,
+                "p10": 2.0,
+                "p90": 5.0,
+                "mean": 3.29
+            },
+            "/pairs/WG/curve/buckets/3/manaValue": {
+                "median": 3.0,
+                "p10": 3.0,
+                "p90": 3.0,
+                "mean": 3.0
+            },
+            "/pairs/WG/curve/buckets/3/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WG/curve/buckets/4/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WG/curve/buckets/4/manaValue": {
+                "median": 4.0,
+                "p10": 4.0,
+                "p90": 4.0,
+                "mean": 4.0
+            },
+            "/pairs/WG/curve/buckets/4/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WG/curve/buckets/5/creatures": {
+                "median": 3.0,
+                "p10": 2.0,
+                "p90": 5.0,
+                "mean": 3.336
+            },
+            "/pairs/WG/curve/buckets/5/manaValue": {
+                "median": 5.0,
+                "p10": 5.0,
+                "p90": 5.0,
+                "mean": 5.0
+            },
+            "/pairs/WG/curve/buckets/5/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WG/curve/buckets/6/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WG/curve/buckets/6/manaValue": {
+                "median": 6.0,
+                "p10": 6.0,
+                "p90": 6.0,
+                "mean": 6.0
+            },
+            "/pairs/WG/curve/buckets/6/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WG/curve/buckets/7/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WG/curve/buckets/7/manaValue": {
+                "median": 7.0,
+                "p10": 7.0,
+                "p90": 7.0,
+                "mean": 7.0
+            },
+            "/pairs/WG/curve/buckets/7/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WG/fixingSources": {
+                "median": 2.0,
+                "p10": 0.0,
+                "p90": 4.0,
+                "mean": 1.902
+            },
+            "/pairs/WG/interaction": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.858
+            },
+            "/pairs/WG/landRecommendation/G": {
+                "median": 11.0,
+                "p10": 10.0,
+                "p90": 11.0,
+                "mean": 10.836
+            },
+            "/pairs/WG/landRecommendation/W": {
+                "median": 6.0,
+                "p10": 6.0,
+                "p90": 7.0,
+                "mean": 6.164
+            },
+            "/pairs/WG/noncreatures": {
+                "median": 12.0,
+                "p10": 11.0,
+                "p90": 12.0,
+                "mean": 11.738
+            },
+            "/pairs/WG/removal": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WG/splashCandidates/count": {
+                "median": 4.0,
+                "p10": 3.0,
+                "p90": 4.0,
+                "mean": 3.798
+            },
+            "/pairs/WR/cards": {
+                "median": 18.0,
+                "p10": 15.0,
+                "p90": 20.0,
+                "mean": 17.85
+            },
+            "/pairs/WR/castProbability/R": {
+                "median": 0.8082,
+                "p10": 0.8082,
+                "p90": 0.8082,
+                "mean": 0.8125
+            },
+            "/pairs/WR/castProbability/W": {
+                "median": 0.9634,
+                "p10": 0.9634,
+                "p90": 0.9634,
+                "mean": 0.9619
+            },
+            "/pairs/WR/creatures": {
+                "median": 5.0,
+                "p10": 3.0,
+                "p90": 7.0,
+                "mean": 5.256
+            },
+            "/pairs/WR/curve/buckets/0/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WR/curve/buckets/0/manaValue": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WR/curve/buckets/0/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WR/curve/buckets/1/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WR/curve/buckets/1/manaValue": {
+                "median": 1.0,
+                "p10": 1.0,
+                "p90": 1.0,
+                "mean": 1.0
+            },
+            "/pairs/WR/curve/buckets/1/noncreatures": {
+                "median": 3.0,
+                "p10": 2.0,
+                "p90": 5.0,
+                "mean": 3.374
+            },
+            "/pairs/WR/curve/buckets/2/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WR/curve/buckets/2/manaValue": {
+                "median": 2.0,
+                "p10": 2.0,
+                "p90": 2.0,
+                "mean": 2.0
+            },
+            "/pairs/WR/curve/buckets/2/noncreatures": {
+                "median": 9.0,
+                "p10": 8.0,
+                "p90": 11.0,
+                "mean": 9.22
+            },
+            "/pairs/WR/curve/buckets/3/creatures": {
+                "median": 2.0,
+                "p10": 0.0,
+                "p90": 3.0,
+                "mean": 1.92
+            },
+            "/pairs/WR/curve/buckets/3/manaValue": {
+                "median": 3.0,
+                "p10": 3.0,
+                "p90": 3.0,
+                "mean": 3.0
+            },
+            "/pairs/WR/curve/buckets/3/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WR/curve/buckets/4/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WR/curve/buckets/4/manaValue": {
+                "median": 4.0,
+                "p10": 4.0,
+                "p90": 4.0,
+                "mean": 4.0
+            },
+            "/pairs/WR/curve/buckets/4/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WR/curve/buckets/5/creatures": {
+                "median": 3.0,
+                "p10": 2.0,
+                "p90": 5.0,
+                "mean": 3.336
+            },
+            "/pairs/WR/curve/buckets/5/manaValue": {
+                "median": 5.0,
+                "p10": 5.0,
+                "p90": 5.0,
+                "mean": 5.0
+            },
+            "/pairs/WR/curve/buckets/5/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WR/curve/buckets/6/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WR/curve/buckets/6/manaValue": {
+                "median": 6.0,
+                "p10": 6.0,
+                "p90": 6.0,
+                "mean": 6.0
+            },
+            "/pairs/WR/curve/buckets/6/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WR/curve/buckets/7/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WR/curve/buckets/7/manaValue": {
+                "median": 7.0,
+                "p10": 7.0,
+                "p90": 7.0,
+                "mean": 7.0
+            },
+            "/pairs/WR/curve/buckets/7/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WR/fixingSources": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WR/interaction": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WR/landRecommendation/R": {
+                "median": 6.0,
+                "p10": 6.0,
+                "p90": 6.0,
+                "mean": 6.088
+            },
+            "/pairs/WR/landRecommendation/W": {
+                "median": 11.0,
+                "p10": 11.0,
+                "p90": 11.0,
+                "mean": 10.912
+            },
+            "/pairs/WR/noncreatures": {
+                "median": 13.0,
+                "p10": 11.0,
+                "p90": 15.0,
+                "mean": 12.594
+            },
+            "/pairs/WR/removal": {
+                "median": 5.0,
+                "p10": 3.0,
+                "p90": 7.0,
+                "mean": 5.26
+            },
+            "/pairs/WR/splashCandidates/count": {
+                "median": 2.0,
+                "p10": 2.0,
+                "p90": 2.0,
+                "mean": 1.904
+            },
+            "/pairs/WU/cards": {
+                "median": 22.0,
+                "p10": 19.0,
+                "p90": 24.0,
+                "mean": 21.788
+            },
+            "/pairs/WU/castProbability/U": {
+                "median": 0.9829,
+                "p10": 0.9634,
+                "p90": 0.9925,
+                "mean": 0.9798
+            },
+            "/pairs/WU/castProbability/W": {
+                "median": 0.8082,
+                "p10": 0.8082,
+                "p90": 0.8082,
+                "mean": 0.806
+            },
+            "/pairs/WU/creatures": {
+                "median": 13.0,
+                "p10": 10.0,
+                "p90": 15.0,
+                "mean": 12.512
+            },
+            "/pairs/WU/curve/buckets/0/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WU/curve/buckets/0/manaValue": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WU/curve/buckets/0/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WU/curve/buckets/1/creatures": {
+                "median": 6.0,
+                "p10": 5.0,
+                "p90": 6.0,
+                "mean": 5.89
+            },
+            "/pairs/WU/curve/buckets/1/manaValue": {
+                "median": 1.0,
+                "p10": 1.0,
+                "p90": 1.0,
+                "mean": 1.0
+            },
+            "/pairs/WU/curve/buckets/1/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WU/curve/buckets/2/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WU/curve/buckets/2/manaValue": {
+                "median": 2.0,
+                "p10": 2.0,
+                "p90": 2.0,
+                "mean": 2.0
+            },
+            "/pairs/WU/curve/buckets/2/noncreatures": {
+                "median": 9.0,
+                "p10": 8.0,
+                "p90": 11.0,
+                "mean": 9.276
+            },
+            "/pairs/WU/curve/buckets/3/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WU/curve/buckets/3/manaValue": {
+                "median": 3.0,
+                "p10": 3.0,
+                "p90": 3.0,
+                "mean": 3.0
+            },
+            "/pairs/WU/curve/buckets/3/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WU/curve/buckets/4/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WU/curve/buckets/4/manaValue": {
+                "median": 4.0,
+                "p10": 4.0,
+                "p90": 4.0,
+                "mean": 4.0
+            },
+            "/pairs/WU/curve/buckets/4/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WU/curve/buckets/5/creatures": {
+                "median": 7.0,
+                "p10": 4.0,
+                "p90": 9.0,
+                "mean": 6.622
+            },
+            "/pairs/WU/curve/buckets/5/manaValue": {
+                "median": 5.0,
+                "p10": 5.0,
+                "p90": 5.0,
+                "mean": 5.0
+            },
+            "/pairs/WU/curve/buckets/5/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WU/curve/buckets/6/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WU/curve/buckets/6/manaValue": {
+                "median": 6.0,
+                "p10": 6.0,
+                "p90": 6.0,
+                "mean": 6.0
+            },
+            "/pairs/WU/curve/buckets/6/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WU/curve/buckets/7/creatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WU/curve/buckets/7/manaValue": {
+                "median": 7.0,
+                "p10": 7.0,
+                "p90": 7.0,
+                "mean": 7.0
+            },
+            "/pairs/WU/curve/buckets/7/noncreatures": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WU/fixingSources": {
+                "median": 2.0,
+                "p10": 0.0,
+                "p90": 4.0,
+                "mean": 1.902
+            },
+            "/pairs/WU/interaction": {
+                "median": 3.0,
+                "p10": 2.0,
+                "p90": 5.0,
+                "mean": 3.396
+            },
+            "/pairs/WU/landRecommendation/U": {
+                "median": 11.0,
+                "p10": 11.0,
+                "p90": 11.0,
+                "mean": 10.958
+            },
+            "/pairs/WU/landRecommendation/W": {
+                "median": 6.0,
+                "p10": 6.0,
+                "p90": 6.0,
+                "mean": 6.042
+            },
+            "/pairs/WU/noncreatures": {
+                "median": 9.0,
+                "p10": 8.0,
+                "p90": 11.0,
+                "mean": 9.276
+            },
+            "/pairs/WU/removal": {
+                "median": 0.0,
+                "p10": 0.0,
+                "p90": 0.0,
+                "mean": 0.0
+            },
+            "/pairs/WU/splashCandidates/count": {
+                "median": 3.0,
+                "p10": 2.0,
+                "p90": 3.0,
+                "mean": 2.894
+            },
+            "/removalTotal": {
+                "median": 15.0,
+                "p10": 12.0,
+                "p90": 17.0,
+                "mean": 14.822
+            },
+            "/totalCards": {
+                "median": 85.0,
+                "p10": 85.0,
+                "p90": 85.0,
+                "mean": 85.0
+            }
+        }
+    }
+}
