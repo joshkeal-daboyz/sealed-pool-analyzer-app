@@ -124,11 +124,13 @@ abstract class GatePlugin @Inject constructor(private val listeners: BuildEvents
      * verify mode, and the unit-tests step does not.
      */
     private fun wireApp(path: String, steps: StepTasks) {
-        steps.format.configure { it.dependsOn(":ktfmtCheck") }
-        steps.lint.configure { it.dependsOn(":detekt", ":lintDebug") }
-        steps.compile.configure { it.dependsOn(":assembleDebug", ":compileDebugUnitTestKotlin") }
-        steps.uiTests.configure { it.dependsOn(":verifyRoborazziDebug") }
-        steps.coverage.configure { it.dependsOn(":koverXmlReportDebug") }
+        steps.format.configure { it.dependsOn("$path:ktfmtCheck") }
+        steps.lint.configure { it.dependsOn("$path:detekt", "$path:lintDebug") }
+        steps.compile.configure {
+            it.dependsOn("$path:assembleDebug", "$path:compileDebugUnitTestKotlin")
+        }
+        steps.uiTests.configure { it.dependsOn("$path:verifyRoborazziDebug") }
+        steps.coverage.configure { it.dependsOn("$path:koverXmlReportDebug") }
     }
 
     private fun testSources(
