@@ -2,6 +2,7 @@
 
 What the Architect learned from merged tickets. One line each, newest first. Read before writing any ticket.
 
+- 2026-11-04 SPA-016: When the emulator types a pool with `adb shell input text`, the keyboard autocorrects card names (`Ortegas,` to `Ortega's,`). Device criteria that paste text should tell the tester to check the field against the file (uiautomator dump) before acting. A dispatch that names a local branch must use `SPA-###` in capitals, or the pre-push hook gates it as ticket `none`.
 - 2026-11-04 SPA-027: Android compiles regexes with ICU, which rejects some patterns the JVM accepts (an unescaped `}`). RegexBraceGuardTest scans only `Regex("...")` and `.toRegex()` literals for that one case. A pattern built from a variable (`RulesTagger.rx`), passed to `Pattern.compile`, or held in a `const` is not scanned. A ticket that adds a regex in one of those forms should prove it on the device or extend the guard.
 - 2026-11-04 SPA-016: The gate runs app code on the JVM, which has `java.*` methods Android lacks (`Files.readString`, at every API level). The first ticket that runs `core` on a device should prove it with an on-device test early. Don't infer an API's availability from `minSdk`; check it on the emulator.
 - 2026-11-03 SPA-025: A wall-clock assertion in a unit test fails whenever the PC is busy, and parallel tester agents make it busy. A criterion that pins a duration names where it holds ("on CI"), and the test enforces it only there.
