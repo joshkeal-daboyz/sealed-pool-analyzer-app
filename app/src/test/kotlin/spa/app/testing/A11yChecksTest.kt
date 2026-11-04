@@ -17,6 +17,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.robolectric.annotation.Config
 import spa.app.PoolUiState
 import spa.app.importing.PoolSource
 import spa.app.pool.PoolEntryScreen
@@ -143,7 +144,11 @@ class A11yChecksTest {
 
     @Test fun resultsLoadingPassesTouchTargetsAndLabels() = clickChecks { Loading() }
 
-    @Test fun resultsLoadedPassesTouchTargetsAndLabels() = clickChecks { Loaded() }
+    // Since SPA-018 Results scrolls past the fold, and these checks read laid-out bounds, which are
+    // clipped to nothing below it; a surface tall enough for the whole scroll lays every row out.
+    @Test
+    @Config(qualifiers = "w411dp-h9000dp-xxhdpi")
+    fun resultsLoadedPassesTouchTargetsAndLabels() = clickChecks { Loaded() }
 
     @Test
     fun poolHasNoTextOverflowAtFontScale2() =
