@@ -61,10 +61,11 @@ object A11yChecks {
     private fun overflow(node: SemanticsNode): String? {
         val layouts = mutableListOf<TextLayoutResult>()
         node.config.getOrNull(SemanticsActions.GetTextLayoutResult)?.action?.invoke(layouts)
-        val reported = layouts.firstOrNull() ?: return null
-        val style = textStyleOf(node)
-        val layout = if (style == null) reported else remeasure(reported, style)
-        if (!layout.hasVisualOverflow) return null
+        val layout =
+            layouts.firstOrNull()?.let { reported ->
+                textStyleOf(node)?.let { remeasure(reported, it) } ?: reported
+            }
+        if (layout == null || !layout.hasVisualOverflow) return null
         val b = node.boundsInRoot
         return "Text '${layout.layoutInput.text}' (node #${node.id} at [${b.left.toInt()}, " +
             "${b.top.toInt()}, ${b.right.toInt()}, ${b.bottom.toInt()}] px) overflows its box"
