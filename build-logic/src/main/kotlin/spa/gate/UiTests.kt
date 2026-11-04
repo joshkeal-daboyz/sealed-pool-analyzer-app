@@ -18,6 +18,14 @@ object UiTests {
     private val changed = Regex("Roborazzi: (.+?\\.png) is changed")
     private val missing = Regex("Roborazzi: The original file\\((.+?\\.png)\\) was not found")
 
+    /**
+     * The command that reruns the app's JVM tests the way the gate does: the app module's debug
+     * unit-test task, by project path, in Roborazzi's verify mode. A failure appends `--tests`,
+     * which is an option of the Test task, so this names that task and not `verifyRoborazziDebug`.
+     */
+    fun reproduceCommand(appPath: String): String =
+        "./gradlew $appPath:testDebugUnitTest -Proborazzi.test.verify=true"
+
     /** The pass note: how many UI tests and snapshots ran. */
     fun note(tests: Int, snapshots: Int): String =
         "${plural(tests, "UI test")} and ${plural(snapshots, "snapshot")} ran"
