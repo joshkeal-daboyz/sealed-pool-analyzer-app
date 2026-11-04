@@ -12,15 +12,23 @@ import org.junit.jupiter.api.io.TempDir
  * Criteria 2 and 3: `spa grade-backtest` on two small committed syn grade files, and its errors.
  *
  * The files grade the 20 non-basic syn cards; the model file leaves out Evolving Wilds (common 19).
- * Scores (win rate / model) and the average ranks they give, hand-checked:
- * - common (1, 5, 6, 7, 8, 11, 18): win rate 1.0 3.5 2.0 2.5 2.0 3.0 1.5, ranks 1 7 3.5 5 3.5 6 2;
- *   model 1.5 4.0 2.5 2.5 2.0 3.0 1.0, ranks 2 7 4.5 4.5 3 6 1. Rank means 4. Sum of deviation
- *   products 25.75, sums of squares 27.5 and 27.5: rho = 25.75 / 27.5 = 0.936.
- * - uncommon (2, 3, 4, 9, 10, 16, 17): win rate 3.5 2.5 3.0 3.0 4.0 2.0 1.5, ranks 6 3 4.5 4.5 7 2
- *   1; model 3.0 3.5 4.0 2.5 2.0 3.0 3.0, ranks 4 6 7 2 1 4 4. Products -10.5, squares 27.5 and 26:
- *   rho = -10.5 / sqrt(715) = -0.393.
+ * The win-rate side is ranked by `gihwr` (all distinct, so no ties), the model side by `score`
+ * (average ranks for ties). Values (win-rate gihwr / model score) and their ranks, hand-checked:
+ * - common (1, 5, 6, 7, 8, 11, 18): gihwr .478 .557 .512 .527 .508 .540 .497, ranks 1 7 4 5 3 6 2;
+ *   model 1.5 4.0 2.5 2.5 2.0 3.0 1.0, ranks 2 7 4.5 4.5 3 6 1. Rank means 4. Deviations
+ *   [-3, 3, 0, 1, -1, 2, -2] and [-2, 3, 0.5, 0.5, -1, 2, -3]: products 6 + 9 + 0 + 0.5 + 1 + 4 + 6
+ *   = 26.5, squares 28 and 27.5. rho = 26.5 / sqrt(770) = 0.954994, printed 0.955.
+ * - uncommon (2, 3, 4, 9, 10, 16, 17): gihwr .553 .523 .538 .542 .572 .510 .493, ranks 6 3 4 5 7 2
+ *   1; model 3.0 3.5 4.0 2.5 2.0 3.0 3.0, ranks 4 6 7 2 1 4 4. Deviations [2, -1, 0, 1, 3, -2, -3]
+ *   and [0, 2, 3, -2, -3, 0, 0]: products 0 - 2 + 0 - 2 - 9 + 0 + 0 = -13, squares 28 and 26. rho =
+ *   -13 / sqrt(728) = -0.4818, printed -0.482.
  * - rare (12, 14, 15, 20) has 4 cards and mythic (13) has 1: under five, so n/a.
- * - all 19 matched cards: sum of products 401.25, squares 560.5 and 560, rho = 0.716.
+ * - all 19 matched cards, gihwr ranks 1 to 19 (mean 10, squares 19 * 360 / 12 = 570) in the order 1
+ *   20 17 18 8 16 6 3 7 4 11 9 2 13 5 14 15 10 12; model ranks for those cards 3 1 10.5 2 4.5 10.5
+ *   7 13 7 15 10.5 7 10.5 17.5 15 17.5 15 4.5 19 (squares 560). Products 63 + 72 - 3.5 + 48
+ *     + 27.5 - 2 + 9 - 6 + 3 + 0 + 0.5 - 6 + 1.5 + 30 + 25 + 45 + 35 - 44 + 81 = 379. rho = 379 /
+ *       sqrt(570 * 560) = 379 / 564.978 = 0.6708, printed 0.671. Ranked by win-rate `score`
+ *       instead, the three rhos would be 0.936, -0.393 and 0.716.
  */
 class GradeBacktestCommandTest {
     @TempDir lateinit var temp: Path
@@ -33,9 +41,9 @@ class GradeBacktestCommandTest {
 
     private val expected =
         listOf(
-            "all: rho 0.716, n 19",
-            "common: rho 0.936, n 7",
-            "uncommon: rho -0.393, n 7",
+            "all: rho 0.671, n 19",
+            "common: rho 0.955, n 7",
+            "uncommon: rho -0.482, n 7",
             "rare: rho n/a, n 4",
             "mythic: rho n/a, n 1",
             "model: claude-opus-5-5, prompt v1, 2026-11-04",

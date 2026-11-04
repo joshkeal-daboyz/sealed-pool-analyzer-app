@@ -61,8 +61,9 @@ object Backtest {
 
     /**
      * The backtest over the cards [winRates] grades that [model] grades too, matched by set code
-     * and collector number. [rarity] gives a printing's rarity, or null when it is unknown; such a
-     * card counts only in [BacktestGroup.ALL].
+     * and collector number. The model side is ranked by `score`; the win-rate side by `gihwr`, or
+     * by `score` for an entry without one. [rarity] gives a printing's rarity, or null when it is
+     * unknown; such a card counts only in [BacktestGroup.ALL].
      */
     fun run(
         model: GradeFile,
@@ -96,7 +97,11 @@ object Backtest {
     ): GroupResult {
         val rho =
             if (pairs.size < MIN_CARDS) null
-            else Spearman.rho(pairs.map { it.first.score }, pairs.map { it.second.score })
+            else
+                Spearman.rho(
+                    pairs.map { it.first.gihwr ?: it.first.score },
+                    pairs.map { it.second.score },
+                )
         return GroupResult(group, rho, pairs.size)
     }
 
