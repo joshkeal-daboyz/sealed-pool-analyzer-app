@@ -2,6 +2,7 @@
 
 What the Architect learned from merged tickets. One line each, newest first. Read before writing any ticket.
 
+- 2026-11-04 SPA-019: A screen ticket that shows pool data must name how the screen receives it. SPA-019 put navigation out of scope, so Pair detail had no way to get the pool, and the Developer bounced before code. Before writing a screen ticket, trace the data from the ViewModel to the composable and scope each file on that path.
 - 2026-11-04 SPA-020: `./gradlew --stop` stops every Gradle daemon on the PC, not just the caller's. The SPA-020 Inspector's stop killed the Acceptance Tester's connected test run. Tell the Test Inspector, when it runs beside the Acceptance Tester, to use `--no-daemon` for its runs and not to call `--stop`. A test that reads a file outside `fixtures/` must declare it as a task input (SPA-028).
 - 2026-11-04 SPA-018: On spa-test, `adb shell input` taps and swipes do not move TalkBack focus, and TTS fails (error -4). A TalkBack criterion is checked by sending swipes through the emulator console (`adb emu event send`) and reading the focus ring in screenshots, not by speech. Pasted fixtures with misspellings get autocorrected word by word; open them through "Open file" instead where the criterion allows.
 - 2026-11-04 SPA-017: Before pinning an outcome for a fixture read with a forced format, run `spa analyze --format <it>` on it. trk-collector-01 read as List with counts resolves 0 entries, so the spec gives a Not a pool card, not the Results header criterion 8 named.

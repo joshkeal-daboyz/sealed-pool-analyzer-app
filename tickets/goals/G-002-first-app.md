@@ -229,3 +229,4 @@ The owner answered the draft's eight open questions on 2026-11-03 ("2. remember"
 - 2026-11-04 SPA-017 integrated (PR #27): Pool screen complete with file picker, format chooser, and error cards, checked on spa-test. 10 of 15 tickets integrated. Next: SPA-018 (Results body).
 - 2026-11-04 SPA-018 integrated (PR #28): Results screen complete beside the baseline, checked on spa-test against spa analyze. 11 of 15 tickets integrated. Next: SPA-020 (About), then 019, 021, 022.
 - 2026-11-04 SPA-020 integrated (PR #29): About screen with Scryfall attribution, checked on spa-test. SPA-028 (README.md as a unit-test input) added from its Test Inspector's finding. 12 of 16 tickets integrated. Next: SPA-019 (Pair detail), then SPA-028, SPA-021, SPA-022.
+- 2026-11-04 SPA-019 integrated (PR #30) on attempt 2: Pair detail checked on spa-test for all ten pairs. 13 of 16 tickets integrated. Next: SPA-028, then SPA-021, SPA-022.
