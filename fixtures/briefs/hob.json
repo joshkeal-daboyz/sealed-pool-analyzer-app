@@ -1,0 +1,263 @@
+{
+  "setCode": "hob",
+  "setName": "The Hobbit",
+  "version": 1,
+  "speed": "medium",
+  "speedNotes": "Written from Scryfall card data only, before any play results. The common and uncommon creature curve peaks at two mana (23 two-drops, 18 three-drops), and amass, ferocious, and Equipment reward attacking, but every color has cheap removal, recruit and landfall give card flow and late-game value, and dual lands support only five pairs, so most decks are two-color faction decks that build a board over several turns rather than racing.",
+  "companionSetCodes": [],
+  "mechanics": [
+    {
+      "name": "Amass",
+      "rulesText": "Amass Goblins N means \"Put N +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.\" It appears on black and red cards, mostly the Goblin faction, and repeated amassing grows one large Army.",
+      "reminderText": "(Put N +1/+1 counters on an Army you control. It's also a Goblin. If you don't control an Army, create a 0/0 black Goblin Army creature token first.)"
+    },
+    {
+      "name": "Recruit",
+      "rulesText": "To recruit, draw a card, then discard a card. If a nonland card was discarded this way, create a 1/1 white Human Soldier creature token. It appears on white and blue cards, mostly the Human faction.",
+      "reminderText": "(Draw a card, then discard a card. If you discarded a nonland card, create a 1/1 white Human Soldier creature token.)"
+    },
+    {
+      "name": "Storied",
+      "rulesText": "Storied is a static ability: if you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game. Cards with storied, mostly red and white Dwarves, get bonuses as long as you have an enduring story. Equipment, legendary creatures, Treasures, and Sagas help turn it on.",
+      "reminderText": "(If you control three or more artifacts, legendaries, and/or Sagas, you have an enduring story for the rest of the game.)"
+    },
+    {
+      "name": "Ferocious",
+      "rulesText": "Ferocious is an ability word. Its abilities check whether you control a creature with power 4 or greater, usually when the creature attacks. It appears on black and green cards, mostly Wolves, alongside large Bears."
+    },
+    {
+      "name": "Landfall",
+      "rulesText": "Landfall is an ability word. Its abilities trigger whenever a land enters the battlefield under your control. It appears on green and blue cards, mostly Elves, with extra land drops and land-fetching effects to trigger it more than once a turn."
+    },
+    {
+      "name": "Draw your second card each turn",
+      "rulesText": "White and blue cards trigger \"whenever you draw your second card each turn,\" which recruit, looting, and instant-speed card draw help set up."
+    },
+    {
+      "name": "Treasure",
+      "rulesText": "A Treasure is a colorless artifact token with \"{T}, Sacrifice this token: Add one mana of any color.\" Treasures are artifacts, so they also count toward storied.",
+      "reminderText": "(It's an artifact with \"{T}, Sacrifice this token: Add one mana of any color.\")"
+    },
+    {
+      "name": "Flashback",
+      "rulesText": "Flashback [cost] means \"You may cast this card from your graveyard for its flashback cost. Then exile it.\" Three commons with flashback get a bigger effect when cast from a graveyard.",
+      "reminderText": "(You may cast this card from your graveyard for its flashback cost. Then exile it.)"
+    },
+    {
+      "name": "Adventure",
+      "rulesText": "An adventurer card has a creature half and an instant or sorcery Adventure half. Cast as an Adventure, the spell resolves and goes to exile, and you may later cast the creature from exile. The set has 17 of them, at every rarity.",
+      "reminderText": "(Then exile this card. You may cast the creature later from exile.)"
+    },
+    {
+      "name": "Saga",
+      "rulesText": "A Saga is an enchantment that gets a lore counter as it enters and after your draw step, triggering its chapter abilities in order, and is sacrificed after its last chapter. Sagas also count toward storied.",
+      "reminderText": "(As this Saga enters and after your draw step, add a lore counter. Sacrifice after the last chapter.)"
+    },
+    {
+      "name": "Typecycling",
+      "rulesText": "Typecycling [cost] means \"[cost], Discard this card: Search your library for a card of the named type, reveal it, put it into your hand, then shuffle.\" It is a form of cycling. The common land Hobbit Hole has halflingcycling {4}, and one rare has mountaincycling.",
+      "reminderText": "({4}, Discard this card: Search your library for a Halfling card, reveal it, put it into your hand, then shuffle.)"
+    },
+    {
+      "name": "Behold",
+      "rulesText": "To behold a quality, choose a permanent you control with that quality or reveal a card with that quality from your hand. It appears on one rare land.",
+      "reminderText": "(To behold an Elf, choose an Elf you control or reveal an Elf card from your hand.)"
+    },
+    {
+      "name": "Factions",
+      "rulesText": "The set has five two-color factions, each a creature type with two gold uncommons, a gold common, and a common dual land whose sacrifice ability puts two +1/+1 counters on a creature of that type: white-blue Humans, red-white Dwarves, black-red Goblins, black-green Wolves and Bears, and green-blue Elves. The other five color pairs have no gold cards and no dual lands."
+    }
+  ],
+  "archetypes": [
+    {
+      "colors": "WU",
+      "name": "Humans: Recruit and Second Card",
+      "plan": "Recruit and loot to fill the board with 1/1 Human Soldiers while triggering the cards that reward drawing your second card each turn, growing a creature with counters and lifelink. Eagle's Rescue gives a small creature flying to carry the damage.",
+      "signpostUncommons": [
+        "Bard the Bowman",
+        "Eagle's Rescue"
+      ],
+      "keyCommons": [
+        "Patient Instructor",
+        "Lakeshore Apothecary",
+        "Esgaroth Garrison",
+        "Long Lake Nuisance",
+        "Lake-town"
+      ]
+    },
+    {
+      "colors": "UB",
+      "name": "Blue-Black (no designed archetype)",
+      "plan": "The set has no gold cards and no dual lands for Blue-Black, so this pair has no designed archetype. A deck in these colors is built from each color's own cards, without a shared theme between them.",
+      "signpostUncommons": [
+        "Old Fat Spider Can't See Me",
+        "Dreaded Bat-Cloud"
+      ]
+    },
+    {
+      "colors": "BR",
+      "name": "Goblins: Amass and Sacrifice",
+      "plan": "Amass a Goblin Army from many small spells and creatures, sacrificing Goblins and other creatures for removal and value. Death triggers and Army counters keep the pressure on after trades.",
+      "signpostUncommons": [
+        "Bolg of the North",
+        "Fearsome Goblin Pair"
+      ],
+      "keyCommons": [
+        "Goblin Plate Mail",
+        "Goblin-town Flunkies",
+        "Rage into the Valley",
+        "Tidings of War",
+        "Goblin-town"
+      ]
+    },
+    {
+      "colors": "RG",
+      "name": "Red-Green (no designed archetype)",
+      "plan": "The set has no gold cards and no dual lands for Red-Green, so this pair has no designed archetype. A deck in these colors is built from each color's own cards, without a shared theme between them.",
+      "signpostUncommons": [
+        "Gandalf, Spark Starter",
+        "Troll Negotiations"
+      ]
+    },
+    {
+      "colors": "GW",
+      "name": "Green-White (no designed archetype)",
+      "plan": "The set has no gold cards and no dual lands for Green-White, so this pair has no designed archetype. A deck in these colors is built from each color's own cards, without a shared theme between them.",
+      "signpostUncommons": [
+        "Old Fat Spider",
+        "Eagle of the Great Shelf"
+      ]
+    },
+    {
+      "colors": "WB",
+      "name": "White-Black (no designed archetype)",
+      "plan": "The set has no gold cards and no dual lands for White-Black, so this pair has no designed archetype. A deck in these colors is built from each color's own cards, without a shared theme between them.",
+      "signpostUncommons": [
+        "Stone by Sunlight",
+        "Gnashing of Teeth"
+      ]
+    },
+    {
+      "colors": "UR",
+      "name": "Blue-Red (no designed archetype)",
+      "plan": "The set has no gold cards and no dual lands for Blue-Red, so this pair has no designed archetype. A deck in these colors is built from each color's own cards, without a shared theme between them.",
+      "signpostUncommons": [
+        "Ravenhill Flock",
+        "Burn, Burn, Tree and Fern"
+      ]
+    },
+    {
+      "colors": "BG",
+      "name": "Wolves and Bears: Ferocious",
+      "plan": "Play large Bears to turn on ferocious, then attack with Wolves that draw cards, gain life, and grow while a creature with power 4 or greater is out. Menace, trample, and +1/+1 counters push damage through blockers.",
+      "signpostUncommons": [
+        "The Chief Warg",
+        "Large Bear"
+      ],
+      "keyCommons": [
+        "Duskwatch Hunter",
+        "Ravening Warg",
+        "Wargling",
+        "Ordinary Bear",
+        "Mirkwood"
+      ]
+    },
+    {
+      "colors": "RW",
+      "name": "Dwarves: Equipment and Storied",
+      "plan": "Suit up Dwarves with Equipment and play artifacts, legendaries, and Sagas to reach an enduring story, which makes Dwarf triggers happen twice and gives your artifacts and creatures ward. Attack each turn with first strike, trample, and counters.",
+      "signpostUncommons": [
+        "Bifur, Melodic Rider",
+        "Thorin Oakenshield"
+      ],
+      "keyCommons": [
+        "Nori, Teller of Tales",
+        "Dwarven Shortsword",
+        "Vow to Erebor",
+        "Iron Hills Stalwart",
+        "Iron Hills"
+      ]
+    },
+    {
+      "colors": "GU",
+      "name": "Elves: Landfall",
+      "plan": "Play extra lands and loot lands onto the battlefield to trigger landfall, making Elf tokens and pumping Elves. Return your own enters-the-battlefield creatures to hand to reuse them while the board grows.",
+      "signpostUncommons": [
+        "Silvan Reveler",
+        "Thranduil, Sindarin Liege // Silvan Rally"
+      ],
+      "keyCommons": [
+        "Mirkwood Nurturer",
+        "Wood Elves",
+        "Mirkwood Meditator",
+        "Attercop",
+        "Elvenking's Halls"
+      ]
+    }
+  ],
+  "genericArchetypes": [],
+  "kitTemplate": {
+    "boosters": 6,
+    "cardsPerBooster": 14,
+    "slots": [
+      {
+        "name": "Common",
+        "count": 7,
+        "weights": {
+          "common": 1
+        }
+      },
+      {
+        "name": "Uncommon",
+        "count": 3,
+        "weights": {
+          "uncommon": 1
+        }
+      },
+      {
+        "name": "Rare or mythic",
+        "count": 1,
+        "weights": {
+          "rare": 6,
+          "mythic": 1
+        }
+      },
+      {
+        "name": "Wildcard",
+        "count": 1,
+        "weights": {
+          "common": 40,
+          "uncommon": 21,
+          "rare": 6,
+          "mythic": 1
+        }
+      },
+      {
+        "name": "Foil wildcard",
+        "count": 1,
+        "foil": true,
+        "weights": {
+          "common": 40,
+          "uncommon": 21,
+          "rare": 6,
+          "mythic": 1
+        }
+      },
+      {
+        "name": "Land",
+        "count": 1,
+        "weights": {
+          "basicLand": 4,
+          "commonLand": 1
+        }
+      }
+    ],
+    "promo": {
+      "weights": {
+        "rare": 6,
+        "mythic": 1
+      }
+    },
+    "basicLandsSupplied": true
+  }
+}

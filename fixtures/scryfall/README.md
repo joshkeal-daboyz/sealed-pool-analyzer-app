@@ -16,8 +16,13 @@ Card data from [Scryfall](https://scryfall.com), cached so tests and the app nev
 | `trk` | Star Trek, the target set. Companions: `sds` | 581 | 2026-11-03T18:19:53Z |
 | `sds` | Stardates, `trk`'s masterpiece companion | 30 | 2026-11-03T18:20:00Z |
 | `syn` | Synthetic test set, built by hand (below) | 25 | 2026-11-03 (source cards) |
+| `msh` | Marvel Super Heroes, a G-003 backtest set. No companions | 453 | 2026-11-04T22:00:01Z |
+| `hob` | The Hobbit, a G-003 backtest set. No companions | 321 | 2026-11-04T22:00:04Z |
+| `fra` | Reality Fracture, a G-003 backtest set. No companions. `cards.json` holds 462 cards against `card_count` 461: Scryfall's count leaves out the variant `101b` (Compel Brutality) | 462 | 2026-11-04T22:00:08Z |
 
 `trc`, `ttrk`, and `atrk` are deliberately not cached: they are not part of the `trk` sealed pool.
+
+The backtest sets' child sets on Scryfall are not cached either: `msc`, `tmsh`, `amsh` (commander, tokens, art series); `hoc`, `thob`, `ahob` (`hoc` is set type `eternal`, new cards for eternal formats, 153 of 158 not Standard-legal, with commons and uncommons, so not a Play Booster bonus sheet); `frc`, `pfra`, `tfra`, `afra`, `yfra` (commander, promo-pack stamped promos, tokens, art series, Alchemy). None is a masterpiece or bonus sheet like `sds`.
 
 ## Refreshing
 

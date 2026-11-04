@@ -1,0 +1,19 @@
+{
+  "object": "set",
+  "id": "6595985e-39cf-4ca3-b43d-dd3e64749fdc",
+  "code": "fra",
+  "mtgo_code": "fra",
+  "arena_code": "fra",
+  "tcgplayer_id": 24684,
+  "name": "Reality Fracture",
+  "uri": "https://api.scryfall.com/sets/6595985e-39cf-4ca3-b43d-dd3e64749fdc",
+  "scryfall_uri": "https://scryfall.com/sets/fra",
+  "search_uri": "https://api.scryfall.com/cards/search?include_extras=true&include_variations=true&order=set&q=e%3Afra&unique=prints",
+  "released_at": "2026-10-02",
+  "set_type": "expansion",
+  "card_count": 461,
+  "digital": false,
+  "nonfoil_only": false,
+  "foil_only": false,
+  "icon_svg_uri": "https://svgs.scryfall.io/sets/fra.svg?1793595600"
+}
