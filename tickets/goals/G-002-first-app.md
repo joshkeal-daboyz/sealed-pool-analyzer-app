@@ -233,3 +233,21 @@ The owner answered the draft's eight open questions on 2026-11-03 ("2. remember"
 - 2026-11-04 SPA-028 integrated (PR #31): README.md is a unit-test input. 14 of 16 tickets integrated. Next: SPA-021, then SPA-022.
 - 2026-11-04 SPA-021 integrated (PR #32): share and Open with, checked on spa-test. 15 of 16 tickets integrated. Next: SPA-022, the last.
 - 2026-11-04 SPA-022 integrated (PR #33) on attempt 3 after two re-plans: remembered pool, Clear pool, backup exclusion, checked on spa-test including a reboot. 16 of 16 tickets integrated. Next: the goal-level closing run on spa-test, then the owner's Pixel 6 check.
+- 2026-11-04 Goal-level acceptance run on main a2d5d64 from a fresh clone: PASS on criteria 1 to 13 and 15 to 17. Gate green (330 UI tests, the spec's 16 snapshots); one command builds `app-debug.apk`; `core/src/main` holds only SPA-014 and SPA-027's changes and no Android dependency; all 11 ManaBox pools through the picker match `spa analyze` (0 mismatches in 385 values); share and Open with match; all 12 paste fixtures detect the CLI's format and match; problems, error cards, airplane mode, no key, About, accessibility trace, remembered pool through force-stop and reboot, Clear pool, backup exclusion, and case-insensitive collector numbers all pass. Timing medians: import to results 394 ms (limit 3000), cold start to first screen 1160 ms (limit 5000). Screenshots kept in the Architect's scratchpad. Criterion 14 (the owner's Pixel 6) is open; the goal closes when it passes.
+
+### Metrics (goal-level run, 2026-11-04)
+
+| Metric | G-002 |
+| --- | --- |
+| Tickets integrated | 16 (SPA-013 to SPA-028) |
+| Gate green on first push | 16 of 16 (no red gate recorded) |
+| Bounces by source | Developer to Architect before code: 5 (SPA-013 ATF tool; SPA-026 core regex found on device; SPA-019 no pool path; SPA-022 twice, unnamed baselines and discarded file text). Acceptance: 1 (SPA-016, device crash on `Files.readString`). Inspector: 0 |
+| Re-plans | 7 across 6 tickets (SPA-013, 016, 019, 025, 026 once each; SPA-022 twice, its limit) |
+| Escalations to the human | 0 from limits. One owner decision outside the pipeline's authority: the `core` change in SPA-027 |
+| Lead time | About 19 hours from SPA-013's dispatch (2026-11-03 19:07) to SPA-022's merge (2026-11-04), one Developer at a time from SPA-016 on |
+| Tokens per merged ticket by role | Not measured this goal |
+| Criteria proven by deterministic tests | 9 of 17 (1, 2, 3, 4, 10, 11, 12, 15, 17); 7 by emulator scenario (5, 6, 7, 8, 9, 13, 16); 1 by the owner (14) |
+| Acceptance screenshot-pass bounces | 0 |
+| States not in the design spec | 6, none blocking: `rare-count` kit warning shows its raw code; `unparsed` reason has no words; Problems with only kit warnings has no summary line; clean Problems outline vs the spec's accent border; "Pool cleared" snackbar uses light colours; default launcher icon. Spec updates go to the owner |
+| Snapshot baselines changed on purpose | 5 (SPA-022 re-plan 1: results_clean, results_clean_fontScale200, results_problems, results_problems_fontScale200, results_wrongSetLines) |
+| Bounces caused by ticket gaps vs code | All 5 bounces before code were ticket or upstream gaps; no bounce was a code defect caught by an inspector |
