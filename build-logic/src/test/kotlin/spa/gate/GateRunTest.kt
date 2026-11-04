@@ -61,6 +61,20 @@ class GateRunTest {
     }
 
     @Test
+    fun `an earlier step that never finished is not run, not passed`() {
+        // With an app, compile tasks run before Android Lint finishes, so compile can fail first.
+        val run = GateRun()
+        run.pass(GateStep.FORMAT)
+        run.fail(GateStep.COMPILE, listOf(failure(GateStep.COMPILE)))
+        val verdict = run.verdict("SPA-013", "abc1234")
+        assertEquals(listOf(failure(GateStep.COMPILE)), verdict.failures)
+        assertEquals(
+            listOf("format" to "pass", "lint" to "not_run", "compile" to "fail"),
+            results(verdict).take(3),
+        )
+    }
+
+    @Test
     fun `only the earliest failing step is reported, whatever order failures arrive in`() {
         val run = GateRun()
         run.fail(GateStep.DEPENDENCIES, listOf(failure(GateStep.DEPENDENCIES)))

@@ -90,9 +90,12 @@ abstract class GatePlugin @Inject constructor(private val listeners: BuildEvents
         project.tasks.configureEach { task ->
             val step = stepOf(task, isApp) ?: return@configureEach
             service.get().register(task.path, GateService.TaskInfo(step, project.projectDir))
-            // Android Lint reads the app's compiled classes, so in the app the compile tasks run
-            // after the format step instead of waiting for the lint step that needs them.
-            val after = if (isApp && step == GateStep.COMPILE) GateStep.FORMAT else step.previous
+            // Android Lint reads the compiled classes of the app and of core, so while an app
+            // exists every compile task runs after the format step instead of waiting for the lint
+            // step that needs it. A compile error found before lint finishes is reported as
+            // compile.
+            val hasApp = project.rootProject.findProject(APP) != null
+            val after = if (hasApp && step == GateStep.COMPILE) GateStep.FORMAT else step.previous
             after?.let { task.mustRunAfter(steps.of(it)) }
             if (step == GateStep.COMPILE) {
                 task.logging.addStandardErrorListener(
