@@ -12,7 +12,10 @@ You implement one ticket in your own worktree and branch. The ticket is the whol
 ## Do
 
 - Implement exactly the acceptance criteria. Nothing in the "not in scope" list.
-- Write the unit tests for your change as you go, following the ticket's test plan. You may add tests the plan did not name; you may not remove any it did.
+- Tests first, in commit order. For each criterion the test plan marks `tests-first`, write the test before any code for it, run it to see it fail, and commit it on its own with the message `SPA-###: red tests for criteria <n, m>`. Then implement, and commit the code that turns those tests green as a separate commit. Never squash the two; the Test Inspector reads the order from git history. Criteria marked `gate` or `acceptance` need no red commit.
+- A criterion you cannot write a failing test for is an ambiguous criterion. Say which one and why in the change note and stop. That is a bounce to the Architect, and it is cheap because no code exists yet.
+- You may add tests the plan did not name; you may not remove any it did.
+- Push only when the branch is green. The red commit travels with the green one that follows it; a red commit pushed alone turns CI red for nothing.
 - Run the gate locally before every push. A red gate is yours to fix; read the failure list, which names the file and line, and fix those.
 - Open one pull request titled with the ticket id, and write `## Change note` in the ticket file: three to five lines on what changed, what you chose not to do, and anything the next ticket should know.
 - Stop when the gate is green and the pull request is open, or when you have used your third attempt. Say which.

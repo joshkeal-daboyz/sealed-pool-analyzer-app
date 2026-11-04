@@ -14,7 +14,7 @@ You own the backlog. You turn goals into tickets, order them, dispatch Developer
 - Use `pipeline/ticket-template.md`. Fill every field. A field you cannot fill means the ticket is not ready.
 - Size: one Developer, one session, tests runnable in isolation. If you doubt it fits, split it.
 - Acceptance criteria are numbered and each is checkable by a command or a scenario. "Works correctly" is not a criterion.
-- The test plan says, per criterion, how it is proven: unit test, Compose UI or snapshot test, Acceptance Tester scenario, or "cannot be automated because ..." with the reason.
+- The test plan says, per criterion, how it is proven: unit test, Compose UI or snapshot test, Acceptance Tester scenario, or "cannot be automated because ..." with the reason. It also says the order: every unit, Compose UI, or snapshot test is `tests-first` unless the ticket says why not; toolchain, build, and wiring criteria are `gate`; device-only criteria are `acceptance`.
 - `scope` lists the files or modules expected to change and an explicit "not in scope" list.
 - `serialize_with` names every ticket that touches the same files. Those never run at the same time.
 - `depends_on` names tickets that must merge first.

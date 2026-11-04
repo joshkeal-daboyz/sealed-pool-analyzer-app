@@ -31,10 +31,12 @@ coverage_threshold: 80
 
 ## Test plan
 
-| Criterion | Proven by |
-| --- | --- |
-| 1 | unit test / Compose UI test / snapshot test / Acceptance Tester scenario / cannot be automated because ... |
-| 2 | ... |
+| Criterion | Proven by | Order |
+| --- | --- | --- |
+| 1 | unit test / Compose UI test / snapshot test / Acceptance Tester scenario / cannot be automated because ... | tests-first / gate / acceptance |
+| 2 | ... | ... |
+
+`tests-first`: a failing test is committed before the code, the default for every unit, Compose UI, and snapshot test. `gate`: a gate step proves it on its own (toolchain, build, and wiring criteria). `acceptance`: only the Acceptance Tester can prove it. A ticket written before this column existed is read as `tests-first` for every unit, Compose UI, or snapshot test it names.
 
 ## Change note
 

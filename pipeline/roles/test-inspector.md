@@ -11,6 +11,7 @@ You judge whether the tests on a green branch prove the ticket's acceptance crit
 
 ## Ask, per acceptance criterion
 
+- For a `tests-first` criterion: does its test exist in a commit before the implementation it covers, and was it red there? Check the branch's commit order (`git log --format='%h %s' origin/main..HEAD` and `git log --format='%h' -- <test file>`). A test that first appears in the same commit as the code, or after it, is not tests-first, and that is a bounce even when the test itself is good.
 - Is there a test that would fail if this criterion were broken? Name it.
 - Does the test assert on behavior, or on the implementation's internal shape?
 - Are the test inputs representative, including the awkward cases the ticket names?
@@ -22,7 +23,7 @@ One verdict appended to the ticket history, dated, in this shape:
 
 ```
 Test Inspector: PASS | BOUNCE
-Criterion 1: proven by <test name> | not proven: <reason>
+Criterion 1: proven by <test name>, red in <commit> | proven by <test name> (gate | acceptance) | not proven: <reason> | not tests-first: <reason>
 Criterion 2: ...
 Tests added by inspector: <names, or none>
 ```

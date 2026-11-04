@@ -9,7 +9,7 @@ A goal in `tickets/goals/` is decomposed by the Architect into tickets in `ticke
 ## Principles
 
 1. The ticket is the contract. Implement what it says and nothing more. Scope creep is a bounce to the Architect, not a bigger change.
-2. Tests ship with the code. Code that cannot be unit tested must say why in the ticket's change note.
+2. Tests first, in commit order. For every criterion the test plan marks `tests-first`, the Developer commits a failing test before the code that makes it pass, in a separate commit, and the Test Inspector verifies that order from git history. Criteria marked `gate` (the gate step itself proves them) or `acceptance` (only the Acceptance Tester can) are exempt. Code that cannot be unit tested must say why in the ticket's change note.
 3. Deterministic before probabilistic. No model reviews a branch that has not passed the gate. The gate's output is the first thing a Testing agent reads.
 4. One writer per set of files. Tickets that touch the same files carry `serialize_with` and never run at the same time.
 5. Bounded retries. Every stage has a limit; hitting it escalates, never loops. Defaults: 3 Developer attempts, 2 inspector bounces, 2 re-plans.
