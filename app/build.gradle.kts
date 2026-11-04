@@ -13,16 +13,19 @@ android {
 
     defaultConfig {
         applicationId = "spa.app"
-        // core calls Files.readString and Files.writeString, which Android has from API 33.
         minSdk = 33
         targetSdk = 36
         versionCode = 1
         versionName = "0.1.0"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
+        // Android's java.nio.file.Files has no readString or writeString at any API level; core
+        // calls them, so desugaring rewrites those calls inside the APK, core's classes included.
+        isCoreLibraryDesugaringEnabled = true
     }
 
     buildFeatures { compose = true }
@@ -102,10 +105,16 @@ val copySetData =
 androidComponents {
     onVariants { variant ->
         variant.sources.assets?.addGeneratedSourceDirectory(copySetData, CopySetData::outputDir)
+        // The on-device test reads its pool text from the test APK's assets.
+        variant.androidTest
+            ?.sources
+            ?.assets
+            ?.addStaticSourceDirectory(rootProject.file("fixtures/pools").absolutePath)
     }
 }
 
 dependencies {
+    coreLibraryDesugaring(libs.desugar.jdk.libs.nio)
     implementation(project(":core"))
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
@@ -123,6 +132,11 @@ dependencies {
     testImplementation(libs.roborazzi.compose)
     testImplementation(libs.roborazzi.junit.rule)
     testImplementation(libs.kotlinx.coroutines.test)
+
+    androidTestImplementation(libs.junit4)
+    androidTestImplementation(libs.androidx.test.runner)
+    androidTestImplementation(libs.androidx.test.core)
+    androidTestImplementation(libs.androidx.test.ext.junit)
 }
 
 ktfmt { kotlinLangStyle() }
