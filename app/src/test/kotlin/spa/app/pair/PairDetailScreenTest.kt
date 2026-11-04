@@ -46,7 +46,8 @@ class PairDetailScreenTest {
         compose.waitForIdle()
     }
 
-    private fun built(text: String) = ResultsKit.loaded(TestImports.success(text), PoolSource.Pasted)
+    private fun built(text: String) =
+        ResultsKit.loaded(TestImports.success(text), PoolSource.Pasted)
 
     private fun golden(pointer: String): Int = ResultsKit.goldenValue(PairKit.FILE, pointer).toInt()
 
@@ -96,14 +97,14 @@ class PairDetailScreenTest {
         val headings = listOf("Lands", "Cards", "Curve", "Splash candidates")
         headings.forEach { compose.onNode(hasText(it) and isHeading()).assertExists() }
         val tree = order(compose.onRoot(useUnmergedTree = true))
-        val positions =
-            headings.map { heading ->
-                tree.indexOfFirst {
-                    SemanticsProperties.Heading in it.config &&
-                        it.config.getOrElse(SemanticsProperties.Text) { emptyList() }
-                            .any { t -> t.text == heading }
-                }
+        val positions = headings.map { heading ->
+            tree.indexOfFirst {
+                SemanticsProperties.Heading in it.config &&
+                    it.config
+                        .getOrElse(SemanticsProperties.Text) { emptyList() }
+                        .any { t -> t.text == heading }
             }
+        }
         assertTrue("$positions", positions.all { it >= 0 })
         assertEquals(positions.sorted(), positions)
     }
@@ -124,11 +125,11 @@ class PairDetailScreenTest {
         val reminder = "This pool has $n lines not read; these numbers leave them out."
         compose.onNodeWithText(reminder).assertIsDisplayed()
         val tree = order(compose.onRoot(useUnmergedTree = true))
-        fun at(text: String) =
-            tree.indexOfFirst {
-                it.config.getOrElse(SemanticsProperties.Text) { emptyList() }
-                    .any { t -> t.text == text }
-            }
+        fun at(text: String) = tree.indexOfFirst {
+            it.config
+                .getOrElse(SemanticsProperties.Text) { emptyList() }
+                .any { t -> t.text == text }
+        }
         assertTrue(at(reminder) in 0 until at("Lands"))
     }
 
@@ -219,15 +220,14 @@ class PairDetailScreenTest {
             .assertIsDisplayed()
         val candidates = PairKit.goldenSplash(PairKit.FILE, "WU")
         assertEquals(n, candidates.size)
-        val nodes =
-            candidates.map { candidate ->
-                compose.onNode(hasText(candidate.name)).performScrollTo()
-                val node = mergedNode(candidate.name)
-                val joined = ResultsKit.mergedTexts(node).joinToString(" ")
-                assertTrue(joined, PairKit.COLOURS.getValue(candidate.color) in joined)
-                assertTrue(joined, PairKit.reasonWords(candidate.reason) in joined)
-                node
-            }
+        val nodes = candidates.map { candidate ->
+            compose.onNode(hasText(candidate.name)).performScrollTo()
+            val node = mergedNode(candidate.name)
+            val joined = ResultsKit.mergedTexts(node).joinToString(" ")
+            assertTrue(joined, PairKit.COLOURS.getValue(candidate.color) in joined)
+            assertTrue(joined, PairKit.reasonWords(candidate.reason) in joined)
+            node
+        }
         val tops = nodes.map { it.boundsInRoot.top }
         assertEquals(tops.sorted(), tops)
         assertEquals(0, count("No splash candidates"))

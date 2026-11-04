@@ -14,7 +14,11 @@ data class LandUi(val color: Color, val lands: DisplayedValue)
 /**
  * One curve row: the bucket's [manaValue], its [creatures], and its [other] (noncreature) cards.
  */
-data class CurveRowUi(val manaValue: Int, val creatures: DisplayedValue, val other: DisplayedValue) {
+data class CurveRowUi(
+    val manaValue: Int,
+    val creatures: DisplayedValue,
+    val other: DisplayedValue,
+) {
     /** The last bucket, which holds its mana value and everything above it. */
     val isTop: Boolean
         get() = manaValue == Curve.TOP
@@ -53,7 +57,11 @@ data class PairDetailUi(
         const val FIXING_SOURCES = "fixingSources"
 
         /** The display model for [pair] of [success] against [baseline]. */
-        fun from(success: ImportOutcome.Success, pair: ColorPair, baseline: Baseline): PairDetailUi {
+        fun from(
+            success: ImportOutcome.Success,
+            pair: ColorPair,
+            baseline: Baseline,
+        ): PairDetailUi {
             val numbers = success.metrics.pairs.getValue(pair)
             val at = "/pairs/$pair"
             fun shown(pointer: String, value: Int) =

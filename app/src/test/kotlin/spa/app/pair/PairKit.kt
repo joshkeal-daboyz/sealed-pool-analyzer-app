@@ -31,8 +31,7 @@ object PairKit {
         mapOf("W" to "Plains", "U" to "Island", "B" to "Swamp", "R" to "Mountain", "G" to "Forest")
 
     /** The colour names, from the spec. */
-    val COLOURS =
-        mapOf("W" to "White", "U" to "Blue", "B" to "Black", "R" to "Red", "G" to "Green")
+    val COLOURS = mapOf("W" to "White", "U" to "Blue", "B" to "Black", "R" to "Red", "G" to "Green")
 
     /** The curve buckets, 0 to 7. */
     val BUCKETS = 0..7
@@ -91,7 +90,9 @@ object PairKit {
 
     private fun JSONArray.objects() = (0 until length()).map { getJSONObject(it) }
 
-    /** A pool whose WU has no cards: two black removal spells, castable in no white or blue pair. */
+    /**
+     * A pool whose WU has no cards: two black removal spells, castable in no white or blue pair.
+     */
     const val EMPTY_WU_POOL = "1 Impossible Choice\n1 He's Dead, Jim"
 
     /** A pool whose WU has no splash candidates: one white and one blue creature, nothing else. */

@@ -26,8 +26,8 @@ import spa.core.metrics.ColorPair
 
 /**
  * Pair detail for [pair] (`WU` to `RG`) of the loaded [pool]: the top bar with Back, the pair's
- * name, and About; then one vertical scroll: the unread-lines reminder when the pool has any, Lands,
- * Cards, Curve, and Splash candidates, all rendered from [PairDetailUi] against the
+ * name, and About; then one vertical scroll: the unread-lines reminder when the pool has any,
+ * Lands, Cards, Curve, and Splash candidates, all rendered from [PairDetailUi] against the
  * [LocalBaseline] (the bundled one by default). With no pool, or an unknown pair, the body is
  * empty: the screen opens only from loaded Results.
  */

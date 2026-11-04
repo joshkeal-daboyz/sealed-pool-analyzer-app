@@ -19,10 +19,10 @@ import spa.app.testing.A11yChecks
 
 /**
  * Criterion 6: snapshots 13 and 14 from the spec's list, `trk-manabox-01.csv` WU, each state
- * checked for A1 and A4 (touch targets and labels) and A5 (no text overflow at font scale 2.0,
- * Back and About clickable, every section reachable with `performScrollTo`). Captures are the 411
- * x 914 dp viewport, what the screen shows first: Roborazzi captures a view's laid-out bounds and
- * cannot stitch a scroll.
+ * checked for A1 and A4 (touch targets and labels) and A5 (no text overflow at font scale 2.0, Back
+ * and About clickable, every section reachable with `performScrollTo`). Captures are the 411 x 914
+ * dp viewport, what the screen shows first: Roborazzi captures a view's laid-out bounds and cannot
+ * stitch a scroll.
  *
  * A1 and A4 run on a surface [TALL] enough to lay the whole scroll out, because the shared checks
  * read each node's laid-out bounds in the root, which are clipped to nothing below the fold.

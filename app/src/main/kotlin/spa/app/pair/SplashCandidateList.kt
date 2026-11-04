@@ -50,7 +50,9 @@ fun SplashCandidateList(
     }
 }
 
-/** One candidate as one merged node: its name, then its colour as a name and its reason in words. */
+/**
+ * One candidate as one merged node: its name, then its colour as a name and its reason in words.
+ */
 @Composable
 fun SplashCandidateItem(candidate: SplashCandidate, modifier: Modifier = Modifier) {
     val colors = LocalSpaColors.current
