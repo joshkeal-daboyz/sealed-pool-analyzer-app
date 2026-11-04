@@ -2,6 +2,8 @@
 
 What the Architect learned from merged tickets. One line each, newest first. Read before writing any ticket.
 
+- 2026-11-03 SPA-013: Before a criterion names a third-party check, confirm it runs in the gate's environment. Compose's ATF checks run under Robolectric but skip every Compose node, which cost a re-plan. Name the property to check (48 dp, a label), not the tool.
+- 2026-11-03 SPA-013: A ticket that changes a gate step should have a criterion that the step's `reproduce` command runs as printed. The Acceptance Tester found the ui-tests one missing `:app`, outside every criterion.
 - 2026-11-03 SPA-012: A warning threshold is a statistical claim. Derive it from the generating distribution, and state its false-positive rate in the ticket. SPA-005's hand-picked rare range flagged one genuine kit in seven, and three of its four kit warnings needed fixing later.
 - 2026-11-03 SPA-009: The command line was the first end-to-end run of the whole engine, and it surfaced a defect from three tickets earlier (SPA-005's kit warning). When a goal has an integration ticket, bring it as early as the dependencies allow, and have its Developer report anything odd in upstream output.
 - 2026-11-03 SPA-009: A README sentence like "Errors are one line on stderr" is a contract too. Either make it an acceptance criterion or leave it out.
