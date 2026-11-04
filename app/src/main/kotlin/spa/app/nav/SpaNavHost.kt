@@ -47,8 +47,10 @@ fun SpaNavHost(
             Routes.PAIR,
             arguments = listOf(navArgument(Routes.PAIR_ARG) { type = NavType.StringType }),
         ) { entry ->
+            val pool by viewModel.currentPool.collectAsStateWithLifecycle()
             PairDetailScreen(
                 pair = entry.arguments?.getString(Routes.PAIR_ARG).orEmpty(),
+                pool = pool,
                 onBack = { navController.popBackStack() },
                 onAbout = app::toAbout,
             )

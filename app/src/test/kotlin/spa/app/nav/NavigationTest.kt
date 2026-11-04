@@ -87,12 +87,12 @@ class NavigationTest {
     }
 
     @Test
-    fun thePairRouteOpensItsPlaceholder() {
+    fun thePairRouteOpensPairDetail() {
         launch()
         compose.runOnUiThread { nav.navigate(Routes.pair("WU")) }
         compose.waitForIdle()
         assertEquals(Routes.PAIR, route())
-        compose.onNodeWithText("WU").assertIsDisplayed()
+        compose.onNodeWithText("White–Blue (WU)").assertIsDisplayed()
         compose.onNodeWithContentDescription("About").assertHasClickAction()
         compose.onNodeWithContentDescription("Back").assertHasClickAction()
     }
