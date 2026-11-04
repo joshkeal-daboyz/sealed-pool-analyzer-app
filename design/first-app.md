@@ -102,7 +102,7 @@ launch ── remembered pool? ── yes ──> Results (Loading) ──ok─�
    └── no ──> Pool (Empty)
 
 share / Open with (CSV) ──> Results (Loading) ──ok──> Results          [back stack: Results only]
-                                    └──fails──> Pool (error card)       [back stack: Pool only]
+                                    └──fails──> Pool (error card)       [back stack: Pool only; with a current pool, Pool on Results]
 
 Pool ── "Open file" ──> system picker ── pick ──> Results (Loading) ──ok──> Results
   │                                   └─ cancel ──> Pool, unchanged
@@ -121,6 +121,7 @@ Rules:
 
 - After a successful import the back stack is just Results; system back from Results leaves the app. "New pool" pushes Pool on top of Results, so back returns to the current pool.
 - After Clear pool, Pool is the only screen in the stack.
+- A failed share or "Open with" follows the same rule as any failed import: with no current pool the stack is Pool only; with a current pool, Pool goes on top of Results, so back returns to that pool (ruled in SPA-021, 2026-11-04).
 - A share or "Open with" that arrives while the app is open (on any screen, including during another import) starts a new import and replaces the stack as above. The latest import wins; an earlier one still running is discarded.
 - About is one tap from both possible first screens (Pool and Results) through the same top-bar icon. Pair detail also has it.
 - Rotation keeps the current screen, the scroll position, the pasted text, and the chosen format. Process death keeps only the remembered pool (deliverable 7); unsent pasted text is lost, which is acceptable.
