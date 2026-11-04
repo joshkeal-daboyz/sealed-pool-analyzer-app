@@ -2,6 +2,7 @@
 
 What the Architect learned from merged tickets. One line each, newest first. Read before writing any ticket.
 
+- 2026-11-03 SPA-025: A wall-clock assertion in a unit test fails whenever the PC is busy, and parallel tester agents make it busy. A criterion that pins a duration names where it holds ("on CI"), and the test enforces it only there.
 - 2026-11-03 SPA-013: Before a criterion names a third-party check, confirm it runs in the gate's environment. Compose's ATF checks run under Robolectric but skip every Compose node, which cost a re-plan. Name the property to check (48 dp, a label), not the tool.
 - 2026-11-03 SPA-013: A ticket that changes a gate step should have a criterion that the step's `reproduce` command runs as printed. The Acceptance Tester found the ui-tests one missing `:app`, outside every criterion.
 - 2026-11-03 SPA-012: A warning threshold is a statistical claim. Derive it from the generating distribution, and state its false-positive rate in the ticket. SPA-005's hand-picked rare range flagged one genuine kit in seven, and three of its four kit warnings needed fixing later.
