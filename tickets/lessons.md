@@ -2,6 +2,7 @@
 
 What the Architect learned from merged tickets. One line each, newest first. Read before writing any ticket.
 
+- 2026-11-04 SPA-030: Before writing a brief ticket for a set, check its Scryfall data for which color pairs have gold cards and dual lands. `hob` has five two-color factions, and the schema needs ten pairs, which cost a re-plan. Every set differs (three- and four-color factions too); the schema change is planned for the multi-set goal.
 - 2026-11-04 SPA-029: json-schema-validator (optimumcode 0.5.5) rejects a whole number such as `3` under `multipleOf: 0.5`. The grade schema exempts integers with if/else. A schema that pins steps with `multipleOf` should test an integer value as well as a fraction.
 - 2026-11-04 SPA-022: Tracing the data path to the screen is not enough; also trace it back to where the data is made, and list every committed baseline whose screen a new control appears on. SPA-022 used both re-plans: once for five unnamed Results baselines the Clear pool button changes, once because file imports discarded the text the store needed. All three G-002 bounces before code were gaps in the ticket, not in the code.
 - 2026-11-04 SPA-019: A screen ticket that shows pool data must name how the screen receives it. SPA-019 put navigation out of scope, so Pair detail had no way to get the pool, and the Developer bounced before code. Before writing a screen ticket, trace the data from the ViewModel to the composable and scope each file on that path.
