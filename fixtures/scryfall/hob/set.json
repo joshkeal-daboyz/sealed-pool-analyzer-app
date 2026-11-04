@@ -1,0 +1,19 @@
+{
+  "object": "set",
+  "id": "59218c23-cb7a-4fde-9cff-3f2f71af1308",
+  "code": "hob",
+  "mtgo_code": "hob",
+  "arena_code": "hob",
+  "tcgplayer_id": 24683,
+  "name": "The Hobbit",
+  "uri": "https://api.scryfall.com/sets/59218c23-cb7a-4fde-9cff-3f2f71af1308",
+  "scryfall_uri": "https://scryfall.com/sets/hob",
+  "search_uri": "https://api.scryfall.com/cards/search?include_extras=true&include_variations=true&order=set&q=e%3Ahob&unique=prints",
+  "released_at": "2026-08-14",
+  "set_type": "expansion",
+  "card_count": 321,
+  "digital": false,
+  "nonfoil_only": false,
+  "foil_only": false,
+  "icon_svg_uri": "https://svgs.scryfall.io/sets/hob.svg?1793595600"
+}

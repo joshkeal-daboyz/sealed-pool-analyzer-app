@@ -1,0 +1,19 @@
+{
+  "object": "set",
+  "id": "ba9bf625-681c-4a4e-ab48-399b2fecac6b",
+  "code": "msh",
+  "mtgo_code": "msh",
+  "arena_code": "msh",
+  "tcgplayer_id": 24553,
+  "name": "Marvel Super Heroes",
+  "uri": "https://api.scryfall.com/sets/ba9bf625-681c-4a4e-ab48-399b2fecac6b",
+  "scryfall_uri": "https://scryfall.com/sets/msh",
+  "search_uri": "https://api.scryfall.com/cards/search?include_extras=true&include_variations=true&order=set&q=e%3Amsh&unique=prints",
+  "released_at": "2026-06-26",
+  "set_type": "expansion",
+  "card_count": 453,
+  "digital": false,
+  "nonfoil_only": false,
+  "foil_only": false,
+  "icon_svg_uri": "https://svgs.scryfall.io/sets/msh.svg?1793595600"
+}

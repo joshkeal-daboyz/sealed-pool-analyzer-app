@@ -4,6 +4,8 @@ One JSON file per set, `<setCode>.json`, describing the set's limited format for
 
 `syn.json` is the complete example, for the synthetic test set. Its archetype names and card names are invented.
 
+`msh.json` (Marvel Super Heroes) and `fra.json` (Reality Fracture) exist only for the G-003 grade backtest. They are blind: written from the sets' Scryfall caches alone, with no 17Lands data, reviews, or play results, so the Claude grader sees the same kind of brief it would see before a set is played. Neither set has a bonus sheet, so their kit template has seven common slots and no `bonusSheet` weight.
+
 ## Writing `trk.json`
 
 1. Copy `syn.json` to `trk.json`.

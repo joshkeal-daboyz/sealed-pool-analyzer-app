@@ -1,0 +1,305 @@
+{
+  "setCode": "msh",
+  "setName": "Marvel Super Heroes",
+  "version": 1,
+  "speed": "medium",
+  "speedNotes": "Written from Scryfall card data only, before any play results. The common and uncommon creature curve peaks at three mana (39 creatures) with 25 two-drops, and every color has power-up abilities, cheap creatures that become big mana sinks later, so boards develop early and games turn on late-game activations. Ten common dual lands that gain 1 life and five common basic landcyclers suggest steady, two-color decks rather than a race.",
+  "companionSetCodes": [],
+  "mechanics": [
+    {
+      "name": "Power-up",
+      "rulesText": "Power-up is an activated ability on permanents, written \"Power-up — [cost]: [effect].\" Each power-up ability can be activated only once, and its cost is reduced by the permanent's mana cost if the permanent entered the battlefield this turn, so a player with enough mana can cast the creature and power it up in the same turn.",
+      "reminderText": "(Activate each power-up ability only once. Reduce the cost by its mana cost if it entered this turn.)"
+    },
+    {
+      "name": "Teamwork",
+      "rulesText": "Teamwork N is an optional additional cost on instants and sorceries: as you cast the spell, you may tap any number of untapped creatures you control with total power N or more. The spell checks whether it was cast using teamwork for a bigger effect, usually choosing both modes instead of one or dealing more damage.",
+      "reminderText": "(As an additional cost to cast this spell, you may tap any number of creatures you control with total power 2 or more.)"
+    },
+    {
+      "name": "Connive",
+      "rulesText": "When a creature connives, its controller draws a card, then discards a card. If a nonland card was discarded this way, they put a +1/+1 counter on the conniving creature.",
+      "reminderText": "(Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on this creature.)"
+    },
+    {
+      "name": "Heroes and Villains",
+      "rulesText": "Hero and Villain are creature types that many cards care about, such as Villain spells costing less, Villain tokens (2/1 black with menace), and bonuses for controlling another Hero. Some legendary creatures are both. Two uncommon lands make mana that can be spent only on Hero or only on Villain spells and abilities."
+    },
+    {
+      "name": "Attacks alone",
+      "rulesText": "A creature attacks alone when it is the only creature declared as an attacker that combat. White and black cards reward this with first strike, menace, extra counters, Clues, and life drain."
+    },
+    {
+      "name": "Plan",
+      "rulesText": "Plan is an enchantment subtype. A Plan gets a plan counter each time its condition is met, and when the fourth plan counter is put on it, it is sacrificed for a one-time payoff."
+    },
+    {
+      "name": "Draw your second card each turn",
+      "rulesText": "Blue and black cards trigger \"whenever you draw your second card each turn,\" which conniving, card draw on the opponent's turn, and Clues help set up."
+    },
+    {
+      "name": "Basic landcycling",
+      "rulesText": "Basic landcycling [cost] means \"[cost], Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.\" It is a form of typecycling, which is a form of cycling, and appears on one common of each color.",
+      "reminderText": "({2}, Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.)"
+    },
+    {
+      "name": "Surveil",
+      "rulesText": "Surveil N means \"Look at the top N cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.\"",
+      "reminderText": "(Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)"
+    },
+    {
+      "name": "Transform",
+      "rulesText": "Some mythic and rare legendary creatures are double-faced cards. An activated ability, usable only as a sorcery, transforms the creature to its stronger back face.",
+      "reminderText": "(To transform a double-faced permanent, turn it over to its other face.)"
+    },
+    {
+      "name": "Prowess",
+      "rulesText": "Prowess is a triggered ability: \"Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.\" Multiple instances trigger separately.",
+      "reminderText": "(Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)"
+    },
+    {
+      "name": "Treasure",
+      "rulesText": "A Treasure is a colorless artifact token with \"{T}, Sacrifice this token: Add one mana of any color.\"",
+      "reminderText": "(It's an artifact with \"{T}, Sacrifice this token: Add one mana of any color.\")"
+    },
+    {
+      "name": "Crew",
+      "rulesText": "Crew N means \"Tap any number of untapped creatures you control with total power N or more: This Vehicle becomes an artifact creature until end of turn.\"",
+      "reminderText": "(Tap any number of creatures you control with total power 4 or more: This Vehicle becomes an artifact creature until end of turn.)"
+    },
+    {
+      "name": "Double",
+      "rulesText": "To double a creature's power and toughness, it gets +X/+Y where X and Y are its current power and toughness. To double damage, the source deals twice that much instead. It appears only at rare and mythic."
+    },
+    {
+      "name": "Investigate",
+      "rulesText": "To investigate, create a Clue token: a colorless artifact with \"{2}, Sacrifice this token: Draw a card.\"",
+      "reminderText": "(Create a Clue token. It's an artifact with \"{2}, Sacrifice this token: Draw a card.\")"
+    },
+    {
+      "name": "Enrage",
+      "rulesText": "Enrage is an ability word. Its abilities trigger whenever the creature is dealt damage."
+    },
+    {
+      "name": "Improvise",
+      "rulesText": "Improvise lets each artifact you tap while casting the spell, after you are done activating mana abilities, pay for {1} of its generic cost.",
+      "reminderText": "(Your artifacts can help cast this spell. Each artifact you tap after you're done activating mana abilities pays for {1}.)"
+    },
+    {
+      "name": "Food",
+      "rulesText": "A Food is a colorless artifact token with \"{2}, {T}, Sacrifice this token: You gain 3 life.\"",
+      "reminderText": "(It's an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\")"
+    },
+    {
+      "name": "Landfall",
+      "rulesText": "Landfall is an ability word. Its abilities trigger whenever a land enters the battlefield under your control."
+    }
+  ],
+  "archetypes": [
+    {
+      "colors": "WU",
+      "name": "Tap and Untap",
+      "plan": "Tap creatures for teamwork and Vehicles, then untap them so they can still attack or block. Lock down the opponent's best creature while flyers and vigilance creatures carry the damage.",
+      "signpostUncommons": [
+        "Captain America, Living Legend",
+        "Spider-Woman, Secret Agent"
+      ],
+      "keyCommons": [
+        "Raft Security Officer",
+        "Helicarrier Strike",
+        "Super Suit"
+      ]
+    },
+    {
+      "colors": "UB",
+      "name": "Second Card Each Turn",
+      "plan": "Connive, loot, and draw extra cards to trigger the cards that reward drawing your second card each turn, draining the opponent and growing creatures while unblockable threats finish the game.",
+      "signpostUncommons": [
+        "Kang, Temporal Tyrant",
+        "Ghost, Spectral Saboteur"
+      ],
+      "keyCommons": [
+        "Red Room Recruit",
+        "Atlantean Cavalry",
+        "A.I.M. Scientists"
+      ]
+    },
+    {
+      "colors": "BR",
+      "name": "Villains",
+      "plan": "Cast Villain spells to make 2/1 menace Villain tokens and turn spare artifacts and cards in hand into damage. An aggressive deck that goes wide with evasive bodies.",
+      "signpostUncommons": [
+        "Madame Hydra",
+        "Bullseye, Death Dealer"
+      ],
+      "keyCommons": [
+        "Agents of HYDRA",
+        "Hire a Crew",
+        "HYDRA Assault Robot"
+      ]
+    },
+    {
+      "colors": "RG",
+      "name": "Gamma Power-up",
+      "plan": "Play big trampling creatures and use the late game to activate power-up abilities, which these cards make cheaper. Fight and big damage spells clear the way.",
+      "signpostUncommons": [
+        "Hulk, Gamma Goliath",
+        "Abomination, Terrifying Titan"
+      ],
+      "keyCommons": [
+        "Volcanic Villain",
+        "Pet Avengers",
+        "Repulsor Blast"
+      ]
+    },
+    {
+      "colors": "WG",
+      "name": "Heroes Assemble",
+      "plan": "Build a board of Hero creatures and tokens, then pump the team when more Heroes enter. Flash and protection keep key creatures alive in combat.",
+      "signpostUncommons": [
+        "Black Panther, Vanguard",
+        "Spider-Man, To the Rescue"
+      ],
+      "keyCommons": [
+        "Wakandan Royal Guard",
+        "Borough Backup",
+        "Hero in Training"
+      ]
+    },
+    {
+      "colors": "WB",
+      "name": "Attack Alone",
+      "plan": "Attack with one well-equipped creature at a time, using first strike, menace, and attack-alone bonuses to make each attack hard to block, while drain effects add up.",
+      "signpostUncommons": [
+        "Black Widow, Double Agent",
+        "U.S.Agent, John Walker"
+      ],
+      "keyCommons": [
+        "Agents of S.H.I.E.L.D.",
+        "S.H.I.E.L.D. Spy Kit",
+        "HYDRA Infiltration"
+      ]
+    },
+    {
+      "colors": "UR",
+      "name": "Artifacts and Tricks",
+      "plan": "Fill the board with artifacts and Robots, then turn them into card draw and power. Spells that target your own creatures double as protection and pump.",
+      "signpostUncommons": [
+        "Iron Man, Master of Machines",
+        "Speedball, New Warrior"
+      ],
+      "keyCommons": [
+        "Machinesmith Automaton",
+        "Futurist Forge",
+        "Vision of Love"
+      ]
+    },
+    {
+      "colors": "BG",
+      "name": "Graveyard Creatures",
+      "plan": "Get two or more creature cards into your graveyard through trades, sacrifice, and milling, then use the bonuses that turn on with them, and sacrifice spare creatures for removal.",
+      "signpostUncommons": [
+        "Killmonger, Scourge of Wakanda",
+        "Titania, Rugged Rumbler"
+      ],
+      "keyCommons": [
+        "HYDRA Troopers",
+        "Undercover Skrull",
+        "Rapid Rescue"
+      ]
+    },
+    {
+      "colors": "RW",
+      "name": "Noncreature Spells and Flyers",
+      "plan": "Cast cheap instants, Auras, and Equipment to trigger prowess, and push damage through the air with flyers that pump the rest of the team.",
+      "signpostUncommons": [
+        "Thor Odinson",
+        "War Machine, Legacy of Iron"
+      ],
+      "keyCommons": [
+        "Agent of Atlas",
+        "Kree Commandos",
+        "Crimson Operative"
+      ]
+    },
+    {
+      "colors": "UG",
+      "name": "+1/+1 Counters",
+      "plan": "Put +1/+1 counters on creatures every turn to make Insect tokens, give flying, and grow threats that draw cards when they connect.",
+      "signpostUncommons": [
+        "Ant-Man, Colony Commander",
+        "Beast, Erudite Aerialist"
+      ],
+      "keyCommons": [
+        "Knight of Wundagore",
+        "Powerful Broker",
+        "Restorative Technique"
+      ]
+    }
+  ],
+  "genericArchetypes": [],
+  "kitTemplate": {
+    "boosters": 6,
+    "cardsPerBooster": 14,
+    "slots": [
+      {
+        "name": "Common",
+        "count": 7,
+        "weights": {
+          "common": 1
+        }
+      },
+      {
+        "name": "Uncommon",
+        "count": 3,
+        "weights": {
+          "uncommon": 1
+        }
+      },
+      {
+        "name": "Rare or mythic",
+        "count": 1,
+        "weights": {
+          "rare": 6,
+          "mythic": 1
+        }
+      },
+      {
+        "name": "Wildcard",
+        "count": 1,
+        "weights": {
+          "common": 40,
+          "uncommon": 21,
+          "rare": 6,
+          "mythic": 1
+        }
+      },
+      {
+        "name": "Foil wildcard",
+        "count": 1,
+        "foil": true,
+        "weights": {
+          "common": 40,
+          "uncommon": 21,
+          "rare": 6,
+          "mythic": 1
+        }
+      },
+      {
+        "name": "Land",
+        "count": 1,
+        "weights": {
+          "basicLand": 4,
+          "commonLand": 1
+        }
+      }
+    ],
+    "promo": {
+      "weights": {
+        "rare": 6,
+        "mythic": 1
+      }
+    },
+    "basicLandsSupplied": true
+  }
+}

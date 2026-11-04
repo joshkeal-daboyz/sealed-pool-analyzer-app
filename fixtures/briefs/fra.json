@@ -1,0 +1,274 @@
+{
+  "setCode": "fra",
+  "setName": "Reality Fracture",
+  "version": 1,
+  "speed": "medium",
+  "speedNotes": "Written from Scryfall card data only, before any play results. The common and uncommon creature curve is low and dense (30 two-drops and 32 three-drops), but many cheap creatures carry a second spell through prepare and many spells add loyalty to a Jace token, so games reward card advantage over several turns more than raw speed. Expect boards to stall around turns five to seven unless red decks find noncombat damage or evasive attackers.",
+  "companionSetCodes": [],
+  "mechanics": [
+    {
+      "name": "Empower Jace",
+      "rulesText": "Empower Jace N means \"Put N loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with '[−1]: Surveil 1' and '[−3]: Draw a card.'\" A player has at most one Jace token to empower at a time, and further empower effects add loyalty to it. It appears in every color.",
+      "reminderText": "(Put two loyalty counters on a Jace token you control. If you don't control one, first create a blue Jace planeswalker token with \"[−1]: Surveil 1\" and \"[−3]: Draw a card.\")"
+    },
+    {
+      "name": "Prepared",
+      "rulesText": "Prepare cards are creatures with a second, spell face (a sorcery or instant). While the creature is prepared, its controller may cast a copy of that spell, which unprepares the creature. Some creatures enter prepared, some become prepared again at the beginning of each upkeep, and other effects can make a creature prepared or unprepared. Several spell faces are shared by more than one creature.",
+      "reminderText": "(While it's prepared, you may cast a copy of its spell. Doing so unprepares it.)"
+    },
+    {
+      "name": "Surveil",
+      "rulesText": "Surveil N means \"Look at the top N cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.\" The Jace token's [−1] ability surveils, and many cards reward you whenever you scry or surveil.",
+      "reminderText": "(Look at the top card of your library. You may put it into your graveyard.)"
+    },
+    {
+      "name": "Prowess",
+      "rulesText": "Prowess is a triggered ability: \"Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.\" Casting a copy of a prepared creature's spell counts.",
+      "reminderText": "(Whenever you cast a noncreature spell, this creature gets +1/+1 until end of turn.)"
+    },
+    {
+      "name": "Flashback",
+      "rulesText": "Flashback [cost] means \"You may cast this card from your graveyard by paying [cost] rather than its mana cost. If you do, exile it as it leaves the stack.\" Several flashback cards do more when cast from a graveyard.",
+      "reminderText": "(You may cast this card from your graveyard for its flashback cost. Then exile it.)"
+    },
+    {
+      "name": "Threshold",
+      "rulesText": "Threshold is an ability word. Its abilities work only as long as there are seven or more cards in your graveyard."
+    },
+    {
+      "name": "Basic landcycling",
+      "rulesText": "Basic landcycling [cost] means \"[cost], Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.\" It is a form of typecycling, which is a form of cycling, and appears on one common of each color.",
+      "reminderText": "({2}, Discard this card: Search your library for a basic land card, reveal it, put it into your hand, then shuffle.)"
+    },
+    {
+      "name": "Landfall",
+      "rulesText": "Landfall is an ability word. Its abilities trigger whenever a land enters the battlefield under your control."
+    },
+    {
+      "name": "Behold",
+      "rulesText": "To behold a Jace, choose a Jace you control or reveal a Jace card from your hand. It appears as an alternative to an extra cost.",
+      "reminderText": "(To behold a Jace, choose a Jace you control or reveal a Jace card from your hand.)"
+    },
+    {
+      "name": "Treasure",
+      "rulesText": "A Treasure is an artifact token with \"{T}, Sacrifice this token: Add one mana of any color.\" It appears only at rare in this set.",
+      "reminderText": "(It's an artifact with \"{T}, Sacrifice this token: Add one mana of any color.\")"
+    },
+    {
+      "name": "Cadets",
+      "rulesText": "Many cards create a 2/2 colorless Wizard Soldier creature token named Cadet, and some reward controlling Wizard tokens."
+    }
+  ],
+  "archetypes": [
+    {
+      "colors": "WU",
+      "name": "Scry and Surveil",
+      "plan": "Surveil every turn with prepared spells, Jace tokens, and Cadet makers, and turn each surveil into a team pump or +1/+1 counters while flyers attack.",
+      "signpostUncommons": [
+        "Desperate Futurescribe",
+        "Prudent Fateseer // Peer Review",
+        "Fatehold Charm"
+      ],
+      "keyCommons": [
+        "Fatehold Chronologist // Peer Review",
+        "Surveillance Phantasm",
+        "Semester Foreseer // Peer Review"
+      ]
+    },
+    {
+      "colors": "UB",
+      "name": "Threshold Graveyard",
+      "plan": "Mill yourself to seven cards in the graveyard to turn on threshold, then use flashback and graveyard recursion to win a long game with removal and counters.",
+      "signpostUncommons": [
+        "Paradox Shaper // Omit Variables",
+        "Recursive Recruitment",
+        "Theorix Charm"
+      ],
+      "keyCommons": [
+        "Theorix Metamage // Omit Variables",
+        "Void Extrapolator // Omit Variables",
+        "Theoretical Necromancer"
+      ]
+    },
+    {
+      "colors": "BR",
+      "name": "Noncombat Damage",
+      "plan": "Ping the opponent with spells, prepared copies, and attack triggers each turn, which turns on flying, haste, and recursion for creatures that care whether an opponent was dealt noncombat damage.",
+      "signpostUncommons": [
+        "Grim Repriser",
+        "Stingerquill Voxmancer // Vicious Verse",
+        "Stingerquill Charm"
+      ],
+      "keyCommons": [
+        "Whiplash Wordsmith // Vicious Verse",
+        "Hallway Heckler // Vicious Verse",
+        "Screeching Soulbreaker"
+      ]
+    },
+    {
+      "colors": "RG",
+      "name": "Heartwood Ramp",
+      "plan": "Make Heartwood mana artifacts and other mana sources early, then cast big trampling creatures that remove a blocker or add a body when they enter.",
+      "signpostUncommons": [
+        "Woodwork Prodigy // Soul Tether",
+        "Craftwork Crusher",
+        "Konstrari Charm"
+      ],
+      "keyCommons": [
+        "Konstrari Improviser // Soul Tether",
+        "Greenhouse Propagator",
+        "Wrecking Gecko"
+      ]
+    },
+    {
+      "colors": "WG",
+      "name": "Life Gain and Counters",
+      "plan": "Gain a little life each turn to draw cards and grow creatures, spreading +1/+1 counters that give vigilance and make fights favorable.",
+      "signpostUncommons": [
+        "Bloombrute",
+        "Vigorbloom Vanguard // Seed Suture",
+        "Vigorbloom Charm"
+      ],
+      "keyCommons": [
+        "Emergency Phytomedic // Seed Suture",
+        "Unflinching Hortimancer",
+        "Predictive Preparations"
+      ]
+    },
+    {
+      "colors": "WB",
+      "name": "Sacrifice and Recursion",
+      "plan": "Sacrifice creatures and tokens for value, gain life whenever they die, and bring cheap creatures back from the graveyard to do it again.",
+      "signpostUncommons": [
+        "Edgar, Ancient Bloodlord",
+        "Twisted Fates"
+      ],
+      "keyCommons": [
+        "Blessed Ghoul",
+        "Silence the Echo",
+        "Apex Witchstalker"
+      ]
+    },
+    {
+      "colors": "UR",
+      "name": "Spells and Thopters",
+      "plan": "Cast many noncreature spells, including flashback and prepared copies, to make flying Thopters and trigger prowess, and draw extra cards from spells cast outside your hand.",
+      "signpostUncommons": [
+        "Saheeli, Jewel of Avishkar",
+        "Clash of Elements"
+      ],
+      "keyCommons": [
+        "Twinned Vision",
+        "Chandra's Emberling",
+        "Cryotheory Adept"
+      ]
+    },
+    {
+      "colors": "BG",
+      "name": "Lands in the Graveyard",
+      "plan": "Mill and discard to fill the graveyard, return lands and permanents from it, and use the biggest card there to power removal and threats that come back when they die.",
+      "signpostUncommons": [
+        "Primal Witchstalker",
+        "Hapatra, the Desert Fang"
+      ],
+      "keyCommons": [
+        "Ferocity of the Hunt",
+        "Something Worth Saving",
+        "Rampart Hunter"
+      ]
+    },
+    {
+      "colors": "RW",
+      "name": "Counters on Arrival",
+      "plan": "Play creatures and tokens every turn and put +1/+1 counters on the ones that just entered, then use cheap Equipment and team pumps to attack through blockers.",
+      "signpostUncommons": [
+        "Mabel, Valley Hero",
+        "Warrior's Blades"
+      ],
+      "keyCommons": [
+        "Charge the Sanctum",
+        "Heartstring Puller",
+        "Graft Surgeon"
+      ]
+    },
+    {
+      "colors": "UG",
+      "name": "Jace Planeswalkers",
+      "plan": "Empower a Jace token early and activate a loyalty ability every turn, which untaps attackers and makes them unblockable, then grow creatures from each loyalty counter you add.",
+      "signpostUncommons": [
+        "Kiora of Salt and Sand",
+        "Mind Meanderer"
+      ],
+      "keyCommons": [
+        "Tam's Resistance",
+        "Inspired Tethermage",
+        "Mindseeker Oculus"
+      ]
+    }
+  ],
+  "genericArchetypes": [],
+  "kitTemplate": {
+    "boosters": 6,
+    "cardsPerBooster": 14,
+    "slots": [
+      {
+        "name": "Common",
+        "count": 7,
+        "weights": {
+          "common": 1
+        }
+      },
+      {
+        "name": "Uncommon",
+        "count": 3,
+        "weights": {
+          "uncommon": 1
+        }
+      },
+      {
+        "name": "Rare or mythic",
+        "count": 1,
+        "weights": {
+          "rare": 6,
+          "mythic": 1
+        }
+      },
+      {
+        "name": "Wildcard",
+        "count": 1,
+        "weights": {
+          "common": 40,
+          "uncommon": 21,
+          "rare": 6,
+          "mythic": 1
+        }
+      },
+      {
+        "name": "Foil wildcard",
+        "count": 1,
+        "foil": true,
+        "weights": {
+          "common": 40,
+          "uncommon": 21,
+          "rare": 6,
+          "mythic": 1
+        }
+      },
+      {
+        "name": "Land",
+        "count": 1,
+        "weights": {
+          "basicLand": 4,
+          "commonLand": 1
+        }
+      }
+    ],
+    "promo": {
+      "weights": {
+        "rare": 6,
+        "mythic": 1
+      }
+    },
+    "basicLandsSupplied": true
+  }
+}
