@@ -97,3 +97,4 @@ The owner approved every default on 2026-11-04. Each item keeps the question and
 - Anthropic Java SDK: `com.anthropic:anthropic-java` 3.0.0 (published 2026-10-21, the newest at least two weeks old).
 - The API key is not set on this PC yet. Tickets that need no live call run first: SPA-029 (module and grade model), SPA-030 (backtest set data), SPA-031 (win-rate tables), SPA-032 (backtest command). SPA-033 (the Claude grader, first live run on `msh`) and SPA-034 (remaining runs, backtest report, `trk` grades) wait for the key.
 - Order, one Developer at a time: SPA-029, 030, 031, 032, 033, 034. Each touches `cli` commands or the build, so all are serialized.
+- 2026-11-04 SPA-029 integrated (PR #34) on attempt 1: the agent module, CardGrade and grade files, GradeLookup, and the replayable model client. 1 of 6 tickets integrated. Next: SPA-030.

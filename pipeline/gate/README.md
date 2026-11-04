@@ -34,6 +34,6 @@ A Developer reads `failures` and nothing else. The Architect appends a one-line 
 
 The script is `pipeline/gate/run.sh`; the steps are the `spa.gate` plugin in `build-logic/`. It runs the same way locally (pre-push hook) and in CI (`.github/workflows/gate.yml`, on `ubuntu-latest` with its preinstalled Android SDK).
 
-Tools: ktfmt (format), detekt and, for `:app`, Android Lint with its Accessibility category as errors (`app/lint.xml`) (lint), Gradle `test` with JUnit (unit tests for `core`, `cli`, and `build-logic`), Robolectric and Roborazzi (ui-tests, for `:app`), Kover (coverage, which also covers `app/src/main/kotlin` against `:app`'s debug-variant report), and the catalog diff (dependencies).
+Tools: ktfmt (format), detekt and, for `:app`, Android Lint with its Accessibility category as errors (`app/lint.xml`) (lint), Gradle `test` with JUnit (unit tests for `core`, `cli`, `agent`, and `build-logic`), Robolectric and Roborazzi (ui-tests, for `:app`), Kover (coverage, which also covers `app/src/main/kotlin` against `:app`'s debug-variant report), and the catalog diff (dependencies).
 
 Running it locally needs JDK 21 (`JAVA_HOME`) and the Android SDK (`ANDROID_HOME`).
