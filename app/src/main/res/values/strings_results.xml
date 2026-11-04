@@ -20,6 +20,15 @@
     <string name="results_reading">Reading your pool…</string>
     <string name="results_reading_description">Reading your pool</string>
     <string name="results_new_pool">New pool</string>
+    <string name="results_clear_pool">Clear pool</string>
+
+    <!-- The Clear pool dialog. %1$s is the file name, or results_clear_source_pasted. -->
+    <string name="results_clear_title">Clear this pool?</string>
+    <string name="results_clear_body">The app will forget %1$s. To see it again you\'ll need to import it again.</string>
+    <string name="results_clear_source_pasted">the pasted text</string>
+    <string name="results_clear_keep">Keep pool</string>
+    <string name="results_clear_confirm">Clear pool</string>
+    <string name="results_pool_cleared">Pool cleared</string>
 
     <!-- Problems. -->
     <string name="results_problems">Problems</string>

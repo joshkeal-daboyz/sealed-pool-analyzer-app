@@ -1,16 +1,19 @@
 package spa.app.pool
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -43,6 +46,7 @@ fun ImportErrorCard(
     source: PoolSource,
     lines: List<UnresolvedLine>,
     modifier: Modifier = Modifier,
+    onClearPool: () -> Unit = {},
 ) {
     val name = sourceName(source)
     val body =
@@ -57,13 +61,21 @@ fun ImportErrorCard(
             ImportFailureKind.WRONG_SET -> stringResource(R.string.pool_error_wrong_set_body, name)
             ImportFailureKind.UNREADABLE ->
                 stringResource(R.string.pool_error_unreadable_body, name)
+            ImportFailureKind.SAVED_POOL_UNREADABLE ->
+                if (source is PoolSource.File && source.name.isBlank()) {
+                    stringResource(R.string.pool_error_saved_unreadable_no_name_body)
+                } else {
+                    stringResource(R.string.pool_error_saved_unreadable_body, name)
+                }
         }
     val listed =
         if (kind == ImportFailureKind.NOT_A_POOL || kind == ImportFailureKind.WRONG_SET) lines
         else emptyList()
     // A file name is shown as it is; only "the pasted text" opening a sentence takes a capital.
     val sentence = if (source is PoolSource.Pasted) capitalised(body) else body
-    ErrorCard(stringResource(titleOf(kind)), sentence, listed, modifier)
+    // Only the saved-pool card has an action: that pool is already unusable, so no confirmation.
+    val clear = onClearPool.takeIf { kind == ImportFailureKind.SAVED_POOL_UNREADABLE }
+    ErrorCard(stringResource(titleOf(kind)), sentence, listed, modifier, clear)
 }
 
 /** The "Card data is missing" card: the bundled set data did not load. */
@@ -84,14 +96,17 @@ private fun titleOf(kind: ImportFailureKind): Int =
         ImportFailureKind.NOT_A_POOL -> R.string.pool_error_not_a_pool_title
         ImportFailureKind.WRONG_SET -> R.string.pool_error_wrong_set_title
         ImportFailureKind.UNREADABLE -> R.string.pool_error_unreadable_title
+        ImportFailureKind.SAVED_POOL_UNREADABLE -> R.string.pool_error_saved_unreadable_title
     }
 
+/** An error card; with [onClearPool], its "Clear pool" button after the body. */
 @Composable
 private fun ErrorCard(
     title: String,
     body: String,
     lines: List<UnresolvedLine>,
     modifier: Modifier = Modifier,
+    onClearPool: (() -> Unit)? = null,
 ) {
     val colors = LocalSpaColors.current
     val type = MaterialTheme.typography
@@ -111,6 +126,7 @@ private fun ErrorCard(
         ) {
             Text(title, style = type.titleMedium)
             Text(body, style = type.bodyLarge, color = colors.onSurfaceVariant)
+            if (onClearPool != null) ClearPoolButton(onClearPool)
             (if (showAll) lines else lines.take(SHOWN_LINES)).forEach { UnreadLine(it) }
             if (!showAll && lines.size > SHOWN_LINES) {
                 TextButton(
@@ -125,6 +141,21 @@ private fun ErrorCard(
                 }
             }
         }
+    }
+}
+
+/** The saved-pool card's "Clear pool": an outlined pill, 52 dp tall, like Results' header's. */
+@Composable
+private fun ClearPoolButton(onClick: () -> Unit) {
+    val colors = LocalSpaColors.current
+    OutlinedButton(
+        onClick = onClick,
+        modifier = Modifier.padding(top = LINE_GAP.dp).heightIn(min = OUTLINED_HEIGHT.dp),
+        shape = CircleShape,
+        border = BorderStroke(1.dp, colors.outline),
+        colors = ButtonDefaults.outlinedButtonColors(contentColor = colors.onSurface),
+    ) {
+        Text(stringResource(R.string.pool_clear_pool), style = MaterialTheme.typography.labelMedium)
     }
 }
 
@@ -175,3 +206,4 @@ private const val CARD_RADIUS = 18
 private const val CARD_PADDING = 20
 private const val LINE_GAP = 6
 private const val MIN_TOUCH = 48
+private const val OUTLINED_HEIGHT = 52

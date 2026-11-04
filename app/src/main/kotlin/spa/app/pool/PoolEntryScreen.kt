@@ -60,6 +60,8 @@ class PoolEntryActions(
     val onAbout: () -> Unit,
     val onFormatChoose: (PoolFormat?) -> Unit = {},
     val onFilePicked: (Uri) -> Unit = {},
+    /** The saved-pool-unreadable card's "Clear pool". */
+    val onClearPool: () -> Unit = {},
 )
 
 /** How long typing must pause before "Detected: <format>" updates. */
@@ -111,7 +113,7 @@ fun PoolEntryScreen(model: PoolEntryModel, actions: PoolEntryActions, onBack: ((
                     .padding(horizontal = SIDE.dp, vertical = TOP.dp),
             verticalArrangement = Arrangement.spacedBy(GAP.dp),
         ) {
-            ErrorCardFor(model.state)
+            ErrorCardFor(model.state, actions.onClearPool)
             Heading()
             OpenFileButton(enabled = inputsEnabled, onPicked = actions.onFilePicked)
             OrDivider()
@@ -148,9 +150,10 @@ private fun detectOrNull(text: String): PoolFormat? =
     if (text.isBlank()) null else PoolParser.detect(text)
 
 @Composable
-private fun ErrorCardFor(state: PoolUiState) {
+private fun ErrorCardFor(state: PoolUiState, onClearPool: () -> Unit) {
     when (state) {
-        is PoolUiState.ImportFailed -> ImportErrorCard(state.kind, state.source, state.lines)
+        is PoolUiState.ImportFailed ->
+            ImportErrorCard(state.kind, state.source, state.lines, onClearPool = onClearPool)
         PoolUiState.DataMissing -> DataMissingCard()
         else -> Unit
     }

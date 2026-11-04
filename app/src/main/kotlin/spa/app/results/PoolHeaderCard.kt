@@ -29,8 +29,8 @@ import spa.app.ui.theme.LocalSpaColors
 
 /**
  * The pool header card: the [source], then "Read as <format>", the counts, and the skipped lines
- * when above 0, and "New pool". With no [loaded] pool (Loading), "Reading your pool…" stands in for
- * the counts and there are no buttons. SPA-022 adds Clear pool beside New pool.
+ * when above 0, and "New pool", with "Clear pool" beside it when [onClearPool] is set. With no
+ * [loaded] pool (Loading), "Reading your pool…" stands in for the counts and there are no buttons.
  */
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -39,6 +39,7 @@ fun PoolHeaderCard(
     loaded: PoolUiState.Loaded?,
     onNewPool: (() -> Unit)?,
     modifier: Modifier = Modifier,
+    onClearPool: (() -> Unit)? = null,
 ) {
     val colors = LocalSpaColors.current
     val type = MaterialTheme.typography
@@ -72,6 +73,7 @@ fun PoolHeaderCard(
                     verticalArrangement = Arrangement.spacedBy(BUTTON_GAP.dp),
                 ) {
                     NewPoolButton(onNewPool)
+                    if (onClearPool != null) ClearPoolButton(onClearPool)
                 }
             }
         }
@@ -110,6 +112,17 @@ private fun HeaderLines(loaded: PoolUiState.Loaded) {
 /** "New pool": an outlined pill, 52 dp tall. */
 @Composable
 fun NewPoolButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
+    HeaderButton(stringResource(R.string.results_new_pool), onClick, modifier)
+}
+
+/** "Clear pool", beside New pool: an outlined pill, 52 dp tall. It opens [ClearPoolDialog]. */
+@Composable
+fun ClearPoolButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
+    HeaderButton(stringResource(R.string.results_clear_pool), onClick, modifier)
+}
+
+@Composable
+private fun HeaderButton(label: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
     val colors = LocalSpaColors.current
     OutlinedButton(
         onClick = onClick,
@@ -118,10 +131,7 @@ fun NewPoolButton(onClick: () -> Unit, modifier: Modifier = Modifier) {
         border = BorderStroke(1.dp, colors.outline),
         colors = ButtonDefaults.outlinedButtonColors(contentColor = colors.onSurface),
     ) {
-        Text(
-            stringResource(R.string.results_new_pool),
-            style = MaterialTheme.typography.labelMedium,
-        )
+        Text(label, style = MaterialTheme.typography.labelMedium)
     }
 }
 

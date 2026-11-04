@@ -14,6 +14,8 @@ import kotlinx.coroutines.launch
 import spa.app.importing.ImportFailureKind
 import spa.app.importing.ImportOutcome
 import spa.app.importing.PoolSource
+import spa.app.store.PoolStore
+import spa.app.store.SavedPool
 import spa.core.intake.PoolFormat
 
 /** One import: the app passes [spa.app.importing.PoolImporter.import]; tests pass fakes. */
@@ -48,6 +50,7 @@ interface FileImporter {
 class PoolViewModel(
     private val importer: Importer,
     private val files: FileImporter = FileImporter.None,
+    private val store: PoolStore? = null,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow<PoolUiState>(PoolUiState.NoPool)
     private val mutablePool = MutableStateFlow<PoolUiState.Loaded?>(null)
@@ -70,6 +73,46 @@ class PoolViewModel(
      * The format chosen by hand for pasted text, or null for "Auto". Kept across a failed import.
      */
     val chosenFormat: StateFlow<PoolFormat?> = mutableFormat.asStateFlow()
+
+    /**
+     * Whether this ViewModel started by re-reading a remembered pool, so launch opens Results in
+     * Loading (decision 1). A pool file too damaged to re-read goes straight to the saved-pool
+     * unreadable error instead, and this is false.
+     */
+    val startsWithSavedPool: Boolean = restore()
+
+    /**
+     * "Clear pool": deletes the pool file and forgets the current pool, dropping any import still
+     * running; the Pool screen is back to Empty, with an empty paste box on "Auto".
+     */
+    fun clearPool() {
+        latest++
+        running?.cancel()
+        store?.clear()
+        mutablePool.value = null
+        mutableState.value = PoolUiState.NoPool
+        mutableText.value = ""
+        mutableFormat.value = null
+    }
+
+    /**
+     * Re-imports the remembered pool, if any, with its stored text, format, and source, and says
+     * whether it did.
+     */
+    private fun restore(): Boolean =
+        when (val saved = store?.read() ?: SavedPool.None) {
+            SavedPool.None -> false
+            is SavedPool.Unreadable -> {
+                mutableState.value = savedPoolUnreadable(saved.source ?: UNNAMED_SAVED_POOL)
+                false
+            }
+            is SavedPool.Pool -> {
+                run(saved.source, restoring = true) {
+                    importer.import(saved.text, saved.format, it)
+                }
+                true
+            }
+        }
 
     fun onTextChange(text: String) {
         mutableText.value = text
@@ -133,15 +176,30 @@ class PoolViewModel(
         run(PoolSource.File(files.displayName(uri))) { files.import(uri, it) }
     }
 
-    private fun run(source: PoolSource, import: suspend (PoolSource) -> ImportOutcome) {
+    /**
+     * Runs [import] from [source]. A success replaces the pool file (decision 5: a failure never
+     * touches it), unless it is the remembered pool being [restoring], whose failure is the
+     * saved-pool unreadable error.
+     */
+    private fun run(
+        source: PoolSource,
+        restoring: Boolean = false,
+        import: suspend (PoolSource) -> ImportOutcome,
+    ) {
         val id = ++latest
         running?.cancel()
         mutableState.value = PoolUiState.Loading(source)
         running = viewModelScope.launch {
             val outcome = import(source)
             if (id == latest) {
-                val state = stateOf(outcome)
-                if (state is PoolUiState.Loaded) mutablePool.value = state
+                val state =
+                    if (restoring && outcome is ImportOutcome.Failure) savedPoolUnreadable(source)
+                    else stateOf(outcome)
+                if (state is PoolUiState.Loaded) {
+                    // The file is small; written here so it is on disk once the pool shows.
+                    if (!restoring) store?.save(state.result.text, state.format, state.source)
+                    mutablePool.value = state
+                }
                 mutableState.value = state
             }
         }
@@ -154,12 +212,25 @@ class PoolViewModel(
          */
         const val NO_FILE_NAME = "The shared file"
 
+        /**
+         * The source of a remembered pool whose file is too damaged to name one: a file with no
+         * name, which the "Your last pool couldn't be read" card calls "Your pool".
+         */
+        val UNNAMED_SAVED_POOL: PoolSource = PoolSource.File("")
+
         fun factory(
             importer: Importer,
             files: FileImporter = FileImporter.None,
         ): ViewModelProvider.Factory = viewModelFactory {
-            initializer { PoolViewModel(importer, files) }
+            initializer {
+                // The pool file lives in the app's private storage.
+                val app = this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY]
+                PoolViewModel(importer, files, app?.let { PoolStore(it.filesDir) })
+            }
         }
+
+        private fun savedPoolUnreadable(source: PoolSource): PoolUiState =
+            PoolUiState.ImportFailed(ImportFailureKind.SAVED_POOL_UNREADABLE, source, emptyList())
 
         private fun stateOf(outcome: ImportOutcome): PoolUiState =
             when (outcome) {
