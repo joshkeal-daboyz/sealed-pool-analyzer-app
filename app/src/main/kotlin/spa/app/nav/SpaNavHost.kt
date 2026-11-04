@@ -21,6 +21,7 @@ import spa.app.pair.PairDetailScreen
 import spa.app.pool.PoolEntryActions
 import spa.app.pool.PoolEntryModel
 import spa.app.pool.PoolEntryScreen
+import spa.app.results.ResultsActions
 import spa.app.results.ResultsScreen
 import spa.app.timing.SpaTiming
 
@@ -127,11 +128,15 @@ private fun ResultsRoute(app: AppNav) {
         if (state is PoolUiState.Loading || state is PoolUiState.Loaded) state else pool ?: state
     ResultsScreen(
         state = shown,
-        onNewPool = {
-            vm.startNewPool()
-            app.navController.navigate(Routes.POOL)
-        },
-        onAbout = app::toAbout,
-        onLoadedShown = app.timing::resultsShown,
+        actions =
+            ResultsActions(
+                onNewPool = {
+                    vm.startNewPool()
+                    app.navController.navigate(Routes.POOL)
+                },
+                onAbout = app::toAbout,
+                onPair = { app.navController.navigate(Routes.pair(it.name)) },
+                onLoadedShown = app.timing::resultsShown,
+            ),
     )
 }

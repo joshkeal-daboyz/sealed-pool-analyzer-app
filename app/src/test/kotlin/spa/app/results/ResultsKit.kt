@@ -1,6 +1,7 @@
 package spa.app.results
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.semantics.SemanticsNode
 import androidx.compose.ui.semantics.SemanticsProperties
@@ -159,13 +160,12 @@ object ResultsKit {
     @Composable
     fun Screen(state: PoolUiState, onPair: (ColorPair) -> Unit = {}) {
         SpaTheme {
-            ResultsScreen(
-                state = state,
-                onNewPool = {},
-                onAbout = {},
-                onPair = onPair,
-                baseline = baseline,
-            )
+            CompositionLocalProvider(LocalBaseline provides baseline) {
+                ResultsScreen(
+                    state = state,
+                    actions = ResultsActions(onNewPool = {}, onAbout = {}, onPair = onPair),
+                )
+            }
         }
     }
 
