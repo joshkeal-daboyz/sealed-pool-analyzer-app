@@ -14,6 +14,7 @@ This repository is built through an agentic development pipeline: a central Arch
 | `design/` | Design specs written by the Designer, one per feature with a UI |
 | `fixtures/` | Real and synthetic pools used by tests (created by the first goal) |
 | `core/`, `app/` | The Kotlin core library and the Android app (created by tickets, not by hand) |
+| `agent/` | The agent layer, the only module that calls a model: card grades, the API key from `ANTHROPIC_API_KEY`, and a model client whose tests replay recorded responses |
 
 ## Design documents
 

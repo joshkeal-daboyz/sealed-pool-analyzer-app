@@ -19,4 +19,24 @@ data class CardGrade(
     val confidence: Double,
     val source: GradeSource,
     val provenance: String,
-)
+) {
+    init {
+        require(isOnScale(score)) {
+            "score must be $MIN_SCORE to $MAX_SCORE in steps of $SCORE_STEP, got $score"
+        }
+        require(confidence in 0.0..1.0) { "confidence must be 0.0 to 1.0, got $confidence" }
+        require(provenance.isNotBlank()) { "provenance must not be blank" }
+    }
+
+    companion object {
+        const val MIN_SCORE = 0.0
+        const val MAX_SCORE = 5.0
+        const val SCORE_STEP = 0.5
+
+        /** True when [score] is one of the scale's eleven steps. NaN is not. */
+        fun isOnScale(score: Double): Boolean {
+            val steps = score / SCORE_STEP
+            return score in MIN_SCORE..MAX_SCORE && steps == Math.rint(steps)
+        }
+    }
+}

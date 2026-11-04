@@ -12,5 +12,9 @@ object ApiKey {
      * The key from [environment], or a [MissingApiKeyException] saying `ANTHROPIC_API_KEY is not
      * set` when it is absent or blank.
      */
-    fun require(environment: Map<String, String> = System.getenv()): String = TODO("SPA-029")
+    fun require(environment: Map<String, String> = System.getenv()): String {
+        val key = environment[VARIABLE]
+        if (key.isNullOrBlank()) throw MissingApiKeyException("$VARIABLE is not set")
+        return key
+    }
 }

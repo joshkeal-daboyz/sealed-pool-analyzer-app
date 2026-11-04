@@ -75,6 +75,15 @@ class GradeFilesTest {
     }
 
     @Test
+    fun `a whole score written without a decimal point is on the scale, and 2_3 is not`() {
+        fun withScore(score: String) =
+            resource("score-six").replace("\"score\": 6", "\"score\": $score")
+        assertEquals(3.0, GradeFiles.parse(withScore("3")).grades[0].score)
+        val e = assertFailsWith<GradeFileException> { GradeFiles.parse(withScore("2.3")) }
+        assertEquals(listOf("/grades/0/score"), e.problems.map { it.pointer })
+    }
+
+    @Test
     fun `a duplicate card fails at the second entry and names the first`() {
         val found = problems("duplicate-card")
         assertEquals(listOf("/grades/2"), found.map { it.pointer })
