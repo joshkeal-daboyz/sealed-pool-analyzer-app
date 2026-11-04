@@ -59,15 +59,11 @@ class PoolStore(dir: File) {
     /** What the pool file holds. */
     fun read(): SavedPool {
         if (!file.exists()) return SavedPool.None
-        val json =
-            try {
-                JSONObject(file.readText(Charsets.UTF_8))
-            } catch (e: JSONException) {
-                return SavedPool.Unreadable(null)
-            } catch (e: IOException) {
-                Log.w(TAG, "Could not read the saved pool", e)
-                return SavedPool.Unreadable(null)
-            }
+        return parse()?.let(::poolOf) ?: SavedPool.Unreadable(null)
+    }
+
+    /** The saved pool [json] holds, or what of it can be read. */
+    private fun poolOf(json: JSONObject): SavedPool {
         val source = json.stringOrNull(SOURCE)?.let(::sourceOf)
         val text = json.stringOrNull(TEXT)
         val format =
@@ -80,6 +76,18 @@ class PoolStore(dir: File) {
             SavedPool.Unreadable(source)
         }
     }
+
+    /** The pool file as JSON, or null when it cannot be read or is not JSON. */
+    private fun parse(): JSONObject? =
+        try {
+            JSONObject(file.readText(Charsets.UTF_8))
+        } catch (e: JSONException) {
+            Log.w(TAG, "The saved pool is not JSON", e)
+            null
+        } catch (e: IOException) {
+            Log.w(TAG, "Could not read the saved pool", e)
+            null
+        }
 
     /** Deletes the pool file. */
     fun clear() {
