@@ -43,10 +43,12 @@ object Main {
     @Suppress("MemberNameEqualsClassName")
     @JvmStatic
     fun main(args: Array<String>) {
-        val stdout = PrintStream(FileOutputStream(FileDescriptor.out), true, StandardCharsets.UTF_8)
-        val stderr = PrintStream(FileOutputStream(FileDescriptor.err), true, StandardCharsets.UTF_8)
-        exitProcess(run(args, stdout, stderr))
+        exitProcess(run(args, utf8(FileDescriptor.out), utf8(FileDescriptor.err)))
     }
+
+    /** An auto-flushing UTF-8 stream onto [descriptor], so card names print the same everywhere. */
+    internal fun utf8(descriptor: FileDescriptor): PrintStream =
+        PrintStream(FileOutputStream(descriptor), true, StandardCharsets.UTF_8)
 
     /** Runs the command in [args], writing to [stdout] and [stderr], and returns the exit code. */
     fun run(args: Array<String>, stdout: PrintStream, stderr: PrintStream): Int =
