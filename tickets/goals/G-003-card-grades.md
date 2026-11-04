@@ -1,7 +1,7 @@
 ---
 id: G-003
 title: Card grades, the first model call
-status: draft
+status: open
 owner: human
 target_set_code: trk
 companion_set_codes: [sds]
@@ -14,7 +14,7 @@ Build step 5 of the design brief, the card grading layer: a per-card limited gra
 
 This is the first goal that calls a model, and the first step of the roadmap's Intelligence phase. As with G-001, it is built and tested on the JVM and reached through `spa`. The app does not change in this goal (open question 1).
 
-Drafted by the Architect on 2026-11-04 for the owner to edit and approve. The open questions are at the end, each with its default.
+Drafted by the Architect on 2026-11-04 and approved by the owner the same day with every default ("Approve with defaults"); the answers are in "Decided" at the end.
 
 ## Why this goal next
 
@@ -75,9 +75,9 @@ The seven analysis agents, the Deck Builder, Judge and Explainer. Any app change
 
 The same as G-002 so the goals compare, minus the UI-only ones: gate green on first push, bounces per merged ticket by source, re-plans, escalations to the human, lead time per ticket, and share of criteria proven by deterministic tests. Add for the first model goal: the backtest correlations, dollars spent on model calls in total and per graded set, and how many recorded responses the gate replays.
 
-## Open questions
+## Decided
 
-Each has a default. An unanswered question takes its default.
+The owner approved every default on 2026-11-04. Each item keeps the question and its answer.
 
 1. **Show grades in the app in this goal?** Default: no. Grades stay in `spa` for this goal; the app shows them in the next app goal, together with editing.
 2. **The scale.** Default: 0.0 to 5.0 in steps of 0.5, with the usual limited letter grades (F to A+) as display labels, relative to the set (a 3.0 is a solid playable in this set).
@@ -86,3 +86,14 @@ Each has a default. An unanswered question takes its default.
 5. **The model.** Default: Claude Opus 5.5. A cheaper model (Sonnet 5.5 at half the price) is possible if the cost estimate worries you; the backtest would then measure that one instead.
 6. **The spend limit.** Default: $20 a month on the Console key. The goal's estimate is under $10.
 7. **Pools from the 11/6 prerelease.** Default: if you photograph pools at the event, give the photos to Claude and keep the ManaBox-format CSVs it returns; the first ticket of this goal adds them as fixtures. If none arrive, deliverable 7 drops.
+
+## Architect notes (2026-11-04)
+
+- G-003 start commit for the "unchanged" criterion (3): 06c306c.
+- Backtest sets, settled from data (Decided 3): `msh` Marvel Super Heroes (released 2026-06-26), `hob` The Hobbit (2026-08-14), and `fra` Reality Fracture (2026-10-02), the three most recent expansions before `trk`, all at or after the model's June 2026 training cutoff. 17Lands publishes Premier Draft game data for each (`game_data_public.<SET>.PremierDraft.csv.gz`, 22 to 31 MB, checked 2026-11-04). Its card ratings endpoint (`/card_ratings/data?expansion=<SET>&format=PremierDraft`) gives `ever_drawn_win_rate`, the GIH WR criterion 8 checks against.
+- The backtest sets have no format brief or Scryfall cache yet. A data ticket fetches the caches with `spa fetch-set` and drafts each brief from Scryfall data alone (mechanics from rules text, signposts from gold uncommons), never from 17Lands or reviews, so the grade stays blind. These briefs exist only for the backtest, so the design brief's human review of each brief (which is for briefs the product ships) is not required; the owner may read them.
+- The Claude grader reads the card data and the format brief. It does not read the set baseline: the baseline holds pool-level averages (removal per pool, curve), which say nothing about one card, and the backtest sets have none. Deliverable 3's "and its baseline" is dropped on that reasoning.
+- The `agent` module must be added to the gate's coverage source roots (`build-logic/src/main/kotlin/spa/gate/Coverage.kt`, line 25), the same trap as SPA-001's ui-tests step.
+- Anthropic Java SDK: `com.anthropic:anthropic-java` 3.0.0 (published 2026-10-21, the newest at least two weeks old).
+- The API key is not set on this PC yet. Tickets that need no live call run first: SPA-029 (module and grade model), SPA-030 (backtest set data), SPA-031 (win-rate tables), SPA-032 (backtest command). SPA-033 (the Claude grader, first live run on `msh`) and SPA-034 (remaining runs, backtest report, `trk` grades) wait for the key.
+- Order, one Developer at a time: SPA-029, 030, 031, 032, 033, 034. Each touches `cli` commands or the build, so all are serialized.
