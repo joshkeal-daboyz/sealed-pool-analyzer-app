@@ -47,9 +47,7 @@ object CollectorListParser {
         val count =
             if (before.isNotEmpty() && after.isNotEmpty()) null
             else PoolLines.positiveCount(before.ifEmpty { after.ifEmpty { "1" } })
-        val printing =
-            index.byCollectorNumber(setCode, number)
-                ?: index.byCollectorNumber(setCode, number.lowercase(Locale.ROOT))
+        val printing = index.byCollectorNumber(setCode, number)
         when {
             index.printings(setCode).isEmpty() ->
                 builder.unresolved(lineNumber, raw, UnresolvedReason.WRONG_SET)
