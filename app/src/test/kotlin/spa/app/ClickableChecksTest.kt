@@ -2,11 +2,14 @@ package spa.app
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.unit.dp
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -58,6 +61,36 @@ class ClickableChecksTest {
     @Test
     fun fullSizeLabelledClickablePasses() {
         compose.setContent { Box(Modifier.size(48.dp).clickable {}) { Text("Open") } }
+        assertEquals(emptyList<String>(), ClickableChecks.problems(compose))
+    }
+
+    @Test
+    fun labelledClickableShortInOneDimensionFailsOnSize() {
+        compose.setContent {
+            Box(Modifier.size(48.dp, 30.dp).testTag("short").clickable {}) { Text("Go") }
+        }
+        val problems = ClickableChecks.problems(compose)
+        assertEquals(1, problems.size)
+        assertTrue(problems.single(), problems.single().contains("tag 'short'"))
+        assertTrue(problems.single(), problems.single().contains("size 48.0 x 30.0 dp"))
+    }
+
+    @Test
+    fun paddingOutsideTheClickableDoesNotCountTowardItsSize() {
+        compose.setContent {
+            Box(Modifier.padding(9.dp).clickable {}.testTag("padded").size(30.dp)) { Text("Go") }
+        }
+        val problems = ClickableChecks.problems(compose)
+        assertEquals(1, problems.size)
+        assertTrue(problems.single(), problems.single().contains("tag 'padded'"))
+        assertTrue(problems.single(), problems.single().contains("size 30.0 x 30.0 dp"))
+    }
+
+    @Test
+    fun clickableLabelledOnlyByContentDescriptionPasses() {
+        compose.setContent {
+            Box(Modifier.size(48.dp).clickable {}.semantics { contentDescription = "Close" })
+        }
         assertEquals(emptyList<String>(), ClickableChecks.problems(compose))
     }
 }
