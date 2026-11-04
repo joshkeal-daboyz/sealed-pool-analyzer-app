@@ -17,6 +17,8 @@ import spa.app.PoolUiState
 import spa.app.R
 import spa.app.ui.SpaTopBar
 import spa.app.ui.theme.LocalSpaColors
+import spa.core.baseline.Baseline
+import spa.core.metrics.ColorPair
 
 /**
  * Results: the top bar "Your pool" with the About icon, then the pool header card, or the Loading
@@ -30,6 +32,8 @@ fun ResultsScreen(
     onAbout: () -> Unit,
     modifier: Modifier = Modifier,
     onLoadedShown: (PoolUiState.Loaded) -> Unit = {},
+    onPair: (ColorPair) -> Unit = {},
+    baseline: Baseline? = rememberBundledBaseline(),
 ) {
     Scaffold(
         modifier = modifier,
