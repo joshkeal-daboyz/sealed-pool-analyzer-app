@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="results_title">Your pool</string>
+    <string name="results_source_pasted">Pasted</string>
+    <string name="results_read_as">Read as %1$s</string>
+    <!-- "<totalCards> cards in <entries> entries": %1$s is results_cards, %2$s is results_entries. -->
+    <string name="results_counts">%1$s in %2$s</string>
+    <plurals name="results_cards">
+        <item quantity="one">%d card</item>
+        <item quantity="other">%d cards</item>
+    </plurals>
+    <plurals name="results_entries">
+        <item quantity="one">%d entry</item>
+        <item quantity="other">%d entries</item>
+    </plurals>
+    <plurals name="results_skipped_lines">
+        <item quantity="one">%d blank or header line skipped</item>
+        <item quantity="other">%d blank or header lines skipped</item>
+    </plurals>
+    <string name="results_reading">Reading your pool…</string>
+    <string name="results_reading_description">Reading your pool</string>
+    <string name="results_new_pool">New pool</string>
+</resources>

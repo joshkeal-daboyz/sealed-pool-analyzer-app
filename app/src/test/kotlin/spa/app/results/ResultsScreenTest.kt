@@ -1,5 +1,6 @@
 package spa.app.results
 
+import androidx.compose.runtime.State
 import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.hasContentDescription
@@ -12,6 +13,7 @@ import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextReplacement
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
@@ -135,12 +137,19 @@ class ResultsScreenTest {
     @Test
     fun theLoadingIndicatorAppearsOnlyOnceLoadingHasLasted300Ms() {
         compose.mainClock.autoAdvance = false
+        // The same timer the screen uses, started in the same composition, read without a frame.
+        lateinit var due: State<Boolean>
         compose.setContent {
+            due = rememberIndicatorDue()
             SpaTheme { ResultsScreen(PoolUiState.Loading(PoolSource.Pasted), {}, {}) }
         }
         compose.mainClock.advanceTimeBy(299, ignoreFrameDuration = true)
+        assertFalse(due.value)
         assertEquals(0, indicators())
         compose.mainClock.advanceTimeBy(1, ignoreFrameDuration = true)
+        assertTrue(due.value)
+        // The indicator is drawn on the frame after the 300 ms are up.
+        compose.mainClock.advanceTimeByFrame()
         assertEquals(1, indicators())
     }
 

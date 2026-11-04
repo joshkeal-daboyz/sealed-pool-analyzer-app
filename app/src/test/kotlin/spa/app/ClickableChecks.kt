@@ -31,26 +31,36 @@ object ClickableChecks {
     }
 
     /** One message per broken rule per clickable, in tree order; empty when all pass. */
-    fun problems(rule: ComposeTestRule): List<String> {
+    fun problems(rule: ComposeTestRule): List<String> =
+        clickables(rule).flatMap { node ->
+            listOfNotNull(sizeProblem(node, rule), labelProblem(node))
+        }
+
+    /** One message per clickable smaller than 48 x 48 dp (A1), in tree order. */
+    fun sizeProblems(rule: ComposeTestRule): List<String> =
+        clickables(rule).mapNotNull { sizeProblem(it, rule) }
+
+    /** One message per clickable with no text or content description (A4), in tree order. */
+    fun labelProblems(rule: ComposeTestRule): List<String> =
+        clickables(rule).mapNotNull { labelProblem(it) }
+
+    private fun clickables(rule: ComposeTestRule): List<SemanticsNode> {
         rule.waitForIdle()
-        val nodes = rule.onAllNodes(hasClickAction()).fetchSemanticsNodes()
-        return nodes.flatMap { node -> problemsOf(node, rule) }
+        return rule.onAllNodes(hasClickAction()).fetchSemanticsNodes()
     }
 
-    private fun problemsOf(node: SemanticsNode, rule: ComposeTestRule): List<String> {
+    private fun sizeProblem(node: SemanticsNode, rule: ComposeTestRule): String? {
         val bounds = node.boundsInRoot
         val (width, height) = with(rule.density) { bounds.width.toDp() to bounds.height.toDp() }
-        val name = describe(node)
-        val small =
-            if (width < MIN_TOUCH_TARGET || height < MIN_TOUCH_TARGET) {
-                "$name: size ${format(width)} x ${format(height)} dp is smaller than " +
-                    "${format(MIN_TOUCH_TARGET)} x ${format(MIN_TOUCH_TARGET)} dp"
-            } else null
-        val unlabelled =
-            if (label(node) == null) "$name: has no label (no text or content description)"
-            else null
-        return listOfNotNull(small, unlabelled)
+        return if (width < MIN_TOUCH_TARGET || height < MIN_TOUCH_TARGET) {
+            "${describe(node)}: size ${format(width)} x ${format(height)} dp is smaller than " +
+                "${format(MIN_TOUCH_TARGET)} x ${format(MIN_TOUCH_TARGET)} dp"
+        } else null
     }
+
+    private fun labelProblem(node: SemanticsNode): String? =
+        if (label(node) == null) "${describe(node)}: has no label (no text or content description)"
+        else null
 
     /** The node's text or content description, from the merged tree, or null when it has none. */
     private fun label(node: SemanticsNode): String? {

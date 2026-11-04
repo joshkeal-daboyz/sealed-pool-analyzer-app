@@ -1,6 +1,7 @@
 package spa.app.timing
 
 import androidx.compose.ui.test.hasSetTextAction
+import androidx.compose.ui.test.isRoot
 import androidx.compose.ui.test.junit4.v2.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
@@ -35,7 +36,7 @@ class SpaTimingTest {
         compose.waitForIdle()
         compose.onNode(hasSetTextAction()).performTextReplacement("TRK 1701d")
         compose.onNodeWithText("Analyze pool").performClick()
-        compose.waitUntil(TIMEOUT) { sink.events.contains("results-shown") }
+        awaitEvents("results-shown", 1)
         compose.waitForIdle()
 
         assertEquals(
@@ -79,7 +80,7 @@ class SpaTimingTest {
             if (it == 1) compose.onNodeWithText("New pool").performClick()
             compose.onNode(hasSetTextAction()).performTextReplacement("TRK 1701d")
             compose.onNodeWithText("Analyze pool").performClick()
-            compose.waitUntil(TIMEOUT) { sink.events.count { e -> e == "results-shown" } == it + 1 }
+            awaitEvents("results-shown", it + 1)
         }
         compose.waitForIdle()
         assertEquals(
@@ -100,6 +101,18 @@ class SpaTimingTest {
         val logged = ShadowLog.getLogsForTag("SpaTiming").map { it.msg }
         assertEquals(1, logged.count { it.startsWith("app-created ") })
         assertTrue(logged.toString(), logged.first().matches(Regex("app-created \\d+")))
+    }
+
+    /**
+     * Waits until [event] has been logged [times] times. Each check reads the semantics tree, which
+     * lets Compose and the main looper go idle; reading only the sink would not, and the import's
+     * result, posted to the main thread, would never be delivered.
+     */
+    private fun awaitEvents(event: String, times: Int) {
+        compose.waitUntil(TIMEOUT) {
+            compose.onAllNodes(isRoot()).fetchSemanticsNodes()
+            sink.events.count { it == event } == times
+        }
     }
 
     private companion object {

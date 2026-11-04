@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Sealed Pool Analyzer</string>
+    <!-- Top bar icons (A2). -->
+    <string name="shell_about">About</string>
+    <string name="shell_back">Back</string>
+    <!-- Format names, used everywhere. -->
+    <string name="format_manabox">ManaBox CSV</string>
+    <string name="format_text">List with counts</string>
+    <string name="format_collector">Collector numbers</string>
 </resources>

@@ -19,14 +19,16 @@ import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import spa.app.pool.PoolEntryScreen
+import spa.app.ui.theme.SpaTheme
 
 @RunWith(AndroidJUnit4::class)
 class ClickableChecksTest {
     @get:Rule val compose = createComposeRule()
 
     @Test
-    fun placeholderScreenPasses() {
-        compose.setContent { PlaceholderScreen() }
+    fun poolScreenPasses() {
+        compose.setContent { SpaTheme { PoolEntryScreen("TRK 1701d", {}, {}, {}, onBack = {}) } }
         ClickableChecks.assertClickablesAccessible(compose)
     }
 

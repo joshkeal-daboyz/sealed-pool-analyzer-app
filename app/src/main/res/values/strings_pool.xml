@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pool_paste_label">Paste your pool</string>
+    <string name="pool_paste_hint">ManaBox CSV, a list with counts, or collector numbers</string>
+    <string name="pool_analyze">Analyze pool</string>
+</resources>
