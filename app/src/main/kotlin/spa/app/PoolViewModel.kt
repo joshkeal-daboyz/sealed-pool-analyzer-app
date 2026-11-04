@@ -19,8 +19,16 @@ fun interface Importer {
     suspend fun import(text: String, format: PoolFormat?, source: PoolSource): ImportOutcome
 }
 
+/** Imports a document the system picker gave. Skeleton for SPA-017's red tests. */
+interface FileImporter {
+    fun displayName(uri: android.net.Uri): String
+
+    suspend fun import(uri: android.net.Uri, source: PoolSource): ImportOutcome
+}
+
 /** Holds the pool's [state] and the Pool screen's pasted text, and runs imports. */
-class PoolViewModel(private val importer: Importer) : ViewModel() {
+class PoolViewModel(private val importer: Importer, private val files: FileImporter? = null) :
+    ViewModel() {
     private val mutableState = MutableStateFlow<PoolUiState>(PoolUiState.NoPool)
     private val mutableText = MutableStateFlow("")
     private var running: Job? = null
@@ -28,12 +36,24 @@ class PoolViewModel(private val importer: Importer) : ViewModel() {
 
     val state: StateFlow<PoolUiState> = mutableState.asStateFlow()
 
+    /** Skeleton for SPA-017's red tests: never set yet. */
+    val currentPool: StateFlow<PoolUiState.Loaded?> = MutableStateFlow(null)
+
+    /** Skeleton for SPA-017's red tests: never set yet. */
+    val chosenFormat: StateFlow<PoolFormat?> = MutableStateFlow(null)
+
     /** The text in the paste box. Kept across a failed import; cleared by [startNewPool]. */
     val pastedText: StateFlow<String> = mutableText.asStateFlow()
 
     fun onTextChange(text: String) {
         mutableText.value = text
     }
+
+    /** Skeleton for SPA-017's red tests: does nothing yet. */
+    fun onFormatChoose(format: PoolFormat?) = Unit.also { format.hashCode() }
+
+    /** Skeleton for SPA-017's red tests: does nothing yet. */
+    fun analyzeFile(uri: android.net.Uri) = Unit.also { "$uri $files".hashCode() }
 
     /** "New pool": the paste box starts empty, not filled with the current pool. */
     fun startNewPool() {

@@ -104,6 +104,9 @@ fun AnalyzeButton(enabled: Boolean, onClick: () -> Unit, modifier: Modifier = Mo
     }
 }
 
+/** How long typing must pause before "Detected: <format>" updates. Skeleton for SPA-017. */
+const val DETECT_PAUSE_MS = 300L
+
 private const val MIN_LINES = 3
 private const val MAX_LINES = 8
 private const val PRIMARY_HEIGHT = 64
