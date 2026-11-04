@@ -12,6 +12,11 @@ class RebuildBudgetTest {
     }
 
     @Test
+    fun `exactly 60 seconds with CI true fails, since the budget is under 60 seconds`() {
+        assertFailsWith<AssertionError> { assertRebuildBudget(60.seconds, "true") }
+    }
+
+    @Test
     fun `59 seconds with CI true passes`() {
         assertRebuildBudget(59.seconds, "true")
     }
