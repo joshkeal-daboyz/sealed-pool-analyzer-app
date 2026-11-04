@@ -13,7 +13,6 @@ android {
 
     defaultConfig {
         applicationId = "spa.app"
-        // core calls Files.readString and Files.writeString, which Android has from API 33.
         minSdk = 33
         targetSdk = 36
         versionCode = 1
@@ -24,6 +23,9 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
+        // Android's java.nio.file.Files has no readString or writeString at any API level; core
+        // calls them, so desugaring rewrites those calls inside the APK, core's classes included.
+        isCoreLibraryDesugaringEnabled = true
     }
 
     buildFeatures { compose = true }
@@ -112,6 +114,7 @@ androidComponents {
 }
 
 dependencies {
+    coreLibraryDesugaring(libs.desugar.jdk.libs.nio)
     implementation(project(":core"))
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
