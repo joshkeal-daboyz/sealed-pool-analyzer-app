@@ -1,9 +1,19 @@
 package spa.core.intake
 
+import kotlin.io.path.readText
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.int
+import kotlinx.serialization.json.jsonArray
+import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
+import spa.core.sim.ExpectedUnresolved
+import spa.core.sim.FixtureManifest
+import spa.core.sim.poolFixturesDir
+import spa.core.sim.trkIndex
 
 class CollectorListParserTest {
     private val file = intakeResource("collector-mixed.txt")
@@ -63,6 +73,57 @@ class CollectorListParserTest {
             result.reasons(),
         )
         assertEquals(listOf("syn 7s" to 1), result.counts())
+    }
+
+    private fun assertPicardLine(line: String) {
+        val result = CollectorListParser.parse("$line\n", trkIndex)
+
+        assertEquals(1, result.pool.entries.size, line)
+        assertEquals(1, result.pool.totalCount, line)
+        assertEquals(listOf("trk 1701D" to 1), result.counts(), line)
+        assertEquals(emptyList(), result.unresolved, line)
+    }
+
+    @Test fun `the line 1701d resolves to trk 1701D`() = assertPicardLine("1701d")
+
+    @Test fun `the line 1701D resolves to trk 1701D`() = assertPicardLine("1701D")
+
+    @Test fun `the line TRK 1701d resolves to trk 1701D`() = assertPicardLine("TRK 1701d")
+
+    @Test fun `the line trk 1701d resolves to trk 1701D`() = assertPicardLine("trk 1701d")
+
+    @Test
+    fun `trk-collector-bad-number-01 still parses as its golden and manifest say`() {
+        val file = "trk-collector-bad-number-01.txt"
+        val entry = FixtureManifest.load(poolFixturesDir).fixtures.single { it.file == file }
+        val golden =
+            Json.parseToJsonElement(
+                    poolFixturesDir.resolveSibling("golden").resolve("$file.json").readText()
+                )
+                .jsonObject
+        val goldenPool = golden.getValue("pool").jsonObject
+        val goldenUnresolved =
+            goldenPool.getValue("unresolved").jsonArray.map {
+                val line = it.jsonObject
+                ExpectedUnresolved(
+                    line.getValue("line").jsonPrimitive.int,
+                    line.getValue("reason").jsonPrimitive.content,
+                )
+            }
+
+        val result = CollectorListParser.parse(poolFixturesDir.resolve(file).readText(), trkIndex)
+
+        assertEquals(goldenPool.getValue("entries").jsonPrimitive.int, result.pool.entries.size)
+        assertEquals(entry.expectedCards, result.pool.totalCount)
+        assertEquals(
+            golden.getValue("metrics").jsonObject.getValue("totalCards").jsonPrimitive.int,
+            result.pool.totalCount,
+        )
+        assertEquals(entry.expectedUnresolved, goldenUnresolved)
+        assertEquals(
+            entry.expectedUnresolved,
+            result.unresolved.map { ExpectedUnresolved(it.lineNumber, it.reason.code) },
+        )
     }
 
     @Test

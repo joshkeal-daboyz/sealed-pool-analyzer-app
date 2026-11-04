@@ -17,7 +17,7 @@ class CardIndex(
     val cards: List<Card> = printings.map { it.card }.distinctBy { it.oracleId }
 
     private val byId = printings.associateBy { it.scryfallId }
-    private val bySetAndNumber = printings.associateBy { it.setCode to it.collectorNumber }
+    private val bySetAndNumber = printings.associateBy { numberKey(it.setCode, it.collectorNumber) }
     private val bySet = printings.groupBy { it.setCode }
     private val byFullName = keyed(cards) { listOf(it.name) }
     private val byFaceName = keyed(cards) { card -> card.faces.map { it.name } }
@@ -32,9 +32,12 @@ class CardIndex(
      */
     fun byName(name: String): Card? = nameKey(name).let { byFullName[it] ?: byFaceName[it] }
 
-    /** The printing of set [setCode] with collector number [number], or null. */
+    /**
+     * The printing of set [setCode] with collector number [number], or null. Both match ignoring
+     * letter case, so `1701d` finds `1701D`; the printing keeps its printed number.
+     */
     fun byCollectorNumber(setCode: String, number: String): Printing? =
-        bySetAndNumber[setCode.lowercase(Locale.ROOT) to number]
+        bySetAndNumber[numberKey(setCode, number)]
 
     /** The printings of one loaded set, in search order; empty for a set not in this index. */
     fun printings(setCode: String): List<Printing> = bySet[setCode.lowercase(Locale.ROOT)].orEmpty()
@@ -56,6 +59,10 @@ class CardIndex(
         /** The lookup key for a name: trimmed, lowercase, curly apostrophes made straight. */
         internal fun nameKey(name: String): String =
             name.trim().replace('’', '\'').replace('‘', '\'').lowercase(Locale.ROOT)
+
+        /** The lookup key for a set code and collector number: both lowercase. */
+        private fun numberKey(setCode: String, number: String): Pair<String, String> =
+            setCode.lowercase(Locale.ROOT) to number.lowercase(Locale.ROOT)
 
         private fun keyed(cards: List<Card>, names: (Card) -> List<String>): Map<String, Card> {
             val map = mutableMapOf<String, Card>()
