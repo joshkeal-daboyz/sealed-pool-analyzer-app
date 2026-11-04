@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import spa.app.PoolUiState
 import spa.app.ui.SpaTopBar
 import spa.app.ui.theme.LocalSpaColors
 
@@ -12,6 +13,7 @@ import spa.app.ui.theme.LocalSpaColors
 @Composable
 fun PairDetailScreen(
     pair: String,
+    pool: PoolUiState.Loaded?,
     onBack: () -> Unit,
     onAbout: () -> Unit,
     modifier: Modifier = Modifier,

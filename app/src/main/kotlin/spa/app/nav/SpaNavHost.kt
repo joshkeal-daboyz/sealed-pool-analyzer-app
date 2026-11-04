@@ -49,6 +49,7 @@ fun SpaNavHost(
         ) { entry ->
             PairDetailScreen(
                 pair = entry.arguments?.getString(Routes.PAIR_ARG).orEmpty(),
+                pool = null,
                 onBack = { navController.popBackStack() },
                 onAbout = app::toAbout,
             )
