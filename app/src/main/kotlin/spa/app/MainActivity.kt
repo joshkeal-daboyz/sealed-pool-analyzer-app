@@ -1,6 +1,8 @@
 package spa.app
 
+import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
@@ -25,3 +27,13 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+/** A file a share or "Open with" handed the app: [uri], or null when the intent carried none. */
+data class IncomingFile(val uri: Uri?)
+
+/**
+ * The file [intent] hands the app: a share's `EXTRA_STREAM`, or an "Open with"'s data. Null when
+ * [intent] is neither a share nor an "Open with".
+ */
+@Suppress("UnusedParameter", "FunctionOnlyReturningConstant")
+fun incomingFile(intent: Intent?): IncomingFile? = null

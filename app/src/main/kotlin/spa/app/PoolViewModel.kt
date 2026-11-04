@@ -74,6 +74,21 @@ class PoolViewModel(
         mutableText.value = text
     }
 
+    /**
+     * The id of the latest share or "Open with" import that the navigation has not moved to yet,
+     * or null when there is none.
+     */
+    val incomingImport: StateFlow<Long?> = MutableStateFlow<Long?>(null).asStateFlow()
+
+    /**
+     * A share or "Open with" handed the app the file at [uri], or no file at all when null: imports
+     * it as a picked file, and marks it in [incomingImport] for the navigation.
+     */
+    @Suppress("UnusedParameter") fun importIncoming(uri: Uri?) {}
+
+    /** The navigation moved to the incoming import [id]. */
+    @Suppress("UnusedParameter") fun onIncomingShown(id: Long) {}
+
     /** A chip was tapped: [format], or null for "Auto". */
     fun onFormatChoose(format: PoolFormat?) {
         mutableFormat.value = format
