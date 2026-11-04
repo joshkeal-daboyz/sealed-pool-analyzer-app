@@ -56,6 +56,17 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1
+        },
+        "gihwr": {
+          "description": "Win-rate grades only: the card's 17Lands game-in-hand win rate, 0 to 1.",
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "games": {
+          "description": "Win-rate grades only: the number of games the win rate is over.",
+          "type": "integer",
+          "minimum": 0
         }
       }
     }
