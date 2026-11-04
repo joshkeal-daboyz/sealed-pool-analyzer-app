@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="pool_heading">Add your pool</string>
+    <string name="pool_intro">Open a ManaBox CSV, or paste a list.</string>
+    <string name="pool_open_file">Open file</string>
+    <string name="pool_or">or</string>
     <string name="pool_paste_label">Paste your pool</string>
     <string name="pool_paste_hint">ManaBox CSV, a list with counts, or collector numbers</string>
     <string name="pool_analyze">Analyze pool</string>
+
+    <!-- Format chooser chips, in order; the other three are the format names. -->
+    <string name="pool_format_auto">Auto</string>
+    <!-- %1$s is a format name. -->
+    <string name="pool_detected">Detected: %1$s</string>
+    <string name="pool_chosen">Reading as %1$s (chosen)</string>
+
+    <!-- Error cards. <source> is the file name, or pool_source_pasted. -->
+    <string name="pool_source_pasted">the pasted text</string>
+    <string name="pool_error_empty_title">This file is empty</string>
+    <string name="pool_error_empty_body">%1$s has no cards in it.</string>
+    <string name="pool_error_not_a_pool_title">This doesn\'t look like a pool</string>
+    <!-- %1$d is the number of unread lines, %2$s the source. -->
+    <string name="pool_error_not_a_pool_body">None of the %1$d lines in %2$s is a trk card.</string>
+    <string name="pool_error_not_a_pool_no_lines_body">%1$s isn\'t a ManaBox CSV, a list with counts, or a collector-number list.</string>
+    <string name="pool_error_wrong_set_title">This pool is from another set</string>
+    <string name="pool_error_wrong_set_body">Every card in %1$s is from a set other than trk. This app reads Star Trek (trk) and its bonus sheet (sds) only.</string>
+    <string name="pool_error_unreadable_title">Couldn\'t read this file</string>
+    <string name="pool_error_unreadable_body">%1$s couldn\'t be opened as text. Try exporting it again, or paste its contents.</string>
+    <string name="pool_error_data_missing_title">Card data is missing</string>
+    <string name="pool_error_data_missing_body">The app\'s trk card data didn\'t load. Reinstall the app.</string>
+    <!-- %1$d is the number of unread lines. -->
+    <string name="pool_error_show_all">Show all %1$d lines</string>
+
+    <!-- An unread line in an error card: "Line <n>", the text, then the reason. -->
+    <string name="pool_line_number">Line %1$d</string>
+    <!-- %1$s is the reason in words, %2$s its code. -->
+    <string name="pool_line_reason">%1$s (%2$s)</string>
+    <string name="pool_reason_unknown_name">No trk or sds card has this name</string>
+    <string name="pool_reason_unknown_collector_number">No trk or sds card has this collector number</string>
+    <string name="pool_reason_wrong_set">This card is from another set</string>
 </resources>

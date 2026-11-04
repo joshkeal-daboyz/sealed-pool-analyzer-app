@@ -29,7 +29,7 @@ class SpaTiming(
         log(FIRST_SCREEN_SHOWN)
     }
 
-    /** "Analyze pool" was tapped. */
+    /** "Analyze pool" was tapped, or the picker gave a file. */
     fun importConfirmed() = log(IMPORT_CONFIRMED)
 
     /** Results drew in its loaded state for [import]. Logged once per distinct [import]. */
