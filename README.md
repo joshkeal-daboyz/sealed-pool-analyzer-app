@@ -55,9 +55,59 @@ cli/build/install/spa/bin/spa validate-brief fixtures/briefs/trk.json --set trk
 cli/build/install/spa/bin/spa fetch-set trk --companions sds
 ```
 
+## Android app
+
+The `app` module builds the Android app, a debug APK signed with the build machine's debug key. It needs the JDK and the Android SDK in [Toolchain](#toolchain).
+
+**Build.** From the repository root:
+
+```bash
+./gradlew :app:assembleDebug
+```
+
+This writes `app/build/outputs/apk/debug/app-debug.apk`.
+
+**Test.** The app's JVM tests (Compose UI tests and snapshot tests under Robolectric, with no emulator or phone) run with:
+
+```bash
+./gradlew :app:verifyRoborazziDebug
+```
+
+The gate runs them too, as its `ui-tests` step.
+
+**Install on a phone.** Android blocks apps that do not come from a store until you allow them. Pick one route.
+
+- Copy the file over. Copy `app-debug.apk` to the phone (over USB, Google Drive, or email to yourself) and tap it in the Files app (or Chrome's downloads). When Android asks, allow the app that opened it: Settings > Apps > Special app access > Install unknown apps > Files (or Chrome) > Allow. Menu names differ slightly by manufacturer. If Google Play Protect warns that the app is from an unknown developer, choose "Install anyway". You can turn the permission off again afterwards.
+- Install over USB with `adb`. On the phone, turn on USB debugging: Settings > About phone > tap Build number seven times, then Settings > System > Developer options > USB debugging. Connect the cable and accept the "Allow USB debugging" prompt on the phone; `adb devices` should list the phone as `device`. Then:
+
+  ```bash
+  adb install -r app/build/outputs/apk/debug/app-debug.apk
+  ```
+
+**No account, no key, no network.** The app needs no account and no API key, and it has no network permission. To check the last, list the APK's permissions with `aapt2` from the SDK build tools the first build installed (`ls "$ANDROID_HOME/build-tools"` shows the version; use yours in place of `36.0.0`):
+
+```bash
+"$ANDROID_HOME/build-tools/36.0.0/aapt2" dump permissions app/build/outputs/apk/debug/app-debug.apk
+```
+
+`android.permission.INTERNET` is not in the list.
+
 ## Toolchain
 
 **JDK.** JDK 21 is required, on `PATH` or in `JAVA_HOME`. On Windows, `winget install EclipseAdoptium.Temurin.21.JDK` installs it (from an administrator prompt); a shell opened before the install may still see an old `java` stub, so set `JAVA_HOME` to `C:\Program Files\Eclipse Adoptium\jdk-21...` if `java -version` does not report 21. Nothing else needs installing: the committed Gradle wrapper (`./gradlew`) downloads Gradle itself. On Windows, run every command below in Git Bash.
+
+**Android SDK.** The app needs the Android SDK command-line tools, installed on their own from https://developer.android.com/studio ("Command line tools only", unpacked so that `%LOCALAPPDATA%\Android\Sdk\cmdline-tools\latest\bin` holds `sdkmanager`) or through Android Studio (Settings > Languages & Frameworks > Android SDK > SDK Tools > "Android SDK Command-line Tools (latest)"). Set the user environment variable `ANDROID_HOME` to the SDK folder, `%LOCALAPPDATA%\Android\Sdk`, and add its `cmdline-tools\latest\bin`, `platform-tools`, and `emulator` folders to your user `PATH`. A terminal opened before you set them does not see the new variables, so close every terminal and open a new one. Then install the packages, and accept the SDK licenses yourself with `sdkmanager --licenses`, reading each one and answering `y`:
+
+```bash
+sdkmanager.bat --install "platform-tools" "emulator" "system-images;android-36;google_apis;x86_64"
+sdkmanager.bat --licenses
+```
+
+Git Bash needs the `.bat` on `sdkmanager`; PowerShell does not. Gradle downloads the SDK platform and build tools the app asks for on its first build, once the licenses are accepted. `ANDROID_HOME` must be visible in Git Bash, where the gate runs; in a new Git Bash window, this prints a path and two versions:
+
+```bash
+echo "$ANDROID_HOME" && adb version && sdkmanager.bat --version
+```
 
 **Running the gate.** From the repository root:
 
