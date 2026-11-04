@@ -40,6 +40,11 @@ android {
                 val fixtures = rootProject.file("fixtures")
                 it.inputs.dir(fixtures).withPropertyName("fixtures")
                 it.systemProperty("spa.fixtures", fixtures.absolutePath)
+                // The About screen's attribution test reads the README's "Card data" section.
+                it.inputs
+                    .file(rootProject.file("README.md"))
+                    .withPropertyName("readme")
+                    .withPathSensitivity(PathSensitivity.RELATIVE)
                 // Robolectric reaches into FileDescriptor internals, which Java 21 keeps closed.
                 it.jvmArgs(
                     "--add-opens=java.base/jdk.internal.access=ALL-UNNAMED",
