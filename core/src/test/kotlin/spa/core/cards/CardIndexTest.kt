@@ -1,5 +1,6 @@
 package spa.core.cards
 
+import java.util.Locale
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
@@ -137,6 +138,56 @@ class CardIndexTest {
         assertNull(syn.byCollectorNumber("syn", "26"))
         assertNull(syn.byCollectorNumber("trk", "1"))
     }
+
+    private fun assertPicard(setCode: String, number: String) {
+        val trk = CardIndex.load(fixturesDir, "trk")
+        val picard = assertNotNull(trk.byCollectorNumber(setCode, number), "$setCode $number")
+
+        assertEquals("4d9fcb2a-b4fa-4990-861c-789926052104", picard.scryfallId)
+        assertEquals("trk", picard.setCode)
+        assertEquals("1701D", picard.collectorNumber)
+    }
+
+    @Test
+    fun `byCollectorNumber finds trk 1701D from trk and 1701d`() = assertPicard("trk", "1701d")
+
+    @Test
+    fun `byCollectorNumber finds trk 1701D from trk and 1701D`() = assertPicard("trk", "1701D")
+
+    @Test
+    fun `byCollectorNumber finds trk 1701D from TRK and 1701d`() = assertPicard("TRK", "1701d")
+
+    @Test
+    fun `byCollectorNumber finds trk 1701D from TRK and 1701D`() = assertPicard("TRK", "1701D")
+
+    private fun assertEveryNumberFoundInAnyCase(code: String) {
+        val index = CardIndex.load(fixturesDir, code)
+        val printings = index.printings(code)
+
+        assertTrue(printings.isNotEmpty(), code)
+        printings.forEach { printing ->
+            val number = printing.collectorNumber
+            assertSame(printing, index.byCollectorNumber(code, number.uppercase(Locale.ROOT)))
+            assertSame(printing, index.byCollectorNumber(code, number.lowercase(Locale.ROOT)))
+        }
+        assertEquals(
+            printings.size,
+            printings.map { it.collectorNumber.lowercase(Locale.ROOT) }.distinct().size,
+            code,
+        )
+    }
+
+    @Test
+    fun `every trk printing is found by its number in either case, with no collision`() =
+        assertEveryNumberFoundInAnyCase("trk")
+
+    @Test
+    fun `every sds printing is found by its number in either case, with no collision`() =
+        assertEveryNumberFoundInAnyCase("sds")
+
+    @Test
+    fun `every syn printing is found by its number in either case, with no collision`() =
+        assertEveryNumberFoundInAnyCase("syn")
 
     @Test
     fun `printings lists one set and is empty for a set not loaded`() {

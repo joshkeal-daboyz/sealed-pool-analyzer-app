@@ -266,4 +266,18 @@ class AnalyzeCommandTest {
         assertEquals(ExitCode.USAGE, analyze("--set", "trk").exit)
         assertEquals(ExitCode.USAGE, analyze(pool, pool, "--set", "trk").exit)
     }
+
+    @Test
+    fun `a typed collector number in lower case resolves to its printing`() {
+        val file = writeFile(temp, "picard.txt", "TRK 1701d\n")
+        val run = analyze(file, "--set", "trk")
+
+        assertEquals(ExitCode.OK, run.exit)
+        val json = run.json()
+        val pool = json.getValue("pool").jsonObject
+        assertEquals(1, pool.getValue("entries").jsonPrimitive.int)
+        assertEquals(0, pool.getValue("unresolved").jsonArray.size)
+        val metrics = json.getValue("metrics").jsonObject
+        assertEquals(1, metrics.getValue("totalCards").jsonPrimitive.int)
+    }
 }
