@@ -20,4 +20,70 @@
     <string name="results_reading">Reading your pool…</string>
     <string name="results_reading_description">Reading your pool</string>
     <string name="results_new_pool">New pool</string>
+
+    <!-- Problems. -->
+    <string name="results_problems">Problems</string>
+    <string name="results_all_clear">Every line read. Kit check passed.</string>
+    <plurals name="results_lines_not_read">
+        <item quantity="one">%d line not read. The numbers below leave it out.</item>
+        <item quantity="other">%d lines not read. The numbers below leave them out.</item>
+    </plurals>
+    <string name="results_wrong_set_note">Some cards are from another set. This app reads trk and its sds bonus sheet only.</string>
+    <string name="results_skip_to_numbers">Skip to numbers</string>
+    <string name="results_line_number">Line %1$d</string>
+    <!-- A kit warning's range: "<actual>, expected <min> to <max>". -->
+    <string name="results_kit_range">%1$d, expected %2$d to %3$d</string>
+
+    <!-- %1$d is the baseline's kit count. -->
+    <string name="results_legend">Typical: the median of %1$d simulated trk pools, with the middle 80%% (10th to 90th percentile).</string>
+    <string name="results_typical_range">typical %1$d (%2$d–%3$d)</string>
+    <string name="results_typical_median">typical %1$d</string>
+    <string name="results_below_typical">below typical</string>
+    <string name="results_above_typical">above typical</string>
+
+    <!-- Pool at a glance. -->
+    <string name="results_glance">Pool at a glance</string>
+    <string name="results_total_cards">Total cards</string>
+    <string name="results_nonland_cards">Nonland cards</string>
+    <string name="results_basic_lands">Basic lands</string>
+    <string name="results_nonbasic_lands">Nonbasic lands</string>
+    <string name="results_removal">Removal</string>
+    <string name="results_interaction">Interaction</string>
+    <string name="results_fixing_sources">Fixing sources</string>
+
+    <!-- Colour pairs. %2$s is the typical line. -->
+    <string name="results_pairs">Colour pairs</string>
+    <string name="results_pairs_sorted">Sorted by cards in the pair</string>
+    <plurals name="results_pair_cards">
+        <item quantity="one">%1$d card, %2$s</item>
+        <item quantity="other">%1$d cards, %2$s</item>
+    </plurals>
+    <plurals name="results_pair_creatures">
+        <item quantity="one">%1$d creature, %2$s</item>
+        <item quantity="other">%1$d creatures, %2$s</item>
+    </plurals>
+
+    <!-- Cards per colour. %1$d is the value, %2$s the typical line. -->
+    <string name="results_colours">Cards per colour</string>
+    <string name="results_colour_cards">Cards %1$d, %2$s</string>
+    <string name="results_colour_playables">Playables %1$d, %2$s</string>
+    <string name="results_colour_creatures">Creatures %1$d, %2$s</string>
+    <string name="results_colour_removal">Removal %1$d, %2$s</string>
+    <string name="results_colour_interaction">Interaction %1$d, %2$s</string>
+    <!-- By rarity: %1$s is the rarity word, %2$d the value, %3$s the typical line. -->
+    <string name="results_rarity_cards">%1$s cards %2$d, %3$s</string>
+    <string name="results_rarity_playables">%1$s playables %2$d, %3$s</string>
+    <string name="results_rarity_common">Common</string>
+    <string name="results_rarity_uncommon">Uncommon</string>
+    <string name="results_rarity_rare">Rare</string>
+    <string name="results_rarity_mythic">Mythic</string>
+    <string name="results_collapsed">Collapsed</string>
+    <string name="results_expanded">Expanded</string>
+
+    <!-- Fixing sources. -->
+    <string name="results_no_fixing">No fixing sources</string>
+    <plurals name="results_fixing_copies">
+        <item quantity="one">%d copy</item>
+        <item quantity="other">%d copies</item>
+    </plurals>
 </resources>
