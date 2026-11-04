@@ -100,30 +100,35 @@ abstract class GatePlugin @Inject constructor(private val listeners: BuildEvents
                 )
             }
         }
+        if (isApp) {
+            wireApp(project.path, steps)
+            return
+        }
         steps.format.configure {
             it.dependsOn(project.tasks.named { name -> name == "ktfmtCheck" })
         }
-        val lintTasks = if (isApp) setOf("detekt", "lintDebug") else setOf("detekt")
-        steps.lint.configure { it.dependsOn(project.tasks.named { name -> name in lintTasks }) }
-        val compileTasks =
-            if (isApp) setOf("assembleDebug", "compileDebugUnitTestKotlin")
-            else setOf("classes", "testClasses")
+        steps.lint.configure { it.dependsOn(project.tasks.named { name -> name == "detekt" }) }
         steps.compile.configure {
-            it.dependsOn(project.tasks.named { name -> name in compileTasks })
+            it.dependsOn(project.tasks.named { name -> name == "classes" || name == "testClasses" })
         }
-        if (isApp) {
-            // The app's JVM tests are Compose UI and snapshot tests: the ui-tests step runs them,
-            // in Roborazzi's verify mode.
-            steps.uiTests.configure {
-                it.dependsOn(project.tasks.named { name -> name == "verifyRoborazziDebug" })
-            }
-        } else {
-            steps.unitTests.configure { it.dependsOn(project.tasks.withType(Test::class.java)) }
-        }
-        val koverReport = if (isApp) "koverXmlReportDebug" else "koverXmlReport"
+        steps.unitTests.configure { it.dependsOn(project.tasks.withType(Test::class.java)) }
         steps.coverage.configure {
-            it.dependsOn(project.tasks.named { name -> name == koverReport })
+            it.dependsOn(project.tasks.named { name -> name == "koverXmlReport" })
         }
+    }
+
+    /**
+     * The app's step tasks, named by path: filtering the app's tasks by name would create every
+     * task AGP registers, and AGP 9.5's release Compose Preview task fails when created. The app's
+     * JVM tests are Compose UI and snapshot tests, so the ui-tests step runs them, in Roborazzi's
+     * verify mode, and the unit-tests step does not.
+     */
+    private fun wireApp(path: String, steps: StepTasks) {
+        steps.format.configure { it.dependsOn(":ktfmtCheck") }
+        steps.lint.configure { it.dependsOn(":detekt", ":lintDebug") }
+        steps.compile.configure { it.dependsOn(":assembleDebug", ":compileDebugUnitTestKotlin") }
+        steps.uiTests.configure { it.dependsOn(":verifyRoborazziDebug") }
+        steps.coverage.configure { it.dependsOn(":koverXmlReportDebug") }
     }
 
     private fun testSources(
