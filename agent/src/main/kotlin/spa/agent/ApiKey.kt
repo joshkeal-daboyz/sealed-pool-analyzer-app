@@ -10,9 +10,10 @@ object ApiKey {
 
     /**
      * The key from [environment], or a [MissingApiKeyException] saying `ANTHROPIC_API_KEY is not
-     * set` when it is absent or blank.
+     * set` when it is absent or blank. The caller passes the environment (`System.getenv()` in
+     * production), so tests never read the real one.
      */
-    fun require(environment: Map<String, String> = System.getenv()): String {
+    fun require(environment: Map<String, String>): String {
         val key = environment[VARIABLE]
         if (key.isNullOrBlank()) throw MissingApiKeyException("$VARIABLE is not set")
         return key

@@ -87,12 +87,16 @@ object GradeFiles {
         }
     }
 
+    /** The entry's setCode and collectorNumber, or null when either is not a string. */
     private fun cardKey(grade: JsonElement): Pair<String, String>? {
-        val entry = grade as? JsonObject ?: return null
-        val setCode = (entry["setCode"] as? JsonPrimitive)?.takeIf { it.isString } ?: return null
-        val number = (entry["collectorNumber"] as? JsonPrimitive)?.takeIf { it.isString }
-        return number?.let { setCode.content to it.content }
+        val entry = grade as? JsonObject
+        val setCode = stringField(entry, "setCode")
+        val number = stringField(entry, "collectorNumber")
+        return if (setCode != null && number != null) setCode to number else null
     }
+
+    private fun stringField(entry: JsonObject?, name: String): String? =
+        (entry?.get(name) as? JsonPrimitive)?.takeIf { it.isString }?.content
 
     /** Runs [block], reporting a serialization failure as one problem on the whole document. */
     private fun <T> documentStep(what: String, block: () -> T): T =
