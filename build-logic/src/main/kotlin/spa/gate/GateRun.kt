@@ -44,7 +44,11 @@ class GateRun {
             GateStep.entries.map { step ->
                 val result =
                     when {
-                        stopped == null || step.ordinal < stopped.ordinal -> VerdictJson.PASS
+                        stopped == null -> VerdictJson.PASS
+                        // A step before the stop that never finished (its tools were still waiting
+                        // on an earlier task) did not pass.
+                        step.ordinal < stopped.ordinal ->
+                            if (step in passed) VerdictJson.PASS else VerdictJson.NOT_RUN
                         step == stopped -> VerdictJson.FAIL
                         else -> VerdictJson.NOT_RUN
                     }

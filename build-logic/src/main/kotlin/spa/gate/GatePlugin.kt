@@ -47,7 +47,21 @@ abstract class GatePlugin @Inject constructor(private val listeners: BuildEvents
         val ticket = ticketProvider(project)
         steps.coverage.configure { it.ticket.set(ticket) }
         steps.dependencies.configure { it.ticket.set(ticket) }
-        steps.uiTests.configure { it.hasAppModule = project.findProject(":app") != null }
+        val app = project.findProject(APP)
+        steps.uiTests.configure { task ->
+            task.hasAppModule = app != null
+            if (app != null) {
+                task.results =
+                    GateUnitTestsTask.ResultSource(
+                        File(app.projectDir, APP_TEST_RESULTS),
+                        TEST_SOURCE_DIRS.map {
+                            RepoPaths.relative(project.rootDir.path, File(app.projectDir, it).path)
+                        },
+                        "./gradlew :testDebugUnitTest -Proborazzi.test.verify=true",
+                    )
+                task.snapshotSummary = File(app.projectDir, APP_SNAPSHOT_SUMMARY)
+            }
+        }
 
         project.allprojects { wireProject(it, steps, service) }
         val buildLogic = project.gradle.includedBuilds.firstOrNull { it.name == BUILD_LOGIC }
@@ -72,15 +86,26 @@ abstract class GatePlugin @Inject constructor(private val listeners: BuildEvents
         steps: StepTasks,
         service: Provider<GateService>,
     ) {
+        val isApp = project.path == APP
         project.tasks.configureEach { task ->
-            val step = stepOf(task) ?: return@configureEach
+            val step = stepOf(task, isApp) ?: return@configureEach
             service.get().register(task.path, GateService.TaskInfo(step, project.projectDir))
-            step.previous?.let { task.mustRunAfter(steps.of(it)) }
+            // Android Lint reads the compiled classes of the app and of core, so while an app
+            // exists every compile task runs after the format step instead of waiting for the lint
+            // step that needs it. A compile error found before lint finishes is reported as
+            // compile.
+            val hasApp = project.rootProject.findProject(APP) != null
+            val after = if (hasApp && step == GateStep.COMPILE) GateStep.FORMAT else step.previous
+            after?.let { task.mustRunAfter(steps.of(it)) }
             if (step == GateStep.COMPILE) {
                 task.logging.addStandardErrorListener(
                     StandardOutputListener { text -> service.get().capture(task.path, text) }
                 )
             }
+        }
+        if (isApp) {
+            wireApp(project.path, steps)
+            return
         }
         steps.format.configure {
             it.dependsOn(project.tasks.named { name -> name == "ktfmtCheck" })
@@ -95,24 +120,42 @@ abstract class GatePlugin @Inject constructor(private val listeners: BuildEvents
         }
     }
 
+    /**
+     * The app's step tasks, named by path: filtering the app's tasks by name would create every
+     * task AGP registers, and AGP 9.5's release Compose Preview task fails when created. The app's
+     * JVM tests are Compose UI and snapshot tests, so the ui-tests step runs them, in Roborazzi's
+     * verify mode, and the unit-tests step does not.
+     */
+    private fun wireApp(path: String, steps: StepTasks) {
+        steps.format.configure { it.dependsOn("$path:ktfmtCheck") }
+        steps.lint.configure { it.dependsOn("$path:detekt", "$path:lintDebug") }
+        steps.compile.configure {
+            it.dependsOn("$path:assembleDebug", "$path:compileDebugUnitTestKotlin")
+        }
+        steps.uiTests.configure { it.dependsOn("$path:verifyRoborazziDebug") }
+        steps.coverage.configure { it.dependsOn("$path:koverXmlReportDebug") }
+    }
+
     private fun testSources(
         project: Project,
         buildLogicDir: File?,
     ): List<GateUnitTestsTask.ResultSource> {
         val root = project.rootDir.path
         val mainBuild =
-            project.allprojects.flatMap { p ->
-                val roots = TEST_SOURCE_DIRS.map {
-                    RepoPaths.relative(root, File(p.projectDir, it).path)
+            project.allprojects
+                .filter { it.path != APP }
+                .flatMap { p ->
+                    val roots = TEST_SOURCE_DIRS.map {
+                        RepoPaths.relative(root, File(p.projectDir, it).path)
+                    }
+                    p.tasks.withType(Test::class.java).map { test ->
+                        GateUnitTestsTask.ResultSource(
+                            test.reports.junitXml.outputLocation.get().asFile,
+                            roots,
+                            "./gradlew ${test.path}",
+                        )
+                    }
                 }
-                p.tasks.withType(Test::class.java).map { test ->
-                    GateUnitTestsTask.ResultSource(
-                        test.reports.junitXml.outputLocation.get().asFile,
-                        roots,
-                        "./gradlew ${test.path}",
-                    )
-                }
-            }
         val gateBuild = buildLogicDir?.let { dir ->
             GateUnitTestsTask.ResultSource(
                 File(dir, "build/test-results/test"),
@@ -136,12 +179,13 @@ abstract class GatePlugin @Inject constructor(private val listeners: BuildEvents
     }
 
     /** Which step a tool task belongs to, by the names the plugins give their tasks. */
-    private fun stepOf(task: Task): GateStep? =
+    private fun stepOf(task: Task, isApp: Boolean): GateStep? =
         when {
             task.name.startsWith("ktfmtCheck") -> GateStep.FORMAT
             task.name.startsWith("detekt") -> GateStep.LINT
+            isApp && task.name.startsWith("lint") -> GateStep.LINT
             task.name.startsWith("compile") -> GateStep.COMPILE
-            task is Test -> GateStep.UNIT_TESTS
+            task is Test -> if (isApp) GateStep.UI_TESTS else GateStep.UNIT_TESTS
             KOVER_REPORT.matches(task.name) -> GateStep.COVERAGE
             else -> null
         }
@@ -180,6 +224,9 @@ abstract class GatePlugin @Inject constructor(private val listeners: BuildEvents
     private companion object {
         const val GROUP = "gate"
         const val BUILD_LOGIC = "build-logic"
+        const val APP = ":app"
+        const val APP_TEST_RESULTS = "build/test-results/testDebugUnitTest"
+        const val APP_SNAPSHOT_SUMMARY = "build/test-results/roborazzi/debug/results-summary.json"
         val TEST_SOURCE_DIRS = listOf("src/test/kotlin", "src/test/java")
         val KOVER_REPORT = Regex("^kover(Xml|Html|Binary)Report.*|^koverVerify.*|^koverLog.*")
     }

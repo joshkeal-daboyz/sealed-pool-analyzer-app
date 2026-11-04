@@ -102,6 +102,39 @@ class CoverageTest {
     }
 
     @Test
+    fun `app sources are covered, against the app's debug-variant Kover report`() {
+        assertEquals(
+            listOf("app/src/main/kotlin/spa/app/MainActivity.kt"),
+            Coverage.touchedMainFiles(
+                listOf("app/src/main/kotlin/spa/app/MainActivity.kt", "app/src/test/kotlin/X.kt")
+            ),
+        )
+        assertEquals(
+            "app/build/reports/kover/reportDebug.xml",
+            Coverage.reportPath("app/src/main/kotlin/spa/app/PlaceholderScreen.kt"),
+        )
+    }
+
+    @Test
+    fun `a touched app file below the threshold fails, naming it`() {
+        val failure =
+            Coverage.failures(
+                    listOf(
+                        TouchedSource(
+                            "app/src/main/kotlin/spa/app/MainActivity.kt",
+                            "spa/app/MainActivity.kt",
+                        )
+                    ),
+                    mapOf("spa/app/MainActivity.kt" to LineCoverage(covered = 1, missed = 3)),
+                    70.0,
+                    "r",
+                )
+                .single()
+        assertEquals("app/src/main/kotlin/spa/app/MainActivity.kt", failure.file)
+        assertEquals("Line coverage 25% is below the ticket threshold 70%.", failure.message)
+    }
+
+    @Test
     fun `one failure per touched file below the threshold, giving both percentages`() {
         val coverage = Coverage.parseKoverXml(koverXml)
         val touched =

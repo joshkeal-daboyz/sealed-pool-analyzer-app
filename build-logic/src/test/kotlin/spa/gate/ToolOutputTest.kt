@@ -19,6 +19,57 @@ class ToolOutputTest {
     }
 
     @Test
+    fun `reads Android Lint errors with file and line, skipping warnings`() {
+        // Shape copied from a real AGP 9.5 lint-results-debug.xml, explanations trimmed.
+        val xml =
+            """
+            <?xml version="1.0" encoding="UTF-8"?>
+            <issues format="6" by="lint 9.5.0">
+                <issue
+                    id="OldTargetApi"
+                    severity="Warning"
+                    message="Not targeting the latest versions of Android."
+                    category="Correctness">
+                    <location
+                        file="D:\repo\app\build.gradle.kts"
+                        line="18"
+                        column="9"/>
+                </issue>
+                <issue
+                    id="ContentDescription"
+                    severity="Error"
+                    message="Missing `contentDescription` attribute on image"
+                    category="Accessibility">
+                    <location
+                        file="D:\repo\app\src\main\res\layout\scratch.xml"
+                        line="2"
+                        column="2"/>
+                </issue>
+            </issues>
+            """
+                .trimIndent()
+        assertEquals(
+            listOf(
+                Located(
+                    "D:\\repo\\app\\src\\main\\res\\layout\\scratch.xml",
+                    2,
+                    "[ContentDescription] Missing `contentDescription` attribute on image",
+                )
+            ),
+            ToolOutput.androidLintErrors(xml),
+        )
+    }
+
+    @Test
+    fun `names the Android Lint report of a lint task`() {
+        assertEquals(
+            "build/reports/lint-results-debug.xml",
+            ToolOutput.androidLintReport("lintDebug"),
+        )
+        assertEquals("build/reports/lint-results.xml", ToolOutput.androidLintReport("lint"))
+    }
+
+    @Test
     fun `reads detekt checkstyle findings`() {
         val xml =
             """

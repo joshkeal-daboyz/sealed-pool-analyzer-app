@@ -8,7 +8,7 @@ The gate is code, not a model. It runs on every Developer push, locally through 
 2. Lint and static analysis, including accessibility lint for Compose screens once the app module exists.
 3. Compile.
 4. Unit tests for every module, not only the files the ticket touched.
-5. Compose UI tests and snapshot tests for the screens the ticket's test plan names. A snapshot that differs from its stored baseline is red unless the ticket updates the baseline on purpose and the change note says so.
+5. Compose UI tests and snapshot tests: the app's JVM tests (`app/src/test`), run under Robolectric with no emulator by `./gradlew :app:verifyRoborazziDebug`, which compares every Roborazzi snapshot with its committed baseline in `app/src/test/snapshots`. The step's note says how many UI tests and snapshots ran. A failing UI test is red with its file and line; a snapshot that differs from its stored baseline, or has none, is red and names the snapshot. The gate never records or updates a baseline: that is `./gradlew :app:recordRoborazziDebug`, run only when the ticket updates the baseline on purpose and the change note says so.
 6. Coverage threshold on the files the ticket touched. Set per ticket by the Architect; never lowered by a Developer. It covers the main sources of `core` (`core/src/main/kotlin`) and `cli` (`cli/src/main/kotlin`), each file against its own module's Kover report.
 7. Dependency audit: no dependency the ticket did not name in `scope`.
 
@@ -32,6 +32,8 @@ A Developer reads `failures` and nothing else. The Architect appends a one-line 
 
 ## Status
 
-The script does not exist yet. The first ticket of goal G-001 creates it, with the Kotlin toolchain, and proves it runs green on an empty `core` module both locally and in CI. Until then, nothing else dispatches.
+The script is `pipeline/gate/run.sh`; the steps are the `spa.gate` plugin in `build-logic/`. It runs the same way locally (pre-push hook) and in CI (`.github/workflows/gate.yml`, on `ubuntu-latest` with its preinstalled Android SDK).
 
-Suggested tools for the Kotlin core, to be confirmed by that ticket: ktlint or ktfmt for formatting, detekt for static analysis, Gradle `test` for JUnit, Kover for coverage, and a snapshot library such as Paparazzi once the app module exists.
+Tools: ktfmt (format), detekt and, for `:app`, Android Lint with its Accessibility category as errors (`app/lint.xml`) (lint), Gradle `test` with JUnit (unit tests for `core`, `cli`, and `build-logic`), Robolectric and Roborazzi (ui-tests, for `:app`), Kover (coverage, which also covers `app/src/main/kotlin` against `:app`'s debug-variant report), and the catalog diff (dependencies).
+
+Running it locally needs JDK 21 (`JAVA_HOME`) and the Android SDK (`ANDROID_HOME`).

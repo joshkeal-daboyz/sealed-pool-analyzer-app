@@ -4,6 +4,9 @@ import com.ncorti.ktfmt.gradle.tasks.KtfmtFormatTask
 plugins {
     // Loaded here so every project shares one Kotlin plugin classloader with ktfmt and detekt.
     alias(libs.plugins.kotlin.jvm) apply false
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.kotlin.compose) apply false
+    alias(libs.plugins.roborazzi) apply false
     alias(libs.plugins.ktfmt)
     alias(libs.plugins.detekt)
     id("spa.gate")

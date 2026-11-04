@@ -38,6 +38,9 @@ object JUnitResults {
             }
         }
 
+    /** How many test cases a report holds, passed or not. */
+    fun testCount(xml: String): Int = Xml.parse(xml).all("testcase").size
+
     /** File name and line of the first stack frame whose method belongs to [className]. */
     fun locate(className: String, stackTrace: String): Pair<String, Int>? {
         val outer = className.substringBefore('$')

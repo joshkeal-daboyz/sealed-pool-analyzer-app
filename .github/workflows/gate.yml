@@ -24,6 +24,14 @@ jobs:
           java-version: "21"
           cache: gradle
 
+      # The app module builds against the Android SDK that ubuntu-latest preinstalls, with its
+      # licenses already accepted. The Android Gradle plugin finds it through $ANDROID_HOME and
+      # downloads any missing platform or build tools itself. Nothing here accepts a license.
+      - name: Show the Android SDK
+        run: |
+          test -n "$ANDROID_HOME" || { echo "ANDROID_HOME is not set on this runner" >&2; exit 1; }
+          echo "ANDROID_HOME=$ANDROID_HOME"
+
       - name: Run the gate
         env:
           # A pull request checks out a detached merge commit, so name the head branch for the
@@ -38,3 +46,12 @@ jobs:
           name: gate-verdict
           path: gate-verdict.json
           if-no-files-found: error
+
+      # When a snapshot differs, the actual and compare images show how.
+      - name: Upload snapshot differences
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: snapshot-differences
+          path: app/build/outputs/roborazzi/
+          if-no-files-found: ignore
