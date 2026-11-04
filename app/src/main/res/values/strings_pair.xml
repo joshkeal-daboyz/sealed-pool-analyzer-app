@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The reminder line when the pool has unresolved lines. -->
+    <plurals name="pair_lines_not_read">
+        <item quantity="one">This pool has %d line not read; these numbers leave it out.</item>
+        <item quantity="other">This pool has %d lines not read; these numbers leave them out.</item>
+    </plurals>
+
+    <!-- Lands: "<n> <basic land name>", such as "6 Plains". -->
+    <string name="pair_lands">Lands</string>
+    <string name="pair_land">%1$d %2$s</string>
+
+    <!-- Cards. -->
+    <string name="pair_cards_heading">Cards</string>
+    <string name="pair_cards">Cards</string>
+    <string name="pair_creatures">Creatures</string>
+    <string name="pair_noncreatures">Noncreatures</string>
+    <string name="pair_removal">Removal</string>
+    <string name="pair_interaction">Interaction</string>
+    <string name="pair_fixing_sources">Fixing sources</string>
+
+    <!-- Curve. %2$s is the typical line. -->
+    <string name="pair_curve">Curve</string>
+    <string name="pair_mana_value">Mana value %1$d</string>
+    <!-- The last bucket holds its mana value and everything above it. -->
+    <string name="pair_mana_value_top">Mana value %1$d+</string>
+    <plurals name="pair_curve_creatures">
+        <item quantity="one">%1$d creature, %2$s</item>
+        <item quantity="other">%1$d creatures, %2$s</item>
+    </plurals>
+    <string name="pair_curve_other">%1$d other, %2$s</string>
+
+    <!-- Splash candidates. %2$s is the typical line. -->
+    <string name="pair_splash">Splash candidates</string>
+    <plurals name="pair_splash_count">
+        <item quantity="one">%1$d splash candidate, %2$s</item>
+        <item quantity="other">%1$d splash candidates, %2$s</item>
+    </plurals>
+    <string name="pair_no_splash">No splash candidates</string>
+    <!-- A candidate's colour name, then its reason in words: "Green, removal". -->
+    <string name="pair_splash_details">%1$s, %2$s</string>
+    <string name="pair_reason_removal">removal</string>
+    <string name="pair_reason_rare_or_mythic">rare or mythic</string>
+</resources>
