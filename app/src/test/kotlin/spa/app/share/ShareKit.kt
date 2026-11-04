@@ -10,8 +10,6 @@ import android.os.ParcelFileDescriptor
 import android.provider.OpenableColumns
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.ComposeTestRule
-import androidx.test.core.app.ActivityScenario
-import androidx.test.platform.app.InstrumentationRegistry
 import java.io.File
 import java.io.FileNotFoundException
 import java.util.concurrent.ConcurrentHashMap
@@ -19,6 +17,7 @@ import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 import org.robolectric.Robolectric
 import org.robolectric.RuntimeEnvironment
+import org.robolectric.android.controller.ActivityController
 import spa.app.MainActivity
 import spa.app.testing.TestImports
 
@@ -137,22 +136,39 @@ object Shares {
         }
 }
 
-/** Hands [intent] to the running activity as Android does when the app is already open. */
-fun ActivityScenario<MainActivity>.deliver(intent: Intent) {
-    onActivity { InstrumentationRegistry.getInstrumentation().callActivityOnNewIntent(it, intent) }
-}
-
 /**
- * Presses system back once and says whether that left the app: true only when the screen on show
- * was the whole back stack.
+ * The real [MainActivity], driven as Android drives it: [launch] starts it with an intent,
+ * [deliver] hands it a new one while it is open (pausing it around `onNewIntent`, as the system
+ * does), and [recreate] re-creates it as a rotation would.
  */
-fun ActivityScenario<MainActivity>.backLeavesTheApp(): Boolean {
-    var finishing = false
-    onActivity {
-        it.onBackPressedDispatcher.onBackPressed()
-        finishing = it.isFinishing
+class SharedApp private constructor(private var controller: ActivityController<MainActivity>) {
+    /**
+     * Presses system back once and says whether that left the app: true only when the screen on
+     * show was the whole back stack.
+     */
+    fun backLeavesTheApp(): Boolean {
+        val activity = controller.get()
+        activity.onBackPressedDispatcher.onBackPressed()
+        return activity.isFinishing
     }
-    return finishing
+
+    /** Hands [intent] to the running Activity as Android does when the app is already open. */
+    fun deliver(intent: Intent) {
+        controller.newIntent(intent)
+    }
+
+    fun recreate() {
+        controller = controller.recreate()
+    }
+
+    fun close() {
+        if (!controller.get().isDestroyed) controller.pause().stop().destroy()
+    }
+
+    companion object {
+        fun launch(intent: Intent): SharedApp =
+            SharedApp(Robolectric.buildActivity(MainActivity::class.java, intent).setup())
+    }
 }
 
 /** Waits for [text] to appear anywhere, as an import runs off the main thread. */

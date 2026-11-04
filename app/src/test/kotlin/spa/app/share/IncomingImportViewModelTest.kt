@@ -53,50 +53,54 @@ class IncomingImportViewModelTest {
     private val vm = PoolViewModel(Importer { _, _, _ -> error("no paste here") }, files)
 
     @Test
-    fun anIncomingFileIsImportedUnderItsName() = runTest(dispatcher) {
-        val uri = Uri.parse("content://x/doc/trk-manabox-01.csv")
-        vm.importIncoming(uri)
-        assertEquals(PoolUiState.Loading(PoolSource.File("trk-manabox-01.csv")), vm.state.value)
-        advanceUntilIdle()
-        assertEquals(listOf(uri), imported)
-        val loaded = vm.state.value as PoolUiState.Loaded
-        assertEquals(PoolSource.File("trk-manabox-01.csv"), loaded.source)
-        assertEquals(loaded, vm.currentPool.value)
-    }
+    fun anIncomingFileIsImportedUnderItsName() =
+        runTest(dispatcher) {
+            val uri = Uri.parse("content://x/doc/trk-manabox-01.csv")
+            vm.importIncoming(uri)
+            assertEquals(PoolUiState.Loading(PoolSource.File("trk-manabox-01.csv")), vm.state.value)
+            advanceUntilIdle()
+            assertEquals(listOf(uri), imported)
+            val loaded = vm.state.value as PoolUiState.Loaded
+            assertEquals(PoolSource.File("trk-manabox-01.csv"), loaded.source)
+            assertEquals(loaded, vm.currentPool.value)
+        }
 
     @Test
-    fun anIntentWithNoFileIsUnreadable() = runTest(dispatcher) {
-        vm.importIncoming(null)
-        advanceUntilIdle()
-        val failed = vm.state.value as PoolUiState.ImportFailed
-        assertEquals(ImportFailureKind.UNREADABLE, failed.kind)
-        assertEquals(emptyList<Uri>(), imported)
-        assertNull(vm.currentPool.value)
-    }
+    fun anIntentWithNoFileIsUnreadable() =
+        runTest(dispatcher) {
+            vm.importIncoming(null)
+            advanceUntilIdle()
+            val failed = vm.state.value as PoolUiState.ImportFailed
+            assertEquals(ImportFailureKind.UNREADABLE, failed.kind)
+            assertEquals(emptyList<Uri>(), imported)
+            assertNull(vm.currentPool.value)
+        }
 
     @Test
-    fun eachIncomingImportIsMarkedUntilTheNavigationShowsIt() = runTest(dispatcher) {
-        assertNull(vm.incomingImport.value)
-        vm.importIncoming(Uri.parse("content://x/doc/a.csv"))
-        val first = checkNotNull(vm.incomingImport.value)
-        vm.importIncoming(Uri.parse("content://x/doc/b.csv"))
-        val second = checkNotNull(vm.incomingImport.value)
-        assertNotEquals(first, second)
+    fun eachIncomingImportIsMarkedUntilTheNavigationShowsIt() =
+        runTest(dispatcher) {
+            assertNull(vm.incomingImport.value)
+            vm.importIncoming(Uri.parse("content://x/doc/a.csv"))
+            val first = checkNotNull(vm.incomingImport.value)
+            vm.importIncoming(Uri.parse("content://x/doc/b.csv"))
+            val second = checkNotNull(vm.incomingImport.value)
+            assertNotEquals(first, second)
 
-        // Showing an older one leaves the newer one marked.
-        vm.onIncomingShown(first)
-        assertEquals(second, vm.incomingImport.value)
-        vm.onIncomingShown(second)
-        assertNull(vm.incomingImport.value)
-        advanceUntilIdle()
-    }
+            // Showing an older one leaves the newer one marked.
+            vm.onIncomingShown(first)
+            assertEquals(second, vm.incomingImport.value)
+            vm.onIncomingShown(second)
+            assertNull(vm.incomingImport.value)
+            advanceUntilIdle()
+        }
 
     @Test
-    fun theLatestIncomingImportWins() = runTest(dispatcher) {
-        vm.importIncoming(Uri.parse("content://x/doc/trk-manabox-01.csv"))
-        vm.importIncoming(Uri.parse("content://x/doc/trk-manabox-02.csv"))
-        advanceUntilIdle()
-        val loaded = vm.state.value as PoolUiState.Loaded
-        assertEquals(PoolSource.File("trk-manabox-02.csv"), loaded.source)
-    }
+    fun theLatestIncomingImportWins() =
+        runTest(dispatcher) {
+            vm.importIncoming(Uri.parse("content://x/doc/trk-manabox-01.csv"))
+            vm.importIncoming(Uri.parse("content://x/doc/trk-manabox-02.csv"))
+            advanceUntilIdle()
+            val loaded = vm.state.value as PoolUiState.Loaded
+            assertEquals(PoolSource.File("trk-manabox-02.csv"), loaded.source)
+        }
 }

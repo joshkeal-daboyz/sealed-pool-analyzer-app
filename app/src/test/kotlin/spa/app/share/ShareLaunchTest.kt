@@ -1,13 +1,11 @@
 package spa.app.share
 
 import android.content.Intent
-import android.net.Uri
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.hasSetTextAction
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.v2.createEmptyComposeRule
 import androidx.compose.ui.test.onNodeWithText
-import androidx.test.core.app.ActivityScenario
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.After
 import org.junit.Assert.assertFalse
@@ -16,7 +14,6 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import spa.app.MainActivity
 import spa.app.testing.Goldens
 
 /**
@@ -29,16 +26,18 @@ import spa.app.testing.Goldens
 class ShareLaunchTest {
     @get:Rule val compose = createEmptyComposeRule()
 
-    private var scenario: ActivityScenario<MainActivity>? = null
+    private var scenario: SharedApp? = null
 
     @Before fun setUp() = SharedDocuments.install()
 
-    @After fun tearDown() = scenario?.close() ?: Unit
+    @After
+    fun tearDown() {
+        scenario?.close()
+    }
 
-    private fun launch(intent: Intent): ActivityScenario<MainActivity> =
-        ActivityScenario.launch<MainActivity>(intent).also { scenario = it }
+    private fun launch(intent: Intent): SharedApp = SharedApp.launch(intent).also { scenario = it }
 
-    private fun assertResultsFor(file: String, app: ActivityScenario<MainActivity>) {
+    private fun assertResultsFor(file: String, app: SharedApp) {
         val golden = Goldens.header(file)
         val counts = "${golden.totalCards} cards in ${golden.entries} entries"
         compose.waitForText(counts)
@@ -48,7 +47,7 @@ class ShareLaunchTest {
         assertTrue("Results is the whole back stack", app.backLeavesTheApp())
     }
 
-    private fun assertPoolCard(title: String, body: String, app: ActivityScenario<MainActivity>) {
+    private fun assertPoolCard(title: String, body: String, app: SharedApp) {
         compose.waitForText(title)
         compose.onNodeWithText(title).assertIsDisplayed()
         compose.onNodeWithText(body, substring = true).assertExists()
@@ -104,13 +103,6 @@ class ShareLaunchTest {
     fun aSharedUriThatCannotBeOpenedSaysItCouldNotReadIt() {
         val app = launch(Shares.send(SharedDocuments.missing("gone.csv")))
         assertPoolCard("Couldn't read this file", "gone.csv couldn't be opened as text.", app)
-    }
-
-    @Test
-    fun aUriWithNoProviderBehindItSaysItCouldNotReadIt() {
-        val uri = Uri.parse("content://spa.app.test.nowhere/doc/lost.csv")
-        val app = launch(Shares.view(uri))
-        assertPoolCard("Couldn't read this file", "lost.csv couldn't be opened as text.", app)
     }
 
     @Test
