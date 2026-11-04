@@ -1,0 +1,19 @@
+{
+  "request": {
+    "model": "claude-opus-5-5",
+    "maxTokens": 1024,
+    "system": "You grade Magic: The Gathering cards for sealed, relative to their set.",
+    "userMessage": "Grade He's Dead, Jim (trk 114)."
+  },
+  "response": {
+    "model": "claude-opus-5-5",
+    "text": "{\"score\": 3.5, \"confidence\": 0.75}",
+    "stopReason": "end_turn",
+    "usage": {
+      "inputTokens": 118,
+      "outputTokens": 38,
+      "cacheReadInputTokens": 96,
+      "cacheCreationInputTokens": 0
+    }
+  }
+}

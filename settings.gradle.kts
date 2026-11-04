@@ -33,4 +33,6 @@ include(":core")
 
 include(":cli")
 
+include(":agent")
+
 include(":app")

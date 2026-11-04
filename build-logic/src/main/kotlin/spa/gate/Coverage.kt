@@ -22,7 +22,12 @@ data class TouchedSource(val path: String, val reportKey: String)
 object Coverage {
     /** The main source roots the step covers, each in a module with its own Kover report. */
     val MAIN_SOURCES =
-        listOf("core/src/main/kotlin/", "cli/src/main/kotlin/", "app/src/main/kotlin/")
+        listOf(
+            "core/src/main/kotlin/",
+            "cli/src/main/kotlin/",
+            "app/src/main/kotlin/",
+            "agent/src/main/kotlin/",
+        )
 
     private const val KOVER_REPORT = "build/reports/kover/report.xml"
 

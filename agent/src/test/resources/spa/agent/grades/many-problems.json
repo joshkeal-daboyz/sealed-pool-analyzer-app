@@ -1,0 +1,18 @@
+{
+  "header": {
+    "setCode": "trk",
+    "source": "GUESS",
+    "provenance": "",
+    "createdAt": "yesterday"
+  },
+  "grades": [
+    {
+      "name": "Battle-Scarred Survivalist",
+      "collectorNumber": "95",
+      "setCode": "trk",
+      "score": 2.3,
+      "confidence": 1.5
+    }
+  ],
+  "notes": "not allowed"
+}

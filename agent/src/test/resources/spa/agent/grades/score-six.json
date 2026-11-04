@@ -1,0 +1,17 @@
+{
+  "header": {
+    "setCode": "trk",
+    "source": "MODEL",
+    "provenance": "claude-opus-5-5, prompt v1, 2026-11-04",
+    "createdAt": "2026-11-04T12:00:00Z"
+  },
+  "grades": [
+    {
+      "name": "Battle-Scarred Survivalist",
+      "collectorNumber": "95",
+      "setCode": "trk",
+      "score": 6,
+      "confidence": 0.6
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "request": {
+    "model": "claude-opus-5-5",
+    "maxTokens": 1024,
+    "system": "You grade Magic: The Gathering cards for sealed, relative to their set.",
+    "userMessage": "Grade Battle-Scarred Survivalist (trk 95)."
+  },
+  "response": {
+    "model": "claude-opus-5-5",
+    "text": "{\"score\": 2.5, \"confidence\": 0.6}",
+    "stopReason": "end_turn",
+    "usage": {
+      "inputTokens": 120,
+      "outputTokens": 40,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0
+    }
+  }
+}
