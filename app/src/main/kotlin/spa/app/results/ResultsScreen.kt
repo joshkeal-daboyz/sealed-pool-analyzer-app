@@ -31,16 +31,6 @@ import spa.app.ui.SpaTopBar
 import spa.app.ui.theme.LocalSpaColors
 import spa.core.metrics.ColorPair
 
-/** What Results can ask of the app. */
-data class ResultsActions(
-    val onNewPool: () -> Unit,
-    val onAbout: () -> Unit,
-    /** A pair row was tapped: open Pair detail for it. */
-    val onPair: (ColorPair) -> Unit = {},
-    /** The loaded state has drawn (timing). */
-    val onLoadedShown: (PoolUiState.Loaded) -> Unit = {},
-)
-
 /** [ResultsScreen] with its actions passed one by one; pair rows do nothing. */
 @Composable
 fun ResultsScreen(

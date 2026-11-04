@@ -1,6 +1,7 @@
 package spa.app.results
 
 import android.content.Context
+import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.produceState
@@ -59,13 +60,21 @@ fun rememberBundledBaseline(): Baseline? {
                         try {
                             BundledBaseline.load(context)
                         } catch (e: IOException) {
-                            null
+                            unreadable(e)
                         } catch (e: IllegalArgumentException) {
                             // Not a baseline: kotlinx.serialization's errors are this type.
-                            null
+                            unreadable(e)
                         }
                     }
             }
         }
     return baseline
 }
+
+/** Logs why the bundled baseline could not be read; Results then shows its header only. */
+private fun unreadable(cause: Exception): Baseline? {
+    Log.w(LOG_TAG, "cannot read the bundled baseline", cause)
+    return null
+}
+
+private const val LOG_TAG = "spa.results"
