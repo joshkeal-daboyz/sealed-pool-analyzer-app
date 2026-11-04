@@ -57,7 +57,7 @@ abstract class GatePlugin @Inject constructor(private val listeners: BuildEvents
                         TEST_SOURCE_DIRS.map {
                             RepoPaths.relative(project.rootDir.path, File(app.projectDir, it).path)
                         },
-                        "./gradlew :testDebugUnitTest -Proborazzi.test.verify=true",
+                        UiTests.reproduceCommand(app.path),
                     )
                 task.snapshotSummary = File(app.projectDir, APP_SNAPSHOT_SUMMARY)
             }

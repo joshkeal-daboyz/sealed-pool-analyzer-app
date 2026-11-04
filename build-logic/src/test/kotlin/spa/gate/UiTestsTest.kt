@@ -12,7 +12,7 @@ class UiTestsTest {
         GateUnitTestsTask.ResultSource(
             File("app/build/test-results/testDebugUnitTest"),
             listOf("app/src/test/kotlin", "app/src/test/java"),
-            "./gradlew :app:testDebugUnitTest -Proborazzi.test.verify=true",
+            UiTests.reproduceCommand(":app"),
         )
 
     /**
@@ -80,6 +80,24 @@ class UiTestsTest {
                 "app/src/test/snapshots/shell_placeholder.png (test shellPlaceholder). The gate " +
                 "never records baselines; if the change is intended, the ticket must say so.",
             failure.message,
+        )
+    }
+
+    @Test
+    fun `the reproduce command runs the app's tests by path in verify mode`() {
+        assertEquals(
+            "./gradlew :app:testDebugUnitTest -Proborazzi.test.verify=true",
+            UiTests.reproduceCommand(":app"),
+        )
+    }
+
+    @Test
+    fun `a differing snapshot reruns its test class by path in verify mode`() {
+        val failure = UiTests.failures(JUnitResults.parse(xml), root, source) { true }[1]
+        assertEquals(
+            "./gradlew :app:testDebugUnitTest -Proborazzi.test.verify=true " +
+                "--tests spa.app.ShellSnapshotTest",
+            failure.reproduce,
         )
     }
 
