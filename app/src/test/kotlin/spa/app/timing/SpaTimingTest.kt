@@ -1,6 +1,7 @@
 package spa.app.timing
 
 import androidx.compose.ui.test.hasSetTextAction
+import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.isRoot
 import androidx.compose.ui.test.junit4.v2.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
@@ -8,15 +9,18 @@ import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextReplacement
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import kotlinx.coroutines.CompletableDeferred
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.shadows.ShadowLog
+import spa.app.Importer
 import spa.app.PoolViewModel
 import spa.app.SpaApp
 import spa.app.SpaApplication
+import spa.app.importing.ImportOutcome
 import spa.app.testing.RecordingSink
 import spa.app.testing.TestImports
 
@@ -96,6 +100,29 @@ class SpaTimingTest {
     }
 
     @Test
+    fun resultsShownWaitsForTheLoadedStateNotLoading() {
+        val outcome = CompletableDeferred<ImportOutcome>()
+        val held = Importer { _, _, _ -> outcome.await() }
+        compose.setContent { SpaApp(PoolViewModel(held), timing) }
+        compose.waitForIdle()
+        compose.onNode(hasSetTextAction()).performTextReplacement("TRK 1701d")
+        compose.onNodeWithText("Analyze pool").performClick()
+        compose.waitUntil(TIMEOUT) {
+            compose.onAllNodes(hasText("Reading your pool…")).fetchSemanticsNodes().isNotEmpty()
+        }
+        compose.mainClock.advanceTimeBy(LOADING_MS)
+        compose.waitForIdle()
+        assertEquals(listOf("first-screen-shown", "import-confirmed"), sink.events)
+
+        outcome.complete(TestImports.success("TRK 1701d"))
+        awaitEvents("results-shown", 1)
+        assertEquals(
+            listOf("first-screen-shown", "import-confirmed", "results-shown"),
+            sink.events,
+        )
+    }
+
+    @Test
     fun theApplicationLogsAppCreatedToLogcat() {
         ApplicationProvider.getApplicationContext<SpaApplication>()
         val logged = ShadowLog.getLogsForTag("SpaTiming").map { it.msg }
@@ -117,5 +144,6 @@ class SpaTimingTest {
 
     private companion object {
         const val TIMEOUT = 15_000L
+        const val LOADING_MS = 1_000L
     }
 }
