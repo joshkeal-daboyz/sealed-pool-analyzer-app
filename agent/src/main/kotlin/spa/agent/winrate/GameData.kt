@@ -50,20 +50,35 @@ object GameData {
     }
 
     private fun summarise(csv: CsvReader): GameDataSummary {
-        val header = csv.next() ?: throw GameDataException("the file is empty")
-        val won = header.indexOf(WON)
-        if (won < 0) throw GameDataException("no '$WON' column")
-        val names = header.filter { it.startsWith(OPENING) }.map { it.removePrefix(OPENING) }
-        val opening = IntArray(names.size) { header.indexOf(OPENING + names[it]) }
-        val drawn = IntArray(names.size) { header.indexOf(DRAWN + names[it]) }
-        val games = IntArray(names.size)
-        val wins = IntArray(names.size)
-        var rows = 0
+        val tally = Tally(csv.next() ?: throw GameDataException("the file is empty"))
         var line = 1
-        while (true) {
-            val row = csv.next() ?: break
+        var row = csv.next()
+        while (row != null) {
             line++
-            if (row.size == 1 && row[0].isEmpty()) continue
+            // A blank line, such as one at the end of the file, is no game.
+            if (row.size != 1 || row[0].isNotEmpty()) tally.add(row, line)
+            row = csv.next()
+        }
+        return tally.summary()
+    }
+
+    /** The running counts of each card column in [header]. */
+    private class Tally(private val header: List<String>) {
+        private val won = header.indexOf(WON)
+        private val names =
+            header.filter { it.startsWith(OPENING) }.map { it.removePrefix(OPENING) }
+        private val opening = IntArray(names.size) { header.indexOf(OPENING + names[it]) }
+        private val drawn = IntArray(names.size) { header.indexOf(DRAWN + names[it]) }
+        private val games = IntArray(names.size)
+        private val wins = IntArray(names.size)
+        private var rows = 0
+
+        init {
+            if (won < 0) throw GameDataException("no '$WON' column")
+        }
+
+        /** Counts the game in [row], the file's line [line]. */
+        fun add(row: List<String>, line: Int) {
             if (row.size != header.size) {
                 throw GameDataException(
                     "line $line has ${row.size} fields, the header has ${header.size}"
@@ -72,30 +87,28 @@ object GameData {
             rows++
             val isWin = won(row[won], line)
             for (i in names.indices) {
-                if (count(row, opening[i], line) + count(row, drawn[i], line) >= 1) {
-                    games[i]++
-                    if (isWin) wins[i]++
-                }
+                val inHand = count(row, opening[i], line) + count(row, drawn[i], line) >= 1
+                if (inHand) games[i]++
+                if (inHand && isWin) wins[i]++
             }
         }
-        return GameDataSummary(
-            rows,
-            names.indices.map { CardWinRate(names[it], games[it], wins[it]) },
-        )
-    }
 
-    private fun won(value: String, line: Int): Boolean =
-        when (value) {
-            "True" -> true
-            "False" -> false
-            else -> throw GameDataException("line $line: '$WON' is '$value', not True or False")
+        fun summary() =
+            GameDataSummary(rows, names.indices.map { CardWinRate(names[it], games[it], wins[it]) })
+
+        private fun won(value: String, line: Int): Boolean =
+            when (value) {
+                "True" -> true
+                "False" -> false
+                else -> throw GameDataException("line $line: '$WON' is '$value', not True or False")
+            }
+
+        /** The count in column [index] of [row], or 0 when the file has no such column. */
+        private fun count(row: List<String>, index: Int, line: Int): Int {
+            if (index < 0) return 0
+            val value = row[index]
+            return value.toIntOrNull()
+                ?: throw GameDataException("line $line: '$value' is not a card count")
         }
-
-    /** The count in column [index] of [row], or 0 when the file has no such column. */
-    private fun count(row: List<String>, index: Int, line: Int): Int {
-        if (index < 0) return 0
-        val value = row[index]
-        return value.toIntOrNull()
-            ?: throw GameDataException("line $line: '$value' is not a card count")
     }
 }

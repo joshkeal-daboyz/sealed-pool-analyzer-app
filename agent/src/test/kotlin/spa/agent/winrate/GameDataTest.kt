@@ -101,6 +101,22 @@ class GameDataTest {
     }
 
     @Test
+    fun `a card with no drawn column counts its opening hand only, and a blank line is no game`() {
+        val text = "won,opening_hand_A\nTrue,1\nFalse,0\n\n"
+        assertEquals(
+            GameDataSummary(2, listOf(CardWinRate("A", 1, 1))),
+            GameData.read(text.byteInputStream()),
+        )
+    }
+
+    @Test
+    fun `a card count that is not a number names its line`() {
+        val text = "won,opening_hand_A,drawn_A\nTrue,1,x\n"
+        val e = assertFailsWith<GameDataException> { GameData.read(text.byteInputStream()) }
+        assertTrue("line 2" in e.message.orEmpty(), e.message)
+    }
+
+    @Test
     fun `an empty file is rejected`() {
         assertFailsWith<GameDataException> { GameData.read(ByteArrayInputStream(ByteArray(0))) }
     }

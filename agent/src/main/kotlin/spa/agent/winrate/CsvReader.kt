@@ -15,30 +15,40 @@ class CsvReader(private val reader: Reader) {
 
     /** The next record's fields, or null at the end of the input. */
     fun next(): List<String>? {
-        var c = read()
-        if (c == END) return null
+        if (peek() == END) return null
         val fields = ArrayList<String>()
+        do {
+            val end = readField()
+            fields += take()
+        } while (end == COMMA)
+        return fields
+    }
+
+    /**
+     * Reads one field into [field] and returns what ended it: [COMMA], [NEWLINE], or [END]. A `\r`
+     * right before the newline is dropped.
+     */
+    private fun readField(): Int {
         var quoted = false
-        while (true) {
-            when {
-                quoted && c == END -> {
-                    fields += take()
-                    return fields
-                }
-                quoted && c == QUOTE.code ->
-                    if (peek() == QUOTE.code) field.append(read().toChar()) else quoted = false
-                quoted -> field.append(c.toChar())
-                c == END || c == '\n'.code -> {
-                    fields += take()
-                    return fields
-                }
-                c == QUOTE.code && field.isEmpty() -> quoted = true
-                c == ','.code -> fields += take()
-                c == '\r'.code && peek() == '\n'.code -> Unit
-                else -> field.append(c.toChar())
-            }
+        var c = read()
+        while (c != END && (quoted || c !in FIELD_ENDS)) {
+            if (quoted) quoted = quotedChar(c)
+            else if (c == QUOTE && field.isEmpty()) quoted = true
+            else if (c != RETURN || peek() != NEWLINE) field.append(c.toChar())
             c = read()
         }
+        return c
+    }
+
+    /** Takes [c] inside quotes, where `""` is one quote; false when [c] closes the quotes. */
+    private fun quotedChar(c: Int): Boolean {
+        if (c != QUOTE) {
+            field.append(c.toChar())
+            return true
+        }
+        val doubled = peek() == QUOTE
+        if (doubled) field.append(read().toChar())
+        return doubled
     }
 
     /** The field read so far, and an empty buffer for the next. One-character fields are shared. */
@@ -70,7 +80,11 @@ class CsvReader(private val reader: Reader) {
     private companion object {
         const val BUFFER_SIZE = 1 shl 16
         const val END = -1
-        const val QUOTE = '"'
+        const val QUOTE = '"'.code
+        const val COMMA = ','.code
+        const val NEWLINE = '\n'.code
+        const val RETURN = '\r'.code
+        val FIELD_ENDS = intArrayOf(COMMA, NEWLINE)
         val SMALL = Array(128) { it.toChar().toString() }
     }
 }
