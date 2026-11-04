@@ -33,6 +33,10 @@ android {
             isIncludeAndroidResources = true
             all {
                 it.systemProperty("robolectric.graphicsMode", "NATIVE")
+                // Import tests compare the app's results with the committed pools and goldens.
+                val fixtures = rootProject.file("fixtures")
+                it.inputs.dir(fixtures).withPropertyName("fixtures")
+                it.systemProperty("spa.fixtures", fixtures.absolutePath)
                 // Robolectric reaches into FileDescriptor internals, which Java 21 keeps closed.
                 it.jvmArgs(
                     "--add-opens=java.base/jdk.internal.access=ALL-UNNAMED",
@@ -47,12 +51,67 @@ android {
 
 kotlin { jvmToolchain(21) }
 
+/**
+ * Copies the bundled set data from `fixtures/` into generated assets under `setdata/`, keeping each
+ * file's path below `fixtures/`. Fails, naming the file, when any of them is missing.
+ */
+abstract class CopySetData : DefaultTask() {
+    /** The repository's `fixtures/` folder. */
+    @get:Internal abstract val fixtures: DirectoryProperty
+
+    /** The files to bundle, relative to [fixtures]. */
+    @get:Input abstract val paths: ListProperty<String>
+
+    /** The same files, for up-to-date checks. */
+    @get:InputFiles
+    @get:PathSensitive(PathSensitivity.RELATIVE)
+    val sources: FileCollection
+        get() = fixtures.get().files(paths.get())
+
+    /** The generated assets folder. */
+    @get:OutputDirectory abstract val outputDir: DirectoryProperty
+
+    @TaskAction
+    fun copy() {
+        val root = fixtures.get().asFile
+        val missing = paths.get().filterNot { root.resolve(it).isFile }
+        if (missing.isNotEmpty()) {
+            throw GradleException("Set data missing: " + missing.joinToString { "fixtures/$it" })
+        }
+        val out = outputDir.get().asFile
+        out.deleteRecursively()
+        paths.get().forEach { path ->
+            root.resolve(path).copyTo(out.resolve("setdata").resolve(path), overwrite = true)
+        }
+    }
+}
+
+val bundledSets = listOf("trk", "sds")
+val scryfallFiles = listOf("cards.json", "companions.json", "set.json", "fetched-at.txt")
+
+val copySetData =
+    tasks.register<CopySetData>("copySetData") {
+        fixtures.set(rootProject.layout.projectDirectory.dir("fixtures"))
+        paths.set(
+            bundledSets.flatMap { set -> scryfallFiles.map { "scryfall/$set/$it" } } +
+                listOf("briefs/trk.json", "baselines/trk.json")
+        )
+        outputDir.set(layout.buildDirectory.dir("generated/setdata"))
+    }
+
+androidComponents {
+    onVariants { variant ->
+        variant.sources.assets?.addGeneratedSourceDirectory(copySetData, CopySetData::outputDir)
+    }
+}
+
 dependencies {
     implementation(project(":core"))
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.kotlinx.coroutines.android)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
     testImplementation(platform(libs.androidx.compose.bom))
@@ -63,6 +122,7 @@ dependencies {
     testImplementation(libs.roborazzi)
     testImplementation(libs.roborazzi.compose)
     testImplementation(libs.roborazzi.junit.rule)
+    testImplementation(libs.kotlinx.coroutines.test)
 }
 
 ktfmt { kotlinLangStyle() }
