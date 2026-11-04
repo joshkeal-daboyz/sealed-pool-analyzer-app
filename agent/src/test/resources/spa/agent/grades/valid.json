@@ -1,0 +1,38 @@
+{
+  "header": {
+    "setCode": "trk",
+    "source": "MODEL",
+    "provenance": "claude-opus-5-5, prompt v1, 2026-11-04",
+    "createdAt": "2026-11-04T12:00:00Z"
+  },
+  "grades": [
+    {
+      "name": "Battle-Scarred Survivalist",
+      "collectorNumber": "95",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "He's Dead, Jim",
+      "collectorNumber": "114",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.75
+    },
+    {
+      "name": "Suurok-Class Science Vessel",
+      "collectorNumber": "83",
+      "setCode": "trk",
+      "score": 0.0,
+      "confidence": 1.0
+    },
+    {
+      "name": "Companion Card",
+      "collectorNumber": "7",
+      "setCode": "sds",
+      "score": 5.0,
+      "confidence": 0.0
+    }
+  ]
+}

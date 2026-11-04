@@ -116,6 +116,24 @@ class CoverageTest {
     }
 
     @Test
+    fun `agent sources are covered, against the agent's own Kover report`() {
+        assertEquals(
+            listOf("agent/src/main/kotlin/spa/agent/ApiKey.kt"),
+            Coverage.touchedMainFiles(
+                listOf(
+                    "agent/src/main/kotlin/spa/agent/ApiKey.kt",
+                    "agent/src/test/kotlin/spa/agent/ApiKeyTest.kt",
+                    "agent/src/main/resources/spa/agent/grades.schema.json",
+                )
+            ),
+        )
+        assertEquals(
+            "agent/build/reports/kover/report.xml",
+            Coverage.reportPath("agent/src/main/kotlin/spa/agent/ApiKey.kt"),
+        )
+    }
+
+    @Test
     fun `a touched app file below the threshold fails, naming it`() {
         val failure =
             Coverage.failures(
