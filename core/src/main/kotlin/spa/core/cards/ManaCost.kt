@@ -10,7 +10,7 @@ import spa.core.text.ManaCost as RulesManaCost
  * they are taken out of the cost first: each adds one half to the mana value and no color.
  */
 internal object ManaCost {
-    private val halfSymbol = Regex("\\{(?:½|H[^}]*)}")
+    private val halfSymbol = Regex("\\{(?:½|H[^}]*)\\}")
     private const val HALF = 0.5
 
     /**

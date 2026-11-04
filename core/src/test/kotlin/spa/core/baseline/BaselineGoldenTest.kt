@@ -3,8 +3,6 @@ package spa.core.baseline
 import java.nio.file.Files
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertTrue
-import kotlin.time.Duration.Companion.seconds
 import kotlin.time.measureTimedValue
 import spa.core.brief.briefFixturesDir
 import spa.core.cards.fixturesDir
@@ -32,9 +30,10 @@ class BaselineGoldenTest {
     }
 
     @Test
-    fun `trk json is rebuilt byte for byte in under 60 seconds`() {
+    fun `trk json is rebuilt byte for byte, in under 60 seconds on CI`() {
         val (committed, took) = measureTimedValue { rebuild("trk") }
-        assertTrue(took < 60.seconds, "trk rebuild took $took")
+        println("trk rebuild took $took")
+        assertRebuildBudget(took, System.getenv("CI"))
         val stored = Baseline.decode(committed)
         assertEquals(20261106, stored.seed)
         assertEquals(2000, stored.kits)

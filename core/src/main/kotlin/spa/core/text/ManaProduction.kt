@@ -13,7 +13,7 @@ object ManaProduction {
     private val word = Regex("[a-z]+")
     private val addClause = Regex("\\badd ([^.\\n]*)")
     private val anyColor = Regex("\\bany (?:one )?color\\b|\\bany combination of colors\\b")
-    private val symbol = Regex("\\{([^{}]*)}")
+    private val symbol = Regex("\\{([^{}]*)\\}")
     private val treasure = Regex("\\bcreates? [^.\\n]*?\\btreasure tokens?\\b")
 
     /**
