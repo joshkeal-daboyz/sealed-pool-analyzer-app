@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- %1$s is the build's versionName. -->
+    <string name="about_version">Version %1$s</string>
+    <!-- %1$s is the date part (YYYY-MM-DD, UTC) of the bundled fetched-at.txt. -->
+    <string name="about_snapshot">Card data snapshot: %1$s</string>
+    <string name="about_card_data">Card data</string>
+    <!--
+        The README's Card data section, its first two sentences, word for word (B1; a test compares
+        them with README.md). The first about_attribution_link in it is the link to Scryfall.
+    -->
+    <string name="about_attribution">Card data comes from Scryfall and is used under Scryfall\'s terms. Sealed Pool Analyzer is unofficial Fan Content: it is not produced by, endorsed by, or affiliated with Scryfall or Wizards of the Coast, and Magic: The Gathering is a trademark of Wizards of the Coast.</string>
+    <string name="about_attribution_link" translatable="false">Scryfall</string>
+</resources>
