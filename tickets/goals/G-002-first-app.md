@@ -232,3 +232,4 @@ The owner answered the draft's eight open questions on 2026-11-03 ("2. remember"
 - 2026-11-04 SPA-019 integrated (PR #30) on attempt 2: Pair detail checked on spa-test for all ten pairs. 13 of 16 tickets integrated. Next: SPA-028, then SPA-021, SPA-022.
 - 2026-11-04 SPA-028 integrated (PR #31): README.md is a unit-test input. 14 of 16 tickets integrated. Next: SPA-021, then SPA-022.
 - 2026-11-04 SPA-021 integrated (PR #32): share and Open with, checked on spa-test. 15 of 16 tickets integrated. Next: SPA-022, the last.
+- 2026-11-04 SPA-022 integrated (PR #33) on attempt 3 after two re-plans: remembered pool, Clear pool, backup exclusion, checked on spa-test including a reboot. 16 of 16 tickets integrated. Next: the goal-level closing run on spa-test, then the owner's Pixel 6 check.
