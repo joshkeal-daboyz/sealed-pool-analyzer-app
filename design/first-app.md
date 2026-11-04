@@ -17,8 +17,70 @@ These are the Designer's calls inside G-002's scope. Each one is used below.
 5. **A failed import never touches the remembered pool.** Only a successful import replaces it.
 6. **A pool with no resolved entry is an error, not a results page.** Empty, wrong set, and not a pool are told apart by rule (see Pool screen states).
 7. **Clear pool asks once.** A confirmation dialog, because the pool may be the only copy the player has at the table.
-8. **Theme follows the system's light or dark setting, with fixed colours** (no dynamic Material You colour), so contrast and snapshot tests give the same result on every device.
+8. **The theme is always dark.** One fixed dark scheme, no dynamic Material You colour, and the system's light setting is ignored in G-002, so contrast and snapshot tests give the same result on every device. The scheme is in Visual direction.
 9. **Not shown in G-002:** `castProbability` from the engine (the goal does not ask for it and it needs wording the goal does not give). See Settled, item 4.
+
+## Visual direction
+
+Direction "B · Low light", chosen by the owner on 2026-11-03 (artboards B-Pool and B-Results on the design canvas). The values in this section are the source of truth.
+
+**Theme.** Always dark (decision 8). There is no light scheme in G-002.
+
+**Colour tokens.** Names for `SpaColors` in `SpaTheme`:
+
+| Token | Value | Used for |
+|---|---|---|
+| `ground` | `#121417` | Background. |
+| `surface` | `#1C2026` | Cards, rows, the text field. |
+| `onSurface` | `#ECEFF3` | Primary text. |
+| `onSurfaceVariant` | `#B8C0CA` | Secondary text, typical values. |
+| `muted` | `#8C96A3` | The "or" divider text, chevrons. |
+| `outline` | `#6B7480` | Button, chip, and text-field borders. The canvas drew `#4A535E`, which is 2.1 to 2.4:1 and fails the 3:1 non-text rule; `#6B7480` replaces it. |
+| `divider` | `#2E343C` | Decorative only. |
+| `accent` | `#F2B544` | Primary button fill, the Problems border and icon, the selected chip's border. |
+| `onAccent` | `#1A1406` | Text on the accent. |
+| `accentText` | `#FFE2A3` | The Problems summary line, the "below typical" / "above typical" words, selected-chip text, the Analyze button text. |
+| `selectedChip` | `#3A2E12` | Selected chip fill. |
+
+**Measured contrast** (WCAG formula, computed by script 2026-11-03; A3's test pins these):
+
+| Foreground on background | Ratio |
+|---|---|
+| `onSurface` on `ground` | 16.00 |
+| `onSurface` on `surface` | 14.18 |
+| `onSurfaceVariant` on `surface` | 8.90 |
+| `onSurfaceVariant` on `ground` | 10.04 |
+| `accentText` on `ground` | 14.64 |
+| `accentText` on `surface` | 12.97 |
+| `onAccent` on `accent` | 10.00 |
+| `accentText` on `selectedChip` | 10.55 |
+| `muted` on `ground` | 6.16 |
+| `accent` on `ground` | 10.08 |
+| `outline` on `ground` | 3.90 |
+| `outline` on `surface` | 3.45 |
+
+**Type.** Atkinson Hyperlegible (regular 400, bold 700) for everything, and Atkinson Hyperlegible Mono (400) for pasted text and unread-line text. Both are under the SIL Open Font License and are bundled in the APK as font resources (the app has no network, so no downloadable fonts). Sizes in sp:
+
+| Text | Size |
+|---|---|
+| Screen title | 20 bold |
+| Pool heading ("Add your pool") | 30 bold |
+| Section headings | 22 bold |
+| Row labels | 18 bold |
+| Secondary and typical lines | 15 to 16 |
+| Big row value | 34 bold, tabular figures |
+| Primary button | 19 bold |
+| Outlined button | 16 bold |
+
+**Shape and layout.**
+
+- Value first. A metric row and a pair row put the value large on the left, with the label, the typical line, and the outside-typical words to its right.
+- Each row is its own `surface` card (corner radius 14dp, 10dp gap between cards), not a divided list.
+- The pool header card and the Problems section have radius 18dp.
+- Primary buttons are 64dp tall, radius 16dp.
+- Format chips are pills 48dp tall.
+- The outlined buttons (New pool, Clear pool) are pills 52dp tall.
+- Problems is an outlined section (2dp `accent` border) with a warning-triangle icon beside its heading; each unread line and kit warning is a `surface` card inside it.
 
 ## Screen inventory
 
@@ -173,7 +235,7 @@ All under `app/src/main/kotlin`, package `spa.app` unless a ticket says otherwis
 **App shell**
 
 - `SpaApp`: the root composable; applies `SpaTheme`, hosts `SpaNavHost`.
-- `SpaTheme`: Material 3 `MaterialTheme` with `SpaLightColors` and `SpaDarkColors` (fixed schemes, no dynamic colour) and the default type scale in `sp`.
+- `SpaTheme`: Material 3 `MaterialTheme` with `SpaColors` (the one dark scheme in Visual direction, no dynamic colour) and the Atkinson Hyperlegible type scale in `sp`.
 - `SpaNavHost`: Navigation Compose `NavHost` with the routes in the screen inventory.
 - `SpaTopBar(title, onBack?, onAbout)`: `TopAppBar` with an optional back `IconButton` and the About `IconButton` (`Icons.Outlined.Info`).
 - `PoolViewModel` with `PoolUiState`: `NoPool`, `Loading(source)`, `Loaded(result, source, format)`, `ImportFailed(kind, source, lines)`, `DataMissing`; `ImportFailureKind`: `EMPTY`, `NOT_A_POOL`, `WRONG_SET`, `UNREADABLE`, `SAVED_POOL_UNREADABLE`. Tests drive screens through these states.
@@ -218,7 +280,7 @@ Each item names how it is checked. "UI test" means a Compose UI test on the JVM 
 
 - A1. Every node with a click action is at least 48 × 48 dp. UI test: for each screen state on the snapshot list, every node matching `hasClickAction()` asserts `assertWidthIsAtLeast(48.dp)` and `assertHeightIsAtLeast(48.dp)` (on its touch bounds).
 - A2. Every icon-only button has a content description: About icon "About", back arrow "Back". UI test: `onNodeWithContentDescription("About")` exists and is clickable on Pool, Results, and Pair detail; `"Back"` on Pair detail, About, and Pool when opened from New pool.
-- A3. Text contrast is at least 4.5:1 for body text and 3:1 for large text and icons, in light and dark. JVM unit test over `SpaLightColors` and `SpaDarkColors`: every foreground/background pair the screens use (`onSurface`/`surface`, `onSurfaceVariant`/`surface`, `onPrimary`/`primary`, `onErrorContainer`/`errorContainer`, the outside-typical tag on its background) meets the WCAG ratio.
+- A3. Text contrast is at least 4.5:1 for body text and 3:1 for large text, icons, and borders. JVM unit test over `SpaColors`: each of these pairs computes to the ratio in Visual direction's contrast table (to two decimals) and meets its threshold: `onSurface`/`ground`, `onSurface`/`surface`, `onSurfaceVariant`/`surface`, `onSurfaceVariant`/`ground`, `accentText`/`ground`, `accentText`/`surface`, `onAccent`/`accent`, `accentText`/`selectedChip`, `muted`/`ground`, `accent`/`ground` (4.5:1); `outline`/`ground`, `outline`/`surface` (3:1).
 - A4. Accessibility Test Framework checks pass. UI test: with `enableAccessibilityChecks()` (Compose UI test's ATF integration) on, each snapshot-list state renders with no ATF error (touch target, contrast, missing label, duplicate clickable).
 - A5. Text scales. UI test: at `fontScale = 2.0f` every screen state on the snapshot list has no `Text` with visual overflow (`TextLayoutResult.hasVisualOverflow` false via the `GetTextLayoutResult` semantics action), and every action named in that state's table is reachable with `performScrollTo()` and clickable. No text size is set in `dp`.
 - A6. Section headings are headings. UI test: "Add your pool", "Problems", "Pool at a glance", "Colour pairs", "Cards per colour", "Fixing sources", "Lands", "Cards", "Curve", "Splash candidates", "Card data" each have `SemanticsProperties.Heading`.
@@ -259,7 +321,7 @@ Each item names how it is checked. "UI test" means a Compose UI test on the JVM 
 
 ## Snapshot list
 
-Snapshot tests render on the JVM (no emulator), on a Pixel 6 sized surface (411 × 914 dp), light theme and font scale 1.0 unless the name says otherwise. Each name is the test's name; the ticket that builds the screen adds them. Pool data comes from the named fixture through the app's import path.
+Snapshot tests render on the JVM (no emulator), on a Pixel 6 sized surface (411 × 914 dp), font scale 1.0 unless the name says otherwise. The theme is always dark, so every snapshot is dark. Each name is the test's name; the ticket that builds the screen adds them. Pool data comes from the named fixture through the app's import path.
 
 | # | Snapshot | Fixture / setup | Why it is pinned |
 |---|---|---|---|
@@ -271,15 +333,14 @@ Snapshot tests render on the JVM (no emulator), on a Pixel 6 sized surface (411 
 | 6 | `results_loading` | Launch with remembered `trk-manabox-01.csv`, held in Loading | What launch shows first. |
 | 7 | `results_clean` | `trk-manabox-01.csv` | The main screen, all-clear problems line. |
 | 8 | `results_clean_fontScale200` | As 7, font scale 2.0 | Goal criterion 12. |
-| 9 | `results_clean_dark` | As 7, dark theme | Poor light at the table. |
-| 10 | `results_problems` | `trk-text-misspelled-01.txt` | Unresolved lines and a kit warning before the numbers. |
-| 11 | `results_problems_fontScale200` | As 10, font scale 2.0 | Long lines at large text, where wrapping breaks first. |
-| 12 | `results_wrongSetLines` | `trk-manabox-wrong-set-01.csv` | The wrong-set note and long CSV lines. |
-| 13 | `results_clearPoolDialog` | As 7, dialog open | The one destructive action. |
-| 14 | `pairDetail_WU` | `trk-manabox-01.csv`, WU | Every pair metric, curve, splash list. |
-| 15 | `pairDetail_WU_fontScale200` | As 14, font scale 2.0 | Curve rows reflowing at large text. |
-| 16 | `about` | — | Goal criterion 11. |
-| 17 | `about_fontScale200` | As 16, font scale 2.0 | The legal text at large text. |
+| 9 | `results_problems` | `trk-text-misspelled-01.txt` | Unresolved lines and a kit warning before the numbers. |
+| 10 | `results_problems_fontScale200` | As 9, font scale 2.0 | Long lines at large text, where wrapping breaks first. |
+| 11 | `results_wrongSetLines` | `trk-manabox-wrong-set-01.csv` | The wrong-set note and long CSV lines. |
+| 12 | `results_clearPoolDialog` | As 7, dialog open | The one destructive action. |
+| 13 | `pairDetail_WU` | `trk-manabox-01.csv`, WU | Every pair metric, curve, splash list. |
+| 14 | `pairDetail_WU_fontScale200` | As 13, font scale 2.0 | Curve rows reflowing at large text. |
+| 15 | `about` | — | Goal criterion 11. |
+| 16 | `about_fontScale200` | As 15, font scale 2.0 | The legal text at large text. |
 
 Snapshots capture the whole scrollable content (not just the first viewport) where the snapshot library allows; the ticket says which.
 
