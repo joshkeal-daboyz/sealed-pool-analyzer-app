@@ -26,7 +26,7 @@ data class ManaCost(
 
     companion object {
         private const val HYBRID_WEIGHT = 0.5
-        private val symbolPattern = Regex("\\{([^{}]*)}")
+        private val symbolPattern = Regex("\\{([^{}]*)\\}")
         private val allowedBetweenSymbols = Regex("[\\s/]*")
         private val variables = setOf("X", "Y", "Z")
 
