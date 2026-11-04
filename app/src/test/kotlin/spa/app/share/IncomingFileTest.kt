@@ -40,6 +40,16 @@ class IncomingFileTest {
     }
 
     @Test
+    fun aShareOfTextAloneGivesNoUri() {
+        // Shared plain text is out of scope: a share whose only content is EXTRA_TEXT has no file.
+        val intent =
+            Intent(Intent.ACTION_SEND)
+                .setType("text/csv")
+                .putExtra(Intent.EXTRA_TEXT, "Name,Set code,Quantity\nShock,trk,1")
+        assertEquals(IncomingFile(null), incomingFile(intent))
+    }
+
+    @Test
     fun anyOtherIntentIsNotAnIncomingFile() {
         assertNull(incomingFile(null))
         assertNull(incomingFile(Shares.launcher()))
