@@ -1,5 +1,7 @@
 package spa.agent.backtest
 
+import java.util.Locale
+import kotlin.math.abs
 import spa.agent.grade.GradeEntry
 import spa.agent.grade.GradeFile
 import spa.core.cards.Rarity
@@ -27,8 +29,29 @@ data class BacktestReport(
     val modelProvenance: String,
     val winRateProvenance: String,
 ) {
-    /** The report as printed, one line each. */
-    fun lines(): List<String> = TODO("SPA-032")
+    /**
+     * The report as printed: `<group>: rho <rho to 3 places or n/a>, n <n>` per group, the two
+     * provenance lines, the count of cards missing from the model file, and one line per card.
+     */
+    fun lines(): List<String> {
+        val count = missingFromModel.size
+        return groups.map { "${it.group.label}: rho ${format(it.rho)}, n ${it.n}" } +
+            "model: $modelProvenance" +
+            "winrates: $winRateProvenance" +
+            "missing from model: $count ${if (count == 1) "card" else "cards"}" +
+            missingFromModel.map { "missing: ${it.name} (${it.setCode} ${it.collectorNumber})" }
+    }
+
+    private fun format(rho: Double?): String {
+        if (rho == null) return "n/a"
+        // A rho that rounds to zero prints 0.000, never -0.000.
+        val shown = if (abs(rho) < HALF_THOUSANDTH) 0.0 else rho
+        return String.format(Locale.ROOT, "%.3f", shown)
+    }
+
+    private companion object {
+        const val HALF_THOUSANDTH = 0.0005
+    }
 }
 
 /** Scores a model grade file against a win-rate grade file by rank correlation. */
@@ -45,5 +68,38 @@ object Backtest {
         model: GradeFile,
         winRates: GradeFile,
         rarity: (setCode: String, collectorNumber: String) -> Rarity?,
-    ): BacktestReport = TODO("SPA-032")
+    ): BacktestReport {
+        val modelByCard = model.grades.associateBy(::key)
+        val (matched, missing) = winRates.grades.partition { key(it) in modelByCard }
+        val pairs = matched.map { entry -> Pair(entry, requireNotNull(modelByCard[key(entry)])) }
+        val groups =
+            BacktestGroup.entries.map { group ->
+                val members =
+                    if (group.rarity == null) pairs
+                    else
+                        pairs.filter {
+                            rarity(it.first.setCode, it.first.collectorNumber) == group.rarity
+                        }
+                result(group, members)
+            }
+        return BacktestReport(
+            groups,
+            missing,
+            model.header.provenance,
+            winRates.header.provenance,
+        )
+    }
+
+    private fun result(
+        group: BacktestGroup,
+        pairs: List<Pair<GradeEntry, GradeEntry>>,
+    ): GroupResult {
+        val rho =
+            if (pairs.size < MIN_CARDS) null
+            else Spearman.rho(pairs.map { it.first.score }, pairs.map { it.second.score })
+        return GroupResult(group, rho, pairs.size)
+    }
+
+    private fun key(entry: GradeEntry): Pair<String, String> =
+        entry.setCode.lowercase(Locale.ROOT) to entry.collectorNumber.lowercase(Locale.ROOT)
 }

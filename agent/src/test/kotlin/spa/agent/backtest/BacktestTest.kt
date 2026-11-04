@@ -14,7 +14,10 @@ class BacktestTest {
         GradeEntry("Card $number", number.toString(), set, score, 0.5)
 
     private fun file(source: GradeSource, provenance: String, vararg grades: GradeEntry) =
-        GradeFile(GradeFileHeader("tst", source, provenance, "2026-11-04T00:00:00Z"), grades.toList())
+        GradeFile(
+            GradeFileHeader("tst", source, provenance, "2026-11-04T00:00:00Z"),
+            grades.toList(),
+        )
 
     private fun model(vararg grades: GradeEntry) =
         file(GradeSource.MODEL, "claude-opus-5-5, prompt v1, 2026-11-04", *grades)
@@ -79,7 +82,10 @@ class BacktestTest {
         assertEquals(5, group(report, BacktestGroup.COMMON).n)
         assertEquals(-1.0, group(report, BacktestGroup.UNCOMMON).rho!!, 1e-12)
         assertEquals(GroupResult(BacktestGroup.RARE, null, 1), group(report, BacktestGroup.RARE))
-        assertEquals(GroupResult(BacktestGroup.MYTHIC, null, 1), group(report, BacktestGroup.MYTHIC))
+        assertEquals(
+            GroupResult(BacktestGroup.MYTHIC, null, 1),
+            group(report, BacktestGroup.MYTHIC),
+        )
         assertEquals(12, group(report, BacktestGroup.ALL).n)
         assertEquals(emptyList(), report.missingFromModel)
     }

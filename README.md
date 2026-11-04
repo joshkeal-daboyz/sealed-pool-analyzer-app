@@ -38,7 +38,7 @@ The `cli` module builds `spa`, the command line the metric engine is tested thro
 ./gradlew :cli:installDist
 ```
 
-This writes `cli/build/install/spa/bin/spa` and, for Windows, `spa.bat`. `spa --help` lists the commands. Every command reads its data from `--data <dir>`, default `fixtures` relative to the current directory, so run it from the repository root or pass `--data`. That directory holds Scryfall caches in `scryfall/<code>/`, briefs in `briefs/<code>.json`, baselines in `baselines/<code>.json`, and win-rate tables in `winrates/<code>.json`. Exit codes: 0 ok, 1 an error (a missing or unreadable file, set cache, or brief, a missing `--set`, or a network error), 2 a bad command line (no command, an unknown command, or a bad flag). Errors are one line on stderr.
+This writes `cli/build/install/spa/bin/spa` and, for Windows, `spa.bat`. `spa --help` lists the commands. Every command reads its data from `--data <dir>`, default `fixtures` relative to the current directory, so run it from the repository root or pass `--data`. That directory holds Scryfall caches in `scryfall/<code>/`, briefs in `briefs/<code>.json`, baselines in `baselines/<code>.json`, win-rate tables in `winrates/<code>.json`, and model grade files in `grades/<code>.json`. Exit codes: 0 ok, 1 an error (a missing or unreadable file, set cache, or brief, a missing `--set`, or a network error), 2 a bad command line (no command, an unknown command, or a bad flag). Errors are one line on stderr.
 
 **analyze** parses a pool file and prints one JSON document to stdout: `tool` (name and version), `set`, `pool` (the file as given, the detected or given `format`, `entries` as the count of resolved pool entries, `skippedLines`, every `unresolved` line with its `line`, `text`, and `reason`, and the brief's `kitWarnings`, each with an `expected` range written as `min` and `max`), `metrics` (the engine's numbers), and the set's `baseline`. The format is detected unless `--format manabox|text|collector` is given; `--brief <file>` replaces `briefs/<code>.json` for kit warnings. `baseline` is `null` with `--no-baseline` or when the set has no baseline file, and stderr says which. Unresolved lines and kit warnings still exit 0. Keys print in a fixed order, so the same input prints the same bytes.
 
@@ -62,6 +62,12 @@ cli/build/install/spa/bin/spa fetch-set trk --companions sds
 
 ```bash
 cli/build/install/spa/bin/spa winrates ~/Downloads/game_data_public.MSH.PremierDraft.csv.gz --set msh --dataset-date 2026-07-27
+```
+
+**grade-backtest** scores a model grade file against a win-rate grade file: `--model <file>` (default `<data>/grades/<code>.json`) and `--winrates <file>` (default `<data>/winrates/<code>.json`). Over the cards the win-rate file grades that the model file grades too, matched by set code and collector number, it computes Spearman's rho of the two scores: each list is ranked, ties taking the average of the ranks they span, and rho is the Pearson correlation of the ranks. It prints one line for `all` cards, then `common`, `uncommon`, `rare` and `mythic` (rarity from the set's Scryfall cache), each `<group>: rho <rho to 3 places>, n <cards>`; a group with fewer than 5 cards, or whose scores are all equal, prints `rho n/a`. Then the model file's provenance, the win-rate file's provenance, the count of win-rate cards missing from the model file, and one `missing: <name> (<set> <number>)` line for each, and exits 0. A missing or invalid file prints one line naming it and exits 1. It makes no network or model call.
+
+```bash
+cli/build/install/spa/bin/spa grade-backtest --set msh
 ```
 
 ## Android app

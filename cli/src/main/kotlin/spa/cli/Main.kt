@@ -8,7 +8,10 @@ import kotlin.system.exitProcess
 import spa.core.cards.HttpClientTransport
 import spa.core.cards.ScryfallSetFetcher
 
-/** The `spa` command line: `analyze`, `validate-brief`, `fetch-set`, and `winrates`. */
+/**
+ * The `spa` command line: `analyze`, `validate-brief`, `fetch-set`, `winrates`, and
+ * `grade-backtest`.
+ */
 object Main {
     /** The text `spa --help` prints. */
     val USAGE =
@@ -26,6 +29,10 @@ object Main {
         |  winrates <game-data.csv.gz> --set <code> [--data <dir>] [--dataset-date <yyyy-mm-dd>]
         |      Derive the set's win-rate grades from a 17Lands public game data file and write
         |      <data>/winrates/<code>.json. Lists the names that match no card of the set.
+        |  grade-backtest --set <code> [--model <file>] [--winrates <file>] [--data <dir>]
+        |      Print the Spearman rank correlation between a model grade file (default
+        |      <data>/grades/<code>.json) and a win-rate grade file (default
+        |      <data>/winrates/<code>.json), over all cards and by rarity.
         |
         |<data> defaults to ${DataDir.DEFAULT}. Exit codes: 0 ok, 1 error, 2 bad command line.
         |Run 'spa --help' for this text.
@@ -64,6 +71,7 @@ object Main {
                 "validate-brief" -> ValidateBriefCommand.run(rest, stdout, stderr)
                 "fetch-set" -> FetchSetCommand(fetcher).run(rest, stdout)
                 "winrates" -> WinratesCommand().run(rest, stdout)
+                "grade-backtest" -> GradeBacktestCommand.run(rest, stdout)
                 null -> usageError("no command given", stderr)
                 else -> usageError("unknown command '$command'", stderr)
             }

@@ -16,8 +16,8 @@ import org.junit.jupiter.api.io.TempDir
  * - common (1, 5, 6, 7, 8, 11, 18): win rate 1.0 3.5 2.0 2.5 2.0 3.0 1.5, ranks 1 7 3.5 5 3.5 6 2;
  *   model 1.5 4.0 2.5 2.5 2.0 3.0 1.0, ranks 2 7 4.5 4.5 3 6 1. Rank means 4. Sum of deviation
  *   products 25.75, sums of squares 27.5 and 27.5: rho = 25.75 / 27.5 = 0.936.
- * - uncommon (2, 3, 4, 9, 10, 16, 17): win rate 3.5 2.5 3.0 3.0 4.0 2.0 1.5, ranks 6 3 4.5 4.5 7 2 1;
- *   model 3.0 3.5 4.0 2.5 2.0 3.0 3.0, ranks 4 6 7 2 1 4 4. Products -10.5, squares 27.5 and 26:
+ * - uncommon (2, 3, 4, 9, 10, 16, 17): win rate 3.5 2.5 3.0 3.0 4.0 2.0 1.5, ranks 6 3 4.5 4.5 7 2
+ *   1; model 3.0 3.5 4.0 2.5 2.0 3.0 3.0, ranks 4 6 7 2 1 4 4. Products -10.5, squares 27.5 and 26:
  *   rho = -10.5 / sqrt(715) = -0.393.
  * - rare (12, 14, 15, 20) has 4 cards and mythic (13) has 1: under five, so n/a.
  * - all 19 matched cards: sum of products 401.25, squares 560.5 and 560, rho = 0.716.
@@ -68,7 +68,8 @@ class GradeBacktestCommandTest {
     @Test
     fun `without --model and --winrates it reads grades and winrates under the data directory`() {
         val data = Fixtures.synDataDir(temp.resolve("data"))
-        resource("syn-model.json").copyTo(data.resolve("grades").createDirectories().resolve("syn.json"))
+        resource("syn-model.json")
+            .copyTo(data.resolve("grades").createDirectories().resolve("syn.json"))
         resource("syn-winrates.json")
             .copyTo(data.resolve("winrates").createDirectories().resolve("syn.json"))
 
