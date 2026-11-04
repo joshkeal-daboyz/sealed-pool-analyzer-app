@@ -202,4 +202,30 @@ class BacktestTest {
         assertEquals("missing from model: 2 cards", lines[7])
         assertEquals(listOf("missing: Card 6 (tst 6)", "missing: Card 7 (tst 7)"), lines.drop(8))
     }
+
+    @Test
+    fun `the win-rate side is ranked by gihwr when present`() {
+        // Win-rate scores all 3.0 (constant), gihwr rises with the model's score: rho 1 by gihwr,
+        // undefined by score.
+        val wr =
+            (1..5).map { GradeEntry("Card $it", "$it", "tst", 3.0, 0.5, 0.50 + it / 100.0, 900) }
+        val m = (1..5).map { entry(it, it.toDouble()) }
+        val report = Backtest.run(model(*m.toTypedArray()), winRates(*wr.toTypedArray()), ::rarity)
+        assertEquals(1.0, group(report, BacktestGroup.ALL).rho!!, 1e-12)
+    }
+
+    @Test
+    fun `a win-rate entry without gihwr is ranked by its score`() {
+        // Cards 1 to 4 carry gihwr [0.51, 0.52, 0.53, 0.54] with falling scores [5, 4, 3, 2];
+        // card 5 has no gihwr and is ranked by its score 3.0. Ranking values [0.51, 0.52, 0.53,
+        // 0.54, 3.0] give ranks [1, 2, 3, 4, 5], equal to the model's, so rho is 1. Ranking by
+        // score alone ([5, 4, 3, 2, 3]) would give a negative rho.
+        val wr =
+            (1..4).map {
+                GradeEntry("Card $it", "$it", "tst", 6.0 - it, 0.5, 0.50 + it / 100.0, 900)
+            } + entry(5, 3.0)
+        val m = (1..5).map { entry(it, it.toDouble()) }
+        val report = Backtest.run(model(*m.toTypedArray()), winRates(*wr.toTypedArray()), ::rarity)
+        assertEquals(1.0, group(report, BacktestGroup.ALL).rho!!, 1e-12)
+    }
 }
