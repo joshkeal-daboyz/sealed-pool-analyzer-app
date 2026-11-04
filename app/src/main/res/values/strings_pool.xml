@@ -28,6 +28,11 @@
     <string name="pool_error_unreadable_body">%1$s couldn\'t be opened as text. Try exporting it again, or paste its contents.</string>
     <string name="pool_error_data_missing_title">Card data is missing</string>
     <string name="pool_error_data_missing_body">The app\'s trk card data didn\'t load. Reinstall the app.</string>
+    <string name="pool_error_saved_unreadable_title">Your last pool couldn\'t be read</string>
+    <string name="pool_error_saved_unreadable_body">%1$s was saved, but the app can\'t read it now.</string>
+    <!-- A saved pool file too damaged to name its source. -->
+    <string name="pool_error_saved_unreadable_no_name_body">Your pool was saved, but the app can\'t read it now.</string>
+    <string name="pool_clear_pool">Clear pool</string>
     <!-- %1$d is the number of unread lines. -->
     <string name="pool_error_show_all">Show all %1$d lines</string>
 

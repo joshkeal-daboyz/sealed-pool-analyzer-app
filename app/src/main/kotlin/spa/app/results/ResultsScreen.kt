@@ -14,8 +14,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Modifier
@@ -51,7 +53,8 @@ fun ResultsScreen(
  * Results: the top bar "Your pool" with the About icon, then one vertical scroll: the pool header
  * card, Problems, the legend, Pool at a glance, Colour pairs, Cards per colour, and Fixing sources,
  * all rendered from [ResultsUi] against the [LocalBaseline] (the bundled one by default). While an
- * import runs, the Loading state instead.
+ * import runs, the Loading state instead. The header's "Clear pool" opens [ClearPoolDialog]; only
+ * its "Clear pool" reaches [ResultsActions.onClearPool].
  */
 @Composable
 fun ResultsScreen(state: PoolUiState, actions: ResultsActions, modifier: Modifier = Modifier) {
@@ -79,11 +82,24 @@ fun ResultsScreen(state: PoolUiState, actions: ResultsActions, modifier: Modifie
                         withFrameNanos {}
                         actions.onLoadedShown(state)
                     }
+                    // Saved with the screen, so the dialog stays open across rotation.
+                    var confirming by rememberSaveable { mutableStateOf(false) }
                     PoolHeaderCard(
                         source = state.source,
                         loaded = state,
                         onNewPool = actions.onNewPool,
+                        onClearPool = { confirming = true },
                     )
+                    if (confirming) {
+                        ClearPoolDialog(
+                            source = state.source,
+                            onConfirm = {
+                                confirming = false
+                                actions.onClearPool()
+                            },
+                            onDismiss = { confirming = false },
+                        )
+                    }
                     val baseline = LocalBaseline.current ?: rememberBundledBaseline()
                     val ui =
                         remember(state, baseline) {

@@ -43,7 +43,7 @@ sealed interface ImportOutcome {
         val metrics: PoolMetrics,
         val format: PoolFormat,
         val source: PoolSource,
-        val text: String = "",
+        val text: String,
     ) : ImportOutcome
 
     /** The import gave no pool; [unresolved] holds the lines that did not resolve, if any. */

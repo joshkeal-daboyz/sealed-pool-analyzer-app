@@ -38,7 +38,11 @@ class PoolImporter(
             }
         return withContext(dispatcher) {
             try {
-                outcome(PoolParser.parse(text, set.index, format, set.brief.kitTemplate), source)
+                outcome(
+                    PoolParser.parse(text, set.index, format, set.brief.kitTemplate),
+                    source,
+                    text,
+                )
             } catch (e: PoolParseException) {
                 // A ManaBox header missing a required column: no line can be read.
                 ImportOutcome.Failure(ImportFailureKind.NOT_A_POOL, source, emptyList())
@@ -94,7 +98,8 @@ class PoolImporter(
                 else -> ImportFailureKind.NOT_A_POOL
             }
 
-        private fun outcome(result: ParseResult, source: PoolSource): ImportOutcome =
+        /** The outcome of [result], parsed from [text]: a success carries the text. */
+        private fun outcome(result: ParseResult, source: PoolSource, text: String): ImportOutcome =
             if (result.pool.entries.isEmpty()) {
                 ImportOutcome.Failure(classify(result), source, result.unresolved)
             } else {
@@ -103,6 +108,7 @@ class PoolImporter(
                     metrics = MetricEngine.compute(result.pool),
                     format = result.format,
                     source = source,
+                    text = text,
                 )
             }
     }

@@ -62,6 +62,7 @@ class ClearPoolDialogTest {
     private fun openDialog() {
         headerClearPool().performScrollTo().performClick()
         compose.waitForIdle()
+        assertTrue("the dialog opened", dialogShown())
     }
 
     private fun dialogShown(): Boolean =
