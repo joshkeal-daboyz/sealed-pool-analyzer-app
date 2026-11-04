@@ -68,6 +68,9 @@ class PoolImporter(
         } catch (e: IOException) {
             // CharacterCodingException, for bytes that are not UTF-8, is an IOException.
             Result.failure(e)
+        } catch (e: SecurityException) {
+            // A content URI whose read permission was revoked.
+            Result.failure(e)
         }
 
     companion object {

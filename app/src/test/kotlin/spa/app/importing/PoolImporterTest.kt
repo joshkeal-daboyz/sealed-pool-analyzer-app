@@ -194,6 +194,18 @@ class PoolImporterTest {
     }
 
     @Test
+    fun aRevokedPermissionIsUnreadable() = runTest {
+        val opens = { throw SecurityException("permission revoked") }
+
+        val outcome = importer.importStream(opens, FILE)
+
+        assertEquals(
+            ImportOutcome.Failure(ImportFailureKind.UNREADABLE, FILE, emptyList()),
+            outcome,
+        )
+    }
+
+    @Test
     fun aStreamThatFailsWhileReadingIsUnreadable() = runTest {
         val failing =
             object : InputStream() {
