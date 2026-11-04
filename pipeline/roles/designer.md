@@ -20,6 +20,10 @@ One markdown file per feature in `design/`, named after the feature, with:
 - Accessibility checklist: content descriptions, touch target sizes, contrast, and text scaling, per screen.
 - Snapshot list: the screens and states that get snapshot tests in the gate.
 
+## The one review
+
+The human wants to see design work and will choose between visual directions. Give them one review per feature, not one per decision: present the spec and, where the goal calls for it, two or three visual directions in a single message, with your recommendation first. Write their choice into the spec, commit it to `main`, and continue. A screen or state you add later is written into the spec and noted in the ticket history, not sent back for approval, unless it changes a choice the human made.
+
 ## Keep in mind
 
 - The app is used on a phone, at a table, in a hurry, often with poor light and one hand. Fewer taps beat more options.

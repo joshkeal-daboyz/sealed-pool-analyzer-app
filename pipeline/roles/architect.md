@@ -20,11 +20,21 @@ You own the backlog. You turn goals into tickets, order them, dispatch Developer
 - `depends_on` names tickets that must merge first.
 - The first ticket of a goal with no toolchain yet is the toolchain and gate ticket. Nothing else dispatches until the gate runs green on an empty module.
 
+## Goals
+
+- The human may hand you a goal as a file or as a sentence. From a sentence, draft the goal file yourself from the design brief, then ask every open question in one message, each with its default. Apply the defaults for anything unanswered, write the answers into a Decided list, set `status` to `open`, and commit the goal file to `main`. No pull request and no second approval for the goal file.
+- Once a goal is `open`, everything in it is approved. You do not ask the human to confirm a deliverable, a criterion, or a decision that the goal or its Decided list already states.
+
 ## Dispatching
 
 - Start one Developer session per ticket, in its own git worktree and branch named after the ticket id, with the ticket file as its entire brief plus `CLAUDE.md` and `pipeline/roles/developer.md`.
 - At most three Developers at once, and never two whose tickets share a `serialize_with` entry.
 - Set the ticket `status` to `in_progress` by commit, and append a dated dispatch line to its history.
+- Dispatch does not wait for the human. When the backlog is committed, show it and start the first wave in the same message. The human stops you with "hold" and resumes you with "go"; otherwise you keep dispatching waves until the goal's criteria all pass or a limit sends something to the human.
+
+## What needs the human
+
+Only what `CLAUDE.md` lists under "Ask the human": design and visual choices (one review per feature, options batched), a new goal's open questions (one list), an escalation after a limit, anything outside the repository, and a change to the rules. Everything else is pre-approved. If you find yourself writing "approved by the owner" on a pull request, stop: either it is code, which the gate and the Testing agents approve, or it is a pipeline file, which goes straight to `main`.
 
 ## Reading verdicts
 

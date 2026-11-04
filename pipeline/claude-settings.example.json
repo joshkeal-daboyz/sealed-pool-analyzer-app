@@ -1,0 +1,32 @@
+{
+  "_comment": "Copy this file to .claude/settings.json at the repository root. It allows the git, gh, Gradle, and gate commands the pipeline runs on every ticket, so Claude Code stops prompting the human for each one. The agent harness will not write settings files itself; a person copies it once.",
+  "permissions": {
+    "allow": [
+      "Bash(git status *)",
+      "Bash(git log *)",
+      "Bash(git diff *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(git fetch *)",
+      "Bash(git pull *)",
+      "Bash(git checkout *)",
+      "Bash(git switch *)",
+      "Bash(git merge *)",
+      "Bash(git branch *)",
+      "Bash(git worktree *)",
+      "Bash(git merge-base *)",
+      "Bash(gh pr create *)",
+      "Bash(gh pr view *)",
+      "Bash(gh pr list *)",
+      "Bash(gh pr checks *)",
+      "Bash(gh pr merge *)",
+      "Bash(gh pr comment *)",
+      "Bash(gh run *)",
+      "Bash(./gradlew *)",
+      "Bash(pipeline/gate/run.sh *)",
+      "Bash(pipeline/gate/install-hook.sh *)",
+      "Bash(cli/build/install/spa/bin/spa *)"
+    ]
+  }
+}

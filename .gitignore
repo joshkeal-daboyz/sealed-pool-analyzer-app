@@ -17,5 +17,6 @@ local.properties
 Thumbs.db
 .DS_Store
 
-# Claude Code local state
-.claude/
+# Claude Code local state, except the project settings the pipeline relies on
+.claude/*
+!.claude/settings.json

@@ -15,6 +15,30 @@ A goal in `tickets/goals/` is decomposed by the Architect into tickets in `ticke
 5. Bounded retries. Every stage has a limit; hitting it escalates, never loops. Defaults: 3 Developer attempts, 2 inspector bounces, 2 re-plans.
 6. Nothing merges without a green gate and both Testing agent verdicts. The Architect merges; it does not skip steps.
 
+## Standing authorizations
+
+The human approved the pipeline, the design brief, and each goal's Decided list in advance. Those approvals stand; do not ask for them again. Before asking the human anything, check in this order: the goal file and its Decided list, `tickets/lessons.md`, this file, and the design brief and pipeline doc in the design-doc repository. If the answer is there, cite it in the ticket history and proceed.
+
+Pre-approved. Never ask, never open a pull request to get a nod:
+
+- Dispatching tickets, in any wave, once a goal's status is `open`.
+- Merging a pull request that has a green gate and both Testing agent verdicts.
+- Bounces, re-plans within the limits, and escalations between agents.
+- Any default a goal states ("Default:", "approved in advance", "the rest default") and anything in a Decided list.
+- Criteria, test plans, scope, splits, and ordering the Architect derives from the goal.
+- Committing pipeline files (ticket status and history, lessons, goal annotations, design spec updates after a review) straight to `main`. Pull requests are for code.
+- Toolchain and dependency choices a ticket names in `scope`.
+
+Ask the human, once per topic, with everything batched into one message:
+
+- Visual and design choices: a design spec's first version, a visual direction, a screen or state the spec never described. Present the options together; one review per feature.
+- A new goal's open questions, all in one list, each with its default. An unanswered question takes the default.
+- An escalation after a limit is hit, with the full history and one proposed decision.
+- Anything outside the repository: installing software, accepting a license, spending money, the human's phone or accounts.
+- Changing a rule in this file or a role brief.
+
+When you ask, say what you will do if no answer comes, and treat a reply that does not mention the question as taking that default.
+
 ## Tickets
 
 - One file per ticket: `tickets/SPA-###.md`, made from `pipeline/ticket-template.md`.
