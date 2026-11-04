@@ -18,6 +18,7 @@ android {
         targetSdk = 36
         versionCode = 1
         versionName = "0.1.0"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     compileOptions {
@@ -102,6 +103,11 @@ val copySetData =
 androidComponents {
     onVariants { variant ->
         variant.sources.assets?.addGeneratedSourceDirectory(copySetData, CopySetData::outputDir)
+        // The on-device test reads its pool text from the test APK's assets.
+        variant.androidTest
+            ?.sources
+            ?.assets
+            ?.addStaticSourceDirectory(rootProject.file("fixtures/pools").absolutePath)
     }
 }
 
@@ -123,6 +129,11 @@ dependencies {
     testImplementation(libs.roborazzi.compose)
     testImplementation(libs.roborazzi.junit.rule)
     testImplementation(libs.kotlinx.coroutines.test)
+
+    androidTestImplementation(libs.junit4)
+    androidTestImplementation(libs.androidx.test.runner)
+    androidTestImplementation(libs.androidx.test.core)
+    androidTestImplementation(libs.androidx.test.ext.junit)
 }
 
 ktfmt { kotlinLangStyle() }
