@@ -52,17 +52,23 @@ class PoolImporter(
      * [ImportFailureKind.UNREADABLE].
      */
     suspend fun importStream(open: () -> InputStream, source: PoolSource): ImportOutcome {
-        val text =
-            withContext(Dispatchers.IO) {
-                try {
-                    decode(open().use { it.readBytes() })
-                } catch (e: IOException) {
-                    // CharacterCodingException, for bytes that are not UTF-8, is an IOException.
-                    null
-                }
-            } ?: return ImportOutcome.Failure(ImportFailureKind.UNREADABLE, source, emptyList())
-        return import(text, null, source)
+        val text = withContext(Dispatchers.IO) { readText(open) }
+        return text.fold(
+            onSuccess = { import(it, null, source) },
+            onFailure = {
+                ImportOutcome.Failure(ImportFailureKind.UNREADABLE, source, emptyList())
+            },
+        )
     }
+
+    /** The stream's text, or the [IOException] that stopped it. */
+    private fun readText(open: () -> InputStream): Result<String> =
+        try {
+            Result.success(decode(open().use { it.readBytes() }))
+        } catch (e: IOException) {
+            // CharacterCodingException, for bytes that are not UTF-8, is an IOException.
+            Result.failure(e)
+        }
 
     companion object {
         /**
