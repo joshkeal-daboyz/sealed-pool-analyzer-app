@@ -93,13 +93,25 @@ abstract class GateService :
         }
 
     private fun lintFailures(path: String, info: TaskInfo): List<GateFailure> {
+        val name = path.substringAfterLast(':')
+        // The lint step runs detekt everywhere and Android Lint (lint<Variant>) on the app.
+        val android = name.startsWith("lint")
         val report =
-            File(info.projectDir, "build/reports/detekt/${path.substringAfterLast(':')}.xml")
+            File(
+                info.projectDir,
+                if (android) ToolOutput.androidLintReport(name)
+                else "build/reports/detekt/$name.xml",
+            )
         if (!report.isFile) return emptyList()
-        return ToolOutput.detektFindings(report.readText()).map {
+        val text = report.readText()
+        val findings =
+            if (android) ToolOutput.androidLintErrors(text) else ToolOutput.detektFindings(text)
+        return findings.map {
             GateFailure(
                 GateStep.LINT.id,
-                RepoPaths.relative(root.path, it.path),
+                it.path
+                    .takeIf { p -> p.isNotEmpty() }
+                    ?.let { p -> RepoPaths.relative(root.path, p) },
                 it.line,
                 it.message,
                 "./gradlew $path",

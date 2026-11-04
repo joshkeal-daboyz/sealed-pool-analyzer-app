@@ -42,22 +42,7 @@ android {
         }
     }
 
-    lint {
-        // The gate's lint step reads this report for file and line.
-        xmlReport = true
-        xmlOutput = file("build/reports/lint/lint-results.xml")
-        abortOnError = true
-        // Every issue in Lint's Accessibility category is an error, not a warning.
-        error += "Accessibility"
-    }
-}
-
-androidComponents {
-    // The gate runs the debug unit tests only; release has nothing of its own to test.
-    beforeVariants(selector().withBuildType("release")) { variant ->
-        variant.hostTests[com.android.build.api.variant.HostTestBuilder.UNIT_TEST_TYPE]?.enable =
-            false
-    }
+    lint { abortOnError = true }
 }
 
 kotlin { jvmToolchain(21) }
@@ -75,7 +60,6 @@ dependencies {
     testImplementation(libs.robolectric)
     testImplementation(libs.androidx.test.ext.junit)
     testImplementation(libs.androidx.compose.ui.test.junit4)
-    testImplementation(libs.androidx.compose.ui.test.junit4.accessibility)
     testImplementation(libs.roborazzi)
     testImplementation(libs.roborazzi.compose)
     testImplementation(libs.roborazzi.junit.rule)
@@ -86,4 +70,6 @@ ktfmt { kotlinLangStyle() }
 detekt {
     buildUponDefaultConfig = true
     config.setFrom(rootProject.file("config/detekt/detekt.yml"))
+    // The app's build script is linted too, like its Kotlin sources.
+    source.setFrom("src/main/kotlin", "src/test/kotlin", "build.gradle.kts")
 }

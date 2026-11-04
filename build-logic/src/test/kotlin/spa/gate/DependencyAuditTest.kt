@@ -87,6 +87,32 @@ class DependencyAuditTest {
     }
 
     @Test
+    fun `the catalog entries an app ticket lists pass, and an unlisted one fails`() {
+        // Entries in the shape SPA-013 adds them: a BOM-managed library has no version.
+        val appHead =
+            base +
+                "\ncompose-bom = { module = \"androidx.compose:compose-bom\", version = \"1\" }" +
+                "\ncompose-ui = { module = \"androidx.compose.ui:ui\" }" +
+                "\nextra = { module = \"androidx.navigation:navigation-compose\" }" +
+                "\n\n[plugins]" +
+                "\nandroid-application = { id = \"com.android.application\", version = \"9.5.0\" }"
+        val appTicket =
+            """
+            - Dependencies this ticket may add (none unless listed). Pick one snapshot library:
+              - `plugin:com.android.application`
+              - `androidx.compose:compose-bom`
+              - `androidx.compose.ui:ui`
+            """
+                .trimIndent()
+        val failures = DependencyAudit.catalogFailures("SPA-013", appTicket, base, appHead, "r")
+        assertEquals(
+            listOf("androidx.navigation:navigation-compose was added to [libraries]"),
+            failures.map { it.message.substringBefore(" but") },
+        )
+        assertEquals(5, failures.single().line)
+    }
+
+    @Test
     fun `a missing ticket file fails when the catalog grew`() {
         val failures = DependencyAudit.catalogFailures("SPA-404", null, base, head, "r")
         assertEquals("Ticket file tickets/SPA-404.md not found.", failures.single().message)

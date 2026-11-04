@@ -1,3 +1,8 @@
 # Overrides on top of detekt's default config (buildUponDefaultConfig = true).
 build:
   maxIssues: 0
+
+# Compose convention: @Composable functions are named in PascalCase, like types (SPA-013).
+naming:
+  FunctionNaming:
+    ignoreAnnotated: ["Composable"]

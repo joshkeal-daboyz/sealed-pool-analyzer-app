@@ -37,6 +37,32 @@ object ToolOutput {
             }
         }
 
+    /**
+     * Where Android Lint task [taskName] (`lint<Variant>`, such as `lintDebug`) writes its XML
+     * report, relative to the project directory.
+     */
+    fun androidLintReport(taskName: String): String {
+        val variant = taskName.removePrefix("lint").replaceFirstChar { it.lowercase() }
+        return if (variant.isEmpty()) "build/reports/lint-results.xml"
+        else "build/reports/lint-results-$variant.xml"
+    }
+
+    /** Errors (severity Error or Fatal) from an Android Lint XML report; warnings are skipped. */
+    fun androidLintErrors(xml: String): List<Located> =
+        Xml.parse(xml)
+            .all("issue")
+            .filter { it.getAttribute("severity") in LINT_ERRORS }
+            .map { issue ->
+                val location = issue.children("location").firstOrNull()
+                Located(
+                    path = location?.getAttribute("file").orEmpty(),
+                    line = location?.getAttribute("line")?.toIntOrNull(),
+                    message = "[${issue.getAttribute("id")}] ${issue.getAttribute("message")}",
+                )
+            }
+
+    private val LINT_ERRORS = setOf("Error", "Fatal")
+
     /** Kotlin compiler errors (`e: file:///path:line:column message`) from captured output. */
     fun compilerErrors(output: String): List<Located> =
         output.lines().mapNotNull { raw ->

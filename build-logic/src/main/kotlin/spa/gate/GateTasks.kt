@@ -91,31 +91,65 @@ abstract class GateUnitTestsTask : GateStepTask() {
         )
 }
 
-/** `ui-tests`: passes with a note until an app module exists. */
+/**
+ * `ui-tests`: the app's JVM Compose UI tests and snapshot verification (Robolectric and Roborazzi,
+ * no emulator), read from the JUnit XML and Roborazzi's results summary. It never records a
+ * baseline. Without an app module it passes with a note.
+ */
 @DisableCachingByDefault(because = "A gate step must evaluate on every run")
 abstract class GateUiTestsTask : GateStepTask() {
     @get:Internal var hasAppModule: Boolean = false
 
+    /** Where the app's test task writes its XML, its source roots, and the rerun command. */
+    @get:Internal var results: GateUnitTestsTask.ResultSource? = null
+
+    /** Roborazzi's `results-summary.json` for the verified variant. */
+    @get:Internal var snapshotSummary: File? = null
+
     @TaskAction
     fun evaluate() {
-        if (!hasAppModule) {
+        val source = results
+        if (!hasAppModule || source == null) {
             logger.lifecycle("ui-tests: $NO_APP_MODULE")
             service.get().run.pass(GateStep.UI_TESTS, NO_APP_MODULE)
             return
         }
+        val reports =
+            source.resultsDir
+                .listFiles { f -> f.name.startsWith("TEST-") && f.name.endsWith(".xml") }
+                .orEmpty()
+                .sortedBy { it.name }
+                .map { it.readText() }
+        val summary = snapshotSummary?.takeIf { it.isFile }
+        val missing = buildList {
+            if (reports.isEmpty()) add("No UI test results in ${relative(source.resultsDir)}.")
+            if (summary == null)
+                add(
+                    "No snapshot results at ${snapshotSummary?.let(::relative)}: snapshot " +
+                        "verification did not run."
+                )
+        }
+        if (missing.isNotEmpty()) {
+            failWith(
+                GateStep.UI_TESTS,
+                missing.map { GateFailure(GateStep.UI_TESTS.id, null, null, it, source.command) },
+            )
+        }
+        val failed = reports.flatMap { JUnitResults.parse(it) }
         failIfAny(
             GateStep.UI_TESTS,
-            listOf(
-                GateFailure(
-                    GateStep.UI_TESTS.id,
-                    "app",
-                    null,
-                    "An app module exists but the gate has no UI or snapshot test step yet.",
-                    "./gradlew gateUiTests",
-                )
-            ),
+            UiTests.failures(failed, root.path, source) { File(root, it).isFile },
         )
+        val note =
+            UiTests.note(
+                reports.sumOf { JUnitResults.testCount(it) },
+                UiTests.snapshotCount(checkNotNull(summary).readText()),
+            )
+        logger.lifecycle("ui-tests: $note")
+        service.get().run.pass(GateStep.UI_TESTS, note)
     }
+
+    private fun relative(file: File) = RepoPaths.relative(root.path, file.path)
 
     companion object {
         const val NO_APP_MODULE = "skipped: no app module"
