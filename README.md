@@ -28,6 +28,8 @@ Open a Claude Code session in this repository and paste the prompt in `pipeline/
 
 Card data comes from [Scryfall](https://scryfall.com) and is used under Scryfall's terms. Sealed Pool Analyzer is unofficial Fan Content: it is not produced by, endorsed by, or affiliated with Scryfall or Wizards of the Coast, and Magic: The Gathering is a trademark of Wizards of the Coast. The card data in `fixtures/scryfall/` is a snapshot, refreshed deliberately by a ticket rather than on every build; `fixtures/scryfall/README.md` records when each set was fetched and how to refresh it.
 
+Play data from [17Lands](https://www.17lands.com), free for non-commercial use. The win-rate tables in `fixtures/winrates/` are derived from 17Lands' public game data files; the downloads themselves are not in this repository. `fixtures/winrates/README.md` names each file and its date.
+
 ## Command line
 
 The `cli` module builds `spa`, the command line the metric engine is tested through until there is an app. Install it from the repository root (needs the JDK in [Toolchain](#toolchain)):
@@ -36,7 +38,7 @@ The `cli` module builds `spa`, the command line the metric engine is tested thro
 ./gradlew :cli:installDist
 ```
 
-This writes `cli/build/install/spa/bin/spa` and, for Windows, `spa.bat`. `spa --help` lists the commands. Every command reads its data from `--data <dir>`, default `fixtures` relative to the current directory, so run it from the repository root or pass `--data`. That directory holds Scryfall caches in `scryfall/<code>/`, briefs in `briefs/<code>.json`, and baselines in `baselines/<code>.json`. Exit codes: 0 ok, 1 an error (a missing or unreadable file, set cache, or brief, a missing `--set`, or a network error), 2 a bad command line (no command, an unknown command, or a bad flag). Errors are one line on stderr.
+This writes `cli/build/install/spa/bin/spa` and, for Windows, `spa.bat`. `spa --help` lists the commands. Every command reads its data from `--data <dir>`, default `fixtures` relative to the current directory, so run it from the repository root or pass `--data`. That directory holds Scryfall caches in `scryfall/<code>/`, briefs in `briefs/<code>.json`, baselines in `baselines/<code>.json`, and win-rate tables in `winrates/<code>.json`. Exit codes: 0 ok, 1 an error (a missing or unreadable file, set cache, or brief, a missing `--set`, or a network error), 2 a bad command line (no command, an unknown command, or a bad flag). Errors are one line on stderr.
 
 **analyze** parses a pool file and prints one JSON document to stdout: `tool` (name and version), `set`, `pool` (the file as given, the detected or given `format`, `entries` as the count of resolved pool entries, `skippedLines`, every `unresolved` line with its `line`, `text`, and `reason`, and the brief's `kitWarnings`, each with an `expected` range written as `min` and `max`), `metrics` (the engine's numbers), and the set's `baseline`. The format is detected unless `--format manabox|text|collector` is given; `--brief <file>` replaces `briefs/<code>.json` for kit warnings. `baseline` is `null` with `--no-baseline` or when the set has no baseline file, and stderr says which. Unresolved lines and kit warnings still exit 0. Keys print in a fixed order, so the same input prints the same bytes.
 
@@ -54,6 +56,12 @@ cli/build/install/spa/bin/spa validate-brief fixtures/briefs/trk.json --set trk
 
 ```bash
 cli/build/install/spa/bin/spa fetch-set trk --companions sds
+```
+
+**winrates** derives a set's win-rate grade table from a 17Lands public game data file (`game_data_public.<SET>.PremierDraft.csv.gz`, gzipped or plain) and writes it to `<data>/winrates/<code>.json`, a grade file with source `WIN_RATE`. A card's GIH WR is its win rate over the games where it was in the opening hand or drawn. Each card with at least 500 such games gets a score of `2.5 + (gihwr - m) / s`, clamped to 0 to 5 and rounded to the nearest 0.5, where `m` and `s` are the mean and population standard deviation of GIH WR over the set's cards with 500 or more games, and a confidence of `games / (games + 2000)`; its `gihwr` and `games` are kept in the file. It prints the game and card counts, the scale, one `unmatched: <name>` line for each 17Lands name that is no card of the set (skipped), and the path written, and exits 0. The provenance names the file and its `Last-Modified` date, from `--dataset-date <yyyy-mm-dd>` or else the file's modified date. A missing file prints one line and exits 1.
+
+```bash
+cli/build/install/spa/bin/spa winrates ~/Downloads/game_data_public.MSH.PremierDraft.csv.gz --set msh --dataset-date 2026-07-27
 ```
 
 ## Android app

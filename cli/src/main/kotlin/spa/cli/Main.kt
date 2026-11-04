@@ -8,7 +8,7 @@ import kotlin.system.exitProcess
 import spa.core.cards.HttpClientTransport
 import spa.core.cards.ScryfallSetFetcher
 
-/** The `spa` command line: `analyze`, `validate-brief`, and `fetch-set`. */
+/** The `spa` command line: `analyze`, `validate-brief`, `fetch-set`, and `winrates`. */
 object Main {
     /** The text `spa --help` prints. */
     val USAGE =
@@ -23,6 +23,9 @@ object Main {
         |      Check a format brief, and warn about signpost and key-common names not in the set.
         |  fetch-set <code> [--data <dir>] [--companions a,b]
         |      Refresh a set's Scryfall cache under <data>/scryfall (needs the network).
+        |  winrates <game-data.csv.gz> --set <code> [--data <dir>] [--dataset-date <yyyy-mm-dd>]
+        |      Derive the set's win-rate grades from a 17Lands public game data file and write
+        |      <data>/winrates/<code>.json. Lists the names that match no card of the set.
         |
         |<data> defaults to ${DataDir.DEFAULT}. Exit codes: 0 ok, 1 error, 2 bad command line.
         |Run 'spa --help' for this text.
@@ -60,6 +63,7 @@ object Main {
                 "analyze" -> AnalyzeCommand.run(rest, stdout, stderr)
                 "validate-brief" -> ValidateBriefCommand.run(rest, stdout, stderr)
                 "fetch-set" -> FetchSetCommand(fetcher).run(rest, stdout)
+                "winrates" -> WinratesCommand().run(rest, stdout)
                 null -> usageError("no command given", stderr)
                 else -> usageError("unknown command '$command'", stderr)
             }

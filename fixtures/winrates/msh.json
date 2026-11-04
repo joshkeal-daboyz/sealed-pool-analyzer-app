@@ -1,0 +1,2512 @@
+{
+  "header": {
+    "setCode": "msh",
+    "source": "WIN_RATE",
+    "provenance": "17Lands public game data game_data_public.MSH.PremierDraft.csv.gz, Last-Modified 2026-07-27",
+    "createdAt": "2026-11-04T22:52:09Z"
+  },
+  "grades": [
+    {
+      "name": "A.I.M. Labs",
+      "collectorNumber": "257",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.897,
+      "gihwr": 0.561692,
+      "games": 17474
+    },
+    {
+      "name": "A.I.M. Scientists",
+      "collectorNumber": "44",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.952,
+      "gihwr": 0.576261,
+      "games": 39286
+    },
+    {
+      "name": "A.I.M. Synthoids",
+      "collectorNumber": "242",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.895,
+      "gihwr": 0.530289,
+      "games": 17036
+    },
+    {
+      "name": "Abomination, Terrifying Titan",
+      "collectorNumber": "198",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.871,
+      "gihwr": 0.571768,
+      "games": 13467
+    },
+    {
+      "name": "Absorbing Man",
+      "collectorNumber": "199",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.769,
+      "gihwr": 0.604264,
+      "games": 6661
+    },
+    {
+      "name": "Aerial Doombot",
+      "collectorNumber": "43",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.951,
+      "gihwr": 0.578441,
+      "games": 39010
+    },
+    {
+      "name": "Agent 13, Sharon Carter",
+      "collectorNumber": "1",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.926,
+      "gihwr": 0.59434,
+      "games": 24984
+    },
+    {
+      "name": "Agent Maria Hill",
+      "collectorNumber": "2",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.915,
+      "gihwr": 0.60064,
+      "games": 21572
+    },
+    {
+      "name": "Agent Phil Coulson",
+      "collectorNumber": "4",
+      "setCode": "msh",
+      "score": 4.5,
+      "confidence": 0.835,
+      "gihwr": 0.643479,
+      "games": 10106
+    },
+    {
+      "name": "Agent of Atlas",
+      "collectorNumber": "3",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.942,
+      "gihwr": 0.570269,
+      "games": 32390
+    },
+    {
+      "name": "Agents of HYDRA",
+      "collectorNumber": "85",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.9,
+      "gihwr": 0.529376,
+      "games": 17957
+    },
+    {
+      "name": "Agents of S.H.I.E.L.D.",
+      "collectorNumber": "5",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.932,
+      "gihwr": 0.562289,
+      "games": 27589
+    },
+    {
+      "name": "Alien Invasion",
+      "collectorNumber": "200",
+      "setCode": "msh",
+      "score": 1.0,
+      "confidence": 0.652,
+      "gihwr": 0.502403,
+      "games": 3746
+    },
+    {
+      "name": "Ant-Man's Army",
+      "collectorNumber": "161",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.939,
+      "gihwr": 0.573813,
+      "games": 30740
+    },
+    {
+      "name": "Ant-Man, Colony Commander",
+      "collectorNumber": "201",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.796,
+      "gihwr": 0.54585,
+      "games": 7808
+    },
+    {
+      "name": "Ares, God of War",
+      "collectorNumber": "202",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.689,
+      "gihwr": 0.570397,
+      "games": 4432
+    },
+    {
+      "name": "Armor Wars",
+      "collectorNumber": "203",
+      "setCode": "msh",
+      "score": 0.5,
+      "confidence": 0.46,
+      "gihwr": 0.490311,
+      "games": 1703
+    },
+    {
+      "name": "Arnim Zola, Bio-Fanatic",
+      "collectorNumber": "86",
+      "setCode": "msh",
+      "score": 1.0,
+      "confidence": 0.812,
+      "gihwr": 0.510626,
+      "games": 8658
+    },
+    {
+      "name": "Asgardian Citadel",
+      "collectorNumber": "258",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.892,
+      "gihwr": 0.565909,
+      "games": 16462
+    },
+    {
+      "name": "Atlantean Cavalry",
+      "collectorNumber": "45",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.848,
+      "gihwr": 0.531381,
+      "games": 11201
+    },
+    {
+      "name": "Atlantis Attacks",
+      "collectorNumber": "46",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.953,
+      "gihwr": 0.572345,
+      "games": 40390
+    },
+    {
+      "name": "Attuma, Atlantean Warlord",
+      "collectorNumber": "47",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.822,
+      "gihwr": 0.549459,
+      "games": 9240
+    },
+    {
+      "name": "Avengers Assemble!",
+      "collectorNumber": "6",
+      "setCode": "msh",
+      "score": 4.5,
+      "confidence": 0.701,
+      "gihwr": 0.644734,
+      "games": 4681
+    },
+    {
+      "name": "Avengers Disassembled",
+      "collectorNumber": "124",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.618,
+      "gihwr": 0.541912,
+      "games": 3233
+    },
+    {
+      "name": "Avengers Hangar",
+      "collectorNumber": "259",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.927,
+      "gihwr": 0.578166,
+      "games": 25337
+    },
+    {
+      "name": "Avengers Tower",
+      "collectorNumber": "260",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.917,
+      "gihwr": 0.605567,
+      "games": 22237
+    },
+    {
+      "name": "Avengers: Under Siege",
+      "collectorNumber": "205",
+      "setCode": "msh",
+      "score": 4.5,
+      "confidence": 0.78,
+      "gihwr": 0.644369,
+      "games": 7086
+    },
+    {
+      "name": "Baron Helmut Zemo",
+      "collectorNumber": "87",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.534,
+      "gihwr": 0.535107,
+      "games": 2293
+    },
+    {
+      "name": "Baron Strucker, HYDRA Overlord",
+      "collectorNumber": "88",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.87,
+      "gihwr": 0.56349,
+      "games": 13388
+    },
+    {
+      "name": "Baxter Building",
+      "collectorNumber": "261",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.913,
+      "gihwr": 0.575716,
+      "games": 20927
+    },
+    {
+      "name": "Beast, Erudite Aerialist",
+      "collectorNumber": "206",
+      "setCode": "msh",
+      "score": 1.0,
+      "confidence": 0.739,
+      "gihwr": 0.497082,
+      "games": 5655
+    },
+    {
+      "name": "Birnin Zana Plaza",
+      "collectorNumber": "262",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.903,
+      "gihwr": 0.568542,
+      "games": 18558
+    },
+    {
+      "name": "Black Panther, Vanguard",
+      "collectorNumber": "207",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.868,
+      "gihwr": 0.561316,
+      "games": 13194
+    },
+    {
+      "name": "Black Widow, Double Agent",
+      "collectorNumber": "208",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.843,
+      "gihwr": 0.560508,
+      "games": 10701
+    },
+    {
+      "name": "Black Widow, Super Spy",
+      "collectorNumber": "89",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.642,
+      "gihwr": 0.581058,
+      "games": 3590
+    },
+    {
+      "name": "Blazing Crescendo",
+      "collectorNumber": "125",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.788,
+      "gihwr": 0.52919,
+      "games": 7417
+    },
+    {
+      "name": "Bold Biochemist",
+      "collectorNumber": "48",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.959,
+      "gihwr": 0.578927,
+      "games": 46809
+    },
+    {
+      "name": "Borough Backup",
+      "collectorNumber": "7",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.964,
+      "gihwr": 0.585271,
+      "games": 53746
+    },
+    {
+      "name": "Brave Brawler",
+      "collectorNumber": "8",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.962,
+      "gihwr": 0.586245,
+      "games": 51151
+    },
+    {
+      "name": "Bruce Banner // The Incredible Hulk",
+      "collectorNumber": "49",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.699,
+      "gihwr": 0.60578,
+      "games": 4637
+    },
+    {
+      "name": "Bullseye, Death Dealer",
+      "collectorNumber": "209",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.842,
+      "gihwr": 0.54709,
+      "games": 10671
+    },
+    {
+      "name": "Call Damage Control",
+      "collectorNumber": "162",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.742,
+      "gihwr": 0.521173,
+      "games": 5762
+    },
+    {
+      "name": "Captain America's Shield",
+      "collectorNumber": "244",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.803,
+      "gihwr": 0.565053,
+      "games": 8178
+    },
+    {
+      "name": "Captain America, Living Legend",
+      "collectorNumber": "210",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.907,
+      "gihwr": 0.580989,
+      "games": 19410
+    },
+    {
+      "name": "Captain America, Super-Soldier",
+      "collectorNumber": "9",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.694,
+      "gihwr": 0.600883,
+      "games": 4530
+    },
+    {
+      "name": "Captain America, Wings of Freedom",
+      "collectorNumber": "10",
+      "setCode": "msh",
+      "score": 4.0,
+      "confidence": 0.831,
+      "gihwr": 0.622864,
+      "games": 9832
+    },
+    {
+      "name": "Captain Mar-Vell, Space-Born",
+      "collectorNumber": "12",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.827,
+      "gihwr": 0.547144,
+      "games": 9577
+    },
+    {
+      "name": "Captain Marvel, Earth's Protector",
+      "collectorNumber": "11",
+      "setCode": "msh",
+      "score": 5.0,
+      "confidence": 0.721,
+      "gihwr": 0.695501,
+      "games": 5179
+    },
+    {
+      "name": "Castle Doom",
+      "collectorNumber": "263",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.601,
+      "gihwr": 0.528827,
+      "games": 3018
+    },
+    {
+      "name": "Claim the Kingdom",
+      "collectorNumber": "163",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.737,
+      "gihwr": 0.513296,
+      "games": 5603
+    },
+    {
+      "name": "Cloak and Dagger, Entwined",
+      "collectorNumber": "211",
+      "setCode": "msh",
+      "score": 4.0,
+      "confidence": 0.8,
+      "gihwr": 0.618828,
+      "games": 8020
+    },
+    {
+      "name": "Colleen Wing, Street Samurai",
+      "collectorNumber": "13",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.844,
+      "gihwr": 0.556595,
+      "games": 10796
+    },
+    {
+      "name": "Construct a Cosmic Cube",
+      "collectorNumber": "90",
+      "setCode": "msh",
+      "score": 1.0,
+      "confidence": 0.631,
+      "gihwr": 0.495614,
+      "games": 3420
+    },
+    {
+      "name": "Cosmic Cube",
+      "collectorNumber": "245",
+      "setCode": "msh",
+      "score": 4.0,
+      "confidence": 0.704,
+      "gihwr": 0.615062,
+      "games": 4767
+    },
+    {
+      "name": "Crimson Operative",
+      "collectorNumber": "126",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.909,
+      "gihwr": 0.544014,
+      "games": 20073
+    },
+    {
+      "name": "Crossbones, Malicious Mercenary",
+      "collectorNumber": "91",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.83,
+      "gihwr": 0.527133,
+      "games": 9785
+    },
+    {
+      "name": "Crowd of True Believers",
+      "collectorNumber": "14",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.891,
+      "gihwr": 0.563403,
+      "games": 16411
+    },
+    {
+      "name": "Cruel Alliance",
+      "collectorNumber": "92",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.956,
+      "gihwr": 0.590188,
+      "games": 43825
+    },
+    {
+      "name": "Daredevil, Man Without Fear",
+      "collectorNumber": "213",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.789,
+      "gihwr": 0.581942,
+      "games": 7487
+    },
+    {
+      "name": "Dark Deed",
+      "collectorNumber": "93",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.904,
+      "gihwr": 0.595131,
+      "games": 18895
+    },
+    {
+      "name": "Dark Fortress",
+      "collectorNumber": "264",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.69,
+      "gihwr": 0.552219,
+      "games": 4462
+    },
+    {
+      "name": "Death to Our Enemies",
+      "collectorNumber": "127",
+      "setCode": "msh",
+      "score": 0.0,
+      "confidence": 0.583,
+      "gihwr": 0.463049,
+      "games": 2801
+    },
+    {
+      "name": "Decoy Ploy",
+      "collectorNumber": "94",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.828,
+      "gihwr": 0.515792,
+      "games": 9657
+    },
+    {
+      "name": "Dependable Quinjet",
+      "collectorNumber": "246",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.869,
+      "gihwr": 0.548368,
+      "games": 13325
+    },
+    {
+      "name": "Depower",
+      "collectorNumber": "50",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.918,
+      "gihwr": 0.56583,
+      "games": 22429
+    },
+    {
+      "name": "Doc Samson, Super Psychiatrist",
+      "collectorNumber": "164",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.781,
+      "gihwr": 0.533895,
+      "games": 7125
+    },
+    {
+      "name": "Doctor Doom",
+      "collectorNumber": "95",
+      "setCode": "msh",
+      "score": 5.0,
+      "confidence": 0.702,
+      "gihwr": 0.657027,
+      "games": 4703
+    },
+    {
+      "name": "Doom Reigns Supreme",
+      "collectorNumber": "96",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.685,
+      "gihwr": 0.532459,
+      "games": 4344
+    },
+    {
+      "name": "Earth's Mightiest Heroes",
+      "collectorNumber": "165",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.63,
+      "gihwr": 0.589359,
+      "games": 3402
+    },
+    {
+      "name": "Echo, Perceptive Prodigy",
+      "collectorNumber": "51",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.857,
+      "gihwr": 0.535991,
+      "games": 11989
+    },
+    {
+      "name": "Elektra, Daughter of the Hand",
+      "collectorNumber": "97",
+      "setCode": "msh",
+      "score": 4.0,
+      "confidence": 0.809,
+      "gihwr": 0.630084,
+      "games": 8483
+    },
+    {
+      "name": "Epic Fight",
+      "collectorNumber": "166",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.776,
+      "gihwr": 0.584917,
+      "games": 6948
+    },
+    {
+      "name": "Evil's Thrall",
+      "collectorNumber": "128",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.423,
+      "gihwr": 0.532335,
+      "games": 1469
+    },
+    {
+      "name": "Falcon's Wing Harness",
+      "collectorNumber": "53",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.888,
+      "gihwr": 0.579714,
+      "games": 15794
+    },
+    {
+      "name": "Falcon, Winged Wonder",
+      "collectorNumber": "52",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.927,
+      "gihwr": 0.605691,
+      "games": 25551
+    },
+    {
+      "name": "Fin Fang Foom",
+      "collectorNumber": "129",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.684,
+      "gihwr": 0.535863,
+      "games": 4322
+    },
+    {
+      "name": "Fisk Tower",
+      "collectorNumber": "265",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.893,
+      "gihwr": 0.56429,
+      "games": 16729
+    },
+    {
+      "name": "Forest",
+      "collectorNumber": "285",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.987,
+      "gihwr": 0.565327,
+      "games": 147695
+    },
+    {
+      "name": "Frozen in Ice",
+      "collectorNumber": "54",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.961,
+      "gihwr": 0.57959,
+      "games": 48838
+    },
+    {
+      "name": "Futurist Forge",
+      "collectorNumber": "55",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.95,
+      "gihwr": 0.585147,
+      "games": 37999
+    },
+    {
+      "name": "Gathering Place",
+      "collectorNumber": "266",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.741,
+      "gihwr": 0.562369,
+      "games": 5724
+    },
+    {
+      "name": "Ghost, Spectral Saboteur",
+      "collectorNumber": "214",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.744,
+      "gihwr": 0.528113,
+      "games": 5798
+    },
+    {
+      "name": "Giant Growth",
+      "collectorNumber": "167",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.814,
+      "gihwr": 0.560934,
+      "games": 8780
+    },
+    {
+      "name": "Giant-Sized Flying Ant",
+      "collectorNumber": "56",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.938,
+      "gihwr": 0.579497,
+      "games": 30240
+    },
+    {
+      "name": "Gleaming Bastion",
+      "collectorNumber": "267",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.789,
+      "gihwr": 0.576717,
+      "games": 7482
+    },
+    {
+      "name": "Go Nuts!",
+      "collectorNumber": "168",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.952,
+      "gihwr": 0.584724,
+      "games": 39381
+    },
+    {
+      "name": "Grim Reaper, Lethal Legionnaire",
+      "collectorNumber": "98",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.735,
+      "gihwr": 0.524901,
+      "games": 5542
+    },
+    {
+      "name": "Guerrilla Gorilla",
+      "collectorNumber": "169",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.927,
+      "gihwr": 0.567779,
+      "games": 25561
+    },
+    {
+      "name": "H.E.R.B.I.E. Scout Unit",
+      "collectorNumber": "247",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.964,
+      "gihwr": 0.5807,
+      "games": 54083
+    },
+    {
+      "name": "HULK SMASH!",
+      "collectorNumber": "135",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.92,
+      "gihwr": 0.553708,
+      "games": 22976
+    },
+    {
+      "name": "HYDRA Assault Robot",
+      "collectorNumber": "137",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.893,
+      "gihwr": 0.523153,
+      "games": 16672
+    },
+    {
+      "name": "HYDRA Infiltration",
+      "collectorNumber": "100",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.868,
+      "gihwr": 0.567547,
+      "games": 13102
+    },
+    {
+      "name": "HYDRA Troopers",
+      "collectorNumber": "101",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.895,
+      "gihwr": 0.534714,
+      "games": 17039
+    },
+    {
+      "name": "Hawkeye's Bow",
+      "collectorNumber": "132",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.777,
+      "gihwr": 0.526942,
+      "games": 6978
+    },
+    {
+      "name": "Hawkeye, Master Marksman",
+      "collectorNumber": "130",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.754,
+      "gihwr": 0.585668,
+      "games": 6140
+    },
+    {
+      "name": "Hawkeye, Young Avenger",
+      "collectorNumber": "131",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.785,
+      "gihwr": 0.520384,
+      "games": 7285
+    },
+    {
+      "name": "Helicarrier Strike",
+      "collectorNumber": "15",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.957,
+      "gihwr": 0.578644,
+      "games": 44784
+    },
+    {
+      "name": "Hell's Kitchen",
+      "collectorNumber": "268",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.877,
+      "gihwr": 0.550288,
+      "games": 14218
+    },
+    {
+      "name": "Hellcat, Undying Vigilante",
+      "collectorNumber": "170",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.834,
+      "gihwr": 0.565833,
+      "games": 10033
+    },
+    {
+      "name": "Hercules, Prince of Power",
+      "collectorNumber": "171",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.832,
+      "gihwr": 0.554544,
+      "games": 9882
+    },
+    {
+      "name": "Hero in Training",
+      "collectorNumber": "16",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.969,
+      "gihwr": 0.605765,
+      "games": 63381
+    },
+    {
+      "name": "Heroic Feast",
+      "collectorNumber": "172",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.584,
+      "gihwr": 0.530503,
+      "games": 2803
+    },
+    {
+      "name": "Hex Magic",
+      "collectorNumber": "133",
+      "setCode": "msh",
+      "score": 0.0,
+      "confidence": 0.304,
+      "gihwr": 0.454857,
+      "games": 875
+    },
+    {
+      "name": "Hidden Lair",
+      "collectorNumber": "269",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.727,
+      "gihwr": 0.564151,
+      "games": 5339
+    },
+    {
+      "name": "Hire a Crew",
+      "collectorNumber": "134",
+      "setCode": "msh",
+      "score": 0.0,
+      "confidence": 0.452,
+      "gihwr": 0.467556,
+      "games": 1649
+    },
+    {
+      "name": "Hour of Defeat",
+      "collectorNumber": "99",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.949,
+      "gihwr": 0.56893,
+      "games": 37110
+    },
+    {
+      "name": "Hulk, Gamma Goliath",
+      "collectorNumber": "215",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.792,
+      "gihwr": 0.560707,
+      "games": 7635
+    },
+    {
+      "name": "Hulkling, Burgeoning Bruiser",
+      "collectorNumber": "173",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.783,
+      "gihwr": 0.525645,
+      "games": 7214
+    },
+    {
+      "name": "Human Torch, Johnny Storm",
+      "collectorNumber": "136",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.759,
+      "gihwr": 0.51876,
+      "games": 6290
+    },
+    {
+      "name": "Hydraulic Helper",
+      "collectorNumber": "57",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.887,
+      "gihwr": 0.54969,
+      "games": 15667
+    },
+    {
+      "name": "I Am Iron Man",
+      "collectorNumber": "58",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.896,
+      "gihwr": 0.562016,
+      "games": 17302
+    },
+    {
+      "name": "Invisible Woman, Sue Storm",
+      "collectorNumber": "17",
+      "setCode": "msh",
+      "score": 0.0,
+      "confidence": 0.61,
+      "gihwr": 0.461268,
+      "games": 3124
+    },
+    {
+      "name": "Iron Fist, Living Weapon",
+      "collectorNumber": "138",
+      "setCode": "msh",
+      "score": 1.0,
+      "confidence": 0.652,
+      "gihwr": 0.510013,
+      "games": 3745
+    },
+    {
+      "name": "Iron Lad, Diverging Destiny",
+      "collectorNumber": "59",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.858,
+      "gihwr": 0.55743,
+      "games": 12093
+    },
+    {
+      "name": "Iron Man Armor",
+      "collectorNumber": "248",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.69,
+      "gihwr": 0.591277,
+      "games": 4448
+    },
+    {
+      "name": "Iron Man, Master of Machines",
+      "collectorNumber": "216",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.814,
+      "gihwr": 0.552557,
+      "games": 8781
+    },
+    {
+      "name": "Ironheart, Clever Champion",
+      "collectorNumber": "60",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.66,
+      "gihwr": 0.533625,
+      "games": 3881
+    },
+    {
+      "name": "Island",
+      "collectorNumber": "279",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.991,
+      "gihwr": 0.568733,
+      "games": 209777
+    },
+    {
+      "name": "Jennifer Walters // The Sensational She-Hulk",
+      "collectorNumber": "18",
+      "setCode": "msh",
+      "score": 5.0,
+      "confidence": 0.71,
+      "gihwr": 0.654976,
+      "games": 4904
+    },
+    {
+      "name": "Jessica Jones, Private Eye",
+      "collectorNumber": "139",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.889,
+      "gihwr": 0.578393,
+      "games": 15958
+    },
+    {
+      "name": "Justice, Vance Astrovik",
+      "collectorNumber": "61",
+      "setCode": "msh",
+      "score": 4.5,
+      "confidence": 0.938,
+      "gihwr": 0.634997,
+      "games": 30123
+    },
+    {
+      "name": "K'un-Lun Warrior",
+      "collectorNumber": "140",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.84,
+      "gihwr": 0.527746,
+      "games": 10524
+    },
+    {
+      "name": "Ka-Zar of the Savage Land",
+      "collectorNumber": "174",
+      "setCode": "msh",
+      "score": 4.0,
+      "confidence": 0.916,
+      "gihwr": 0.616413,
+      "games": 21763
+    },
+    {
+      "name": "Kang the Conqueror",
+      "collectorNumber": "62",
+      "setCode": "msh",
+      "score": 4.0,
+      "confidence": 0.702,
+      "gihwr": 0.618684,
+      "games": 4710
+    },
+    {
+      "name": "Kang, Temporal Tyrant",
+      "collectorNumber": "217",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.841,
+      "gihwr": 0.55458,
+      "games": 10590
+    },
+    {
+      "name": "Kid Loki",
+      "collectorNumber": "63",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.834,
+      "gihwr": 0.541538,
+      "games": 10027
+    },
+    {
+      "name": "Killmonger, Scourge of Wakanda",
+      "collectorNumber": "218",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.895,
+      "gihwr": 0.608762,
+      "games": 16959
+    },
+    {
+      "name": "King T'Challa // Black Panther, Hope Enduring",
+      "collectorNumber": "219",
+      "setCode": "msh",
+      "score": 4.0,
+      "confidence": 0.722,
+      "gihwr": 0.617222,
+      "games": 5191
+    },
+    {
+      "name": "Kingpin's Enforcers",
+      "collectorNumber": "102",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.886,
+      "gihwr": 0.542842,
+      "games": 15592
+    },
+    {
+      "name": "Klaw, Sonic Subjugator",
+      "collectorNumber": "103",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.897,
+      "gihwr": 0.570043,
+      "games": 17325
+    },
+    {
+      "name": "Knight of Wundagore",
+      "collectorNumber": "175",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.902,
+      "gihwr": 0.529831,
+      "games": 18370
+    },
+    {
+      "name": "Kree Commandos",
+      "collectorNumber": "19",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.774,
+      "gihwr": 0.520105,
+      "games": 6839
+    },
+    {
+      "name": "Kree Sentinel",
+      "collectorNumber": "141",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.918,
+      "gihwr": 0.542222,
+      "games": 22417
+    },
+    {
+      "name": "Leader, Super-Genius",
+      "collectorNumber": "64",
+      "setCode": "msh",
+      "score": 5.0,
+      "confidence": 0.854,
+      "gihwr": 0.678059,
+      "games": 11704
+    },
+    {
+      "name": "Lightning Strike",
+      "collectorNumber": "142",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.935,
+      "gihwr": 0.555369,
+      "games": 28626
+    },
+    {
+      "name": "Loki Laufeyson",
+      "collectorNumber": "143",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.838,
+      "gihwr": 0.530061,
+      "games": 10329
+    },
+    {
+      "name": "Loki, God of Mischief",
+      "collectorNumber": "65",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.819,
+      "gihwr": 0.593068,
+      "games": 9031
+    },
+    {
+      "name": "Los Diablos Missile Base",
+      "collectorNumber": "270",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.875,
+      "gihwr": 0.561011,
+      "games": 13973
+    },
+    {
+      "name": "Luke Cage, Power Man",
+      "collectorNumber": "20",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.705,
+      "gihwr": 0.52658,
+      "games": 4778
+    },
+    {
+      "name": "M.O.D.O.K.",
+      "collectorNumber": "106",
+      "setCode": "msh",
+      "score": 4.5,
+      "confidence": 0.682,
+      "gihwr": 0.644341,
+      "games": 4285
+    },
+    {
+      "name": "Machinesmith Automaton",
+      "collectorNumber": "144",
+      "setCode": "msh",
+      "score": 1.0,
+      "confidence": 0.825,
+      "gihwr": 0.51281,
+      "games": 9407
+    },
+    {
+      "name": "Madame Hydra",
+      "collectorNumber": "221",
+      "setCode": "msh",
+      "score": 1.0,
+      "confidence": 0.794,
+      "gihwr": 0.500259,
+      "games": 7722
+    },
+    {
+      "name": "Madame Masque",
+      "collectorNumber": "104",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.902,
+      "gihwr": 0.584783,
+      "games": 18335
+    },
+    {
+      "name": "Mister Fantastic, Reed Richards",
+      "collectorNumber": "66",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.756,
+      "gihwr": 0.535622,
+      "games": 6204
+    },
+    {
+      "name": "Mister Hyde, Monster Within",
+      "collectorNumber": "176",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.85,
+      "gihwr": 0.561272,
+      "games": 11351
+    },
+    {
+      "name": "Misty Knight, Hero for Hire",
+      "collectorNumber": "145",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.794,
+      "gihwr": 0.536339,
+      "games": 7719
+    },
+    {
+      "name": "Mjölnir, Hammer of Thor",
+      "collectorNumber": "146",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.641,
+      "gihwr": 0.596801,
+      "games": 3564
+    },
+    {
+      "name": "Mockingbird, Ace Agent",
+      "collectorNumber": "22",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.708,
+      "gihwr": 0.518878,
+      "games": 4847
+    },
+    {
+      "name": "Mole Man, Moloid Master",
+      "collectorNumber": "177",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.661,
+      "gihwr": 0.545804,
+      "games": 3897
+    },
+    {
+      "name": "Monica Rambeau // Photon, Living Light",
+      "collectorNumber": "23",
+      "setCode": "msh",
+      "score": 4.5,
+      "confidence": 0.711,
+      "gihwr": 0.634345,
+      "games": 4909
+    },
+    {
+      "name": "Moon Girl and Devil Dinosaur",
+      "collectorNumber": "223",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.705,
+      "gihwr": 0.559021,
+      "games": 4778
+    },
+    {
+      "name": "Moonstone, Harsh Mistress",
+      "collectorNumber": "107",
+      "setCode": "msh",
+      "score": 1.0,
+      "confidence": 0.784,
+      "gihwr": 0.511185,
+      "games": 7242
+    },
+    {
+      "name": "Mountain",
+      "collectorNumber": "283",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.985,
+      "gihwr": 0.547393,
+      "games": 130685
+    },
+    {
+      "name": "Ms. Marvel, Kamala Khan",
+      "collectorNumber": "67",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.673,
+      "gihwr": 0.556232,
+      "games": 4108
+    },
+    {
+      "name": "Multiversal Incursion",
+      "collectorNumber": "68",
+      "setCode": "msh",
+      "score": 1.0,
+      "confidence": 0.538,
+      "gihwr": 0.509661,
+      "games": 2329
+    },
+    {
+      "name": "Murdock's Crusade",
+      "collectorNumber": "24",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.963,
+      "gihwr": 0.605419,
+      "games": 52007
+    },
+    {
+      "name": "Namor the Sub-Mariner",
+      "collectorNumber": "69",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.577,
+      "gihwr": 0.566287,
+      "games": 2723
+    },
+    {
+      "name": "Nick Fury, Agent of S.H.I.E.L.D.",
+      "collectorNumber": "25",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.735,
+      "gihwr": 0.580959,
+      "games": 5546
+    },
+    {
+      "name": "Night Nurse, Healer of Heroes",
+      "collectorNumber": "26",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.922,
+      "gihwr": 0.578436,
+      "games": 23669
+    },
+    {
+      "name": "Ninja of the Hand",
+      "collectorNumber": "108",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.907,
+      "gihwr": 0.551663,
+      "games": 19608
+    },
+    {
+      "name": "Okoye, Dora Milaje Leader",
+      "collectorNumber": "27",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.916,
+      "gihwr": 0.588618,
+      "games": 21683
+    },
+    {
+      "name": "Origin of the Avengers",
+      "collectorNumber": "28",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.803,
+      "gihwr": 0.583129,
+      "games": 8168
+    },
+    {
+      "name": "Panther Pounce",
+      "collectorNumber": "29",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.852,
+      "gihwr": 0.543921,
+      "games": 11498
+    },
+    {
+      "name": "Patriot, Shield Wielder",
+      "collectorNumber": "30",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.917,
+      "gihwr": 0.578075,
+      "games": 22139
+    },
+    {
+      "name": "Pet Avengers",
+      "collectorNumber": "178",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.938,
+      "gihwr": 0.57538,
+      "games": 30114
+    },
+    {
+      "name": "Photon Blast Barrage",
+      "collectorNumber": "147",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.859,
+      "gihwr": 0.561763,
+      "games": 12208
+    },
+    {
+      "name": "Plains",
+      "collectorNumber": "277",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.991,
+      "gihwr": 0.573625,
+      "games": 225461
+    },
+    {
+      "name": "Political Triumph",
+      "collectorNumber": "31",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.912,
+      "gihwr": 0.595438,
+      "games": 20694
+    },
+    {
+      "name": "Powerful Broker",
+      "collectorNumber": "179",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.765,
+      "gihwr": 0.523744,
+      "games": 6507
+    },
+    {
+      "name": "Project Deathlok Soldier",
+      "collectorNumber": "109",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.812,
+      "gihwr": 0.532208,
+      "games": 8647
+    },
+    {
+      "name": "Punishing Punch",
+      "collectorNumber": "180",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.904,
+      "gihwr": 0.602446,
+      "games": 18888
+    },
+    {
+      "name": "Pym Particles",
+      "collectorNumber": "70",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.723,
+      "gihwr": 0.527725,
+      "games": 5230
+    },
+    {
+      "name": "Pym Technologies",
+      "collectorNumber": "271",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.897,
+      "gihwr": 0.568119,
+      "games": 17440
+    },
+    {
+      "name": "Quake, Agent of S.H.I.E.L.D.",
+      "collectorNumber": "32",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.86,
+      "gihwr": 0.557261,
+      "games": 12251
+    },
+    {
+      "name": "Quicksilver, Brash Blur",
+      "collectorNumber": "148",
+      "setCode": "msh",
+      "score": 1.0,
+      "confidence": 0.403,
+      "gihwr": 0.511869,
+      "games": 1348
+    },
+    {
+      "name": "Raft Security Officer",
+      "collectorNumber": "33",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.964,
+      "gihwr": 0.578622,
+      "games": 52803
+    },
+    {
+      "name": "Rapid Rescue",
+      "collectorNumber": "181",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.857,
+      "gihwr": 0.58005,
+      "games": 12030
+    },
+    {
+      "name": "Red Guardian, Super-Soldier",
+      "collectorNumber": "34",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.916,
+      "gihwr": 0.592258,
+      "games": 21673
+    },
+    {
+      "name": "Red Hulk",
+      "collectorNumber": "149",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.766,
+      "gihwr": 0.51485,
+      "games": 6532
+    },
+    {
+      "name": "Red Room Recruit",
+      "collectorNumber": "110",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.942,
+      "gihwr": 0.556065,
+      "games": 32257
+    },
+    {
+      "name": "Reptil, Dinomorpher",
+      "collectorNumber": "182",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.765,
+      "gihwr": 0.57723,
+      "games": 6526
+    },
+    {
+      "name": "Repulsor Blast",
+      "collectorNumber": "150",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.916,
+      "gihwr": 0.524207,
+      "games": 21915
+    },
+    {
+      "name": "Restorative Technique",
+      "collectorNumber": "183",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.817,
+      "gihwr": 0.531619,
+      "games": 8903
+    },
+    {
+      "name": "Rewrite History",
+      "collectorNumber": "71",
+      "setCode": "msh",
+      "score": 0.5,
+      "confidence": 0.573,
+      "gihwr": 0.491261,
+      "games": 2689
+    },
+    {
+      "name": "Rick Jones, Destined Sidekick",
+      "collectorNumber": "184",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.51,
+      "gihwr": 0.542926,
+      "games": 2085
+    },
+    {
+      "name": "Robot Domination",
+      "collectorNumber": "111",
+      "setCode": "msh",
+      "score": 0.5,
+      "confidence": 0.738,
+      "gihwr": 0.488186,
+      "games": 5629
+    },
+    {
+      "name": "Ronin, Shadow Stalker",
+      "collectorNumber": "112",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.716,
+      "gihwr": 0.55838,
+      "games": 5036
+    },
+    {
+      "name": "Roxxon Brutes",
+      "collectorNumber": "113",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.932,
+      "gihwr": 0.545418,
+      "games": 27566
+    },
+    {
+      "name": "S.H.I.E.L.D. Deployment Drone",
+      "collectorNumber": "73",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.968,
+      "gihwr": 0.599728,
+      "games": 61121
+    },
+    {
+      "name": "S.H.I.E.L.D. Flying Car",
+      "collectorNumber": "74",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.835,
+      "gihwr": 0.597556,
+      "games": 10148
+    },
+    {
+      "name": "S.H.I.E.L.D. Helicarrier",
+      "collectorNumber": "249",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.683,
+      "gihwr": 0.573782,
+      "games": 4310
+    },
+    {
+      "name": "S.H.I.E.L.D. Spy Kit",
+      "collectorNumber": "36",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.956,
+      "gihwr": 0.585279,
+      "games": 43217
+    },
+    {
+      "name": "Savage Land Dinosaur",
+      "collectorNumber": "185",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.935,
+      "gihwr": 0.562255,
+      "games": 28560
+    },
+    {
+      "name": "Scientist Supreme of A.I.M.",
+      "collectorNumber": "225",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.51,
+      "gihwr": 0.51875,
+      "games": 2080
+    },
+    {
+      "name": "Secret Invasion",
+      "collectorNumber": "72",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.822,
+      "gihwr": 0.600673,
+      "games": 9218
+    },
+    {
+      "name": "Serpent Specialist",
+      "collectorNumber": "186",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.925,
+      "gihwr": 0.57115,
+      "games": 24575
+    },
+    {
+      "name": "Shang-Chi, Master of Kung Fu",
+      "collectorNumber": "187",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.517,
+      "gihwr": 0.537383,
+      "games": 2140
+    },
+    {
+      "name": "She-Hulk, Jade Defender",
+      "collectorNumber": "188",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.902,
+      "gihwr": 0.60995,
+      "games": 18472
+    },
+    {
+      "name": "Shuri, Wakandan Inventor",
+      "collectorNumber": "75",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.842,
+      "gihwr": 0.562041,
+      "games": 10622
+    },
+    {
+      "name": "Speed, Young Avenger",
+      "collectorNumber": "152",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.677,
+      "gihwr": 0.539524,
+      "games": 4200
+    },
+    {
+      "name": "Speedball, New Warrior",
+      "collectorNumber": "227",
+      "setCode": "msh",
+      "score": 1.0,
+      "confidence": 0.743,
+      "gihwr": 0.511342,
+      "games": 5775
+    },
+    {
+      "name": "Spider-Man, To the Rescue",
+      "collectorNumber": "228",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.885,
+      "gihwr": 0.555251,
+      "games": 15339
+    },
+    {
+      "name": "Spider-Woman, Secret Agent",
+      "collectorNumber": "229",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.925,
+      "gihwr": 0.597159,
+      "games": 24779
+    },
+    {
+      "name": "Stark Industries",
+      "collectorNumber": "272",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.893,
+      "gihwr": 0.563351,
+      "games": 16748
+    },
+    {
+      "name": "Stark Industries Executive",
+      "collectorNumber": "153",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.872,
+      "gihwr": 0.514856,
+      "games": 13631
+    },
+    {
+      "name": "Stature, Size Shifter",
+      "collectorNumber": "76",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.923,
+      "gihwr": 0.598156,
+      "games": 23865
+    },
+    {
+      "name": "Stolen Stark Tech",
+      "collectorNumber": "114",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.887,
+      "gihwr": 0.555563,
+      "games": 15739
+    },
+    {
+      "name": "Storm, Windrider",
+      "collectorNumber": "230",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.803,
+      "gihwr": 0.602988,
+      "games": 8166
+    },
+    {
+      "name": "Subterranean Cavern",
+      "collectorNumber": "273",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.891,
+      "gihwr": 0.56653,
+      "games": 16361
+    },
+    {
+      "name": "Super Intelligence",
+      "collectorNumber": "77",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.751,
+      "gihwr": 0.534417,
+      "games": 6029
+    },
+    {
+      "name": "Super Speed",
+      "collectorNumber": "154",
+      "setCode": "msh",
+      "score": 0.5,
+      "confidence": 0.44,
+      "gihwr": 0.490134,
+      "games": 1571
+    },
+    {
+      "name": "Super Strength",
+      "collectorNumber": "189",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.479,
+      "gihwr": 0.520087,
+      "games": 1842
+    },
+    {
+      "name": "Super Suit",
+      "collectorNumber": "78",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.864,
+      "gihwr": 0.558415,
+      "games": 12668
+    },
+    {
+      "name": "Super Villain Lockup",
+      "collectorNumber": "37",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.894,
+      "gihwr": 0.564242,
+      "games": 16897
+    },
+    {
+      "name": "Super-Adaptoid",
+      "collectorNumber": "250",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.791,
+      "gihwr": 0.583289,
+      "games": 7576
+    },
+    {
+      "name": "Super-Skrull",
+      "collectorNumber": "115",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.798,
+      "gihwr": 0.600505,
+      "games": 7925
+    },
+    {
+      "name": "Super-Soldier Serum",
+      "collectorNumber": "38",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.633,
+      "gihwr": 0.549826,
+      "games": 3452
+    },
+    {
+      "name": "Surveillance Room",
+      "collectorNumber": "274",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.958,
+      "gihwr": 0.569989,
+      "games": 45264
+    },
+    {
+      "name": "Swamp",
+      "collectorNumber": "281",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.986,
+      "gihwr": 0.551969,
+      "games": 139622
+    },
+    {
+      "name": "Swordsman, Sharp Scoundrel",
+      "collectorNumber": "116",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.805,
+      "gihwr": 0.55903,
+      "games": 8250
+    },
+    {
+      "name": "Take Up the Shield",
+      "collectorNumber": "39",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.96,
+      "gihwr": 0.59201,
+      "games": 47761
+    },
+    {
+      "name": "Taskmaster, Mercenary Mimic",
+      "collectorNumber": "232",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.705,
+      "gihwr": 0.550503,
+      "games": 4772
+    },
+    {
+      "name": "Team Tactics",
+      "collectorNumber": "155",
+      "setCode": "msh",
+      "score": 1.0,
+      "confidence": 0.629,
+      "gihwr": 0.497936,
+      "games": 3392
+    },
+    {
+      "name": "Thanos, the Mad Titan",
+      "collectorNumber": "233",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.469,
+      "gihwr": 0.574011,
+      "games": 1770
+    },
+    {
+      "name": "The Astonishing Ant-Man",
+      "collectorNumber": "204",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.722,
+      "gihwr": 0.569832,
+      "games": 5191
+    },
+    {
+      "name": "The Coming of Galactus",
+      "collectorNumber": "212",
+      "setCode": "msh",
+      "score": 4.5,
+      "confidence": 0.671,
+      "gihwr": 0.636943,
+      "games": 4082
+    },
+    {
+      "name": "The Kingpin of Crime",
+      "collectorNumber": "220",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.74,
+      "gihwr": 0.581326,
+      "games": 5687
+    },
+    {
+      "name": "The Masters of Evil",
+      "collectorNumber": "105",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.848,
+      "gihwr": 0.542893,
+      "games": 11144
+    },
+    {
+      "name": "The Mighty Thor, Jane Foster",
+      "collectorNumber": "222",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.833,
+      "gihwr": 0.605535,
+      "games": 9973
+    },
+    {
+      "name": "The Mind Stone",
+      "collectorNumber": "21",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.632,
+      "gihwr": 0.555846,
+      "games": 3438
+    },
+    {
+      "name": "The Ruinous Wrecking Crew",
+      "collectorNumber": "224",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.782,
+      "gihwr": 0.606247,
+      "games": 7172
+    },
+    {
+      "name": "The Scarlet Witch",
+      "collectorNumber": "151",
+      "setCode": "msh",
+      "score": 0.5,
+      "confidence": 0.27,
+      "gihwr": 0.483131,
+      "games": 741
+    },
+    {
+      "name": "The Sentry, Golden Guardian",
+      "collectorNumber": "35",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.721,
+      "gihwr": 0.537927,
+      "games": 5181
+    },
+    {
+      "name": "The Serpent Society",
+      "collectorNumber": "226",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.655,
+      "gihwr": 0.571089,
+      "games": 3791
+    },
+    {
+      "name": "The Super Hero Civil War",
+      "collectorNumber": "231",
+      "setCode": "msh",
+      "score": 5.0,
+      "confidence": 0.849,
+      "gihwr": 0.70278,
+      "games": 11261
+    },
+    {
+      "name": "The Thing, Ben Grimm",
+      "collectorNumber": "190",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.785,
+      "gihwr": 0.52946,
+      "games": 7298
+    },
+    {
+      "name": "The Unbeatable Squirrel Girl",
+      "collectorNumber": "193",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.788,
+      "gihwr": 0.59876,
+      "games": 7422
+    },
+    {
+      "name": "The Vision",
+      "collectorNumber": "255",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.824,
+      "gihwr": 0.598398,
+      "games": 9365
+    },
+    {
+      "name": "The Wondrous Wasp",
+      "collectorNumber": "84",
+      "setCode": "msh",
+      "score": 4.5,
+      "confidence": 0.848,
+      "gihwr": 0.640068,
+      "games": 11166
+    },
+    {
+      "name": "Thirst for Knowledge",
+      "collectorNumber": "79",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.69,
+      "gihwr": 0.52352,
+      "games": 4443
+    },
+    {
+      "name": "Thor Odinson",
+      "collectorNumber": "234",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.772,
+      "gihwr": 0.523045,
+      "games": 6791
+    },
+    {
+      "name": "Thor, God of Thunder",
+      "collectorNumber": "156",
+      "setCode": "msh",
+      "score": 4.0,
+      "confidence": 0.641,
+      "gihwr": 0.62472,
+      "games": 3568
+    },
+    {
+      "name": "Thunderbolts Conspiracy",
+      "collectorNumber": "117",
+      "setCode": "msh",
+      "score": 1.0,
+      "confidence": 0.593,
+      "gihwr": 0.499658,
+      "games": 2920
+    },
+    {
+      "name": "Tigra, Feline Fury",
+      "collectorNumber": "191",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.776,
+      "gihwr": 0.538907,
+      "games": 6914
+    },
+    {
+      "name": "Titania, Rugged Rumbler",
+      "collectorNumber": "235",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.86,
+      "gihwr": 0.567716,
+      "games": 12235
+    },
+    {
+      "name": "Tony Stark // The Invincible Iron Man",
+      "collectorNumber": "80",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.67,
+      "gihwr": 0.609425,
+      "games": 4053
+    },
+    {
+      "name": "Too Evil to Stay Dead",
+      "collectorNumber": "118",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.708,
+      "gihwr": 0.514156,
+      "games": 4839
+    },
+    {
+      "name": "Training Compound",
+      "collectorNumber": "275",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.686,
+      "gihwr": 0.56947,
+      "games": 4376
+    },
+    {
+      "name": "Training Regimen",
+      "collectorNumber": "192",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.762,
+      "gihwr": 0.529063,
+      "games": 6400
+    },
+    {
+      "name": "Trickster's Stratagem",
+      "collectorNumber": "81",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.969,
+      "gihwr": 0.607019,
+      "games": 62741
+    },
+    {
+      "name": "Truck Toss",
+      "collectorNumber": "157",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.818,
+      "gihwr": 0.524043,
+      "games": 8963
+    },
+    {
+      "name": "U.S.Agent, John Walker",
+      "collectorNumber": "236",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.909,
+      "gihwr": 0.57403,
+      "games": 19992
+    },
+    {
+      "name": "Ultron Drone",
+      "collectorNumber": "253",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.861,
+      "gihwr": 0.541912,
+      "games": 12395
+    },
+    {
+      "name": "Ultron, Artificial Malevolence",
+      "collectorNumber": "252",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.592,
+      "gihwr": 0.537668,
+      "games": 2907
+    },
+    {
+      "name": "Undercover Skrull",
+      "collectorNumber": "194",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.955,
+      "gihwr": 0.597875,
+      "games": 42457
+    },
+    {
+      "name": "Unliving Legionnaire",
+      "collectorNumber": "119",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.848,
+      "gihwr": 0.543841,
+      "games": 11154
+    },
+    {
+      "name": "Vibranium Energy Daggers",
+      "collectorNumber": "254",
+      "setCode": "msh",
+      "score": 1.0,
+      "confidence": 0.683,
+      "gihwr": 0.509763,
+      "games": 4302
+    },
+    {
+      "name": "Villainous Hideout",
+      "collectorNumber": "276",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.878,
+      "gihwr": 0.578493,
+      "games": 14377
+    },
+    {
+      "name": "Vision Quest",
+      "collectorNumber": "237",
+      "setCode": "msh",
+      "score": 4.0,
+      "confidence": 0.807,
+      "gihwr": 0.615081,
+      "games": 8368
+    },
+    {
+      "name": "Vision of Love",
+      "collectorNumber": "158",
+      "setCode": "msh",
+      "score": 1.0,
+      "confidence": 0.727,
+      "gihwr": 0.502344,
+      "games": 5333
+    },
+    {
+      "name": "Visions of Villainy",
+      "collectorNumber": "120",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.915,
+      "gihwr": 0.538134,
+      "games": 21621
+    },
+    {
+      "name": "Viv Vision, Teen Synthezoid",
+      "collectorNumber": "256",
+      "setCode": "msh",
+      "score": 2.0,
+      "confidence": 0.826,
+      "gihwr": 0.53795,
+      "games": 9473
+    },
+    {
+      "name": "Volcanic Villain",
+      "collectorNumber": "159",
+      "setCode": "msh",
+      "score": 0.5,
+      "confidence": 0.612,
+      "gihwr": 0.491122,
+      "games": 3154
+    },
+    {
+      "name": "Wakandan Drone Flock",
+      "collectorNumber": "40",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.944,
+      "gihwr": 0.577982,
+      "games": 33636
+    },
+    {
+      "name": "Wakandan Royal Guard",
+      "collectorNumber": "195",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.903,
+      "gihwr": 0.562114,
+      "games": 18603
+    },
+    {
+      "name": "War Machine, Legacy of Iron",
+      "collectorNumber": "238",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.833,
+      "gihwr": 0.527706,
+      "games": 9998
+    },
+    {
+      "name": "We Say Thee Nay!",
+      "collectorNumber": "82",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.965,
+      "gihwr": 0.594905,
+      "games": 55619
+    },
+    {
+      "name": "Web Up",
+      "collectorNumber": "41",
+      "setCode": "msh",
+      "score": 3.5,
+      "confidence": 0.965,
+      "gihwr": 0.598462,
+      "games": 54996
+    },
+    {
+      "name": "Whiplash, Vengeful Engineer",
+      "collectorNumber": "121",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.793,
+      "gihwr": 0.573539,
+      "games": 7649
+    },
+    {
+      "name": "White Tiger, Ava Ayala",
+      "collectorNumber": "196",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.898,
+      "gihwr": 0.580339,
+      "games": 17700
+    },
+    {
+      "name": "White Widow, Free Agent",
+      "collectorNumber": "42",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.892,
+      "gihwr": 0.56337,
+      "games": 16593
+    },
+    {
+      "name": "Wiccan, Rising Magician",
+      "collectorNumber": "83",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.874,
+      "gihwr": 0.561678,
+      "games": 13919
+    },
+    {
+      "name": "Widow's Bite",
+      "collectorNumber": "122",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.942,
+      "gihwr": 0.565534,
+      "games": 32380
+    },
+    {
+      "name": "Winter Soldier, Icy Assassin",
+      "collectorNumber": "239",
+      "setCode": "msh",
+      "score": 3.0,
+      "confidence": 0.703,
+      "gihwr": 0.589652,
+      "games": 4735
+    },
+    {
+      "name": "Wolverine, Fierce Fighter",
+      "collectorNumber": "240",
+      "setCode": "msh",
+      "score": 4.5,
+      "confidence": 0.789,
+      "gihwr": 0.644439,
+      "games": 7498
+    },
+    {
+      "name": "Wonder Man, Hollywood Hero",
+      "collectorNumber": "160",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.676,
+      "gihwr": 0.520163,
+      "games": 4166
+    },
+    {
+      "name": "World War Hulk",
+      "collectorNumber": "197",
+      "setCode": "msh",
+      "score": 1.5,
+      "confidence": 0.638,
+      "gihwr": 0.528141,
+      "games": 3518
+    },
+    {
+      "name": "Yellowjacket, Heartless Marauder",
+      "collectorNumber": "123",
+      "setCode": "msh",
+      "score": 2.5,
+      "confidence": 0.866,
+      "gihwr": 0.557567,
+      "games": 12924
+    }
+  ]
+}

@@ -1,0 +1,2449 @@
+{
+  "header": {
+    "setCode": "fra",
+    "source": "WIN_RATE",
+    "provenance": "17Lands public game data game_data_public.FRA.PremierDraft.csv.gz, Last-Modified 2026-10-19",
+    "createdAt": "2026-11-04T22:52:47Z"
+  },
+  "grades": [
+    {
+      "name": "Academic Ascent",
+      "collectorNumber": "2",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.692,
+      "gihwr": 0.531702,
+      "games": 4495
+    },
+    {
+      "name": "Aerid Konstrari",
+      "collectorNumber": "121",
+      "setCode": "fra",
+      "score": 4.5,
+      "confidence": 0.633,
+      "gihwr": 0.645966,
+      "games": 3446
+    },
+    {
+      "name": "Afterthought Sentry",
+      "collectorNumber": "166",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.776,
+      "gihwr": 0.536818,
+      "games": 6926
+    },
+    {
+      "name": "Ajani Resolute",
+      "collectorNumber": "195",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.472,
+      "gihwr": 0.526611,
+      "games": 1785
+    },
+    {
+      "name": "Ajani Unrelenting",
+      "collectorNumber": "242",
+      "setCode": "fra",
+      "score": 5.0,
+      "confidence": 0.684,
+      "gihwr": 0.739935,
+      "games": 4322
+    },
+    {
+      "name": "Ajani's Anguish",
+      "collectorNumber": "72",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.763,
+      "gihwr": 0.567938,
+      "games": 6425
+    },
+    {
+      "name": "Apex Witchstalker",
+      "collectorNumber": "48",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.946,
+      "gihwr": 0.562805,
+      "games": 34790
+    },
+    {
+      "name": "Arcane Amphisbaena",
+      "collectorNumber": "97",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.942,
+      "gihwr": 0.565383,
+      "games": 32233
+    },
+    {
+      "name": "Archive Arbiter",
+      "collectorNumber": "167",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.856,
+      "gihwr": 0.562468,
+      "games": 11894
+    },
+    {
+      "name": "Arni, Humble Scribe",
+      "collectorNumber": "211",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.877,
+      "gihwr": 0.555089,
+      "games": 14295
+    },
+    {
+      "name": "Arni, Renowned Champion",
+      "collectorNumber": "243",
+      "setCode": "fra",
+      "score": 0.0,
+      "confidence": 0.504,
+      "gihwr": 0.465848,
+      "games": 2035
+    },
+    {
+      "name": "Artifist Acumen",
+      "collectorNumber": "73",
+      "setCode": "fra",
+      "score": 1.0,
+      "confidence": 0.583,
+      "gihwr": 0.502857,
+      "games": 2800
+    },
+    {
+      "name": "Avatar of Burgeoning Echoes",
+      "collectorNumber": "122",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.604,
+      "gihwr": 0.61002,
+      "games": 3054
+    },
+    {
+      "name": "Awaken the Inferno",
+      "collectorNumber": "74",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.943,
+      "gihwr": 0.567677,
+      "games": 32788
+    },
+    {
+      "name": "Bestial Incursion",
+      "collectorNumber": "98",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.94,
+      "gihwr": 0.567944,
+      "games": 31570
+    },
+    {
+      "name": "Blazing Crescendo",
+      "collectorNumber": "75",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.707,
+      "gihwr": 0.520033,
+      "games": 4817
+    },
+    {
+      "name": "Blessed Ghoul",
+      "collectorNumber": "123",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.878,
+      "gihwr": 0.547816,
+      "games": 14357
+    },
+    {
+      "name": "Bloodline Recollector // Ancestral Craving",
+      "collectorNumber": "49",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.425,
+      "gihwr": 0.52265,
+      "games": 1479
+    },
+    {
+      "name": "Bloombrute",
+      "collectorNumber": "124",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.846,
+      "gihwr": 0.578312,
+      "games": 11020
+    },
+    {
+      "name": "Blossom-Blessed Angel // Seed Suture",
+      "collectorNumber": "3",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.917,
+      "gihwr": 0.562443,
+      "games": 22036
+    },
+    {
+      "name": "Break Under Pressure",
+      "collectorNumber": "50",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.916,
+      "gihwr": 0.603527,
+      "games": 21777
+    },
+    {
+      "name": "Budding Insurgent",
+      "collectorNumber": "99",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.814,
+      "gihwr": 0.519647,
+      "games": 8729
+    },
+    {
+      "name": "Campus Crier",
+      "collectorNumber": "4",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.931,
+      "gihwr": 0.563301,
+      "games": 27140
+    },
+    {
+      "name": "Carnivorous Cultivator // Enroot",
+      "collectorNumber": "100",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.777,
+      "gihwr": 0.605206,
+      "games": 6953
+    },
+    {
+      "name": "Cast Away Doubt",
+      "collectorNumber": "51",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.821,
+      "gihwr": 0.535847,
+      "games": 9150
+    },
+    {
+      "name": "Chandra's Emberling",
+      "collectorNumber": "76",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.815,
+      "gihwr": 0.520364,
+      "games": 8790
+    },
+    {
+      "name": "Chandra, Chill of Compliance",
+      "collectorNumber": "212",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.669,
+      "gihwr": 0.599358,
+      "games": 4051
+    },
+    {
+      "name": "Chandra, Torch of Defiance",
+      "collectorNumber": "244",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.62,
+      "gihwr": 0.609562,
+      "games": 3263
+    },
+    {
+      "name": "Charge the Sanctum",
+      "collectorNumber": "125",
+      "setCode": "fra",
+      "score": 1.0,
+      "confidence": 0.634,
+      "gihwr": 0.501156,
+      "games": 3460
+    },
+    {
+      "name": "Clash of Elements",
+      "collectorNumber": "126",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.878,
+      "gihwr": 0.589394,
+      "games": 14369
+    },
+    {
+      "name": "Command the Stage",
+      "collectorNumber": "77",
+      "setCode": "fra",
+      "score": 1.0,
+      "confidence": 0.71,
+      "gihwr": 0.504587,
+      "games": 4905
+    },
+    {
+      "name": "Compel Brutality",
+      "collectorNumber": "101",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.938,
+      "gihwr": 0.556322,
+      "games": 30317
+    },
+    {
+      "name": "Countersculpt",
+      "collectorNumber": "25",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.928,
+      "gihwr": 0.601444,
+      "games": 25763
+    },
+    {
+      "name": "Craftwork Crusher",
+      "collectorNumber": "127",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.897,
+      "gihwr": 0.620507,
+      "games": 17331
+    },
+    {
+      "name": "Craterclaw Colossus",
+      "collectorNumber": "78",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.481,
+      "gihwr": 0.585353,
+      "games": 1857
+    },
+    {
+      "name": "Cryotheory Adept",
+      "collectorNumber": "27",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.875,
+      "gihwr": 0.540809,
+      "games": 13992
+    },
+    {
+      "name": "Curse-Marred Demon",
+      "collectorNumber": "79",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.742,
+      "gihwr": 0.569068,
+      "games": 5748
+    },
+    {
+      "name": "Danitha, Spear of Agony",
+      "collectorNumber": "227",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.788,
+      "gihwr": 0.511153,
+      "games": 7442
+    },
+    {
+      "name": "Danitha, Sword of Hope",
+      "collectorNumber": "196",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.707,
+      "gihwr": 0.525585,
+      "games": 4827
+    },
+    {
+      "name": "Dark Matter Manipulator",
+      "collectorNumber": "52",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.708,
+      "gihwr": 0.580313,
+      "games": 4856
+    },
+    {
+      "name": "Darklight Phoenix",
+      "collectorNumber": "53",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.48,
+      "gihwr": 0.543926,
+      "games": 1844
+    },
+    {
+      "name": "Dedicated Commons",
+      "collectorNumber": "175",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.842,
+      "gihwr": 0.542561,
+      "games": 10620
+    },
+    {
+      "name": "Denzilore Fatehold",
+      "collectorNumber": "128",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.662,
+      "gihwr": 0.618902,
+      "games": 3915
+    },
+    {
+      "name": "Deserted Beach",
+      "collectorNumber": "176",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.688,
+      "gihwr": 0.566303,
+      "games": 4404
+    },
+    {
+      "name": "Desperate Futurescribe",
+      "collectorNumber": "129",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.888,
+      "gihwr": 0.580702,
+      "games": 15929
+    },
+    {
+      "name": "Diviner of Victory // Unwind History",
+      "collectorNumber": "28",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.807,
+      "gihwr": 0.598159,
+      "games": 8364
+    },
+    {
+      "name": "Divining Duelist",
+      "collectorNumber": "29",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.856,
+      "gihwr": 0.557497,
+      "games": 11905
+    },
+    {
+      "name": "Draconic Visitor",
+      "collectorNumber": "80",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.703,
+      "gihwr": 0.54789,
+      "games": 4740
+    },
+    {
+      "name": "Eardrum Rattler",
+      "collectorNumber": "81",
+      "setCode": "fra",
+      "score": 1.0,
+      "confidence": 0.716,
+      "gihwr": 0.498807,
+      "games": 5030
+    },
+    {
+      "name": "Edgar, Ancient Bloodlord",
+      "collectorNumber": "270",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.683,
+      "gihwr": 0.531185,
+      "games": 4313
+    },
+    {
+      "name": "Edgar, Moonlit Sovereign",
+      "collectorNumber": "257",
+      "setCode": "fra",
+      "score": 1.0,
+      "confidence": 0.778,
+      "gihwr": 0.508283,
+      "games": 7002
+    },
+    {
+      "name": "Emergency Phytomedic // Seed Suture",
+      "collectorNumber": "130",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.89,
+      "gihwr": 0.550111,
+      "games": 16244
+    },
+    {
+      "name": "Emrakul, the Exigent Doom",
+      "collectorNumber": "1",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.454,
+      "gihwr": 0.52736,
+      "games": 1663
+    },
+    {
+      "name": "Enlightened Confidant",
+      "collectorNumber": "5",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.553,
+      "gihwr": 0.573969,
+      "games": 2474
+    },
+    {
+      "name": "Extended Absence",
+      "collectorNumber": "54",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.956,
+      "gihwr": 0.598404,
+      "games": 43347
+    },
+    {
+      "name": "Eye of Jace",
+      "collectorNumber": "170",
+      "setCode": "fra",
+      "score": 1.0,
+      "confidence": 0.653,
+      "gihwr": 0.498938,
+      "games": 3768
+    },
+    {
+      "name": "Face Yourself",
+      "collectorNumber": "83",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.671,
+      "gihwr": 0.546367,
+      "games": 4087
+    },
+    {
+      "name": "Fatehold Annex",
+      "collectorNumber": "177",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.894,
+      "gihwr": 0.565017,
+      "games": 16911
+    },
+    {
+      "name": "Fatehold Charm",
+      "collectorNumber": "132",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.874,
+      "gihwr": 0.58574,
+      "games": 13815
+    },
+    {
+      "name": "Fatehold Chronologist // Peer Review",
+      "collectorNumber": "133",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.951,
+      "gihwr": 0.572042,
+      "games": 38651
+    },
+    {
+      "name": "Fateshaper Aspirant",
+      "collectorNumber": "6",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.827,
+      "gihwr": 0.527523,
+      "games": 9592
+    },
+    {
+      "name": "Fblthp, Impossibly Lost",
+      "collectorNumber": "213",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.912,
+      "gihwr": 0.583297,
+      "games": 20799
+    },
+    {
+      "name": "Fblthp, Knows the Way",
+      "collectorNumber": "258",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.902,
+      "gihwr": 0.57922,
+      "games": 18354
+    },
+    {
+      "name": "Ferocity of the Hunt",
+      "collectorNumber": "134",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.872,
+      "gihwr": 0.530421,
+      "games": 13576
+    },
+    {
+      "name": "Flickering Hound",
+      "collectorNumber": "7",
+      "setCode": "fra",
+      "score": 0.5,
+      "confidence": 0.454,
+      "gihwr": 0.476821,
+      "games": 1661
+    },
+    {
+      "name": "Forest",
+      "collectorNumber": "289",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.986,
+      "gihwr": 0.556762,
+      "games": 138120
+    },
+    {
+      "name": "Formidable Commons",
+      "collectorNumber": "178",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.903,
+      "gihwr": 0.568558,
+      "games": 18714
+    },
+    {
+      "name": "Frostbite Pyromental",
+      "collectorNumber": "135",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.453,
+      "gihwr": 0.526221,
+      "games": 1659
+    },
+    {
+      "name": "Fulminous Forte",
+      "collectorNumber": "84",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.899,
+      "gihwr": 0.577588,
+      "games": 17812
+    },
+    {
+      "name": "Gallia, Tragic Host",
+      "collectorNumber": "228",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.881,
+      "gihwr": 0.559346,
+      "games": 14862
+    },
+    {
+      "name": "Gallia, the Merrymaker",
+      "collectorNumber": "245",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.777,
+      "gihwr": 0.523057,
+      "games": 6961
+    },
+    {
+      "name": "Garruk, Curse Breaker",
+      "collectorNumber": "259",
+      "setCode": "fra",
+      "score": 5.0,
+      "confidence": 0.654,
+      "gihwr": 0.653856,
+      "games": 3773
+    },
+    {
+      "name": "Garruk, Veiled Butcher",
+      "collectorNumber": "229",
+      "setCode": "fra",
+      "score": 5.0,
+      "confidence": 0.672,
+      "gihwr": 0.658548,
+      "games": 4106
+    },
+    {
+      "name": "Geist of Saint Thalia",
+      "collectorNumber": "214",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.894,
+      "gihwr": 0.576301,
+      "games": 16887
+    },
+    {
+      "name": "Generous Revival",
+      "collectorNumber": "8",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.845,
+      "gihwr": 0.573393,
+      "games": 10907
+    },
+    {
+      "name": "Germinate Recruits",
+      "collectorNumber": "9",
+      "setCode": "fra",
+      "score": 0.5,
+      "confidence": 0.23,
+      "gihwr": 0.479062,
+      "games": 597
+    },
+    {
+      "name": "Ghalta the Immovable",
+      "collectorNumber": "197",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.611,
+      "gihwr": 0.538412,
+      "games": 3137
+    },
+    {
+      "name": "Ghalta the Unstoppable",
+      "collectorNumber": "260",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.828,
+      "gihwr": 0.54473,
+      "games": 9658
+    },
+    {
+      "name": "Gideon the Oathless",
+      "collectorNumber": "230",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.784,
+      "gihwr": 0.59912,
+      "games": 7269
+    },
+    {
+      "name": "Gideon's Memorial",
+      "collectorNumber": "198",
+      "setCode": "fra",
+      "score": 1.0,
+      "confidence": 0.604,
+      "gihwr": 0.508858,
+      "games": 3048
+    },
+    {
+      "name": "Graft Surgeon",
+      "collectorNumber": "10",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.785,
+      "gihwr": 0.524259,
+      "games": 7317
+    },
+    {
+      "name": "Greenhouse Propagator",
+      "collectorNumber": "104",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.922,
+      "gihwr": 0.550819,
+      "games": 23623
+    },
+    {
+      "name": "Grim Repriser",
+      "collectorNumber": "136",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.753,
+      "gihwr": 0.538335,
+      "games": 6091
+    },
+    {
+      "name": "Guiding Hydra",
+      "collectorNumber": "11",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.771,
+      "gihwr": 0.583902,
+      "games": 6746
+    },
+    {
+      "name": "Hall of Echoes",
+      "collectorNumber": "179",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.59,
+      "gihwr": 0.531826,
+      "games": 2875
+    },
+    {
+      "name": "Hallway Heckler // Vicious Verse",
+      "collectorNumber": "85",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.845,
+      "gihwr": 0.532619,
+      "games": 10914
+    },
+    {
+      "name": "Hapatra, the Desert Fang",
+      "collectorNumber": "271",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.902,
+      "gihwr": 0.602015,
+      "games": 18360
+    },
+    {
+      "name": "Hapatra, the Desert Frost",
+      "collectorNumber": "215",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.816,
+      "gihwr": 0.535593,
+      "games": 8850
+    },
+    {
+      "name": "Haunted Ridge",
+      "collectorNumber": "180",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.666,
+      "gihwr": 0.55628,
+      "games": 3989
+    },
+    {
+      "name": "Heartstring Puller",
+      "collectorNumber": "86",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.916,
+      "gihwr": 0.55277,
+      "games": 21736
+    },
+    {
+      "name": "Heartwood Crafter // Soul Tether",
+      "collectorNumber": "105",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.888,
+      "gihwr": 0.578161,
+      "games": 15871
+    },
+    {
+      "name": "Hexhaven Battalion",
+      "collectorNumber": "12",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.947,
+      "gihwr": 0.581157,
+      "games": 36035
+    },
+    {
+      "name": "Hexhaven Dueling Arena",
+      "collectorNumber": "181",
+      "setCode": "fra",
+      "score": 0.5,
+      "confidence": 0.481,
+      "gihwr": 0.491096,
+      "games": 1853
+    },
+    {
+      "name": "Hexhaven Invigorator",
+      "collectorNumber": "106",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.397,
+      "gihwr": 0.55057,
+      "games": 1315
+    },
+    {
+      "name": "Hungering Puppetbeast",
+      "collectorNumber": "107",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.785,
+      "gihwr": 0.616102,
+      "games": 7291
+    },
+    {
+      "name": "Hunter's Axe",
+      "collectorNumber": "108",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.629,
+      "gihwr": 0.516072,
+      "games": 3391
+    },
+    {
+      "name": "Icy Reception",
+      "collectorNumber": "30",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.952,
+      "gihwr": 0.585554,
+      "games": 40010
+    },
+    {
+      "name": "Infinite Coursework",
+      "collectorNumber": "31",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.948,
+      "gihwr": 0.566388,
+      "games": 36166
+    },
+    {
+      "name": "Ingris Stingerquill",
+      "collectorNumber": "137",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.519,
+      "gihwr": 0.589708,
+      "games": 2157
+    },
+    {
+      "name": "Innovative Commons",
+      "collectorNumber": "182",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.893,
+      "gihwr": 0.568138,
+      "games": 16760
+    },
+    {
+      "name": "Inspired Tethermage",
+      "collectorNumber": "109",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.882,
+      "gihwr": 0.525391,
+      "games": 14966
+    },
+    {
+      "name": "Island",
+      "collectorNumber": "283",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.988,
+      "gihwr": 0.562386,
+      "games": 163459
+    },
+    {
+      "name": "Jace's Machinations",
+      "collectorNumber": "32",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.792,
+      "gihwr": 0.581475,
+      "games": 7622
+    },
+    {
+      "name": "Jace, Reality Sculptor",
+      "collectorNumber": "216",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.78,
+      "gihwr": 0.584342,
+      "games": 7102
+    },
+    {
+      "name": "Jiang Yanggu, Alone",
+      "collectorNumber": "246",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.768,
+      "gihwr": 0.540728,
+      "games": 6617
+    },
+    {
+      "name": "Jiang Yanggu, Never Alone",
+      "collectorNumber": "261",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.878,
+      "gihwr": 0.563151,
+      "games": 14410
+    },
+    {
+      "name": "Karn, Gilded Guardian",
+      "collectorNumber": "272",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.214,
+      "gihwr": 0.513812,
+      "games": 543
+    },
+    {
+      "name": "Keeper of the Quiet Hour",
+      "collectorNumber": "171",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.929,
+      "gihwr": 0.569186,
+      "games": 26053
+    },
+    {
+      "name": "Kindred Judgment",
+      "collectorNumber": "13",
+      "setCode": "fra",
+      "score": 4.5,
+      "confidence": 0.784,
+      "gihwr": 0.628781,
+      "games": 7241
+    },
+    {
+      "name": "Kiora of Fire and Ashes",
+      "collectorNumber": "247",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.911,
+      "gihwr": 0.617694,
+      "games": 20515
+    },
+    {
+      "name": "Kiora of Salt and Sand",
+      "collectorNumber": "273",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.747,
+      "gihwr": 0.549915,
+      "games": 5910
+    },
+    {
+      "name": "Konstrari Annex",
+      "collectorNumber": "183",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.889,
+      "gihwr": 0.553138,
+      "games": 15949
+    },
+    {
+      "name": "Konstrari Charm",
+      "collectorNumber": "138",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.777,
+      "gihwr": 0.562077,
+      "games": 6951
+    },
+    {
+      "name": "Konstrari Improviser // Soul Tether",
+      "collectorNumber": "139",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.932,
+      "gihwr": 0.550987,
+      "games": 27311
+    },
+    {
+      "name": "Koth of the Homestead",
+      "collectorNumber": "199",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.838,
+      "gihwr": 0.55492,
+      "games": 10315
+    },
+    {
+      "name": "Koth, the Geomancer",
+      "collectorNumber": "248",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.807,
+      "gihwr": 0.52163,
+      "games": 8345
+    },
+    {
+      "name": "Kwia Vigorbloom",
+      "collectorNumber": "140",
+      "setCode": "fra",
+      "score": 4.5,
+      "confidence": 0.603,
+      "gihwr": 0.627632,
+      "games": 3040
+    },
+    {
+      "name": "Last Gasp",
+      "collectorNumber": "56",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.949,
+      "gihwr": 0.575784,
+      "games": 37389
+    },
+    {
+      "name": "Lich's Relic",
+      "collectorNumber": "57",
+      "setCode": "fra",
+      "score": 4.5,
+      "confidence": 0.815,
+      "gihwr": 0.631998,
+      "games": 8788
+    },
+    {
+      "name": "Liliana the Faultless",
+      "collectorNumber": "200",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.686,
+      "gihwr": 0.582247,
+      "games": 4371
+    },
+    {
+      "name": "Liliana the Repentant",
+      "collectorNumber": "231",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.772,
+      "gihwr": 0.564967,
+      "games": 6765
+    },
+    {
+      "name": "Living Library",
+      "collectorNumber": "172",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.653,
+      "gihwr": 0.546975,
+      "games": 3768
+    },
+    {
+      "name": "Loot, the Anomaly",
+      "collectorNumber": "232",
+      "setCode": "fra",
+      "score": 0.5,
+      "confidence": 0.465,
+      "gihwr": 0.490512,
+      "games": 1739
+    },
+    {
+      "name": "Loot, the Nexus",
+      "collectorNumber": "262",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.836,
+      "gihwr": 0.534359,
+      "games": 10201
+    },
+    {
+      "name": "Lyra, Archangel of Dawn",
+      "collectorNumber": "201",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.727,
+      "gihwr": 0.600564,
+      "games": 5320
+    },
+    {
+      "name": "Lyra, Tolarian Archangel",
+      "collectorNumber": "217",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.819,
+      "gihwr": 0.612508,
+      "games": 9066
+    },
+    {
+      "name": "Mabel, Bitter Recluse",
+      "collectorNumber": "233",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.841,
+      "gihwr": 0.549354,
+      "games": 10607
+    },
+    {
+      "name": "Mabel, Valley Hero",
+      "collectorNumber": "274",
+      "setCode": "fra",
+      "score": 1.0,
+      "confidence": 0.728,
+      "gihwr": 0.509826,
+      "games": 5343
+    },
+    {
+      "name": "Marwyn, the Clearcutter",
+      "collectorNumber": "249",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.836,
+      "gihwr": 0.563576,
+      "games": 10169
+    },
+    {
+      "name": "Marwyn, the Preserver",
+      "collectorNumber": "263",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.862,
+      "gihwr": 0.556345,
+      "games": 12521
+    },
+    {
+      "name": "Massacre Girl, Most Wanted",
+      "collectorNumber": "234",
+      "setCode": "fra",
+      "score": 1.0,
+      "confidence": 0.785,
+      "gihwr": 0.503554,
+      "games": 7316
+    },
+    {
+      "name": "Master of Barbs",
+      "collectorNumber": "88",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.636,
+      "gihwr": 0.543634,
+      "games": 3495
+    },
+    {
+      "name": "Medic's Kitesail",
+      "collectorNumber": "173",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.841,
+      "gihwr": 0.548984,
+      "games": 10585
+    },
+    {
+      "name": "Memory Trap",
+      "collectorNumber": "15",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.941,
+      "gihwr": 0.568709,
+      "games": 32048
+    },
+    {
+      "name": "Meticulous Commons",
+      "collectorNumber": "184",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.87,
+      "gihwr": 0.553172,
+      "games": 13381
+    },
+    {
+      "name": "Mind Meanderer",
+      "collectorNumber": "141",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.887,
+      "gihwr": 0.576371,
+      "games": 15667
+    },
+    {
+      "name": "Mindseeker Oculus",
+      "collectorNumber": "33",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.962,
+      "gihwr": 0.600375,
+      "games": 51173
+    },
+    {
+      "name": "Mountain",
+      "collectorNumber": "287",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.985,
+      "gihwr": 0.554434,
+      "games": 127972
+    },
+    {
+      "name": "Multiply by Zero",
+      "collectorNumber": "58",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.912,
+      "gihwr": 0.595719,
+      "games": 20602
+    },
+    {
+      "name": "Murmuring Volume",
+      "collectorNumber": "174",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.929,
+      "gihwr": 0.572415,
+      "games": 26203
+    },
+    {
+      "name": "No Admittance",
+      "collectorNumber": "89",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.945,
+      "gihwr": 0.572109,
+      "games": 34219
+    },
+    {
+      "name": "Null Summoner",
+      "collectorNumber": "142",
+      "setCode": "fra",
+      "score": 4.5,
+      "confidence": 0.827,
+      "gihwr": 0.632112,
+      "games": 9579
+    },
+    {
+      "name": "Overgrown Farmland",
+      "collectorNumber": "185",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.626,
+      "gihwr": 0.537978,
+      "games": 3344
+    },
+    {
+      "name": "Overwrite the Multiverse",
+      "collectorNumber": "59",
+      "setCode": "fra",
+      "score": 5.0,
+      "confidence": 0.676,
+      "gihwr": 0.661325,
+      "games": 4181
+    },
+    {
+      "name": "Paradox Shaper // Omit Variables",
+      "collectorNumber": "143",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.885,
+      "gihwr": 0.556455,
+      "games": 15446
+    },
+    {
+      "name": "Perfected Theory",
+      "collectorNumber": "34",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.647,
+      "gihwr": 0.537158,
+      "games": 3660
+    },
+    {
+      "name": "Pia, Aether Ascetic",
+      "collectorNumber": "264",
+      "setCode": "fra",
+      "score": 1.0,
+      "confidence": 0.625,
+      "gihwr": 0.508551,
+      "games": 3333
+    },
+    {
+      "name": "Pia, Determined Rebuilder",
+      "collectorNumber": "250",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.882,
+      "gihwr": 0.57747,
+      "games": 14896
+    },
+    {
+      "name": "Plains",
+      "collectorNumber": "281",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.984,
+      "gihwr": 0.552773,
+      "games": 122325
+    },
+    {
+      "name": "Plan for All Outcomes",
+      "collectorNumber": "35",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.929,
+      "gihwr": 0.597817,
+      "games": 26018
+    },
+    {
+      "name": "Pompous Battlemage // Improvised Act",
+      "collectorNumber": "90",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.607,
+      "gihwr": 0.53122,
+      "games": 3091
+    },
+    {
+      "name": "Predictive Preparations",
+      "collectorNumber": "16",
+      "setCode": "fra",
+      "score": 1.0,
+      "confidence": 0.71,
+      "gihwr": 0.495913,
+      "games": 4894
+    },
+    {
+      "name": "Primal Witchstalker",
+      "collectorNumber": "144",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.882,
+      "gihwr": 0.599839,
+      "games": 14909
+    },
+    {
+      "name": "Proctor of Potential",
+      "collectorNumber": "145",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.752,
+      "gihwr": 0.609579,
+      "games": 6055
+    },
+    {
+      "name": "Proft, Consulting Detective",
+      "collectorNumber": "218",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.916,
+      "gihwr": 0.582079,
+      "games": 21717
+    },
+    {
+      "name": "Proft, Sinister Mastermind",
+      "collectorNumber": "235",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.861,
+      "gihwr": 0.558521,
+      "games": 12440
+    },
+    {
+      "name": "Prophesied End",
+      "collectorNumber": "17",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.872,
+      "gihwr": 0.56389,
+      "games": 13625
+    },
+    {
+      "name": "Protege's Awakening",
+      "collectorNumber": "37",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.95,
+      "gihwr": 0.590423,
+      "games": 37756
+    },
+    {
+      "name": "Prudent Fateseer // Peer Review",
+      "collectorNumber": "146",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.895,
+      "gihwr": 0.567807,
+      "games": 16960
+    },
+    {
+      "name": "Puppet Crafting",
+      "collectorNumber": "111",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.379,
+      "gihwr": 0.519278,
+      "games": 1219
+    },
+    {
+      "name": "Pyre Rhymer // Molten Tide",
+      "collectorNumber": "91",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.599,
+      "gihwr": 0.51655,
+      "games": 2991
+    },
+    {
+      "name": "Rampart Hunter",
+      "collectorNumber": "60",
+      "setCode": "fra",
+      "score": 0.5,
+      "confidence": 0.566,
+      "gihwr": 0.484639,
+      "games": 2604
+    },
+    {
+      "name": "Rank Rat",
+      "collectorNumber": "61",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.926,
+      "gihwr": 0.555498,
+      "games": 25118
+    },
+    {
+      "name": "Recursive Recruitment",
+      "collectorNumber": "147",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.925,
+      "gihwr": 0.614863,
+      "games": 24612
+    },
+    {
+      "name": "Refute Destiny",
+      "collectorNumber": "18",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.362,
+      "gihwr": 0.5365,
+      "games": 1137
+    },
+    {
+      "name": "Repurposed Enforcer",
+      "collectorNumber": "19",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.764,
+      "gihwr": 0.601144,
+      "games": 6471
+    },
+    {
+      "name": "Rescue Girl, First Responder",
+      "collectorNumber": "202",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.853,
+      "gihwr": 0.532453,
+      "games": 11586
+    },
+    {
+      "name": "Restore with Empathy",
+      "collectorNumber": "112",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.836,
+      "gihwr": 0.556299,
+      "games": 10160
+    },
+    {
+      "name": "Return to the Light Realms",
+      "collectorNumber": "20",
+      "setCode": "fra",
+      "score": 1.0,
+      "confidence": 0.224,
+      "gihwr": 0.498264,
+      "games": 576
+    },
+    {
+      "name": "Rewrite Regrets",
+      "collectorNumber": "62",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.909,
+      "gihwr": 0.592613,
+      "games": 19927
+    },
+    {
+      "name": "Rise of the Deathbringer",
+      "collectorNumber": "63",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.758,
+      "gihwr": 0.567826,
+      "games": 6266
+    },
+    {
+      "name": "Rockfall Vale",
+      "collectorNumber": "186",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.682,
+      "gihwr": 0.548334,
+      "games": 4293
+    },
+    {
+      "name": "Roiling Canopy",
+      "collectorNumber": "187",
+      "setCode": "fra",
+      "score": 1.0,
+      "confidence": 0.311,
+      "gihwr": 0.504994,
+      "games": 901
+    },
+    {
+      "name": "Room of Refuge",
+      "collectorNumber": "188",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.957,
+      "gihwr": 0.563559,
+      "games": 44730
+    },
+    {
+      "name": "Ruric Thar, Biomagus",
+      "collectorNumber": "219",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.884,
+      "gihwr": 0.562786,
+      "games": 15274
+    },
+    {
+      "name": "Ruric Thar, Magecrusher",
+      "collectorNumber": "265",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.858,
+      "gihwr": 0.555997,
+      "games": 12090
+    },
+    {
+      "name": "Saheeli, Consul of Oversight",
+      "collectorNumber": "203",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.853,
+      "gihwr": 0.560833,
+      "games": 11622
+    },
+    {
+      "name": "Saheeli, Jewel of Avishkar",
+      "collectorNumber": "275",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.884,
+      "gihwr": 0.577505,
+      "games": 15212
+    },
+    {
+      "name": "Samut, Hazoret's Champion",
+      "collectorNumber": "251",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.684,
+      "gihwr": 0.567536,
+      "games": 4331
+    },
+    {
+      "name": "Samut, Tyrant of Naktamun",
+      "collectorNumber": "220",
+      "setCode": "fra",
+      "score": 0.0,
+      "confidence": 0.38,
+      "gihwr": 0.463733,
+      "games": 1227
+    },
+    {
+      "name": "Sanctum Lurker",
+      "collectorNumber": "64",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.803,
+      "gihwr": 0.622173,
+      "games": 8136
+    },
+    {
+      "name": "Screeching Soulbreaker",
+      "collectorNumber": "65",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.866,
+      "gihwr": 0.544567,
+      "games": 12913
+    },
+    {
+      "name": "Seasoned Cryomancer",
+      "collectorNumber": "38",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.673,
+      "gihwr": 0.598638,
+      "games": 4111
+    },
+    {
+      "name": "Semester Foreseer // Peer Review",
+      "collectorNumber": "39",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.917,
+      "gihwr": 0.543001,
+      "games": 21976
+    },
+    {
+      "name": "Shatterwing Pegasus",
+      "collectorNumber": "21",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.878,
+      "gihwr": 0.543626,
+      "games": 14372
+    },
+    {
+      "name": "Shipwreck Marsh",
+      "collectorNumber": "189",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.761,
+      "gihwr": 0.583727,
+      "games": 6354
+    },
+    {
+      "name": "Silence the Echo",
+      "collectorNumber": "66",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.92,
+      "gihwr": 0.537054,
+      "games": 22899
+    },
+    {
+      "name": "Simulacrum Shaper",
+      "collectorNumber": "113",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.77,
+      "gihwr": 0.606817,
+      "games": 6689
+    },
+    {
+      "name": "Skilled Battlecarver",
+      "collectorNumber": "92",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.901,
+      "gihwr": 0.53598,
+      "games": 18260
+    },
+    {
+      "name": "Solarium Sentry",
+      "collectorNumber": "148",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.623,
+      "gihwr": 0.572378,
+      "games": 3309
+    },
+    {
+      "name": "Solitary Cell",
+      "collectorNumber": "149",
+      "setCode": "fra",
+      "score": 1.0,
+      "confidence": 0.483,
+      "gihwr": 0.506166,
+      "games": 1865
+    },
+    {
+      "name": "Solve for Disappointment",
+      "collectorNumber": "67",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.79,
+      "gihwr": 0.535871,
+      "games": 7541
+    },
+    {
+      "name": "Something Worth Saving",
+      "collectorNumber": "114",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.911,
+      "gihwr": 0.572937,
+      "games": 20552
+    },
+    {
+      "name": "Sphinx of False Conclusions",
+      "collectorNumber": "40",
+      "setCode": "fra",
+      "score": 5.0,
+      "confidence": 0.822,
+      "gihwr": 0.653792,
+      "games": 9217
+    },
+    {
+      "name": "Sphinx's Approach",
+      "collectorNumber": "41",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.87,
+      "gihwr": 0.562816,
+      "games": 13436
+    },
+    {
+      "name": "Stingcaster Mage",
+      "collectorNumber": "93",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.554,
+      "gihwr": 0.572119,
+      "games": 2482
+    },
+    {
+      "name": "Stingerquill Annex",
+      "collectorNumber": "190",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.876,
+      "gihwr": 0.546779,
+      "games": 14066
+    },
+    {
+      "name": "Stingerquill Charm",
+      "collectorNumber": "150",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.82,
+      "gihwr": 0.561042,
+      "games": 9133
+    },
+    {
+      "name": "Stingerquill Voxmancer // Vicious Verse",
+      "collectorNumber": "151",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.824,
+      "gihwr": 0.5472,
+      "games": 9375
+    },
+    {
+      "name": "Stinging Vitriol",
+      "collectorNumber": "152",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.562,
+      "gihwr": 0.543825,
+      "games": 2567
+    },
+    {
+      "name": "Sureshot Sower",
+      "collectorNumber": "115",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.908,
+      "gihwr": 0.544402,
+      "games": 19684
+    },
+    {
+      "name": "Surgical Precision",
+      "collectorNumber": "22",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.939,
+      "gihwr": 0.579728,
+      "games": 30761
+    },
+    {
+      "name": "Surveillance Phantasm",
+      "collectorNumber": "42",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.955,
+      "gihwr": 0.57997,
+      "games": 42066
+    },
+    {
+      "name": "Swamp",
+      "collectorNumber": "285",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.986,
+      "gihwr": 0.559959,
+      "games": 145075
+    },
+    {
+      "name": "Tam's Resistance",
+      "collectorNumber": "153",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.924,
+      "gihwr": 0.569717,
+      "games": 24291
+    },
+    {
+      "name": "Tarmogoyf",
+      "collectorNumber": "116",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.536,
+      "gihwr": 0.579585,
+      "games": 2312
+    },
+    {
+      "name": "Tenured Tethermage",
+      "collectorNumber": "154",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.736,
+      "gihwr": 0.589481,
+      "games": 5571
+    },
+    {
+      "name": "Terminal Criticism",
+      "collectorNumber": "68",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.312,
+      "gihwr": 0.52591,
+      "games": 907
+    },
+    {
+      "name": "Tether Technician",
+      "collectorNumber": "94",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.792,
+      "gihwr": 0.529652,
+      "games": 7605
+    },
+    {
+      "name": "Tethermage's Advantage",
+      "collectorNumber": "117",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.552,
+      "gihwr": 0.515593,
+      "games": 2469
+    },
+    {
+      "name": "Tetsuko Umezawa, Fugitive",
+      "collectorNumber": "221",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.855,
+      "gihwr": 0.556215,
+      "games": 11803
+    },
+    {
+      "name": "Tetsuko Umezawa, Pursuer",
+      "collectorNumber": "252",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.774,
+      "gihwr": 0.529575,
+      "games": 6864
+    },
+    {
+      "name": "Teyo, Diamondblade Mage",
+      "collectorNumber": "236",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.731,
+      "gihwr": 0.519071,
+      "games": 5427
+    },
+    {
+      "name": "Teyo, Lightshield Expert",
+      "collectorNumber": "204",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.863,
+      "gihwr": 0.565638,
+      "games": 12607
+    },
+    {
+      "name": "Thalia, the Survivor",
+      "collectorNumber": "205",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.824,
+      "gihwr": 0.557041,
+      "games": 9353
+    },
+    {
+      "name": "The Echoverse Fulcrum",
+      "collectorNumber": "169",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.641,
+      "gihwr": 0.593548,
+      "games": 3565
+    },
+    {
+      "name": "The Theorist, Jace Beleren",
+      "collectorNumber": "43",
+      "setCode": "fra",
+      "score": 5.0,
+      "confidence": 0.687,
+      "gihwr": 0.684474,
+      "games": 4399
+    },
+    {
+      "name": "Theoretical Necromancer",
+      "collectorNumber": "69",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.926,
+      "gihwr": 0.557459,
+      "games": 25096
+    },
+    {
+      "name": "Theorist's Proxy",
+      "collectorNumber": "44",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.786,
+      "gihwr": 0.580267,
+      "games": 7338
+    },
+    {
+      "name": "Theorist's Sanctum",
+      "collectorNumber": "191",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.814,
+      "gihwr": 0.589597,
+      "games": 8728
+    },
+    {
+      "name": "Theorix Annex",
+      "collectorNumber": "192",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.921,
+      "gihwr": 0.569399,
+      "games": 23444
+    },
+    {
+      "name": "Theorix Charm",
+      "collectorNumber": "155",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.887,
+      "gihwr": 0.572046,
+      "games": 15740
+    },
+    {
+      "name": "Theorix Metamage // Omit Variables",
+      "collectorNumber": "156",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.908,
+      "gihwr": 0.549664,
+      "games": 19632
+    },
+    {
+      "name": "Tinybones, Pocket Nuisance",
+      "collectorNumber": "237",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.849,
+      "gihwr": 0.560039,
+      "games": 11276
+    },
+    {
+      "name": "Titanbones, Towering Heart",
+      "collectorNumber": "266",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.788,
+      "gihwr": 0.526861,
+      "games": 7427
+    },
+    {
+      "name": "Tomik, Izzet Sparkmage",
+      "collectorNumber": "253",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.805,
+      "gihwr": 0.528942,
+      "games": 8258
+    },
+    {
+      "name": "Tomik, Orzhov Lawmage",
+      "collectorNumber": "206",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.852,
+      "gihwr": 0.547644,
+      "games": 11502
+    },
+    {
+      "name": "Transformative Commons",
+      "collectorNumber": "193",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.897,
+      "gihwr": 0.570014,
+      "games": 17368
+    },
+    {
+      "name": "Traxos, Academy Guardian",
+      "collectorNumber": "222",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.884,
+      "gihwr": 0.563174,
+      "games": 15212
+    },
+    {
+      "name": "Traxos, Scourge Eternal",
+      "collectorNumber": "280",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.719,
+      "gihwr": 0.520524,
+      "games": 5116
+    },
+    {
+      "name": "Twinned Vision",
+      "collectorNumber": "157",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.951,
+      "gihwr": 0.588457,
+      "games": 38516
+    },
+    {
+      "name": "Twisted Fates",
+      "collectorNumber": "158",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.859,
+      "gihwr": 0.578334,
+      "games": 12185
+    },
+    {
+      "name": "Uldaros Theorix",
+      "collectorNumber": "159",
+      "setCode": "fra",
+      "score": 5.0,
+      "confidence": 0.695,
+      "gihwr": 0.694554,
+      "games": 4554
+    },
+    {
+      "name": "Undulating Witness",
+      "collectorNumber": "45",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.951,
+      "gihwr": 0.565268,
+      "games": 38771
+    },
+    {
+      "name": "Unflinching Hortimancer",
+      "collectorNumber": "23",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.894,
+      "gihwr": 0.546464,
+      "games": 16841
+    },
+    {
+      "name": "Unsummon",
+      "collectorNumber": "46",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.952,
+      "gihwr": 0.580218,
+      "games": 39461
+    },
+    {
+      "name": "Variable Chaser // Arc of Fortune",
+      "collectorNumber": "47",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.765,
+      "gihwr": 0.586488,
+      "games": 6498
+    },
+    {
+      "name": "Verdant Kraken",
+      "collectorNumber": "118",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.768,
+      "gihwr": 0.589453,
+      "games": 6618
+    },
+    {
+      "name": "Vigorbloom Annex",
+      "collectorNumber": "194",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.863,
+      "gihwr": 0.541971,
+      "games": 12604
+    },
+    {
+      "name": "Vigorbloom Charm",
+      "collectorNumber": "160",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.833,
+      "gihwr": 0.568879,
+      "games": 9974
+    },
+    {
+      "name": "Vigorbloom Vanguard // Seed Suture",
+      "collectorNumber": "161",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.874,
+      "gihwr": 0.570739,
+      "games": 13875
+    },
+    {
+      "name": "Vindictive Triumph",
+      "collectorNumber": "162",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.603,
+      "gihwr": 0.554201,
+      "games": 3035
+    },
+    {
+      "name": "Vinelasher Adept",
+      "collectorNumber": "119",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.938,
+      "gihwr": 0.563387,
+      "games": 30377
+    },
+    {
+      "name": "Violent Echoes",
+      "collectorNumber": "95",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.902,
+      "gihwr": 0.596293,
+      "games": 18454
+    },
+    {
+      "name": "Void Extrapolator // Omit Variables",
+      "collectorNumber": "70",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.902,
+      "gihwr": 0.564618,
+      "games": 18439
+    },
+    {
+      "name": "Vraska's Final Mercy",
+      "collectorNumber": "71",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.727,
+      "gihwr": 0.545642,
+      "games": 5324
+    },
+    {
+      "name": "Vraska, Soul of Stone",
+      "collectorNumber": "277",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.536,
+      "gihwr": 0.550173,
+      "games": 2312
+    },
+    {
+      "name": "Vraska, the Cutting Glare",
+      "collectorNumber": "278",
+      "setCode": "fra",
+      "score": 4.5,
+      "confidence": 0.789,
+      "gihwr": 0.632002,
+      "games": 7462
+    },
+    {
+      "name": "Warrior's Blades",
+      "collectorNumber": "163",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.827,
+      "gihwr": 0.561568,
+      "games": 9591
+    },
+    {
+      "name": "Way of the Cryomancer",
+      "collectorNumber": "223",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.813,
+      "gihwr": 0.537259,
+      "games": 8696
+    },
+    {
+      "name": "Way of the Deathbringer",
+      "collectorNumber": "238",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.74,
+      "gihwr": 0.516339,
+      "games": 5692
+    },
+    {
+      "name": "Way of the Healer",
+      "collectorNumber": "207",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.898,
+      "gihwr": 0.578281,
+      "games": 17533
+    },
+    {
+      "name": "Way of the Mentor",
+      "collectorNumber": "208",
+      "setCode": "fra",
+      "score": 1.0,
+      "confidence": 0.708,
+      "gihwr": 0.508045,
+      "games": 4848
+    },
+    {
+      "name": "Way of the Mind Sculptor",
+      "collectorNumber": "224",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.919,
+      "gihwr": 0.589206,
+      "games": 22549
+    },
+    {
+      "name": "Way of the Necromancer",
+      "collectorNumber": "239",
+      "setCode": "fra",
+      "score": 0.0,
+      "confidence": 0.433,
+      "gihwr": 0.449902,
+      "games": 1527
+    },
+    {
+      "name": "Way of the Paradox",
+      "collectorNumber": "267",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.848,
+      "gihwr": 0.573574,
+      "games": 11118
+    },
+    {
+      "name": "Way of the Pyromancer",
+      "collectorNumber": "254",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.837,
+      "gihwr": 0.530362,
+      "games": 10276
+    },
+    {
+      "name": "Way of the Warlord",
+      "collectorNumber": "255",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.838,
+      "gihwr": 0.543586,
+      "games": 10313
+    },
+    {
+      "name": "Way of the Wildspeaker",
+      "collectorNumber": "268",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.878,
+      "gihwr": 0.553372,
+      "games": 14352
+    },
+    {
+      "name": "Whiplash Wordsmith // Vicious Verse",
+      "collectorNumber": "164",
+      "setCode": "fra",
+      "score": 1.0,
+      "confidence": 0.773,
+      "gihwr": 0.504551,
+      "games": 6812
+    },
+    {
+      "name": "Winter, Team Player",
+      "collectorNumber": "256",
+      "setCode": "fra",
+      "score": 0.5,
+      "confidence": 0.61,
+      "gihwr": 0.476312,
+      "games": 3124
+    },
+    {
+      "name": "Winter, Tormented Loner",
+      "collectorNumber": "240",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.841,
+      "gihwr": 0.546056,
+      "games": 10585
+    },
+    {
+      "name": "Woodwork Prodigy // Soul Tether",
+      "collectorNumber": "165",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.858,
+      "gihwr": 0.536983,
+      "games": 12073
+    },
+    {
+      "name": "Wrath of the Bloodmane",
+      "collectorNumber": "96",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.942,
+      "gihwr": 0.567139,
+      "games": 32440
+    },
+    {
+      "name": "Wrecking Gecko",
+      "collectorNumber": "120",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.883,
+      "gihwr": 0.553439,
+      "games": 15064
+    },
+    {
+      "name": "Yargle, Goliath of Otaria",
+      "collectorNumber": "225",
+      "setCode": "fra",
+      "score": 0.0,
+      "confidence": 0.261,
+      "gihwr": 0.455319,
+      "games": 705
+    },
+    {
+      "name": "Yoshimaru, Beloved Companion",
+      "collectorNumber": "209",
+      "setCode": "fra",
+      "score": 1.0,
+      "confidence": 0.772,
+      "gihwr": 0.502514,
+      "games": 6762
+    },
+    {
+      "name": "Yoshimaru, Scrappy Stray",
+      "collectorNumber": "269",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.863,
+      "gihwr": 0.549451,
+      "games": 12649
+    },
+    {
+      "name": "Your Fate Ends Here",
+      "collectorNumber": "24",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.894,
+      "gihwr": 0.575942,
+      "games": 16901
+    },
+    {
+      "name": "Yuriko, Blade of the Mighty",
+      "collectorNumber": "210",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.743,
+      "gihwr": 0.546226,
+      "games": 5776
+    },
+    {
+      "name": "Yuriko, Hope from the Shadows",
+      "collectorNumber": "226",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.8,
+      "gihwr": 0.547601,
+      "games": 8004
+    }
+  ]
+}

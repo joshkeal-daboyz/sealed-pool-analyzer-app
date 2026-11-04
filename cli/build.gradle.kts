@@ -18,6 +18,7 @@ application {
 
 dependencies {
     implementation(project(":core"))
+    implementation(project(":agent"))
     implementation(libs.kotlinx.serialization.json)
     testImplementation(libs.kotlin.test.junit5)
     testImplementation(libs.junit.jupiter)

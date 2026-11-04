@@ -65,6 +65,38 @@ class GradeFilesTest {
     }
 
     @Test
+    fun `a win-rate entry with gihwr and games round-trips, and the fields stay optional`() {
+        val withRates =
+            sample.copy(
+                grades =
+                    listOf(
+                        GradeEntry("A Card", "1", "trk", 4.5, 0.9, gihwr = 0.6125, games = 18000),
+                        GradeEntry("Another Card", "12a", "sds", 1.0, 0.25),
+                    )
+            )
+        val text = GradeFiles.write(withRates)
+        assertTrue("\"gihwr\": 0.6125" in text, text)
+        assertTrue("\"games\": 18000" in text, text)
+        assertEquals(1, Regex("\"gihwr\"").findAll(text).count(), "a null gihwr is not written")
+        assertEquals(withRates, GradeFiles.parse(text))
+    }
+
+    @Test
+    fun `a gihwr over 1, a negative or fractional games count fails at that field`() {
+        fun withField(field: String) =
+            resource("valid").replaceFirst("\"confidence\": ", "$field, \"confidence\": ")
+        fun pointers(field: String) =
+            assertFailsWith<GradeFileException> { GradeFiles.parse(withField(field)) }
+                .problems
+                .map { it.pointer }
+        assertEquals(0.5, GradeFiles.parse(withField("\"gihwr\": 0.5")).grades[0].gihwr)
+        assertEquals(listOf("/grades/0/gihwr"), pointers("\"gihwr\": 1.5"))
+        assertEquals(listOf("/grades/0/gihwr"), pointers("\"gihwr\": -0.1"))
+        assertEquals(listOf("/grades/0/games"), pointers("\"games\": -1"))
+        assertEquals(listOf("/grades/0/games"), pointers("\"games\": 2.5"))
+    }
+
+    @Test
     fun `an unknown field fails at that field`() {
         assertEquals(listOf("/grades/1/winRate"), problems("unknown-field").map { it.pointer })
     }
