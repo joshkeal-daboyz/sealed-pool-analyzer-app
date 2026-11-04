@@ -227,3 +227,4 @@ The owner answered the draft's eight open questions on 2026-11-03 ("2. remember"
 - 2026-11-04 Owner approved SPA-027 (the core regex fix). It integrated as PR #26 on attempt 1. 8 of 15 tickets integrated (SPA-013, 014, 015, 023, 024, 025, 026, 027). Next: SPA-016 attempt 2, then 017, 018, 020, 019, 021, 022, one Developer at a time.
 - 2026-11-04 SPA-016 integrated (PR #22) on attempt 2: paste import works end to end on spa-test. 9 of 15 tickets integrated (SPA-013, 014, 015, 016, 023, 024, 025, 026, 027). Next: SPA-017, then 018, 020, 019, 021, 022, one Developer at a time.
 - 2026-11-04 SPA-017 integrated (PR #27): Pool screen complete with file picker, format chooser, and error cards, checked on spa-test. 10 of 15 tickets integrated. Next: SPA-018 (Results body).
+- 2026-11-04 SPA-018 integrated (PR #28): Results screen complete beside the baseline, checked on spa-test against spa analyze. 11 of 15 tickets integrated. Next: SPA-020 (About), then 019, 021, 022.
