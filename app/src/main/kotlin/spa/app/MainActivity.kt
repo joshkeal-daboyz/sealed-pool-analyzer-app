@@ -19,7 +19,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         val app = application as SpaApplication
         setContent {
-            val pool: PoolViewModel = viewModel(factory = PoolViewModel.factory(app.importer))
+            val pool: PoolViewModel =
+                viewModel(factory = PoolViewModel.factory(app.importer, app.fileImporter))
             SpaApp(pool, app.timing)
         }
     }
