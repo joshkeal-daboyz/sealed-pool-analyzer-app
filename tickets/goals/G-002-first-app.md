@@ -1,7 +1,7 @@
 ---
 id: G-002
 title: First installable app, a pool and its metrics on the phone
-status: open
+status: closed
 owner: human
 target_set_code: trk
 companion_set_codes: [sds]
@@ -252,3 +252,4 @@ The owner answered the draft's eight open questions on 2026-11-03 ("2. remember"
 | Snapshot baselines changed on purpose | 5 (SPA-022 re-plan 1: results_clean, results_clean_fontScale200, results_problems, results_problems_fontScale200, results_wrongSetLines) |
 | Bounces caused by ticket gaps vs code | All 5 bounces before code were ticket or upstream gaps; no bounce was a code defect caught by an inspector |
 - 2026-11-04 Owner decision: the look and feel is revisited after the functionality is ironed out, in a later goal, taking inspiration from the MTG Arena app (familiar to players). The six states not in the spec go to that goal rather than spec updates now. The owner is installing the APK on a spare Pixel 6 for criterion 14.
+- 2026-11-04 Criterion 14 PASS: the owner installed `app-debug.apk` built from main on a spare Pixel 6, opened `trk-manabox-01.csv` through Open file, and confirmed the app showed the correct numbers (85 cards in 71 entries; White–Blue 33 cards, 19 creatures), matching `spa analyze`. All 17 criteria pass. G-002 closed.
