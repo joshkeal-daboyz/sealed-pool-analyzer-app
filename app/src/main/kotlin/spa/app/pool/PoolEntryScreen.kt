@@ -60,6 +60,8 @@ class PoolEntryActions(
     val onAbout: () -> Unit,
     val onFormatChoose: (PoolFormat?) -> Unit = {},
     val onFilePicked: (Uri) -> Unit = {},
+    /** The saved-pool-unreadable card's "Clear pool". */
+    val onClearPool: () -> Unit = {},
 )
 
 /** How long typing must pause before "Detected: <format>" updates. */

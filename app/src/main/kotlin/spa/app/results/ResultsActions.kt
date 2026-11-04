@@ -11,4 +11,6 @@ data class ResultsActions(
     val onPair: (ColorPair) -> Unit = {},
     /** The loaded state has drawn (timing). */
     val onLoadedShown: (PoolUiState.Loaded) -> Unit = {},
+    /** "Clear pool" was confirmed in the Clear pool dialog. */
+    val onClearPool: () -> Unit = {},
 )

@@ -43,6 +43,7 @@ fun ImportErrorCard(
     source: PoolSource,
     lines: List<UnresolvedLine>,
     modifier: Modifier = Modifier,
+    onClearPool: () -> Unit = {},
 ) {
     val name = sourceName(source)
     val body =
@@ -57,6 +58,7 @@ fun ImportErrorCard(
             ImportFailureKind.WRONG_SET -> stringResource(R.string.pool_error_wrong_set_body, name)
             ImportFailureKind.UNREADABLE ->
                 stringResource(R.string.pool_error_unreadable_body, name)
+            ImportFailureKind.SAVED_POOL_UNREADABLE -> TODO("SPA-022")
         }
     val listed =
         if (kind == ImportFailureKind.NOT_A_POOL || kind == ImportFailureKind.WRONG_SET) lines
@@ -84,6 +86,7 @@ private fun titleOf(kind: ImportFailureKind): Int =
         ImportFailureKind.NOT_A_POOL -> R.string.pool_error_not_a_pool_title
         ImportFailureKind.WRONG_SET -> R.string.pool_error_wrong_set_title
         ImportFailureKind.UNREADABLE -> R.string.pool_error_unreadable_title
+        ImportFailureKind.SAVED_POOL_UNREADABLE -> TODO("SPA-022")
     }
 
 @Composable

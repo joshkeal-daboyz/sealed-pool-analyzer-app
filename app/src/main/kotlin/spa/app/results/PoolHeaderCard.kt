@@ -39,6 +39,7 @@ fun PoolHeaderCard(
     loaded: PoolUiState.Loaded?,
     onNewPool: (() -> Unit)?,
     modifier: Modifier = Modifier,
+    onClearPool: (() -> Unit)? = null,
 ) {
     val colors = LocalSpaColors.current
     val type = MaterialTheme.typography

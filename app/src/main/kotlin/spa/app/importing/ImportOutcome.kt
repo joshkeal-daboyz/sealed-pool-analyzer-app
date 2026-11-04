@@ -27,16 +27,23 @@ enum class ImportFailureKind {
 
     /** The bytes could not be read as UTF-8 text. */
     UNREADABLE,
+
+    /** The remembered pool, re-read at launch, gave no pool, or its file could not be read. */
+    SAVED_POOL_UNREADABLE,
 }
 
 /** What one import gave. */
 sealed interface ImportOutcome {
-    /** The pool resolved at least one entry. [format] is the format it was read as. */
+    /**
+     * The pool resolved at least one entry. [format] is the format it was read as, and [text] the
+     * exact text that was parsed.
+     */
     data class Success(
         val result: ParseResult,
         val metrics: PoolMetrics,
         val format: PoolFormat,
         val source: PoolSource,
+        val text: String = "",
     ) : ImportOutcome
 
     /** The import gave no pool; [unresolved] holds the lines that did not resolve, if any. */

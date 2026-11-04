@@ -14,6 +14,7 @@ import kotlinx.coroutines.launch
 import spa.app.importing.ImportFailureKind
 import spa.app.importing.ImportOutcome
 import spa.app.importing.PoolSource
+import spa.app.store.PoolStore
 import spa.core.intake.PoolFormat
 
 /** One import: the app passes [spa.app.importing.PoolImporter.import]; tests pass fakes. */
@@ -48,6 +49,7 @@ interface FileImporter {
 class PoolViewModel(
     private val importer: Importer,
     private val files: FileImporter = FileImporter.None,
+    private val store: PoolStore? = null,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow<PoolUiState>(PoolUiState.NoPool)
     private val mutablePool = MutableStateFlow<PoolUiState.Loaded?>(null)
@@ -70,6 +72,20 @@ class PoolViewModel(
      * The format chosen by hand for pasted text, or null for "Auto". Kept across a failed import.
      */
     val chosenFormat: StateFlow<PoolFormat?> = mutableFormat.asStateFlow()
+
+    /**
+     * Whether this ViewModel started by re-reading a remembered pool, so launch opens Results in
+     * Loading (decision 1).
+     */
+    val startsWithSavedPool: Boolean = false
+
+    /**
+     * "Clear pool": deletes the pool file and forgets the current pool; the Pool screen is back to
+     * Empty.
+     */
+    fun clearPool() {
+        TODO("SPA-022")
+    }
 
     fun onTextChange(text: String) {
         mutableText.value = text
@@ -153,6 +169,12 @@ class PoolViewModel(
          * file" card has a name to give.
          */
         const val NO_FILE_NAME = "The shared file"
+
+        /**
+         * The source of a remembered pool whose file is too damaged to name one: a file with no
+         * name, which the "Your last pool couldn't be read" card calls "Your pool".
+         */
+        val UNNAMED_SAVED_POOL: PoolSource = PoolSource.File("")
 
         fun factory(
             importer: Importer,
