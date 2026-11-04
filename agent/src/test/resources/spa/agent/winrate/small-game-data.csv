@@ -1,0 +1,11 @@
+expansion,event_type,won,opening_hand_Grizzly Bears,drawn_Grizzly Bears,tutored_Grizzly Bears,deck_Grizzly Bears,sideboard_Grizzly Bears,"opening_hand_Treizeci, Sun of Serra","drawn_Treizeci, Sun of Serra","tutored_Treizeci, Sun of Serra","deck_Treizeci, Sun of Serra","sideboard_Treizeci, Sun of Serra",opening_hand_Serra Angel,drawn_Serra Angel,tutored_Serra Angel,deck_Serra Angel,sideboard_Serra Angel
+SYN,PremierDraft,True,1,0,0,2,0,1,0,0,1,0,0,0,0,1,0
+SYN,PremierDraft,False,0,1,0,2,0,0,0,0,1,0,0,1,0,1,0
+SYN,PremierDraft,True,1,1,0,2,0,0,0,0,0,1,0,0,0,1,0
+SYN,PremierDraft,True,0,0,0,2,0,1,0,0,1,0,1,0,0,1,0
+SYN,PremierDraft,False,0,0,0,2,0,0,0,0,1,0,0,0,0,1,0
+SYN,PremierDraft,False,2,0,0,2,0,1,0,0,1,0,0,0,1,1,0
+SYN,PremierDraft,True,0,0,0,0,0,0,0,0,0,0,0,2,0,1,0
+SYN,PremierDraft,False,0,1,0,2,0,0,0,0,1,0,0,0,0,1,0
+SYN,PremierDraft,True,0,0,0,2,0,0,0,0,1,0,0,0,0,1,0
+SYN,PremierDraft,False,0,0,0,2,0,1,0,0,1,0,0,0,0,1,0

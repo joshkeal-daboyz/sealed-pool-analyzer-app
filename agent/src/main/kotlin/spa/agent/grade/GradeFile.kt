@@ -17,7 +17,11 @@ data class GradeFileHeader(
     val createdAt: String,
 )
 
-/** One card's grade. [setCode] is the printing's own set, which may be a companion set. */
+/**
+ * One card's grade. [setCode] is the printing's own set, which may be a companion set. A win-rate
+ * grade also carries the card's GIH WR ([gihwr], 0 to 1) and the [games] it was measured over; both
+ * are absent from other grades and are not written when null.
+ */
 @Serializable
 data class GradeEntry(
     val name: String,
@@ -25,4 +29,6 @@ data class GradeEntry(
     val setCode: String,
     val score: Double,
     val confidence: Double,
+    val gihwr: Double? = null,
+    val games: Int? = null,
 )
