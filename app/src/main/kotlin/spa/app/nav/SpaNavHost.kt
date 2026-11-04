@@ -29,7 +29,8 @@ import spa.app.timing.SpaTiming
  * The app's navigation, by the spec's Navigation flow. With no pool, launch shows Pool. An import,
  * pasted or picked, replaces the back stack with Results. A failed one moves to Pool: on top of
  * Results when there is a current pool, so back returns to it (decision 5), else as the only
- * screen. "New pool" pushes Pool on top of Results.
+ * screen. "New pool" pushes Pool on top of Results. A share or "Open with" replaces the back stack
+ * with Results from any screen, and the latest import wins.
  */
 @Composable
 fun SpaNavHost(
@@ -57,6 +58,15 @@ fun SpaNavHost(
         }
         composable(Routes.ABOUT) { AboutScreen(onBack = { navController.popBackStack() }) }
     }
+    // A share or "Open with", at launch or while the app is open on any screen: its import is
+    // already running, so Results (Loading) becomes the whole back stack.
+    val incoming by viewModel.incomingImport.collectAsStateWithLifecycle()
+    LaunchedEffect(incoming) {
+        incoming?.let { id ->
+            app.showIncomingImport()
+            viewModel.onIncomingShown(id)
+        }
+    }
 }
 
 /** What every destination shares: the controller, the pool, the timing lines. */
@@ -81,6 +91,18 @@ private class AppNav(
         timing.importConfirmed()
         start()
         replaceStackWith(Routes.RESULTS)
+    }
+
+    /**
+     * A share or "Open with" started an import: logs it and makes a new Results entry the whole
+     * back stack. Never the Results entry on show, even when it is on top, so its record of an
+     * earlier failure handled cannot keep this import's failure from moving to Pool.
+     */
+    fun showIncomingImport() {
+        timing.importConfirmed()
+        navController.navigate(Routes.RESULTS) {
+            popUpTo(navController.graph.id) { inclusive = true }
+        }
     }
 }
 

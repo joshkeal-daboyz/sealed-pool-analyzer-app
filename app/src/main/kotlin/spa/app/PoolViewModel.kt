@@ -53,6 +53,7 @@ class PoolViewModel(
     private val mutablePool = MutableStateFlow<PoolUiState.Loaded?>(null)
     private val mutableText = MutableStateFlow("")
     private val mutableFormat = MutableStateFlow<PoolFormat?>(null)
+    private val mutableIncoming = MutableStateFlow<Long?>(null)
     private var running: Job? = null
     private var latest = 0L
 
@@ -75,19 +76,31 @@ class PoolViewModel(
     }
 
     /**
-     * The id of the latest share or "Open with" import that the navigation has not moved to yet,
-     * or null when there is none.
+     * The id of the latest share or "Open with" import that the navigation has not moved to yet, or
+     * null when there is none.
      */
-    val incomingImport: StateFlow<Long?> = MutableStateFlow<Long?>(null).asStateFlow()
+    val incomingImport: StateFlow<Long?> = mutableIncoming.asStateFlow()
 
     /**
      * A share or "Open with" handed the app the file at [uri], or no file at all when null: imports
-     * it as a picked file, and marks it in [incomingImport] for the navigation.
+     * it as a picked file, and marks it in [incomingImport] for the navigation. With no file, the
+     * import is unreadable at once ("Couldn't read this file").
      */
-    @Suppress("UnusedParameter") fun importIncoming(uri: Uri?) {}
+    fun importIncoming(uri: Uri?) {
+        if (uri != null) {
+            analyzeFile(uri)
+        } else {
+            run(PoolSource.File(NO_FILE_NAME)) {
+                ImportOutcome.Failure(ImportFailureKind.UNREADABLE, it, emptyList())
+            }
+        }
+        mutableIncoming.value = latest
+    }
 
-    /** The navigation moved to the incoming import [id]. */
-    @Suppress("UnusedParameter") fun onIncomingShown(id: Long) {}
+    /** The navigation moved to the incoming import [id]: unmarks it, unless a newer one came. */
+    fun onIncomingShown(id: Long) {
+        mutableIncoming.compareAndSet(id, null)
+    }
 
     /** A chip was tapped: [format], or null for "Auto". */
     fun onFormatChoose(format: PoolFormat?) {
@@ -135,6 +148,12 @@ class PoolViewModel(
     }
 
     companion object {
+        /**
+         * The source of a share or "Open with" that carried no file, so the "Couldn't read this
+         * file" card has a name to give.
+         */
+        const val NO_FILE_NAME = "The shared file"
+
         fun factory(
             importer: Importer,
             files: FileImporter = FileImporter.None,
