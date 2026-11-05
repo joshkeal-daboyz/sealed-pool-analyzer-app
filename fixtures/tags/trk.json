@@ -1,0 +1,8155 @@
+{
+  "set": "trk",
+  "provenance": "claude-fable-5-1 via Claude Code, tags prompt v1, 2026-11-05",
+  "axes": [
+    {
+      "id": "plus-one-counters",
+      "name": "+1/+1 counters and counters matter",
+      "definition": "Puts +1/+1 counters (or any counters, including charge counters) on your creatures or permanents, or doubles counters, feeding payoffs that reward creatures or permanents with counters on them."
+    },
+    {
+      "id": "spacecraft-and-station",
+      "name": "Spacecraft and station",
+      "definition": "Is a Spacecraft, puts charge counters on Spacecraft, or tutors, recurs or protects Spacecraft, feeding payoffs that trigger on casting or controlling Spacecraft or on charge counters."
+    },
+    {
+      "id": "tap-outlets",
+      "name": "Tapping your own creatures",
+      "definition": "Taps your own creatures outside of attacking (station, tap-two or tap-three costs, mana abilities) or untaps them to tap again, feeding creatures with 'whenever this becomes tapped' triggers."
+    },
+    {
+      "id": "artifact-creatures",
+      "name": "Artifact creatures and Borg",
+      "definition": "Is an artifact creature (Borg, Construct, Android, Illusion token, assimilated creature, stationed Spacecraft) or makes artifact creature tokens, feeding lords and payoffs that count or grant abilities to artifact creatures."
+    },
+    {
+      "id": "noncreature-spells",
+      "name": "Cheap noncreature spells",
+      "definition": "Is a cheap instant, sorcery, enchantment, Equipment or Spacecraft you cast, feeding Scientist-style payoffs that trigger whenever you cast a noncreature spell."
+    },
+    {
+      "id": "dilemmas",
+      "name": "Face a dilemma (modal spells)",
+      "definition": "Is a modal spell or has a 'choose one' modal ability (enters triggers, attack triggers, land triggers), so casting or triggering it makes you face a dilemma for dilemma payoffs."
+    },
+    {
+      "id": "creature-deaths",
+      "name": "Dies triggers and sacrifice",
+      "definition": "Provides expendable bodies (hasty Klingon Warrior, Officer or Borg tokens, creatures that want to die) or a sacrifice outlet, feeding payoffs that trigger whenever a creature dies or reward sacrificing."
+    },
+    {
+      "id": "klingons",
+      "name": "Klingons",
+      "definition": "Is a Klingon or creates Klingon Warrior tokens, feeding cards that pump, target or reward sacrificing Klingons."
+    },
+    {
+      "id": "command-total-power",
+      "name": "Command: total power 8 and going wide",
+      "definition": "Adds power to your board cheaply, via Officer or other creature tokens, anthems, high-power bodies or pump, so that attacks with total power 8 or greater turn on the command payoffs."
+    },
+    {
+      "id": "landfall",
+      "name": "Landfall and extra lands",
+      "definition": "Puts lands onto the battlefield beyond the normal drop or more often (land tutors to battlefield, Planet tokens, extra land drops, land-to-hand effects that keep drops flowing), feeding landfall triggers."
+    },
+    {
+      "id": "differently-named-lands",
+      "name": "Strange new worlds (land names)",
+      "definition": "Is a nonbasic land with its own name (Planet, Anomaly, dual land), creates New Planet tokens, or tutors Planets, raising the count of differently named lands for strange new worlds cards."
+    },
+    {
+      "id": "graveyard-fill",
+      "name": "Filling the graveyard",
+      "definition": "Puts cards into your graveyard (surveil, mill, looting, discard, self-sacrifice), feeding reanimation, cast-from-graveyard, beam me up and threshold payoffs."
+    },
+    {
+      "id": "graveyard-exit",
+      "name": "Cards leaving the graveyard",
+      "definition": "Removes cards from your graveyard (beam me up casting, exile-from-graveyard costs, graveyard-to-hand or battlefield recursion, graveyard exile effects), feeding payoffs that trigger whenever a card leaves your graveyard."
+    },
+    {
+      "id": "enters-and-self-bounce",
+      "name": "Enters effects and self-bounce",
+      "definition": "Is a creature with a valuable enters ability, or an effect that returns, flickers or re-casts your own permanents, so beam me up costs and self-bounce turn into repeated value."
+    },
+    {
+      "id": "federation-type-diversity",
+      "name": "Federation (creature type diversity)",
+      "definition": "Adds distinct creature types among non-Borg creatures you control (multi-type creatures, changeling copies, named tokens of unusual types), feeding Federation payoffs that count creature types."
+    }
+  ],
+  "cards": [
+    {
+      "id": "trk/1",
+      "name": "70,000 Light-Years from Home",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/2",
+      "name": "Andromedan Automatons",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/2",
+          "strength": 3
+        }
+      ]
+    },
+    {
+      "id": "trk/3",
+      "name": "Antagonist Incorporator",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/30",
+          "strength": 2
+        },
+        {
+          "id": "trk/121",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/4",
+      "name": "Assembly Specialist",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/10",
+          "strength": 1
+        },
+        {
+          "id": "trk/125",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/5",
+      "name": "Brad Boimler, Eager Ensign",
+      "roles": [
+        {
+          "axis": "tap-outlets",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/256",
+          "strength": 2
+        },
+        {
+          "id": "trk/196",
+          "strength": 1
+        },
+        {
+          "id": "trk/12",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/6",
+      "name": "Captain Benjamin Sisko",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/7",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "trk/7",
+      "name": "Captain Jean-Luc Picard",
+      "roles": [
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "spacecraft-and-station",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "spacecraft-and-station",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/6",
+          "strength": 2
+        },
+        {
+          "id": "trk/43",
+          "strength": 1
+        },
+        {
+          "id": "trk/201",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "trk/8",
+      "name": "Command Decision",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/9",
+      "name": "Command Subadjunct",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/98",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/10",
+      "name": "Conquest Mission",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/2",
+          "strength": 2
+        },
+        {
+          "id": "trk/24",
+          "strength": 2
+        },
+        {
+          "id": "trk/122",
+          "strength": 1
+        },
+        {
+          "id": "trk/20",
+          "strength": 1
+        },
+        {
+          "id": "trk/233",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "trk/11",
+      "name": "Deanna Troi, Psychic Counsel",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/14",
+          "strength": 2
+        },
+        {
+          "id": "trk/196",
+          "strength": 2
+        },
+        {
+          "id": "trk/41",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/12",
+      "name": "DOT-7 Repair Squad",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/29",
+          "strength": 1
+        },
+        {
+          "id": "trk/138",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/13",
+      "name": "Dr. Beverly Crusher",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/209",
+          "strength": 2
+        },
+        {
+          "id": "trk/268",
+          "strength": 2
+        },
+        {
+          "id": "trk/205",
+          "strength": 1
+        },
+        {
+          "id": "trk/36",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/14",
+      "name": "Dr. McCoy, Surly Surgeon",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/11",
+          "strength": 2
+        },
+        {
+          "id": "trk/196",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/15",
+      "name": "Emergency Medical Hologram",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/13",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/16",
+      "name": "Excalbian Gamemaster",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/201",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "trk/17",
+      "name": "Federation Field Medic",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/18",
+      "name": "Federation Resupply",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "spacecraft-and-station",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/19",
+      "name": "Free Borg Revolutionaries",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/122",
+          "strength": 2
+        },
+        {
+          "id": "trk/102",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/20",
+      "name": "Ghost of Illyria",
+      "roles": [
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/43",
+          "strength": 2
+        },
+        {
+          "id": "trk/272",
+          "strength": 1
+        },
+        {
+          "id": "trk/10",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/21",
+      "name": "Hologram Janeway",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "command-total-power",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/22",
+      "name": "Malfunctioning Holodeck",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/23",
+      "name": "The Measure of a Man",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/233",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/24",
+      "name": "Miles O'Brien, Transporter Ops",
+      "roles": [
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/79",
+          "strength": 2
+        },
+        {
+          "id": "trk/10",
+          "strength": 1
+        },
+        {
+          "id": "trk/4",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/25",
+      "name": "The Needs of the Many",
+      "roles": [
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/26",
+      "name": "Oberth-Class Starship",
+      "roles": [
+        {
+          "axis": "spacecraft-and-station",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/37",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/27",
+      "name": "Peace in Our Time",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/233",
+          "strength": 2
+        },
+        {
+          "id": "trk/5",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/28",
+      "name": "Pet Sehlat",
+      "roles": [
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/29",
+      "name": "Picard, Leading by Example",
+      "roles": [
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/12",
+          "strength": 1
+        },
+        {
+          "id": "trk/11",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/30",
+      "name": "Primary Unimatrix Adjunct",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/3",
+          "strength": 2
+        },
+        {
+          "id": "trk/115",
+          "strength": 2
+        },
+        {
+          "id": "trk/245",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/31",
+      "name": "Pure Energy",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/32",
+      "name": "Rutherford, Upgraded Ensign",
+      "roles": [
+        {
+          "axis": "spacecraft-and-station",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/90",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/33",
+      "name": "Saavik, Stoic Student",
+      "roles": [
+        {
+          "axis": "federation-type-diversity",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/34",
+      "name": "Set Phasers to . . .",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/44",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/35",
+      "name": "Shields Up!",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/36",
+      "name": "Shuttle Ace",
+      "roles": [
+        {
+          "axis": "tap-outlets",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/13",
+          "strength": 1
+        },
+        {
+          "id": "trk/209",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/37",
+      "name": "Sulu, Space Swashbuckler",
+      "roles": [
+        {
+          "axis": "tap-outlets",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "spacecraft-and-station",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/260",
+          "strength": 1
+        },
+        {
+          "id": "trk/270",
+          "strength": 1
+        },
+        {
+          "id": "trk/61",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/38",
+      "name": "Tactical Officer",
+      "roles": [
+        {
+          "axis": "command-total-power",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/39",
+      "name": "Test of Conviction",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/40",
+      "name": "There's Coffee in that Nebula",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/41",
+      "name": "Troubling Tribbles",
+      "roles": [
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "federation-type-diversity",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/201",
+          "strength": 3
+        },
+        {
+          "id": "trk/11",
+          "strength": 1
+        },
+        {
+          "id": "trk/109",
+          "strength": 1
+        },
+        {
+          "id": "trk/187",
+          "strength": 2
+        },
+        {
+          "id": "trk/216",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "trk/42",
+      "name": "Una Chin-Riley, Number One",
+      "roles": [
+        {
+          "axis": "command-total-power",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/43",
+      "name": "U.S.S. Enterprise-A, Free Spirit",
+      "roles": [
+        {
+          "axis": "spacecraft-and-station",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/20",
+          "strength": 2
+        },
+        {
+          "id": "trk/201",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "trk/44",
+      "name": "U.S.S. Excelsior, Cutting Edge",
+      "roles": [
+        {
+          "axis": "spacecraft-and-station",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/45",
+          "strength": 2
+        },
+        {
+          "id": "trk/72",
+          "strength": 2
+        },
+        {
+          "id": "trk/84",
+          "strength": 2
+        },
+        {
+          "id": "trk/271",
+          "strength": 1
+        },
+        {
+          "id": "trk/58",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/45",
+      "name": "Vexing Drone",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/44",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "trk/46",
+      "name": "Anthropological Mission",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/52",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/47",
+      "name": "The Caretaker",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/48",
+      "name": "Cetacean Ops",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/63",
+          "strength": 3
+        }
+      ]
+    },
+    {
+      "id": "trk/49",
+      "name": "Cloak and Phaser",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "federation-type-diversity",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/50",
+      "name": "Cloistered Telepath",
+      "roles": [
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/51",
+      "name": "Consider the Prime Directive",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/52",
+      "name": "Data, New Life",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/74",
+          "strength": 2
+        },
+        {
+          "id": "trk/46",
+          "strength": 1
+        },
+        {
+          "id": "trk/239",
+          "strength": 1
+        },
+        {
+          "id": "trk/83",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/53",
+      "name": "Deep Space Scan",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/74",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/54",
+      "name": "Dominion Saboteur",
+      "roles": [
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/55",
+      "name": "Emergency Holographic Crew",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "spacecraft-and-station",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/56",
+      "name": "Energize",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/57",
+      "name": "Ensign Pavel Chekov",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/58",
+      "name": "Enterprise NX-01",
+      "roles": [
+        {
+          "axis": "spacecraft-and-station",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/44",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/59",
+      "name": "Federation Probe",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/79",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/60",
+      "name": "Guidance Failure",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/61",
+      "name": "Gwyndala, the Progeny",
+      "roles": [
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/260",
+          "strength": 2
+        },
+        {
+          "id": "trk/37",
+          "strength": 1
+        },
+        {
+          "id": "trk/271",
+          "strength": 1
+        },
+        {
+          "id": "trk/267",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/62",
+      "name": "Highly Illogical",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/63",
+      "name": "H.M.S. Bounty, Unlikely Timeship",
+      "roles": [
+        {
+          "axis": "spacecraft-and-station",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/65",
+          "strength": 3
+        },
+        {
+          "id": "trk/48",
+          "strength": 3
+        }
+      ]
+    },
+    {
+      "id": "trk/64",
+      "name": "Hoshi Sato, Exolinguist",
+      "roles": [
+        {
+          "axis": "federation-type-diversity",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/65",
+      "name": "Humpback Whales",
+      "roles": [
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/63",
+          "strength": 3
+        }
+      ]
+    },
+    {
+      "id": "trk/66",
+      "name": "Interstellar Effigy",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/67",
+      "name": "Jett Reno, Problem Solver",
+      "roles": [
+        {
+          "axis": "tap-outlets",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "dilemmas",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/68",
+      "name": "Kobayashi Maru Scenario",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/78",
+          "strength": 3
+        },
+        {
+          "id": "trk/252",
+          "strength": 1
+        },
+        {
+          "id": "trk/6",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/69",
+      "name": "Lieutenant Commander Data",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/196",
+          "strength": 1
+        },
+        {
+          "id": "trk/5",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/70",
+      "name": "Lt. Cmdr. Geordi La Forge",
+      "roles": [
+        {
+          "axis": "spacecraft-and-station",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/274",
+          "strength": 2
+        },
+        {
+          "id": "trk/77",
+          "strength": 2
+        },
+        {
+          "id": "trk/90",
+          "strength": 2
+        },
+        {
+          "id": "trk/273",
+          "strength": 1
+        },
+        {
+          "id": "trk/264",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/71",
+      "name": "Make It So",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/72",
+      "name": "Marooned",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/44",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "trk/73",
+      "name": "Melkotian Adjudicator",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/74",
+      "name": "Mr. Spock, Science Officer",
+      "roles": [],
+      "partners": [
+        {
+          "id": "trk/52",
+          "strength": 2
+        },
+        {
+          "id": "trk/239",
+          "strength": 1
+        },
+        {
+          "id": "trk/53",
+          "strength": 1
+        },
+        {
+          "id": "trk/46",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/75",
+      "name": "Nyota Uhura, Communications",
+      "roles": [
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/76",
+      "name": "Open Communications",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/74",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/77",
+      "name": "Romulan Bird-of-Prey",
+      "roles": [
+        {
+          "axis": "spacecraft-and-station",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/70",
+          "strength": 2
+        },
+        {
+          "id": "trk/90",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/78",
+      "name": "Rules of Acquisition",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/68",
+          "strength": 3
+        }
+      ]
+    },
+    {
+      "id": "trk/79",
+      "name": "Scotty, Miracle Worker",
+      "roles": [
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/24",
+          "strength": 2
+        },
+        {
+          "id": "trk/76",
+          "strength": 1
+        },
+        {
+          "id": "trk/59",
+          "strength": 1
+        },
+        {
+          "id": "trk/255",
+          "strength": 1
+        },
+        {
+          "id": "trk/96",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/80",
+      "name": "Seven of Nine, Unassimilated",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/81",
+      "name": "Starfleet Spanner Jockey",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/82",
+      "name": "Subcommander T'Pol",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/44",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/83",
+      "name": "Suurok-Class Science Vessel",
+      "roles": [
+        {
+          "axis": "spacecraft-and-station",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/24",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/84",
+      "name": "Suus Mahna Practitioner",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/44",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "trk/85",
+      "name": "Test of Priorities",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/86",
+      "name": "Those Old Scientists",
+      "roles": [
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "spacecraft-and-station",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/233",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/87",
+      "name": "V'Ger, the Intruder",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/88",
+      "name": "Vulcan Mind-Meld",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/89",
+      "name": "Wesley Crusher, Starfleet Cadet",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/90",
+      "name": "Zefram Cochrane, Warp Pioneer",
+      "roles": [
+        {
+          "axis": "spacecraft-and-station",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/70",
+          "strength": 2
+        },
+        {
+          "id": "trk/273",
+          "strength": 2
+        },
+        {
+          "id": "trk/77",
+          "strength": 1
+        },
+        {
+          "id": "trk/32",
+          "strength": 1
+        },
+        {
+          "id": "trk/145",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "trk/91",
+      "name": "Armus, Skin of Evil",
+      "roles": [
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/130",
+          "strength": 1
+        },
+        {
+          "id": "trk/102",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/92",
+      "name": "Assault Drone",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/93",
+      "name": "Automated Warfare System",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/133",
+          "strength": 1
+        },
+        {
+          "id": "trk/41",
+          "strength": 1
+        },
+        {
+          "id": "trk/112",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/94",
+      "name": "Bat'leth",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/37",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/95",
+      "name": "Battle-Scarred Survivalist",
+      "roles": [
+        {
+          "axis": "klingons",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/96",
+      "name": "Blastoneuron",
+      "roles": [
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/79",
+          "strength": 1
+        },
+        {
+          "id": "trk/217",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/97",
+      "name": "Cha'DIch Investigator",
+      "roles": [
+        {
+          "axis": "klingons",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/98",
+      "name": "Collation Trimatrix",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/9",
+          "strength": 1
+        },
+        {
+          "id": "trk/5",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/99",
+      "name": "Collective Drone",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/100",
+      "name": "Commander Raffi Musiker",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/101",
+      "name": "D'Ghor Bloodletter",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "klingons",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/102",
+      "name": "Death Is Irrelevant",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/103",
+      "name": "The Destruction of Praxis",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "klingons",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/104",
+      "name": "De-evolve",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/105",
+      "name": "Eject the Warp Core",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/133",
+          "strength": 1
+        },
+        {
+          "id": "trk/235",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/106",
+      "name": "Elim Garak, Simple Tailor",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/107",
+      "name": "Fugitive Listener",
+      "roles": [
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/108",
+      "name": "Gabriel Lorca, Mirror Menace",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/109",
+      "name": "General Chang, Cold Warrior",
+      "roles": [
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "klingons",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "klingons",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/41",
+          "strength": 1
+        },
+        {
+          "id": "trk/235",
+          "strength": 2
+        },
+        {
+          "id": "trk/180",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "trk/110",
+      "name": "Georgiou, Terran Emperor",
+      "roles": [
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/111",
+      "name": "A Good Day to Die",
+      "roles": [
+        {
+          "axis": "creature-deaths",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/112",
+      "name": "Grand Nagus Zek",
+      "roles": [
+        {
+          "axis": "creature-deaths",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/166",
+          "strength": 2
+        },
+        {
+          "id": "trk/171",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/113",
+      "name": "Gul Dukat, Colonial Prefect",
+      "roles": [],
+      "partners": []
+    },
+    {
+      "id": "trk/114",
+      "name": "He's Dead, Jim",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/115",
+      "name": "Hive Mind Coprocessor",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/30",
+          "strength": 2
+        },
+        {
+          "id": "trk/121",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/116",
+      "name": "Impossible Choice",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/117",
+      "name": "In the Pale Moonlight",
+      "roles": [
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "federation-type-diversity",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/233",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/118",
+      "name": "Kai Winn, Faithless Leader",
+      "roles": [],
+      "partners": []
+    },
+    {
+      "id": "trk/119",
+      "name": "Khan, Vengeful Heart",
+      "roles": [
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/168",
+          "strength": 1
+        },
+        {
+          "id": "trk/148",
+          "strength": 1
+        },
+        {
+          "id": "trk/133",
+          "strength": 1
+        },
+        {
+          "id": "trk/243",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/120",
+      "name": "Obsidian Order Operative",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/121",
+      "name": "Organic Avulsion Unit",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/122",
+      "name": "Overflow Submatrix",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/19",
+          "strength": 2
+        },
+        {
+          "id": "trk/126",
+          "strength": 2
+        },
+        {
+          "id": "trk/245",
+          "strength": 2
+        },
+        {
+          "id": "trk/10",
+          "strength": 1
+        },
+        {
+          "id": "trk/133",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/123",
+      "name": "Pattern Buffer Preservation",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/124",
+      "name": "Relentless Drednok",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/125",
+      "name": "Resistance Is Futile",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/4",
+          "strength": 2
+        },
+        {
+          "id": "trk/245",
+          "strength": 2
+        },
+        {
+          "id": "trk/133",
+          "strength": 1
+        },
+        {
+          "id": "trk/45",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/126",
+      "name": "Rogue Artificial Intelligence",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/122",
+          "strength": 2
+        },
+        {
+          "id": "trk/102",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/127",
+      "name": "Salt Vampire",
+      "roles": [
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/128",
+      "name": "Sela, Tal Shiar Paradox",
+      "roles": [
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "federation-type-diversity",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/217",
+          "strength": 2
+        },
+        {
+          "id": "trk/262",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "trk/129",
+      "name": "Storied Veteran",
+      "roles": [
+        {
+          "axis": "klingons",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/109",
+          "strength": 2
+        },
+        {
+          "id": "trk/237",
+          "strength": 1
+        },
+        {
+          "id": "trk/247",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/130",
+      "name": "Stray from History",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "spacecraft-and-station",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/131",
+      "name": "Tal Shiar Operative",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/132",
+      "name": "Tell Me What You See",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "dilemmas",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/233",
+          "strength": 2
+        },
+        {
+          "id": "trk/137",
+          "strength": 1
+        },
+        {
+          "id": "trk/46",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/133",
+      "name": "Tenacious Drone",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/119",
+          "strength": 1
+        },
+        {
+          "id": "trk/93",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/134",
+      "name": "Test of Loyalty",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/135",
+      "name": "U.S.S. Reliant, From Hell's Heart",
+      "roles": [
+        {
+          "axis": "spacecraft-and-station",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/136",
+      "name": "Vengeance Mission",
+      "roles": [
+        {
+          "axis": "creature-deaths",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/233",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/137",
+      "name": "Academy Instructor",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/132",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/138",
+      "name": "Beckett Mariner, Impetuous Ensign",
+      "roles": [
+        {
+          "axis": "tap-outlets",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/12",
+          "strength": 1
+        },
+        {
+          "id": "trk/5",
+          "strength": 1
+        },
+        {
+          "id": "trk/236",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/139",
+      "name": "Boarding Action",
+      "roles": [
+        {
+          "axis": "klingons",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/140",
+      "name": "Brazen Bluff",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/141",
+      "name": "Cantankerous Captain",
+      "roles": [
+        {
+          "axis": "command-total-power",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/142",
+      "name": "Captain James T. Kirk",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/143",
+      "name": "Captain Michael Burnham",
+      "roles": [
+        {
+          "axis": "landfall",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/157",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "trk/144",
+      "name": "Captain's Tutelage",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/145",
+      "name": "D-7 Battle Cruiser",
+      "roles": [
+        {
+          "axis": "spacecraft-and-station",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "klingons",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/274",
+          "strength": 2
+        },
+        {
+          "id": "trk/90",
+          "strength": 2
+        },
+        {
+          "id": "trk/170",
+          "strength": 2
+        },
+        {
+          "id": "trk/109",
+          "strength": 1
+        },
+        {
+          "id": "trk/237",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/146",
+      "name": "Dahar Master",
+      "roles": [
+        {
+          "axis": "klingons",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/147",
+      "name": "Dominion Infiltration",
+      "roles": [
+        {
+          "axis": "federation-type-diversity",
+          "role": "enabler",
+          "strength": 3
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/148",
+      "name": "Encounter the Unknown",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/119",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/149",
+      "name": "Erica Ortegas, Plucky Pilot",
+      "roles": [
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/12",
+          "strength": 1
+        },
+        {
+          "id": "trk/236",
+          "strength": 1
+        },
+        {
+          "id": "trk/187",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/150",
+      "name": "Exploratory Mission",
+      "roles": [
+        {
+          "axis": "landfall",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/233",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "trk/151",
+      "name": "Genesis Effect",
+      "roles": [
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/152",
+      "name": "Horta",
+      "roles": [
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/153",
+      "name": "Infinite Diversity",
+      "roles": [
+        {
+          "axis": "federation-type-diversity",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/154",
+      "name": "Khaaaaaaaaaaaannn!",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/155",
+      "name": "Khan, Despot by Design",
+      "roles": [
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/156",
+      "name": "La'An Noonien-Singh, Security",
+      "roles": [
+        {
+          "axis": "command-total-power",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/157",
+      "name": "Lwaxana Troi, Charming Guest",
+      "roles": [],
+      "partners": [
+        {
+          "id": "trk/229",
+          "strength": 2
+        },
+        {
+          "id": "trk/143",
+          "strength": 2
+        },
+        {
+          "id": "trk/218",
+          "strength": 2
+        },
+        {
+          "id": "trk/237",
+          "strength": 1
+        },
+        {
+          "id": "trk/255",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/158",
+      "name": "Munitions Enthusiast",
+      "roles": [
+        {
+          "axis": "klingons",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/159",
+      "name": "The Naked Time",
+      "roles": [
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/233",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/160",
+      "name": "Pah-Wraith",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/161",
+      "name": "Perils of the Past",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/162",
+      "name": "Planetary Bombardment",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/163",
+      "name": "Planetary Patrol",
+      "roles": [
+        {
+          "axis": "landfall",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/164",
+      "name": "Plasma Cascade",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/165",
+      "name": "Q, Stacking the Deck",
+      "roles": [],
+      "partners": []
+    },
+    {
+      "id": "trk/166",
+      "name": "Quark, Humble Proprietor",
+      "roles": [],
+      "partners": [
+        {
+          "id": "trk/112",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "trk/167",
+      "name": "Ravenous Cosmozoan",
+      "roles": [
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/168",
+      "name": "Reckless Impulse",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/119",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/169",
+      "name": "Red Alert!",
+      "roles": [
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/170",
+      "name": "Sarcophagus, Ship of the Dead",
+      "roles": [
+        {
+          "axis": "spacecraft-and-station",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/145",
+          "strength": 2
+        },
+        {
+          "id": "trk/247",
+          "strength": 2
+        },
+        {
+          "id": "trk/70",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/171",
+      "name": "Savvy Profiteer",
+      "roles": [
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/112",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/172",
+      "name": "Silicate Surveyor",
+      "roles": [
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/119",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/173",
+      "name": "Starfleet Security",
+      "roles": [
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/174",
+      "name": "Tal Shiar Analyst",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/236",
+          "strength": 2
+        },
+        {
+          "id": "trk/12",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/175",
+      "name": "Targ Wrangler",
+      "roles": [
+        {
+          "axis": "klingons",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/133",
+          "strength": 1
+        },
+        {
+          "id": "trk/41",
+          "strength": 1
+        },
+        {
+          "id": "trk/171",
+          "strength": 1
+        },
+        {
+          "id": "trk/209",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/176",
+      "name": "Tasha Yar, Out of Time",
+      "roles": [
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/119",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/177",
+      "name": "Test of Identity",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "klingons",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/178",
+      "name": "Transporter Malfunction",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/179",
+      "name": "Will Riker, First in the Field",
+      "roles": [
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/249",
+          "strength": 3
+        },
+        {
+          "id": "trk/231",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "trk/180",
+      "name": "Worf, Intelligence Contractor",
+      "roles": [
+        {
+          "axis": "klingons",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/109",
+          "strength": 2
+        },
+        {
+          "id": "trk/237",
+          "strength": 2
+        },
+        {
+          "id": "trk/119",
+          "strength": 1
+        },
+        {
+          "id": "trk/146",
+          "strength": 1
+        },
+        {
+          "id": "trk/247",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/181",
+      "name": "The Wrath of Khan",
+      "roles": [
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/109",
+          "strength": 1
+        },
+        {
+          "id": "trk/237",
+          "strength": 1
+        },
+        {
+          "id": "trk/233",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/182",
+      "name": "Adversary by Algorithm",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/183",
+      "name": "Amok Time",
+      "roles": [
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/233",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/184",
+      "name": "Astute Terraformer",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/185",
+      "name": "Branching Timeline",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/186",
+      "name": "Captain Jonathan Archer",
+      "roles": [
+        {
+          "axis": "federation-type-diversity",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "federation-type-diversity",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/187",
+      "name": "Captain Kathryn Janeway",
+      "roles": [
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/41",
+          "strength": 2
+        },
+        {
+          "id": "trk/149",
+          "strength": 1
+        },
+        {
+          "id": "trk/157",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/188",
+      "name": "Captain Pike, Fullness of Time",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/189",
+      "name": "Cold-Blooded Crew",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/190",
+      "name": "Common Goal",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/191",
+      "name": "Culber and Stamets, Star-Crossed",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/192",
+      "name": "Dathon and Picard at El-Adrel",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/193",
+      "name": "David and Carol Marcus, Creators",
+      "roles": [
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/267",
+          "strength": 2
+        },
+        {
+          "id": "trk/24",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/194",
+      "name": "Dominion Assault Force",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/195",
+      "name": "Dominion Supervisor",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/196",
+      "name": "Dr. Joseph M'Benga",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/11",
+          "strength": 2
+        },
+        {
+          "id": "trk/204",
+          "strength": 2
+        },
+        {
+          "id": "trk/5",
+          "strength": 1
+        },
+        {
+          "id": "trk/218",
+          "strength": 1
+        },
+        {
+          "id": "trk/268",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/197",
+      "name": "Dr. Leonard \"Bones\" McCoy",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/146",
+          "strength": 1
+        },
+        {
+          "id": "trk/109",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/198",
+      "name": "Final Frontier",
+      "roles": [
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/199",
+      "name": "First Contact",
+      "roles": [
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/200",
+      "name": "Genesis Device",
+      "roles": [
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/249",
+          "strength": 2
+        },
+        {
+          "id": "trk/179",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/201",
+      "name": "Holo-Engineer",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/41",
+          "strength": 3
+        },
+        {
+          "id": "trk/43",
+          "strength": 2
+        },
+        {
+          "id": "trk/16",
+          "strength": 2
+        },
+        {
+          "id": "trk/229",
+          "strength": 2
+        },
+        {
+          "id": "trk/7",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "trk/202",
+      "name": "Hologram Stalker",
+      "roles": [
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/217",
+          "strength": 1
+        },
+        {
+          "id": "trk/262",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "trk/203",
+      "name": "I'm a Doctor, Not a . . .",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/98",
+          "strength": 1
+        },
+        {
+          "id": "trk/36",
+          "strength": 1
+        },
+        {
+          "id": "trk/149",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/204",
+      "name": "Jadzia Dax, Living Legacy",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/196",
+          "strength": 2
+        },
+        {
+          "id": "trk/5",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/205",
+      "name": "Jake Sisko, War Correspondent",
+      "roles": [
+        {
+          "axis": "landfall",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/13",
+          "strength": 1
+        },
+        {
+          "id": "trk/209",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/206",
+      "name": "MACO Strike Team",
+      "roles": [
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/207",
+      "name": "Moopsy",
+      "roles": [],
+      "partners": []
+    },
+    {
+      "id": "trk/208",
+      "name": "Mugato",
+      "roles": [
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/209",
+      "name": "Neelix, Moral Support",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/13",
+          "strength": 2
+        },
+        {
+          "id": "trk/268",
+          "strength": 1
+        },
+        {
+          "id": "trk/205",
+          "strength": 1
+        },
+        {
+          "id": "trk/36",
+          "strength": 1
+        },
+        {
+          "id": "trk/214",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/210",
+      "name": "Photosynthetic Physician",
+      "roles": [
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/211",
+      "name": "Rok-Tahk, Budding Scientist",
+      "roles": [
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "federation-type-diversity",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/36",
+          "strength": 2
+        },
+        {
+          "id": "trk/138",
+          "strength": 2
+        },
+        {
+          "id": "trk/239",
+          "strength": 2
+        },
+        {
+          "id": "trk/149",
+          "strength": 2
+        },
+        {
+          "id": "trk/67",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "trk/212",
+      "name": "Saru, Unthreatened",
+      "roles": [
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/213",
+      "name": "Saurian Explorer",
+      "roles": [
+        {
+          "axis": "landfall",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/214",
+      "name": "Species 8472",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/209",
+          "strength": 1
+        },
+        {
+          "id": "trk/13",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/215",
+      "name": "Stable Wormhole",
+      "roles": [
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/267",
+          "strength": 1
+        },
+        {
+          "id": "trk/233",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/216",
+      "name": "Support Mission",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/41",
+          "strength": 2
+        },
+        {
+          "id": "trk/233",
+          "strength": 2
+        },
+        {
+          "id": "trk/11",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/217",
+      "name": "Sylvia Tilly, Joy of Discovery",
+      "roles": [
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/255",
+          "strength": 2
+        },
+        {
+          "id": "trk/128",
+          "strength": 2
+        },
+        {
+          "id": "trk/96",
+          "strength": 1
+        },
+        {
+          "id": "trk/202",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/218",
+      "name": "Syndicate Liquidators",
+      "roles": [
+        {
+          "axis": "landfall",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/157",
+          "strength": 2
+        },
+        {
+          "id": "trk/196",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/219",
+      "name": "Temporal Conqueror",
+      "roles": [
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/249",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/220",
+      "name": "Test of Courage",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/221",
+      "name": "U.S.S. Discovery, at Black Alert",
+      "roles": [
+        {
+          "axis": "spacecraft-and-station",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/222",
+      "name": "U.S.S. Voyager, Lone Wanderer",
+      "roles": [
+        {
+          "axis": "spacecraft-and-station",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/229",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/223",
+      "name": "Warp Speed",
+      "roles": [
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "differently-named-lands",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/233",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/224",
+      "name": "Xenobotanist",
+      "roles": [
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/225",
+      "name": "Xindi Surveyors",
+      "roles": [
+        {
+          "axis": "landfall",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/226",
+      "name": "All Good Things...",
+      "roles": [],
+      "partners": [
+        {
+          "id": "trk/233",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/227",
+      "name": "Borg Cube",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "spacecraft-and-station",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/99",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/228",
+      "name": "The City on the Edge of Forever",
+      "roles": [
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "federation-type-diversity",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/233",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/229",
+      "name": "Cleveland Booker, Empath",
+      "roles": [
+        {
+          "axis": "landfall",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/201",
+          "strength": 2
+        },
+        {
+          "id": "trk/157",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "trk/230",
+      "name": "Constable Odo",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/44",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/231",
+      "name": "Dal R'El, Augment Orphan",
+      "roles": [
+        {
+          "axis": "landfall",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/179",
+          "strength": 2
+        },
+        {
+          "id": "trk/249",
+          "strength": 2
+        },
+        {
+          "id": "trk/149",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/232",
+      "name": "Daniels, Temporal Agent",
+      "roles": [
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/233",
+      "name": "Dathon, His Heart Open",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/27",
+          "strength": 2
+        },
+        {
+          "id": "trk/10",
+          "strength": 2
+        },
+        {
+          "id": "trk/216",
+          "strength": 2
+        },
+        {
+          "id": "trk/150",
+          "strength": 2
+        },
+        {
+          "id": "trk/132",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "trk/234",
+      "name": "The Doctor, EMH",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/235",
+      "name": "The Duras Sisters",
+      "roles": [
+        {
+          "axis": "klingons",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/109",
+          "strength": 2
+        },
+        {
+          "id": "trk/237",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/236",
+      "name": "D'Vana Tendi, Optimistic Ensign",
+      "roles": [
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/174",
+          "strength": 2
+        },
+        {
+          "id": "trk/149",
+          "strength": 1
+        },
+        {
+          "id": "trk/138",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/237",
+      "name": "Gowron, Eager for Battle",
+      "roles": [
+        {
+          "axis": "creature-deaths",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "klingons",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/41",
+          "strength": 1
+        },
+        {
+          "id": "trk/157",
+          "strength": 1
+        },
+        {
+          "id": "trk/180",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "trk/238",
+      "name": "Gray and Adira, Forever Joined",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/239",
+      "name": "Hemmer, Fixing What Is Broken",
+      "roles": [
+        {
+          "axis": "tap-outlets",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "spacecraft-and-station",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/74",
+          "strength": 1
+        },
+        {
+          "id": "trk/52",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/240",
+      "name": "Hit It!",
+      "roles": [
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/233",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/241",
+      "name": "The Inner Light",
+      "roles": [
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/233",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/242",
+      "name": "Kira Nerys, Firebrand",
+      "roles": [
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/41",
+          "strength": 1
+        },
+        {
+          "id": "trk/137",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/243",
+      "name": "Kirk, Commanding Officer",
+      "roles": [
+        {
+          "axis": "command-total-power",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/119",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/244",
+      "name": "Live Long and Prosper",
+      "roles": [],
+      "partners": [
+        {
+          "id": "trk/74",
+          "strength": 1
+        },
+        {
+          "id": "trk/53",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/245",
+      "name": "Locutus, the One Who Speaks",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/122",
+          "strength": 2
+        },
+        {
+          "id": "trk/125",
+          "strength": 2
+        },
+        {
+          "id": "trk/102",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/246",
+      "name": "Lore, Positronic Provocateur",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/247",
+      "name": "L'Rell, Fierce Visionary",
+      "roles": [
+        {
+          "axis": "klingons",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/109",
+          "strength": 2
+        },
+        {
+          "id": "trk/237",
+          "strength": 2
+        },
+        {
+          "id": "trk/170",
+          "strength": 2
+        },
+        {
+          "id": "trk/133",
+          "strength": 1
+        },
+        {
+          "id": "trk/136",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/248",
+      "name": "Mirror Universe Intrusion",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "federation-type-diversity",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/249",
+      "name": "Nog, Ambitious Cadet",
+      "roles": [
+        {
+          "axis": "tap-outlets",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/179",
+          "strength": 3
+        },
+        {
+          "id": "trk/231",
+          "strength": 2
+        },
+        {
+          "id": "trk/200",
+          "strength": 2
+        },
+        {
+          "id": "trk/219",
+          "strength": 1
+        },
+        {
+          "id": "trk/149",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/250",
+      "name": "Phlox, Unorthodox Doctor",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/251",
+      "name": "Sarek, Federation Ambassador",
+      "roles": [
+        {
+          "axis": "federation-type-diversity",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/252",
+      "name": "Seven of Nine",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/68",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/253",
+      "name": "Spock, Always Your Friend",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/254",
+      "name": "The Traveler",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/255",
+      "name": "Vash, Freelance Archaeologist",
+      "roles": [
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/217",
+          "strength": 2
+        },
+        {
+          "id": "trk/262",
+          "strength": 2
+        },
+        {
+          "id": "trk/79",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/256",
+      "name": "Worf, Honor-Bound Warrior",
+      "roles": [
+        {
+          "axis": "command-total-power",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "klingons",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/5",
+          "strength": 2
+        },
+        {
+          "id": "trk/36",
+          "strength": 1
+        },
+        {
+          "id": "trk/239",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/257",
+      "name": "Year of Hell",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/233",
+          "strength": 2
+        },
+        {
+          "id": "trk/52",
+          "strength": 1
+        },
+        {
+          "id": "trk/74",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/258",
+      "name": "Zero, Incorporeal Sensate",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/259",
+      "name": "Class-F Shuttlecraft",
+      "roles": [
+        {
+          "axis": "spacecraft-and-station",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/260",
+      "name": "Combadge",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/61",
+          "strength": 2
+        },
+        {
+          "id": "trk/37",
+          "strength": 1
+        },
+        {
+          "id": "trk/260",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "trk/261",
+      "name": "Crystalline Entity",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/262",
+      "name": "Cybernetic Specialist",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/255",
+          "strength": 2
+        },
+        {
+          "id": "trk/128",
+          "strength": 2
+        },
+        {
+          "id": "trk/202",
+          "strength": 2
+        },
+        {
+          "id": "trk/96",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/263",
+      "name": "Deep Space 9",
+      "roles": [
+        {
+          "axis": "spacecraft-and-station",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/70",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/264",
+      "name": "Engineered Explosives",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/70",
+          "strength": 1
+        },
+        {
+          "id": "trk/5",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/265",
+      "name": "The Holodeck",
+      "roles": [
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/266",
+      "name": "Isolinear Processor",
+      "roles": [
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/267",
+      "name": "Replicator",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/193",
+          "strength": 2
+        },
+        {
+          "id": "trk/201",
+          "strength": 2
+        },
+        {
+          "id": "trk/41",
+          "strength": 1
+        },
+        {
+          "id": "trk/61",
+          "strength": 1
+        },
+        {
+          "id": "trk/215",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/268",
+      "name": "Sickbay",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/13",
+          "strength": 2
+        },
+        {
+          "id": "trk/209",
+          "strength": 1
+        },
+        {
+          "id": "trk/196",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/269",
+      "name": "Tea, Earl Grey, Hot",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/270",
+      "name": "Tricorder",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/37",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/271",
+      "name": "Type-2 Phaser",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/44",
+          "strength": 2
+        },
+        {
+          "id": "trk/37",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/272",
+      "name": "U.S.S. Cerritos, Following Up",
+      "roles": [
+        {
+          "axis": "spacecraft-and-station",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/20",
+          "strength": 1
+        },
+        {
+          "id": "trk/201",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/273",
+      "name": "U.S.S. Enterprise-D, Galaxy-Class",
+      "roles": [
+        {
+          "axis": "spacecraft-and-station",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "spacecraft-and-station",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/274",
+          "strength": 2
+        },
+        {
+          "id": "trk/90",
+          "strength": 2
+        },
+        {
+          "id": "trk/70",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/274",
+      "name": "Warp Core",
+      "roles": [
+        {
+          "axis": "spacecraft-and-station",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/70",
+          "strength": 2
+        },
+        {
+          "id": "trk/273",
+          "strength": 2
+        },
+        {
+          "id": "trk/145",
+          "strength": 2
+        },
+        {
+          "id": "trk/77",
+          "strength": 1
+        },
+        {
+          "id": "trk/170",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "trk/275",
+      "name": "Andoria",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/276",
+      "name": "Artificial Anomaly",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/277",
+      "name": "Bajor",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/278",
+      "name": "Blood Crypt",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/279",
+      "name": "Breeding Pool",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/280",
+      "name": "Cardassia Prime",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/281",
+      "name": "Earth, Sector 001",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/282",
+      "name": "Federation Outpost",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/283",
+      "name": "Ferenginar",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/284",
+      "name": "Gaseous Anomaly",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/285",
+      "name": "Godless Shrine",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/286",
+      "name": "Hallowed Fountain",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/287",
+      "name": "Ni'Var Science Academy",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/288",
+      "name": "Orion",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/289",
+      "name": "Overgrown Tomb",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/290",
+      "name": "Q Continuum",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/291",
+      "name": "Qo'noS",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/292",
+      "name": "Quark's Bar",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/293",
+      "name": "Risa",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/294",
+      "name": "Romulus",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/295",
+      "name": "Sacred Foundry",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/296",
+      "name": "Spatial Anomaly",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/297",
+      "name": "Starfleet Academy",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "federation-type-diversity",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/298",
+      "name": "Steam Vents",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/299",
+      "name": "Stomping Ground",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/300",
+      "name": "Subspace Anomaly",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/301",
+      "name": "Temple Garden",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/302",
+      "name": "Temporal Anomaly",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/303",
+      "name": "Unexplored Territory",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/304",
+      "name": "The Unicomplex",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/305",
+      "name": "Vulcan",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "trk/306",
+      "name": "Watery Grave",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "sds/1",
+      "name": "Mikaeus, the Lunarch",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/196",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "sds/2",
+      "name": "Flare of Fortitude",
+      "roles": [
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "sds/3",
+      "name": "Kenrith, the Returned King",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "sds/4",
+      "name": "Sisay, Weatherlight Captain",
+      "roles": [],
+      "partners": []
+    },
+    {
+      "id": "sds/5",
+      "name": "Thada Adel, Acquisitor",
+      "roles": [],
+      "partners": []
+    },
+    {
+      "id": "sds/6",
+      "name": "Empress Galina",
+      "roles": [
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "sds/7",
+      "name": "Arcum Dagsson",
+      "roles": [
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "spacecraft-and-station",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/263",
+          "strength": 3
+        },
+        {
+          "id": "trk/227",
+          "strength": 2
+        },
+        {
+          "id": "trk/133",
+          "strength": 2
+        },
+        {
+          "id": "trk/4",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "sds/8",
+      "name": "Bruvac the Grandiloquent",
+      "roles": [],
+      "partners": []
+    },
+    {
+      "id": "sds/9",
+      "name": "Decree of Pain",
+      "roles": [
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "sds/10",
+      "name": "Drivnod, Carnage Dominus",
+      "roles": [
+        {
+          "axis": "creature-deaths",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "graveyard-exit",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/136",
+          "strength": 2
+        },
+        {
+          "id": "trk/133",
+          "strength": 1
+        },
+        {
+          "id": "trk/237",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "sds/11",
+      "name": "Sheoldred, the Apocalypse",
+      "roles": [],
+      "partners": [
+        {
+          "id": "trk/74",
+          "strength": 2
+        },
+        {
+          "id": "trk/52",
+          "strength": 1
+        },
+        {
+          "id": "trk/239",
+          "strength": 1
+        },
+        {
+          "id": "trk/80",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "sds/12",
+      "name": "Torbran, Thane of Red Fell",
+      "roles": [],
+      "partners": [
+        {
+          "id": "trk/174",
+          "strength": 2
+        },
+        {
+          "id": "trk/143",
+          "strength": 2
+        },
+        {
+          "id": "trk/138",
+          "strength": 1
+        },
+        {
+          "id": "trk/158",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "sds/13",
+      "name": "Loot, Exuberant Explorer",
+      "roles": [
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "sds/14",
+      "name": "Rishkar, Peema Renegade",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "sds/15",
+      "name": "Bristly Bill, Spine Sower",
+      "roles": [
+        {
+          "axis": "landfall",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/196",
+          "strength": 2
+        },
+        {
+          "id": "trk/157",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "sds/16",
+      "name": "Sen Triplets",
+      "roles": [
+        {
+          "axis": "artifact-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "federation-type-diversity",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "sds/17",
+      "name": "Tatyova, Benthic Druid",
+      "roles": [
+        {
+          "axis": "landfall",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/157",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "sds/18",
+      "name": "Hull Breach",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "sds/19",
+      "name": "Isshin, Two Heavens as One",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/131",
+          "strength": 2
+        },
+        {
+          "id": "trk/142",
+          "strength": 2
+        },
+        {
+          "id": "trk/243",
+          "strength": 2
+        },
+        {
+          "id": "trk/215",
+          "strength": 2
+        },
+        {
+          "id": "trk/21",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "sds/20",
+      "name": "Ertai Resurrected",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "enters-and-self-bounce",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "sds/21",
+      "name": "Jhoira, Weatherlight Captain",
+      "roles": [
+        {
+          "axis": "spacecraft-and-station",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "artifact-creatures",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "sds/22",
+      "name": "Captain Sisay",
+      "roles": [
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "sds/23",
+      "name": "Riku of Many Paths",
+      "roles": [
+        {
+          "axis": "dilemmas",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "command-total-power",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "sds/24",
+      "name": "Prosper, Tome-Bound",
+      "roles": [],
+      "partners": [
+        {
+          "id": "trk/119",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "sds/25",
+      "name": "Stella Lee, Wild Card",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "sds/26",
+      "name": "Mogis, God of Slaughter",
+      "roles": [
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "sds/27",
+      "name": "Minamo, School at Water's Edge",
+      "roles": [
+        {
+          "axis": "tap-outlets",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "trk/239",
+          "strength": 1
+        },
+        {
+          "id": "trk/67",
+          "strength": 1
+        },
+        {
+          "id": "trk/149",
+          "strength": 1
+        },
+        {
+          "id": "trk/138",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "sds/28",
+      "name": "Talon Gates of Madara",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "sds/29",
+      "name": "Phyrexian Tower",
+      "roles": [
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "sds/30",
+      "name": "Shizo, Death's Storehouse",
+      "roles": [
+        {
+          "axis": "differently-named-lands",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    }
+  ]
+}

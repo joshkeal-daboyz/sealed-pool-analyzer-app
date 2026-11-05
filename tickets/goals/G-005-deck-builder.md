@@ -140,3 +140,8 @@ The owner answered on 2026-11-05: "Approve all except 2 and 5. Agents are going 
   - any fix is a general change to the prompt or the formula, made without looking at which pairs failed, and the owner approves it;
   - after a fix, the failed check has been used once and is marked "seen". Only checks the fix never saw still count as independent.
 - Checks run on the committed `trk` tags as soon as SPA-048 merges, and the result goes in this file.
+- 2026-11-05 Architect: trk tagged with Fable 5.1 on the subscription, tags prompt v1, as two fresh agents that could read only their packet folder.
+  - Pass 1 named 15 axes. Pass 2 tagged all 336 cards: 814 roles, 377 named partners (2 of them a card with itself), 7 cards with no tag.
+  - Usage: 136,385 and 196,257 tokens; weekly Fable allowance 22% to 26%.
+  - Committed as `fixtures/tags/trk.json` while 17Lands still returns 403 for `game_data_public.TRK.PremierDraft.csv.gz`, which is criterion 8's blind date.
+  - The owner's synergy checks were not run and not seen by either agent; they run after SPA-048.
