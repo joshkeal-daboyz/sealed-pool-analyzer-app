@@ -1,7 +1,7 @@
 ---
 id: G-004
 title: Layered grades, from the set to your pool
-status: draft
+status: open
 owner: human
 target_set_code: trk
 companion_set_codes: [sds]
@@ -12,7 +12,7 @@ depends_on: [G-003]
 
 The owner's direction (2026-11-04): grade in layers. G-003 built the first layer, a grade for each card against its whole set. This goal makes that layer better and adds the layers on top: what the set's own synergies say about a card, and how much a card is worth in your pool, given its synergies with your other cards, your curve and your colours. Each layer is measured against what strong players actually did.
 
-Drafted by the Architect on 2026-11-04 for the owner to edit and approve. The open questions are at the end, each with its default.
+Drafted by the Architect on 2026-11-04 and approved by the owner the same day with every default ("Approve with defaults"); the answers are in "Decided" at the end.
 
 ## Why this goal next
 
@@ -72,9 +72,9 @@ The deck builder, the other analysis agents, the Judge and the Explainer. Any ap
 
 The same as G-003, plus: the deck-pick overlaps (random, set grade, adjusted) on `fra` and `trk`; the v1 and v2 backtests on `trk`; and Fable usage per graded set.
 
-## Open questions
+## Decided
 
-Each has a default. An unanswered question takes its default.
+The owner approved every default on 2026-11-04.
 
 1. **Where you see it.** Default: the command line, plus the Star Trek grade sheet page (updated by the Architect, not a repo ticket) showing your pool's adjusted ranking by colour pair. The phone app gets it with the deck builder, in a later goal.
 2. **Who counts as a strong player** in the deck-pick test. Default: 17Lands' `user_game_win_rate_bucket` of 0.60 or higher, which keeps a few thousand builds per set.
@@ -82,3 +82,12 @@ Each has a default. An unanswered question takes its default.
 4. **Waiting for `trk` data.** Default: everything except deliverable 5 and criterion 7 runs now. If 17Lands has not published `trk` data by 2026-12-01, the goal closes on the `fra` result and `trk` becomes a follow-up ticket.
 5. **The model.** Default: Claude Fable 5.1 on your subscription, as in G-003.
 6. **Adjustment cap.** Default: a card moves at most 1.0 up or down in total from its set grade, so a C card can't jump to an A.
+
+## Architect notes (2026-11-04)
+
+- G-004 start commit for criterion 2: c0ce95f.
+- `core`'s card model keeps no Scryfall `keywords`, so theme code in `agent` reads them from `fixtures/scryfall/<code>/cards.json` by oracle id. No `core` change.
+- Theme counts pinned by an independent script (scratchpad `tools/themes.js`) on `trk` plus `sds`, 336 sealed-pool cards: Station has 17, refers 1; Surveil has 22, refers 0; Spacecraft has 17, refers 11; Human has 68, refers 1; Equipment has 4, refers 3. "Refers" excludes the card's own keyword, reminder text, its own name and "this <theme>".
+- 17Lands Sealed data (checked 2026-11-04): `game_data_public.<SET>.Sealed.csv.gz` for MSH, HOB, FRA, 4.5 to 5.6 MB; 12,090 to 15,331 builds per set; one row per game, with `draft_id`, `build_index`, `main_colors`, `splash_colors`, `user_game_win_rate_bucket`, and `deck_<name>` and `sideboard_<name>` counts (deck plus sideboard is the pool, about 96 cards with basics). Downloaded to the scratchpad `g004-data` folder.
+- Prompt v2 is developed by the Architect as a pipeline step: at most three candidate prompts, each graded by Fable on `msh`, `hob` and `fra`, the best mean backtest kept. Then `trk` is graded with it and frozen. `trk` releases 2026-11-13 and 17Lands data follows within days, so v2 must be frozen by 2026-11-12.
+- Tickets: SPA-035 (themes), SPA-036 (packet with synergy counts and a prompt option), then the Architect's prompt runs, SPA-037 (prompt v2 and the v2 grade files), SPA-038 (pool adjustment), SPA-039 (deck-pick test and tuning), SPA-040 (`trk` data, waits for 17Lands). One Developer at a time; all touch `cli` commands, so all are serialized.
