@@ -145,3 +145,8 @@ The owner answered on 2026-11-05: "Approve all except 2 and 5. Agents are going 
   - Usage: 136,385 and 196,257 tokens; weekly Fable allowance 22% to 26%.
   - Committed as `fixtures/tags/trk.json` while 17Lands still returns 403 for `game_data_public.TRK.PremierDraft.csv.gz`, which is criterion 8's blind date.
   - The owner's synergy checks were not run and not seen by either agent; they run after SPA-048.
+- 2026-11-05 Architect: msh, hob and fra tagged the same way (tags prompt v1, fresh Fable agents per pass, each reading only its packet folder). These sets are for tuning (msh, hob) and the held-out test (fra).
+  - msh: 13 axes, 276 cards, 703 roles, 657 partners, 16 untagged; 126,547 and 182,426 tokens.
+  - hob: 15 axes, 188 cards, 585 roles, 382 partners, 4 untagged; 106,567 and 155,636 tokens.
+  - fra: 14 axes, 280 cards, 825 roles, 833 partners, 6 untagged; 127,130 and 196,305 tokens.
+  - Weekly Fable allowance 26% to 33%; all four sets together, 22% to 33%.
