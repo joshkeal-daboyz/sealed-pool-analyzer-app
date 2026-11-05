@@ -162,3 +162,10 @@ The owner answered on 2026-11-05: "Approve all except 2 and 5. Agents are going 
   - legendary permanents (130) with legendary payoffs (4, all sds bonus-sheet cards): 22 of 516, share 0.043. **Fail.** trk has no legendary axis; pass 1 named exactly 15 axes, the cap.
   - Running total: 3 of 6 checks pass.
   - The Architect saw the first, third and fourth cases before they were checks, while listing untagged cards for the owner. Nothing was changed because of that.
+- 2026-11-05 Owner approved ("Yes do it") the fix the Architect proposed for the three failing checks, which also carries out the owner's point: "There should be tags associated with the cards that assist in identifying synergy."
+  - **Card facts:** a deterministic tag layer made by code from card data: card types, legendary, creature types, keywords, cheap (mana value 2 or less), and its own enters, dies and token-making triggers.
+  - **Axis supply:** in tags prompt v2, pass 1 names which facts supply each axis, with a strength (for example, landfall from any land, legendary payoffs from any legendary permanent, creature deaths from any creature, more for cheap deathtouch ones). A card's enabler strength on an axis becomes the larger of its own role and its strongest supplying fact.
+  - **More axes:** the axis cap rises from 15 to 20.
+  - All four sets are retagged with v2. Expected cost about 11% of the weekly Fable allowance.
+  - The three failing checks (lands with landfall, Moopsy with death payoffs, legendary permanents with legendary payoffs) are marked `seen`; the three passing ones stay `independent`.
+  - Caveat: the "enters trigger" fact uses nearly the same text rule as the enters-with-beam-me-up check's list. If v2 supplies the enters axis from that fact, that check passes partly by construction. It passed under v1, before any fact existed, and that v1 result stands as its independent evidence.
