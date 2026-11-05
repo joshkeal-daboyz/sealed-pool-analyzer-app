@@ -6,6 +6,9 @@ A baseline gives the typical value of every pool metric for a pool from one set.
 | --- | --- | --- | --- |
 | `trk.json` | trk (with its bonus sheet, sds) | 20261106 | 2000 |
 | `syn.json` | syn (synthetic test set) | 1 | 500 |
+| `msh.json` | msh | 20261106 | 2000 |
+| `hob.json` | hob | 20261106 | 2000 |
+| `fra.json` | fra | 20261106 | 2000 |
 
 Kit `i`, counted from 0, uses seed `seed + i`.
 
@@ -14,6 +17,9 @@ Kit `i`, counted from 0, uses seed `seed + i`.
 ```bash
 ./gradlew :core:buildBaseline -Pset=trk -Pseed=20261106 -Pkits=2000
 ./gradlew :core:buildBaseline -Pset=syn -Pseed=1 -Pkits=500
+./gradlew :core:buildBaseline -Pset=msh -Pseed=20261106 -Pkits=2000
+./gradlew :core:buildBaseline -Pset=hob -Pseed=20261106 -Pkits=2000
+./gradlew :core:buildBaseline -Pset=fra -Pseed=20261106 -Pkits=2000
 ```
 
 Only a ticket rebuilds a baseline. Refreshing the Scryfall cache, changing the brief's kit template, or changing the sampler or the metric engine all change it. A golden test (`BaselineGoldenTest`) rebuilds each file from the seed and kit count stored inside it and fails on any byte of difference. So any of those changes must regenerate the files in the same ticket, and say so in its change note.
@@ -36,4 +42,5 @@ Each pointer is a numeric leaf of the pool metrics JSON, for example `/totalCard
 
 - A trk pool's typical rare and mythic counts include bonus-sheet (sds) cards, because those count by their own printed rarity, which is mythic.
 - `basicLandsSupplied` means basics are also handed out at the event. It does not change the basics sampled inside boosters. In trk, only the Land slot can yield a basic, at 4 in 5 per booster, so `/basicLands` follows Binomial(6, 4/5): median 5, mean 4.8.
-- `/totalCards` is constant: 85 for trk, which is 6 boosters of 14 plus the promo.
+- `/totalCards` is constant: 85 for trk, which is 6 boosters of 14 plus the promo. It is also 85 for msh, hob and fra.
+- The msh, hob and fra briefs, whose kit templates these baselines sample, were drafted blind from Scryfall data (SPA-030). msh and fra also miss their bonus-sheet reprints (a known G-003 gap), so their typical counts, rarity counts above all, are approximate.
