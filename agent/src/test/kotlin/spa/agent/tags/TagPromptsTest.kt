@@ -44,7 +44,7 @@ class TagPromptsTest {
     }
 }
 
-private val AXES_V1 =
+private const val AXES_V1 =
     "You are reading a Magic: The Gathering set you have never seen played, to find its " +
         "synergies for Sealed. Read every card file in this folder first. Then name the set's " +
         "synergy axes: the things some cards supply and other cards reward, such as a kind of " +
@@ -57,7 +57,7 @@ private val AXES_V1 =
         "tool other than reading these files and writing `axes.response.json`, which must " +
         "match `axes.schema.json`.\n"
 
-private val ROLES_V1 =
+private const val ROLES_V1 =
     "You are tagging every card of a Magic: The Gathering set you have never seen played, for " +
         "Sealed synergy. The set's axes are listed below. Read every card file in this folder " +
         "first. For each card, list its role on each axis it touches.\n" +

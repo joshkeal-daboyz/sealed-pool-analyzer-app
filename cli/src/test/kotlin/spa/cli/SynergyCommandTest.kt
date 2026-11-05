@@ -87,7 +87,9 @@ class SynergyCommandTest {
             lines.chunked(2).map { (line, reason) ->
                 val match = pattern.matchEntire(line)
                 assertTrue(match != null, "card line: $line")
-                val (part, syn, e, quantity, name) = match.destructured
+                val (part, syn, e) = match.destructured
+                val quantity = match.groupValues[4]
+                val name = match.groupValues[5]
                 val value = part.toDouble()
                 val expected =
                     weight *
@@ -153,75 +155,33 @@ class SynergyCommandTest {
         assertTrue(text in run.stderr, run.stderr)
     }
 
+    /** `spa synergy` with the pool, `--set trk`, `--pair WU` and the fixtures unless given. */
+    private fun synergy(
+        file: String = pool,
+        set: String = "trk",
+        pair: String? = "WU",
+        data: String = Fixtures.data,
+        extra: List<String> = emptyList(),
+    ): CliRun {
+        val pairArgs = if (pair == null) emptyList() else listOf("--pair", pair)
+        val args = listOf("synergy", file, "--set", set) + pairArgs + extra + listOf("--data", data)
+        return runCli(*args.toTypedArray())
+    }
+
     @Test
     fun `errors are one line and exit 1`(@TempDir dir: Path) {
-        val data = Fixtures.data
         assertOneLine(
-            runCli(
-                "synergy",
-                pool,
-                "--set",
-                "trk",
-                "--pair",
-                "WU",
-                "--data",
-                Fixtures.synDataDir(dir).toString(),
-            ),
+            synergy(data = Fixtures.synDataDir(dir).toString()),
             "no Scryfall cache for set 'trk'",
         )
-        assertOneLine(
-            runCli("synergy", pool, "--set", "zzz", "--pair", "WU", "--data", data),
-            "zzz",
-        )
-        assertOneLine(
-            runCli(
-                "synergy",
-                dir.resolve("none.csv").toString(),
-                "--set",
-                "trk",
-                "--pair",
-                "WU",
-                "--data",
-                data,
-            ),
-            "pool file not found",
-        )
-        assertOneLine(
-            runCli("synergy", pool, "--set", "trk", "--pair", "WW", "--data", data),
-            "unknown pair 'WW'",
-        )
-        assertOneLine(runCli("synergy", pool, "--set", "trk", "--data", data), "--pair")
+        assertOneLine(synergy(set = "zzz"), "zzz")
+        assertOneLine(synergy(file = dir.resolve("none.csv").toString()), "pool file not found")
+        assertOneLine(synergy(pair = "WW"), "unknown pair 'WW'")
+        assertOneLine(synergy(pair = null), "--pair")
         val bad = writeFile(dir, "bad.json", """{ "weight": -1 }""")
-        assertOneLine(
-            runCli(
-                "synergy",
-                pool,
-                "--set",
-                "trk",
-                "--pair",
-                "WU",
-                "--weights",
-                bad,
-                "--data",
-                data,
-            ),
-            "invalid weights file",
-        )
-        assertOneLine(
-            runCli(
-                "synergy",
-                pool,
-                "--set",
-                "trk",
-                "--pair",
-                "WU",
-                "--weights",
-                dir.resolve("no.json").toString(),
-                "--data",
-                data,
-            ),
-            "weights file not found",
-        )
+        assertOneLine(synergy(extra = listOf("--weights", bad)), "invalid weights file")
+        val none = dir.resolve("no.json").toString()
+        assertOneLine(synergy(extra = listOf("--weights", none)), "weights file not found")
     }
 
     @Test
