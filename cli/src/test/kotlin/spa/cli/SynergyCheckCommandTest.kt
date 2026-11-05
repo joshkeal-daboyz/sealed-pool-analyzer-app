@@ -18,21 +18,33 @@ import spa.agent.tags.TagRole
  * errors on hand-built files.
  */
 class SynergyCheckCommandTest {
+    /**
+     * The two original trk checks, pinned by id. The totals line is not pinned here, because the
+     * owner keeps adding checks to the file (Architect ruling, 2026-11-05); its format is pinned on
+     * hand-built files.
+     */
     @Test
-    fun `trk prints both checks passing and the summary line`() {
+    fun `trk prints the two original checks passing, with their numbers`() {
         val run = runCli("synergy-check", "--set", "trk", "--data", Fixtures.data)
+        val lines = run.stdoutLines()
+        val byId = { id: String -> lines.single { it.split(" ").getOrNull(1) == id } }
 
         assertEquals(ExitCode.OK, run.exit, run.stderr)
         assertEquals("", run.stderr)
         assertEquals(
-            listOf(
-                "PASS automatons-with-itself independent  score 3  axis 0  partner 3",
-                "PASS enters-with-beam-me-up independent  590 pairs  524 meeting min 1  " +
-                    "share 0.8881  mean 1.7000",
-                "2 of 2 checks pass (2 independent)",
-            ),
-            run.stdoutLines(),
+            "PASS automatons-with-itself independent  score 3  axis 0  partner 3",
+            byId("automatons-with-itself"),
         )
+        assertEquals(
+            "PASS enters-with-beam-me-up independent  590 pairs  524 meeting min 1  " +
+                "share 0.8881  mean 1.7000",
+            byId("enters-with-beam-me-up"),
+        )
+        assertTrue(
+            Regex("""^\d+ of \d+ checks pass \(\d+ independent\)$""").matches(lines.last()),
+            lines.last(),
+        )
+        assertTrue(lines.dropLast(1).all { it.startsWith("PASS ") || it.startsWith("FAIL ") })
     }
 
     /** A data directory under [dir] with a small tag file for `xyz` and the check file [checks]. */
