@@ -1,0 +1,6 @@
+[
+  { "id": "flying", "name": "Flying", "definition": "A creature with flying." },
+  { "id": "graveyard", "name": "Graveyard", "definition": "Puts creature cards into a graveyard." },
+  { "id": "lifegain", "name": "Life gain", "definition": "Gains you life." },
+  { "id": "double-faced", "name": "Double-faced cards", "definition": "A card with two faces that transforms." }
+]
