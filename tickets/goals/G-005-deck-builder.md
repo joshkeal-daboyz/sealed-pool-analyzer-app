@@ -155,3 +155,10 @@ The owner answered on 2026-11-05: "Approve all except 2 and 5. Agents are going 
   - 524 of the 590 pairs of the 59 creatures with their own enters trigger and the 10 beam me up cards score above 0 (share 0.888, mean 1.70): pass.
 
   The enters list is 59 cards, not 57; the first count missed names written with a period. Both checks stay `independent`, because nothing was changed after seeing them.
+- 2026-11-05 Owner's second batch of examples: "Lands should have synergy with landfall cards." "Moopsy should have synergy with cards that care about creatures dying." "Star Trek has loads of legendary permanents." "Lands also have synergy with the set's unique land mechanics." Added as four checks to `fixtures/synergy-checks/trk.json`, with lists built from card text (`tools/checklists2.js`). Results on the committed trk tags (independent script):
+  - lands (36) with landfall cards (11): 77 of 396 pairs score at least 1, share 0.194. **Fail.**
+  - lands with Strange new worlds cards (14): 504 of 504, share 1.000. **Pass.**
+  - Moopsy with death payoffs (5): 0 of 5. **Fail.** Moopsy has no tags at all.
+  - legendary permanents (130) with legendary payoffs (4, all sds bonus-sheet cards): 22 of 516, share 0.043. **Fail.** trk has no legendary axis; pass 1 named exactly 15 axes, the cap.
+  - Running total: 3 of 6 checks pass.
+  - The Architect saw the first, third and fourth cases before they were checks, while listing untagged cards for the owner. Nothing was changed because of that.
