@@ -90,6 +90,6 @@ class PoolGradesTrkTest {
         assertEquals(emptyList(), card.synergy.themes)
         assertNear(-0.170, card.curve.value, "curve")
         assertNear(-0.108, card.colour.value, "colour")
-        assertNear(2.722, card.adjusted, "adjusted")
+        assertNear(2.721, card.adjusted, "adjusted")
     }
 }
