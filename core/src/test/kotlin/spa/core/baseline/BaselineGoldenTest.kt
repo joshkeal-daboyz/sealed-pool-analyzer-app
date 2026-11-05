@@ -38,4 +38,16 @@ class BaselineGoldenTest {
         assertEquals(20261106, stored.seed)
         assertEquals(2000, stored.kits)
     }
+
+    private fun assertBacktestSet(set: String) {
+        val stored = Baseline.decode(rebuild(set))
+        assertEquals(20261106, stored.seed)
+        assertEquals(2000, stored.kits)
+    }
+
+    @Test fun `msh json is rebuilt byte for byte`() = assertBacktestSet("msh")
+
+    @Test fun `hob json is rebuilt byte for byte`() = assertBacktestSet("hob")
+
+    @Test fun `fra json is rebuilt byte for byte`() = assertBacktestSet("fra")
 }
