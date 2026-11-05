@@ -1,0 +1,1970 @@
+{
+  "header": {
+    "setCode": "fra",
+    "source": "MODEL",
+    "provenance": "claude-fable-5-1 via Claude Code, prompt v1, 2026-11-04",
+    "createdAt": "2026-11-05T00:57:35Z"
+  },
+  "grades": [
+    {
+      "name": "Emrakul, the Exigent Doom",
+      "collectorNumber": "1",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Academic Ascent",
+      "collectorNumber": "2",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Blossom-Blessed Angel // Seed Suture",
+      "collectorNumber": "3",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.75
+    },
+    {
+      "name": "Campus Crier",
+      "collectorNumber": "4",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Enlightened Confidant",
+      "collectorNumber": "5",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.55
+    },
+    {
+      "name": "Fateshaper Aspirant",
+      "collectorNumber": "6",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.65
+    },
+    {
+      "name": "Flickering Hound",
+      "collectorNumber": "7",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Generous Revival",
+      "collectorNumber": "8",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Germinate Recruits",
+      "collectorNumber": "9",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.45
+    },
+    {
+      "name": "Graft Surgeon",
+      "collectorNumber": "10",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Guiding Hydra",
+      "collectorNumber": "11",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Hexhaven Battalion",
+      "collectorNumber": "12",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Kindred Judgment",
+      "collectorNumber": "13",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.55
+    },
+    {
+      "name": "Loyal Tutor",
+      "collectorNumber": "14",
+      "setCode": "fra",
+      "score": 0.5,
+      "confidence": 0.85
+    },
+    {
+      "name": "Memory Trap",
+      "collectorNumber": "15",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.9
+    },
+    {
+      "name": "Predictive Preparations",
+      "collectorNumber": "16",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Prophesied End",
+      "collectorNumber": "17",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.85
+    },
+    {
+      "name": "Refute Destiny",
+      "collectorNumber": "18",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Repurposed Enforcer",
+      "collectorNumber": "19",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.65
+    },
+    {
+      "name": "Return to the Light Realms",
+      "collectorNumber": "20",
+      "setCode": "fra",
+      "score": 0.5,
+      "confidence": 0.85
+    },
+    {
+      "name": "Shatterwing Pegasus",
+      "collectorNumber": "21",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Surgical Precision",
+      "collectorNumber": "22",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Unflinching Hortimancer",
+      "collectorNumber": "23",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Your Fate Ends Here",
+      "collectorNumber": "24",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.85
+    },
+    {
+      "name": "Countersculpt",
+      "collectorNumber": "25",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Cruel Calculations",
+      "collectorNumber": "26",
+      "setCode": "fra",
+      "score": 1.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Cryotheory Adept",
+      "collectorNumber": "27",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.65
+    },
+    {
+      "name": "Diviner of Victory // Unwind History",
+      "collectorNumber": "28",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.55
+    },
+    {
+      "name": "Divining Duelist",
+      "collectorNumber": "29",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Icy Reception",
+      "collectorNumber": "30",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.65
+    },
+    {
+      "name": "Infinite Coursework",
+      "collectorNumber": "31",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Jace's Machinations",
+      "collectorNumber": "32",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Mindseeker Oculus",
+      "collectorNumber": "33",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Perfected Theory",
+      "collectorNumber": "34",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Plan for All Outcomes",
+      "collectorNumber": "35",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.55
+    },
+    {
+      "name": "Precise Redaction",
+      "collectorNumber": "36",
+      "setCode": "fra",
+      "score": 1.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Protege's Awakening",
+      "collectorNumber": "37",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Seasoned Cryomancer",
+      "collectorNumber": "38",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Semester Foreseer // Peer Review",
+      "collectorNumber": "39",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Sphinx of False Conclusions",
+      "collectorNumber": "40",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Sphinx's Approach",
+      "collectorNumber": "41",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.75
+    },
+    {
+      "name": "Surveillance Phantasm",
+      "collectorNumber": "42",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.55
+    },
+    {
+      "name": "The Theorist, Jace Beleren",
+      "collectorNumber": "43",
+      "setCode": "fra",
+      "score": 4.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Theorist's Proxy",
+      "collectorNumber": "44",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Undulating Witness",
+      "collectorNumber": "45",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Unsummon",
+      "collectorNumber": "46",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Variable Chaser // Arc of Fortune",
+      "collectorNumber": "47",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Apex Witchstalker",
+      "collectorNumber": "48",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Bloodline Recollector // Ancestral Craving",
+      "collectorNumber": "49",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Break Under Pressure",
+      "collectorNumber": "50",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.75
+    },
+    {
+      "name": "Cast Away Doubt",
+      "collectorNumber": "51",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Dark Matter Manipulator",
+      "collectorNumber": "52",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Darklight Phoenix",
+      "collectorNumber": "53",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.65
+    },
+    {
+      "name": "Extended Absence",
+      "collectorNumber": "54",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.9
+    },
+    {
+      "name": "Extrapolate the Impossible",
+      "collectorNumber": "55",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.4
+    },
+    {
+      "name": "Last Gasp",
+      "collectorNumber": "56",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.9
+    },
+    {
+      "name": "Lich's Relic",
+      "collectorNumber": "57",
+      "setCode": "fra",
+      "score": 4.5,
+      "confidence": 0.85
+    },
+    {
+      "name": "Multiply by Zero",
+      "collectorNumber": "58",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Overwrite the Multiverse",
+      "collectorNumber": "59",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.55
+    },
+    {
+      "name": "Rampart Hunter",
+      "collectorNumber": "60",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Rank Rat",
+      "collectorNumber": "61",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Rewrite Regrets",
+      "collectorNumber": "62",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Rise of the Deathbringer",
+      "collectorNumber": "63",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Sanctum Lurker",
+      "collectorNumber": "64",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Screeching Soulbreaker",
+      "collectorNumber": "65",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Silence the Echo",
+      "collectorNumber": "66",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Solve for Disappointment",
+      "collectorNumber": "67",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.65
+    },
+    {
+      "name": "Terminal Criticism",
+      "collectorNumber": "68",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Theoretical Necromancer",
+      "collectorNumber": "69",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Void Extrapolator // Omit Variables",
+      "collectorNumber": "70",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Vraska's Final Mercy",
+      "collectorNumber": "71",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.85
+    },
+    {
+      "name": "Ajani's Anguish",
+      "collectorNumber": "72",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.75
+    },
+    {
+      "name": "Artifist Acumen",
+      "collectorNumber": "73",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Awaken the Inferno",
+      "collectorNumber": "74",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.85
+    },
+    {
+      "name": "Blazing Crescendo",
+      "collectorNumber": "75",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.65
+    },
+    {
+      "name": "Chandra's Emberling",
+      "collectorNumber": "76",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Command the Stage",
+      "collectorNumber": "77",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Craterclaw Colossus",
+      "collectorNumber": "78",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Curse-Marred Demon",
+      "collectorNumber": "79",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Draconic Visitor",
+      "collectorNumber": "80",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Eardrum Rattler",
+      "collectorNumber": "81",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Essence Burn",
+      "collectorNumber": "82",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Face Yourself",
+      "collectorNumber": "83",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Fulminous Forte",
+      "collectorNumber": "84",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.85
+    },
+    {
+      "name": "Hallway Heckler // Vicious Verse",
+      "collectorNumber": "85",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.65
+    },
+    {
+      "name": "Heartstring Puller",
+      "collectorNumber": "86",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.75
+    },
+    {
+      "name": "Identity Echo",
+      "collectorNumber": "87",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Master of Barbs",
+      "collectorNumber": "88",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.55
+    },
+    {
+      "name": "No Admittance",
+      "collectorNumber": "89",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.9
+    },
+    {
+      "name": "Pompous Battlemage // Improvised Act",
+      "collectorNumber": "90",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Pyre Rhymer // Molten Tide",
+      "collectorNumber": "91",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Skilled Battlecarver",
+      "collectorNumber": "92",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Stingcaster Mage",
+      "collectorNumber": "93",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Tether Technician",
+      "collectorNumber": "94",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Violent Echoes",
+      "collectorNumber": "95",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.85
+    },
+    {
+      "name": "Wrath of the Bloodmane",
+      "collectorNumber": "96",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.9
+    },
+    {
+      "name": "Arcane Amphisbaena",
+      "collectorNumber": "97",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Bestial Incursion",
+      "collectorNumber": "98",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Budding Insurgent",
+      "collectorNumber": "99",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.75
+    },
+    {
+      "name": "Carnivorous Cultivator // Enroot",
+      "collectorNumber": "100",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Compel Brutality",
+      "collectorNumber": "101",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Flourishing Grapple",
+      "collectorNumber": "102",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.65
+    },
+    {
+      "name": "Gardenize",
+      "collectorNumber": "103",
+      "setCode": "fra",
+      "score": 1.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Greenhouse Propagator",
+      "collectorNumber": "104",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Heartwood Crafter // Soul Tether",
+      "collectorNumber": "105",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Hexhaven Invigorator",
+      "collectorNumber": "106",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Hungering Puppetbeast",
+      "collectorNumber": "107",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Hunter's Axe",
+      "collectorNumber": "108",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.65
+    },
+    {
+      "name": "Inspired Tethermage",
+      "collectorNumber": "109",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Omnipresence",
+      "collectorNumber": "110",
+      "setCode": "fra",
+      "score": 0.5,
+      "confidence": 0.85
+    },
+    {
+      "name": "Puppet Crafting",
+      "collectorNumber": "111",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.45
+    },
+    {
+      "name": "Restore with Empathy",
+      "collectorNumber": "112",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Simulacrum Shaper",
+      "collectorNumber": "113",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Something Worth Saving",
+      "collectorNumber": "114",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.55
+    },
+    {
+      "name": "Sureshot Sower",
+      "collectorNumber": "115",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.75
+    },
+    {
+      "name": "Tarmogoyf",
+      "collectorNumber": "116",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Tethermage's Advantage",
+      "collectorNumber": "117",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Verdant Kraken",
+      "collectorNumber": "118",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Vinelasher Adept",
+      "collectorNumber": "119",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Wrecking Gecko",
+      "collectorNumber": "120",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Aerid Konstrari",
+      "collectorNumber": "121",
+      "setCode": "fra",
+      "score": 4.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Avatar of Burgeoning Echoes",
+      "collectorNumber": "122",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Blessed Ghoul",
+      "collectorNumber": "123",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.65
+    },
+    {
+      "name": "Bloombrute",
+      "collectorNumber": "124",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.65
+    },
+    {
+      "name": "Charge the Sanctum",
+      "collectorNumber": "125",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.65
+    },
+    {
+      "name": "Clash of Elements",
+      "collectorNumber": "126",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.65
+    },
+    {
+      "name": "Craftwork Crusher",
+      "collectorNumber": "127",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Denzilore Fatehold",
+      "collectorNumber": "128",
+      "setCode": "fra",
+      "score": 4.5,
+      "confidence": 0.75
+    },
+    {
+      "name": "Desperate Futurescribe",
+      "collectorNumber": "129",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.75
+    },
+    {
+      "name": "Emergency Phytomedic // Seed Suture",
+      "collectorNumber": "130",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Entrust the Spark",
+      "collectorNumber": "131",
+      "setCode": "fra",
+      "score": 0.5,
+      "confidence": 0.75
+    },
+    {
+      "name": "Fatehold Charm",
+      "collectorNumber": "132",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Fatehold Chronologist // Peer Review",
+      "collectorNumber": "133",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Ferocity of the Hunt",
+      "collectorNumber": "134",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.65
+    },
+    {
+      "name": "Frostbite Pyromental",
+      "collectorNumber": "135",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.55
+    },
+    {
+      "name": "Grim Repriser",
+      "collectorNumber": "136",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Ingris Stingerquill",
+      "collectorNumber": "137",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Konstrari Charm",
+      "collectorNumber": "138",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Konstrari Improviser // Soul Tether",
+      "collectorNumber": "139",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Kwia Vigorbloom",
+      "collectorNumber": "140",
+      "setCode": "fra",
+      "score": 5.0,
+      "confidence": 0.9
+    },
+    {
+      "name": "Mind Meanderer",
+      "collectorNumber": "141",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.75
+    },
+    {
+      "name": "Null Summoner",
+      "collectorNumber": "142",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.65
+    },
+    {
+      "name": "Paradox Shaper // Omit Variables",
+      "collectorNumber": "143",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Primal Witchstalker",
+      "collectorNumber": "144",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Proctor of Potential",
+      "collectorNumber": "145",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Prudent Fateseer // Peer Review",
+      "collectorNumber": "146",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.65
+    },
+    {
+      "name": "Recursive Recruitment",
+      "collectorNumber": "147",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Solarium Sentry",
+      "collectorNumber": "148",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Solitary Cell",
+      "collectorNumber": "149",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.75
+    },
+    {
+      "name": "Stingerquill Charm",
+      "collectorNumber": "150",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Stingerquill Voxmancer // Vicious Verse",
+      "collectorNumber": "151",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Stinging Vitriol",
+      "collectorNumber": "152",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Tam's Resistance",
+      "collectorNumber": "153",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.65
+    },
+    {
+      "name": "Tenured Tethermage",
+      "collectorNumber": "154",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Theorix Charm",
+      "collectorNumber": "155",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Theorix Metamage // Omit Variables",
+      "collectorNumber": "156",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Twinned Vision",
+      "collectorNumber": "157",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Twisted Fates",
+      "collectorNumber": "158",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.75
+    },
+    {
+      "name": "Uldaros Theorix",
+      "collectorNumber": "159",
+      "setCode": "fra",
+      "score": 4.5,
+      "confidence": 0.75
+    },
+    {
+      "name": "Vigorbloom Charm",
+      "collectorNumber": "160",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Vigorbloom Vanguard // Seed Suture",
+      "collectorNumber": "161",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.65
+    },
+    {
+      "name": "Vindictive Triumph",
+      "collectorNumber": "162",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.85
+    },
+    {
+      "name": "Warrior's Blades",
+      "collectorNumber": "163",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.75
+    },
+    {
+      "name": "Whiplash Wordsmith // Vicious Verse",
+      "collectorNumber": "164",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.65
+    },
+    {
+      "name": "Woodwork Prodigy // Soul Tether",
+      "collectorNumber": "165",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Afterthought Sentry",
+      "collectorNumber": "166",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Archive Arbiter",
+      "collectorNumber": "167",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Codie, Ravenous Codex",
+      "collectorNumber": "168",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "The Echoverse Fulcrum",
+      "collectorNumber": "169",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.55
+    },
+    {
+      "name": "Eye of Jace",
+      "collectorNumber": "170",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Keeper of the Quiet Hour",
+      "collectorNumber": "171",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Living Library",
+      "collectorNumber": "172",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Medic's Kitesail",
+      "collectorNumber": "173",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.65
+    },
+    {
+      "name": "Murmuring Volume",
+      "collectorNumber": "174",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.65
+    },
+    {
+      "name": "Dedicated Commons",
+      "collectorNumber": "175",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Deserted Beach",
+      "collectorNumber": "176",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Fatehold Annex",
+      "collectorNumber": "177",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Formidable Commons",
+      "collectorNumber": "178",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Hall of Echoes",
+      "collectorNumber": "179",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Haunted Ridge",
+      "collectorNumber": "180",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Hexhaven Dueling Arena",
+      "collectorNumber": "181",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Innovative Commons",
+      "collectorNumber": "182",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Konstrari Annex",
+      "collectorNumber": "183",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Meticulous Commons",
+      "collectorNumber": "184",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Overgrown Farmland",
+      "collectorNumber": "185",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Rockfall Vale",
+      "collectorNumber": "186",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Roiling Canopy",
+      "collectorNumber": "187",
+      "setCode": "fra",
+      "score": 0.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Room of Refuge",
+      "collectorNumber": "188",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.65
+    },
+    {
+      "name": "Shipwreck Marsh",
+      "collectorNumber": "189",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Stingerquill Annex",
+      "collectorNumber": "190",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Theorist's Sanctum",
+      "collectorNumber": "191",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Theorix Annex",
+      "collectorNumber": "192",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Transformative Commons",
+      "collectorNumber": "193",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Vigorbloom Annex",
+      "collectorNumber": "194",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Ajani Resolute",
+      "collectorNumber": "195",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Danitha, Sword of Hope",
+      "collectorNumber": "196",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.65
+    },
+    {
+      "name": "Ghalta the Immovable",
+      "collectorNumber": "197",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Gideon's Memorial",
+      "collectorNumber": "198",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.55
+    },
+    {
+      "name": "Koth of the Homestead",
+      "collectorNumber": "199",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.65
+    },
+    {
+      "name": "Liliana the Faultless",
+      "collectorNumber": "200",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.65
+    },
+    {
+      "name": "Lyra, Archangel of Dawn",
+      "collectorNumber": "201",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Rescue Girl, First Responder",
+      "collectorNumber": "202",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Saheeli, Consul of Oversight",
+      "collectorNumber": "203",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Teyo, Lightshield Expert",
+      "collectorNumber": "204",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.65
+    },
+    {
+      "name": "Thalia, the Survivor",
+      "collectorNumber": "205",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Tomik, Orzhov Lawmage",
+      "collectorNumber": "206",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Way of the Healer",
+      "collectorNumber": "207",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Way of the Mentor",
+      "collectorNumber": "208",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Yoshimaru, Beloved Companion",
+      "collectorNumber": "209",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.55
+    },
+    {
+      "name": "Yuriko, Blade of the Mighty",
+      "collectorNumber": "210",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.55
+    },
+    {
+      "name": "Arni, Humble Scribe",
+      "collectorNumber": "211",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Chandra, Chill of Compliance",
+      "collectorNumber": "212",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Fblthp, Impossibly Lost",
+      "collectorNumber": "213",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.55
+    },
+    {
+      "name": "Geist of Saint Thalia",
+      "collectorNumber": "214",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.65
+    },
+    {
+      "name": "Hapatra, the Desert Frost",
+      "collectorNumber": "215",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Jace, Reality Sculptor",
+      "collectorNumber": "216",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.55
+    },
+    {
+      "name": "Lyra, Tolarian Archangel",
+      "collectorNumber": "217",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.75
+    },
+    {
+      "name": "Proft, Consulting Detective",
+      "collectorNumber": "218",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Ruric Thar, Biomagus",
+      "collectorNumber": "219",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Samut, Tyrant of Naktamun",
+      "collectorNumber": "220",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Tetsuko Umezawa, Fugitive",
+      "collectorNumber": "221",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.55
+    },
+    {
+      "name": "Traxos, Academy Guardian",
+      "collectorNumber": "222",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Way of the Cryomancer",
+      "collectorNumber": "223",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Way of the Mind Sculptor",
+      "collectorNumber": "224",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Yargle, Goliath of Otaria",
+      "collectorNumber": "225",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Yuriko, Hope from the Shadows",
+      "collectorNumber": "226",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Danitha, Spear of Agony",
+      "collectorNumber": "227",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.65
+    },
+    {
+      "name": "Gallia, Tragic Host",
+      "collectorNumber": "228",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.65
+    },
+    {
+      "name": "Garruk, Veiled Butcher",
+      "collectorNumber": "229",
+      "setCode": "fra",
+      "score": 4.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Gideon the Oathless",
+      "collectorNumber": "230",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.75
+    },
+    {
+      "name": "Liliana the Repentant",
+      "collectorNumber": "231",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Loot, the Anomaly",
+      "collectorNumber": "232",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.55
+    },
+    {
+      "name": "Mabel, Bitter Recluse",
+      "collectorNumber": "233",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Massacre Girl, Most Wanted",
+      "collectorNumber": "234",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Proft, Sinister Mastermind",
+      "collectorNumber": "235",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.55
+    },
+    {
+      "name": "Teyo, Diamondblade Mage",
+      "collectorNumber": "236",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.65
+    },
+    {
+      "name": "Tinybones, Pocket Nuisance",
+      "collectorNumber": "237",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.65
+    },
+    {
+      "name": "Way of the Deathbringer",
+      "collectorNumber": "238",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Way of the Necromancer",
+      "collectorNumber": "239",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.55
+    },
+    {
+      "name": "Winter, Tormented Loner",
+      "collectorNumber": "240",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Yargle, Glutton of Urborg",
+      "collectorNumber": "241",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Ajani Unrelenting",
+      "collectorNumber": "242",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Arni, Renowned Champion",
+      "collectorNumber": "243",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.65
+    },
+    {
+      "name": "Chandra, Torch of Defiance",
+      "collectorNumber": "244",
+      "setCode": "fra",
+      "score": 4.5,
+      "confidence": 0.85
+    },
+    {
+      "name": "Gallia, the Merrymaker",
+      "collectorNumber": "245",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Jiang Yanggu, Alone",
+      "collectorNumber": "246",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Kiora of Fire and Ashes",
+      "collectorNumber": "247",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.75
+    },
+    {
+      "name": "Koth, the Geomancer",
+      "collectorNumber": "248",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Marwyn, the Clearcutter",
+      "collectorNumber": "249",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.65
+    },
+    {
+      "name": "Pia, Determined Rebuilder",
+      "collectorNumber": "250",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Samut, Hazoret's Champion",
+      "collectorNumber": "251",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.65
+    },
+    {
+      "name": "Tetsuko Umezawa, Pursuer",
+      "collectorNumber": "252",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.75
+    },
+    {
+      "name": "Tomik, Izzet Sparkmage",
+      "collectorNumber": "253",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.55
+    },
+    {
+      "name": "Way of the Pyromancer",
+      "collectorNumber": "254",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Way of the Warlord",
+      "collectorNumber": "255",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Winter, Team Player",
+      "collectorNumber": "256",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Edgar, Moonlit Sovereign",
+      "collectorNumber": "257",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Fblthp, Knows the Way",
+      "collectorNumber": "258",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Garruk, Curse Breaker",
+      "collectorNumber": "259",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Ghalta the Unstoppable",
+      "collectorNumber": "260",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Jiang Yanggu, Never Alone",
+      "collectorNumber": "261",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Loot, the Nexus",
+      "collectorNumber": "262",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Marwyn, the Preserver",
+      "collectorNumber": "263",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.75
+    },
+    {
+      "name": "Pia, Aether Ascetic",
+      "collectorNumber": "264",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Ruric Thar, Magecrusher",
+      "collectorNumber": "265",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.75
+    },
+    {
+      "name": "Titanbones, Towering Heart",
+      "collectorNumber": "266",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.65
+    },
+    {
+      "name": "Way of the Paradox",
+      "collectorNumber": "267",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Way of the Wildspeaker",
+      "collectorNumber": "268",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.55
+    },
+    {
+      "name": "Yoshimaru, Scrappy Stray",
+      "collectorNumber": "269",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.65
+    },
+    {
+      "name": "Edgar, Ancient Bloodlord",
+      "collectorNumber": "270",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Hapatra, the Desert Fang",
+      "collectorNumber": "271",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Karn, Gilded Guardian",
+      "collectorNumber": "272",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Kiora of Salt and Sand",
+      "collectorNumber": "273",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Mabel, Valley Hero",
+      "collectorNumber": "274",
+      "setCode": "fra",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Saheeli, Jewel of Avishkar",
+      "collectorNumber": "275",
+      "setCode": "fra",
+      "score": 3.5,
+      "confidence": 0.65
+    },
+    {
+      "name": "Tam, the Possibility",
+      "collectorNumber": "276",
+      "setCode": "fra",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Vraska, Soul of Stone",
+      "collectorNumber": "277",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.55
+    },
+    {
+      "name": "Vraska, the Cutting Glare",
+      "collectorNumber": "278",
+      "setCode": "fra",
+      "score": 4.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Karn, Argent Defender",
+      "collectorNumber": "279",
+      "setCode": "fra",
+      "score": 1.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Traxos, Scourge Eternal",
+      "collectorNumber": "280",
+      "setCode": "fra",
+      "score": 2.5,
+      "confidence": 0.6
+    }
+  ]
+}

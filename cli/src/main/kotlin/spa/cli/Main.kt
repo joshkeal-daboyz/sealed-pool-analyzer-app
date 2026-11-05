@@ -10,7 +10,7 @@ import spa.core.cards.ScryfallSetFetcher
 
 /**
  * The `spa` command line: `analyze`, `validate-brief`, `fetch-set`, `winrates`, `grade-backtest`,
- * `grade-packet`, and `grade-import`.
+ * `grade-packet`, `grade-import`, and `grades`.
  */
 object Main {
     /** The text `spa --help` prints. */
@@ -39,6 +39,11 @@ object Main {
         |  grade-import <code> --responses <dir> --provenance <text> [--data <dir>]
         |      Check a grader's response files in the packet directory <dir> and write
         |      <data>/grades/<code>.json with source MODEL. Writes nothing on any problem.
+        |  grades <pool-file> --set <code> [--data <dir>]
+        |      Print each pool entry with its grade (0.0 to 5.0), letter label (F to A+),
+        |      confidence and source (WIN_RATE if <data>/winrates/<code>.json grades it, else
+        |      MODEL), highest first. Entries with no grade, such as basic lands, come last
+        |      with - and source none.
         |
         |<data> defaults to ${DataDir.DEFAULT}. Exit codes: 0 ok, 1 error, 2 bad command line.
         |Run 'spa --help' for this text.
@@ -74,23 +79,34 @@ object Main {
             return ExitCode.OK
         }
         return try {
-            when (command) {
-                "analyze" -> AnalyzeCommand.run(rest, stdout, stderr)
-                "validate-brief" -> ValidateBriefCommand.run(rest, stdout, stderr)
-                "fetch-set" -> FetchSetCommand(fetcher).run(rest, stdout)
-                "winrates" -> WinratesCommand().run(rest, stdout)
-                "grade-backtest" -> GradeBacktestCommand.run(rest, stdout)
-                "grade-packet" -> GradePacketCommand.run(rest, stdout)
-                "grade-import" -> GradeImportCommand().run(rest, stdout, stderr)
-                null -> usageError("no command given", stderr)
-                else -> usageError("unknown command '$command'", stderr)
-            }
+            dispatch(command, rest, stdout, stderr, fetcher)
         } catch (e: CliFailure) {
             stderr.println("spa: ${e.message}")
             if (e.exitCode == ExitCode.USAGE) stderr.println("Run 'spa --help' for usage.")
             e.exitCode
         }
     }
+
+    /** Runs [command] on [rest]; an absent or unknown command is a usage error. */
+    private fun dispatch(
+        command: String?,
+        rest: List<String>,
+        stdout: PrintStream,
+        stderr: PrintStream,
+        fetcher: () -> ScryfallSetFetcher,
+    ): Int =
+        when (command) {
+            "analyze" -> AnalyzeCommand.run(rest, stdout, stderr)
+            "validate-brief" -> ValidateBriefCommand.run(rest, stdout, stderr)
+            "fetch-set" -> FetchSetCommand(fetcher).run(rest, stdout)
+            "winrates" -> WinratesCommand().run(rest, stdout)
+            "grade-backtest" -> GradeBacktestCommand.run(rest, stdout)
+            "grade-packet" -> GradePacketCommand.run(rest, stdout)
+            "grade-import" -> GradeImportCommand().run(rest, stdout, stderr)
+            "grades" -> GradesCommand.run(rest, stdout, stderr)
+            null -> usageError("no command given", stderr)
+            else -> usageError("unknown command '$command'", stderr)
+        }
 
     private fun usageError(message: String, stderr: PrintStream): Int {
         stderr.println("spa: $message")
