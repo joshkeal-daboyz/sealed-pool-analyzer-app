@@ -45,12 +45,9 @@ class BaselineGoldenTest {
         assertEquals(2000, stored.kits)
     }
 
-    @Test
-    fun `msh json is rebuilt byte for byte`() = assertBacktestSet("msh")
+    @Test fun `msh json is rebuilt byte for byte`() = assertBacktestSet("msh")
 
-    @Test
-    fun `hob json is rebuilt byte for byte`() = assertBacktestSet("hob")
+    @Test fun `hob json is rebuilt byte for byte`() = assertBacktestSet("hob")
 
-    @Test
-    fun `fra json is rebuilt byte for byte`() = assertBacktestSet("fra")
+    @Test fun `fra json is rebuilt byte for byte`() = assertBacktestSet("fra")
 }
