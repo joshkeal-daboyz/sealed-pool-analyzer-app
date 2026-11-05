@@ -138,6 +138,13 @@ cli/build/install/spa/bin/spa deck-pick MSH.Sealed.csv.gz HOB.Sealed.csv.gz --se
 cli/build/install/spa/bin/spa deck-pick ~/Downloads/game_data_public.FRA.Sealed.csv.gz --set fra --weights fixtures/weights/tuned.json
 ```
 
+**fixing** classes each card of the set's sealed pool (the set and its companions, basic lands out, one card per oracle id) as colour fixing or not, by its Scryfall oracle text: every face's, with reminder text (everything in parentheses) removed. Each kind is one rule: MANA, an `Add` clause, up to the next period or line end, that makes any colour (`any color`, `any one color`, `any combination of colors`, `chosen color`: all five) or names two or more coloured symbols (those colours), quoted token abilities included; CYCLING, `Basic landcycling` (all five) or a land-type cycling such as `Mountaincycling` (its colour); SEARCH, a `search your library for` clause, to the next period or line end, that names a `land card` and does not say `into your graveyard` (all five); TREASURE, `create ... Treasure` in one sentence (all five). A card's colours are the union over its kinds. With no pool file it prints every fixing card, sorted by name, as name, kinds joined by `+`, colours in WUBRG order, and `land` when its front face is a land, separated by two spaces, then a line with the count of fixing cards and of each kind. With a pool file it prints only the pool's fixing cards, each with its quantity first, then a line with the fixing copies and how many of them can supply each colour; pool lines that do not resolve are listed on stderr. An unknown set or an unreadable pool file prints one line and exits 1. It makes no network or model call.
+
+```bash
+cli/build/install/spa/bin/spa fixing --set fra
+cli/build/install/spa/bin/spa fixing fixtures/pools/trk-manabox-01.csv --set trk
+```
+
 ## Android app
 
 The `app` module builds the Android app, a debug APK signed with the build machine's debug key. It needs the JDK and the Android SDK in [Toolchain](#toolchain).
