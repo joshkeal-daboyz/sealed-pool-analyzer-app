@@ -7,7 +7,11 @@ import spa.agent.tags.TagFile
  * One term of the synergy score of two cards of a set's tag file (G-005 deliverable 7). A pair's
  * score is the sum of every term in the list; [score] must be symmetric in its two cards, and is
  * also asked for a card with itself.
+ *
+ * Without the Java-compatibility `DefaultImpls` bridge: every caller is Kotlin, and the bridge
+ * would be uncovered code.
  */
+@JvmDefaultWithoutCompatibility
 interface PairTerm {
     /** The term's name, printed beside its part of each pair's score. */
     val name: String
