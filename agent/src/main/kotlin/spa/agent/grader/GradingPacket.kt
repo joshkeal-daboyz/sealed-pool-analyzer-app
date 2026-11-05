@@ -107,7 +107,11 @@ object GradingPackets {
         themes: PacketThemes? = null,
     ): GradingPacket {
         require(cardsPerFile > 0) { "cardsPerFile must be positive, got $cardsPerFile" }
-        val cards = GradingPool.printings(index).map(PacketCard::of)
+        val cards =
+            GradingPool.printings(index).map { printing ->
+                val card = PacketCard.of(printing)
+                if (themes == null) card else card.copy(themes = themes.of(printing.card.oracleId))
+            }
         val chunks = cards.chunked(cardsPerFile)
         val cardFiles = chunks.mapIndexed { i, chunk ->
             PacketFile(
@@ -115,11 +119,13 @@ object GradingPackets {
                 json.encodeToString(ListSerializer(PacketCard.serializer()), chunk) + "\n",
             )
         }
+        val themesSection = themes?.let { it.render() + "\n" }.orEmpty()
         val instructions =
-            promptText.trimEnd() +
+            prompt.replace("\r\n", "\n").trimEnd() +
                 "\n\n" +
                 renderBrief(brief) +
                 "\n" +
+                themesSection +
                 describeFiles(cards.size, cardFiles.map { it.name }, cardsPerFile)
         return GradingPacket(
             listOf(
