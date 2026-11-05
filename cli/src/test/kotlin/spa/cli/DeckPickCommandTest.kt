@@ -170,6 +170,31 @@ class DeckPickCommandTest {
     }
 
     @Test
+    fun `the committed tuned weights are one of the grid's combinations`() {
+        // Criterion 3: fixtures/weights/tuned.json holds the grid winner in the four-key format,
+        // so pool-grades reads it too.
+        val file = Fixtures.root.resolve("weights/tuned.json")
+        val tuned = Weights.parse(file.readText())
+
+        assertTrue(tuned in Tuning.GRID, tuned.toString())
+        assertEquals(TunedWeights.encode(tuned), file.readText())
+        val run =
+            runCli(
+                "pool-grades",
+                Fixtures.pool("trk-manabox-01.csv"),
+                "--set",
+                "trk",
+                "--pair",
+                "WU",
+                "--data",
+                Fixtures.data,
+                "--weights",
+                file.toString(),
+            )
+        assertEquals(ExitCode.OK, run.exit, run.stderr)
+    }
+
+    @Test
     fun `the help text names the command`() {
         assertTrue("deck-pick <sealed-game-data.csv.gz>" in Main.USAGE)
     }

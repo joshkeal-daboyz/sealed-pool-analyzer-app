@@ -130,6 +130,14 @@ WU  mean 2.88  (24 cards, 33 copies)
 ...
 ```
 
+**deck-pick** measures how well a ranking picks the cards strong players registered from their own pools, on a 17Lands public Sealed game data file (`game_data_public.<SET>.Sealed.csv.gz`, gzipped or plain; never committed). Each build, one `(draft_id, build_index)`, is read once. A build is used when, checked in this order, its `user_game_win_rate_bucket` is a number of 0.60 or more, its `main_colors` are exactly two letters of WUBRG, every `deck_` and `sideboard_` name with a copy is a card of the set's Scryfall cache (by full or front-face name), and it leaves a choice; each skipped build is counted under the first check it fails. A build's candidates are its deck and sideboard copies that are not lands and whose colours are within `main_colors` (colourless included), each copy counted; N is the candidates' deck copies. A ranking's overlap is the deck copies among its top N candidates over N; a group of equal scores that straddles position N counts its deck copies times places left over the group's size. It prints the builds used and skipped by reason, the weights, and the mean overlap of a random ranking (N over the candidates), of set grades alone, and of the pool-adjusted grades for the build's pair (`pool-grades`' rules on the build's pool, all its non-basic copies), and adjusted minus set grade, to 4 decimals. Grades and weights default as for `pool-grades`. With `--tune`, it takes one file per set of `--set a,b` (and of `--grades a,b`, if given), measures every combination of synergy {0, 0.25, 0.5, 0.75, 1.0}, curve {0, 0.25, 0.5} and colour {0, 0.25, 0.5} with cap 1.0 on the sets' builds pooled, prints each, and writes the best (ties to the smaller total weight) to `--out`, else `<data>/weights/tuned.json`, in the format of `default.json`. It makes no network or model call.
+
+```bash
+cli/build/install/spa/bin/spa deck-pick ~/Downloads/game_data_public.HOB.Sealed.csv.gz --set hob
+cli/build/install/spa/bin/spa deck-pick MSH.Sealed.csv.gz HOB.Sealed.csv.gz --set msh,hob --tune
+cli/build/install/spa/bin/spa deck-pick ~/Downloads/game_data_public.FRA.Sealed.csv.gz --set fra --weights fixtures/weights/tuned.json
+```
+
 ## Android app
 
 The `app` module builds the Android app, a debug APK signed with the build machine's debug key. It needs the JDK and the Android SDK in [Toolchain](#toolchain).
