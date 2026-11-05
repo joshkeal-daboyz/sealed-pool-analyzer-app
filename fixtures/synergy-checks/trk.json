@@ -719,7 +719,7 @@
     },
     {
       "id": "moopsy-with-death-payoffs",
-      "owner": "Moopsy should have synergy with cards that care about creatures dying.",
+      "owner": "Moopsy should have synergy with cards that care about creatures dying. Moopsy is a tempo boost for decks that care about creatures dying: the card is cheap, trades up and triggers on death.",
       "added": "2026-11-05",
       "status": "independent",
       "kind": "groups",
