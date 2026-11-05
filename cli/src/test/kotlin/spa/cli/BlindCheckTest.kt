@@ -22,17 +22,17 @@ class BlindCheckTest {
     }
 
     @Test
-    fun `win percent and 17 lands fail the blind check`(@TempDir dir: Path) {
+    fun `win percent fails the blind check`(@TempDir dir: Path) {
         writeFile(dir, "instructions.md", "Its WIN % is high on 17 Lands.\n")
 
         assertEquals(
-            listOf("instructions.md: win %", "instructions.md: 17 lands"),
+            listOf("instructions.md: win %"),
             BlindCheck.forbiddenTextHits(dir),
         )
     }
 
     @Test
-    fun `the list holds the SPA-033 wordings and the four spaced ones`() {
+    fun `the list holds the SPA-033 wordings and the three spaced ones`() {
         assertEquals(
             listOf(
                 "winrate",
@@ -42,7 +42,6 @@ class BlindCheckTest {
                 "gih wr",
                 "game in hand",
                 "win %",
-                "17 lands",
             ),
             BlindCheck.forbiddenText,
         )

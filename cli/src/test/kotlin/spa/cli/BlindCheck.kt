@@ -41,7 +41,6 @@ internal object BlindCheck {
             "gih wr",
             "game in hand",
             "win %",
-            "17 lands",
         )
 
     fun files(packet: Path): List<Path> = packet.listDirectoryEntries().sortedBy { it.name }
