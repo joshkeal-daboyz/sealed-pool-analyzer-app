@@ -1,0 +1,2362 @@
+{
+  "header": {
+    "setCode": "trk",
+    "source": "MODEL",
+    "provenance": "claude-fable-5-1 via Claude Code, prompt v2, 2026-11-05",
+    "createdAt": "2026-11-05T03:49:24Z"
+  },
+  "grades": [
+    {
+      "name": "70,000 Light-Years from Home",
+      "collectorNumber": "1",
+      "setCode": "trk",
+      "score": 4.0,
+      "confidence": 0.9
+    },
+    {
+      "name": "Andromedan Automatons",
+      "collectorNumber": "2",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Antagonist Incorporator",
+      "collectorNumber": "3",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Assembly Specialist",
+      "collectorNumber": "4",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Brad Boimler, Eager Ensign",
+      "collectorNumber": "5",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Captain Benjamin Sisko",
+      "collectorNumber": "6",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.4
+    },
+    {
+      "name": "Captain Jean-Luc Picard",
+      "collectorNumber": "7",
+      "setCode": "trk",
+      "score": 4.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Command Decision",
+      "collectorNumber": "8",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Command Subadjunct",
+      "collectorNumber": "9",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Conquest Mission",
+      "collectorNumber": "10",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.4
+    },
+    {
+      "name": "Deanna Troi, Psychic Counsel",
+      "collectorNumber": "11",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "DOT-7 Repair Squad",
+      "collectorNumber": "12",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Dr. Beverly Crusher",
+      "collectorNumber": "13",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Dr. McCoy, Surly Surgeon",
+      "collectorNumber": "14",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Emergency Medical Hologram",
+      "collectorNumber": "15",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Excalbian Gamemaster",
+      "collectorNumber": "16",
+      "setCode": "trk",
+      "score": 4.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Federation Field Medic",
+      "collectorNumber": "17",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Federation Resupply",
+      "collectorNumber": "18",
+      "setCode": "trk",
+      "score": 1.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Free Borg Revolutionaries",
+      "collectorNumber": "19",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Ghost of Illyria",
+      "collectorNumber": "20",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Hologram Janeway",
+      "collectorNumber": "21",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Malfunctioning Holodeck",
+      "collectorNumber": "22",
+      "setCode": "trk",
+      "score": 4.0,
+      "confidence": 0.9
+    },
+    {
+      "name": "The Measure of a Man",
+      "collectorNumber": "23",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Miles O'Brien, Transporter Ops",
+      "collectorNumber": "24",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "The Needs of the Many",
+      "collectorNumber": "25",
+      "setCode": "trk",
+      "score": 0.5,
+      "confidence": 0.9
+    },
+    {
+      "name": "Oberth-Class Starship",
+      "collectorNumber": "26",
+      "setCode": "trk",
+      "score": 1.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Peace in Our Time",
+      "collectorNumber": "27",
+      "setCode": "trk",
+      "score": 1.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Pet Sehlat",
+      "collectorNumber": "28",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Picard, Leading by Example",
+      "collectorNumber": "29",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Primary Unimatrix Adjunct",
+      "collectorNumber": "30",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Pure Energy",
+      "collectorNumber": "31",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Rutherford, Upgraded Ensign",
+      "collectorNumber": "32",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Saavik, Stoic Student",
+      "collectorNumber": "33",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Set Phasers to . . .",
+      "collectorNumber": "34",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Shields Up!",
+      "collectorNumber": "35",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Shuttle Ace",
+      "collectorNumber": "36",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Sulu, Space Swashbuckler",
+      "collectorNumber": "37",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Tactical Officer",
+      "collectorNumber": "38",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Test of Conviction",
+      "collectorNumber": "39",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "There's Coffee in that Nebula",
+      "collectorNumber": "40",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Troubling Tribbles",
+      "collectorNumber": "41",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.4
+    },
+    {
+      "name": "Una Chin-Riley, Number One",
+      "collectorNumber": "42",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "U.S.S. Enterprise-A, Free Spirit",
+      "collectorNumber": "43",
+      "setCode": "trk",
+      "score": 4.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "U.S.S. Excelsior, Cutting Edge",
+      "collectorNumber": "44",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Vexing Drone",
+      "collectorNumber": "45",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Anthropological Mission",
+      "collectorNumber": "46",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.4
+    },
+    {
+      "name": "The Caretaker",
+      "collectorNumber": "47",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Cetacean Ops",
+      "collectorNumber": "48",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Cloak and Phaser",
+      "collectorNumber": "49",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Cloistered Telepath",
+      "collectorNumber": "50",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Consider the Prime Directive",
+      "collectorNumber": "51",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Data, New Life",
+      "collectorNumber": "52",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Deep Space Scan",
+      "collectorNumber": "53",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Dominion Saboteur",
+      "collectorNumber": "54",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Emergency Holographic Crew",
+      "collectorNumber": "55",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Energize",
+      "collectorNumber": "56",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Ensign Pavel Chekov",
+      "collectorNumber": "57",
+      "setCode": "trk",
+      "score": 1.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Enterprise NX-01",
+      "collectorNumber": "58",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Federation Probe",
+      "collectorNumber": "59",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Guidance Failure",
+      "collectorNumber": "60",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Gwyndala, the Progeny",
+      "collectorNumber": "61",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Highly Illogical",
+      "collectorNumber": "62",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "H.M.S. Bounty, Unlikely Timeship",
+      "collectorNumber": "63",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Hoshi Sato, Exolinguist",
+      "collectorNumber": "64",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Humpback Whales",
+      "collectorNumber": "65",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Interstellar Effigy",
+      "collectorNumber": "66",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Jett Reno, Problem Solver",
+      "collectorNumber": "67",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Kobayashi Maru Scenario",
+      "collectorNumber": "68",
+      "setCode": "trk",
+      "score": 1.5,
+      "confidence": 0.4
+    },
+    {
+      "name": "Lieutenant Commander Data",
+      "collectorNumber": "69",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Lt. Cmdr. Geordi La Forge",
+      "collectorNumber": "70",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Make It So",
+      "collectorNumber": "71",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Marooned",
+      "collectorNumber": "72",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Melkotian Adjudicator",
+      "collectorNumber": "73",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Mr. Spock, Science Officer",
+      "collectorNumber": "74",
+      "setCode": "trk",
+      "score": 4.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Nyota Uhura, Communications",
+      "collectorNumber": "75",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Open Communications",
+      "collectorNumber": "76",
+      "setCode": "trk",
+      "score": 1.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Romulan Bird-of-Prey",
+      "collectorNumber": "77",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Rules of Acquisition",
+      "collectorNumber": "78",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Scotty, Miracle Worker",
+      "collectorNumber": "79",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Seven of Nine, Unassimilated",
+      "collectorNumber": "80",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Starfleet Spanner Jockey",
+      "collectorNumber": "81",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Subcommander T'Pol",
+      "collectorNumber": "82",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Suurok-Class Science Vessel",
+      "collectorNumber": "83",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Suus Mahna Practitioner",
+      "collectorNumber": "84",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Test of Priorities",
+      "collectorNumber": "85",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Those Old Scientists",
+      "collectorNumber": "86",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "V'Ger, the Intruder",
+      "collectorNumber": "87",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Vulcan Mind-Meld",
+      "collectorNumber": "88",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Wesley Crusher, Starfleet Cadet",
+      "collectorNumber": "89",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Zefram Cochrane, Warp Pioneer",
+      "collectorNumber": "90",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Armus, Skin of Evil",
+      "collectorNumber": "91",
+      "setCode": "trk",
+      "score": 4.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Assault Drone",
+      "collectorNumber": "92",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Automated Warfare System",
+      "collectorNumber": "93",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Bat'leth",
+      "collectorNumber": "94",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Battle-Scarred Survivalist",
+      "collectorNumber": "95",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Blastoneuron",
+      "collectorNumber": "96",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Cha'DIch Investigator",
+      "collectorNumber": "97",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Collation Trimatrix",
+      "collectorNumber": "98",
+      "setCode": "trk",
+      "score": 1.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Collective Drone",
+      "collectorNumber": "99",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Commander Raffi Musiker",
+      "collectorNumber": "100",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "D'Ghor Bloodletter",
+      "collectorNumber": "101",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Death Is Irrelevant",
+      "collectorNumber": "102",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "The Destruction of Praxis",
+      "collectorNumber": "103",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "De-evolve",
+      "collectorNumber": "104",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Eject the Warp Core",
+      "collectorNumber": "105",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Elim Garak, Simple Tailor",
+      "collectorNumber": "106",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Fugitive Listener",
+      "collectorNumber": "107",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Gabriel Lorca, Mirror Menace",
+      "collectorNumber": "108",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "General Chang, Cold Warrior",
+      "collectorNumber": "109",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Georgiou, Terran Emperor",
+      "collectorNumber": "110",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "A Good Day to Die",
+      "collectorNumber": "111",
+      "setCode": "trk",
+      "score": 1.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Grand Nagus Zek",
+      "collectorNumber": "112",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Gul Dukat, Colonial Prefect",
+      "collectorNumber": "113",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "He's Dead, Jim",
+      "collectorNumber": "114",
+      "setCode": "trk",
+      "score": 4.0,
+      "confidence": 0.9
+    },
+    {
+      "name": "Hive Mind Coprocessor",
+      "collectorNumber": "115",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Impossible Choice",
+      "collectorNumber": "116",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "In the Pale Moonlight",
+      "collectorNumber": "117",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Kai Winn, Faithless Leader",
+      "collectorNumber": "118",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Khan, Vengeful Heart",
+      "collectorNumber": "119",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Obsidian Order Operative",
+      "collectorNumber": "120",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Organic Avulsion Unit",
+      "collectorNumber": "121",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Overflow Submatrix",
+      "collectorNumber": "122",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Pattern Buffer Preservation",
+      "collectorNumber": "123",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Relentless Drednok",
+      "collectorNumber": "124",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Resistance Is Futile",
+      "collectorNumber": "125",
+      "setCode": "trk",
+      "score": 4.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Rogue Artificial Intelligence",
+      "collectorNumber": "126",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Salt Vampire",
+      "collectorNumber": "127",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Sela, Tal Shiar Paradox",
+      "collectorNumber": "128",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Storied Veteran",
+      "collectorNumber": "129",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Stray from History",
+      "collectorNumber": "130",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Tal Shiar Operative",
+      "collectorNumber": "131",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Tell Me What You See",
+      "collectorNumber": "132",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Tenacious Drone",
+      "collectorNumber": "133",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Test of Loyalty",
+      "collectorNumber": "134",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "U.S.S. Reliant, From Hell's Heart",
+      "collectorNumber": "135",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Vengeance Mission",
+      "collectorNumber": "136",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Academy Instructor",
+      "collectorNumber": "137",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Beckett Mariner, Impetuous Ensign",
+      "collectorNumber": "138",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Boarding Action",
+      "collectorNumber": "139",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Brazen Bluff",
+      "collectorNumber": "140",
+      "setCode": "trk",
+      "score": 1.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Cantankerous Captain",
+      "collectorNumber": "141",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Captain James T. Kirk",
+      "collectorNumber": "142",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Captain Michael Burnham",
+      "collectorNumber": "143",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Captain's Tutelage",
+      "collectorNumber": "144",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "D-7 Battle Cruiser",
+      "collectorNumber": "145",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Dahar Master",
+      "collectorNumber": "146",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Dominion Infiltration",
+      "collectorNumber": "147",
+      "setCode": "trk",
+      "score": 1.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Encounter the Unknown",
+      "collectorNumber": "148",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Erica Ortegas, Plucky Pilot",
+      "collectorNumber": "149",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Exploratory Mission",
+      "collectorNumber": "150",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Genesis Effect",
+      "collectorNumber": "151",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Horta",
+      "collectorNumber": "152",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Infinite Diversity",
+      "collectorNumber": "153",
+      "setCode": "trk",
+      "score": 0.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Khaaaaaaaaaaaannn!",
+      "collectorNumber": "154",
+      "setCode": "trk",
+      "score": 4.0,
+      "confidence": 0.9
+    },
+    {
+      "name": "Khan, Despot by Design",
+      "collectorNumber": "155",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "La'An Noonien-Singh, Security",
+      "collectorNumber": "156",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Lwaxana Troi, Charming Guest",
+      "collectorNumber": "157",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Munitions Enthusiast",
+      "collectorNumber": "158",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "The Naked Time",
+      "collectorNumber": "159",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Pah-Wraith",
+      "collectorNumber": "160",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Perils of the Past",
+      "collectorNumber": "161",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Planetary Bombardment",
+      "collectorNumber": "162",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Planetary Patrol",
+      "collectorNumber": "163",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Plasma Cascade",
+      "collectorNumber": "164",
+      "setCode": "trk",
+      "score": 4.0,
+      "confidence": 0.9
+    },
+    {
+      "name": "Q, Stacking the Deck",
+      "collectorNumber": "165",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Quark, Humble Proprietor",
+      "collectorNumber": "166",
+      "setCode": "trk",
+      "score": 1.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Ravenous Cosmozoan",
+      "collectorNumber": "167",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Reckless Impulse",
+      "collectorNumber": "168",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Red Alert!",
+      "collectorNumber": "169",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Sarcophagus, Ship of the Dead",
+      "collectorNumber": "170",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Savvy Profiteer",
+      "collectorNumber": "171",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Silicate Surveyor",
+      "collectorNumber": "172",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Starfleet Security",
+      "collectorNumber": "173",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Tal Shiar Analyst",
+      "collectorNumber": "174",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Targ Wrangler",
+      "collectorNumber": "175",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Tasha Yar, Out of Time",
+      "collectorNumber": "176",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Test of Identity",
+      "collectorNumber": "177",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Transporter Malfunction",
+      "collectorNumber": "178",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.9
+    },
+    {
+      "name": "Will Riker, First in the Field",
+      "collectorNumber": "179",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Worf, Intelligence Contractor",
+      "collectorNumber": "180",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "The Wrath of Khan",
+      "collectorNumber": "181",
+      "setCode": "trk",
+      "score": 4.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Adversary by Algorithm",
+      "collectorNumber": "182",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Amok Time",
+      "collectorNumber": "183",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Astute Terraformer",
+      "collectorNumber": "184",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Branching Timeline",
+      "collectorNumber": "185",
+      "setCode": "trk",
+      "score": 1.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Captain Jonathan Archer",
+      "collectorNumber": "186",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Captain Kathryn Janeway",
+      "collectorNumber": "187",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Captain Pike, Fullness of Time",
+      "collectorNumber": "188",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Cold-Blooded Crew",
+      "collectorNumber": "189",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Common Goal",
+      "collectorNumber": "190",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Culber and Stamets, Star-Crossed",
+      "collectorNumber": "191",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Dathon and Picard at El-Adrel",
+      "collectorNumber": "192",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "David and Carol Marcus, Creators",
+      "collectorNumber": "193",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Dominion Assault Force",
+      "collectorNumber": "194",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Dominion Supervisor",
+      "collectorNumber": "195",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Dr. Joseph M'Benga",
+      "collectorNumber": "196",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Dr. Leonard \"Bones\" McCoy",
+      "collectorNumber": "197",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Final Frontier",
+      "collectorNumber": "198",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "First Contact",
+      "collectorNumber": "199",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Genesis Device",
+      "collectorNumber": "200",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Holo-Engineer",
+      "collectorNumber": "201",
+      "setCode": "trk",
+      "score": 4.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Hologram Stalker",
+      "collectorNumber": "202",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "I'm a Doctor, Not a . . .",
+      "collectorNumber": "203",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Jadzia Dax, Living Legacy",
+      "collectorNumber": "204",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Jake Sisko, War Correspondent",
+      "collectorNumber": "205",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "MACO Strike Team",
+      "collectorNumber": "206",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Moopsy",
+      "collectorNumber": "207",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Mugato",
+      "collectorNumber": "208",
+      "setCode": "trk",
+      "score": 4.0,
+      "confidence": 0.9
+    },
+    {
+      "name": "Neelix, Moral Support",
+      "collectorNumber": "209",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Photosynthetic Physician",
+      "collectorNumber": "210",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Rok-Tahk, Budding Scientist",
+      "collectorNumber": "211",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Saru, Unthreatened",
+      "collectorNumber": "212",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Saurian Explorer",
+      "collectorNumber": "213",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Species 8472",
+      "collectorNumber": "214",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Stable Wormhole",
+      "collectorNumber": "215",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Support Mission",
+      "collectorNumber": "216",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Sylvia Tilly, Joy of Discovery",
+      "collectorNumber": "217",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Syndicate Liquidators",
+      "collectorNumber": "218",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Temporal Conqueror",
+      "collectorNumber": "219",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Test of Courage",
+      "collectorNumber": "220",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "U.S.S. Discovery, at Black Alert",
+      "collectorNumber": "221",
+      "setCode": "trk",
+      "score": 4.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "U.S.S. Voyager, Lone Wanderer",
+      "collectorNumber": "222",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Warp Speed",
+      "collectorNumber": "223",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Xenobotanist",
+      "collectorNumber": "224",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Xindi Surveyors",
+      "collectorNumber": "225",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "All Good Things...",
+      "collectorNumber": "226",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Borg Cube",
+      "collectorNumber": "227",
+      "setCode": "trk",
+      "score": 4.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "The City on the Edge of Forever",
+      "collectorNumber": "228",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.4
+    },
+    {
+      "name": "Cleveland Booker, Empath",
+      "collectorNumber": "229",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Constable Odo",
+      "collectorNumber": "230",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Dal R'El, Augment Orphan",
+      "collectorNumber": "231",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Daniels, Temporal Agent",
+      "collectorNumber": "232",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Dathon, His Heart Open",
+      "collectorNumber": "233",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "The Doctor, EMH",
+      "collectorNumber": "234",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "The Duras Sisters",
+      "collectorNumber": "235",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "D'Vana Tendi, Optimistic Ensign",
+      "collectorNumber": "236",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Gowron, Eager for Battle",
+      "collectorNumber": "237",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Gray and Adira, Forever Joined",
+      "collectorNumber": "238",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Hemmer, Fixing What Is Broken",
+      "collectorNumber": "239",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Hit It!",
+      "collectorNumber": "240",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "The Inner Light",
+      "collectorNumber": "241",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Kira Nerys, Firebrand",
+      "collectorNumber": "242",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Kirk, Commanding Officer",
+      "collectorNumber": "243",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Live Long and Prosper",
+      "collectorNumber": "244",
+      "setCode": "trk",
+      "score": 1.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Locutus, the One Who Speaks",
+      "collectorNumber": "245",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Lore, Positronic Provocateur",
+      "collectorNumber": "246",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "L'Rell, Fierce Visionary",
+      "collectorNumber": "247",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Mirror Universe Intrusion",
+      "collectorNumber": "248",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Nog, Ambitious Cadet",
+      "collectorNumber": "249",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Phlox, Unorthodox Doctor",
+      "collectorNumber": "250",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Sarek, Federation Ambassador",
+      "collectorNumber": "251",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Seven of Nine",
+      "collectorNumber": "252",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Spock, Always Your Friend",
+      "collectorNumber": "253",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "The Traveler",
+      "collectorNumber": "254",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Vash, Freelance Archaeologist",
+      "collectorNumber": "255",
+      "setCode": "trk",
+      "score": 3.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Worf, Honor-Bound Warrior",
+      "collectorNumber": "256",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Year of Hell",
+      "collectorNumber": "257",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Zero, Incorporeal Sensate",
+      "collectorNumber": "258",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Class-F Shuttlecraft",
+      "collectorNumber": "259",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Combadge",
+      "collectorNumber": "260",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Crystalline Entity",
+      "collectorNumber": "261",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Cybernetic Specialist",
+      "collectorNumber": "262",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Deep Space 9",
+      "collectorNumber": "263",
+      "setCode": "trk",
+      "score": 1.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Engineered Explosives",
+      "collectorNumber": "264",
+      "setCode": "trk",
+      "score": 1.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "The Holodeck",
+      "collectorNumber": "265",
+      "setCode": "trk",
+      "score": 1.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Isolinear Processor",
+      "collectorNumber": "266",
+      "setCode": "trk",
+      "score": 1.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Replicator",
+      "collectorNumber": "267",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Sickbay",
+      "collectorNumber": "268",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Tea, Earl Grey, Hot",
+      "collectorNumber": "269",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Tricorder",
+      "collectorNumber": "270",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Type-2 Phaser",
+      "collectorNumber": "271",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "U.S.S. Cerritos, Following Up",
+      "collectorNumber": "272",
+      "setCode": "trk",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "U.S.S. Enterprise-D, Galaxy-Class",
+      "collectorNumber": "273",
+      "setCode": "trk",
+      "score": 3.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Warp Core",
+      "collectorNumber": "274",
+      "setCode": "trk",
+      "score": 1.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Andoria",
+      "collectorNumber": "275",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Artificial Anomaly",
+      "collectorNumber": "276",
+      "setCode": "trk",
+      "score": 1.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Bajor",
+      "collectorNumber": "277",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Blood Crypt",
+      "collectorNumber": "278",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Breeding Pool",
+      "collectorNumber": "279",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Cardassia Prime",
+      "collectorNumber": "280",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Earth, Sector 001",
+      "collectorNumber": "281",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Federation Outpost",
+      "collectorNumber": "282",
+      "setCode": "trk",
+      "score": 1.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Ferenginar",
+      "collectorNumber": "283",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Gaseous Anomaly",
+      "collectorNumber": "284",
+      "setCode": "trk",
+      "score": 1.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Godless Shrine",
+      "collectorNumber": "285",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Hallowed Fountain",
+      "collectorNumber": "286",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Ni'Var Science Academy",
+      "collectorNumber": "287",
+      "setCode": "trk",
+      "score": 1.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Orion",
+      "collectorNumber": "288",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Overgrown Tomb",
+      "collectorNumber": "289",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Q Continuum",
+      "collectorNumber": "290",
+      "setCode": "trk",
+      "score": 1.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Qo'noS",
+      "collectorNumber": "291",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Quark's Bar",
+      "collectorNumber": "292",
+      "setCode": "trk",
+      "score": 1.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Risa",
+      "collectorNumber": "293",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Romulus",
+      "collectorNumber": "294",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Sacred Foundry",
+      "collectorNumber": "295",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Spatial Anomaly",
+      "collectorNumber": "296",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Starfleet Academy",
+      "collectorNumber": "297",
+      "setCode": "trk",
+      "score": 1.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Steam Vents",
+      "collectorNumber": "298",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Stomping Ground",
+      "collectorNumber": "299",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Subspace Anomaly",
+      "collectorNumber": "300",
+      "setCode": "trk",
+      "score": 1.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Temple Garden",
+      "collectorNumber": "301",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Temporal Anomaly",
+      "collectorNumber": "302",
+      "setCode": "trk",
+      "score": 1.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Unexplored Territory",
+      "collectorNumber": "303",
+      "setCode": "trk",
+      "score": 1.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "The Unicomplex",
+      "collectorNumber": "304",
+      "setCode": "trk",
+      "score": 1.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Vulcan",
+      "collectorNumber": "305",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Watery Grave",
+      "collectorNumber": "306",
+      "setCode": "trk",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Mikaeus, the Lunarch",
+      "collectorNumber": "1",
+      "setCode": "sds",
+      "score": 3.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Flare of Fortitude",
+      "collectorNumber": "2",
+      "setCode": "sds",
+      "score": 1.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Kenrith, the Returned King",
+      "collectorNumber": "3",
+      "setCode": "sds",
+      "score": 4.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Sisay, Weatherlight Captain",
+      "collectorNumber": "4",
+      "setCode": "sds",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Thada Adel, Acquisitor",
+      "collectorNumber": "5",
+      "setCode": "sds",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Empress Galina",
+      "collectorNumber": "6",
+      "setCode": "sds",
+      "score": 3.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Arcum Dagsson",
+      "collectorNumber": "7",
+      "setCode": "sds",
+      "score": 3.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Bruvac the Grandiloquent",
+      "collectorNumber": "8",
+      "setCode": "sds",
+      "score": 1.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Decree of Pain",
+      "collectorNumber": "9",
+      "setCode": "sds",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Drivnod, Carnage Dominus",
+      "collectorNumber": "10",
+      "setCode": "sds",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Sheoldred, the Apocalypse",
+      "collectorNumber": "11",
+      "setCode": "sds",
+      "score": 5.0,
+      "confidence": 0.9
+    },
+    {
+      "name": "Torbran, Thane of Red Fell",
+      "collectorNumber": "12",
+      "setCode": "sds",
+      "score": 3.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Loot, Exuberant Explorer",
+      "collectorNumber": "13",
+      "setCode": "sds",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Rishkar, Peema Renegade",
+      "collectorNumber": "14",
+      "setCode": "sds",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Bristly Bill, Spine Sower",
+      "collectorNumber": "15",
+      "setCode": "sds",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Sen Triplets",
+      "collectorNumber": "16",
+      "setCode": "sds",
+      "score": 3.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Tatyova, Benthic Druid",
+      "collectorNumber": "17",
+      "setCode": "sds",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Hull Breach",
+      "collectorNumber": "18",
+      "setCode": "sds",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Isshin, Two Heavens as One",
+      "collectorNumber": "19",
+      "setCode": "sds",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Ertai Resurrected",
+      "collectorNumber": "20",
+      "setCode": "sds",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Jhoira, Weatherlight Captain",
+      "collectorNumber": "21",
+      "setCode": "sds",
+      "score": 3.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Captain Sisay",
+      "collectorNumber": "22",
+      "setCode": "sds",
+      "score": 3.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Riku of Many Paths",
+      "collectorNumber": "23",
+      "setCode": "sds",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Prosper, Tome-Bound",
+      "collectorNumber": "24",
+      "setCode": "sds",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Stella Lee, Wild Card",
+      "collectorNumber": "25",
+      "setCode": "sds",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Mogis, God of Slaughter",
+      "collectorNumber": "26",
+      "setCode": "sds",
+      "score": 3.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Minamo, School at Water's Edge",
+      "collectorNumber": "27",
+      "setCode": "sds",
+      "score": 1.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Talon Gates of Madara",
+      "collectorNumber": "28",
+      "setCode": "sds",
+      "score": 1.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Phyrexian Tower",
+      "collectorNumber": "29",
+      "setCode": "sds",
+      "score": 1.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Shizo, Death's Storehouse",
+      "collectorNumber": "30",
+      "setCode": "sds",
+      "score": 1.0,
+      "confidence": 0.7
+    }
+  ]
+}

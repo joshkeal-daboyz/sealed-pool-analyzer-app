@@ -39,3 +39,14 @@ No API key and no model call in this repository. The grading itself is a Claude 
 Each was written by `spa grade-import` from one Fable grading run per set (SPA-034). `msh`, `hob` and `fra` are the blind backtest sets (`spa grade-backtest --set <code>`); `trk` is the prerelease set, read by `spa grades <pool-file> --set trk`. `createdAt` in each header is the import time, so a re-import differs from the committed file in that field only.
 
 A changed prompt is a new file (`prompt-v2.md`) and a new provenance; a file graded with one prompt is never edited by hand.
+
+### Prompt v2
+
+| File | Grades | Sets | Provenance |
+| --- | --- | --- | --- |
+| `msh.v2.json` | 276 | msh | claude-fable-5-1 via Claude Code, prompt v2, 2026-11-05 |
+| `hob.v2.json` | 188 | hob | claude-fable-5-1 via Claude Code, prompt v2, 2026-11-05 |
+| `fra.v2.json` | 280 | fra | claude-fable-5-1 via Claude Code, prompt v2, 2026-11-05 |
+| `trk.v2.json` | 336 | trk and its companion sds | claude-fable-5-1 via Claude Code, prompt v2, 2026-11-05 |
+
+Graded from packets built with `spa grade-packet <code> --themes --prompt agent/src/main/resources/spa/agent/grader/prompt-v2.md`, one Fable run per set (G-004, SPA-037). `grade-import` always writes `<data>/grades/<code>.json`, so each was imported with `--data <scratch dir>` holding a copy of `fixtures/scryfall`, then copied unchanged to its `.v2.json` name. Backtest one with `spa grade-backtest --set <code> --model fixtures/grades/<code>.v2.json`. `trk.v2.json` was committed before 17Lands published any `trk` game data, so the later `trk` backtest is blind; it is frozen.
