@@ -51,6 +51,13 @@ The owner asked for this goal on 2026-11-05 ("Go ahead and start five"), right a
 
 ## Constraints
 
+- **Easy to change how cards and decks are scored** (owner, 2026-11-05: "We are going to be regularly updating the way that cards are evaluated so make sure that the modules used to evaluate cards and the deck itself are easily alterable"). Concretely, for every ticket in this goal:
+  - Each scoring rule (a card adjustment such as curve or colour depth; a deck part such as the curve penalty, creature count, removal bonus, castability or fixing bonus; the synergy bonus) is its own class behind one small interface, in its own file, with its own tests.
+  - The builder, ranking and printing code see only that interface and a list of parts. Adding, removing or reordering a part touches the list and the part's own file, nothing else.
+  - Every weight, threshold and cutoff comes from a versioned JSON file under `fixtures/weights/` (as G-004's `tuned.json` does), selectable with `--weights`, never a constant in code. A part with weight 0 is switched off.
+  - Each part writes its own reason line, so a new part explains itself with no change to the printer.
+  - The deck backtest runs any weights file, so a change is measured against the last one with one command.
+  - A test proves the seam: a test-only part, added to the list, changes the score and prints its reason with no other code change.
 - **Deterministic before probabilistic.** Fixing tags, the builder, mana and backtest are code. The only model step is the synergy agent, on the subscription (G-003 Decided 5), with no API key, through recorded files as in G-003's grading.
 - **No tuning on the test.** `msh` and `hob` are for tuning; `fra` is held out; `trk` is held out for everything (SPA-040's data, when it comes).
 - **Every set is different** (owner, 2026-11-04). Land counts, creature targets, curve shape and how much fixing a set has come from each set's own data, never from fixed numbers that suit one set. `hob` builds are mostly two colours and `fra` builds are often three; the builder must learn that from the pools, not from a set flag.
@@ -83,7 +90,16 @@ The owner answered on 2026-11-05: "Approve all except 2 and 5. Agents are going 
 
 ## Architect notes (2026-11-05)
 
-- G-005 start commit for criterion 2: the commit that opens this goal.
+- G-005 start commit for criterion 2: 2962b0f.
 - G-004's deck-pick test counted only two-colour builds (`main_colors` of length 2), which are 27% to 58% of strong builds. Its numbers stand for those builds only; this goal's backtest covers every colour count.
 - 17Lands encodes a build's colours as `main_colors` (for example `WUB`) and `splash_colors` (for example `R`). Strong builds per set: `msh` 4,995, `hob` 5,206, `fra` 5,321.
-- Tickets, one Developer at a time, all serialized (they share `cli` and the builder): SPA-042 (fixing tags and `spa fixing`), SPA-043 (the builder and mana for a given colour set), SPA-044 (colour configurations, ranking and `spa build`), SPA-045 (the deck backtest and tuning, held out on `fra`), SPA-046 (the synergy agent). The Architect completes each ticket, with script-pinned numbers, before dispatching it.
+- G-004's `PoolGrader` hard-codes its three adjustments (a sealed `Part` interface) and a fixed `Weights` class, so it does not meet the alterable-scoring constraint. SPA-043 makes it pluggable with no change to any output.
+- Tickets, one Developer at a time, all serialized (they share `agent`, `cli` and the builder):
+  - SPA-042: fixing tags and `spa fixing`.
+  - SPA-043: pluggable card adjustment parts and weights files, a refactor whose `pool-grades` and `deck-pick` outputs stay byte-identical.
+  - SPA-044: the builder and mana for a given colour set, with pluggable deck parts.
+  - SPA-045: colour configurations, ranking and `spa build`.
+  - SPA-046: the deck backtest and tuning, held out on `fra`.
+  - SPA-047: the synergy agent.
+
+  The Architect completes each ticket, with script-pinned numbers, before dispatching it.
