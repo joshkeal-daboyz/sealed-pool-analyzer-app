@@ -79,6 +79,24 @@ cli/build/install/spa/bin/spa grade-packet msh --out ../grading/msh
 cli/build/install/spa/bin/spa grade-import msh --responses ../grading/msh --provenance "claude-fable-5-1 via Claude Code, prompt v1, 2026-11-05"
 ```
 
+**grades** parses a pool file (any format `analyze` reads) and prints one line per pool entry: grade, letter label, confidence, source, count, name, and set and collector number. Grades come through the grade lookup from `<data>/winrates/<code>.json` and `<data>/grades/<code>.json`, whichever exist, preferring the win-rate grade; a card is matched by printing, else by name. Graded entries come first, highest grade first and ties by name; entries with no grade (basic lands, which grade files never hold) follow, by name, with `-` for grade, label and confidence and source `none`. Lines that do not resolve to a card are listed on stderr; the command still exits 0. No grade file for the set prints one line and exits 1. It makes no network or model call.
+
+```bash
+cli/build/install/spa/bin/spa grades fixtures/pools/trk-manabox-01.csv --set trk
+```
+
+```text
+4.0  A−  0.90  MODEL     1x He's Dead, Jim (trk 114)
+...
+-    -   -     none      3x Swamp (trk 309)
+```
+
+Letter labels, relative to the card's set (G-003 Decided 2):
+
+| Score | 5.0 | 4.5 | 4.0 | 3.5 | 3.0 | 2.5 | 2.0 | 1.5 | 1.0 | 0.5 | 0.0 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Label | A+ | A | A− | B+ | B | C+ | C | C− | D | D− | F |
+
 ## Android app
 
 The `app` module builds the Android app, a debug APK signed with the build machine's debug key. It needs the JDK and the Android SDK in [Toolchain](#toolchain).

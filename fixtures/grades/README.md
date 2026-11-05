@@ -25,4 +25,15 @@ No API key and no model call in this repository. The grading itself is a Claude 
 
    It writes `fixtures/grades/<code>.json` only when every card is graded exactly once, no id is unknown, every score is on the scale and every confidence is in [0, 1]. Otherwise it prints one line per problem and writes nothing; fix or regrade the named files and import again.
 
+## The committed files
+
+| File | Grades | Sets | Provenance |
+| --- | --- | --- | --- |
+| `msh.json` | 276 | msh | claude-fable-5-1 via Claude Code, prompt v1, 2026-11-04 |
+| `hob.json` | 188 | hob | claude-fable-5-1 via Claude Code, prompt v1, 2026-11-04 |
+| `fra.json` | 280 | fra | claude-fable-5-1 via Claude Code, prompt v1, 2026-11-04 |
+| `trk.json` | 336 | trk and its companion sds | claude-fable-5-1 via Claude Code, prompt v1, 2026-11-04 |
+
+Each was written by `spa grade-import` from one Fable grading run per set (SPA-034). `msh`, `hob` and `fra` are the blind backtest sets (`spa grade-backtest --set <code>`); `trk` is the prerelease set, read by `spa grades <pool-file> --set trk`. `createdAt` in each header is the import time, so a re-import differs from the committed file in that field only.
+
 A changed prompt is a new file (`prompt-v2.md`) and a new provenance; a file graded with one prompt is never edited by hand.

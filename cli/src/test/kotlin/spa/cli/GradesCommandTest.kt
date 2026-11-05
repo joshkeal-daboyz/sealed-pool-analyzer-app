@@ -56,7 +56,7 @@ class GradesCommandTest {
         val graded = trkGrades().stdoutLines().take(68)
 
         assertEquals(68, graded.size)
-        assertTrue(graded.all { it.substring(16, 24) == "MODEL   " }, graded.joinToString("\n"))
+        assertTrue(graded.all { it.substring(15, 23) == "MODEL   " }, graded.joinToString("\n"))
         val scores = graded.map { it.substring(0, 3).toDouble() }
         assertEquals(scores.sortedDescending(), scores)
     }
