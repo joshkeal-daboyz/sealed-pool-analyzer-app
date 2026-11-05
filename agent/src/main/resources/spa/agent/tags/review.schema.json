@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Synergy tag review",
+  "description": "One review file, cards-NN.review.json: the corrections to the tags of the cards in cards-NN.json, whose current tags are in tags-NN.json; an empty array when no card needs one. Each correction names a card of cards-NN.json, one action and only that action's fields, and a one-line reason.",
+  "type": "array",
+  "items": {
+    "oneOf": [
+      {
+        "description": "add-role: give the card a role on an axis it lacks.",
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "action", "axis", "role", "strength", "reason"],
+        "properties": {
+          "id": { "$ref": "#/$defs/id" },
+          "action": { "const": "add-role" },
+          "axis": { "$ref": "#/$defs/axis" },
+          "role": { "$ref": "#/$defs/role" },
+          "strength": { "$ref": "#/$defs/strength" },
+          "reason": { "$ref": "#/$defs/reason" }
+        }
+      },
+      {
+        "description": "remove-role: take off a role the card has.",
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "action", "axis", "role", "reason"],
+        "properties": {
+          "id": { "$ref": "#/$defs/id" },
+          "action": { "const": "remove-role" },
+          "axis": { "$ref": "#/$defs/axis" },
+          "role": { "$ref": "#/$defs/role" },
+          "reason": { "$ref": "#/$defs/reason" }
+        }
+      },
+      {
+        "description": "set-strength: change the strength of a role the card has.",
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "action", "axis", "role", "strength", "reason"],
+        "properties": {
+          "id": { "$ref": "#/$defs/id" },
+          "action": { "const": "set-strength" },
+          "axis": { "$ref": "#/$defs/axis" },
+          "role": { "$ref": "#/$defs/role" },
+          "strength": { "$ref": "#/$defs/strength" },
+          "reason": { "$ref": "#/$defs/reason" }
+        }
+      },
+      {
+        "description": "add-partner: name a partner the card lacks, at most 5 partners in all.",
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "action", "partner", "strength", "reason"],
+        "properties": {
+          "id": { "$ref": "#/$defs/id" },
+          "action": { "const": "add-partner" },
+          "partner": { "$ref": "#/$defs/id" },
+          "strength": { "$ref": "#/$defs/strength" },
+          "reason": { "$ref": "#/$defs/reason" }
+        }
+      },
+      {
+        "description": "remove-partner: take off a partner the card names.",
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "action", "partner", "reason"],
+        "properties": {
+          "id": { "$ref": "#/$defs/id" },
+          "action": { "const": "remove-partner" },
+          "partner": { "$ref": "#/$defs/id" },
+          "reason": { "$ref": "#/$defs/reason" }
+        }
+      }
+    ]
+  },
+  "$defs": {
+    "id": {
+      "description": "A card id, copied exactly from the card files (a card may be its own partner).",
+      "type": "string"
+    },
+    "axis": {
+      "description": "One of the axes listed in instructions.md, by its id.",
+      "type": "string"
+    },
+    "role": { "enum": ["enabler", "payoff"] },
+    "strength": { "enum": [1, 2, 3] },
+    "reason": {
+      "description": "One line: why the correction is right, from the card's rules text.",
+      "type": "string",
+      "pattern": "\\S"
+    }
+  }
+}

@@ -76,7 +76,7 @@ object TagPacketText {
         appendLine("- You write ${range(responses)}, one beside each card file.")
     }
 
-    private fun cardsLine(index: CardIndex, cardFiles: List<String>): String {
+    internal fun cardsLine(index: CardIndex, cardFiles: List<String>): String {
         val count = GradingPool.printings(index).size
         return "- ${range(cardFiles)}: the $count cards of the set, " +
             "${GradingPackets.CARDS_PER_FILE} per file except the last, in collector order. " +
@@ -85,7 +85,7 @@ object TagPacketText {
             "separated by ` // `."
     }
 
-    private fun range(names: List<String>): String =
+    internal fun range(names: List<String>): String =
         if (names.size <= 1) "`${names.firstOrNull() ?: GradingPackets.cardFileName(1)}`"
         else "`${names.first()}` to `${names.last()}`"
 

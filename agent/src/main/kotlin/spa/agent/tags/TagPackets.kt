@@ -139,7 +139,7 @@ object TagPackets {
     }
 
     /** `facts.json`: each card id, in pool order, with its sorted facts; none without [facts]. */
-    private fun factsFile(facts: Map<String, Set<String>>?): List<PacketFile> =
+    internal fun factsFile(facts: Map<String, Set<String>>?): List<PacketFile> =
         if (facts == null) emptyList()
         else {
             val sorted = facts.mapValues { (_, it) -> it.sorted() }

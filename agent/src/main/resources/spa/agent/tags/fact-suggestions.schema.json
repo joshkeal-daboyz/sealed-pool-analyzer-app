@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Fact suggestions",
+  "description": "fact-suggestions.json, optional: card facts the fact list lacks that several cards should share. Each names the new fact, the rule that would give it from a card's data, example cards that should have it, and a one-line reason. Suggestions are reported, not applied.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["fact", "rule", "examples", "reason"],
+    "properties": {
+      "fact": {
+        "description": "The new fact's name, in the style of the facts in facts.json.",
+        "type": "string",
+        "pattern": "\\S"
+      },
+      "rule": {
+        "description": "What in a card's data would give it the fact.",
+        "type": "string",
+        "pattern": "\\S"
+      },
+      "examples": {
+        "description": "Card ids, copied exactly from the card files, of cards that should have the fact.",
+        "type": "array",
+        "minItems": 1,
+        "items": { "type": "string" }
+      },
+      "reason": {
+        "description": "One line: why the fact would help.",
+        "type": "string",
+        "pattern": "\\S"
+      }
+    }
+  }
+}
