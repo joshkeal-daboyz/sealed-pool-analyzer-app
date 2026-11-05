@@ -32,7 +32,17 @@ internal object BlindCheck {
             "confidence",
         )
 
-    val forbiddenText = listOf("winrate", "gihwr", "17lands", "win rate")
+    val forbiddenText =
+        listOf(
+            "winrate",
+            "gihwr",
+            "17lands",
+            "win rate",
+            "gih wr",
+            "game in hand",
+            "win %",
+            "17 lands",
+        )
 
     fun files(packet: Path): List<Path> = packet.listDirectoryEntries().sortedBy { it.name }
 

@@ -10,5 +10,10 @@ import spa.agent.tags.TagCard
 object PartnerTerm : PairTerm {
     override val name = "partner"
 
-    override fun score(a: TagCard, b: TagCard): Int = TODO()
+    override fun score(a: TagCard, b: TagCard): Int =
+        if (a.id == b.id) names(a, a) else names(a, b) + names(b, a)
+
+    /** The strength with which [card] names [other], 0 when it does not. */
+    private fun names(card: TagCard, other: TagCard): Int =
+        card.partners.filter { it.id == other.id }.sumOf { it.strength }
 }

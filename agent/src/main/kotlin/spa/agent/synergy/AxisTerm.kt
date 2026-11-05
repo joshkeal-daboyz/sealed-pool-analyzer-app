@@ -1,5 +1,6 @@
 package spa.agent.synergy
 
+import spa.agent.tags.RoleNameCheck
 import spa.agent.tags.TagCard
 
 /**
@@ -10,5 +11,15 @@ import spa.agent.tags.TagCard
 object AxisTerm : PairTerm {
     override val name = "axis"
 
-    override fun score(a: TagCard, b: TagCard): Int = TODO()
+    override fun score(a: TagCard, b: TagCard): Int = supplies(a, b) + supplies(b, a)
+
+    /** Σ over the axes of [enabler]'s enabler strength times [payoff]'s payoff strength. */
+    private fun supplies(enabler: TagCard, payoff: TagCard): Int =
+        enabler.roles
+            .filter { it.role == RoleNameCheck.ENABLER }
+            .sumOf { supply ->
+                payoff.roles
+                    .filter { it.role == RoleNameCheck.PAYOFF && it.axis == supply.axis }
+                    .sumOf { supply.strength * it.strength }
+            }
 }

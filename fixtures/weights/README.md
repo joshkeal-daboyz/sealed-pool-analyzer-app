@@ -11,6 +11,10 @@
 
 The defaults are G-004's starting weights (SPA-038), untuned. The weights tuned on `msh` and `hob` in SPA-039 are `tuned.json`, below. Any other key, a missing key, a negative number or a value that is not a number makes the command print one line and exit 1.
 
+## `tag-synergy.json`
+
+`spa synergy` reads the tag synergy part's weight from `tag-synergy.json` here unless `--weights <file>` names another file: `{ "weight": 0.5 }`, one JSON object with exactly the number `weight`, 0 or more. It is the most the part moves a card, up or down; weight 0 switches the part off. 0.5 is SPA-048's starting weight, untuned (SPA-046 tunes it on `msh` and `hob`). Any other key, a missing key, a negative number or a value that is not a number makes the command print one line and exit 1.
+
 ## `tuned.json`
 
 The grid winner of SPA-039's tuning, frozen: `{ "synergy": 0.0, "curve": 0.25, "colour": 0.5, "cap": 1.0 }`, in the same four-key format as `default.json`, so `spa pool-grades --weights fixtures/weights/tuned.json` and `spa deck-pick --weights` both read it.

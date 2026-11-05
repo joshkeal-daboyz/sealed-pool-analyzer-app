@@ -11,7 +11,7 @@ import spa.core.cards.ScryfallSetFetcher
 /**
  * The `spa` command line: `analyze`, `validate-brief`, `fetch-set`, `winrates`, `grade-backtest`,
  * `grade-packet`, `grade-import`, `grades`, `themes`, `pool-grades`, `deck-pick`, `fixing`,
- * `tags-packet`, and `tags-import`.
+ * `tags-packet`, `tags-import`, `synergy-table`, and `synergy`.
  */
 object Main {
     /** The text `spa --help` prints. */
@@ -85,6 +85,16 @@ object Main {
         |  tags-import <code> --packet <dir> --provenance <text> [--data <dir>]
         |      Check a tagger's response files in the pass-2 packet <dir> and write
         |      <data>/tags/<code>.json. Writes nothing on any problem.
+        |  synergy-table --set <code> [--min <score>] [--data <dir>]
+        |      Print every pair of cards of the set's tag file <data>/tags/<code>.json, each card
+        |      with itself included, scoring at least --min (default 1), highest first: the score,
+        |      its axis and partner parts, and the two cards. The last line counts the pairs, the
+        |      nonzero pairs and diagonal, and gives the maximum.
+        |  synergy <pool-file> --set <code> --pair <XY> [--weights <file>] [--data <dir>]
+        |      For each pool card castable in the pair, highest first, print its tag synergy part,
+        |      its syn with the rest of the pool, the e of a typical pool, its quantity and name,
+        |      then a line naming its strongest partners in the pool. The weight comes from
+        |      --weights, else <data>/weights/tag-synergy.json.
         |
         |<data> defaults to ${DataDir.DEFAULT}. Exit codes: 0 ok, 1 error, 2 bad command line.
         |Run 'spa --help' for this text.
