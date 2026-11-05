@@ -1,0 +1,305 @@
+{
+  "set": "trk",
+  "checks": [
+    {
+      "id": "automatons-with-itself",
+      "owner": "Andromedan Automatons are a great example of a card that synergizes with itself.",
+      "added": "2026-11-05",
+      "status": "independent",
+      "kind": "pair",
+      "a": "trk/2",
+      "b": "trk/2",
+      "min": 1
+    },
+    {
+      "id": "enters-with-beam-me-up",
+      "owner": "Creatures with ETBs should be recognized as synergizing with \"beam me up\".",
+      "added": "2026-11-05",
+      "status": "independent",
+      "kind": "groups",
+      "share": 0.5,
+      "min": 1,
+      "listRule": "groupA: creatures (front face) whose rules text, reminder text removed, has \"When(ever) this creature enters\" or \"When(ever) <a capitalised name> enters\"; groupB: cards with Beam me up on any face. Built from card text only, never from tags.",
+      "groupA": [
+        {
+          "id": "trk/2",
+          "name": "Andromedan Automatons"
+        },
+        {
+          "id": "trk/4",
+          "name": "Assembly Specialist"
+        },
+        {
+          "id": "trk/14",
+          "name": "Dr. McCoy, Surly Surgeon"
+        },
+        {
+          "id": "trk/15",
+          "name": "Emergency Medical Hologram"
+        },
+        {
+          "id": "trk/16",
+          "name": "Excalbian Gamemaster"
+        },
+        {
+          "id": "trk/17",
+          "name": "Federation Field Medic"
+        },
+        {
+          "id": "trk/19",
+          "name": "Free Borg Revolutionaries"
+        },
+        {
+          "id": "trk/20",
+          "name": "Ghost of Illyria"
+        },
+        {
+          "id": "trk/24",
+          "name": "Miles O'Brien, Transporter Ops"
+        },
+        {
+          "id": "trk/32",
+          "name": "Rutherford, Upgraded Ensign"
+        },
+        {
+          "id": "trk/33",
+          "name": "Saavik, Stoic Student"
+        },
+        {
+          "id": "trk/45",
+          "name": "Vexing Drone"
+        },
+        {
+          "id": "trk/50",
+          "name": "Cloistered Telepath"
+        },
+        {
+          "id": "trk/55",
+          "name": "Emergency Holographic Crew"
+        },
+        {
+          "id": "trk/57",
+          "name": "Ensign Pavel Chekov"
+        },
+        {
+          "id": "trk/59",
+          "name": "Federation Probe"
+        },
+        {
+          "id": "trk/61",
+          "name": "Gwyndala, the Progeny"
+        },
+        {
+          "id": "trk/64",
+          "name": "Hoshi Sato, Exolinguist"
+        },
+        {
+          "id": "trk/66",
+          "name": "Interstellar Effigy"
+        },
+        {
+          "id": "trk/82",
+          "name": "Subcommander T'Pol"
+        },
+        {
+          "id": "trk/87",
+          "name": "V'Ger, the Intruder"
+        },
+        {
+          "id": "trk/89",
+          "name": "Wesley Crusher, Starfleet Cadet"
+        },
+        {
+          "id": "trk/96",
+          "name": "Blastoneuron"
+        },
+        {
+          "id": "trk/97",
+          "name": "Cha'DIch Investigator"
+        },
+        {
+          "id": "trk/100",
+          "name": "Commander Raffi Musiker"
+        },
+        {
+          "id": "trk/101",
+          "name": "D'Ghor Bloodletter"
+        },
+        {
+          "id": "trk/107",
+          "name": "Fugitive Listener"
+        },
+        {
+          "id": "trk/119",
+          "name": "Khan, Vengeful Heart"
+        },
+        {
+          "id": "trk/126",
+          "name": "Rogue Artificial Intelligence"
+        },
+        {
+          "id": "trk/127",
+          "name": "Salt Vampire"
+        },
+        {
+          "id": "trk/142",
+          "name": "Captain James T. Kirk"
+        },
+        {
+          "id": "trk/146",
+          "name": "Dahar Master"
+        },
+        {
+          "id": "trk/155",
+          "name": "Khan, Despot by Design"
+        },
+        {
+          "id": "trk/165",
+          "name": "Q, Stacking the Deck"
+        },
+        {
+          "id": "trk/172",
+          "name": "Silicate Surveyor"
+        },
+        {
+          "id": "trk/180",
+          "name": "Worf, Intelligence Contractor"
+        },
+        {
+          "id": "trk/186",
+          "name": "Captain Jonathan Archer"
+        },
+        {
+          "id": "trk/189",
+          "name": "Cold-Blooded Crew"
+        },
+        {
+          "id": "trk/194",
+          "name": "Dominion Assault Force"
+        },
+        {
+          "id": "trk/195",
+          "name": "Dominion Supervisor"
+        },
+        {
+          "id": "trk/197",
+          "name": "Dr. Leonard \"Bones\" McCoy"
+        },
+        {
+          "id": "trk/201",
+          "name": "Holo-Engineer"
+        },
+        {
+          "id": "trk/202",
+          "name": "Hologram Stalker"
+        },
+        {
+          "id": "trk/209",
+          "name": "Neelix, Moral Support"
+        },
+        {
+          "id": "trk/211",
+          "name": "Rok-Tahk, Budding Scientist"
+        },
+        {
+          "id": "trk/212",
+          "name": "Saru, Unthreatened"
+        },
+        {
+          "id": "trk/214",
+          "name": "Species 8472"
+        },
+        {
+          "id": "trk/217",
+          "name": "Sylvia Tilly, Joy of Discovery"
+        },
+        {
+          "id": "trk/219",
+          "name": "Temporal Conqueror"
+        },
+        {
+          "id": "trk/230",
+          "name": "Constable Odo"
+        },
+        {
+          "id": "trk/232",
+          "name": "Daniels, Temporal Agent"
+        },
+        {
+          "id": "trk/234",
+          "name": "The Doctor, EMH"
+        },
+        {
+          "id": "trk/246",
+          "name": "Lore, Positronic Provocateur"
+        },
+        {
+          "id": "trk/253",
+          "name": "Spock, Always Your Friend"
+        },
+        {
+          "id": "trk/258",
+          "name": "Zero, Incorporeal Sensate"
+        },
+        {
+          "id": "trk/261",
+          "name": "Crystalline Entity"
+        },
+        {
+          "id": "trk/262",
+          "name": "Cybernetic Specialist"
+        },
+        {
+          "id": "sds/14",
+          "name": "Rishkar, Peema Renegade"
+        },
+        {
+          "id": "sds/20",
+          "name": "Ertai Resurrected"
+        }
+      ],
+      "groupB": [
+        {
+          "id": "trk/18",
+          "name": "Federation Resupply"
+        },
+        {
+          "id": "trk/31",
+          "name": "Pure Energy"
+        },
+        {
+          "id": "trk/40",
+          "name": "There's Coffee in that Nebula"
+        },
+        {
+          "id": "trk/56",
+          "name": "Energize"
+        },
+        {
+          "id": "trk/76",
+          "name": "Open Communications"
+        },
+        {
+          "id": "trk/123",
+          "name": "Pattern Buffer Preservation"
+        },
+        {
+          "id": "trk/139",
+          "name": "Boarding Action"
+        },
+        {
+          "id": "trk/178",
+          "name": "Transporter Malfunction"
+        },
+        {
+          "id": "trk/182",
+          "name": "Adversary by Algorithm"
+        },
+        {
+          "id": "trk/198",
+          "name": "Final Frontier"
+        }
+      ]
+    }
+  ]
+}

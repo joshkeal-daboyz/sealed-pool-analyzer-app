@@ -150,3 +150,8 @@ The owner answered on 2026-11-05: "Approve all except 2 and 5. Agents are going 
   - hob: 15 axes, 188 cards, 585 roles, 382 partners, 4 untagged; 106,567 and 155,636 tokens.
   - fra: 14 axes, 280 cards, 825 roles, 833 partners, 6 untagged; 127,130 and 196,305 tokens.
   - Weekly Fable allowance 26% to 33%; all four sets together, 22% to 33%.
+- 2026-11-05 Architect: the owner's checks were scored on the committed trk tags by an independent script, before SPA-050's command exists:
+  - Andromedan Automatons with itself scores 3 (Fable named it its own partner): pass.
+  - 524 of the 590 pairs of the 59 creatures with their own enters trigger and the 10 beam me up cards score above 0 (share 0.888, mean 1.70): pass.
+
+  The enters list is 59 cards, not 57; the first count missed names written with a period. Both checks stay `independent`, because nothing was changed after seeing them.
