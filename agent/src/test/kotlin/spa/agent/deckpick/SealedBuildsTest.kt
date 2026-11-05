@@ -72,6 +72,22 @@ class SealedBuildsTest {
     }
 
     @Test
+    fun `the bucket is checked before the colours`() {
+        // Inspector: d2/0 (weak) as WUB and d3/0 (blank bucket) as W fail both the bucket check
+        // and the colour check; each counts under the bucket check, which runs first.
+        val lines = String(bytes(), Charsets.UTF_8).lines()
+        val weakThree = lines.single { it.startsWith("XYZ,Sealed,d2,0,") }.replace(",WU,", ",WUB,")
+        val blankOne = lines.single { it.startsWith("XYZ,Sealed,d3,0,") }.replace(",WU,", ",W,")
+        val csv = listOf(lines.first(), weakThree, blankOne).joinToString("\n")
+
+        val skipped = SealedBuilds.read(ByteArrayInputStream(csv.toByteArray()), resolve).skipped
+
+        assertEquals(1, skipped[SkipReason.WEAK])
+        assertEquals(1, skipped[SkipReason.NO_BUCKET])
+        assertEquals(0, skipped[SkipReason.COLOURS])
+    }
+
+    @Test
     fun `a build holds every card with a deck or sideboard copy`() {
         val build = selection().builds.first()
 
