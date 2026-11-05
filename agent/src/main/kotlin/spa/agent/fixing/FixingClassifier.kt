@@ -1,0 +1,38 @@
+package spa.agent.fixing
+
+import spa.agent.grader.GradingPool
+import spa.core.cards.Card
+import spa.core.cards.CardIndex
+import spa.core.text.Color
+
+/**
+ * A fixing card: the [kinds] of fixing it has and the [colours] they can supply, their union, in
+ * WUBRG order.
+ */
+data class CardFixing(val card: Card, val kinds: List<FixingKind>, val colours: List<Color>) {
+    /** True when the card's front face is a land. */
+    val isLand: Boolean
+        get() = card.isLand
+}
+
+/**
+ * Classes cards as fixing by [rules]. A card gets a rule's kind when the rule matches any of its
+ * faces (with reminder text removed), and its colours are the union over its kinds. The classifier
+ * knows nothing of any one rule: adding, removing or changing a rule touches only [rules].
+ */
+class FixingClassifier(val rules: List<FixingRule> = DEFAULT_RULES) {
+    /** The card's fixing, or null when no rule matches it. */
+    fun classify(card: Card): CardFixing? = null // TODO SPA-042
+
+    /** Every fixing card in [index]'s sealed pool ([GradingPool]), sorted by name. */
+    fun setFixing(index: CardIndex): List<CardFixing> = emptyList() // TODO SPA-042
+
+    /** The distinct kinds [rules] can give, sorted by name. */
+    val kinds: List<FixingKind>
+        get() = rules.map { it.kind }.distinct().sorted()
+
+    companion object {
+        /** The rules G-005 deliverable 1 names. */
+        val DEFAULT_RULES: List<FixingRule> = listOf(CyclingRule, ManaRule, SearchRule, TreasureRule)
+    }
+}
