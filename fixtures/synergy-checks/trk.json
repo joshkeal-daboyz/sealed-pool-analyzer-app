@@ -300,6 +300,1010 @@
           "name": "Final Frontier"
         }
       ]
+    },
+    {
+      "id": "lands-with-landfall",
+      "owner": "Lands should have synergy with landfall cards.",
+      "added": "2026-11-05",
+      "status": "independent",
+      "kind": "groups",
+      "share": 0.5,
+      "min": 1,
+      "listRule": "groupA: cards whose front face is a Land (basics are not in the pool); groupB: cards with Landfall or \"whenever a land / one or more lands (you control) enter(s)\". Card text only.",
+      "groupA": [
+        {
+          "id": "trk/275",
+          "name": "Andoria"
+        },
+        {
+          "id": "trk/276",
+          "name": "Artificial Anomaly"
+        },
+        {
+          "id": "trk/277",
+          "name": "Bajor"
+        },
+        {
+          "id": "trk/278",
+          "name": "Blood Crypt"
+        },
+        {
+          "id": "trk/279",
+          "name": "Breeding Pool"
+        },
+        {
+          "id": "trk/280",
+          "name": "Cardassia Prime"
+        },
+        {
+          "id": "trk/281",
+          "name": "Earth, Sector 001"
+        },
+        {
+          "id": "trk/282",
+          "name": "Federation Outpost"
+        },
+        {
+          "id": "trk/283",
+          "name": "Ferenginar"
+        },
+        {
+          "id": "trk/284",
+          "name": "Gaseous Anomaly"
+        },
+        {
+          "id": "trk/285",
+          "name": "Godless Shrine"
+        },
+        {
+          "id": "trk/286",
+          "name": "Hallowed Fountain"
+        },
+        {
+          "id": "trk/287",
+          "name": "Ni'Var Science Academy"
+        },
+        {
+          "id": "trk/288",
+          "name": "Orion"
+        },
+        {
+          "id": "trk/289",
+          "name": "Overgrown Tomb"
+        },
+        {
+          "id": "trk/290",
+          "name": "Q Continuum"
+        },
+        {
+          "id": "trk/291",
+          "name": "Qo'noS"
+        },
+        {
+          "id": "trk/292",
+          "name": "Quark's Bar"
+        },
+        {
+          "id": "trk/293",
+          "name": "Risa"
+        },
+        {
+          "id": "trk/294",
+          "name": "Romulus"
+        },
+        {
+          "id": "trk/295",
+          "name": "Sacred Foundry"
+        },
+        {
+          "id": "trk/296",
+          "name": "Spatial Anomaly"
+        },
+        {
+          "id": "trk/297",
+          "name": "Starfleet Academy"
+        },
+        {
+          "id": "trk/298",
+          "name": "Steam Vents"
+        },
+        {
+          "id": "trk/299",
+          "name": "Stomping Ground"
+        },
+        {
+          "id": "trk/300",
+          "name": "Subspace Anomaly"
+        },
+        {
+          "id": "trk/301",
+          "name": "Temple Garden"
+        },
+        {
+          "id": "trk/302",
+          "name": "Temporal Anomaly"
+        },
+        {
+          "id": "trk/303",
+          "name": "Unexplored Territory"
+        },
+        {
+          "id": "trk/304",
+          "name": "The Unicomplex"
+        },
+        {
+          "id": "trk/305",
+          "name": "Vulcan"
+        },
+        {
+          "id": "trk/306",
+          "name": "Watery Grave"
+        },
+        {
+          "id": "sds/27",
+          "name": "Minamo, School at Water's Edge"
+        },
+        {
+          "id": "sds/28",
+          "name": "Talon Gates of Madara"
+        },
+        {
+          "id": "sds/29",
+          "name": "Phyrexian Tower"
+        },
+        {
+          "id": "sds/30",
+          "name": "Shizo, Death's Storehouse"
+        }
+      ],
+      "groupB": [
+        {
+          "id": "trk/143",
+          "name": "Captain Michael Burnham"
+        },
+        {
+          "id": "trk/150",
+          "name": "Exploratory Mission"
+        },
+        {
+          "id": "trk/163",
+          "name": "Planetary Patrol"
+        },
+        {
+          "id": "trk/205",
+          "name": "Jake Sisko, War Correspondent"
+        },
+        {
+          "id": "trk/213",
+          "name": "Saurian Explorer"
+        },
+        {
+          "id": "trk/218",
+          "name": "Syndicate Liquidators"
+        },
+        {
+          "id": "trk/225",
+          "name": "Xindi Surveyors"
+        },
+        {
+          "id": "trk/229",
+          "name": "Cleveland Booker, Empath"
+        },
+        {
+          "id": "trk/231",
+          "name": "Dal R'El, Augment Orphan"
+        },
+        {
+          "id": "sds/15",
+          "name": "Bristly Bill, Spine Sower"
+        },
+        {
+          "id": "sds/17",
+          "name": "Tatyova, Benthic Druid"
+        }
+      ]
+    },
+    {
+      "id": "lands-with-land-mechanics",
+      "owner": "Lands also have synergy with the sets unique land mechanics.",
+      "added": "2026-11-05",
+      "status": "independent",
+      "kind": "groups",
+      "share": 0.5,
+      "min": 1,
+      "listRule": "groupA: cards whose front face is a Land; groupB: cards mentioning differently named lands or Strange new worlds (trk's own land mechanic). Card text only.",
+      "groupA": [
+        {
+          "id": "trk/275",
+          "name": "Andoria"
+        },
+        {
+          "id": "trk/276",
+          "name": "Artificial Anomaly"
+        },
+        {
+          "id": "trk/277",
+          "name": "Bajor"
+        },
+        {
+          "id": "trk/278",
+          "name": "Blood Crypt"
+        },
+        {
+          "id": "trk/279",
+          "name": "Breeding Pool"
+        },
+        {
+          "id": "trk/280",
+          "name": "Cardassia Prime"
+        },
+        {
+          "id": "trk/281",
+          "name": "Earth, Sector 001"
+        },
+        {
+          "id": "trk/282",
+          "name": "Federation Outpost"
+        },
+        {
+          "id": "trk/283",
+          "name": "Ferenginar"
+        },
+        {
+          "id": "trk/284",
+          "name": "Gaseous Anomaly"
+        },
+        {
+          "id": "trk/285",
+          "name": "Godless Shrine"
+        },
+        {
+          "id": "trk/286",
+          "name": "Hallowed Fountain"
+        },
+        {
+          "id": "trk/287",
+          "name": "Ni'Var Science Academy"
+        },
+        {
+          "id": "trk/288",
+          "name": "Orion"
+        },
+        {
+          "id": "trk/289",
+          "name": "Overgrown Tomb"
+        },
+        {
+          "id": "trk/290",
+          "name": "Q Continuum"
+        },
+        {
+          "id": "trk/291",
+          "name": "Qo'noS"
+        },
+        {
+          "id": "trk/292",
+          "name": "Quark's Bar"
+        },
+        {
+          "id": "trk/293",
+          "name": "Risa"
+        },
+        {
+          "id": "trk/294",
+          "name": "Romulus"
+        },
+        {
+          "id": "trk/295",
+          "name": "Sacred Foundry"
+        },
+        {
+          "id": "trk/296",
+          "name": "Spatial Anomaly"
+        },
+        {
+          "id": "trk/297",
+          "name": "Starfleet Academy"
+        },
+        {
+          "id": "trk/298",
+          "name": "Steam Vents"
+        },
+        {
+          "id": "trk/299",
+          "name": "Stomping Ground"
+        },
+        {
+          "id": "trk/300",
+          "name": "Subspace Anomaly"
+        },
+        {
+          "id": "trk/301",
+          "name": "Temple Garden"
+        },
+        {
+          "id": "trk/302",
+          "name": "Temporal Anomaly"
+        },
+        {
+          "id": "trk/303",
+          "name": "Unexplored Territory"
+        },
+        {
+          "id": "trk/304",
+          "name": "The Unicomplex"
+        },
+        {
+          "id": "trk/305",
+          "name": "Vulcan"
+        },
+        {
+          "id": "trk/306",
+          "name": "Watery Grave"
+        },
+        {
+          "id": "sds/27",
+          "name": "Minamo, School at Water's Edge"
+        },
+        {
+          "id": "sds/28",
+          "name": "Talon Gates of Madara"
+        },
+        {
+          "id": "sds/29",
+          "name": "Phyrexian Tower"
+        },
+        {
+          "id": "sds/30",
+          "name": "Shizo, Death's Storehouse"
+        }
+      ],
+      "groupB": [
+        {
+          "id": "trk/16",
+          "name": "Excalbian Gamemaster"
+        },
+        {
+          "id": "trk/49",
+          "name": "Cloak and Phaser"
+        },
+        {
+          "id": "trk/53",
+          "name": "Deep Space Scan"
+        },
+        {
+          "id": "trk/57",
+          "name": "Ensign Pavel Chekov"
+        },
+        {
+          "id": "trk/80",
+          "name": "Seven of Nine, Unassimilated"
+        },
+        {
+          "id": "trk/84",
+          "name": "Suus Mahna Practitioner"
+        },
+        {
+          "id": "trk/103",
+          "name": "The Destruction of Praxis"
+        },
+        {
+          "id": "trk/160",
+          "name": "Pah-Wraith"
+        },
+        {
+          "id": "trk/184",
+          "name": "Astute Terraformer"
+        },
+        {
+          "id": "trk/185",
+          "name": "Branching Timeline"
+        },
+        {
+          "id": "trk/188",
+          "name": "Captain Pike, Fullness of Time"
+        },
+        {
+          "id": "trk/214",
+          "name": "Species 8472"
+        },
+        {
+          "id": "trk/223",
+          "name": "Warp Speed"
+        },
+        {
+          "id": "trk/254",
+          "name": "The Traveler"
+        }
+      ]
+    },
+    {
+      "id": "moopsy-with-death-payoffs",
+      "owner": "Moopsy should have synergy with cards that care about creatures dying.",
+      "added": "2026-11-05",
+      "status": "independent",
+      "kind": "groups",
+      "share": 0.5,
+      "min": 1,
+      "listRule": "groupA: Moopsy; groupB: cards with \"whenever a/another/one or more ... creature(s) ... die(s)\". Card text only.",
+      "groupA": [
+        {
+          "id": "trk/207",
+          "name": "Moopsy"
+        }
+      ],
+      "groupB": [
+        {
+          "id": "trk/95",
+          "name": "Battle-Scarred Survivalist"
+        },
+        {
+          "id": "trk/112",
+          "name": "Grand Nagus Zek"
+        },
+        {
+          "id": "trk/136",
+          "name": "Vengeance Mission"
+        },
+        {
+          "id": "trk/170",
+          "name": "Sarcophagus, Ship of the Dead"
+        },
+        {
+          "id": "trk/237",
+          "name": "Gowron, Eager for Battle"
+        }
+      ]
+    },
+    {
+      "id": "legendary-permanents-with-legendary-payoffs",
+      "owner": "Star Trek has loads of legendary permanents.",
+      "added": "2026-11-05",
+      "status": "independent",
+      "kind": "groups",
+      "share": 0.5,
+      "min": 1,
+      "listRule": "groupA: legendary permanents (front face Legendary, not instant or sorcery), 130 cards; groupB: the cards whose text rewards or acts on your legendary permanents, picked by hand from the 9 that mention \"legendary\" other than in their own name (cards that only create a legendary token were left out): Sisay, Weatherlight Captain; Captain Sisay; Minamo, School at Water's Edge; Shizo, Death's Storehouse. All four are sds bonus-sheet cards.",
+      "groupA": [
+        {
+          "id": "trk/5",
+          "name": "Brad Boimler, Eager Ensign"
+        },
+        {
+          "id": "trk/6",
+          "name": "Captain Benjamin Sisko"
+        },
+        {
+          "id": "trk/7",
+          "name": "Captain Jean-Luc Picard"
+        },
+        {
+          "id": "trk/11",
+          "name": "Deanna Troi, Psychic Counsel"
+        },
+        {
+          "id": "trk/13",
+          "name": "Dr. Beverly Crusher"
+        },
+        {
+          "id": "trk/14",
+          "name": "Dr. McCoy, Surly Surgeon"
+        },
+        {
+          "id": "trk/21",
+          "name": "Hologram Janeway"
+        },
+        {
+          "id": "trk/24",
+          "name": "Miles O'Brien, Transporter Ops"
+        },
+        {
+          "id": "trk/29",
+          "name": "Picard, Leading by Example"
+        },
+        {
+          "id": "trk/32",
+          "name": "Rutherford, Upgraded Ensign"
+        },
+        {
+          "id": "trk/33",
+          "name": "Saavik, Stoic Student"
+        },
+        {
+          "id": "trk/37",
+          "name": "Sulu, Space Swashbuckler"
+        },
+        {
+          "id": "trk/42",
+          "name": "Una Chin-Riley, Number One"
+        },
+        {
+          "id": "trk/43",
+          "name": "U.S.S. Enterprise-A, Free Spirit"
+        },
+        {
+          "id": "trk/44",
+          "name": "U.S.S. Excelsior, Cutting Edge"
+        },
+        {
+          "id": "trk/47",
+          "name": "The Caretaker"
+        },
+        {
+          "id": "trk/52",
+          "name": "Data, New Life"
+        },
+        {
+          "id": "trk/57",
+          "name": "Ensign Pavel Chekov"
+        },
+        {
+          "id": "trk/58",
+          "name": "Enterprise NX-01"
+        },
+        {
+          "id": "trk/61",
+          "name": "Gwyndala, the Progeny"
+        },
+        {
+          "id": "trk/63",
+          "name": "H.M.S. Bounty, Unlikely Timeship"
+        },
+        {
+          "id": "trk/64",
+          "name": "Hoshi Sato, Exolinguist"
+        },
+        {
+          "id": "trk/67",
+          "name": "Jett Reno, Problem Solver"
+        },
+        {
+          "id": "trk/69",
+          "name": "Lieutenant Commander Data"
+        },
+        {
+          "id": "trk/70",
+          "name": "Lt. Cmdr. Geordi La Forge"
+        },
+        {
+          "id": "trk/74",
+          "name": "Mr. Spock, Science Officer"
+        },
+        {
+          "id": "trk/75",
+          "name": "Nyota Uhura, Communications"
+        },
+        {
+          "id": "trk/79",
+          "name": "Scotty, Miracle Worker"
+        },
+        {
+          "id": "trk/80",
+          "name": "Seven of Nine, Unassimilated"
+        },
+        {
+          "id": "trk/82",
+          "name": "Subcommander T'Pol"
+        },
+        {
+          "id": "trk/87",
+          "name": "V'Ger, the Intruder"
+        },
+        {
+          "id": "trk/89",
+          "name": "Wesley Crusher, Starfleet Cadet"
+        },
+        {
+          "id": "trk/90",
+          "name": "Zefram Cochrane, Warp Pioneer"
+        },
+        {
+          "id": "trk/91",
+          "name": "Armus, Skin of Evil"
+        },
+        {
+          "id": "trk/100",
+          "name": "Commander Raffi Musiker"
+        },
+        {
+          "id": "trk/106",
+          "name": "Elim Garak, Simple Tailor"
+        },
+        {
+          "id": "trk/108",
+          "name": "Gabriel Lorca, Mirror Menace"
+        },
+        {
+          "id": "trk/109",
+          "name": "General Chang, Cold Warrior"
+        },
+        {
+          "id": "trk/110",
+          "name": "Georgiou, Terran Emperor"
+        },
+        {
+          "id": "trk/112",
+          "name": "Grand Nagus Zek"
+        },
+        {
+          "id": "trk/113",
+          "name": "Gul Dukat, Colonial Prefect"
+        },
+        {
+          "id": "trk/118",
+          "name": "Kai Winn, Faithless Leader"
+        },
+        {
+          "id": "trk/119",
+          "name": "Khan, Vengeful Heart"
+        },
+        {
+          "id": "trk/128",
+          "name": "Sela, Tal Shiar Paradox"
+        },
+        {
+          "id": "trk/135",
+          "name": "U.S.S. Reliant, From Hell's Heart"
+        },
+        {
+          "id": "trk/138",
+          "name": "Beckett Mariner, Impetuous Ensign"
+        },
+        {
+          "id": "trk/142",
+          "name": "Captain James T. Kirk"
+        },
+        {
+          "id": "trk/143",
+          "name": "Captain Michael Burnham"
+        },
+        {
+          "id": "trk/149",
+          "name": "Erica Ortegas, Plucky Pilot"
+        },
+        {
+          "id": "trk/155",
+          "name": "Khan, Despot by Design"
+        },
+        {
+          "id": "trk/156",
+          "name": "La'An Noonien-Singh, Security"
+        },
+        {
+          "id": "trk/157",
+          "name": "Lwaxana Troi, Charming Guest"
+        },
+        {
+          "id": "trk/165",
+          "name": "Q, Stacking the Deck"
+        },
+        {
+          "id": "trk/166",
+          "name": "Quark, Humble Proprietor"
+        },
+        {
+          "id": "trk/170",
+          "name": "Sarcophagus, Ship of the Dead"
+        },
+        {
+          "id": "trk/176",
+          "name": "Tasha Yar, Out of Time"
+        },
+        {
+          "id": "trk/179",
+          "name": "Will Riker, First in the Field"
+        },
+        {
+          "id": "trk/180",
+          "name": "Worf, Intelligence Contractor"
+        },
+        {
+          "id": "trk/186",
+          "name": "Captain Jonathan Archer"
+        },
+        {
+          "id": "trk/187",
+          "name": "Captain Kathryn Janeway"
+        },
+        {
+          "id": "trk/188",
+          "name": "Captain Pike, Fullness of Time"
+        },
+        {
+          "id": "trk/191",
+          "name": "Culber and Stamets, Star-Crossed"
+        },
+        {
+          "id": "trk/193",
+          "name": "David and Carol Marcus, Creators"
+        },
+        {
+          "id": "trk/196",
+          "name": "Dr. Joseph M'Benga"
+        },
+        {
+          "id": "trk/197",
+          "name": "Dr. Leonard \"Bones\" McCoy"
+        },
+        {
+          "id": "trk/200",
+          "name": "Genesis Device"
+        },
+        {
+          "id": "trk/204",
+          "name": "Jadzia Dax, Living Legacy"
+        },
+        {
+          "id": "trk/205",
+          "name": "Jake Sisko, War Correspondent"
+        },
+        {
+          "id": "trk/209",
+          "name": "Neelix, Moral Support"
+        },
+        {
+          "id": "trk/211",
+          "name": "Rok-Tahk, Budding Scientist"
+        },
+        {
+          "id": "trk/212",
+          "name": "Saru, Unthreatened"
+        },
+        {
+          "id": "trk/217",
+          "name": "Sylvia Tilly, Joy of Discovery"
+        },
+        {
+          "id": "trk/221",
+          "name": "U.S.S. Discovery, at Black Alert"
+        },
+        {
+          "id": "trk/222",
+          "name": "U.S.S. Voyager, Lone Wanderer"
+        },
+        {
+          "id": "trk/229",
+          "name": "Cleveland Booker, Empath"
+        },
+        {
+          "id": "trk/230",
+          "name": "Constable Odo"
+        },
+        {
+          "id": "trk/231",
+          "name": "Dal R'El, Augment Orphan"
+        },
+        {
+          "id": "trk/232",
+          "name": "Daniels, Temporal Agent"
+        },
+        {
+          "id": "trk/233",
+          "name": "Dathon, His Heart Open"
+        },
+        {
+          "id": "trk/234",
+          "name": "The Doctor, EMH"
+        },
+        {
+          "id": "trk/235",
+          "name": "The Duras Sisters"
+        },
+        {
+          "id": "trk/236",
+          "name": "D'Vana Tendi, Optimistic Ensign"
+        },
+        {
+          "id": "trk/237",
+          "name": "Gowron, Eager for Battle"
+        },
+        {
+          "id": "trk/238",
+          "name": "Gray and Adira, Forever Joined"
+        },
+        {
+          "id": "trk/239",
+          "name": "Hemmer, Fixing What Is Broken"
+        },
+        {
+          "id": "trk/242",
+          "name": "Kira Nerys, Firebrand"
+        },
+        {
+          "id": "trk/243",
+          "name": "Kirk, Commanding Officer"
+        },
+        {
+          "id": "trk/245",
+          "name": "Locutus, the One Who Speaks"
+        },
+        {
+          "id": "trk/246",
+          "name": "Lore, Positronic Provocateur"
+        },
+        {
+          "id": "trk/247",
+          "name": "L'Rell, Fierce Visionary"
+        },
+        {
+          "id": "trk/249",
+          "name": "Nog, Ambitious Cadet"
+        },
+        {
+          "id": "trk/250",
+          "name": "Phlox, Unorthodox Doctor"
+        },
+        {
+          "id": "trk/251",
+          "name": "Sarek, Federation Ambassador"
+        },
+        {
+          "id": "trk/252",
+          "name": "Seven of Nine"
+        },
+        {
+          "id": "trk/253",
+          "name": "Spock, Always Your Friend"
+        },
+        {
+          "id": "trk/254",
+          "name": "The Traveler"
+        },
+        {
+          "id": "trk/255",
+          "name": "Vash, Freelance Archaeologist"
+        },
+        {
+          "id": "trk/256",
+          "name": "Worf, Honor-Bound Warrior"
+        },
+        {
+          "id": "trk/258",
+          "name": "Zero, Incorporeal Sensate"
+        },
+        {
+          "id": "trk/263",
+          "name": "Deep Space 9"
+        },
+        {
+          "id": "trk/265",
+          "name": "The Holodeck"
+        },
+        {
+          "id": "trk/272",
+          "name": "U.S.S. Cerritos, Following Up"
+        },
+        {
+          "id": "trk/273",
+          "name": "U.S.S. Enterprise-D, Galaxy-Class"
+        },
+        {
+          "id": "trk/297",
+          "name": "Starfleet Academy"
+        },
+        {
+          "id": "sds/1",
+          "name": "Mikaeus, the Lunarch"
+        },
+        {
+          "id": "sds/3",
+          "name": "Kenrith, the Returned King"
+        },
+        {
+          "id": "sds/4",
+          "name": "Sisay, Weatherlight Captain"
+        },
+        {
+          "id": "sds/5",
+          "name": "Thada Adel, Acquisitor"
+        },
+        {
+          "id": "sds/6",
+          "name": "Empress Galina"
+        },
+        {
+          "id": "sds/7",
+          "name": "Arcum Dagsson"
+        },
+        {
+          "id": "sds/8",
+          "name": "Bruvac the Grandiloquent"
+        },
+        {
+          "id": "sds/10",
+          "name": "Drivnod, Carnage Dominus"
+        },
+        {
+          "id": "sds/11",
+          "name": "Sheoldred, the Apocalypse"
+        },
+        {
+          "id": "sds/12",
+          "name": "Torbran, Thane of Red Fell"
+        },
+        {
+          "id": "sds/13",
+          "name": "Loot, Exuberant Explorer"
+        },
+        {
+          "id": "sds/14",
+          "name": "Rishkar, Peema Renegade"
+        },
+        {
+          "id": "sds/15",
+          "name": "Bristly Bill, Spine Sower"
+        },
+        {
+          "id": "sds/16",
+          "name": "Sen Triplets"
+        },
+        {
+          "id": "sds/17",
+          "name": "Tatyova, Benthic Druid"
+        },
+        {
+          "id": "sds/19",
+          "name": "Isshin, Two Heavens as One"
+        },
+        {
+          "id": "sds/20",
+          "name": "Ertai Resurrected"
+        },
+        {
+          "id": "sds/21",
+          "name": "Jhoira, Weatherlight Captain"
+        },
+        {
+          "id": "sds/22",
+          "name": "Captain Sisay"
+        },
+        {
+          "id": "sds/23",
+          "name": "Riku of Many Paths"
+        },
+        {
+          "id": "sds/24",
+          "name": "Prosper, Tome-Bound"
+        },
+        {
+          "id": "sds/25",
+          "name": "Stella Lee, Wild Card"
+        },
+        {
+          "id": "sds/26",
+          "name": "Mogis, God of Slaughter"
+        },
+        {
+          "id": "sds/27",
+          "name": "Minamo, School at Water's Edge"
+        },
+        {
+          "id": "sds/29",
+          "name": "Phyrexian Tower"
+        },
+        {
+          "id": "sds/30",
+          "name": "Shizo, Death's Storehouse"
+        }
+      ],
+      "groupB": [
+        {
+          "id": "sds/4",
+          "name": "Sisay, Weatherlight Captain"
+        },
+        {
+          "id": "sds/22",
+          "name": "Captain Sisay"
+        },
+        {
+          "id": "sds/27",
+          "name": "Minamo, School at Water's Edge"
+        },
+        {
+          "id": "sds/30",
+          "name": "Shizo, Death's Storehouse"
+        }
+      ]
     }
   ]
 }
