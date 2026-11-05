@@ -70,6 +70,15 @@ cli/build/install/spa/bin/spa winrates ~/Downloads/game_data_public.MSH.PremierD
 cli/build/install/spa/bin/spa grade-backtest --set msh
 ```
 
+**grade-packet** writes the blind grading packet for a set's sealed pool (the set and its companions, basic lands excluded, one entry per distinct card) into `--out <dir>`: `instructions.md` (the grading prompt, `agent/src/main/resources/spa/agent/grader/prompt-v1.md`, then the set's format brief and a description of the files), `response.schema.json`, and `cards-01.json`, `cards-02.json`, ... with 50 cards each in collector order. Each card is `{ id, name, manaCost, typeLine, rarity, oracleText, power, toughness }`, with `id` as `<set>/<collector number>` and the faces of a multi-face card joined with ` // `. The packet holds no win rates. The same inputs always give the same bytes; earlier packet files in `<dir>` are replaced and response files are kept. It prints the card and file counts and exits 0.
+
+**grade-import** reads the packet in `--responses <dir>` and the grader's `cards-NN.response.json` beside each card file, each a JSON array of `{ "id", "score", "confidence" }`. It checks that every card id is graded exactly once, that no id is unknown, that every score is 0.0 to 5.0 in steps of 0.5 and every confidence is 0 to 1, and writes `<data>/grades/<code>.json`, a grade file with source `MODEL` and the given `--provenance`. On any problem it prints one line per problem, naming the file and the card, writes nothing, and exits 1. `fixtures/grades/README.md` describes the grading run. Neither command calls a model.
+
+```bash
+cli/build/install/spa/bin/spa grade-packet msh --out ../grading/msh
+cli/build/install/spa/bin/spa grade-import msh --responses ../grading/msh --provenance "claude-fable-5-1 via Claude Code, prompt v1, 2026-11-05"
+```
+
 ## Android app
 
 The `app` module builds the Android app, a debug APK signed with the build machine's debug key. It needs the JDK and the Android SDK in [Toolchain](#toolchain).

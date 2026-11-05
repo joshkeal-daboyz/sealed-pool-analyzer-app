@@ -9,8 +9,8 @@ import spa.core.cards.HttpClientTransport
 import spa.core.cards.ScryfallSetFetcher
 
 /**
- * The `spa` command line: `analyze`, `validate-brief`, `fetch-set`, `winrates`, and
- * `grade-backtest`.
+ * The `spa` command line: `analyze`, `validate-brief`, `fetch-set`, `winrates`, `grade-backtest`,
+ * `grade-packet`, and `grade-import`.
  */
 object Main {
     /** The text `spa --help` prints. */
@@ -33,6 +33,12 @@ object Main {
         |      Print the Spearman rank correlation between a model grade file (default
         |      <data>/grades/<code>.json) and a win-rate grade file (default
         |      <data>/winrates/<code>.json), over all cards and by rarity.
+        |  grade-packet <code> --out <dir> [--data <dir>]
+        |      Write the blind grading packet for the set's sealed pool into <dir>: instructions,
+        |      the format brief, the cards in files of 50, and the response schema.
+        |  grade-import <code> --responses <dir> --provenance <text> [--data <dir>]
+        |      Check a grader's response files in the packet directory <dir> and write
+        |      <data>/grades/<code>.json with source MODEL. Writes nothing on any problem.
         |
         |<data> defaults to ${DataDir.DEFAULT}. Exit codes: 0 ok, 1 error, 2 bad command line.
         |Run 'spa --help' for this text.
@@ -74,6 +80,8 @@ object Main {
                 "fetch-set" -> FetchSetCommand(fetcher).run(rest, stdout)
                 "winrates" -> WinratesCommand().run(rest, stdout)
                 "grade-backtest" -> GradeBacktestCommand.run(rest, stdout)
+                "grade-packet" -> GradePacketCommand.run(rest, stdout)
+                "grade-import" -> GradeImportCommand().run(rest, stdout, stderr)
                 null -> usageError("no command given", stderr)
                 else -> usageError("unknown command '$command'", stderr)
             }
