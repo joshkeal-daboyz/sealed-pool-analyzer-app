@@ -79,24 +79,34 @@ object Main {
             return ExitCode.OK
         }
         return try {
-            when (command) {
-                "analyze" -> AnalyzeCommand.run(rest, stdout, stderr)
-                "validate-brief" -> ValidateBriefCommand.run(rest, stdout, stderr)
-                "fetch-set" -> FetchSetCommand(fetcher).run(rest, stdout)
-                "winrates" -> WinratesCommand().run(rest, stdout)
-                "grade-backtest" -> GradeBacktestCommand.run(rest, stdout)
-                "grade-packet" -> GradePacketCommand.run(rest, stdout)
-                "grade-import" -> GradeImportCommand().run(rest, stdout, stderr)
-                "grades" -> GradesCommand.run(rest, stdout, stderr)
-                null -> usageError("no command given", stderr)
-                else -> usageError("unknown command '$command'", stderr)
-            }
+            dispatch(command, rest, stdout, stderr, fetcher)
         } catch (e: CliFailure) {
             stderr.println("spa: ${e.message}")
             if (e.exitCode == ExitCode.USAGE) stderr.println("Run 'spa --help' for usage.")
             e.exitCode
         }
     }
+
+    /** Runs [command] on [rest]; an absent or unknown command is a usage error. */
+    private fun dispatch(
+        command: String?,
+        rest: List<String>,
+        stdout: PrintStream,
+        stderr: PrintStream,
+        fetcher: () -> ScryfallSetFetcher,
+    ): Int =
+        when (command) {
+            "analyze" -> AnalyzeCommand.run(rest, stdout, stderr)
+            "validate-brief" -> ValidateBriefCommand.run(rest, stdout, stderr)
+            "fetch-set" -> FetchSetCommand(fetcher).run(rest, stdout)
+            "winrates" -> WinratesCommand().run(rest, stdout)
+            "grade-backtest" -> GradeBacktestCommand.run(rest, stdout)
+            "grade-packet" -> GradePacketCommand.run(rest, stdout)
+            "grade-import" -> GradeImportCommand().run(rest, stdout, stderr)
+            "grades" -> GradesCommand.run(rest, stdout, stderr)
+            null -> usageError("no command given", stderr)
+            else -> usageError("unknown command '$command'", stderr)
+        }
 
     private fun usageError(message: String, stderr: PrintStream): Int {
         stderr.println("spa: $message")
