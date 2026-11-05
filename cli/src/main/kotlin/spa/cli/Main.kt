@@ -184,6 +184,8 @@ object Main {
             "fixing" to { a, out, err -> FixingCommand.run(a, out, err) },
             "tags-packet" to { a, out, err -> TagsPacketCommand.run(a, out, err) },
             "tags-import" to { a, out, err -> TagsImportCommand().run(a, out, err) },
+            "tags-review-packet" to { a, out, err -> TagsReviewPacketCommand.run(a, out, err) },
+            "tags-review-import" to { a, out, err -> TagsReviewImportCommand().run(a, out, err) },
             "synergy-table" to { a, out, err -> SynergyTableCommand.run(a, out, err) },
             "synergy" to { a, out, err -> SynergyCommand.run(a, out, err) },
             "synergy-check" to { a, out, err -> SynergyCheckCommand.run(a, out, err) },

@@ -33,8 +33,38 @@ data class TagCard(
 )
 
 /**
+ * One correction a review applied (SPA-052): the card [id], the [action] (`add-role`, ...), the
+ * fields the action takes ([axis], [role], [partner], [strength]; null when it takes none), and the
+ * reviewer's one-line [reason].
+ */
+@Serializable
+data class TagCorrection(
+    val id: String,
+    val action: String,
+    val axis: String? = null,
+    val role: String? = null,
+    val partner: String? = null,
+    val strength: Int? = null,
+    val reason: String,
+)
+
+/**
+ * The review pass's record in a tag file (SPA-052): the review's [provenance], the number of
+ * applied corrections by action ([counts], in the actions' order), and every applied correction in
+ * the order it was applied.
+ */
+@Serializable
+data class TagReview(
+    val provenance: String,
+    val counts: Map<String, Int>,
+    val corrections: List<TagCorrection>,
+)
+
+/**
  * A set's synergy tag file, `fixtures/tags/<code>.json`: the [set] code, the [provenance] (model,
- * prompt version and date), the set's [axes], and every sealed-pool card's tags in collector order.
+ * prompt version and date), the set's [axes], every sealed-pool card's tags in collector order,
+ * and, once `spa tags-review-import` has run, the [review] (null, and absent from the file,
+ * before).
  */
 @Serializable
 data class TagFile(
@@ -42,4 +72,5 @@ data class TagFile(
     val provenance: String,
     val axes: List<Axis>,
     val cards: List<TagCard>,
+    val review: TagReview? = null,
 )

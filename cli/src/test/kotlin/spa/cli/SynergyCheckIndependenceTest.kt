@@ -58,6 +58,7 @@ class SynergyCheckIndependenceTest {
         val axesPacket = temp.resolve("axes")
         val rolesPacket = temp.resolve("roles")
         val gradePacket = temp.resolve("grades")
+        val reviewPacket = temp.resolve("review")
         val axes = TagFiles.read(Fixtures.root.resolve("tags/trk.json")).axes
         val axesFile =
             writeFile(
@@ -98,9 +99,18 @@ class SynergyCheckIndependenceTest {
                     "--data",
                     Fixtures.data,
                 ),
+                // SPA-052: the review packet, built from the committed trk tag file.
+                runCli(
+                    "tags-review-packet",
+                    "trk",
+                    "--out",
+                    reviewPacket.toString(),
+                    "--data",
+                    Fixtures.data,
+                ),
             )
         runs.forEach { assertEquals(ExitCode.OK, it.exit, it.stderr) }
-        return listOf(axesPacket, rolesPacket, gradePacket)
+        return listOf(axesPacket, rolesPacket, gradePacket, reviewPacket)
     }
 
     private fun q(text: String) = Json.encodeToString(String.serializer(), text)
@@ -147,7 +157,13 @@ class SynergyCheckIndependenceTest {
 
         assertTrue(
             found.first.containsAll(
-                listOf("prompt-v1.md", "prompt-v2.md", "tags-axes-v1.md", "tags-roles-v1.md")
+                listOf(
+                    "prompt-v1.md",
+                    "prompt-v2.md",
+                    "tags-axes-v1.md",
+                    "tags-roles-v1.md",
+                    "tags-review-v1.md",
+                )
             ),
             "${found.first}",
         )
