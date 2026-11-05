@@ -34,7 +34,11 @@ The owner asked for this goal on 2026-11-05 ("Go ahead and start five"), right a
    - **Land count:** the builder's land count is within one of the player's.
 
    It also reports the same numbers for a baseline builder that uses set grades alone and two-colour pairs only.
-7. **Synergy judgement by a model** (Decided 4). A Fable agent reads one pool's cards in one colour set and names the synergy groups it sees, each naming the pool's cards that make it work. The builder turns each named group into a score bonus. It is measured on a sample of held-out builds, against the builder without it.
+7. **Synergy tags for every card in the set** (owner, 2026-11-05; replaces the per-pool synergy agent of Decided 4). Once per set, Fable reads the whole set, blind, as in G-003's grading, in two passes:
+   - **The set's synergy axes.** It names the set's synergy axes from the cards themselves (for example: sacrifice, tokens, +1/+1 counters, artifacts, spells cast, Spacecraft and Station, a tribe), each with a one-line definition.
+   - **Card roles.** It tags each card with its role on each axis it touches: an **enabler** (it supplies the thing), a **payoff** (it rewards having the thing), or both, each with a strength of 1 to 3.
+
+   The tags are validated by `spa tags-import` (every card exactly once, only the set's own axes) and committed as `fixtures/tags/<code>.json`, with the model, prompt version and date. A deterministic synergy part then scores a deck's payoffs by the enablers it plays, and its enablers by the payoffs, against what a typical pool of the set offers. It is pluggable and weighted like every other part. Because the tags are a file, synergy works offline on the phone, costs nothing per pool, and is measured over every backtest build, not a sample. `trk` is tagged before any 17Lands `trk` data exists, so its later test stays blind.
 8. **The Star Trek grade sheet page** gets a "Decks" view: paste a pool, see the ranked decks (Decided 1). The Architect updates it; it is not a repo ticket.
 
 ## Goal-level acceptance criteria
@@ -46,7 +50,7 @@ The owner asked for this goal on 2026-11-05 ("Go ahead and start five"), right a
 5. **Fixing pinned.** For each of `msh`, `hob`, `fra` and `trk`, the fixing class of every sealed-pool card equals an independent script's, and a test pins five named cards per set, including at least one basic landcycler where the set has one.
 6. **Tuned and held out.** The builder's penalties, bonuses and land rules are tuned on `msh` and `hob` only, then frozen and measured on `fra`. The tuning and the held-out result are recorded in the goal file.
 7. **Targets on `fra`** (Decided 2). Over all strong builds: colour agreement 50% or more, top-three rate 80% or more, main-deck overlap 16 or more of the player's nonland cards on average, land count within one 85% or more of the time. On builds with three or more main colours, colour agreement 35% or more. The builder beats the two-colour, set-grades baseline on main-deck overlap overall and on colour agreement for three-colour builds. A miss goes to the owner with the numbers, as in G-003 and G-004.
-8. **Synergy agent, measured.** On a fixed sample of held-out `fra` builds, main-deck overlap with the synergy bonus is reported against the builder without it. The bonus ships switched on only if it helps. Each finding names only cards in the pool; the import step drops any finding that names a card the pool lacks.
+8. **Synergy tags, measured.** Tag files for `msh`, `hob`, `fra` and `trk` are committed and validate. The `trk` file is dated before the first 17Lands `trk` data file's `Last-Modified`, and the tagging packet holds no win-rate or review text. The synergy part's weight is tuned on `msh` and `hob`. On held-out `fra`, the deck backtest reports main-deck overlap and colour agreement with the part on against off. It ships switched on only if it helps.
 9. **Usage.** Each Fable run records its tokens and the weekly Fable percentage before and after.
 
 ## Constraints
@@ -58,7 +62,7 @@ The owner asked for this goal on 2026-11-05 ("Go ahead and start five"), right a
   - Each part writes its own reason line, so a new part explains itself with no change to the printer.
   - The deck backtest runs any weights file, so a change is measured against the last one with one command.
   - A test proves the seam: a test-only part, added to the list, changes the score and prints its reason with no other code change.
-- **Deterministic before probabilistic.** Fixing tags, the builder, mana and backtest are code. The only model step is the synergy agent, on the subscription (G-003 Decided 5), with no API key, through recorded files as in G-003's grading.
+- **Deterministic before probabilistic.** Fixing tags, the builder, mana and backtest are code. The only model step is tagging each set once, on the subscription (G-003 Decided 5), with no API key, through recorded files as in G-003's grading.
 - **No tuning on the test.** `msh` and `hob` are for tuning; `fra` is held out; `trk` is held out for everything (SPA-040's data, when it comes).
 - **Every set is different** (owner, 2026-11-04). Land counts, creature targets, curve shape and how much fixing a set has come from each set's own data, never from fixed numbers that suit one set. `hob` builds are mostly two colours and `fra` builds are often three; the builder must learn that from the pools, not from a set flag.
 - **17Lands public datasets only.** Downloads stay out of the repository.
@@ -68,7 +72,7 @@ The owner asked for this goal on 2026-11-05 ("Go ahead and start five"), right a
 
 - The brief prunes ten pairs to three using analysis-agent findings, then builds. Here the builder builds every colour configuration (it is search, and fast) and ranks them by deck score. The analysis agents can shape that ranking later.
 - The brief builds "one candidate per pair plus a second variant when a splash is viable". Here splashes and three- and four-colour decks are configurations in their own right (owner, 2026-11-05).
-- The brief's Synergy Detector reads parsed keywords. G-004 showed that counting them lowers deck-pick accuracy, so here it is a model reading the cards, measured before it is used.
+- The brief's Synergy Detector reads parsed keywords. G-004 showed that counting them lowers deck-pick accuracy: a keyword can't tell a card that makes tokens from one that rewards them. Here a model reads each card once per set and tags its role, and code scores synergy from those tags, measured before it is used.
 
 ## Out of scope for this goal
 
@@ -76,7 +80,7 @@ The Red Team, the Sideboard Planner's swap plans, the Judge, and the Explainer's
 
 ## Metrics to report when the goal closes
 
-The same as G-004, plus: the deck-backtest numbers on `fra`, overall and by deck shape, for the builder and for the baseline; the synergy agent's sample result and its Fable usage; and the time `spa build` takes on a pool.
+The same as G-004, plus: the deck-backtest numbers on `fra`, overall and by deck shape, for the builder and for the baseline; the synergy part on against off, and the tagging runs' Fable usage; and the time `spa build` takes on a pool.
 
 ## Decided
 
@@ -85,7 +89,7 @@ The owner answered on 2026-11-05: "Approve all except 2 and 5. Agents are going 
 1. **Where you see the decks.** Approved default: the command line plus a "Decks" view on the Star Trek grade sheet page. The phone app gets the deck screens with the Arena-inspired redesign, in a later goal.
 2. **Targets on `fra`.** The default (pair agreement 60%, top-three 90%, overlap 17, land count 90%) assumed two-colour decks, and the owner did not approve it. The Architect re-derived it for decks of any colour count (criterion 7): colour agreement 50%, top-three 80%, overlap 16, land count within one 85%, colour agreement 35% on three-or-more-colour builds, and beating the two-colour baseline. The bars are lower than the draft's because matching the exact colour set among two, three and four colours, with or without a splash, is harder than matching one of ten pairs. The owner may set other numbers; until then these stand.
 3. **Land count.** Approved default, widened for more colours: 17 lands with 23 spells, 16 with 24 when the deck's mean mana value is at or below a cutoff, and 18 with 22 allowed for decks of three or more colours. The cutoffs are tuned on `msh` and `hob`.
-4. **Synergy agent in this goal.** Approved default: yes, as the last ticket, run on 60 held-out `fra` builds (about 60 Fable calls on the subscription), and kept only if it raises main-deck overlap.
+4. **Synergy agent in this goal.** Approved default: yes, run on 60 held-out `fra` builds and kept only if it helps. **Changed by the owner the same day:** "I think that perhaps you should apply tagging to cards in the set, so that way the tags can be leveraged to identify synergy." Synergy now comes from per-set role tags made once by Fable (deliverable 7, criterion 8), not from a model call per pool. That is cheaper (four set runs instead of a call per pool), works offline on the phone, and is measured on every build.
 5. **Splashes and more colours.** The default (two colours only) was not approved. Decided by the owner: the builder must build splash, three-colour and four-colour decks when the two-colour pairs are weak, and basic landcycling and colour fixing are valued more when a deck needs them (deliverables 1, 3 and 4).
 
 ## Architect notes (2026-11-05)
@@ -100,6 +104,8 @@ The owner answered on 2026-11-05: "Approve all except 2 and 5. Agents are going 
   - SPA-044: the builder and mana for a given colour set, with pluggable deck parts.
   - SPA-045: colour configurations, ranking and `spa build`.
   - SPA-046: the deck backtest and tuning, held out on `fra`.
-  - SPA-047: the synergy agent.
+  - SPA-047: synergy tags, meaning the tagging packet, `spa tags-import` and the tag schema. Then the Architect's Fable runs on the four sets, `trk` first, before 17Lands publishes its data (expected around 2026-11-20).
+  - SPA-048: the synergy deck part from the tags, tuned on `msh` and `hob`, measured on `fra`.
+- SPA-047 can run before the builder: it needs only the set caches. It goes right after SPA-042, so `trk` is tagged in time.
 
   The Architect completes each ticket, with script-pinned numbers, before dispatching it.
