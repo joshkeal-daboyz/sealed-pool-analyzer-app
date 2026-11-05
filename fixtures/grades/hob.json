@@ -1,0 +1,1326 @@
+{
+  "header": {
+    "setCode": "hob",
+    "source": "MODEL",
+    "provenance": "claude-fable-5-1 via Claude Code, prompt v1, 2026-11-04",
+    "createdAt": "2026-11-05T00:57:34Z"
+  },
+  "grades": [
+    {
+      "name": "Long-Bodied Grey Dog",
+      "collectorNumber": "1",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Old Thrush",
+      "collectorNumber": "2",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Troop of Ponies",
+      "collectorNumber": "3",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Belladonna Took",
+      "collectorNumber": "4",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.4
+    },
+    {
+      "name": "Bilbo's Gambit",
+      "collectorNumber": "5",
+      "setCode": "hob",
+      "score": 1.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Bofur, Reliable Guardian // Concerted Care",
+      "collectorNumber": "6",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Celebrate the Mountain-king",
+      "collectorNumber": "7",
+      "setCode": "hob",
+      "score": 4.0,
+      "confidence": 0.85
+    },
+    {
+      "name": "Dáin, Lord of the Iron Hills",
+      "collectorNumber": "8",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Dwarven Provisioner",
+      "collectorNumber": "9",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Dwarven Shortsword",
+      "collectorNumber": "10",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Eagle of the Great Shelf",
+      "collectorNumber": "11",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "The Eagles Are Coming!",
+      "collectorNumber": "12",
+      "setCode": "hob",
+      "score": 3.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Esgaroth Garrison",
+      "collectorNumber": "13",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Fíli the Pathfinder",
+      "collectorNumber": "14",
+      "setCode": "hob",
+      "score": 3.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Gleaming Splendor",
+      "collectorNumber": "15",
+      "setCode": "hob",
+      "score": 1.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Iron Hills Blacksmith",
+      "collectorNumber": "16",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Kíli the Resourceful",
+      "collectorNumber": "17",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Lake-town Lookout",
+      "collectorNumber": "18",
+      "setCode": "hob",
+      "score": 1.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Lake-town Toymaker",
+      "collectorNumber": "19",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Magnificent End",
+      "collectorNumber": "20",
+      "setCode": "hob",
+      "score": 4.0,
+      "confidence": 0.85
+    },
+    {
+      "name": "Moment of Glory",
+      "collectorNumber": "21",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "The Mountain-king's Return",
+      "collectorNumber": "22",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Ori, Keeper of Songs",
+      "collectorNumber": "23",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "The Queen of Dale",
+      "collectorNumber": "24",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Roads Go Ever, Ever On",
+      "collectorNumber": "25",
+      "setCode": "hob",
+      "score": 1.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Settle the Wreckage",
+      "collectorNumber": "26",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Stone by Sunlight",
+      "collectorNumber": "27",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Thorin's Last Stand",
+      "collectorNumber": "28",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "An Unexpected Party // At the Door",
+      "collectorNumber": "29",
+      "setCode": "hob",
+      "score": 4.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Velvetwing Butterflies // Gaze in Wonder",
+      "collectorNumber": "30",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Vow to Erebor",
+      "collectorNumber": "31",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Bilbo, Luckwearer // Burglar's Plot",
+      "collectorNumber": "32",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Bilbo, Thief in the Night",
+      "collectorNumber": "33",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.4
+    },
+    {
+      "name": "Bilbo Baggins, Burglar // Take a Glance",
+      "collectorNumber": "34",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Confusticate and Bebother",
+      "collectorNumber": "35",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Elrond, Moon-Reader",
+      "collectorNumber": "36",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Elven Raft-Steerer",
+      "collectorNumber": "37",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Elvenking's Harper",
+      "collectorNumber": "38",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Enchanted River's Grasp",
+      "collectorNumber": "39",
+      "setCode": "hob",
+      "score": 3.5,
+      "confidence": 0.75
+    },
+    {
+      "name": "Fateful Discovery",
+      "collectorNumber": "40",
+      "setCode": "hob",
+      "score": 1.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Gandalf, Wandering Wizard",
+      "collectorNumber": "41",
+      "setCode": "hob",
+      "score": 3.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Great Gilded Boat",
+      "collectorNumber": "42",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Lakeshore Apothecary",
+      "collectorNumber": "43",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Lake-town Mariners // Gone Fishing",
+      "collectorNumber": "44",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Long Lake Nuisance",
+      "collectorNumber": "45",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "The Lord of the Eagles",
+      "collectorNumber": "46",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Master's Councillors",
+      "collectorNumber": "47",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Mirkwood Meditator",
+      "collectorNumber": "48",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Most Decrepit Old Bird // Speak Secrets",
+      "collectorNumber": "49",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Old Fat Spider Can't See Me",
+      "collectorNumber": "50",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Plunder the Trollshaws",
+      "collectorNumber": "51",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Ravenhill Flock",
+      "collectorNumber": "52",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Riddles in the Dark",
+      "collectorNumber": "53",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Roll-Roll-Roll-Roll",
+      "collectorNumber": "54",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.4
+    },
+    {
+      "name": "Sound the Trumpets",
+      "collectorNumber": "55",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Thranduil's Decree",
+      "collectorNumber": "56",
+      "setCode": "hob",
+      "score": 1.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Uncover the Moon-Letters",
+      "collectorNumber": "57",
+      "setCode": "hob",
+      "score": 1.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Uneasy Partings",
+      "collectorNumber": "58",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Wizard's Staff",
+      "collectorNumber": "59",
+      "setCode": "hob",
+      "score": 1.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Along the Crooked Way",
+      "collectorNumber": "60",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Azog, Moria's Ruin",
+      "collectorNumber": "61",
+      "setCode": "hob",
+      "score": 3.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Bilbo's Deadly Slice",
+      "collectorNumber": "62",
+      "setCode": "hob",
+      "score": 4.0,
+      "confidence": 0.9
+    },
+    {
+      "name": "Crude Bent Blade",
+      "collectorNumber": "63",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Desolation Prowler",
+      "collectorNumber": "64",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Down, Down to Goblin-town",
+      "collectorNumber": "65",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Dreaded Bat-Cloud",
+      "collectorNumber": "66",
+      "setCode": "hob",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Front Porch Sentries",
+      "collectorNumber": "67",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Gathering of Darkness",
+      "collectorNumber": "68",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Gnashing of Teeth",
+      "collectorNumber": "69",
+      "setCode": "hob",
+      "score": 4.0,
+      "confidence": 0.85
+    },
+    {
+      "name": "Gollum, Riddle Master",
+      "collectorNumber": "70",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Gollum, Silent Slinker // Meager Meal",
+      "collectorNumber": "71",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Gollum the Abandoned",
+      "collectorNumber": "72",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Great Fierce Bee",
+      "collectorNumber": "73",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Great Ugly-Looking Goblin // Clap! Snap!",
+      "collectorNumber": "74",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Head of the Hunt",
+      "collectorNumber": "75",
+      "setCode": "hob",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Inside Information",
+      "collectorNumber": "76",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.4
+    },
+    {
+      "name": "The Master of Lake-town",
+      "collectorNumber": "77",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Nighthowl Pursuer",
+      "collectorNumber": "78",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Rage into the Valley",
+      "collectorNumber": "79",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Ravening Warg",
+      "collectorNumber": "80",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Reverent Howl",
+      "collectorNumber": "81",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Rhovanion Rampager",
+      "collectorNumber": "82",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "The Sackville-Bagginses",
+      "collectorNumber": "83",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Stir Up Trouble",
+      "collectorNumber": "84",
+      "setCode": "hob",
+      "score": 3.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Stony-Voiced Goblins",
+      "collectorNumber": "85",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Supper for Spiders",
+      "collectorNumber": "86",
+      "setCode": "hob",
+      "score": 1.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Balin, Loremaster",
+      "collectorNumber": "87",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Bombur, Gentle Dreamer",
+      "collectorNumber": "88",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.4
+    },
+    {
+      "name": "Bothersome Noisemaker",
+      "collectorNumber": "89",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Burn, Burn, Tree and Fern",
+      "collectorNumber": "90",
+      "setCode": "hob",
+      "score": 3.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Dáin Ironfoot",
+      "collectorNumber": "91",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Desert Were-Worm",
+      "collectorNumber": "92",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Desolation of Smaug",
+      "collectorNumber": "93",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Dori, Bearer of Friends",
+      "collectorNumber": "94",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Dwarven Mauler",
+      "collectorNumber": "95",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Gandalf, Goblins' Bane // Flameshape",
+      "collectorNumber": "96",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Gandalf, Spark Starter",
+      "collectorNumber": "97",
+      "setCode": "hob",
+      "score": 3.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Getaway Barrel",
+      "collectorNumber": "98",
+      "setCode": "hob",
+      "score": 1.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Glóin the Mighty // Easy Pickings",
+      "collectorNumber": "99",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Goblin-town Flunkies",
+      "collectorNumber": "100",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Gundabad Opportunist",
+      "collectorNumber": "101",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Iron Hills Stalwart",
+      "collectorNumber": "102",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Last Light of Durin's Day",
+      "collectorNumber": "103",
+      "setCode": "hob",
+      "score": 1.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "The Misty Mountains Cold",
+      "collectorNumber": "104",
+      "setCode": "hob",
+      "score": 3.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Misty Mountains Raider",
+      "collectorNumber": "105",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Óin the Brave",
+      "collectorNumber": "106",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Pinecone Strike",
+      "collectorNumber": "107",
+      "setCode": "hob",
+      "score": 3.5,
+      "confidence": 0.85
+    },
+    {
+      "name": "Ragged Short Spear",
+      "collectorNumber": "108",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Smaug, the Great Calamity // Spew Flame",
+      "collectorNumber": "109",
+      "setCode": "hob",
+      "score": 4.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Smaug the Magnificent",
+      "collectorNumber": "110",
+      "setCode": "hob",
+      "score": 5.0,
+      "confidence": 0.9
+    },
+    {
+      "name": "Smaug's Fury",
+      "collectorNumber": "111",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Snowslope Hunter",
+      "collectorNumber": "112",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Stone-Giant of High Pass",
+      "collectorNumber": "113",
+      "setCode": "hob",
+      "score": 4.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Thorin, Mountain-king",
+      "collectorNumber": "114",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Tidings of War",
+      "collectorNumber": "115",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Attercop",
+      "collectorNumber": "116",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Bejeweled Warg",
+      "collectorNumber": "117",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Beorn, Reluctant Host // Till and Tend",
+      "collectorNumber": "118",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Beorn the Fierce",
+      "collectorNumber": "119",
+      "setCode": "hob",
+      "score": 4.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Beorn's Hospitality",
+      "collectorNumber": "120",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Boughside Wanderers",
+      "collectorNumber": "121",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Cantankerous Keepers",
+      "collectorNumber": "122",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Dancing from Dark to Dawn",
+      "collectorNumber": "123",
+      "setCode": "hob",
+      "score": 3.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Down in the Valley",
+      "collectorNumber": "124",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Galion, Elvenking's Butler",
+      "collectorNumber": "125",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Gigantic Big Bear",
+      "collectorNumber": "126",
+      "setCode": "hob",
+      "score": 4.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "Guardian of the Halls",
+      "collectorNumber": "127",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Little Bear",
+      "collectorNumber": "128",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Mirkwood Pathmaker",
+      "collectorNumber": "129",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Nasty Little Rabbit",
+      "collectorNumber": "130",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "The Notary Hobbits",
+      "collectorNumber": "131",
+      "setCode": "hob",
+      "score": 1.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Old Fat Spider",
+      "collectorNumber": "132",
+      "setCode": "hob",
+      "score": 3.5,
+      "confidence": 0.75
+    },
+    {
+      "name": "Ordinary Bear",
+      "collectorNumber": "133",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.85
+    },
+    {
+      "name": "Part in Friendship",
+      "collectorNumber": "134",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Quarrel",
+      "collectorNumber": "135",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Radagast of Rhosgobel",
+      "collectorNumber": "136",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Through the Forest Gate",
+      "collectorNumber": "137",
+      "setCode": "hob",
+      "score": 0.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Troll Negotiations",
+      "collectorNumber": "138",
+      "setCode": "hob",
+      "score": 3.5,
+      "confidence": 0.8
+    },
+    {
+      "name": "Warg Tactics",
+      "collectorNumber": "139",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Wargling",
+      "collectorNumber": "140",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Wilderland Scrounger",
+      "collectorNumber": "141",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Wood Elves",
+      "collectorNumber": "142",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Woodland Weavemaster",
+      "collectorNumber": "143",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Bard, King of Dale",
+      "collectorNumber": "144",
+      "setCode": "hob",
+      "score": 4.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Bard the Bowman",
+      "collectorNumber": "145",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "Bard's Company",
+      "collectorNumber": "146",
+      "setCode": "hob",
+      "score": 4.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Bifur, Melodic Rider",
+      "collectorNumber": "147",
+      "setCode": "hob",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Bolg of the North",
+      "collectorNumber": "148",
+      "setCode": "hob",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Bolg's Company",
+      "collectorNumber": "149",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "The Chief Warg",
+      "collectorNumber": "150",
+      "setCode": "hob",
+      "score": 3.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Chief Warg's Company",
+      "collectorNumber": "151",
+      "setCode": "hob",
+      "score": 4.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Dáin's Company",
+      "collectorNumber": "152",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Duskwatch Hunter",
+      "collectorNumber": "153",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.75
+    },
+    {
+      "name": "Dwalin, Weaponmaster",
+      "collectorNumber": "154",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Eagle's Rescue",
+      "collectorNumber": "155",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Fearsome Goblin Pair",
+      "collectorNumber": "156",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Goblin Plate Mail",
+      "collectorNumber": "157",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "The Great Goblin",
+      "collectorNumber": "158",
+      "setCode": "hob",
+      "score": 3.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Large Bear",
+      "collectorNumber": "159",
+      "setCode": "hob",
+      "score": 3.5,
+      "confidence": 0.85
+    },
+    {
+      "name": "Mirkwood Nurturer",
+      "collectorNumber": "160",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.65
+    },
+    {
+      "name": "Nori, Teller of Tales",
+      "collectorNumber": "161",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.75
+    },
+    {
+      "name": "Patient Instructor",
+      "collectorNumber": "162",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.75
+    },
+    {
+      "name": "Silvan Reveler",
+      "collectorNumber": "163",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Smaug, Wicked Worm",
+      "collectorNumber": "164",
+      "setCode": "hob",
+      "score": 4.0,
+      "confidence": 0.8
+    },
+    {
+      "name": "Thorin Oakenshield",
+      "collectorNumber": "165",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Thranduil, Sindarin Liege // Silvan Rally",
+      "collectorNumber": "166",
+      "setCode": "hob",
+      "score": 3.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Thranduil, the Elvenking",
+      "collectorNumber": "167",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Thranduil's Company",
+      "collectorNumber": "168",
+      "setCode": "hob",
+      "score": 3.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Tom, Bert, and William",
+      "collectorNumber": "169",
+      "setCode": "hob",
+      "score": 3.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "The Arkenstone // Seek the Heart",
+      "collectorNumber": "170",
+      "setCode": "hob",
+      "score": 4.0,
+      "confidence": 0.75
+    },
+    {
+      "name": "The Black Arrow",
+      "collectorNumber": "171",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Dwarven Mattock",
+      "collectorNumber": "172",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Giant's Boulder",
+      "collectorNumber": "173",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Glamdring, Foe-hammer // Gleam of Death",
+      "collectorNumber": "174",
+      "setCode": "hob",
+      "score": 1.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Key to the Side-Door",
+      "collectorNumber": "175",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.5
+    },
+    {
+      "name": "My Precious // Allure of Power",
+      "collectorNumber": "176",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.5
+    },
+    {
+      "name": "Orcrist, Goblin-cleaver",
+      "collectorNumber": "177",
+      "setCode": "hob",
+      "score": 3.5,
+      "confidence": 0.7
+    },
+    {
+      "name": "Sting, Bilbo's Sword",
+      "collectorNumber": "178",
+      "setCode": "hob",
+      "score": 3.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Thrór's Map",
+      "collectorNumber": "179",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.6
+    },
+    {
+      "name": "Well-Worn Spatula",
+      "collectorNumber": "180",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Elven Passage",
+      "collectorNumber": "181",
+      "setCode": "hob",
+      "score": 1.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Elvenking's Halls",
+      "collectorNumber": "182",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Goblin-town",
+      "collectorNumber": "183",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Hobbit Hole",
+      "collectorNumber": "184",
+      "setCode": "hob",
+      "score": 1.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Iron Hills",
+      "collectorNumber": "185",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "Lake-town",
+      "collectorNumber": "186",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.7
+    },
+    {
+      "name": "The Lonely Mountain",
+      "collectorNumber": "187",
+      "setCode": "hob",
+      "score": 2.5,
+      "confidence": 0.6
+    },
+    {
+      "name": "Mirkwood",
+      "collectorNumber": "188",
+      "setCode": "hob",
+      "score": 2.0,
+      "confidence": 0.7
+    }
+  ]
+}
