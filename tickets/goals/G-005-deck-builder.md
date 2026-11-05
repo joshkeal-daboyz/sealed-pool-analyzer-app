@@ -126,13 +126,17 @@ The owner answered on 2026-11-05: "Approve all except 2 and 5. Agents are going 
 - 2026-11-05 Owner's tagging examples (Star Trek): "Andromedan Automatons are a great example of a card that synergizes with itself." "Creatures with ETBs should be recognized as synergizing with 'beam me up'." Checked against the cards:
   - Andromedan Automatons' enters ability searches for "any number of cards named Andromedan Automatons".
   - Beam me up (10 cards in trk) is cast from the graveyard by returning a creature you control to its owner's hand. That replays a creature's enters ability, and trk has 57 creatures with one.
-  - Prompt v1 (SPA-047) covers the first only loosely ("a card may name itself") and the second not at all. It reads synergy through shared axes, and nothing tells it that returning a creature to hand rewards enters abilities.
-- SPA-050, before any tagging run: prompt v2 for both passes, as new resource files, with v2 the default. It adds two general rules, worded for any set, not for trk:
-  - mechanics interact across axes: effects that return, blink or copy your creatures reward creatures with enters or leaves abilities, and graveyard casting rewards self-mill;
-  - a card that refers to its own name (searching for, counting or boosting cards with its name) is its own partner, strength 3.
-- SPA-048 also adds a deterministic self-partner rule, so the pair table never depends on Fable noticing: a card whose rules text names itself, outside "this" and reminder text, gets a self-pair score from the weights file.
-- The trk tagging run is checked against both examples before it is committed:
-  - Andromedan Automatons must be its own partner;
-  - the run must have an axis for beam me up (or for returning creatures), with most of the 57 enters-ability creatures tagged on it.
+- Owner, the same day: "I don't want you to add these examples to the pipeline, I want these to be leveraged as independent tests to ensure synergy is working properly." So:
+  - the tagging prompt stays v1 as written in SPA-047, with no rule drawn from these examples;
+  - no self-name rule goes into the code;
+  - the examples become **owner synergy checks**: a held-out test of the tags and the pair table that Fable never sees.
+- SPA-050 (after SPA-048): `fixtures/synergy-checks/<code>.json` holds the owner's checks, and `spa synergy-check --set <code>` reports each check as pass or fail, with its numbers. The first file, `trk`, holds two checks:
+  - **Andromedan Automatons with itself:** its self-pair score in the table is above 0.
+  - **Enters abilities with beam me up:** over every pair of one of trk's 57 creatures with an enters ability and one of its 10 beam me up cards, more than half score above 0. Both card lists are frozen in the check file, made by a script from the card text, so the check does not depend on any tagging rule.
 
-  A miss means a prompt fix and a rerun, not a commit.
+  New examples from the owner are added as new checks in the same file.
+- **Keeping them independent.** No check file, card list or check wording goes into a packet, a prompt or a scoring rule. If a check fails:
+  - the Architect reports it to the owner with the numbers;
+  - any fix is a general change to the prompt or the formula, made without looking at which pairs failed, and the owner approves it;
+  - after a fix, the failed check has been used once and is marked "seen". Only checks the fix never saw still count as independent.
+- Checks run on the committed `trk` tags as soon as SPA-048 merges, and the result goes in this file.
