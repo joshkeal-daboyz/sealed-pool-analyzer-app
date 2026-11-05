@@ -2,6 +2,7 @@
 
 What the Architect learned from merged tickets. One line each, newest first. Read before writing any ticket.
 
+- 2026-11-04 SPA-034: A criterion that counts a pool's entries must say what happens to entries the feature excludes by design. "All 71 entries graded" ignored the three basic lands grade files never hold. Before pinning a count, run the fixture through every rule that filters it.
 - 2026-11-04 SPA-032: Say which field a statistic reads when a file has two candidates. "Rank each list" let the Developer rank win rates by the 0.5-step score instead of `gihwr`, which would have lowered every backtest number; the Inspector caught it. Name the exact field in the criterion.
 - 2026-11-04 SPA-031: Before a criterion names an external check, fetch it and read its terms. 17Lands' card ratings endpoint had shrunk to a few days of data, and the full one is marked for use on 17Lands.com only; the public dataset was the right source all along. A ticket that adds fields to a file another ticket defined must scope that file's schema. Developers: delete a stray file with a new commit, never by rewriting a pushed branch.
 - 2026-11-04 SPA-030: Before writing a brief ticket for a set, check its Scryfall data for which color pairs have gold cards and dual lands. `hob` has five two-color factions, and the schema needs ten pairs, which cost a re-plan. Every set differs (three- and four-color factions too); the schema change is planned for the multi-set goal.
