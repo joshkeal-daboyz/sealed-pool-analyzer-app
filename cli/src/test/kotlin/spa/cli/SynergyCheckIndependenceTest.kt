@@ -59,7 +59,8 @@ class SynergyCheckIndependenceTest {
         val rolesPacket = temp.resolve("roles")
         val gradePacket = temp.resolve("grades")
         val reviewPacket = temp.resolve("review")
-        val axes = TagFiles.read(Fixtures.root.resolve("tags/trk.json")).axes
+        // The pass-2 packet is v1's, so its axes are the v1 trk axes, frozen since SPA-053.
+        val axes = TagFiles.read(Path.of(Fixtures.v1Tags("trk"))).axes
         val axesFile =
             writeFile(
                 temp,
@@ -87,7 +88,7 @@ class SynergyCheckIndependenceTest {
                     rolesPacket.toString(),
                     "--data",
                     Fixtures.data,
-                    // SPA-051 made v2 the default; trk's committed axes are v1's.
+                    // SPA-051 made v2 the default; these axes are v1's.
                     "--prompt",
                     "v1",
                 ),

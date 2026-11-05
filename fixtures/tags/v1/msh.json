@@ -1,0 +1,8331 @@
+{
+  "set": "msh",
+  "provenance": "claude-fable-5-1 via Claude Code, tags prompt v1, 2026-11-05",
+  "axes": [
+    {
+      "id": "hero-creatures",
+      "name": "Heroes",
+      "definition": "A permanent with the Hero creature type, a card that creates Hero tokens, or an effect that puts Hero creature cards onto the battlefield or into your hand."
+    },
+    {
+      "id": "villain-creatures",
+      "name": "Villains",
+      "definition": "A Villain spell or permanent, or a card that creates Villain creature tokens such as the 2/1 black menace Villain or Robot Villain tokens."
+    },
+    {
+      "id": "plus-one-counters",
+      "name": "+1/+1 counters",
+      "definition": "Any effect that puts +1/+1 counters on your creatures: power-up abilities, connive, spells and enter-the-battlefield effects that add counters, and effects that add extra counters."
+    },
+    {
+      "id": "artifacts",
+      "name": "Artifacts",
+      "definition": "Artifact permanents and artifact tokens entering under your control: artifact creatures and Robots, Equipment, Vehicles, Treasure, Clue and Food tokens, including spare artifacts to sacrifice."
+    },
+    {
+      "id": "equipment",
+      "name": "Equipment",
+      "definition": "Equipment cards and Equipment tokens, and effects that attach Equipment without paying the equip cost."
+    },
+    {
+      "id": "noncreature-spells",
+      "name": "Noncreature spells",
+      "definition": "Cheap instants, sorceries, Auras, Equipment and other noncreature spells that can be cast often on your own turn to trigger prowess and whenever-you-cast-a-noncreature-spell abilities."
+    },
+    {
+      "id": "target-own-creatures",
+      "name": "Spells targeting your creatures",
+      "definition": "An instant, sorcery, Aura or attach-on-enter Equipment that targets a creature you control: pump, protection, evasion, counters or untap effects."
+    },
+    {
+      "id": "teamwork-tapping",
+      "name": "Tap and untap",
+      "definition": "Untapped creatures with power that can be tapped for teamwork or crew, plus vigilance, effects that untap your creatures, and abilities that trigger when your creatures become tapped."
+    },
+    {
+      "id": "attacks-alone",
+      "name": "Attacks alone",
+      "definition": "Making one creature a safe solo attacker: evasion, first strike, menace, indestructible, Equipment, Auras and pump concentrated on a creature that attacks by itself."
+    },
+    {
+      "id": "second-card-draw",
+      "name": "Second card each turn",
+      "definition": "Card draw beyond the normal draw step, especially at instant speed or on the opponent's turn: connive, looting, cantrips, Clues, draw-on-enter and repeatable draw that trigger second-card and whenever-you-draw abilities."
+    },
+    {
+      "id": "graveyard-creatures",
+      "name": "Creature cards in graveyard",
+      "definition": "Putting creature cards into your graveyard: mill, surveil, connive or discard of creature cards, sacrifice outlets, cheap creatures that trade or die, and creatures with basic landcycling."
+    },
+    {
+      "id": "power-up",
+      "name": "Power-up",
+      "definition": "Permanents with power-up abilities and the mana to activate them: ramp, Treasure, mana rocks and lands that make extra mana, and cards that reduce, repeat or copy activated abilities."
+    },
+    {
+      "id": "landfall",
+      "name": "Landfall",
+      "definition": "Extra land drops and lands entering under your control: basic landcycling, land search, putting lands onto the battlefield, playing lands from the library or graveyard, and Landfall triggers."
+    }
+  ],
+  "cards": [
+    {
+      "id": "msh/1",
+      "name": "Agent 13, Sharon Carter",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "attacks-alone",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/20",
+          "strength": 2
+        },
+        {
+          "id": "msh/208",
+          "strength": 2
+        },
+        {
+          "id": "msh/36",
+          "strength": 2
+        },
+        {
+          "id": "msh/66",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/2",
+      "name": "Agent Maria Hill",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/210",
+          "strength": 3
+        },
+        {
+          "id": "msh/155",
+          "strength": 2
+        },
+        {
+          "id": "msh/15",
+          "strength": 2
+        },
+        {
+          "id": "msh/82",
+          "strength": 1
+        },
+        {
+          "id": "msh/168",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/3",
+      "name": "Agent of Atlas",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/4",
+      "name": "Agent Phil Coulson",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "hero-creatures",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/210",
+          "strength": 3
+        },
+        {
+          "id": "msh/17",
+          "strength": 2
+        },
+        {
+          "id": "msh/51",
+          "strength": 2
+        },
+        {
+          "id": "msh/187",
+          "strength": 2
+        },
+        {
+          "id": "msh/164",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "msh/5",
+      "name": "Agents of S.H.I.E.L.D.",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "attacks-alone",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/6",
+      "name": "Avengers Assemble!",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/7",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/7",
+      "name": "Borough Backup",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/27",
+          "strength": 1
+        },
+        {
+          "id": "msh/66",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/8",
+      "name": "Brave Brawler",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "power-up",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/9",
+      "name": "Captain America, Super-Soldier",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "hero-creatures",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "attacks-alone",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/244",
+          "strength": 2
+        },
+        {
+          "id": "msh/38",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/10",
+      "name": "Captain America, Wings of Freedom",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "hero-creatures",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "attacks-alone",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/244",
+          "strength": 3
+        },
+        {
+          "id": "msh/38",
+          "strength": 2
+        },
+        {
+          "id": "msh/78",
+          "strength": 2
+        },
+        {
+          "id": "msh/254",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/11",
+      "name": "Captain Marvel, Earth's Protector",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "power-up",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/12",
+      "name": "Captain Mar-Vell, Space-Born",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/13",
+      "name": "Colleen Wing, Street Samurai",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "target-own-creatures",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/39",
+          "strength": 2
+        },
+        {
+          "id": "msh/29",
+          "strength": 2
+        },
+        {
+          "id": "msh/167",
+          "strength": 1
+        },
+        {
+          "id": "msh/70",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/14",
+      "name": "Crowd of True Believers",
+      "roles": [
+        {
+          "axis": "attacks-alone",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/15",
+      "name": "Helicarrier Strike",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/2",
+          "strength": 2
+        },
+        {
+          "id": "msh/210",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/16",
+      "name": "Hero in Training",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "hero-creatures",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/17",
+      "name": "Invisible Woman, Sue Storm",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "hero-creatures",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/4",
+          "strength": 3
+        },
+        {
+          "id": "msh/195",
+          "strength": 2
+        },
+        {
+          "id": "msh/192",
+          "strength": 2
+        },
+        {
+          "id": "msh/66",
+          "strength": 2
+        },
+        {
+          "id": "msh/28",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/18",
+      "name": "Jennifer Walters // The Sensational She-Hulk",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/240",
+          "strength": 2
+        },
+        {
+          "id": "msh/149",
+          "strength": 2
+        },
+        {
+          "id": "msh/146",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/19",
+      "name": "Kree Commandos",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/20",
+      "name": "Luke Cage, Power Man",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "attacks-alone",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/1",
+          "strength": 2
+        },
+        {
+          "id": "msh/208",
+          "strength": 2
+        },
+        {
+          "id": "msh/100",
+          "strength": 1
+        },
+        {
+          "id": "msh/5",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/21",
+      "name": "The Mind Stone",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "power-up",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/27",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/22",
+      "name": "Mockingbird, Ace Agent",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "target-own-creatures",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "attacks-alone",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/39",
+          "strength": 2
+        },
+        {
+          "id": "msh/29",
+          "strength": 1
+        },
+        {
+          "id": "msh/155",
+          "strength": 1
+        },
+        {
+          "id": "msh/167",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/23",
+      "name": "Monica Rambeau // Photon, Living Light",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/24",
+      "name": "Murdock's Crusade",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/25",
+      "name": "Nick Fury, Agent of S.H.I.E.L.D.",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "power-up",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "equipment",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/246",
+          "strength": 2
+        },
+        {
+          "id": "msh/194",
+          "strength": 2
+        },
+        {
+          "id": "msh/261",
+          "strength": 2
+        },
+        {
+          "id": "msh/164",
+          "strength": 1
+        },
+        {
+          "id": "msh/274",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/26",
+      "name": "Night Nurse, Healer of Heroes",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/169",
+          "strength": 1
+        },
+        {
+          "id": "msh/218",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/27",
+      "name": "Okoye, Dora Milaje Leader",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/66",
+          "strength": 1
+        },
+        {
+          "id": "msh/7",
+          "strength": 1
+        },
+        {
+          "id": "msh/249",
+          "strength": 1
+        },
+        {
+          "id": "msh/193",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/28",
+      "name": "Origin of the Avengers",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/29",
+      "name": "Panther Pounce",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "target-own-creatures",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "attacks-alone",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/13",
+          "strength": 2
+        },
+        {
+          "id": "msh/22",
+          "strength": 2
+        },
+        {
+          "id": "msh/67",
+          "strength": 2
+        },
+        {
+          "id": "msh/138",
+          "strength": 2
+        },
+        {
+          "id": "msh/4",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/30",
+      "name": "Patriot, Shield Wielder",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "attacks-alone",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/31",
+      "name": "Political Triumph",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/179",
+          "strength": 2
+        },
+        {
+          "id": "msh/164",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/32",
+      "name": "Quake, Agent of S.H.I.E.L.D.",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/37",
+          "strength": 3
+        }
+      ]
+    },
+    {
+      "id": "msh/33",
+      "name": "Raft Security Officer",
+      "roles": [],
+      "partners": [
+        {
+          "id": "msh/37",
+          "strength": 2
+        },
+        {
+          "id": "msh/65",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/34",
+      "name": "Red Guardian, Super-Soldier",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/35",
+      "name": "The Sentry, Golden Guardian",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "attacks-alone",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/36",
+      "name": "S.H.I.E.L.D. Spy Kit",
+      "roles": [
+        {
+          "axis": "equipment",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "attacks-alone",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "attacks-alone",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/121",
+          "strength": 2
+        },
+        {
+          "id": "msh/239",
+          "strength": 2
+        },
+        {
+          "id": "msh/116",
+          "strength": 1
+        },
+        {
+          "id": "msh/38",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/37",
+      "name": "Super Villain Lockup",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/32",
+          "strength": 3
+        },
+        {
+          "id": "msh/33",
+          "strength": 2
+        },
+        {
+          "id": "msh/56",
+          "strength": 2
+        },
+        {
+          "id": "msh/84",
+          "strength": 2
+        },
+        {
+          "id": "msh/229",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/38",
+      "name": "Super-Soldier Serum",
+      "roles": [
+        {
+          "axis": "target-own-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "equipment",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "attacks-alone",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/254",
+          "strength": 3
+        },
+        {
+          "id": "msh/244",
+          "strength": 2
+        },
+        {
+          "id": "msh/248",
+          "strength": 2
+        },
+        {
+          "id": "msh/146",
+          "strength": 2
+        },
+        {
+          "id": "msh/239",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/39",
+      "name": "Take Up the Shield",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "target-own-creatures",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/13",
+          "strength": 2
+        },
+        {
+          "id": "msh/22",
+          "strength": 2
+        },
+        {
+          "id": "msh/67",
+          "strength": 2
+        },
+        {
+          "id": "msh/138",
+          "strength": 2
+        },
+        {
+          "id": "msh/63",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/40",
+      "name": "Wakandan Drone Flock",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/41",
+      "name": "Web Up",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/42",
+      "name": "White Widow, Free Agent",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/43",
+      "name": "Aerial Doombot",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "power-up",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/44",
+      "name": "A.I.M. Scientists",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/45",
+      "name": "Atlantean Cavalry",
+      "roles": [
+        {
+          "axis": "second-card-draw",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/47",
+          "strength": 2
+        },
+        {
+          "id": "msh/69",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "msh/46",
+      "name": "Atlantis Attacks",
+      "roles": [
+        {
+          "axis": "teamwork-tapping",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/151",
+          "strength": 2
+        },
+        {
+          "id": "msh/66",
+          "strength": 1
+        },
+        {
+          "id": "msh/61",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/47",
+      "name": "Attuma, Atlantean Warlord",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/69",
+          "strength": 3
+        },
+        {
+          "id": "msh/45",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "msh/48",
+      "name": "Bold Biochemist",
+      "roles": [
+        {
+          "axis": "power-up",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/49",
+      "name": "Bruce Banner // The Incredible Hulk",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/187",
+          "strength": 2
+        },
+        {
+          "id": "msh/210",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/50",
+      "name": "Depower",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/51",
+      "name": "Echo, Perceptive Prodigy",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "power-up",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/4",
+          "strength": 2
+        },
+        {
+          "id": "msh/62",
+          "strength": 2
+        },
+        {
+          "id": "msh/209",
+          "strength": 2
+        },
+        {
+          "id": "msh/196",
+          "strength": 1
+        },
+        {
+          "id": "msh/119",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/52",
+      "name": "Falcon, Winged Wonder",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/66",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/53",
+      "name": "Falcon's Wing Harness",
+      "roles": [
+        {
+          "axis": "equipment",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "target-own-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "attacks-alone",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/222",
+          "strength": 1
+        },
+        {
+          "id": "msh/121",
+          "strength": 1
+        },
+        {
+          "id": "msh/239",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/54",
+      "name": "Frozen in Ice",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/37",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/55",
+      "name": "Futurist Forge",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/223",
+          "strength": 2
+        },
+        {
+          "id": "msh/225",
+          "strength": 1
+        },
+        {
+          "id": "msh/102",
+          "strength": 1
+        },
+        {
+          "id": "msh/209",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/56",
+      "name": "Giant-Sized Flying Ant",
+      "roles": [
+        {
+          "axis": "teamwork-tapping",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/37",
+          "strength": 2
+        },
+        {
+          "id": "msh/4",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/57",
+      "name": "Hydraulic Helper",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/58",
+      "name": "I Am Iron Man",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "target-own-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/59",
+      "name": "Iron Lad, Diverging Destiny",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/60",
+      "name": "Ironheart, Clever Champion",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/243",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/61",
+      "name": "Justice, Vance Astrovik",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/97",
+          "strength": 2
+        },
+        {
+          "id": "msh/202",
+          "strength": 1
+        },
+        {
+          "id": "msh/46",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/62",
+      "name": "Kang the Conqueror",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "power-up",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/51",
+          "strength": 2
+        },
+        {
+          "id": "msh/160",
+          "strength": 2
+        },
+        {
+          "id": "msh/215",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/63",
+      "name": "Kid Loki",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/77",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "msh/64",
+      "name": "Leader, Super-Genius",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/88",
+          "strength": 2
+        },
+        {
+          "id": "msh/217",
+          "strength": 2
+        },
+        {
+          "id": "msh/104",
+          "strength": 1
+        },
+        {
+          "id": "msh/276",
+          "strength": 1
+        },
+        {
+          "id": "msh/87",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/65",
+      "name": "Loki, God of Mischief",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/33",
+          "strength": 1
+        },
+        {
+          "id": "msh/30",
+          "strength": 1
+        },
+        {
+          "id": "msh/4",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/66",
+      "name": "Mister Fantastic, Reed Richards",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/193",
+          "strength": 2
+        },
+        {
+          "id": "msh/221",
+          "strength": 2
+        },
+        {
+          "id": "msh/1",
+          "strength": 1
+        },
+        {
+          "id": "msh/27",
+          "strength": 1
+        },
+        {
+          "id": "msh/153",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/67",
+      "name": "Ms. Marvel, Kamala Khan",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "target-own-creatures",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/39",
+          "strength": 2
+        },
+        {
+          "id": "msh/29",
+          "strength": 2
+        },
+        {
+          "id": "msh/70",
+          "strength": 2
+        },
+        {
+          "id": "msh/167",
+          "strength": 1
+        },
+        {
+          "id": "msh/125",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/68",
+      "name": "Multiversal Incursion",
+      "roles": [],
+      "partners": [
+        {
+          "id": "msh/66",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/69",
+      "name": "Namor the Sub-Mariner",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/47",
+          "strength": 3
+        },
+        {
+          "id": "msh/45",
+          "strength": 1
+        },
+        {
+          "id": "msh/79",
+          "strength": 1
+        },
+        {
+          "id": "msh/82",
+          "strength": 1
+        },
+        {
+          "id": "msh/72",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/70",
+      "name": "Pym Particles",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "target-own-creatures",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "attacks-alone",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/67",
+          "strength": 2
+        },
+        {
+          "id": "msh/13",
+          "strength": 2
+        },
+        {
+          "id": "msh/22",
+          "strength": 1
+        },
+        {
+          "id": "msh/206",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/71",
+      "name": "Rewrite History",
+      "roles": [
+        {
+          "axis": "teamwork-tapping",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/210",
+          "strength": 3
+        },
+        {
+          "id": "msh/107",
+          "strength": 2
+        },
+        {
+          "id": "msh/130",
+          "strength": 1
+        },
+        {
+          "id": "msh/145",
+          "strength": 1
+        },
+        {
+          "id": "msh/132",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/72",
+      "name": "Secret Invasion",
+      "roles": [
+        {
+          "axis": "target-own-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/73",
+      "name": "S.H.I.E.L.D. Deployment Drone",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/66",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/74",
+      "name": "S.H.I.E.L.D. Flying Car",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/27",
+          "strength": 1
+        },
+        {
+          "id": "msh/195",
+          "strength": 1
+        },
+        {
+          "id": "msh/218",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/75",
+      "name": "Shuri, Wakandan Inventor",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/252",
+          "strength": 1
+        },
+        {
+          "id": "msh/248",
+          "strength": 1
+        },
+        {
+          "id": "msh/243",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/76",
+      "name": "Stature, Size Shifter",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "power-up",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/164",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/77",
+      "name": "Super Intelligence",
+      "roles": [
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "target-own-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/63",
+          "strength": 2
+        },
+        {
+          "id": "msh/45",
+          "strength": 2
+        },
+        {
+          "id": "msh/217",
+          "strength": 2
+        },
+        {
+          "id": "msh/104",
+          "strength": 2
+        },
+        {
+          "id": "msh/90",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "msh/78",
+      "name": "Super Suit",
+      "roles": [
+        {
+          "axis": "equipment",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "target-own-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/10",
+          "strength": 2
+        },
+        {
+          "id": "msh/222",
+          "strength": 1
+        },
+        {
+          "id": "msh/4",
+          "strength": 1
+        },
+        {
+          "id": "msh/121",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/79",
+      "name": "Thirst for Knowledge",
+      "roles": [
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/107",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/80",
+      "name": "Tony Stark // The Invincible Iron Man",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "equipment",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/248",
+          "strength": 3
+        },
+        {
+          "id": "msh/146",
+          "strength": 2
+        },
+        {
+          "id": "msh/243",
+          "strength": 1
+        },
+        {
+          "id": "msh/244",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/81",
+      "name": "Trickster's Stratagem",
+      "roles": [
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/82",
+      "name": "We Say Thee Nay!",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/83",
+      "name": "Wiccan, Rising Magician",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/27",
+          "strength": 1
+        },
+        {
+          "id": "msh/195",
+          "strength": 1
+        },
+        {
+          "id": "msh/104",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/84",
+      "name": "The Wondrous Wasp",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/37",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "msh/85",
+      "name": "Agents of HYDRA",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/218",
+          "strength": 2
+        },
+        {
+          "id": "msh/102",
+          "strength": 1
+        },
+        {
+          "id": "msh/96",
+          "strength": 1
+        },
+        {
+          "id": "msh/117",
+          "strength": 1
+        },
+        {
+          "id": "msh/91",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/86",
+      "name": "Arnim Zola, Bio-Fanatic",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/91",
+          "strength": 2
+        },
+        {
+          "id": "msh/96",
+          "strength": 2
+        },
+        {
+          "id": "msh/123",
+          "strength": 1
+        },
+        {
+          "id": "msh/137",
+          "strength": 1
+        },
+        {
+          "id": "msh/181",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/87",
+      "name": "Baron Helmut Zemo",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/64",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/88",
+      "name": "Baron Strucker, HYDRA Overlord",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "villain-creatures",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/64",
+          "strength": 2
+        },
+        {
+          "id": "msh/221",
+          "strength": 2
+        },
+        {
+          "id": "msh/105",
+          "strength": 1
+        },
+        {
+          "id": "msh/91",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/89",
+      "name": "Black Widow, Super Spy",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "attacks-alone",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/90",
+      "name": "Construct a Cosmic Cube",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/77",
+          "strength": 2
+        },
+        {
+          "id": "msh/64",
+          "strength": 2
+        },
+        {
+          "id": "msh/179",
+          "strength": 2
+        },
+        {
+          "id": "msh/217",
+          "strength": 1
+        },
+        {
+          "id": "msh/96",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/91",
+      "name": "Crossbones, Malicious Mercenary",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "villain-creatures",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/221",
+          "strength": 2
+        },
+        {
+          "id": "msh/86",
+          "strength": 2
+        },
+        {
+          "id": "msh/85",
+          "strength": 1
+        },
+        {
+          "id": "msh/226",
+          "strength": 1
+        },
+        {
+          "id": "msh/101",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/92",
+      "name": "Cruel Alliance",
+      "roles": [
+        {
+          "axis": "teamwork-tapping",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/93",
+      "name": "Dark Deed",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/94",
+      "name": "Decoy Ploy",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "hero-creatures",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "villain-creatures",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/95",
+      "name": "Doctor Doom",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/263",
+          "strength": 1
+        },
+        {
+          "id": "msh/66",
+          "strength": 1
+        },
+        {
+          "id": "msh/137",
+          "strength": 1
+        },
+        {
+          "id": "msh/91",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/96",
+      "name": "Doom Reigns Supreme",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/221",
+          "strength": 2
+        },
+        {
+          "id": "msh/86",
+          "strength": 2
+        },
+        {
+          "id": "msh/179",
+          "strength": 2
+        },
+        {
+          "id": "msh/85",
+          "strength": 1
+        },
+        {
+          "id": "msh/95",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/97",
+      "name": "Elektra, Daughter of the Hand",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/214",
+          "strength": 2
+        },
+        {
+          "id": "msh/61",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/98",
+      "name": "Grim Reaper, Lethal Legionnaire",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/185",
+          "strength": 2
+        },
+        {
+          "id": "msh/105",
+          "strength": 2
+        },
+        {
+          "id": "msh/141",
+          "strength": 1
+        },
+        {
+          "id": "msh/101",
+          "strength": 1
+        },
+        {
+          "id": "msh/165",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/99",
+      "name": "Hour of Defeat",
+      "roles": [
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/100",
+      "name": "HYDRA Infiltration",
+      "roles": [
+        {
+          "axis": "attacks-alone",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/20",
+          "strength": 1
+        },
+        {
+          "id": "msh/208",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/101",
+      "name": "HYDRA Troopers",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/111",
+          "strength": 1
+        },
+        {
+          "id": "msh/86",
+          "strength": 1
+        },
+        {
+          "id": "msh/98",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/102",
+      "name": "Kingpin's Enforcers",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/109",
+          "strength": 3
+        },
+        {
+          "id": "msh/170",
+          "strength": 2
+        },
+        {
+          "id": "msh/85",
+          "strength": 2
+        },
+        {
+          "id": "msh/153",
+          "strength": 1
+        },
+        {
+          "id": "msh/128",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/103",
+      "name": "Klaw, Sonic Subjugator",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/104",
+      "name": "Madame Masque",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/77",
+          "strength": 2
+        },
+        {
+          "id": "msh/64",
+          "strength": 2
+        },
+        {
+          "id": "msh/217",
+          "strength": 1
+        },
+        {
+          "id": "msh/120",
+          "strength": 1
+        },
+        {
+          "id": "msh/88",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/105",
+      "name": "The Masters of Evil",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "villain-creatures",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/96",
+          "strength": 2
+        },
+        {
+          "id": "msh/90",
+          "strength": 2
+        },
+        {
+          "id": "msh/111",
+          "strength": 2
+        },
+        {
+          "id": "msh/221",
+          "strength": 2
+        },
+        {
+          "id": "msh/98",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "msh/106",
+      "name": "M.O.D.O.K.",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/64",
+          "strength": 2
+        },
+        {
+          "id": "msh/225",
+          "strength": 2
+        },
+        {
+          "id": "msh/217",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/107",
+      "name": "Moonstone, Harsh Mistress",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/71",
+          "strength": 2
+        },
+        {
+          "id": "msh/145",
+          "strength": 2
+        },
+        {
+          "id": "msh/130",
+          "strength": 1
+        },
+        {
+          "id": "msh/79",
+          "strength": 1
+        },
+        {
+          "id": "msh/158",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/108",
+      "name": "Ninja of the Hand",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "power-up",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/226",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "msh/109",
+      "name": "Project Deathlok Soldier",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/102",
+          "strength": 3
+        },
+        {
+          "id": "msh/218",
+          "strength": 2
+        },
+        {
+          "id": "msh/209",
+          "strength": 2
+        },
+        {
+          "id": "msh/263",
+          "strength": 2
+        },
+        {
+          "id": "msh/158",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/110",
+      "name": "Red Room Recruit",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/88",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/111",
+      "name": "Robot Domination",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/184",
+          "strength": 2
+        },
+        {
+          "id": "msh/179",
+          "strength": 2
+        },
+        {
+          "id": "msh/101",
+          "strength": 1
+        },
+        {
+          "id": "msh/181",
+          "strength": 1
+        },
+        {
+          "id": "msh/105",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/112",
+      "name": "Ronin, Shadow Stalker",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "equipment",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/254",
+          "strength": 2
+        },
+        {
+          "id": "msh/114",
+          "strength": 1
+        },
+        {
+          "id": "msh/248",
+          "strength": 1
+        },
+        {
+          "id": "msh/116",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/113",
+      "name": "Roxxon Brutes",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "attacks-alone",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/77",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/114",
+      "name": "Stolen Stark Tech",
+      "roles": [
+        {
+          "axis": "equipment",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "target-own-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "attacks-alone",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/121",
+          "strength": 1
+        },
+        {
+          "id": "msh/239",
+          "strength": 1
+        },
+        {
+          "id": "msh/222",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/115",
+      "name": "Super-Skrull",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/187",
+          "strength": 2
+        },
+        {
+          "id": "msh/194",
+          "strength": 1
+        },
+        {
+          "id": "msh/246",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/116",
+      "name": "Swordsman, Sharp Scoundrel",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "villain-creatures",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "equipment",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/221",
+          "strength": 2
+        },
+        {
+          "id": "msh/254",
+          "strength": 2
+        },
+        {
+          "id": "msh/121",
+          "strength": 2
+        },
+        {
+          "id": "msh/85",
+          "strength": 1
+        },
+        {
+          "id": "msh/239",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/117",
+      "name": "Thunderbolts Conspiracy",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/218",
+          "strength": 2
+        },
+        {
+          "id": "msh/102",
+          "strength": 2
+        },
+        {
+          "id": "msh/85",
+          "strength": 1
+        },
+        {
+          "id": "msh/91",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/118",
+      "name": "Too Evil to Stay Dead",
+      "roles": [
+        {
+          "axis": "graveyard-creatures",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/185",
+          "strength": 2
+        },
+        {
+          "id": "msh/141",
+          "strength": 1
+        },
+        {
+          "id": "msh/105",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/119",
+      "name": "Unliving Legionnaire",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "power-up",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/120",
+      "name": "Visions of Villainy",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/121",
+      "name": "Whiplash, Vengeful Engineer",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "equipment",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/254",
+          "strength": 2
+        },
+        {
+          "id": "msh/36",
+          "strength": 2
+        },
+        {
+          "id": "msh/38",
+          "strength": 2
+        },
+        {
+          "id": "msh/114",
+          "strength": 1
+        },
+        {
+          "id": "msh/236",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/122",
+      "name": "Widow's Bite",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "target-own-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/226",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/123",
+      "name": "Yellowjacket, Heartless Marauder",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "villain-creatures",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/221",
+          "strength": 2
+        },
+        {
+          "id": "msh/85",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/124",
+      "name": "Avengers Disassembled",
+      "roles": [],
+      "partners": [
+        {
+          "id": "msh/129",
+          "strength": 2
+        },
+        {
+          "id": "msh/149",
+          "strength": 1
+        },
+        {
+          "id": "msh/49",
+          "strength": 1
+        },
+        {
+          "id": "msh/240",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/125",
+      "name": "Blazing Crescendo",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "target-own-creatures",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/13",
+          "strength": 1
+        },
+        {
+          "id": "msh/138",
+          "strength": 1
+        },
+        {
+          "id": "msh/67",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/126",
+      "name": "Crimson Operative",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/127",
+      "name": "Death to Our Enemies",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "power-up",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/179",
+          "strength": 2
+        },
+        {
+          "id": "msh/131",
+          "strength": 2
+        },
+        {
+          "id": "msh/29",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/128",
+      "name": "Evil's Thrall",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/218",
+          "strength": 2
+        },
+        {
+          "id": "msh/102",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "msh/129",
+      "name": "Fin Fang Foom",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/135",
+          "strength": 2
+        },
+        {
+          "id": "msh/124",
+          "strength": 2
+        },
+        {
+          "id": "msh/143",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/130",
+      "name": "Hawkeye, Master Marksman",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "attacks-alone",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/210",
+          "strength": 3
+        },
+        {
+          "id": "msh/132",
+          "strength": 2
+        },
+        {
+          "id": "msh/131",
+          "strength": 2
+        },
+        {
+          "id": "msh/71",
+          "strength": 1
+        },
+        {
+          "id": "msh/78",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/131",
+      "name": "Hawkeye, Young Avenger",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/132",
+          "strength": 2
+        },
+        {
+          "id": "msh/127",
+          "strength": 2
+        },
+        {
+          "id": "msh/142",
+          "strength": 1
+        },
+        {
+          "id": "msh/91",
+          "strength": 1
+        },
+        {
+          "id": "msh/137",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/132",
+      "name": "Hawkeye's Bow",
+      "roles": [
+        {
+          "axis": "equipment",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/210",
+          "strength": 3
+        },
+        {
+          "id": "msh/130",
+          "strength": 2
+        },
+        {
+          "id": "msh/131",
+          "strength": 2
+        },
+        {
+          "id": "msh/121",
+          "strength": 1
+        },
+        {
+          "id": "msh/239",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/133",
+      "name": "Hex Magic",
+      "roles": [
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/204",
+          "strength": 1
+        },
+        {
+          "id": "msh/136",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/134",
+      "name": "Hire a Crew",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/66",
+          "strength": 1
+        },
+        {
+          "id": "msh/96",
+          "strength": 1
+        },
+        {
+          "id": "msh/91",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/135",
+      "name": "HULK SMASH!",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "target-own-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/129",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "msh/136",
+      "name": "Human Torch, Johnny Storm",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "hero-creatures",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "power-up",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/131",
+          "strength": 2
+        },
+        {
+          "id": "msh/49",
+          "strength": 1
+        },
+        {
+          "id": "msh/48",
+          "strength": 1
+        },
+        {
+          "id": "msh/77",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/137",
+      "name": "HYDRA Assault Robot",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "villain-creatures",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/221",
+          "strength": 2
+        },
+        {
+          "id": "msh/131",
+          "strength": 2
+        },
+        {
+          "id": "msh/252",
+          "strength": 1
+        },
+        {
+          "id": "msh/95",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/138",
+      "name": "Iron Fist, Living Weapon",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "target-own-creatures",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/39",
+          "strength": 2
+        },
+        {
+          "id": "msh/29",
+          "strength": 2
+        },
+        {
+          "id": "msh/167",
+          "strength": 2
+        },
+        {
+          "id": "msh/125",
+          "strength": 2
+        },
+        {
+          "id": "msh/155",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/139",
+      "name": "Jessica Jones, Private Eye",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/78",
+          "strength": 1
+        },
+        {
+          "id": "msh/56",
+          "strength": 1
+        },
+        {
+          "id": "msh/210",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/140",
+      "name": "K'un-Lun Warrior",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/141",
+      "name": "Kree Sentinel",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/98",
+          "strength": 1
+        },
+        {
+          "id": "msh/118",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/142",
+      "name": "Lightning Strike",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/131",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/143",
+      "name": "Loki Laufeyson",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "power-up",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/147",
+          "strength": 1
+        },
+        {
+          "id": "msh/167",
+          "strength": 1
+        },
+        {
+          "id": "msh/142",
+          "strength": 1
+        },
+        {
+          "id": "msh/187",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/144",
+      "name": "Machinesmith Automaton",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/252",
+          "strength": 1
+        },
+        {
+          "id": "msh/153",
+          "strength": 1
+        },
+        {
+          "id": "msh/161",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/145",
+      "name": "Misty Knight, Hero for Hire",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/107",
+          "strength": 2
+        },
+        {
+          "id": "msh/71",
+          "strength": 1
+        },
+        {
+          "id": "msh/130",
+          "strength": 1
+        },
+        {
+          "id": "msh/158",
+          "strength": 1
+        },
+        {
+          "id": "msh/209",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/146",
+      "name": "Mjölnir, Hammer of Thor",
+      "roles": [
+        {
+          "axis": "equipment",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "attacks-alone",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/234",
+          "strength": 3
+        },
+        {
+          "id": "msh/156",
+          "strength": 3
+        },
+        {
+          "id": "msh/38",
+          "strength": 2
+        },
+        {
+          "id": "msh/148",
+          "strength": 2
+        },
+        {
+          "id": "msh/80",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/147",
+      "name": "Photon Blast Barrage",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/131",
+          "strength": 2
+        },
+        {
+          "id": "msh/149",
+          "strength": 1
+        },
+        {
+          "id": "msh/151",
+          "strength": 1
+        },
+        {
+          "id": "msh/143",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/148",
+      "name": "Quicksilver, Brash Blur",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "power-up",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/146",
+          "strength": 2
+        },
+        {
+          "id": "msh/152",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/149",
+      "name": "Red Hulk",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/18",
+          "strength": 2
+        },
+        {
+          "id": "msh/147",
+          "strength": 1
+        },
+        {
+          "id": "msh/146",
+          "strength": 1
+        },
+        {
+          "id": "msh/124",
+          "strength": 1
+        },
+        {
+          "id": "msh/179",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/150",
+      "name": "Repulsor Blast",
+      "roles": [
+        {
+          "axis": "teamwork-tapping",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/151",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/151",
+      "name": "The Scarlet Witch",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/46",
+          "strength": 2
+        },
+        {
+          "id": "msh/165",
+          "strength": 2
+        },
+        {
+          "id": "msh/68",
+          "strength": 1
+        },
+        {
+          "id": "msh/241",
+          "strength": 1
+        },
+        {
+          "id": "msh/157",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/152",
+      "name": "Speed, Young Avenger",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/154",
+          "strength": 2
+        },
+        {
+          "id": "msh/148",
+          "strength": 1
+        },
+        {
+          "id": "msh/170",
+          "strength": 1
+        },
+        {
+          "id": "msh/240",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/153",
+      "name": "Stark Industries Executive",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "power-up",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/209",
+          "strength": 2
+        },
+        {
+          "id": "msh/223",
+          "strength": 2
+        },
+        {
+          "id": "msh/102",
+          "strength": 1
+        },
+        {
+          "id": "msh/66",
+          "strength": 1
+        },
+        {
+          "id": "msh/144",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/154",
+      "name": "Super Speed",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "target-own-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "attacks-alone",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/152",
+          "strength": 2
+        },
+        {
+          "id": "msh/13",
+          "strength": 1
+        },
+        {
+          "id": "msh/22",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/155",
+      "name": "Team Tactics",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "target-own-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/2",
+          "strength": 2
+        },
+        {
+          "id": "msh/146",
+          "strength": 1
+        },
+        {
+          "id": "msh/138",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/156",
+      "name": "Thor, God of Thunder",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "equipment",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/146",
+          "strength": 3
+        },
+        {
+          "id": "msh/131",
+          "strength": 2
+        },
+        {
+          "id": "msh/46",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/157",
+      "name": "Truck Toss",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/246",
+          "strength": 2
+        },
+        {
+          "id": "msh/249",
+          "strength": 2
+        },
+        {
+          "id": "msh/74",
+          "strength": 2
+        },
+        {
+          "id": "msh/131",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/158",
+      "name": "Vision of Love",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/107",
+          "strength": 1
+        },
+        {
+          "id": "msh/109",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/159",
+      "name": "Volcanic Villain",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "power-up",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/160",
+      "name": "Wonder Man, Hollywood Hero",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "power-up",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/215",
+          "strength": 3
+        },
+        {
+          "id": "msh/62",
+          "strength": 2
+        },
+        {
+          "id": "msh/136",
+          "strength": 1
+        },
+        {
+          "id": "msh/233",
+          "strength": 1
+        },
+        {
+          "id": "msh/198",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/161",
+      "name": "Ant-Man's Army",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "power-up",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/66",
+          "strength": 1
+        },
+        {
+          "id": "msh/209",
+          "strength": 1
+        },
+        {
+          "id": "msh/191",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/162",
+      "name": "Call Damage Control",
+      "roles": [
+        {
+          "axis": "graveyard-creatures",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/163",
+      "name": "Claim the Kingdom",
+      "roles": [
+        {
+          "axis": "landfall",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/177",
+          "strength": 2
+        },
+        {
+          "id": "msh/174",
+          "strength": 2
+        },
+        {
+          "id": "msh/247",
+          "strength": 1
+        },
+        {
+          "id": "msh/183",
+          "strength": 1
+        },
+        {
+          "id": "msh/179",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/164",
+      "name": "Doc Samson, Super Psychiatrist",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "power-up",
+          "role": "enabler",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/4",
+          "strength": 2
+        },
+        {
+          "id": "msh/179",
+          "strength": 2
+        },
+        {
+          "id": "msh/215",
+          "strength": 2
+        },
+        {
+          "id": "msh/192",
+          "strength": 1
+        },
+        {
+          "id": "msh/76",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/165",
+      "name": "Earth's Mightiest Heroes",
+      "roles": [
+        {
+          "axis": "teamwork-tapping",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/151",
+          "strength": 2
+        },
+        {
+          "id": "msh/98",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/166",
+      "name": "Epic Fight",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "target-own-creatures",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/167",
+      "name": "Giant Growth",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "target-own-creatures",
+          "role": "enabler",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/138",
+          "strength": 2
+        },
+        {
+          "id": "msh/13",
+          "strength": 1
+        },
+        {
+          "id": "msh/67",
+          "strength": 1
+        },
+        {
+          "id": "msh/22",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/168",
+      "name": "Go Nuts!",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "target-own-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/2",
+          "strength": 1
+        },
+        {
+          "id": "msh/206",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/169",
+      "name": "Guerrilla Gorilla",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/26",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/170",
+      "name": "Hellcat, Undying Vigilante",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/102",
+          "strength": 2
+        },
+        {
+          "id": "msh/218",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "msh/171",
+      "name": "Hercules, Prince of Power",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "power-up",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/172",
+      "name": "Heroic Feast",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/191",
+          "strength": 2
+        },
+        {
+          "id": "msh/8",
+          "strength": 1
+        },
+        {
+          "id": "msh/102",
+          "strength": 1
+        },
+        {
+          "id": "msh/220",
+          "strength": 1
+        },
+        {
+          "id": "msh/217",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/173",
+      "name": "Hulkling, Burgeoning Bruiser",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/174",
+      "name": "Ka-Zar of the Savage Land",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "landfall",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/163",
+          "strength": 2
+        },
+        {
+          "id": "msh/177",
+          "strength": 2
+        },
+        {
+          "id": "msh/274",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/175",
+      "name": "Knight of Wundagore",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/201",
+          "strength": 1
+        },
+        {
+          "id": "msh/192",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/176",
+      "name": "Mister Hyde, Monster Within",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/164",
+          "strength": 1
+        },
+        {
+          "id": "msh/179",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/177",
+      "name": "Mole Man, Moloid Master",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "landfall",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/174",
+          "strength": 2
+        },
+        {
+          "id": "msh/163",
+          "strength": 2
+        },
+        {
+          "id": "msh/247",
+          "strength": 1
+        },
+        {
+          "id": "msh/66",
+          "strength": 1
+        },
+        {
+          "id": "msh/124",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/178",
+      "name": "Pet Avengers",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "power-up",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/179",
+      "name": "Powerful Broker",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/164",
+          "strength": 2
+        },
+        {
+          "id": "msh/127",
+          "strength": 2
+        },
+        {
+          "id": "msh/96",
+          "strength": 2
+        },
+        {
+          "id": "msh/90",
+          "strength": 2
+        },
+        {
+          "id": "msh/111",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "msh/180",
+      "name": "Punishing Punch",
+      "roles": [
+        {
+          "axis": "graveyard-creatures",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "target-own-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/181",
+      "name": "Rapid Rescue",
+      "roles": [
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/111",
+          "strength": 1
+        },
+        {
+          "id": "msh/86",
+          "strength": 1
+        },
+        {
+          "id": "msh/191",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/182",
+      "name": "Reptil, Dinomorpher",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/187",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "msh/183",
+      "name": "Restorative Technique",
+      "roles": [
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/163",
+          "strength": 1
+        },
+        {
+          "id": "msh/177",
+          "strength": 1
+        },
+        {
+          "id": "msh/191",
+          "strength": 1
+        },
+        {
+          "id": "msh/172",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/184",
+      "name": "Rick Jones, Destined Sidekick",
+      "roles": [
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "hero-creatures",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/111",
+          "strength": 2
+        },
+        {
+          "id": "msh/86",
+          "strength": 1
+        },
+        {
+          "id": "msh/98",
+          "strength": 1
+        },
+        {
+          "id": "msh/187",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/185",
+      "name": "Savage Land Dinosaur",
+      "roles": [
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/98",
+          "strength": 2
+        },
+        {
+          "id": "msh/118",
+          "strength": 2
+        },
+        {
+          "id": "msh/173",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/186",
+      "name": "Serpent Specialist",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "power-up",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/226",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "msh/187",
+      "name": "Shang-Chi, Master of Kung Fu",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "power-up",
+          "role": "enabler",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/4",
+          "strength": 2
+        },
+        {
+          "id": "msh/182",
+          "strength": 2
+        },
+        {
+          "id": "msh/49",
+          "strength": 2
+        },
+        {
+          "id": "msh/115",
+          "strength": 2
+        },
+        {
+          "id": "msh/51",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/188",
+      "name": "She-Hulk, Jade Defender",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "power-up",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/189",
+      "name": "Super Strength",
+      "roles": [
+        {
+          "axis": "target-own-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "attacks-alone",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/190",
+      "name": "The Thing, Ben Grimm",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "hero-creatures",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/191",
+      "name": "Tigra, Feline Fury",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/172",
+          "strength": 2
+        },
+        {
+          "id": "msh/183",
+          "strength": 1
+        },
+        {
+          "id": "msh/181",
+          "strength": 1
+        },
+        {
+          "id": "msh/8",
+          "strength": 1
+        },
+        {
+          "id": "msh/161",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/192",
+      "name": "Training Regimen",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/206",
+          "strength": 2
+        },
+        {
+          "id": "msh/17",
+          "strength": 1
+        },
+        {
+          "id": "msh/201",
+          "strength": 1
+        },
+        {
+          "id": "msh/175",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/193",
+      "name": "The Unbeatable Squirrel Girl",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/66",
+          "strength": 2
+        },
+        {
+          "id": "msh/27",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/194",
+      "name": "Undercover Skrull",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "power-up",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/25",
+          "strength": 2
+        },
+        {
+          "id": "msh/233",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/195",
+      "name": "Wakandan Royal Guard",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "hero-creatures",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/17",
+          "strength": 1
+        },
+        {
+          "id": "msh/74",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/196",
+      "name": "White Tiger, Ava Ayala",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "power-up",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/197",
+      "name": "World War Hulk",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/198",
+      "name": "Abomination, Terrifying Titan",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "power-up",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/215",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "msh/199",
+      "name": "Absorbing Man",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/243",
+          "strength": 2
+        },
+        {
+          "id": "msh/263",
+          "strength": 1
+        },
+        {
+          "id": "msh/245",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/200",
+      "name": "Alien Invasion",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/66",
+          "strength": 1
+        },
+        {
+          "id": "msh/179",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/201",
+      "name": "Ant-Man, Colony Commander",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/192",
+          "strength": 2
+        },
+        {
+          "id": "msh/66",
+          "strength": 1
+        },
+        {
+          "id": "msh/175",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/202",
+      "name": "Ares, God of War",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/61",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/203",
+      "name": "Armor Wars",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/243",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/204",
+      "name": "The Astonishing Ant-Man",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/77",
+          "strength": 2
+        },
+        {
+          "id": "msh/49",
+          "strength": 1
+        },
+        {
+          "id": "msh/133",
+          "strength": 1
+        },
+        {
+          "id": "msh/79",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/205",
+      "name": "Avengers: Under Siege",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "power-up",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/221",
+          "strength": 1
+        },
+        {
+          "id": "msh/96",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/206",
+      "name": "Beast, Erudite Aerialist",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/192",
+          "strength": 2
+        },
+        {
+          "id": "msh/163",
+          "strength": 1
+        },
+        {
+          "id": "msh/168",
+          "strength": 1
+        },
+        {
+          "id": "msh/39",
+          "strength": 1
+        },
+        {
+          "id": "msh/4",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/207",
+      "name": "Black Panther, Vanguard",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "hero-creatures",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/66",
+          "strength": 1
+        },
+        {
+          "id": "msh/28",
+          "strength": 1
+        },
+        {
+          "id": "msh/25",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/208",
+      "name": "Black Widow, Double Agent",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "attacks-alone",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/20",
+          "strength": 2
+        },
+        {
+          "id": "msh/1",
+          "strength": 2
+        },
+        {
+          "id": "msh/226",
+          "strength": 1
+        },
+        {
+          "id": "msh/100",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/209",
+      "name": "Bullseye, Death Dealer",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/153",
+          "strength": 2
+        },
+        {
+          "id": "msh/109",
+          "strength": 2
+        },
+        {
+          "id": "msh/51",
+          "strength": 2
+        },
+        {
+          "id": "msh/131",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "msh/210",
+      "name": "Captain America, Living Legend",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "enabler",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/2",
+          "strength": 3
+        },
+        {
+          "id": "msh/130",
+          "strength": 3
+        },
+        {
+          "id": "msh/132",
+          "strength": 3
+        },
+        {
+          "id": "msh/71",
+          "strength": 3
+        },
+        {
+          "id": "msh/4",
+          "strength": 3
+        }
+      ]
+    },
+    {
+      "id": "msh/211",
+      "name": "Cloak and Dagger, Entwined",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/226",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/212",
+      "name": "The Coming of Galactus",
+      "roles": [],
+      "partners": []
+    },
+    {
+      "id": "msh/213",
+      "name": "Daredevil, Man Without Fear",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "hero-creatures",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/146",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/214",
+      "name": "Ghost, Spectral Saboteur",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "attacks-alone",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/97",
+          "strength": 2
+        },
+        {
+          "id": "msh/208",
+          "strength": 1
+        },
+        {
+          "id": "msh/1",
+          "strength": 1
+        },
+        {
+          "id": "msh/254",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/215",
+      "name": "Hulk, Gamma Goliath",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "power-up",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "power-up",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/160",
+          "strength": 3
+        },
+        {
+          "id": "msh/198",
+          "strength": 2
+        },
+        {
+          "id": "msh/62",
+          "strength": 1
+        },
+        {
+          "id": "msh/43",
+          "strength": 1
+        },
+        {
+          "id": "msh/253",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/216",
+      "name": "Iron Man, Master of Machines",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/252",
+          "strength": 1
+        },
+        {
+          "id": "msh/153",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/217",
+      "name": "Kang, Temporal Tyrant",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/64",
+          "strength": 2
+        },
+        {
+          "id": "msh/77",
+          "strength": 2
+        },
+        {
+          "id": "msh/120",
+          "strength": 1
+        },
+        {
+          "id": "msh/104",
+          "strength": 1
+        },
+        {
+          "id": "msh/88",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/218",
+      "name": "Killmonger, Scourge of Wakanda",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/85",
+          "strength": 2
+        },
+        {
+          "id": "msh/170",
+          "strength": 2
+        },
+        {
+          "id": "msh/109",
+          "strength": 2
+        },
+        {
+          "id": "msh/128",
+          "strength": 2
+        },
+        {
+          "id": "msh/117",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/219",
+      "name": "King T'Challa // Black Panther, Hope Enduring",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/77",
+          "strength": 2
+        },
+        {
+          "id": "msh/63",
+          "strength": 1
+        },
+        {
+          "id": "msh/217",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/220",
+      "name": "The Kingpin of Crime",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/244",
+          "strength": 3
+        },
+        {
+          "id": "msh/17",
+          "strength": 1
+        },
+        {
+          "id": "msh/33",
+          "strength": 1
+        },
+        {
+          "id": "msh/20",
+          "strength": 1
+        },
+        {
+          "id": "msh/78",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/221",
+      "name": "Madame Hydra",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "villain-creatures",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/88",
+          "strength": 2
+        },
+        {
+          "id": "msh/91",
+          "strength": 2
+        },
+        {
+          "id": "msh/116",
+          "strength": 2
+        },
+        {
+          "id": "msh/96",
+          "strength": 2
+        },
+        {
+          "id": "msh/123",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "msh/222",
+      "name": "The Mighty Thor, Jane Foster",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "equipment",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/236",
+          "strength": 2
+        },
+        {
+          "id": "msh/78",
+          "strength": 1
+        },
+        {
+          "id": "msh/114",
+          "strength": 1
+        },
+        {
+          "id": "msh/53",
+          "strength": 1
+        },
+        {
+          "id": "msh/252",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/223",
+      "name": "Moon Girl and Devil Dinosaur",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/55",
+          "strength": 2
+        },
+        {
+          "id": "msh/153",
+          "strength": 2
+        },
+        {
+          "id": "msh/77",
+          "strength": 1
+        },
+        {
+          "id": "msh/253",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/224",
+      "name": "The Ruinous Wrecking Crew",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/225",
+      "name": "Scientist Supreme of A.I.M.",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/252",
+          "strength": 2
+        },
+        {
+          "id": "msh/253",
+          "strength": 2
+        },
+        {
+          "id": "msh/106",
+          "strength": 2
+        },
+        {
+          "id": "msh/250",
+          "strength": 1
+        },
+        {
+          "id": "msh/248",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/226",
+      "name": "The Serpent Society",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/186",
+          "strength": 2
+        },
+        {
+          "id": "msh/108",
+          "strength": 2
+        },
+        {
+          "id": "msh/91",
+          "strength": 1
+        },
+        {
+          "id": "msh/122",
+          "strength": 1
+        },
+        {
+          "id": "msh/211",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/227",
+      "name": "Speedball, New Warrior",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "target-own-creatures",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/167",
+          "strength": 1
+        },
+        {
+          "id": "msh/29",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/228",
+      "name": "Spider-Man, To the Rescue",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/229",
+      "name": "Spider-Woman, Secret Agent",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/37",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/230",
+      "name": "Storm, Windrider",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "target-own-creatures",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/167",
+          "strength": 1
+        },
+        {
+          "id": "msh/39",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/231",
+      "name": "The Super Hero Civil War",
+      "roles": [
+        {
+          "axis": "teamwork-tapping",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/218",
+          "strength": 1
+        },
+        {
+          "id": "msh/102",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/232",
+      "name": "Taskmaster, Mercenary Mimic",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/233",
+      "name": "Thanos, the Mad Titan",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "power-up",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/246",
+          "strength": 2
+        },
+        {
+          "id": "msh/194",
+          "strength": 2
+        },
+        {
+          "id": "msh/261",
+          "strength": 2
+        },
+        {
+          "id": "msh/164",
+          "strength": 1
+        },
+        {
+          "id": "msh/243",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/234",
+      "name": "Thor Odinson",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/146",
+          "strength": 3
+        }
+      ]
+    },
+    {
+      "id": "msh/235",
+      "name": "Titania, Rugged Rumbler",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/107",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/236",
+      "name": "U.S.Agent, John Walker",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "equipment",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/222",
+          "strength": 2
+        },
+        {
+          "id": "msh/121",
+          "strength": 1
+        },
+        {
+          "id": "msh/239",
+          "strength": 1
+        },
+        {
+          "id": "msh/112",
+          "strength": 1
+        },
+        {
+          "id": "msh/116",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/237",
+      "name": "Vision Quest",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/252",
+          "strength": 1
+        },
+        {
+          "id": "msh/60",
+          "strength": 1
+        },
+        {
+          "id": "msh/255",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/238",
+      "name": "War Machine, Legacy of Iron",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/254",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/239",
+      "name": "Winter Soldier, Icy Assassin",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "equipment",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "attacks-alone",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/254",
+          "strength": 2
+        },
+        {
+          "id": "msh/114",
+          "strength": 1
+        },
+        {
+          "id": "msh/36",
+          "strength": 1
+        },
+        {
+          "id": "msh/248",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/240",
+      "name": "Wolverine, Fierce Fighter",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/18",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "msh/241",
+      "name": "Worlds Within Worlds",
+      "roles": [],
+      "partners": [
+        {
+          "id": "msh/151",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/242",
+      "name": "A.I.M. Synthoids",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/243",
+      "name": "Arc Reactor",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "power-up",
+          "role": "enabler",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/199",
+          "strength": 2
+        },
+        {
+          "id": "msh/215",
+          "strength": 1
+        },
+        {
+          "id": "msh/233",
+          "strength": 1
+        },
+        {
+          "id": "msh/252",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/244",
+      "name": "Captain America's Shield",
+      "roles": [
+        {
+          "axis": "equipment",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/10",
+          "strength": 3
+        },
+        {
+          "id": "msh/220",
+          "strength": 3
+        },
+        {
+          "id": "msh/38",
+          "strength": 2
+        },
+        {
+          "id": "msh/121",
+          "strength": 1
+        },
+        {
+          "id": "msh/239",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/245",
+      "name": "Cosmic Cube",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/246",
+      "name": "Dependable Quinjet",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "power-up",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/25",
+          "strength": 2
+        },
+        {
+          "id": "msh/233",
+          "strength": 2
+        },
+        {
+          "id": "msh/157",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "msh/247",
+      "name": "H.E.R.B.I.E. Scout Unit",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "landfall",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/163",
+          "strength": 1
+        },
+        {
+          "id": "msh/177",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/248",
+      "name": "Iron Man Armor",
+      "roles": [
+        {
+          "axis": "equipment",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "target-own-creatures",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/80",
+          "strength": 3
+        },
+        {
+          "id": "msh/38",
+          "strength": 1
+        },
+        {
+          "id": "msh/239",
+          "strength": 1
+        },
+        {
+          "id": "msh/121",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/249",
+      "name": "S.H.I.E.L.D. Helicarrier",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/157",
+          "strength": 2
+        },
+        {
+          "id": "msh/66",
+          "strength": 1
+        },
+        {
+          "id": "msh/27",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/250",
+      "name": "Super-Adaptoid",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/148",
+          "strength": 1
+        },
+        {
+          "id": "msh/233",
+          "strength": 1
+        },
+        {
+          "id": "msh/10",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/251",
+      "name": "The Ten Rings",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/204",
+          "strength": 1
+        },
+        {
+          "id": "msh/67",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/252",
+      "name": "Ultron, Artificial Malevolence",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/225",
+          "strength": 2
+        },
+        {
+          "id": "msh/222",
+          "strength": 1
+        },
+        {
+          "id": "msh/137",
+          "strength": 1
+        },
+        {
+          "id": "msh/254",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/253",
+      "name": "Ultron Drone",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "power-up",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/225",
+          "strength": 2
+        },
+        {
+          "id": "msh/215",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/254",
+      "name": "Vibranium Energy Daggers",
+      "roles": [
+        {
+          "axis": "equipment",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "attacks-alone",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/38",
+          "strength": 3
+        },
+        {
+          "id": "msh/112",
+          "strength": 2
+        },
+        {
+          "id": "msh/121",
+          "strength": 2
+        },
+        {
+          "id": "msh/239",
+          "strength": 2
+        },
+        {
+          "id": "msh/116",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "msh/255",
+      "name": "The Vision",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "teamwork-tapping",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/256",
+      "name": "Viv Vision, Teen Synthezoid",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "power-up",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/225",
+          "strength": 1
+        },
+        {
+          "id": "msh/254",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/257",
+      "name": "A.I.M. Labs",
+      "roles": [],
+      "partners": []
+    },
+    {
+      "id": "msh/258",
+      "name": "Asgardian Citadel",
+      "roles": [],
+      "partners": []
+    },
+    {
+      "id": "msh/259",
+      "name": "Avengers Hangar",
+      "roles": [],
+      "partners": []
+    },
+    {
+      "id": "msh/260",
+      "name": "Avengers Tower",
+      "roles": [
+        {
+          "axis": "hero-creatures",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/261",
+      "name": "Baxter Building",
+      "roles": [
+        {
+          "axis": "power-up",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/25",
+          "strength": 2
+        },
+        {
+          "id": "msh/233",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "msh/262",
+      "name": "Birnin Zana Plaza",
+      "roles": [],
+      "partners": []
+    },
+    {
+      "id": "msh/263",
+      "name": "Castle Doom",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/109",
+          "strength": 2
+        },
+        {
+          "id": "msh/153",
+          "strength": 1
+        },
+        {
+          "id": "msh/95",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "msh/264",
+      "name": "Dark Fortress",
+      "roles": [],
+      "partners": []
+    },
+    {
+      "id": "msh/265",
+      "name": "Fisk Tower",
+      "roles": [],
+      "partners": []
+    },
+    {
+      "id": "msh/266",
+      "name": "Gathering Place",
+      "roles": [],
+      "partners": []
+    },
+    {
+      "id": "msh/267",
+      "name": "Gleaming Bastion",
+      "roles": [],
+      "partners": []
+    },
+    {
+      "id": "msh/268",
+      "name": "Hell's Kitchen",
+      "roles": [],
+      "partners": []
+    },
+    {
+      "id": "msh/269",
+      "name": "Hidden Lair",
+      "roles": [],
+      "partners": []
+    },
+    {
+      "id": "msh/270",
+      "name": "Los Diablos Missile Base",
+      "roles": [],
+      "partners": []
+    },
+    {
+      "id": "msh/271",
+      "name": "Pym Technologies",
+      "roles": [],
+      "partners": []
+    },
+    {
+      "id": "msh/272",
+      "name": "Stark Industries",
+      "roles": [],
+      "partners": []
+    },
+    {
+      "id": "msh/273",
+      "name": "Subterranean Cavern",
+      "roles": [],
+      "partners": []
+    },
+    {
+      "id": "msh/274",
+      "name": "Surveillance Room",
+      "roles": [
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "power-up",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "msh/275",
+      "name": "Training Compound",
+      "roles": [],
+      "partners": []
+    },
+    {
+      "id": "msh/276",
+      "name": "Villainous Hideout",
+      "roles": [
+        {
+          "axis": "villain-creatures",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "second-card-draw",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-creatures",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "msh/64",
+          "strength": 1
+        }
+      ]
+    }
+  ]
+}

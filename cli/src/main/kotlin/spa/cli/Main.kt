@@ -100,22 +100,25 @@ object Main {
         |      file the packet was built from, unchanged since, check the result as tags-import
         |      does, and write <data>/tags/<code>.json with a review block. Prints the count by
         |      action and each fact suggestion. Writes nothing on any problem.
-        |  synergy-table --set <code> [--min <score>] [--data <dir>]
-        |      Print every pair of cards of the set's tag file <data>/tags/<code>.json, each card
-        |      with itself included, scoring at least --min (default 1), highest first: the score,
-        |      its axis and partner parts (and fact part when an axis has suppliedBy), and the
-        |      two cards. The last line counts the pairs, the nonzero pairs and diagonal, and
-        |      gives the maximum.
-        |  synergy <pool-file> --set <code> --pair <XY> [--weights <file>] [--data <dir>]
+        |  synergy-table --set <code> [--min <score>] [--tags <file>] [--data <dir>]
+        |      Print every pair of cards of the set's tag file, --tags or by default
+        |      <data>/tags/<code>.json, each card with itself included, scoring at least --min
+        |      (default 1), highest first: the score, its axis and partner parts (and fact part
+        |      when an axis has suppliedBy), and the two cards. The last line counts the pairs,
+        |      the nonzero pairs and diagonal, and gives the maximum.
+        |  synergy <pool-file> --set <code> --pair <XY> [--weights <file>] [--tags <file>]
+        |          [--data <dir>]
         |      For each pool card castable in the pair, highest first, print its tag synergy part,
         |      its syn with the rest of the pool, the e of a typical pool, its quantity and name,
         |      then a line naming its strongest partners in the pool. The weight comes from
-        |      --weights, else <data>/weights/tag-synergy.json.
-        |  synergy-check --set <code> [--data <dir>]
+        |      --weights, else <data>/weights/tag-synergy.json; the tags from --tags, else
+        |      <data>/tags/<code>.json.
+        |  synergy-check --set <code> [--tags <file>] [--data <dir>]
         |      Run the owner's held-out synergy checks in <data>/synergy-checks/<code>.json on
-        |      the pair table of the set's tag file: one line per check, in file order, with PASS
-        |      or FAIL, its id, its status (independent or seen) and its numbers, then a line
-        |      counting the checks that pass and how many of those are independent.
+        |      the pair table of the set's tag file, --tags or by default <data>/tags/<code>.json:
+        |      one line per check, in file order, with PASS or FAIL, its id, its status
+        |      (independent or seen) and its numbers, then a line counting the checks that pass
+        |      and how many of those are independent.
         |  facts --set <code> [--card <name or id>] [--data <dir>]
         |      Print each card fact of the set's sealed pool (card types, legendary, creature
         |      types, keywords, cheap, enters and dies triggers, makes tokens) with the number of

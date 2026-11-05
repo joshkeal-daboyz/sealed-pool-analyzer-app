@@ -29,6 +29,13 @@ internal object Fixtures {
     fun brief(set: String): String = root.resolve("briefs").resolve("$set.json").toString()
 
     /**
+     * The frozen v1 tag file of [set], `fixtures/tags/v1/<code>.json` (SPA-053). A test that pins a
+     * number or line computed from a tag file reads this, so the live `tags/<code>.json` can
+     * change.
+     */
+    fun v1Tags(set: String): String = root.resolve("tags/v1/$set.json").toString()
+
+    /**
      * A data directory under [dir] holding a copy of set `syn`'s Scryfall cache and brief, and no
      * baselines, for tests that need to change what the data directory holds.
      */

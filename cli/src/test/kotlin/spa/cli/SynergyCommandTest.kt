@@ -14,23 +14,36 @@ import spa.agent.synergy.PoolSynergy
 import spa.core.metrics.ColorPair
 
 /**
- * SPA-048 criteria 3, 4 and 6: `spa synergy` on trk-manabox-01 in WU with the committed trk tags
- * and weight 0.5, against an independent script's values (scratchpad `tools/synergy.js`,
- * 2026-11-05) to 3 decimals, every printed line, and the errors.
+ * SPA-048 criteria 3, 4 and 6: `spa synergy` on trk-manabox-01 in WU with the v1 trk tags, frozen
+ * since SPA-053 as `fixtures/tags/v1/trk.json`, and weight 0.5, against an independent script's
+ * values (scratchpad `tools/synergy.js`, 2026-11-05) to 3 decimals, every printed line, and the
+ * errors.
  */
 class SynergyCommandTest {
     private val pool = Fixtures.pool("trk-manabox-01.csv")
 
+    private val v1 = listOf("--tags", Fixtures.v1Tags("trk"))
+
     private val wu: PoolSynergy by lazy {
         val err = ByteArrayOutputStream()
         SynergyCommand.compute(
-            listOf(pool, "--set", "trk", "--pair", "WU", "--data", Fixtures.data),
+            listOf(pool, "--set", "trk", "--pair", "WU") + v1 + listOf("--data", Fixtures.data),
             PrintStream(err, true, Charsets.UTF_8),
         )
     }
 
     private val run: CliRun by lazy {
-        runCli("synergy", pool, "--set", "trk", "--pair", "WU", "--data", Fixtures.data)
+        runCli(
+            "synergy",
+            pool,
+            "--set",
+            "trk",
+            "--pair",
+            "WU",
+            *v1.toTypedArray(),
+            "--data",
+            Fixtures.data,
+        )
     }
 
     private fun card(number: String): CardSynergy =
@@ -206,5 +219,34 @@ class SynergyCommandTest {
     @Test
     fun `help lists the command`() {
         assertTrue("synergy <pool-file> --set <code> --pair <XY>" in Main.USAGE)
+    }
+
+    @Test
+    fun `--tags reads that file instead of the data directory's tag file`(@TempDir dir: Path) {
+        val tags = dir.resolve("elsewhere.json")
+        java.nio.file.Files.copy(Path.of(Fixtures.v1Tags("trk")), tags)
+        val run = synergy(extra = listOf("--tags", "$tags"))
+
+        assertEquals(ExitCode.OK, run.exit, run.stderr)
+        assertEquals(
+            "+0.128  syn 26  e 20.690  1 Enterprise NX-01",
+            run.stdoutLines().single { it.endsWith(" Enterprise NX-01") },
+        )
+    }
+
+    @Test
+    fun `a missing --tags file is one line and exit 1`(@TempDir dir: Path) {
+        val none = dir.resolve("none.json")
+        val run = synergy(extra = listOf("--tags", "$none"))
+
+        assertOneLine(run, "tag file not found: $none")
+    }
+
+    @Test
+    fun `help names --tags`() {
+        assertTrue(
+            "synergy <pool-file> --set <code> --pair <XY> [--weights <file>] [--tags <file>]" in
+                Main.USAGE
+        )
     }
 }

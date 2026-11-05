@@ -7,9 +7,12 @@ import org.junit.jupiter.api.Test
 /**
  * SPA-051 criterion 4: on the committed v1 `trk` tags, `spa synergy-table --set trk` and `spa
  * synergy-check --set trk` print exactly what they printed before SPA-051. The digests are of the
- * output of commit ed11e4c (origin/main before SPA-051), with line feeds only.
+ * output of commit ed11e4c (origin/main before SPA-051), with line feeds only. Since SPA-053 the v1
+ * tags are read from their frozen copy, `fixtures/tags/v1/trk.json`, through `--tags`.
  */
 class SynergyV1UnchangedTest {
+    private val v1 = arrayOf("--tags", Fixtures.v1Tags("trk"))
+
     private fun sha256(text: String): String =
         MessageDigest.getInstance("SHA-256")
             .digest(text.replace("\r\n", "\n").toByteArray(Charsets.UTF_8))
@@ -17,7 +20,7 @@ class SynergyV1UnchangedTest {
 
     @Test
     fun `synergy-table on trk is byte-identical to before`() {
-        val run = runCli("synergy-table", "--set", "trk", "--data", Fixtures.data)
+        val run = runCli("synergy-table", "--set", "trk", *v1, "--data", Fixtures.data)
 
         assertEquals(ExitCode.OK, run.exit, run.stderr)
         assertEquals(7260, run.stdoutLines().size)
@@ -29,7 +32,7 @@ class SynergyV1UnchangedTest {
 
     @Test
     fun `synergy-check on trk is byte-identical to before`() {
-        val run = runCli("synergy-check", "--set", "trk", "--data", Fixtures.data)
+        val run = runCli("synergy-check", "--set", "trk", *v1, "--data", Fixtures.data)
 
         assertEquals(ExitCode.OK, run.exit, run.stderr)
         assertEquals(

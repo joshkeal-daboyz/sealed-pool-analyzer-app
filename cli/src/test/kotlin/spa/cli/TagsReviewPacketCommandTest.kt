@@ -26,16 +26,27 @@ import spa.agent.tags.TagRole
 import spa.agent.tags.review.ReviewPrompts
 
 /**
- * SPA-052 criterion 1: `spa tags-review-packet trk --out <dir>` on the committed trk tag file, and
- * the command's options and failures.
+ * SPA-052 criterion 1: `spa tags-review-packet trk --out <dir>` on the v1 trk tag file (frozen
+ * since SPA-053 as `fixtures/tags/v1/trk.json`, given with `--tags`), and the command's options and
+ * failures.
  */
 class TagsReviewPacketCommandTest {
     @TempDir lateinit var temp: Path
 
-    private val trkTags: Path = Fixtures.root.resolve("tags/trk.json")
+    private val trkTags: Path = Path.of(Fixtures.v1Tags("trk"))
 
     private fun packet(set: String, out: Path, vararg extra: String): CliRun =
-        runCli("tags-review-packet", set, "--out", out.toString(), "--data", Fixtures.data, *extra)
+        runCli(
+            "tags-review-packet",
+            set,
+            "--out",
+            out.toString(),
+            "--tags",
+            trkTags.toString(),
+            "--data",
+            Fixtures.data,
+            *extra,
+        )
 
     private val trk: Path by lazy {
         temp.resolve("trk").also {

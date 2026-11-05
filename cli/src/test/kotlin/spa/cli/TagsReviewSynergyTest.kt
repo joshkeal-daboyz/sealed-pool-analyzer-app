@@ -20,12 +20,15 @@ import spa.agent.tags.TagReview
 
 /**
  * SPA-052 criterion 4: `spa synergy-table` and `spa synergy-check` on trk tag files with a `review`
- * block and with 20 v2 axes, and the committed trk file (no review) reading and printing as before.
+ * block and with 20 v2 axes, and the v1 trk file (no review) reading and printing as before. The v1
+ * trk file is the frozen copy `fixtures/tags/v1/trk.json` since SPA-053.
  */
 class TagsReviewSynergyTest {
     @TempDir lateinit var temp: Path
 
-    private val committed: TagFile = TagFiles.read(Fixtures.root.resolve("tags/trk.json"))
+    private val v1Path: Path = Path.of(Fixtures.v1Tags("trk"))
+
+    private val committed: TagFile = TagFiles.read(v1Path)
 
     /** A data directory holding trk's Scryfall cache, its checks, and the tag file [tags]. */
     private fun data(tags: TagFile): String {
@@ -67,7 +70,7 @@ class TagsReviewSynergyTest {
 
     @Test
     fun `the committed trk file reads and writes back byte for byte, with no review`() {
-        val path = Fixtures.root.resolve("tags/trk.json")
+        val path = v1Path
 
         assertEquals(null, committed.review)
         assertEquals(path.readText(), TagFiles.write(committed))
@@ -75,7 +78,10 @@ class TagsReviewSynergyTest {
 
     @Test
     fun `a review block changes neither command's output on trk`() {
-        val before = table(Fixtures.data) to check(Fixtures.data)
+        val v1 = arrayOf("--tags", v1Path.toString())
+        val before =
+            runCli("synergy-table", "--set", "trk", *v1, "--data", Fixtures.data) to
+                runCli("synergy-check", "--set", "trk", *v1, "--data", Fixtures.data)
         val reviewed = data(committed.copy(review = review))
 
         val after = table(reviewed) to check(reviewed)

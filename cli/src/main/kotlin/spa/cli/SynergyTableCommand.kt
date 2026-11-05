@@ -2,6 +2,7 @@ package spa.cli
 
 import java.io.PrintStream
 import java.nio.file.Files
+import java.nio.file.Path
 import spa.agent.facts.CardFacts
 import spa.agent.synergy.PairScore
 import spa.agent.synergy.SynergyTable
@@ -10,9 +11,10 @@ import spa.agent.tags.TagFile
 import spa.agent.tags.TagFiles
 
 /**
- * `spa synergy-table --set <code> [--min <score>] [--data <dir>]`: every pair of the set's tag
- * file, each card with itself included, whose synergy score is at least `--min` (default 1),
- * highest first ([SynergyTable]), then a summary line. No network or model call.
+ * `spa synergy-table --set <code> [--min <score>] [--tags <file>] [--data <dir>]`: every pair of
+ * the set's tag file (`--tags`, else `<data>/tags/<code>.json`), each card with itself included,
+ * whose synergy score is at least `--min` (default 1), highest first ([SynergyTable]), then a
+ * summary line. No network or model call.
  *
  * Each pair line gives the score, each term's part by name, and the two cards' names and ids; a
  * card with itself is printed once, as `<name> (<id>) with itself`. Ties print in the tag file's
@@ -24,7 +26,7 @@ object SynergyTableCommand {
     private const val DEFAULT_MIN = 1.0
 
     fun run(args: List<String>, stdout: PrintStream, stderr: PrintStream): Int {
-        val parsed = Args.parse(args, valueOptions = setOf("set", "data", "min"))
+        val parsed = Args.parse(args, valueOptions = setOf("set", "data", "min", "tags"))
         if (parsed.positionals.isNotEmpty()) {
             throw CliFailure("unexpected argument '${parsed.positionals.first()}'", ExitCode.USAGE)
         }
@@ -35,16 +37,23 @@ object SynergyTableCommand {
                 it.toDoubleOrNull()
                     ?: throw CliFailure("--min must be a number, got '$it'", ExitCode.ERROR)
             } ?: DEFAULT_MIN
-        lines(table(data, set, tagFile(data, set)), min).forEach(stdout::println)
+        lines(table(data, set, tagFile(data, set, tagsOption(parsed))), min)
+            .forEach(stdout::println)
         stdout.flush()
         stderr.flush()
         return ExitCode.OK
     }
 
-    /** The tag file of [set] under [data], `<data>/tags/<code>.json`, checked. */
-    internal fun tagFile(data: DataDir, set: String): TagFile {
-        val path = data.root.resolve("tags").resolve("$set.json")
-        if (!Files.isRegularFile(path)) {
+    /** The `--tags <file>` the synergy commands were given, or null for the default. */
+    internal fun tagsOption(parsed: Args): Path? = parsed.value("tags")?.let { Path.of(it) }
+
+    /**
+     * The tag file of [set], checked: [given] (`--tags <file>`) when not null, else
+     * `<data>/tags/<code>.json`.
+     */
+    internal fun tagFile(data: DataDir, set: String, given: Path? = null): TagFile {
+        val path = given ?: data.root.resolve("tags").resolve("$set.json")
+        if (given == null && !Files.isRegularFile(path)) {
             throw CliFailure("no tag file for set '$set': $path", ExitCode.ERROR)
         }
         val text = Commands.readFile(path, "tag file")

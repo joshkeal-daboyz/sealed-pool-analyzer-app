@@ -13,9 +13,9 @@ import spa.agent.tags.TagFiles
 import spa.agent.tags.TagRole
 
 /**
- * SPA-050 criteria 1, 2 and 4: `spa synergy-check` on the committed trk tags and owner checks,
- * against the Architect's independent script (scratchpad `tools/synergy.js`, 2026-11-05), and its
- * errors on hand-built files.
+ * SPA-050 criteria 1, 2 and 4: `spa synergy-check` on the v1 trk tags (frozen since SPA-053 as
+ * `fixtures/tags/v1/trk.json`) and the committed owner checks, against the Architect's independent
+ * script (scratchpad `tools/synergy.js`, 2026-11-05), and its errors on hand-built files.
  */
 class SynergyCheckCommandTest {
     /**
@@ -25,7 +25,17 @@ class SynergyCheckCommandTest {
      */
     @Test
     fun `trk prints the two original checks passing, with their numbers`() {
-        val run = runCli("synergy-check", "--set", "trk", "--data", Fixtures.data)
+        // The v1 trk tags these numbers were computed from, frozen since SPA-053.
+        val run =
+            runCli(
+                "synergy-check",
+                "--set",
+                "trk",
+                "--tags",
+                Fixtures.v1Tags("trk"),
+                "--data",
+                Fixtures.data,
+            )
         val lines = run.stdoutLines()
         val byId = { id: String -> lines.single { it.split(" ").getOrNull(1) == id } }
 
@@ -175,5 +185,36 @@ class SynergyCheckCommandTest {
     @Test
     fun `help lists the command`() {
         assertTrue("synergy-check --set <code>" in Main.USAGE)
+    }
+
+    @Test
+    fun `--tags reads that file instead of the data directory's tag file`(@TempDir dir: Path) {
+        val data = xyz(dir, checks(pair("pass", "xyz/2", 6), pair("fail", "xyz/2", 7)))
+        val before = runCli("synergy-check", "--set", "xyz", "--data", data)
+        val moved = dir.resolve("elsewhere.json")
+        Files.move(dir.resolve("tags/xyz.json"), moved)
+
+        val run = runCli("synergy-check", "--set", "xyz", "--tags", "$moved", "--data", data)
+
+        assertEquals(ExitCode.OK, before.exit, before.stderr)
+        assertEquals(ExitCode.OK, run.exit, run.stderr)
+        assertEquals("1 of 2 checks pass (1 independent)", run.stdoutLines().last())
+        assertEquals(before.stdout, run.stdout)
+    }
+
+    @Test
+    fun `a missing --tags file is one line and exit 1, and no check runs`(@TempDir dir: Path) {
+        val data = xyz(dir, checks(pair("ok", "xyz/2", 1)))
+        val none = dir.resolve("none.json")
+        val run = runCli("synergy-check", "--set", "xyz", "--tags", "$none", "--data", data)
+
+        assertEquals(ExitCode.ERROR, run.exit)
+        assertEquals("", run.stdout)
+        assertEquals(listOf("spa: tag file not found: $none"), run.stderrLines())
+    }
+
+    @Test
+    fun `help names --tags`() {
+        assertTrue("synergy-check --set <code> [--tags <file>]" in Main.USAGE)
     }
 }
