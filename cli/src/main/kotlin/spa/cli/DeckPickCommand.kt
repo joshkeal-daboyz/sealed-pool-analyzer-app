@@ -28,8 +28,8 @@ import spa.core.cards.Printing
  *
  * With `--tune`, the positionals are one file per set of `--set a,b` (and `--grades`, if given, one
  * file per set); every [Tuning.GRID] combination is measured on all the sets' builds pooled, and
- * the best is written, with a comment, to `--out` or `<data>/weights/tuned.json`. No network or
- * model call.
+ * the best is written, in the four-key format of `default.json`, to `--out` or
+ * `<data>/weights/tuned.json`. No network or model call.
  */
 object DeckPickCommand {
     fun run(args: List<String>, stdout: PrintStream): Int {
@@ -56,7 +56,7 @@ object DeckPickCommand {
         val weightsFile = parsed.value("weights")?.let(Path::of) ?: data.weightsFile()
         val weights =
             Commands.guard("invalid weights file $weightsFile") {
-                TunedWeights.parse(Commands.readFile(weightsFile, "weights file"))
+                Weights.parse(Commands.readFile(weightsFile, "weights file"))
             }
         val selection = context.read(Path.of(file))
         val report =
@@ -97,16 +97,9 @@ object DeckPickCommand {
         val best = Tuning.best(points)
         stdout.println("best: ${point(best)}")
         Files.createDirectories(out.toAbsolutePath().parent)
-        Files.writeString(out, TunedWeights.encode(best.weights, comment(best, counts)))
+        Files.writeString(out, TunedWeights.encode(best.weights))
         stdout.println("wrote $out")
     }
-
-    private fun comment(best: GridPoint, counts: String): String =
-        "SPA-039 grid winner. Grid: synergy ${Tuning.SYNERGY.joinToString(", ", "{", "}")}, " +
-            "curve ${Tuning.CURVE.joinToString(", ", "{", "}")}, " +
-            "colour ${Tuning.COLOUR.joinToString(", ", "{", "}")}, cap ${Tuning.CAP}. " +
-            "Highest mean adjusted overlap (${decimals(best.overlap)}) over the builds of " +
-            "$counts pooled; ties to the smaller total weight."
 
     private fun point(point: GridPoint): String =
         "${weights(point.weights, "  ")}: ${decimals(point.overlap)}"

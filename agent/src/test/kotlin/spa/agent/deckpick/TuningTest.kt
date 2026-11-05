@@ -3,7 +3,6 @@ package spa.agent.deckpick
 import java.io.ByteArrayInputStream
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertFailsWith
 import spa.agent.deckpick.DeckPickTestCards.dawnCleric
 import spa.agent.deckpick.DeckPickTestCards.duskPaladin
 import spa.agent.deckpick.DeckPickTestCards.graveRat
@@ -118,34 +117,20 @@ class TuningTest {
     }
 
     @Test
-    fun `tuned weights carry a comment and read back as weights`() {
+    fun `tuned weights are written in the four-key format of the default weights file`() {
         val weights = w(0.75, 0.25, 0.0)
-        val text = TunedWeights.encode(weights, "grid winner")
+        val text = TunedWeights.encode(weights)
 
-        assertEquals(weights, TunedWeights.parse(text))
+        assertEquals(weights, Weights.parse(text))
         assertEquals(
-            listOf("synergy", "curve", "colour", "cap", "comment"),
-            Regex("\"(\\w+)\":").findAll(text).map { it.groupValues[1] }.toList(),
+            "{ \"synergy\": 0.75, \"curve\": 0.25, \"colour\": 0.0, \"cap\": 1.0 }\n",
+            text,
         )
-        assertEquals(Weights.DEFAULT, TunedWeights.parse(Weights.DEFAULT.let(::plain)))
+        assertEquals(
+            "{ \"synergy\": 0.5, \"curve\": 0.25, \"colour\": 0.25, \"cap\": 1.0 }\n",
+            TunedWeights.encode(Weights.DEFAULT),
+        )
     }
-
-    @Test
-    fun `a comment that is not a string, or any other key, is refused`() {
-        assertFailsWith<IllegalArgumentException> {
-            TunedWeights.parse(
-                """{"synergy": 1, "curve": 0, "colour": 0, "cap": 1, "comment": 3}"""
-            )
-        }
-        assertFailsWith<IllegalArgumentException> {
-            TunedWeights.parse("""{"synergy": 1, "curve": 0, "colour": 0, "cap": 1, "note": "x"}""")
-        }
-        assertFailsWith<IllegalArgumentException> { TunedWeights.parse("[1, 2]") }
-    }
-
-    private fun plain(weights: Weights) =
-        """{"synergy": ${weights.synergy}, "curve": ${weights.curve}, """ +
-            """"colour": ${weights.colour}, "cap": ${weights.cap}}"""
 
     private fun small(): BuildSelection {
         val stream =

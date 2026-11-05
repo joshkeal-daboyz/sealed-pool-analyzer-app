@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.io.TempDir
 import spa.agent.deckpick.TunedWeights
 import spa.agent.deckpick.Tuning
+import spa.agent.poolgrade.Weights
 
 /**
  * Criterion 1, through the command line: `spa deck-pick` on the committed `syn-sealed.csv`.
@@ -92,7 +93,7 @@ class DeckPickCommandTest {
     }
 
     @Test
-    fun `a weights file with a comment is read`() {
+    fun `a weights file with any key but the four weights is one error line`() {
         val file = temp.resolve("tuned.json")
         file.writeText(
             """{"synergy": 0, "curve": 0, "colour": 0, "cap": 1, "comment": "a tuned file"}"""
@@ -100,12 +101,12 @@ class DeckPickCommandTest {
 
         val run = deckPick("--weights", file.toString())
 
-        assertEquals(ExitCode.OK, run.exit, run.stderr)
-        assertTrue("adjusted: 0.5000" in run.stdoutLines(), run.stdout)
+        assertEquals(ExitCode.ERROR, run.exit)
+        assertEquals(1, run.stderrLines().size, run.stderr)
     }
 
     @Test
-    fun `--tune prints every grid point and writes the best with a comment`() {
+    fun `--tune prints every grid point and writes the best as a weights file`() {
         val out = temp.resolve("tuned.json")
 
         val run =
@@ -128,11 +129,13 @@ class DeckPickCommandTest {
         val lines = run.stdoutLines()
         val grid = lines.filter { it.startsWith("synergy ") }
         assertEquals(Tuning.GRID.size, grid.size, run.stdout)
-        val written = TunedWeights.parse(out.readText())
+        val written = Weights.parse(out.readText())
         assertTrue(written in Tuning.GRID)
-        val comment = Regex(""""comment": "([^"]*)"""").find(out.readText())!!.groupValues[1]
-        assertTrue("syn (1 builds)" in comment, comment)
-        assertTrue(lines.any { it.startsWith("best: ") }, run.stdout)
+        assertEquals(TunedWeights.encode(written), out.readText())
+        assertEquals("tuning on syn (1 builds), syn (1 builds): 2 builds pooled", lines.first())
+        val best = lines.single { it.startsWith("best: ") }
+        assertTrue("synergy ${written.synergy}  curve ${written.curve}" in best, best)
+        assertEquals("wrote $out", lines.last())
     }
 
     @Test
