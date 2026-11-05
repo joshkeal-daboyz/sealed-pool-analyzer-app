@@ -19,11 +19,16 @@ data class ResponseCard(
 /** One card file of the packet: its [name] and the card [ids] it holds, in order. */
 data class CardFileIds(val name: String, val ids: List<String>)
 
-/** What an import check sees: the packet's [cardFiles], its [axes], and every response entry. */
+/**
+ * What an import check sees: the packet's [cardFiles], its [axes], every response entry, the
+ * [facts] that at least one card of the set has, and the name of the [axesFile] the axes came from.
+ */
 class TagCheckInput(
     val cardFiles: List<CardFileIds>,
     val axes: List<Axis>,
     val responses: List<ResponseCard>,
+    val facts: Set<String> = emptySet(),
+    val axesFile: String = TagPackets.AXES,
 ) {
     /** Every card id the packet holds, in packet order. */
     val poolIds: List<String> = cardFiles.flatMap { it.ids }
@@ -39,6 +44,9 @@ fun interface TagCheck {
 
 /** The checks `spa tags-import` runs, in order. A new check is one file and one entry here. */
 object TagChecks {
+    /** Stub. */
+    val SUPPLY: List<TagCheck> = emptyList()
+
     val ALL: List<TagCheck> =
         listOf(
             CoverageCheck,

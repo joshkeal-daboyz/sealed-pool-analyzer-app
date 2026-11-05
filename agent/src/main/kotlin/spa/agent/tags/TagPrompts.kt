@@ -11,6 +11,9 @@ object TagPrompts {
 
     private val versionPattern = Regex("[a-z0-9]+")
 
+    /** Stub. */
+    @Suppress("UNUSED_PARAMETER") fun format(version: String): AxesFormat = AxesFormat.PLAIN
+
     /** The two passes: naming the set's axes, then tagging each card's roles and partners. */
     enum class Pass(val stem: String) {
         AXES("tags-axes"),

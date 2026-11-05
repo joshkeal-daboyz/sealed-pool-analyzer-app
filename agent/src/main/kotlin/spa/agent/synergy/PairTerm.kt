@@ -1,6 +1,7 @@
 package spa.agent.synergy
 
 import spa.agent.tags.TagCard
+import spa.agent.tags.TagFile
 
 /**
  * One term of the synergy score of two cards of a set's tag file (G-005 deliverable 7). A pair's
@@ -13,6 +14,9 @@ interface PairTerm {
 
     /** This term's part of the score of [a] with [b], where [a] and [b] may be the same card. */
     fun score(a: TagCard, b: TagCard): Int
+
+    /** Stub. */
+    fun forTable(tags: TagFile, facts: Map<String, Set<String>>): PairTerm? = this
 }
 
 /** The terms a pair's score sums, in print order. A new term is one file and one entry here. */

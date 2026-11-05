@@ -8,6 +8,15 @@ import kotlinx.serialization.json.JsonObject
 data class AxesResult(val axes: List<Axis>?, val problems: List<String>)
 
 /**
+ * The two forms of an axes file. [PLAIN] (tags prompt v1): `{ id, name, definition }`, at most 15
+ * axes. [SUPPLIED] (v2 on): each axis also carries `suppliedBy`, at most 20 axes.
+ */
+enum class AxesFormat(val maxAxes: Int, val supplied: Boolean) {
+    PLAIN(15, false),
+    SUPPLIED(20, true),
+}
+
+/**
  * Reads and checks an axes file, the tagger's `axes.response.json`: a JSON array of `{ id, name,
  * definition }`, [MIN_AXES] to [MAX_AXES] entries, each id lowercase letters, digits and hyphens,
  * the ids distinct, and each name and definition a non-empty string. Every problem is one line
@@ -19,6 +28,14 @@ object AxesFile {
 
     private val fields = setOf("id", "name", "definition")
     private val idPattern = Regex("[a-z0-9-]+")
+
+    /** Stub. */
+    @Suppress("UNUSED_PARAMETER")
+    fun parse(text: String, fileName: String, format: AxesFormat): AxesResult =
+        parse(text, fileName)
+
+    /** Stub. */
+    fun parseDetected(text: String, fileName: String): AxesResult = parse(text, fileName)
 
     /** The axes in [text], read from the file named [fileName]. */
     fun parse(text: String, fileName: String): AxesResult {

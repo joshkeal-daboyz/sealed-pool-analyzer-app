@@ -29,6 +29,7 @@ object TagImport {
         setCode: String,
         provenance: String,
         checks: List<TagCheck> = TagChecks.ALL,
+        facts: Map<String, Set<String>> = emptyMap(),
     ): TagImportResult {
         val pool = GradingPool.printings(index)
         val packet = readPacket(packetDir, pool, setCode)

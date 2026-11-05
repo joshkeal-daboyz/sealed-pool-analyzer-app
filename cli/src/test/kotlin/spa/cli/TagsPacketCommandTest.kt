@@ -23,8 +23,22 @@ import org.junit.jupiter.api.io.TempDir
 class TagsPacketCommandTest {
     @TempDir lateinit var temp: Path
 
-    private fun packet(set: String, out: Path, vararg extra: String): CliRun =
-        runCli("tags-packet", set, "--out", out.toString(), "--data", Fixtures.data, *extra)
+    /**
+     * `spa tags-packet` with prompt v1 unless [extra] names a prompt (SPA-051 made v2 the default).
+     */
+    private fun packet(set: String, out: Path, vararg extra: String): CliRun {
+        val prompt = if ("--prompt" in extra) emptyArray() else arrayOf("--prompt", "v1")
+        return runCli(
+            "tags-packet",
+            set,
+            "--out",
+            out.toString(),
+            "--data",
+            Fixtures.data,
+            *extra,
+            *prompt,
+        )
+    }
 
     private fun cardFiles(dir: Path): List<Path> =
         dir.listDirectoryEntries("cards-*.json")
@@ -278,17 +292,19 @@ class TagsPacketCommandTest {
     }
 
     @Test
-    fun `--prompt v1 is the default`() {
+    fun `--prompt v1 still writes the v1 packet, and is no longer the default`() {
+        // SPA-051: the default became v2 (TagsV2CommandTest); v1 stays selectable.
         val default = temp.resolve("default")
         val v1 = temp.resolve("v1")
 
-        assertEquals(ExitCode.OK, packet("syn", default).exit)
+        val run = runCli("tags-packet", "syn", "--out", "$default", "--data", Fixtures.data)
+        assertEquals(ExitCode.OK, run.exit)
         assertEquals(ExitCode.OK, packet("syn", v1, "--prompt", "v1").exit)
 
-        assertEquals(
-            default.resolve("instructions.md").readText(),
-            v1.resolve("instructions.md").readText(),
-        )
+        val text = v1.resolve("instructions.md").readText()
+        assertTrue("Give between 3 and 15 axes." in text)
+        assertFalse(v1.resolve("facts.json").exists())
+        assertTrue(default.resolve("facts.json").exists())
     }
 
     @Test

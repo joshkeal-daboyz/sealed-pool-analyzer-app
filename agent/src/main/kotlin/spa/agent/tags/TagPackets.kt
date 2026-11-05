@@ -32,6 +32,7 @@ object TagPackets {
     const val AXES_RESPONSE = "axes.response.json"
     const val AXES = "axes.json"
     const val RESPONSE_SCHEMA = "response.schema.json"
+    const val FACTS = "facts.json"
 
     /** The most named partners a card may list. */
     const val MAX_PARTNERS = 5
@@ -47,6 +48,7 @@ object TagPackets {
         brief: FormatBrief,
         themes: PacketThemes?,
         prompt: String,
+        facts: Map<String, Set<String>>? = null,
     ): GradingPacket {
         val cardFiles = cardFiles(index, brief)
         val instructions =
@@ -68,6 +70,7 @@ object TagPackets {
         themes: PacketThemes?,
         prompt: String,
         axes: List<Axis>,
+        facts: Map<String, Set<String>>? = null,
     ): GradingPacket {
         val cardFiles = cardFiles(index, brief)
         val instructions =
