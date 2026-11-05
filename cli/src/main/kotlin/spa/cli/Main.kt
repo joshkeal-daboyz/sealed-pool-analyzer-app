@@ -10,7 +10,7 @@ import spa.core.cards.ScryfallSetFetcher
 
 /**
  * The `spa` command line: `analyze`, `validate-brief`, `fetch-set`, `winrates`, `grade-backtest`,
- * `grade-packet`, `grade-import`, and `grades`.
+ * `grade-packet`, `grade-import`, `grades`, and `themes`.
  */
 object Main {
     /** The text `spa --help` prints. */
@@ -44,6 +44,10 @@ object Main {
         |      confidence and source (WIN_RATE if <data>/winrates/<code>.json grades it, else
         |      MODEL), highest first. Entries with no grade, such as basic lands, come last
         |      with - and source none.
+        |  themes <code> [--data <dir>]
+        |      Print each theme of the set's sealed pool (a keyword that is not evergreen, or a
+        |      subtype) held or referred to by 3 or more cards: the cards that have it, refer to
+        |      it, or either, and the either count by colour and rarity, most cards first.
         |
         |<data> defaults to ${DataDir.DEFAULT}. Exit codes: 0 ok, 1 error, 2 bad command line.
         |Run 'spa --help' for this text.
@@ -104,6 +108,7 @@ object Main {
             "grade-packet" -> GradePacketCommand.run(rest, stdout)
             "grade-import" -> GradeImportCommand().run(rest, stdout, stderr)
             "grades" -> GradesCommand.run(rest, stdout, stderr)
+            "themes" -> ThemesCommand.run(rest, stdout)
             null -> usageError("no command given", stderr)
             else -> usageError("unknown command '$command'", stderr)
         }

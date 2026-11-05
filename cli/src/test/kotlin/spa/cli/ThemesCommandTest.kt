@@ -1,8 +1,11 @@
 package spa.cli
 
+import java.nio.file.Files
+import java.nio.file.Path
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.io.TempDir
 import spa.agent.themes.ColourGroup
 import spa.agent.themes.PoolThemes
 import spa.agent.themes.Tally
@@ -106,6 +109,22 @@ class ThemesCommandTest {
         assertEquals(1, run.exit)
         assertEquals("", run.stdout)
         assertEquals(1, run.stderrLines().size, run.stderr)
+    }
+
+    @Test
+    fun `a set without a brief still prints its themes, and an invalid brief exits 1`(
+        @TempDir temp: Path
+    ) {
+        val data = Fixtures.synDataDir(temp)
+        Files.delete(data.resolve("briefs/syn.json"))
+        val run = runCli("themes", "syn", "--data", data.toString())
+        assertEquals(0, run.exit, run.stderr)
+        run.stdoutLines().forEach { assertTrue(linePattern.matches(it), it) }
+
+        Files.writeString(data.resolve("briefs/syn.json"), "{}")
+        val bad = runCli("themes", "syn", "--data", data.toString())
+        assertEquals(1, bad.exit)
+        assertEquals(1, bad.stderrLines().size, bad.stderr)
     }
 
     @Test

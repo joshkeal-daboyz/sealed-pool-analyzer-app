@@ -97,6 +97,18 @@ Letter labels, relative to the card's set (G-003 Decided 2):
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Label | A+ | A | A− | B+ | B | C+ | C | C− | D | D− | F |
 
+**themes** tags each card of the set's sealed pool (the set and its companions, basic lands out, one card per oracle id) with themes and counts them. A keyword theme is a keyword in the card's Scryfall `keywords` (read from `<data>/scryfall/<code>/cards.json` and its companions'), unless it is evergreen (Flying, Trample, Ward, Scry and the like); a mechanic the set's brief names is always a theme. A type theme is any subtype on a face's type line. A card has a theme when the keyword is in its keywords or the subtype on its type line; it refers to a theme when its rules text, without reminder text, its own names and every `this <theme>`, names the theme as a whole word (any case, optional plural `s`) and it does not have the theme as a keyword. A theme with 3 or more cards that have it or refer to it is printed, one line each, most cards first: name, kind, the has, refers and either counts, then the either count by colour (W, U, B, R, G, M multicoloured, C colourless) and rarity (C, U, R, M). It exits 0; a set with no cache prints one line and exits 1. It makes no network or model call.
+
+```bash
+cli/build/install/spa/bin/spa themes trk
+```
+
+```text
+Human type has=68 refers=1 either=69 colour W=15 U=13 B=5 R=9 G=11 M=15 C=1 rarity C=5 U=26 R=16 M=22
+Officer type has=34 refers=15 either=45 colour W=9 U=8 B=7 R=8 G=6 M=5 C=2 rarity C=10 U=16 R=11 M=8
+...
+```
+
 ## Android app
 
 The `app` module builds the Android app, a debug APK signed with the build machine's debug key. It needs the JDK and the Android SDK in [Toolchain](#toolchain).
