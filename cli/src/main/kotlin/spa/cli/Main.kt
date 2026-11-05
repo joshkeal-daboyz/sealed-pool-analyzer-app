@@ -11,7 +11,8 @@ import spa.core.cards.ScryfallSetFetcher
 /**
  * The `spa` command line: `analyze`, `validate-brief`, `fetch-set`, `winrates`, `grade-backtest`,
  * `grade-packet`, `grade-import`, `grades`, `themes`, `pool-grades`, `deck-pick`, `fixing`,
- * `tags-packet`, `tags-import`, `synergy-table`, `synergy`, `synergy-check`, and `facts`.
+ * `tags-packet`, `tags-import`, `tags-review-packet`, `tags-review-import`, `synergy-table`,
+ * `synergy`, `synergy-check`, and `facts`.
  */
 object Main {
     /** The text `spa --help` prints. */
@@ -87,6 +88,18 @@ object Main {
         |  tags-import <code> --packet <dir> --provenance <text> [--data <dir>]
         |      Check a tagger's response files in the pass-2 packet <dir> and write
         |      <data>/tags/<code>.json. Writes nothing on any problem.
+        |  tags-review-packet <code> --out <dir> [--tags <file>] [--prompt <version>] [--data <dir>]
+        |      Write a blind review packet for the set's tag file (--tags, else
+        |      <data>/tags/<code>.json) into <dir>: the review prompt (default v1), the axes with
+        |      their supply, the brief and theme counts, the cards in files of 50 with each file's
+        |      current tags beside it as tags-NN.json, facts.json, tag-file.json (the tag file's
+        |      path and hash), review.schema.json and fact-suggestions.schema.json.
+        |  tags-review-import <code> --packet <dir> --provenance <text> [--data <dir>]
+        |      Apply the reviewer's cards-NN.review.json corrections (add-role, remove-role,
+        |      set-strength, add-partner, remove-partner, each with a reason) in <dir> to the tag
+        |      file the packet was built from, unchanged since, check the result as tags-import
+        |      does, and write <data>/tags/<code>.json with a review block. Prints the count by
+        |      action and each fact suggestion. Writes nothing on any problem.
         |  synergy-table --set <code> [--min <score>] [--data <dir>]
         |      Print every pair of cards of the set's tag file <data>/tags/<code>.json, each card
         |      with itself included, scoring at least --min (default 1), highest first: the score,
@@ -184,7 +197,7 @@ object Main {
             "fixing" to { a, out, err -> FixingCommand.run(a, out, err) },
             "tags-packet" to { a, out, err -> TagsPacketCommand.run(a, out, err) },
             "tags-import" to { a, out, err -> TagsImportCommand().run(a, out, err) },
-            "tags-review-packet" to { a, out, err -> TagsReviewPacketCommand.run(a, out, err) },
+            "tags-review-packet" to { a, out, _ -> TagsReviewPacketCommand.run(a, out) },
             "tags-review-import" to { a, out, err -> TagsReviewImportCommand().run(a, out, err) },
             "synergy-table" to { a, out, err -> SynergyTableCommand.run(a, out, err) },
             "synergy" to { a, out, err -> SynergyCommand.run(a, out, err) },

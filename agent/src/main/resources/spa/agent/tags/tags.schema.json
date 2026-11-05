@@ -25,9 +25,42 @@
     "cards": {
       "type": "array",
       "items": { "$ref": "#/$defs/card" }
+    },
+    "review": {
+      "description": "Written by spa tags-review-import (SPA-052); absent before a review. The review's provenance, the number of applied corrections by action, and every applied correction, in the order it was applied, with its reason.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provenance", "counts", "corrections"],
+      "properties": {
+        "provenance": { "type": "string", "pattern": "\\S" },
+        "counts": {
+          "type": "object",
+          "propertyNames": { "$ref": "#/$defs/action" },
+          "additionalProperties": { "type": "integer", "minimum": 0 }
+        },
+        "corrections": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/correction" }
+        }
+      }
     }
   },
   "$defs": {
+    "action": { "type": "string", "pattern": "^[a-z]+(-[a-z]+)*$" },
+    "correction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "action", "reason"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]{3,6}/\\S+$" },
+        "action": { "$ref": "#/$defs/action" },
+        "axis": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "role": { "enum": ["enabler", "payoff"] },
+        "partner": { "type": "string", "pattern": "^[a-z0-9]{3,6}/\\S+$" },
+        "strength": { "$ref": "#/$defs/strength" },
+        "reason": { "type": "string", "pattern": "\\S" }
+      }
+    },
     "strength": {
       "enum": [1, 2, 3]
     },
