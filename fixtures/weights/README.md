@@ -1,15 +1,16 @@
 # Pool adjustment weights
 
-`spa pool-grades` reads its weights from `default.json` here unless `--weights <file>` names another file. A weights file is one JSON object with exactly these four numbers, each 0 or more:
+`spa pool-grades` reads its weights from `default.json` here unless `--weights <file>` names another file. A weights file is one JSON object of numbers, each finite and 0 or more: `cap`, and one key per card part (`CardParts.ALL` in `spa.agent.poolgrade`):
 
 | Key | Default | Meaning |
 | --- | --- | --- |
 | `synergy` | 0.5 | The most the synergy part moves a grade, up or down. |
 | `curve` | 0.25 | The most the curve part moves a grade. |
 | `colour` | 0.25 | The most the colour depth part moves a grade. |
-| `cap` | 1.0 | The most the three parts together move a grade (G-004 Decided 6). |
+| `tagSynergy` | 0 | The most the tag synergy part (SPA-048, through SPA-043) moves a grade. The tag file is read only when this is above 0. |
+| `cap` | 1.0 | The most the parts together move a grade (G-004 Decided 6). Required. |
 
-The defaults are G-004's starting weights (SPA-038), untuned. The weights tuned on `msh` and `hob` in SPA-039 are `tuned.json`, below. Any other key, a missing key, a negative number or a value that is not a number makes the command print one line and exit 1.
+A part missing from the file has weight 0, which switches it off. The defaults are G-004's starting weights (SPA-038), untuned; `default.json` has no `tagSynergy`, so it is 0. The weights tuned on `msh` and `hob` in SPA-039 are `tuned.json`, below. An unknown key, a missing `cap`, a negative number or a value that is not a number makes the command print one line, naming the key, and exit 1.
 
 ## `tag-synergy.json`
 
@@ -17,7 +18,7 @@ The defaults are G-004's starting weights (SPA-038), untuned. The weights tuned 
 
 ## `tuned.json`
 
-The grid winner of SPA-039's tuning, frozen: `{ "synergy": 0.0, "curve": 0.25, "colour": 0.5, "cap": 1.0 }`, in the same four-key format as `default.json`, so `spa pool-grades --weights fixtures/weights/tuned.json` and `spa deck-pick --weights` both read it.
+The grid winner of SPA-039's tuning, frozen: `{ "synergy": 0.0, "curve": 0.25, "colour": 0.5, "cap": 1.0 }`, in the same four-key format as `default.json`, so `spa pool-grades --weights fixtures/weights/tuned.json` and `spa deck-pick --weights` both read it. `deck-pick --tune` writes `synergy`, `curve`, `colour` and `cap`, with `tagSynergy` before `cap` only when it is above 0; its grid keeps `tagSynergy` at 0.
 
 It was written by `spa deck-pick MSH.Sealed.csv.gz HOB.Sealed.csv.gz --set msh,hob --tune --out fixtures/weights/tuned.json` on 17Lands' public Sealed game data (`game_data_public.<SET>.Sealed.csv.gz`, not committed) with the v2 grade files and the committed baselines:
 

@@ -49,12 +49,13 @@ object Main {
         |      MODEL), highest first. Entries with no grade, such as basic lands, come last
         |      with - and source none.
         |  pool-grades <pool-file> --set <code> [--pair <XY>] [--grades <file>]
-        |          [--weights <file>] [--data <dir>]
+        |          [--weights <file>] [--tags <file>] [--data <dir>]
         |      For each colour pair (or the one --pair names, as WU or UW), highest mean first,
         |      print the pool's cards castable in it with each set grade adjusted for this pool by
-        |      synergy, curve and colour depth, capped, and one reason line per adjustment. Set
-        |      grades come from --grades, else <data>/grades/<code>.v2.json, else <code>.json;
-        |      weights from --weights, else <data>/weights/default.json.
+        |      synergy, curve, colour depth and tag synergy, capped, and one reason line per
+        |      adjustment. Set grades come from --grades, else <data>/grades/<code>.v2.json, else
+        |      <code>.json; weights from --weights, else <data>/weights/default.json; tags, read
+        |      only when tagSynergy is above 0, from --tags, else <data>/tags/<code>.json.
         |  deck-pick <sealed-game-data.csv.gz> --set <code> [--grades <file>] [--weights <file>]
         |          [--data <dir>]
         |      For each build of a 17Lands Sealed game data file by a strong player (win-rate
