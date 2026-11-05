@@ -2,6 +2,7 @@
 
 What the Architect learned from merged tickets. One line each, newest first. Read before writing any ticket.
 
+- 2026-11-05 SPA-039: An independent script must use the same field the engine uses, not a similar one from the raw data. The deck-pick script read Scryfall's top-level `colors`, which covers one face of adventure and modal double-faced cards, so two pinned numbers were off. Check the script against the engine on multi-face cards before pinning.
 - 2026-11-05 SPA-038: Pin numbers from the script's unrounded values, not from a rounded printout. The ticket pinned 2.722 from a printed 2.7215 whose true value rounds to 2.721; the Developer caught it. Print pins with more decimals than the criterion asks for.
 - 2026-11-04 SPA-034: A criterion that counts a pool's entries must say what happens to entries the feature excludes by design. "All 71 entries graded" ignored the three basic lands grade files never hold. Before pinning a count, run the fixture through every rule that filters it.
 - 2026-11-04 SPA-032: Say which field a statistic reads when a file has two candidates. "Rank each list" let the Developer rank win rates by the 0.5-step score instead of `gihwr`, which would have lowered every backtest number; the Inspector caught it. Name the exact field in the criterion.
