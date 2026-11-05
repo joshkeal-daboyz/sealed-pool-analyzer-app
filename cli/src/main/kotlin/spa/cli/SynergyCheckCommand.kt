@@ -2,7 +2,9 @@ package spa.cli
 
 import java.io.PrintStream
 import java.nio.file.Files
+import java.nio.file.Path
 import spa.agent.synergy.SynergyTable
+import spa.agent.synergy.check.SynergyCheckFile
 import spa.agent.synergy.check.SynergyChecks
 
 /**
@@ -23,6 +25,16 @@ object SynergyCheckCommand {
         val data = Commands.dataDir(parsed)
         val table = SynergyTable(SynergyTableCommand.tagFile(data, set))
         val path = data.root.resolve("synergy-checks").resolve("$set.json")
+        val file = checkFile(path, set)
+        val lines = Commands.guard("synergy check file $path") { SynergyChecks.lines(file, table) }
+        lines.forEach(stdout::println)
+        stdout.flush()
+        stderr.flush()
+        return ExitCode.OK
+    }
+
+    /** The check file of [set] at [path], checked. */
+    private fun checkFile(path: Path, set: String): SynergyCheckFile {
         if (!Files.isRegularFile(path)) {
             throw CliFailure("no synergy check file for set '$set': $path", ExitCode.ERROR)
         }
@@ -34,10 +46,6 @@ object SynergyCheckCommand {
                 ExitCode.ERROR,
             )
         }
-        val lines = Commands.guard("synergy check file $path") { SynergyChecks.lines(file, table) }
-        lines.forEach(stdout::println)
-        stdout.flush()
-        stderr.flush()
-        return ExitCode.OK
+        return file
     }
 }

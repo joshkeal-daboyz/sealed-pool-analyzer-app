@@ -77,11 +77,10 @@ class SynergyChecksTest {
         groupB: List<Int>,
         share: Double,
         min: Int = 1,
-        status: String = "independent",
     ): String {
         fun group(numbers: List<Int>) =
             numbers.joinToString(", ", "[", "]") { """{ "id": "xyz/$it", "name": "n$it" }""" }
-        return """{ "id": "$id", "owner": "words", "added": "2026-11-05", "status": "$status",
+        return """{ "id": "$id", "owner": "words", "added": "2026-11-05", "status": "independent",
              "kind": "groups", "share": $share, "min": $min, "listRule": "by hand",
              "groupA": ${group(groupA)}, "groupB": ${group(groupB)} }"""
     }
