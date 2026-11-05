@@ -123,3 +123,16 @@ The owner answered on 2026-11-05: "Approve all except 2 and 5. Agents are going 
   7. SPA-046: the deck backtest and tuning of every part, synergy included, on `msh` and `hob`, held out on `fra`, with synergy on against off.
 
   The Architect completes each ticket, with script-pinned numbers, before dispatching it.
+- 2026-11-05 Owner's tagging examples (Star Trek): "Andromedan Automatons are a great example of a card that synergizes with itself." "Creatures with ETBs should be recognized as synergizing with 'beam me up'." Checked against the cards:
+  - Andromedan Automatons' enters ability searches for "any number of cards named Andromedan Automatons".
+  - Beam me up (10 cards in trk) is cast from the graveyard by returning a creature you control to its owner's hand. That replays a creature's enters ability, and trk has 57 creatures with one.
+  - Prompt v1 (SPA-047) covers the first only loosely ("a card may name itself") and the second not at all. It reads synergy through shared axes, and nothing tells it that returning a creature to hand rewards enters abilities.
+- SPA-050, before any tagging run: prompt v2 for both passes, as new resource files, with v2 the default. It adds two general rules, worded for any set, not for trk:
+  - mechanics interact across axes: effects that return, blink or copy your creatures reward creatures with enters or leaves abilities, and graveyard casting rewards self-mill;
+  - a card that refers to its own name (searching for, counting or boosting cards with its name) is its own partner, strength 3.
+- SPA-048 also adds a deterministic self-partner rule, so the pair table never depends on Fable noticing: a card whose rules text names itself, outside "this" and reminder text, gets a self-pair score from the weights file.
+- The trk tagging run is checked against both examples before it is committed:
+  - Andromedan Automatons must be its own partner;
+  - the run must have an axis for beam me up (or for returning creatures), with most of the 57 enters-ability creatures tagged on it.
+
+  A miss means a prompt fix and a rerun, not a commit.
