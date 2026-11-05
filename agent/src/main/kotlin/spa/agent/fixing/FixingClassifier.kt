@@ -22,10 +22,21 @@ data class CardFixing(val card: Card, val kinds: List<FixingKind>, val colours: 
  */
 class FixingClassifier(val rules: List<FixingRule> = DEFAULT_RULES) {
     /** The card's fixing, or null when no rule matches it. */
-    fun classify(card: Card): CardFixing? = null // TODO SPA-042
+    fun classify(card: Card): CardFixing? {
+        val texts = card.faces.map { ReminderText.strip(it.oracleText) }
+        val byKind = sortedMapOf<FixingKind, MutableSet<Color>>()
+        rules.forEach { rule ->
+            val colours = texts.flatMap { rule.colours(it) }
+            if (colours.isNotEmpty()) byKind.getOrPut(rule.kind) { mutableSetOf() } += colours
+        }
+        if (byKind.isEmpty()) return null
+        val union = byKind.values.flatten().toSet()
+        return CardFixing(card, byKind.keys.toList(), Color.entries.filter { it in union })
+    }
 
     /** Every fixing card in [index]'s sealed pool ([GradingPool]), sorted by name. */
-    fun setFixing(index: CardIndex): List<CardFixing> = emptyList() // TODO SPA-042
+    fun setFixing(index: CardIndex): List<CardFixing> =
+        GradingPool.printings(index).mapNotNull { classify(it.card) }.sortedBy { it.card.name }
 
     /** The distinct kinds [rules] can give, sorted by name. */
     val kinds: List<FixingKind>
@@ -33,6 +44,7 @@ class FixingClassifier(val rules: List<FixingRule> = DEFAULT_RULES) {
 
     companion object {
         /** The rules G-005 deliverable 1 names. */
-        val DEFAULT_RULES: List<FixingRule> = listOf(CyclingRule, ManaRule, SearchRule, TreasureRule)
+        val DEFAULT_RULES: List<FixingRule> =
+            listOf(CyclingRule, ManaRule, SearchRule, TreasureRule)
     }
 }

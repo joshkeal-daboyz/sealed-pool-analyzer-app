@@ -9,5 +9,12 @@ import spa.core.text.Color
 object SearchRule : FixingRule {
     override val kind = FixingKind.SEARCH
 
-    override fun colours(faceText: String): Set<Color> = emptySet() // TODO SPA-042
+    private val CLAUSE = Regex("""\bsearch your library for\b[^.\n]*""", RegexOption.IGNORE_CASE)
+
+    override fun colours(faceText: String): Set<Color> =
+        if (CLAUSE.findAll(faceText).any { fixes(it.value) }) ALL_COLOURS else emptySet()
+
+    private fun fixes(clause: String): Boolean =
+        clause.contains("land card", ignoreCase = true) &&
+            !clause.contains("into your graveyard", ignoreCase = true)
 }

@@ -9,5 +9,24 @@ import spa.core.text.Color
 object CyclingRule : FixingRule {
     override val kind = FixingKind.CYCLING
 
-    override fun colours(faceText: String): Set<Color> = emptySet() // TODO SPA-042
+    private val BASIC = Regex("""\bbasic landcycling\b""", RegexOption.IGNORE_CASE)
+
+    private val BY_TYPE =
+        mapOf(
+                "Plains" to Color.W,
+                "Island" to Color.U,
+                "Swamp" to Color.B,
+                "Mountain" to Color.R,
+                "Forest" to Color.G,
+            )
+            .map { (type, colour) ->
+                Regex("""\b${type}cycling\b""", RegexOption.IGNORE_CASE) to colour
+            }
+
+    override fun colours(faceText: String): Set<Color> {
+        if (BASIC.containsMatchIn(faceText)) return ALL_COLOURS
+        return BY_TYPE.filter { (pattern, _) -> pattern.containsMatchIn(faceText) }
+            .map { it.second }
+            .toSet()
+    }
 }

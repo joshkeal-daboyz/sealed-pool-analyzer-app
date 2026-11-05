@@ -10,7 +10,7 @@ import spa.core.cards.ScryfallSetFetcher
 
 /**
  * The `spa` command line: `analyze`, `validate-brief`, `fetch-set`, `winrates`, `grade-backtest`,
- * `grade-packet`, `grade-import`, `grades`, `themes`, `pool-grades`, and `deck-pick`.
+ * `grade-packet`, `grade-import`, `grades`, `themes`, `pool-grades`, `deck-pick`, and `fixing`.
  */
 object Main {
     /** The text `spa --help` prints. */
@@ -69,6 +69,12 @@ object Main {
         |      Print each theme of the set's sealed pool (a keyword that is not evergreen, or a
         |      subtype) held or referred to by 3 or more cards: the cards that have it, refer to
         |      it, or either, and the either count by colour and rarity, most cards first.
+        |  fixing [<pool-file>] --set <code> [--data <dir>]
+        |      Print each fixing card of the set's sealed pool (mana of two or more colours,
+        |      basic or land-type cycling, a land search, a Treasure), sorted by name, with its
+        |      kinds, the colours it can supply and 'land' for a land, then the count of each
+        |      kind. With a pool file, only the pool's fixing cards with their quantities, then
+        |      the copies that can supply each colour.
         |
         |<data> defaults to ${DataDir.DEFAULT}. Exit codes: 0 ok, 1 error, 2 bad command line.
         |Run 'spa --help' for this text.
@@ -119,22 +125,31 @@ object Main {
         stdout: PrintStream,
         stderr: PrintStream,
         fetcher: () -> ScryfallSetFetcher,
-    ): Int =
-        when (command) {
-            "analyze" -> AnalyzeCommand.run(rest, stdout, stderr)
-            "validate-brief" -> ValidateBriefCommand.run(rest, stdout, stderr)
-            "fetch-set" -> FetchSetCommand(fetcher).run(rest, stdout)
-            "winrates" -> WinratesCommand().run(rest, stdout)
-            "grade-backtest" -> GradeBacktestCommand.run(rest, stdout)
-            "grade-packet" -> GradePacketCommand.run(rest, stdout)
-            "grade-import" -> GradeImportCommand().run(rest, stdout, stderr)
-            "grades" -> GradesCommand.run(rest, stdout, stderr)
-            "themes" -> ThemesCommand.run(rest, stdout)
-            "pool-grades" -> PoolGradesCommand.run(rest, stdout, stderr)
-            "deck-pick" -> DeckPickCommand.run(rest, stdout)
-            null -> usageError("no command given", stderr)
+    ): Int {
+        val handler = command?.let { commands(fetcher)[it] }
+        return when {
+            handler != null -> handler(rest, stdout, stderr)
+            command == null -> usageError("no command given", stderr)
             else -> usageError("unknown command '$command'", stderr)
         }
+    }
+
+    /** Each command by name. */
+    private fun commands(fetcher: () -> ScryfallSetFetcher): Map<String, Handler> =
+        mapOf(
+            "analyze" to { a, out, err -> AnalyzeCommand.run(a, out, err) },
+            "validate-brief" to { a, out, err -> ValidateBriefCommand.run(a, out, err) },
+            "fetch-set" to { a, out, _ -> FetchSetCommand(fetcher).run(a, out) },
+            "winrates" to { a, out, _ -> WinratesCommand().run(a, out) },
+            "grade-backtest" to { a, out, _ -> GradeBacktestCommand.run(a, out) },
+            "grade-packet" to { a, out, _ -> GradePacketCommand.run(a, out) },
+            "grade-import" to { a, out, err -> GradeImportCommand().run(a, out, err) },
+            "grades" to { a, out, err -> GradesCommand.run(a, out, err) },
+            "themes" to { a, out, _ -> ThemesCommand.run(a, out) },
+            "pool-grades" to { a, out, err -> PoolGradesCommand.run(a, out, err) },
+            "deck-pick" to { a, out, _ -> DeckPickCommand.run(a, out) },
+            "fixing" to { a, out, err -> FixingCommand.run(a, out, err) },
+        )
 
     private fun usageError(message: String, stderr: PrintStream): Int {
         stderr.println("spa: $message")
@@ -144,3 +159,6 @@ object Main {
 
     private val HELP = setOf("--help", "-h", "help")
 }
+
+/** One command's entry point: its arguments, stdout and stderr in, its exit code out. */
+private typealias Handler = (List<String>, PrintStream, PrintStream) -> Int

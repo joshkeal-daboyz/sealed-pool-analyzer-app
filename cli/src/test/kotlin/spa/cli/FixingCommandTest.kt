@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.io.TempDir
 
 /**
- * SPA-042 criteria 2 to 5: `spa fixing` over the four sets' caches and the trk sample pool, and
- * its errors. Pinned numbers come from the Architect's independent script (ticket Background).
+ * SPA-042 criteria 2 to 5: `spa fixing` over the four sets' caches and the trk sample pool, and its
+ * errors. Pinned numbers come from the Architect's independent script (ticket Background).
  */
 class FixingCommandTest {
     @TempDir lateinit var temp: Path

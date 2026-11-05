@@ -5,6 +5,8 @@ package spa.agent.fixing
  * otherwise match the TREASURE, MANA and SEARCH rules.
  */
 object ReminderText {
+    private val PARENTHESISED = Regex("""\([^)]*\)""")
+
     /** [text] with every parenthesised part removed. */
-    fun strip(text: String): String = text // TODO SPA-042
+    fun strip(text: String): String = PARENTHESISED.replace(text, "")
 }

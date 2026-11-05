@@ -22,8 +22,8 @@ value class FixingKind(val name: String) : Comparable<FixingKind> {
 
 /**
  * One way a card can fix a deck's colours (G-005 deliverable 1). Each rule is its own class in its
- * own file; [FixingClassifier] holds a list of them. A new wording is a new rule, or a change to one
- * rule, and nothing else.
+ * own file; [FixingClassifier] holds a list of them. A new wording is a new rule, or a change to
+ * one rule, and nothing else.
  */
 interface FixingRule {
     /** The kind a card gets when this rule matches any of its faces. */

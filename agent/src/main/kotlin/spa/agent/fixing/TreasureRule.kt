@@ -6,5 +6,8 @@ import spa.core.text.Color
 object TreasureRule : FixingRule {
     override val kind = FixingKind.TREASURE
 
-    override fun colours(faceText: String): Set<Color> = emptySet() // TODO SPA-042
+    private val CLAUSE = Regex("""\bcreate\b[^.\n]*\bTreasure""", RegexOption.IGNORE_CASE)
+
+    override fun colours(faceText: String): Set<Color> =
+        if (CLAUSE.containsMatchIn(faceText)) ALL_COLOURS else emptySet()
 }

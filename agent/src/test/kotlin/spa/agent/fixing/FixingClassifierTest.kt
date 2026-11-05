@@ -100,7 +100,11 @@ class FixingClassifierTest {
     @Test
     fun `a Treasure maker is TREASURE in all five`() {
         val pirate =
-            fixing("Lucky Pirate", "Creature — Pirate", "When this creature enters, create a Treasure token.")
+            fixing(
+                "Lucky Pirate",
+                "Creature — Pirate",
+                "When this creature enters, create a Treasure token.",
+            )
         assertEquals("TREASURE WUBRG", summary(pirate))
     }
 
@@ -133,8 +137,7 @@ class FixingClassifierTest {
                 "{T}: Add {B} or {G}.\nWhen this artifact enters, create a Treasure token.",
             )
         assertEquals("MANA+TREASURE WUBRG", summary(both))
-        val narrow =
-            fixing("Swamp Elk", "Creature", "{T}: Add {B} or {G}.\nMountaincycling {2}")
+        val narrow = fixing("Swamp Elk", "Creature", "{T}: Add {B} or {G}.\nMountaincycling {2}")
         assertEquals("CYCLING+MANA BRG", summary(narrow))
     }
 
