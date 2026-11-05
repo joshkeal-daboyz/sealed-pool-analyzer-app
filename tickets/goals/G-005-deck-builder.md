@@ -214,3 +214,8 @@ The owner answered on 2026-11-05: "Approve all except 2 and 5. Agents are going 
   - new facts from the reviews: `draws-card` and `noncreature`;
   - only trk is retagged and reviewed now (owner: the other sets cost time and are needed only for the backtest). msh, hob and fra are retagged just before SPA-046;
   - same-name cards (Andromedan Automatons) stay on named partners, so that independent check stays unseen.
+- 2026-11-05 Owner: "Yes, don't reinvent the wheel." Scryfall publishes its Tagger tags as a bulk file, Oracle Tags (6 MB, 4,601 tags with parents and taggings by oracle id). It covers all 336 trk cards, about 14 tags each with parents.
+  - SPA-054 turns these tags into facts, and Scryfall's "matters" and "synergy" tags into `cares:` tags through `fixtures/otags/cares.json` (Architect-curated data).
+  - The planned Fable cares pass is replaced by this.
+  - Owner: "Fable needs to fill in the gaps where the Scryfall tags haven't been applied." That is SPA-055, after SPA-054: a Fable pass, trk only for now, that adds `cares:` tags only where Scryfall gives none for that idea.
+  - The Moopsy check's removal waits for SPA-054, which frees `SynergyV1UnchangedTest` from the live check file.

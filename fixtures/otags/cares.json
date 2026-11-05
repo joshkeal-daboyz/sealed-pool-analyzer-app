@@ -1,0 +1,26 @@
+{
+  "comment": "Scryfall Tagger 'cares about' tags, and the facts each one cares about. A card with the tag gets cares:<fact> at the strength given, for every fact listed. Facts are spa facts names (land, legendary, artifact, kw:station, ...) or Scryfall tags written otag:<slug>. Name tags (name-matters, tutor-self) are left out on purpose: the owner's Andromedan Automatons check must stay independent. Curated by the Architect, 2026-11-05; edit freely.",
+  "cares": {
+    "lands-matter": [{ "fact": "land", "strength": 2 }],
+    "differently-named-lands-matter": [{ "fact": "land", "strength": 3 }],
+    "land-count-matters": [{ "fact": "land", "strength": 2 }],
+    "synergy-legendary": [{ "fact": "legendary", "strength": 3 }],
+    "synergy-historic": [{ "fact": "legendary", "strength": 2 }, { "fact": "artifact", "strength": 2 }],
+    "synergy-artifact": [{ "fact": "artifact", "strength": 2 }],
+    "synergy-artifact-creature": [{ "fact": "artifact", "strength": 2 }],
+    "synergy-equipment": [{ "fact": "kw:equip", "strength": 3 }],
+    "synergy-spacecraft": [{ "fact": "kw:station", "strength": 3 }],
+    "synergy-enchantment": [{ "fact": "enchantment", "strength": 2 }],
+    "synergy-instant": [{ "fact": "instant", "strength": 2 }],
+    "synergy-sorcery": [{ "fact": "sorcery", "strength": 2 }],
+    "synergy-noncreature": [{ "fact": "instant", "strength": 2 }, { "fact": "sorcery", "strength": 2 }, { "fact": "artifact", "strength": 1 }, { "fact": "enchantment", "strength": 1 }],
+    "synergy-modal": [{ "fact": "otag:modal", "strength": 2 }],
+    "synergy-token": [{ "fact": "makes-token", "strength": 2 }],
+    "synergy-mill": [{ "fact": "otag:mill", "strength": 2 }],
+    "creature-count-matters": [{ "fact": "creature", "strength": 1 }],
+    "draw-matters": [{ "fact": "otag:draw", "strength": 3 }],
+    "lifegain-matters": [{ "fact": "otag:lifegain", "strength": 3 }],
+    "leaving-graveyard-matters": [{ "fact": "otag:recursion", "strength": 2 }, { "fact": "otag:reanimate", "strength": 2 }],
+    "counters-matter": [{ "fact": "kw:station", "strength": 1 }]
+  }
+}
