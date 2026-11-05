@@ -39,5 +39,15 @@ fun interface TagCheck {
 
 /** The checks `spa tags-import` runs, in order. A new check is one file and one entry here. */
 object TagChecks {
-    val ALL: List<TagCheck> = emptyList()
+    val ALL: List<TagCheck> =
+        listOf(
+            CoverageCheck,
+            AxisCheck,
+            RoleNameCheck,
+            StrengthCheck,
+            RepeatedRoleCheck,
+            PartnerPoolCheck,
+            PartnerCountCheck,
+            RepeatedPartnerCheck,
+        )
 }

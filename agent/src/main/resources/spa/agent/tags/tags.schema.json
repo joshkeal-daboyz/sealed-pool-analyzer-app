@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spa.local/schema/tags.schema.json",
+  "title": "Synergy tag file",
+  "description": "One set's synergy tags: its axes, and every sealed-pool card's roles on them and named partners, in collector order. That every role's axis and every partner is in the file, and that no card, axis and role, or partner repeats, is checked by spa tags-import.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["set", "provenance", "axes", "cards"],
+  "properties": {
+    "set": {
+      "type": "string",
+      "pattern": "^[a-z0-9]{3,6}$"
+    },
+    "provenance": {
+      "description": "The model, the tags prompt version and the date.",
+      "type": "string",
+      "pattern": "\\S"
+    },
+    "axes": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 15,
+      "items": { "$ref": "#/$defs/axis" }
+    },
+    "cards": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/card" }
+    }
+  },
+  "$defs": {
+    "strength": {
+      "enum": [1, 2, 3]
+    },
+    "axis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "definition"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "name": { "type": "string", "pattern": "\\S" },
+        "definition": { "type": "string", "pattern": "\\S" }
+      }
+    },
+    "card": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "roles", "partners"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]{3,6}/\\S+$" },
+        "name": { "type": "string", "pattern": "\\S" },
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["axis", "role", "strength"],
+            "properties": {
+              "axis": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+              "role": { "enum": ["enabler", "payoff"] },
+              "strength": { "$ref": "#/$defs/strength" }
+            }
+          }
+        },
+        "partners": {
+          "type": "array",
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "strength"],
+            "properties": {
+              "id": { "type": "string", "pattern": "^[a-z0-9]{3,6}/\\S+$" },
+              "strength": { "$ref": "#/$defs/strength" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

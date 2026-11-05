@@ -11,6 +11,7 @@ import spa.agent.themes.PoolThemes
 import spa.core.brief.BriefLoader
 import spa.core.brief.BriefValidationException
 import spa.core.brief.FormatBrief
+import spa.core.cards.CardIndex
 
 /**
  * `spa grade-packet <code> --out <dir> [--data <dir>] [--prompt <file>] [--themes]`: writes the
@@ -37,12 +38,7 @@ object GradePacketCommand {
         val index = Commands.loadIndex(data, set)
         val brief = loadBrief(data.briefFile(set))
         val prompt = parsed.value("prompt")?.let { loadPrompt(Path.of(it)) }
-        val themes =
-            if (parsed.has("themes")) {
-                // loadIndex has just read the same cache files, so they exist and parse.
-                val keywords = PoolThemes.keywords(data.scryfall, index.setCodes)
-                PacketThemes.of(PoolThemes.cards(index, keywords), brief.mechanics.map { it.name })
-            } else null
+        val themes = if (parsed.has("themes")) packetThemes(data, index, brief) else null
         val packet =
             GradingPackets.build(
                 index,
@@ -71,7 +67,15 @@ object GradePacketCommand {
         return text
     }
 
-    private fun loadBrief(path: Path): FormatBrief {
+    /** The packet themes of [index]'s sealed pool with [brief]'s mechanics, as `--themes` adds. */
+    internal fun packetThemes(data: DataDir, index: CardIndex, brief: FormatBrief): PacketThemes {
+        // loadIndex has just read the same cache files, so they exist and parse.
+        val keywords = PoolThemes.keywords(data.scryfall, index.setCodes)
+        return PacketThemes.of(PoolThemes.cards(index, keywords), brief.mechanics.map { it.name })
+    }
+
+    /** The brief at [path]; a missing, unreadable or invalid brief is a [CliFailure]. */
+    internal fun loadBrief(path: Path): FormatBrief {
         val text = Commands.readFile(path, "brief")
         return try {
             BriefLoader.parse(text)
