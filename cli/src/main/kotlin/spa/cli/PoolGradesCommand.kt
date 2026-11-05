@@ -81,7 +81,7 @@ object PoolGradesCommand {
     }
 
     /** `--pair`, in either letter order and any case. */
-    private fun pair(text: String): ColorPair {
+    internal fun pair(text: String): ColorPair {
         val colours = text.uppercase(Locale.ROOT).mapNotNull { Color.fromSymbol(it) }.toSet()
         return ColorPair.entries.firstOrNull { text.length == 2 && it.colors == colours }
             ?: throw CliFailure(
@@ -116,7 +116,7 @@ object PoolGradesCommand {
         return Commands.guard("invalid weights file $path") { Weights.parse(text) }
     }
 
-    private fun pool(
+    internal fun pool(
         text: String,
         file: String,
         index: CardIndex,
