@@ -10,7 +10,7 @@ import spa.core.cards.ScryfallSetFetcher
 
 /**
  * The `spa` command line: `analyze`, `validate-brief`, `fetch-set`, `winrates`, `grade-backtest`,
- * `grade-packet`, `grade-import`, `grades`, and `themes`.
+ * `grade-packet`, `grade-import`, `grades`, `themes`, and `pool-grades`.
  */
 object Main {
     /** The text `spa --help` prints. */
@@ -46,6 +46,13 @@ object Main {
         |      confidence and source (WIN_RATE if <data>/winrates/<code>.json grades it, else
         |      MODEL), highest first. Entries with no grade, such as basic lands, come last
         |      with - and source none.
+        |  pool-grades <pool-file> --set <code> [--pair <XY>] [--grades <file>]
+        |          [--weights <file>] [--data <dir>]
+        |      For each colour pair (or the one --pair names, as WU or UW), highest mean first,
+        |      print the pool's cards castable in it with each set grade adjusted for this pool by
+        |      synergy, curve and colour depth, capped, and one reason line per adjustment. Set
+        |      grades come from --grades, else <data>/grades/<code>.v2.json, else <code>.json;
+        |      weights from --weights, else <data>/weights/default.json.
         |  themes <code> [--data <dir>]
         |      Print each theme of the set's sealed pool (a keyword that is not evergreen, or a
         |      subtype) held or referred to by 3 or more cards: the cards that have it, refer to
@@ -111,6 +118,7 @@ object Main {
             "grade-import" -> GradeImportCommand().run(rest, stdout, stderr)
             "grades" -> GradesCommand.run(rest, stdout, stderr)
             "themes" -> ThemesCommand.run(rest, stdout)
+            "pool-grades" -> PoolGradesCommand.run(rest, stdout, stderr)
             null -> usageError("no command given", stderr)
             else -> usageError("unknown command '$command'", stderr)
         }

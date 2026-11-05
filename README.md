@@ -109,6 +109,27 @@ Officer type has=34 refers=15 either=45 colour W=9 U=8 B=7 R=8 G=6 M=5 C=2 rarit
 ...
 ```
 
+**pool-grades** moves each card's set grade up or down for one pool and one colour pair, by fixed rules, and prints the reason for every move. Set grades come from `--grades <file>`, else `<data>/grades/<code>.v2.json` if it exists, else `<data>/grades/<code>.json`, matched by printing, else by name. The weights come from `--weights <file>`, else `<data>/weights/default.json` (see `fixtures/weights/README.md`). A pair's candidates are the pool's nonland copies whose colours are within the pair's, colourless included. Each candidate gets three parts, each clamped to plus or minus its weight:
+
+- **synergy**: `n`, the candidate copies other than one copy of the card that are its partners (a partner has a theme the card refers to, or has or refers to a theme the card has, as `spa themes` tags them), against `e`, the share of partners among the set's sealed-pool nonland cards that fit the pair times the candidates less one: weight × (n − e) / max(e, 1). A card with no theme has none.
+- **curve**: the pair's cards at the card's mana value (7 or more share a bucket) against the baseline's typical count `m`: weight × (m − count) / max(m, 1). A short bucket raises the card; a crowded one lowers it.
+- **colour**: for each of the card's colours, the pool's playables of that colour against the baseline's typical count, (playables − typical) / max(typical, 1); the weight times the smallest. A colourless card has none.
+
+The adjusted grade is the set grade plus the parts' sum, the sum capped at plus or minus `cap`, kept within 0 to 5. Each pair (all ten, highest mean first, or the one `--pair` names, as `WU` or `UW`) prints a heading with the mean adjusted grade of its best 23 candidate copies, then each distinct graded candidate, highest adjusted first: adjusted grade, its letter (the nearest half step, as in the table above), set grade, change, quantity, name, and set and collector number; then one indented line per nonzero part. An unknown set or pair, an unreadable pool, a missing baseline or grade file, or a bad weights file prints one line and exits 1. It makes no network or model call.
+
+```bash
+cli/build/install/spa/bin/spa pool-grades fixtures/pools/trk-manabox-01.csv --set trk --pair WU
+```
+
+```text
+WU  mean 2.88  (24 cards, 33 copies)
+3.63  B+  3.5  +0.13  1x Enterprise NX-01 (trk 58)
+      synergy +0.16: 8 partners in the pool, 6.07 expected (Spacecraft, Station, Stun)
+      curve −0.14: 7 cards at mana value 4, 4.48 typical
+      colour +0.12: Blue playables 18, typical 12.27
+...
+```
+
 ## Android app
 
 The `app` module builds the Android app, a debug APK signed with the build machine's debug key. It needs the JDK and the Android SDK in [Toolchain](#toolchain).
