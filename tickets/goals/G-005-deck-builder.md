@@ -169,3 +169,14 @@ The owner answered on 2026-11-05: "Approve all except 2 and 5. Agents are going 
   - All four sets are retagged with v2. Expected cost about 11% of the weekly Fable allowance.
   - The three failing checks (lands with landfall, Moopsy with death payoffs, legendary permanents with legendary payoffs) are marked `seen`; the three passing ones stay `independent`.
   - Caveat: the "enters trigger" fact uses nearly the same text rule as the enters-with-beam-me-up check's list. If v2 supplies the enters axis from that fact, that check passes partly by construction. It passed under v1, before any fact existed, and that v1 result stands as its independent evidence.
+- 2026-11-05 Owner: "Perhaps we should leverage Fable to look over the cards and ensure the proper tags are applied to each card." Planned as **SPA-052, a review pass (pass 3)** after each set's v2 tagging.
+  - **What the reviewer gets.** A fresh Fable agent reads a packet holding:
+    - the cards;
+    - the set's axes with their `suppliedBy` facts;
+    - every card's facts;
+    - the pass-2 roles and partners.
+  - **What it writes.** Corrections only: add, remove or change a role or partner, each with a one-line reason. It also writes suggestions for new fact rules, for cases like Moopsy's self-granted reach. These are reported to the Architect and never applied automatically, since facts are code.
+  - **The import.** `spa tags-review-import` validates the corrections against the same checks as pass 2, applies them, and records each one with its reason in the tag file. The provenance names both passes.
+  - **Blind.** Like grading: no win rates, no reviews, and none of the owner's synergy checks.
+  - **Cost.** About 4% of the weekly Fable allowance per set, so 16% for four sets. With the v2 retag that comes to roughly 60% of the week by the 2026-11-11 reset.
+  - **Order.** SPA-050 merges, then SPA-051, then SPA-052. Each set is then tagged with v2, reviewed, and its owner checks run.
