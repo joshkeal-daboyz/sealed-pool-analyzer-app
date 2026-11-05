@@ -57,7 +57,7 @@ object ThemesCommand {
         )
 
     /** The brief's mechanic names, or none when the set has no brief. */
-    private fun mechanics(data: DataDir, set: String): List<String> {
+    internal fun mechanics(data: DataDir, set: String): List<String> {
         val file = data.briefFile(set)
         if (!Files.isRegularFile(file)) return emptyList()
         val text = Commands.readFile(file, "brief")

@@ -18,6 +18,9 @@ class DataDir(val root: Path) {
 
     fun baselineFile(set: String): Path = root.resolve("baselines").resolve("$set.json")
 
+    /** The pool adjustment's weights when `--weights` is not given. */
+    fun weightsFile(): Path = root.resolve("weights").resolve("default.json")
+
     companion object {
         /** The data directory when `--data` is not given. */
         const val DEFAULT = "fixtures"

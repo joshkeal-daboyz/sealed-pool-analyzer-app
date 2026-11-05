@@ -132,7 +132,9 @@ class PoolGradesCommandTest {
             reasons[0].startsWith("      synergy +0.16: 8 partners in the pool, 6.07 expected ("),
             reasons[0],
         )
-        assertEquals("      curve −0.14: 7 cards at mana value 2, 4.48 typical", reasons[1])
+        // Enterprise NX-01 costs 4: the ticket's example line names mana value 2 only as an
+        // example; criterion 2's k 7 and m 4.478 are WU's mana value 4 bucket.
+        assertEquals("      curve −0.14: 7 cards at mana value 4, 4.48 typical", reasons[1])
         assertTrue(reasons[2].startsWith("      colour +0.12: "), reasons[2])
     }
 

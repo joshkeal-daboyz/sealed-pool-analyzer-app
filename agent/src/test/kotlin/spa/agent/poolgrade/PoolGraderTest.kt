@@ -139,9 +139,9 @@ class PoolGraderTest {
     // Curve. Colourless cards with no theme, so only the curve moves.
 
     private val gear = card("Gear", mv = 2)
-    private val bot = card("Bot", mv = 2, creature = true)
-    private val colossus = card("Colossus", mv = 7, creature = true)
-    private val titan = card("Titan", mv = 9, creature = true)
+    private val bot = card("Bot", mv = 2, type = "Creature")
+    private val colossus = card("Colossus", mv = 7, type = "Creature")
+    private val titan = card("Titan", mv = 9, type = "Creature")
 
     private val curveBaseline =
         baseline(

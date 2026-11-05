@@ -37,23 +37,19 @@ internal object PoolGradeTestCards {
     val STATION = Theme("Station", ThemeKind.KEYWORD)
     val THEMES = listOf(SPACECRAFT, STATION)
 
-    /** A card; [mv] also sets the cost `{mv}`, [creature] the type line's card type. */
+    /**
+     * A card; [mv] also sets the cost `{mv}`; [type] is its type line, starting `Artifact`,
+     * `Creature` or `Land`.
+     */
     fun card(
         name: String,
         colors: Set<Color> = emptySet(),
         mv: Int = 2,
-        subtype: String? = null,
+        type: String = "Artifact",
         text: String = "",
-        creature: Boolean = false,
-        land: Boolean = false,
     ): Card {
-        val base =
-            when {
-                land -> "Land"
-                creature -> "Creature"
-                else -> "Artifact"
-            }
-        val type = if (subtype == null) base else "$base — $subtype"
+        val land = type.startsWith("Land")
+        val creature = type.startsWith("Creature")
         val cost = if (land) "" else "{$mv}"
         val face = Face(name, cost, mv.toDouble(), colors, type, text, null, null)
         return Card(
@@ -77,16 +73,16 @@ internal object PoolGradeTestCards {
 
     val dockingBay =
         card("Docking Bay", W, text = "Whenever a Spacecraft you control attacks, scry 1.")
-    val shuttleOne = card("Shuttle One", W, subtype = "Spacecraft")
-    val shuttleTwo = card("Shuttle Two", U, subtype = "Spacecraft")
-    val shuttleThree = card("Shuttle Three", subtype = "Spacecraft")
+    val shuttleOne = card("Shuttle One", W, type = "Artifact — Spacecraft")
+    val shuttleTwo = card("Shuttle Two", U, type = "Artifact — Spacecraft")
+    val shuttleThree = card("Shuttle Three", type = "Artifact — Spacecraft")
     val beacon = card("Beacon", U, text = "Spacecraft you control get +1/+1.")
     val fillerOne = card("Filler One", W)
     val fillerTwo = card("Filler Two", U)
     val fillerThree = card("Filler Three")
     val admiral = card("Admiral", setOf(Color.W, Color.U))
-    val redShip = card("Red Ship", setOf(Color.R), subtype = "Spacecraft")
-    val spaceport = card("Spaceport", subtype = "Spacecraft", land = true)
+    val redShip = card("Red Ship", setOf(Color.R), type = "Artifact — Spacecraft")
+    val spaceport = card("Spaceport", type = "Land — Spacecraft")
     val outpost = card("Outpost", U)
 
     /** Keywords by oracle id: only Outpost has one, Station. */
