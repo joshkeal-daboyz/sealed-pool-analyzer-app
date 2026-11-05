@@ -1,7 +1,7 @@
 ---
 id: G-005
 title: Build the deck, ranked decks for a pool
-status: draft
+status: open
 owner: human
 target_set_code: trk
 companion_set_codes: [sds]
@@ -10,66 +10,80 @@ depends_on: [G-004]
 
 # G-005: Build the deck, ranked decks for a pool
 
-The owner asked for this goal on 2026-11-05 ("Go ahead and start five"), right after closing G-004. This is the step a player sees: give the app a pool, get back the 40-card decks it could build, ranked, each with its lands and a reason for every card. Drafted by the Architect from the design brief (Deck Builder, Mana Engineer, the backtest protocol) and from what G-004 measured.
+The owner asked for this goal on 2026-11-05 ("Go ahead and start five"), right after closing G-004. This is the step a player sees: give the app a pool, get back the 40-card decks it could build, ranked, each with its lands and a reason for every card. Drafted by the Architect from the design brief (Deck Builder, Mana Engineer, the backtest protocol) and from what G-004 measured. Approved the same day with changes to questions 2 and 5; the answers are in "Decided" at the end.
 
 ## Why this goal next
 
 - The roadmap orders it. Grades exist (G-003) and move with the pool (G-004). The design brief's Deck Builder is the next consumer, and the Judge and Explainer need its candidates.
-- It is measurable, with data we already hold. 17Lands' public Sealed data (G-004) gives each strong player's whole pool and the deck they registered. The brief's own backtest metrics apply directly: does the top deck use the player's colour pair, how many of their spells it shares, and is its land count within one.
+- It is measurable, with data we already hold. 17Lands' public Sealed data (G-004) gives each strong player's whole pool and the deck they registered.
+- Two-colour decks are not the norm. Among strong players' builds (win-rate bucket 0.60 or higher), a straight two-colour deck is 27% in `msh`, 58% in `hob` and 28% in `fra`. The rest splash or play three or more main colours: three or more main colours are 27% in `msh`, 10% in `hob` and 35% in `fra` (Architect count, 2026-11-05, scratchpad `tools/cs2.js`). A builder that only knows pairs misses most real decks in two of the three sets.
 - G-004 left one thing for here. Counted synergy hurt at every weight, and the owner moved synergy judgement by a model reading the pool into this goal (G-004, 2026-11-05).
 
 ## Deliverables
 
-1. **The deck builder** (search, no model call, as the brief decided on 2026-11-03). For each colour pair, it picks the 22 or 23 spells with the best total score and fills the rest with lands. The score is the sum of the cards' pool-adjusted grades (G-004's tuned weights), minus penalties for curve gaps and too few creatures, plus a bonus for removal. The search is a greedy fill followed by local swaps. It is deterministic, and every included card carries a numeric reason.
-2. **Mana.** A land count from the deck's curve (open question 3), and basics split by the deck's coloured mana symbols. The builder plays the nonbasic lands from the pool that make the pair's colours.
-3. **`spa build <pool-file> --set <code> [--pair <XY>] [--top <n>]`.** It prints the ranked decks, by default the top three pairs. Each deck shows its 40 cards by mana value, its land split, its score broken into parts, and its sideboard. Each card has a short reason (its grade, plus anything the curve, creature count or removal added).
-4. **The deck backtest: `spa deck-backtest --set <code>`.** For each strong player's build in a 17Lands Sealed file (G-004 Decided 2), the builder runs on that player's pool and reports four numbers:
-   - **Pair agreement:** the top deck's pair is the player's pair.
-   - **Top-three rate:** the player's pair is in the top three.
-   - **Main-deck overlap:** how many of the player's registered nonland cards the builder's deck for the player's pair also plays.
+1. **Fixing tags** (no `core` change; `core`'s FIXING tag covers only cards that produce two or more colours). In `agent`, each card in a set's sealed pool is classed as fixing, or not, by its Scryfall data: lands that make two or more colours, basic landcycling and land-type cycling (such as Plainscycling), cards that search for a basic land, Treasure makers, and mana producers of two or more colours. `spa fixing <pool-file> --set <code>` prints the pool's fixing, each card with the colours it can make.
+2. **The deck builder** (search, no model call, as the brief decided on 2026-11-03). For a given set of colours, it picks the 22 to 24 spells with the best total score and fills the rest with lands. The score is the sum of the cards' pool-adjusted grades (G-004's tuned weights), minus penalties for curve gaps and too few creatures, plus a bonus for removal, minus a castability penalty for each card whose colours the mana base supports poorly. The search is a greedy fill followed by local swaps. It is deterministic, and every included card carries a numeric reason.
+3. **Colour configurations.** The builder tries every two-colour pair; every pair with a splash of one or two colours; every three-colour set; and four-colour sets when the pool's fixing supports them. It ranks the resulting decks by score, so a three-colour deck wins when the pairs are weak and the fixing is there.
+4. **Mana.** The land count comes from the deck's curve and its number of colours (Decided 3). Basics are split by the deck's coloured mana symbols. The pool's fixing lands that make the deck's colours are played. Castability uses the hypergeometric odds of having each card's colours by its mana value, counting basics and fixing. **Fixing is worth more the more colours a deck needs** (owner, 2026-11-05): in a two-colour deck a fixer is scored on its grade alone; with a splash, three colours or four, it gets a bonus that rises with the colours it supplies that the deck needs.
+5. **`spa build <pool-file> --set <code> [--colours <WUB>] [--top <n>]`.** It prints the ranked decks, three by default. Each deck shows its colours (main and splash), its 40 cards by mana value, its land split and fixing, its score broken into parts, and its sideboard. Each card has a short reason (its grade, plus anything the curve, creature count, removal, castability or fixing added).
+6. **The deck backtest: `spa deck-backtest --set <code>`.** For each strong player's build in a 17Lands Sealed file (G-004 Decided 2), of any colour count, the builder runs on that player's pool and reports these numbers, overall and by the player's deck shape (two colours, two plus a splash, three or more main colours):
+   - **Colour agreement:** the top deck's main colours are the player's main colours.
+   - **Top-three rate:** the player's main colours are among the top three decks'.
+   - **Splash agreement:** the top deck splashes exactly when the player did.
+   - **Main-deck overlap:** how many of the player's registered nonland cards the builder's deck in the player's colours also plays.
    - **Land count:** the builder's land count is within one of the player's.
 
-   It also reports the same numbers for a baseline builder that uses set grades alone.
-5. **Synergy judgement by a model** (open question 4). A Fable agent reads one pool's cards in one pair and names the synergy groups it sees, each naming the pool's cards that make it work. The builder turns each named group into a score bonus. It is measured on a sample of held-out builds, against the builder without it.
-6. **The Star Trek grade sheet page** gets a "Decks" view: paste a pool, see the ranked decks (open question 1). The Architect updates it; it is not a repo ticket.
+   It also reports the same numbers for a baseline builder that uses set grades alone and two-colour pairs only.
+7. **Synergy judgement by a model** (Decided 4). A Fable agent reads one pool's cards in one colour set and names the synergy groups it sees, each naming the pool's cards that make it work. The builder turns each named group into a score bonus. It is measured on a sample of held-out builds, against the builder without it.
+8. **The Star Trek grade sheet page** gets a "Decks" view: paste a pool, see the ranked decks (Decided 1). The Architect updates it; it is not a repo ticket.
 
 ## Goal-level acceptance criteria
 
 1. **Gate.** Green on `main` at goal close, locally and in CI. No test calls a model or the network; the synergy agent's tests replay recorded responses.
 2. **`core` unchanged** unless a ticket names a `core` change the owner approved.
-3. **Legal decks.** Every deck the builder emits has exactly 40 cards, only pool cards plus basics, and no card above its pool quantity. Property tests check this over every fixture pool and every pair, and the deck backtest checks it over every build it runs.
+3. **Legal decks.** Every deck the builder emits has exactly 40 cards, only pool cards plus basics, and no card above its pool quantity. Property tests check this over every fixture pool and every colour configuration, and the deck backtest checks it over every build it runs.
 4. **Explained.** Each deck's printed score equals the sum of its listed parts, and every card line has a reason. A test checks this over every line `spa build` prints for the trk sample pool.
-5. **Tuned and held out.** The builder's penalties and bonuses are tuned on `msh` and `hob` only, then frozen and measured on `fra`. The tuning and the held-out result are recorded in the goal file.
-6. **Targets on `fra`** (open question 2). Pair agreement, top-three rate, main-deck overlap and land count each meet their target, and the builder beats the set-grades-only baseline on main-deck overlap. A miss goes to the owner with the numbers, as in G-003 and G-004.
-7. **Synergy agent, measured** (if open question 4 keeps it). On a fixed sample of held-out `fra` builds, main-deck overlap with the synergy bonus is reported against the builder without it. The bonus ships switched on only if it helps. Each finding names only cards in the pool; the import step drops any finding that names a card the pool lacks.
-8. **Usage.** Each Fable run records its tokens and the weekly Fable percentage before and after.
+5. **Fixing pinned.** For each of `msh`, `hob`, `fra` and `trk`, the fixing class of every sealed-pool card equals an independent script's, and a test pins five named cards per set, including at least one basic landcycler where the set has one.
+6. **Tuned and held out.** The builder's penalties, bonuses and land rules are tuned on `msh` and `hob` only, then frozen and measured on `fra`. The tuning and the held-out result are recorded in the goal file.
+7. **Targets on `fra`** (Decided 2). Over all strong builds: colour agreement 50% or more, top-three rate 80% or more, main-deck overlap 16 or more of the player's nonland cards on average, land count within one 85% or more of the time. On builds with three or more main colours, colour agreement 35% or more. The builder beats the two-colour, set-grades baseline on main-deck overlap overall and on colour agreement for three-colour builds. A miss goes to the owner with the numbers, as in G-003 and G-004.
+8. **Synergy agent, measured.** On a fixed sample of held-out `fra` builds, main-deck overlap with the synergy bonus is reported against the builder without it. The bonus ships switched on only if it helps. Each finding names only cards in the pool; the import step drops any finding that names a card the pool lacks.
+9. **Usage.** Each Fable run records its tokens and the weekly Fable percentage before and after.
 
 ## Constraints
 
-- **Deterministic before probabilistic.** The builder, mana and backtest are code. The only model step is the synergy agent, on the subscription (G-003 Decided 5), with no API key, through recorded files as in G-003's grading.
+- **Deterministic before probabilistic.** Fixing tags, the builder, mana and backtest are code. The only model step is the synergy agent, on the subscription (G-003 Decided 5), with no API key, through recorded files as in G-003's grading.
 - **No tuning on the test.** `msh` and `hob` are for tuning; `fra` is held out; `trk` is held out for everything (SPA-040's data, when it comes).
-- **Every set is different** (owner, 2026-11-04). Land counts, creature targets and curve shape come from each set's own baseline, never from fixed numbers that suit one set.
+- **Every set is different** (owner, 2026-11-04). Land counts, creature targets, curve shape and how much fixing a set has come from each set's own data, never from fixed numbers that suit one set. `hob` builds are mostly two colours and `fra` builds are often three; the builder must learn that from the pools, not from a set flag.
 - **17Lands public datasets only.** Downloads stay out of the repository.
 - **One Developer at a time** on this PC.
 
 ## Where this departs from the design brief
 
-- The brief prunes ten pairs to three using analysis-agent findings, then builds. Here the builder builds all ten (it is instant) and ranks them by deck score. The analysis agents can shape that ranking later.
+- The brief prunes ten pairs to three using analysis-agent findings, then builds. Here the builder builds every colour configuration (it is search, and fast) and ranks them by deck score. The analysis agents can shape that ranking later.
+- The brief builds "one candidate per pair plus a second variant when a splash is viable". Here splashes and three- and four-colour decks are configurations in their own right (owner, 2026-11-05).
 - The brief's Synergy Detector reads parsed keywords. G-004 showed that counting them lowers deck-pick accuracy, so here it is a model reading the cards, measured before it is used.
-- Splashes (a second variant when a splash is viable) are open question 5.
 
 ## Out of scope for this goal
 
-The Red Team, the Sideboard Planner's swap plans, the Judge, and the Explainer's written rationale. The other analysis agents. Any `core` change. Editing grades or pinning cards in a UI. Native photo capture. The Arena-inspired redesign.
+The Red Team, the Sideboard Planner's swap plans, the Judge, and the Explainer's written rationale. The other analysis agents. Any `core` change. Editing grades or pinning cards in a UI. Native photo capture. The Arena-inspired redesign. Five-colour decks.
 
 ## Metrics to report when the goal closes
 
-The same as G-004, plus: the four deck-backtest numbers on `fra` for the builder and for the set-grades baseline; the synergy agent's sample result and its Fable usage; and the time `spa build` takes on a pool.
+The same as G-004, plus: the deck-backtest numbers on `fra`, overall and by deck shape, for the builder and for the baseline; the synergy agent's sample result and its Fable usage; and the time `spa build` takes on a pool.
 
-## Open questions, each with its default
+## Decided
 
-1. **Where you see the decks.** Default: the command line plus a "Decks" view on the Star Trek grade sheet page. The phone app gets the deck screens with the Arena-inspired redesign, in a later goal, since that is a visual review of its own.
-2. **Targets on `fra`.** Default: pair agreement 60% or more, top-three rate 90% or more, main-deck overlap 17 or more of the player's spells on average, land count within one 90% or more of the time, and better overlap than the set-grades baseline. The brief's targets (80% and 18) stay the long-run aim; this goal has no Judge or analysis agents yet.
-3. **Land count.** Default: 17 lands with 23 spells. 16 lands with 24 spells when the deck's mean mana value is at or below a cutoff tuned on `msh` and `hob`.
-4. **Synergy agent in this goal.** Default: yes, as the last ticket, run on 60 held-out `fra` builds (about 60 Fable calls on the subscription), and kept only if it raises main-deck overlap.
-5. **Splashes.** Default: no splashes in this goal; every deck is two colours plus colourless cards. A splash variant comes with the Mana Engineer's odds, in a later goal.
+The owner answered on 2026-11-05: "Approve all except 2 and 5. Agents are going to have to pick up on the fact that sometimes all of the two color pairs are weak and 3-4 color decks must be formed in order to reach maximum potential. Basic land cycling and color fixing should be considered a higher priority when this is a necessity."
+
+1. **Where you see the decks.** Approved default: the command line plus a "Decks" view on the Star Trek grade sheet page. The phone app gets the deck screens with the Arena-inspired redesign, in a later goal.
+2. **Targets on `fra`.** The default (pair agreement 60%, top-three 90%, overlap 17, land count 90%) assumed two-colour decks, and the owner did not approve it. The Architect re-derived it for decks of any colour count (criterion 7): colour agreement 50%, top-three 80%, overlap 16, land count within one 85%, colour agreement 35% on three-or-more-colour builds, and beating the two-colour baseline. The bars are lower than the draft's because matching the exact colour set among two, three and four colours, with or without a splash, is harder than matching one of ten pairs. The owner may set other numbers; until then these stand.
+3. **Land count.** Approved default, widened for more colours: 17 lands with 23 spells, 16 with 24 when the deck's mean mana value is at or below a cutoff, and 18 with 22 allowed for decks of three or more colours. The cutoffs are tuned on `msh` and `hob`.
+4. **Synergy agent in this goal.** Approved default: yes, as the last ticket, run on 60 held-out `fra` builds (about 60 Fable calls on the subscription), and kept only if it raises main-deck overlap.
+5. **Splashes and more colours.** The default (two colours only) was not approved. Decided by the owner: the builder must build splash, three-colour and four-colour decks when the two-colour pairs are weak, and basic landcycling and colour fixing are valued more when a deck needs them (deliverables 1, 3 and 4).
+
+## Architect notes (2026-11-05)
+
+- G-005 start commit for criterion 2: the commit that opens this goal.
+- G-004's deck-pick test counted only two-colour builds (`main_colors` of length 2), which are 27% to 58% of strong builds. Its numbers stand for those builds only; this goal's backtest covers every colour count.
+- 17Lands encodes a build's colours as `main_colors` (for example `WUB`) and `splash_colors` (for example `R`). Strong builds per set: `msh` 4,995, `hob` 5,206, `fra` 5,321.
+- Tickets, one Developer at a time, all serialized (they share `cli` and the builder): SPA-042 (fixing tags and `spa fixing`), SPA-043 (the builder and mana for a given colour set), SPA-044 (colour configurations, ranking and `spa build`), SPA-045 (the deck backtest and tuning, held out on `fra`), SPA-046 (the synergy agent). The Architect completes each ticket, with script-pinned numbers, before dispatching it.
