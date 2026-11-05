@@ -123,7 +123,8 @@ class TagPacketsV2Test {
 
     @Test
     fun `pass 2 shows each axis's suppliedBy and writes it to axes json`() {
-        val packet = TagPackets.rolesPacket(index, brief(), null, "Roles v2.", axes, facts)
+        val packet =
+            TagPackets.rolesPacket(TagPacketSet(index, brief(), null, facts), "Roles v2.", axes)
 
         assertEquals(
             listOf(

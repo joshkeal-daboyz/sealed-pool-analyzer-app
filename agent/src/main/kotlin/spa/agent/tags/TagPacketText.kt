@@ -1,5 +1,6 @@
 package spa.agent.tags
 
+import spa.agent.facts.CardFacts
 import spa.agent.grader.GradingPackets
 import spa.agent.grader.GradingPool
 import spa.core.cards.CardIndex
@@ -12,26 +13,64 @@ object TagPacketText {
         appendLine()
         appendLine("Use these axes only, each by its id.")
         appendLine()
-        axes.forEach { appendLine("- `${it.id}`, ${it.name}: ${it.definition}") }
+        axes.forEach { appendLine("- `${it.id}`, ${it.name}: ${it.definition}${supply(it)}") }
     }
 
-    /** The files section of pass 1, for card files named [cardFiles]. */
-    fun describeAxesFiles(index: CardIndex, cardFiles: List<String>): String = buildString {
+    /** An axis's supply as pass 2 shows it, or nothing for an axis without `suppliedBy` (v1). */
+    private fun supply(axis: Axis): String {
+        val supply = axis.suppliedBy ?: return ""
+        return if (supply.isEmpty()) " Supplied by: no fact."
+        else " Supplied by: " + supply.joinToString(", ") { "`${it.fact}` ${it.strength}" } + "."
+    }
+
+    /**
+     * The `## Card facts` section of pass 1: each fact of [facts] (card id to its facts) with the
+     * number of cards that have it, most first, then by name ([CardFacts.counts]).
+     */
+    fun renderFacts(facts: Map<String, Set<String>>): String = buildString {
+        appendLine("## Card facts")
+        appendLine()
+        appendLine(
+            "Each fact a card of the set has, with the number of cards that have it, most " +
+                "first. `${TagPackets.FACTS}` gives each card's facts by its id."
+        )
+        appendLine()
+        CardFacts.counts(facts).forEach { appendLine("- `${it.fact}`: ${it.cards}") }
+    }
+
+    /**
+     * The files section of pass 1, for card files named [cardFiles], naming `facts.json` when the
+     * packet has it ([withFacts]).
+     */
+    fun describeAxesFiles(
+        index: CardIndex,
+        cardFiles: List<String>,
+        withFacts: Boolean = false,
+    ): String = buildString {
         appendLine("## The files in this folder")
         appendLine()
         appendLine("- `${TagPackets.INSTRUCTIONS}`: this file.")
         appendLine(cardsLine(index, cardFiles))
+        if (withFacts) appendLine(FACTS_LINE)
         appendLine("- `${TagPackets.AXES_SCHEMA}`: the JSON schema of your response.")
         appendLine("- You write `${TagPackets.AXES_RESPONSE}`.")
     }
 
-    /** The files section of pass 2, for card files named [cardFiles]. */
-    fun describeRolesFiles(index: CardIndex, cardFiles: List<String>): String = buildString {
+    /**
+     * The files section of pass 2, for card files named [cardFiles], naming `facts.json` when the
+     * packet has it ([withFacts]).
+     */
+    fun describeRolesFiles(
+        index: CardIndex,
+        cardFiles: List<String>,
+        withFacts: Boolean = false,
+    ): String = buildString {
         val responses = cardFiles.map(GradingPackets::responseFileName)
         appendLine("## The files in this folder")
         appendLine()
         appendLine("- `${TagPackets.INSTRUCTIONS}`: this file.")
         appendLine(cardsLine(index, cardFiles))
+        if (withFacts) appendLine(FACTS_LINE)
         appendLine("- `${TagPackets.AXES}`: the axes above, as JSON.")
         appendLine("- `${TagPackets.RESPONSE_SCHEMA}`: the JSON schema of one response file.")
         appendLine("- You write ${range(responses)}, one beside each card file.")
@@ -50,20 +89,53 @@ object TagPacketText {
         if (names.size <= 1) "`${names.firstOrNull() ?: GradingPackets.cardFileName(1)}`"
         else "`${names.first()}` to `${names.last()}`"
 
-    /** The schema of `axes.response.json`. */
-    val axesSchema: String =
-        """
+    private const val FACTS_LINE = "- `${TagPackets.FACTS}`: each card's facts, by card id."
+
+    /** The schema of `axes.response.json` for tags prompt v1 ([AxesFormat.PLAIN]). */
+    val axesSchema: String
+        get() = axesSchema(AxesFormat.PLAIN)
+
+    /**
+     * The schema of `axes.response.json` in [format]: for [AxesFormat.SUPPLIED], up to 20 axes,
+     * each with a required `suppliedBy`.
+     */
+    fun axesSchema(format: AxesFormat): String {
+        val max = format.maxAxes
+        val required =
+            if (format.supplied) "\"id\", \"name\", \"definition\", \"suppliedBy\""
+            else "\"id\", \"name\", \"definition\""
+        val supplied =
+            if (!format.supplied) ""
+            else
+                """
+                |,
+                |      "suppliedBy": {
+                |        "description": "The card facts that supply the axis just by a card having them, each a fact some card of the set has, at most once, with a strength from 1 to 3; empty when no fact does.",
+                |        "type": "array",
+                |        "items": {
+                |          "type": "object",
+                |          "additionalProperties": false,
+                |          "required": ["fact", "strength"],
+                |          "properties": {
+                |            "fact": { "type": "string" },
+                |            "strength": { "enum": [1, 2, 3] }
+                |          }
+                |        }
+                |      }
+                """
+                    .trimMargin()
+        return """
         |{
         |  "${'$'}schema": "https://json-schema.org/draft/2020-12/schema",
         |  "title": "Synergy axes response",
-        |  "description": "axes.response.json: the set's synergy axes, ${AxesFile.MIN_AXES} to ${AxesFile.MAX_AXES} of them, with distinct ids.",
+        |  "description": "axes.response.json: the set's synergy axes, ${AxesFile.MIN_AXES} to $max of them, with distinct ids.",
         |  "type": "array",
         |  "minItems": ${AxesFile.MIN_AXES},
-        |  "maxItems": ${AxesFile.MAX_AXES},
+        |  "maxItems": $max,
         |  "items": {
         |    "type": "object",
         |    "additionalProperties": false,
-        |    "required": ["id", "name", "definition"],
+        |    "required": [$required],
         |    "properties": {
         |      "id": {
         |        "description": "Lowercase words joined by hyphens, distinct from every other axis's id.",
@@ -79,12 +151,13 @@ object TagPacketText {
         |        "description": "One line: what counts as supplying the axis.",
         |        "type": "string",
         |        "minLength": 1
-        |      }
+        |      }$supplied
         |    }
         |  }
         |}
         |"""
             .trimMargin()
+    }
 
     /** The schema of one `cards-NN.response.json`, with each role's axis one of [axes]. */
     fun responseSchema(axes: List<Axis>): String {

@@ -6,7 +6,6 @@ import java.util.Locale
 import spa.agent.grader.GradingPool
 import spa.agent.synergy.CardSynergy
 import spa.agent.synergy.PoolSynergy
-import spa.agent.synergy.SynergyTable
 import spa.agent.synergy.SynergyWeight
 import spa.agent.synergy.TagSynergy
 
@@ -49,7 +48,11 @@ object SynergyCommand {
                     ?: data.root.resolve("weights").resolve("tag-synergy.json")
             )
         val pool = PoolGradesCommand.pool(text, file, index, stderr)
-        return TagSynergy(SynergyTable(tags), GradingPool.printings(index), weight)
+        return TagSynergy(
+                SynergyTableCommand.table(data, set, tags),
+                GradingPool.printings(index),
+                weight,
+            )
             .score(pool, pair)
     }
 

@@ -15,11 +15,15 @@ interface PairTerm {
     /** This term's part of the score of [a] with [b], where [a] and [b] may be the same card. */
     fun score(a: TagCard, b: TagCard): Int
 
-    /** Stub. */
+    /**
+     * The term as a [SynergyTable] of [tags] uses it, given each card's [facts] by tag id: this
+     * term by default; a term that needs the table's data returns one holding it, and a term that
+     * adds nothing to [tags] returns null, so it is not printed.
+     */
     fun forTable(tags: TagFile, facts: Map<String, Set<String>>): PairTerm? = this
 }
 
 /** The terms a pair's score sums, in print order. A new term is one file and one entry here. */
 object PairTerms {
-    val ALL: List<PairTerm> = listOf(AxisTerm, PartnerTerm)
+    val ALL: List<PairTerm> = listOf(AxisTerm, PartnerTerm, FactSupplyTerm)
 }

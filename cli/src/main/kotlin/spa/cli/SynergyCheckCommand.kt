@@ -3,7 +3,6 @@ package spa.cli
 import java.io.PrintStream
 import java.nio.file.Files
 import java.nio.file.Path
-import spa.agent.synergy.SynergyTable
 import spa.agent.synergy.check.SynergyCheckFile
 import spa.agent.synergy.check.SynergyChecks
 
@@ -23,7 +22,7 @@ object SynergyCheckCommand {
         }
         val set = Commands.requiredSet(parsed)
         val data = Commands.dataDir(parsed)
-        val table = SynergyTable(SynergyTableCommand.tagFile(data, set))
+        val table = SynergyTableCommand.table(data, set, SynergyTableCommand.tagFile(data, set))
         val path = data.root.resolve("synergy-checks").resolve("$set.json")
         val file = checkFile(path, set)
         val lines = Commands.guard("synergy check file $path") { SynergyChecks.lines(file, table) }

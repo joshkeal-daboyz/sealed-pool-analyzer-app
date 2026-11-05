@@ -42,6 +42,17 @@ class FactCard(val card: Card, val keywords: List<String> = emptyList()) {
     val isLand: Boolean
         get() = "land" in frontTypes
 
+    /**
+     * A regex group matching any of [phrases], the full name or the short name, longest first, so
+     * that a rule's "this creature, its full name or its short name" is one pattern.
+     */
+    fun subjects(phrases: List<String>): String =
+        (phrases + fullName + shortName)
+            .filter { it.isNotBlank() }
+            .distinct()
+            .sortedByDescending { it.length }
+            .joinToString("|", "(?:", ")") { Regex.escape(it) }
+
     private fun words(text: String): List<String> = text.split(' ').filter { it.isNotBlank() }
 
     private companion object {

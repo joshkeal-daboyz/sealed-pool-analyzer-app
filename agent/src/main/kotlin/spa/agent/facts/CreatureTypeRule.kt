@@ -1,6 +1,8 @@
 package spa.agent.facts
 
-/** Stub. */
+/** `type:<subtype>` for each subtype of a creature front face, slugged ([FactRules.slug]). */
 object CreatureTypeRule : FactRule {
-    override fun facts(card: FactCard): Set<String> = emptySet()
+    override fun facts(card: FactCard): Set<String> =
+        if ("creature" !in card.frontTypes) emptySet()
+        else card.frontSubtypes.map { "type:${FactRules.slug(it)}" }.toSet()
 }

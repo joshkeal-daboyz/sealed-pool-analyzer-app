@@ -44,8 +44,11 @@ fun interface TagCheck {
 
 /** The checks `spa tags-import` runs, in order. A new check is one file and one entry here. */
 object TagChecks {
-    /** Stub. */
-    val SUPPLY: List<TagCheck> = emptyList()
+    /**
+     * The checks on the axes' `suppliedBy` (tags prompt v2), which need no responses: `spa
+     * tags-packet --axes` runs these alone on the axes file, and the import runs them last.
+     */
+    val SUPPLY: List<TagCheck> = listOf(SupplyFactCheck, SupplyStrengthCheck, RepeatedSupplyCheck)
 
     val ALL: List<TagCheck> =
         listOf(
@@ -57,5 +60,5 @@ object TagChecks {
             PartnerPoolCheck,
             PartnerCountCheck,
             RepeatedPartnerCheck,
-        )
+        ) + SUPPLY
 }

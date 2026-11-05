@@ -1,26 +1,49 @@
 package spa.agent.facts
 
 import java.nio.file.Path
+import spa.agent.grader.GradingPool
+import spa.agent.themes.PoolThemes
 import spa.core.cards.CardIndex
 
-/** A fact and the number of [cards] that have it. */
+/** A [fact] and the number of [cards] that have it. */
 data class FactCount(val fact: String, val cards: Int)
 
-/** Stub. */
+/**
+ * The card facts of a set's sealed pool (SPA-051): a deterministic tag layer made by code from card
+ * data, as the union of the [FactRule]s in a list. Model-free.
+ */
 object CardFacts {
-    fun of(card: FactCard, rules: List<FactRule> = FactRules.ALL): Set<String> = emptySet()
+    /** [card]'s facts under [rules], sorted. */
+    fun of(card: FactCard, rules: List<FactRule> = FactRules.ALL): Set<String> =
+        rules.flatMap { it.facts(card) }.toSortedSet()
 
+    /**
+     * Each card of [index]'s sealed pool ([GradingPool]) by its packet id, in pool order, with its
+     * facts, its Scryfall keywords taken from [keywords] by oracle id (none when absent).
+     */
     fun pool(
         index: CardIndex,
         keywords: Map<String, List<String>>,
         rules: List<FactRule> = FactRules.ALL,
-    ): Map<String, Set<String>> = emptyMap()
+    ): Map<String, Set<String>> =
+        GradingPool.printings(index).associate {
+            GradingPool.id(it) to of(FactCard(it.card, keywords[it.card.oracleId].orEmpty()), rules)
+        }
 
+    /** [pool], with the keywords read from the Scryfall caches under [scryfallDir]. */
     fun load(
         scryfallDir: Path,
         index: CardIndex,
         rules: List<FactRule> = FactRules.ALL,
-    ): Map<String, Set<String>> = emptyMap()
+    ): Map<String, Set<String>> =
+        pool(index, PoolThemes.keywords(scryfallDir, index.setCodes), rules)
 
-    fun counts(facts: Map<String, Set<String>>): List<FactCount> = emptyList()
+    /** Each fact of [facts] with the number of cards that have it, most first, then by name. */
+    fun counts(facts: Map<String, Set<String>>): List<FactCount> =
+        facts.values
+            .flatten()
+            .groupingBy { it }
+            .eachCount()
+            .map { (fact, n) -> FactCount(fact, n) }
+            .sortedWith(compareByDescending<FactCount> { it.cards }.thenBy { it.fact })
 }

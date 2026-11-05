@@ -2,6 +2,7 @@ package spa.cli
 
 import java.io.PrintStream
 import java.nio.file.Files
+import spa.agent.facts.CardFacts
 import spa.agent.synergy.PairScore
 import spa.agent.synergy.SynergyTable
 import spa.agent.tags.TagCard
@@ -34,7 +35,7 @@ object SynergyTableCommand {
                 it.toDoubleOrNull()
                     ?: throw CliFailure("--min must be a number, got '$it'", ExitCode.ERROR)
             } ?: DEFAULT_MIN
-        lines(SynergyTable(tagFile(data, set)), min).forEach(stdout::println)
+        lines(table(data, set, tagFile(data, set)), min).forEach(stdout::println)
         stdout.flush()
         stderr.flush()
         return ExitCode.OK
@@ -52,6 +53,19 @@ object SynergyTableCommand {
             throw CliFailure("tag file $path is for set '${file.set}', not '$set'", ExitCode.ERROR)
         }
         return file
+    }
+
+    /**
+     * The pair table of [tags], the tag file of [set]. When an axis has `suppliedBy` facts (tags
+     * prompt v2), the set's card facts are worked out from the Scryfall cache under [data] for the
+     * fact supply term; a v1 file needs no cache and scores exactly as before.
+     */
+    internal fun table(data: DataDir, set: String, tags: TagFile): SynergyTable {
+        val supplied = tags.axes.any { !it.suppliedBy.isNullOrEmpty() }
+        val facts =
+            if (supplied) CardFacts.load(data.scryfall, Commands.loadIndex(data, set))
+            else emptyMap()
+        return SynergyTable(tags, facts = facts)
     }
 
     /** The lines [run] prints for [table] and [min]. */
