@@ -1,0 +1,9716 @@
+{
+  "set": "fra",
+  "provenance": "claude-fable-5-1 via Claude Code, tags prompt v1, 2026-11-05",
+  "axes": [
+    {
+      "id": "jace-loyalty",
+      "name": "Jace and planeswalker loyalty",
+      "definition": "Empowering Jace, casting a planeswalker, or otherwise putting loyalty counters on a planeswalker you control, so that you control a planeswalker and can activate loyalty abilities."
+    },
+    {
+      "id": "scry-surveil",
+      "name": "Scry and surveil triggers",
+      "definition": "Any card that scries or surveils for you (including the Jace token's [-1], surveil riders on spells, and Peer Review copies), so that 'whenever you scry or surveil' and 'if you've scried or surveilled this turn' cards fire."
+    },
+    {
+      "id": "noncreature-spells",
+      "name": "Noncreature spells and prowess",
+      "definition": "Casting noncreature spells: instants, sorceries, copies of prepared creatures' spell faces, flashback casts, enchantments and artifacts, which feed prowess, Thopter and Treasure makers and once-per-turn spell triggers."
+    },
+    {
+      "id": "noncombat-damage",
+      "name": "Noncombat damage to opponents",
+      "definition": "Dealing noncombat damage to an opponent: pingers like Vicious Verse, burn that can target players, attack-trigger pings, discard and landfall pings, and effects that add to such damage."
+    },
+    {
+      "id": "graveyard-fill",
+      "name": "Self-mill and graveyard count",
+      "definition": "Putting cards into your own graveyard (mill, surveil, discard, looting, sacrificing lands or permanents) to reach threshold, grow graveyard-counting creatures, and give flashback, exile-from-graveyard and reanimation effects targets."
+    },
+    {
+      "id": "creature-sacrifice",
+      "name": "Sacrifice and death triggers",
+      "definition": "Sacrifice outlets and cheap creatures or tokens willing to die, so that 'whenever a creature you control dies', 'if N creatures died this turn' and return-from-graveyard creatures pay off."
+    },
+    {
+      "id": "life-gain",
+      "name": "Life gain",
+      "definition": "Any effect that gains you life, however small: lifelink, Seed Suture, drain pings, enter-or-die life triggers, and repeatable gain each turn for 'whenever you gain life' payoffs."
+    },
+    {
+      "id": "plus-one-counters",
+      "name": "+1/+1 counters",
+      "definition": "Putting +1/+1 counters on your creatures (spells, enter triggers, counter-on-arrival effects) so that creatures with counters gain vigilance, flying or haste, grow further, or equip more cheaply."
+    },
+    {
+      "id": "creature-enters",
+      "name": "Creatures entering",
+      "definition": "Putting creatures onto the battlefield often, especially cheap creatures and token makers, so that 'whenever another creature you control enters', 'creature that entered this turn' and creature-count effects trigger."
+    },
+    {
+      "id": "creature-tokens",
+      "name": "Creature tokens",
+      "definition": "Creating creature tokens, above all 2/2 Wizard Soldier Cadets but also Thopters, Beasts, Illusions and Dragons, for cards that pump, untap, spare or count tokens or Wizard tokens."
+    },
+    {
+      "id": "artifacts",
+      "name": "Artifacts and Heartwood",
+      "definition": "Controlling or creating artifacts: Heartwood and Treasure tokens, Thopters, Equipment, Books and artifact creatures, for artifact-count pumps, tap-two-artifacts and sacrifice-an-artifact abilities, and artifact-spell triggers."
+    },
+    {
+      "id": "lands-landfall",
+      "name": "Lands entering and land count",
+      "definition": "Extra land drops and land fetching (basic landcycling, land search, returning land cards from the graveyard, extra land plays) for landfall triggers, basic-land-type triggers and six-or-more-lands checks."
+    },
+    {
+      "id": "discard",
+      "name": "Discard outlets",
+      "definition": "Effects that let you discard your own cards: looting, rummaging, discard-as-cost abilities and cycling, which trigger discard payoffs and let cards that want to be discarded do their job."
+    },
+    {
+      "id": "legendary",
+      "name": "Legendary permanents",
+      "definition": "Legendary creatures, enchantments and artifacts in play, in hand or in the graveyard, for cards that cost less with a legend, return or discard legendary cards, or put counters on legendary creatures."
+    }
+  ],
+  "cards": [
+    {
+      "id": "fra/1",
+      "name": "Emrakul, the Exigent Doom",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/87",
+          "strength": 3
+        },
+        {
+          "id": "fra/110",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/2",
+      "name": "Academic Ascent",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/196",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/3",
+      "name": "Blossom-Blessed Angel // Seed Suture",
+      "roles": [
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/201",
+          "strength": 2
+        },
+        {
+          "id": "fra/168",
+          "strength": 1
+        },
+        {
+          "id": "fra/181",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/4",
+      "name": "Campus Crier",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/5",
+      "name": "Enlightened Confidant",
+      "roles": [
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "life-gain",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/173",
+          "strength": 2
+        },
+        {
+          "id": "fra/124",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/6",
+      "name": "Fateshaper Aspirant",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/149",
+          "strength": 2
+        },
+        {
+          "id": "fra/235",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/7",
+      "name": "Flickering Hound",
+      "roles": [
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-enters",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/33",
+          "strength": 2
+        },
+        {
+          "id": "fra/119",
+          "strength": 2
+        },
+        {
+          "id": "fra/144",
+          "strength": 2
+        },
+        {
+          "id": "fra/127",
+          "strength": 2
+        },
+        {
+          "id": "fra/86",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/8",
+      "name": "Generous Revival",
+      "roles": [
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/38",
+          "strength": 2
+        },
+        {
+          "id": "fra/135",
+          "strength": 2
+        },
+        {
+          "id": "fra/33",
+          "strength": 1
+        },
+        {
+          "id": "fra/144",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/9",
+      "name": "Germinate Recruits",
+      "roles": [
+        {
+          "axis": "life-gain",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/112",
+          "strength": 2
+        },
+        {
+          "id": "fra/160",
+          "strength": 2
+        },
+        {
+          "id": "fra/140",
+          "strength": 2
+        },
+        {
+          "id": "fra/167",
+          "strength": 1
+        },
+        {
+          "id": "fra/163",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/10",
+      "name": "Graft Surgeon",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/270",
+          "strength": 1
+        },
+        {
+          "id": "fra/66",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/11",
+      "name": "Guiding Hydra",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/209",
+          "strength": 2
+        },
+        {
+          "id": "fra/206",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/12",
+      "name": "Hexhaven Battalion",
+      "roles": [
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "lands-landfall",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "discard",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/77",
+          "strength": 1
+        },
+        {
+          "id": "fra/198",
+          "strength": 1
+        },
+        {
+          "id": "fra/93",
+          "strength": 2
+        },
+        {
+          "id": "fra/271",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/13",
+      "name": "Kindred Judgment",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/12",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/14",
+      "name": "Loyal Tutor",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/43",
+          "strength": 2
+        },
+        {
+          "id": "fra/216",
+          "strength": 2
+        },
+        {
+          "id": "fra/244",
+          "strength": 2
+        },
+        {
+          "id": "fra/229",
+          "strength": 2
+        },
+        {
+          "id": "fra/259",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/15",
+      "name": "Memory Trap",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/202",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/16",
+      "name": "Predictive Preparations",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/209",
+          "strength": 2
+        },
+        {
+          "id": "fra/196",
+          "strength": 1
+        },
+        {
+          "id": "fra/93",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/17",
+      "name": "Prophesied End",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/18",
+      "name": "Refute Destiny",
+      "roles": [
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/19",
+      "name": "Repurposed Enforcer",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "creature-enters",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/12",
+          "strength": 2
+        },
+        {
+          "id": "fra/273",
+          "strength": 2
+        },
+        {
+          "id": "fra/251",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/20",
+      "name": "Return to the Light Realms",
+      "roles": [
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/143",
+          "strength": 1
+        },
+        {
+          "id": "fra/38",
+          "strength": 1
+        },
+        {
+          "id": "fra/169",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/21",
+      "name": "Shatterwing Pegasus",
+      "roles": [
+        {
+          "axis": "creature-tokens",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/22",
+      "name": "Surgical Precision",
+      "roles": [
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/23",
+      "name": "Unflinching Hortimancer",
+      "roles": [
+        {
+          "axis": "life-gain",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/161",
+          "strength": 1
+        },
+        {
+          "id": "fra/206",
+          "strength": 1
+        },
+        {
+          "id": "fra/173",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/24",
+      "name": "Your Fate Ends Here",
+      "roles": [
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/25",
+      "name": "Countersculpt",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/43",
+          "strength": 1
+        },
+        {
+          "id": "fra/216",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/26",
+      "name": "Cruel Calculations",
+      "roles": [
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/144",
+          "strength": 3
+        },
+        {
+          "id": "fra/114",
+          "strength": 2
+        },
+        {
+          "id": "fra/143",
+          "strength": 2
+        },
+        {
+          "id": "fra/70",
+          "strength": 2
+        },
+        {
+          "id": "fra/155",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/27",
+      "name": "Cryotheory Adept",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/28",
+      "name": "Diviner of Victory // Unwind History",
+      "roles": [
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/168",
+          "strength": 2
+        },
+        {
+          "id": "fra/181",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/29",
+      "name": "Divining Duelist",
+      "roles": [
+        {
+          "axis": "discard",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/266",
+          "strength": 1
+        },
+        {
+          "id": "fra/237",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/30",
+      "name": "Icy Reception",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/31",
+      "name": "Infinite Coursework",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/32",
+      "name": "Jace's Machinations",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/255",
+          "strength": 2
+        },
+        {
+          "id": "fra/273",
+          "strength": 2
+        },
+        {
+          "id": "fra/224",
+          "strength": 2
+        },
+        {
+          "id": "fra/207",
+          "strength": 2
+        },
+        {
+          "id": "fra/216",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/33",
+      "name": "Mindseeker Oculus",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/7",
+          "strength": 2
+        },
+        {
+          "id": "fra/202",
+          "strength": 2
+        },
+        {
+          "id": "fra/8",
+          "strength": 1
+        },
+        {
+          "id": "fra/273",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/34",
+      "name": "Perfected Theory",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/35",
+      "name": "Plan for All Outcomes",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/151",
+          "strength": 2
+        },
+        {
+          "id": "fra/165",
+          "strength": 2
+        },
+        {
+          "id": "fra/143",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/36",
+      "name": "Precise Redaction",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/37",
+      "name": "Protege's Awakening",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/216",
+          "strength": 2
+        },
+        {
+          "id": "fra/273",
+          "strength": 1
+        },
+        {
+          "id": "fra/101",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/38",
+      "name": "Seasoned Cryomancer",
+      "roles": [
+        {
+          "axis": "discard",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/266",
+          "strength": 2
+        },
+        {
+          "id": "fra/8",
+          "strength": 2
+        },
+        {
+          "id": "fra/62",
+          "strength": 2
+        },
+        {
+          "id": "fra/237",
+          "strength": 2
+        },
+        {
+          "id": "fra/271",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/39",
+      "name": "Semester Foreseer // Peer Review",
+      "roles": [
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/168",
+          "strength": 2
+        },
+        {
+          "id": "fra/181",
+          "strength": 2
+        },
+        {
+          "id": "fra/77",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/40",
+      "name": "Sphinx of False Conclusions",
+      "roles": [
+        {
+          "axis": "discard",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/41",
+          "strength": 2
+        },
+        {
+          "id": "fra/270",
+          "strength": 2
+        },
+        {
+          "id": "fra/66",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/41",
+      "name": "Sphinx's Approach",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/41",
+          "strength": 3
+        },
+        {
+          "id": "fra/40",
+          "strength": 2
+        },
+        {
+          "id": "fra/167",
+          "strength": 2
+        },
+        {
+          "id": "fra/128",
+          "strength": 2
+        },
+        {
+          "id": "fra/159",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/42",
+      "name": "Surveillance Phantasm",
+      "roles": [
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/43",
+      "name": "The Theorist, Jace Beleren",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/191",
+          "strength": 2
+        },
+        {
+          "id": "fra/25",
+          "strength": 1
+        },
+        {
+          "id": "fra/14",
+          "strength": 1
+        },
+        {
+          "id": "fra/216",
+          "strength": 1
+        },
+        {
+          "id": "fra/273",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/44",
+      "name": "Theorist's Proxy",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/202",
+          "strength": 1
+        },
+        {
+          "id": "fra/7",
+          "strength": 1
+        },
+        {
+          "id": "fra/134",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/45",
+      "name": "Undulating Witness",
+      "roles": [
+        {
+          "axis": "lands-landfall",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "discard",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/197",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/46",
+      "name": "Unsummon",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/33",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/47",
+      "name": "Variable Chaser // Arc of Fortune",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "discard",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/237",
+          "strength": 3
+        },
+        {
+          "id": "fra/246",
+          "strength": 3
+        },
+        {
+          "id": "fra/181",
+          "strength": 2
+        },
+        {
+          "id": "fra/217",
+          "strength": 2
+        },
+        {
+          "id": "fra/168",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/48",
+      "name": "Apex Witchstalker",
+      "roles": [
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "lands-landfall",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "discard",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/270",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/49",
+      "name": "Bloodline Recollector // Ancestral Craving",
+      "roles": [
+        {
+          "axis": "creature-sacrifice",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/53",
+          "strength": 2
+        },
+        {
+          "id": "fra/270",
+          "strength": 2
+        },
+        {
+          "id": "fra/240",
+          "strength": 2
+        },
+        {
+          "id": "fra/63",
+          "strength": 2
+        },
+        {
+          "id": "fra/169",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/50",
+      "name": "Break Under Pressure",
+      "roles": [
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/51",
+      "name": "Cast Away Doubt",
+      "roles": [
+        {
+          "axis": "noncombat-damage",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/253",
+          "strength": 2
+        },
+        {
+          "id": "fra/88",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/52",
+      "name": "Dark Matter Manipulator",
+      "roles": [
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/26",
+          "strength": 2
+        },
+        {
+          "id": "fra/7",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/53",
+      "name": "Darklight Phoenix",
+      "roles": [
+        {
+          "axis": "creature-sacrifice",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "discard",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/49",
+          "strength": 2
+        },
+        {
+          "id": "fra/270",
+          "strength": 2
+        },
+        {
+          "id": "fra/169",
+          "strength": 2
+        },
+        {
+          "id": "fra/38",
+          "strength": 2
+        },
+        {
+          "id": "fra/240",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/54",
+      "name": "Extended Absence",
+      "roles": [
+        {
+          "axis": "noncombat-damage",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/253",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/55",
+      "name": "Extrapolate the Impossible",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/56",
+      "name": "Last Gasp",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/57",
+      "name": "Lich's Relic",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/196",
+          "strength": 2
+        },
+        {
+          "id": "fra/272",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/58",
+      "name": "Multiply by Zero",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/59",
+      "name": "Overwrite the Multiverse",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/216",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/60",
+      "name": "Rampart Hunter",
+      "roles": [
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/61",
+      "name": "Rank Rat",
+      "roles": [
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/237",
+          "strength": 2
+        },
+        {
+          "id": "fra/7",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/62",
+      "name": "Rewrite Regrets",
+      "roles": [
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/38",
+          "strength": 2
+        },
+        {
+          "id": "fra/144",
+          "strength": 1
+        },
+        {
+          "id": "fra/155",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/63",
+      "name": "Rise of the Deathbringer",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/49",
+          "strength": 2
+        },
+        {
+          "id": "fra/53",
+          "strength": 2
+        },
+        {
+          "id": "fra/241",
+          "strength": 2
+        },
+        {
+          "id": "fra/260",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/64",
+      "name": "Sanctum Lurker",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "noncombat-damage",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/234",
+          "strength": 2
+        },
+        {
+          "id": "fra/88",
+          "strength": 2
+        },
+        {
+          "id": "fra/253",
+          "strength": 2
+        },
+        {
+          "id": "fra/32",
+          "strength": 1
+        },
+        {
+          "id": "fra/208",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/65",
+      "name": "Screeching Soulbreaker",
+      "roles": [
+        {
+          "axis": "noncombat-damage",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/234",
+          "strength": 2
+        },
+        {
+          "id": "fra/88",
+          "strength": 2
+        },
+        {
+          "id": "fra/253",
+          "strength": 2
+        },
+        {
+          "id": "fra/164",
+          "strength": 1
+        },
+        {
+          "id": "fra/77",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/66",
+      "name": "Silence the Echo",
+      "roles": [
+        {
+          "axis": "creature-sacrifice",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/40",
+          "strength": 2
+        },
+        {
+          "id": "fra/10",
+          "strength": 1
+        },
+        {
+          "id": "fra/49",
+          "strength": 1
+        },
+        {
+          "id": "fra/162",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/67",
+      "name": "Solve for Disappointment",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/68",
+      "name": "Terminal Criticism",
+      "roles": [
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/69",
+      "name": "Theoretical Necromancer",
+      "roles": [
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/38",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/70",
+      "name": "Void Extrapolator // Omit Variables",
+      "roles": [
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/168",
+          "strength": 2
+        },
+        {
+          "id": "fra/181",
+          "strength": 2
+        },
+        {
+          "id": "fra/26",
+          "strength": 2
+        },
+        {
+          "id": "fra/52",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/71",
+      "name": "Vraska's Final Mercy",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/216",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/72",
+      "name": "Ajani's Anguish",
+      "roles": [
+        {
+          "axis": "noncombat-damage",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/253",
+          "strength": 2
+        },
+        {
+          "id": "fra/88",
+          "strength": 1
+        },
+        {
+          "id": "fra/164",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/73",
+      "name": "Artifist Acumen",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/74",
+      "name": "Awaken the Inferno",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "lands-landfall",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "discard",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/75",
+      "name": "Blazing Crescendo",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/157",
+          "strength": 2
+        },
+        {
+          "id": "fra/196",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/76",
+      "name": "Chandra's Emberling",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/161",
+          "strength": 1
+        },
+        {
+          "id": "fra/206",
+          "strength": 1
+        },
+        {
+          "id": "fra/143",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/77",
+      "name": "Command the Stage",
+      "roles": [
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "noncombat-damage",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/151",
+          "strength": 3
+        },
+        {
+          "id": "fra/85",
+          "strength": 2
+        },
+        {
+          "id": "fra/164",
+          "strength": 2
+        },
+        {
+          "id": "fra/65",
+          "strength": 2
+        },
+        {
+          "id": "fra/137",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/78",
+      "name": "Craterclaw Colossus",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/165",
+          "strength": 2
+        },
+        {
+          "id": "fra/154",
+          "strength": 2
+        },
+        {
+          "id": "fra/105",
+          "strength": 2
+        },
+        {
+          "id": "fra/139",
+          "strength": 2
+        },
+        {
+          "id": "fra/87",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/79",
+      "name": "Curse-Marred Demon",
+      "roles": [
+        {
+          "axis": "discard",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/237",
+          "strength": 1
+        },
+        {
+          "id": "fra/266",
+          "strength": 1
+        },
+        {
+          "id": "fra/53",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/80",
+      "name": "Draconic Visitor",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/165",
+          "strength": 3
+        },
+        {
+          "id": "fra/154",
+          "strength": 3
+        },
+        {
+          "id": "fra/275",
+          "strength": 3
+        },
+        {
+          "id": "fra/105",
+          "strength": 3
+        },
+        {
+          "id": "fra/139",
+          "strength": 3
+        }
+      ]
+    },
+    {
+      "id": "fra/81",
+      "name": "Eardrum Rattler",
+      "roles": [
+        {
+          "axis": "creature-tokens",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/213",
+          "strength": 2
+        },
+        {
+          "id": "fra/246",
+          "strength": 2
+        },
+        {
+          "id": "fra/210",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/82",
+      "name": "Essence Burn",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/83",
+      "name": "Face Yourself",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/64",
+          "strength": 2
+        },
+        {
+          "id": "fra/49",
+          "strength": 2
+        },
+        {
+          "id": "fra/103",
+          "strength": 2
+        },
+        {
+          "id": "fra/234",
+          "strength": 2
+        },
+        {
+          "id": "fra/104",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/84",
+      "name": "Fulminous Forte",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/85",
+      "name": "Hallway Heckler // Vicious Verse",
+      "roles": [
+        {
+          "axis": "noncombat-damage",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "discard",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/237",
+          "strength": 3
+        },
+        {
+          "id": "fra/77",
+          "strength": 2
+        },
+        {
+          "id": "fra/266",
+          "strength": 2
+        },
+        {
+          "id": "fra/168",
+          "strength": 2
+        },
+        {
+          "id": "fra/181",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/86",
+      "name": "Heartstring Puller",
+      "roles": [
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/7",
+          "strength": 1
+        },
+        {
+          "id": "fra/77",
+          "strength": 1
+        },
+        {
+          "id": "fra/243",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/87",
+      "name": "Identity Echo",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/1",
+          "strength": 3
+        },
+        {
+          "id": "fra/78",
+          "strength": 2
+        },
+        {
+          "id": "fra/260",
+          "strength": 2
+        },
+        {
+          "id": "fra/12",
+          "strength": 2
+        },
+        {
+          "id": "fra/265",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/88",
+      "name": "Master of Barbs",
+      "roles": [
+        {
+          "axis": "noncombat-damage",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/151",
+          "strength": 3
+        },
+        {
+          "id": "fra/137",
+          "strength": 3
+        },
+        {
+          "id": "fra/65",
+          "strength": 2
+        },
+        {
+          "id": "fra/248",
+          "strength": 2
+        },
+        {
+          "id": "fra/237",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/89",
+      "name": "No Admittance",
+      "roles": [
+        {
+          "axis": "noncombat-damage",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/253",
+          "strength": 2
+        },
+        {
+          "id": "fra/88",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/90",
+      "name": "Pompous Battlemage // Improvised Act",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "discard",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/168",
+          "strength": 2
+        },
+        {
+          "id": "fra/181",
+          "strength": 2
+        },
+        {
+          "id": "fra/266",
+          "strength": 1
+        },
+        {
+          "id": "fra/237",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/91",
+      "name": "Pyre Rhymer // Molten Tide",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/168",
+          "strength": 1
+        },
+        {
+          "id": "fra/181",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/92",
+      "name": "Skilled Battlecarver",
+      "roles": [],
+      "partners": []
+    },
+    {
+      "id": "fra/93",
+      "name": "Stingcaster Mage",
+      "roles": [
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/147",
+          "strength": 3
+        },
+        {
+          "id": "fra/157",
+          "strength": 2
+        },
+        {
+          "id": "fra/12",
+          "strength": 2
+        },
+        {
+          "id": "fra/8",
+          "strength": 1
+        },
+        {
+          "id": "fra/98",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/94",
+      "name": "Tether Technician",
+      "roles": [
+        {
+          "axis": "discard",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncombat-damage",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/266",
+          "strength": 2
+        },
+        {
+          "id": "fra/237",
+          "strength": 2
+        },
+        {
+          "id": "fra/253",
+          "strength": 1
+        },
+        {
+          "id": "fra/53",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/95",
+      "name": "Violent Echoes",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/253",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/96",
+      "name": "Wrath of the Bloodmane",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/97",
+      "name": "Arcane Amphisbaena",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/7",
+          "strength": 1
+        },
+        {
+          "id": "fra/202",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/98",
+      "name": "Bestial Incursion",
+      "roles": [
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/259",
+          "strength": 2
+        },
+        {
+          "id": "fra/243",
+          "strength": 2
+        },
+        {
+          "id": "fra/93",
+          "strength": 1
+        },
+        {
+          "id": "fra/261",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/99",
+      "name": "Budding Insurgent",
+      "roles": [
+        {
+          "axis": "creature-sacrifice",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/103",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/100",
+      "name": "Carnivorous Cultivator // Enroot",
+      "roles": [
+        {
+          "axis": "lands-landfall",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/144",
+          "strength": 3
+        },
+        {
+          "id": "fra/263",
+          "strength": 2
+        },
+        {
+          "id": "fra/154",
+          "strength": 2
+        },
+        {
+          "id": "fra/168",
+          "strength": 1
+        },
+        {
+          "id": "fra/181",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/101",
+      "name": "Compel Brutality",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/32",
+          "strength": 2
+        },
+        {
+          "id": "fra/37",
+          "strength": 2
+        },
+        {
+          "id": "fra/33",
+          "strength": 1
+        },
+        {
+          "id": "fra/241",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/102",
+      "name": "Flourishing Grapple",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/196",
+          "strength": 1
+        },
+        {
+          "id": "fra/227",
+          "strength": 1
+        },
+        {
+          "id": "fra/241",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/103",
+      "name": "Gardenize",
+      "roles": [
+        {
+          "axis": "creature-sacrifice",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/83",
+          "strength": 2
+        },
+        {
+          "id": "fra/270",
+          "strength": 2
+        },
+        {
+          "id": "fra/240",
+          "strength": 1
+        },
+        {
+          "id": "fra/232",
+          "strength": 2
+        },
+        {
+          "id": "fra/169",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/104",
+      "name": "Greenhouse Propagator",
+      "roles": [
+        {
+          "axis": "creature-enters",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/12",
+          "strength": 2
+        },
+        {
+          "id": "fra/9",
+          "strength": 2
+        },
+        {
+          "id": "fra/83",
+          "strength": 2
+        },
+        {
+          "id": "fra/124",
+          "strength": 1
+        },
+        {
+          "id": "fra/147",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/105",
+      "name": "Heartwood Crafter // Soul Tether",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/80",
+          "strength": 3
+        },
+        {
+          "id": "fra/168",
+          "strength": 2
+        },
+        {
+          "id": "fra/181",
+          "strength": 2
+        },
+        {
+          "id": "fra/78",
+          "strength": 2
+        },
+        {
+          "id": "fra/154",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/106",
+      "name": "Hexhaven Invigorator",
+      "roles": [
+        {
+          "axis": "lands-landfall",
+          "role": "enabler",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/122",
+          "strength": 3
+        },
+        {
+          "id": "fra/248",
+          "strength": 3
+        },
+        {
+          "id": "fra/199",
+          "strength": 2
+        },
+        {
+          "id": "fra/187",
+          "strength": 2
+        },
+        {
+          "id": "fra/160",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/107",
+      "name": "Hungering Puppetbeast",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/80",
+          "strength": 2
+        },
+        {
+          "id": "fra/105",
+          "strength": 2
+        },
+        {
+          "id": "fra/139",
+          "strength": 2
+        },
+        {
+          "id": "fra/165",
+          "strength": 2
+        },
+        {
+          "id": "fra/275",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/108",
+      "name": "Hunter's Axe",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/196",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/109",
+      "name": "Inspired Tethermage",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/208",
+          "strength": 3
+        },
+        {
+          "id": "fra/239",
+          "strength": 3
+        },
+        {
+          "id": "fra/32",
+          "strength": 2
+        },
+        {
+          "id": "fra/191",
+          "strength": 2
+        },
+        {
+          "id": "fra/216",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/110",
+      "name": "Omnipresence",
+      "roles": [
+        {
+          "axis": "creature-enters",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/12",
+          "strength": 2
+        },
+        {
+          "id": "fra/1",
+          "strength": 2
+        },
+        {
+          "id": "fra/118",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/111",
+      "name": "Puppet Crafting",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/105",
+          "strength": 2
+        },
+        {
+          "id": "fra/165",
+          "strength": 2
+        },
+        {
+          "id": "fra/139",
+          "strength": 2
+        },
+        {
+          "id": "fra/198",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/112",
+      "name": "Restore with Empathy",
+      "roles": [
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "lands-landfall",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/9",
+          "strength": 2
+        },
+        {
+          "id": "fra/124",
+          "strength": 1
+        },
+        {
+          "id": "fra/140",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/113",
+      "name": "Simulacrum Shaper",
+      "roles": [
+        {
+          "axis": "lands-landfall",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/122",
+          "strength": 2
+        },
+        {
+          "id": "fra/248",
+          "strength": 1
+        },
+        {
+          "id": "fra/199",
+          "strength": 1
+        },
+        {
+          "id": "fra/270",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/114",
+      "name": "Something Worth Saving",
+      "roles": [
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/26",
+          "strength": 2
+        },
+        {
+          "id": "fra/52",
+          "strength": 1
+        },
+        {
+          "id": "fra/116",
+          "strength": 1
+        },
+        {
+          "id": "fra/271",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/115",
+      "name": "Sureshot Sower",
+      "roles": [
+        {
+          "axis": "discard",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/237",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/116",
+      "name": "Tarmogoyf",
+      "roles": [
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/100",
+          "strength": 2
+        },
+        {
+          "id": "fra/144",
+          "strength": 1
+        },
+        {
+          "id": "fra/114",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/117",
+      "name": "Tethermage's Advantage",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/196",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/118",
+      "name": "Verdant Kraken",
+      "roles": [
+        {
+          "axis": "lands-landfall",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/122",
+          "strength": 3
+        },
+        {
+          "id": "fra/248",
+          "strength": 3
+        },
+        {
+          "id": "fra/187",
+          "strength": 3
+        },
+        {
+          "id": "fra/199",
+          "strength": 2
+        },
+        {
+          "id": "fra/261",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/119",
+      "name": "Vinelasher Adept",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "lands-landfall",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "discard",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/7",
+          "strength": 2
+        },
+        {
+          "id": "fra/209",
+          "strength": 1
+        },
+        {
+          "id": "fra/206",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/120",
+      "name": "Wrecking Gecko",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/121",
+      "name": "Aerid Konstrari",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/80",
+          "strength": 3
+        },
+        {
+          "id": "fra/78",
+          "strength": 2
+        },
+        {
+          "id": "fra/154",
+          "strength": 2
+        },
+        {
+          "id": "fra/107",
+          "strength": 2
+        },
+        {
+          "id": "fra/270",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/122",
+      "name": "Avatar of Burgeoning Echoes",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "lands-landfall",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/106",
+          "strength": 3
+        },
+        {
+          "id": "fra/118",
+          "strength": 3
+        },
+        {
+          "id": "fra/267",
+          "strength": 3
+        },
+        {
+          "id": "fra/144",
+          "strength": 2
+        },
+        {
+          "id": "fra/113",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/123",
+      "name": "Blessed Ghoul",
+      "roles": [
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/270",
+          "strength": 2
+        },
+        {
+          "id": "fra/66",
+          "strength": 2
+        },
+        {
+          "id": "fra/274",
+          "strength": 1
+        },
+        {
+          "id": "fra/104",
+          "strength": 1
+        },
+        {
+          "id": "fra/200",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/124",
+      "name": "Bloombrute",
+      "roles": [
+        {
+          "axis": "life-gain",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/104",
+          "strength": 2
+        },
+        {
+          "id": "fra/173",
+          "strength": 2
+        },
+        {
+          "id": "fra/65",
+          "strength": 2
+        },
+        {
+          "id": "fra/199",
+          "strength": 1
+        },
+        {
+          "id": "fra/205",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/125",
+      "name": "Charge the Sanctum",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/196",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/126",
+      "name": "Clash of Elements",
+      "roles": [
+        {
+          "axis": "noncombat-damage",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/253",
+          "strength": 2
+        },
+        {
+          "id": "fra/88",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/127",
+      "name": "Craftwork Crusher",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/7",
+          "strength": 2
+        },
+        {
+          "id": "fra/202",
+          "strength": 2
+        },
+        {
+          "id": "fra/87",
+          "strength": 1
+        },
+        {
+          "id": "fra/259",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/128",
+      "name": "Denzilore Fatehold",
+      "roles": [
+        {
+          "axis": "scry-surveil",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/209",
+          "strength": 3
+        },
+        {
+          "id": "fra/170",
+          "strength": 2
+        },
+        {
+          "id": "fra/42",
+          "strength": 2
+        },
+        {
+          "id": "fra/146",
+          "strength": 2
+        },
+        {
+          "id": "fra/32",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/129",
+      "name": "Desperate Futurescribe",
+      "roles": [
+        {
+          "axis": "scry-surveil",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/170",
+          "strength": 2
+        },
+        {
+          "id": "fra/42",
+          "strength": 2
+        },
+        {
+          "id": "fra/209",
+          "strength": 1
+        },
+        {
+          "id": "fra/39",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/130",
+      "name": "Emergency Phytomedic // Seed Suture",
+      "roles": [
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/168",
+          "strength": 1
+        },
+        {
+          "id": "fra/181",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/131",
+      "name": "Entrust the Spark",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/216",
+          "strength": 2
+        },
+        {
+          "id": "fra/244",
+          "strength": 2
+        },
+        {
+          "id": "fra/259",
+          "strength": 2
+        },
+        {
+          "id": "fra/43",
+          "strength": 2
+        },
+        {
+          "id": "fra/229",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/132",
+      "name": "Fatehold Charm",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/33",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/133",
+      "name": "Fatehold Chronologist // Peer Review",
+      "roles": [
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/168",
+          "strength": 2
+        },
+        {
+          "id": "fra/181",
+          "strength": 2
+        },
+        {
+          "id": "fra/77",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/134",
+      "name": "Ferocity of the Hunt",
+      "roles": [
+        {
+          "axis": "creature-sacrifice",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/270",
+          "strength": 3
+        },
+        {
+          "id": "fra/135",
+          "strength": 3
+        },
+        {
+          "id": "fra/33",
+          "strength": 2
+        },
+        {
+          "id": "fra/144",
+          "strength": 2
+        },
+        {
+          "id": "fra/44",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/135",
+      "name": "Frostbite Pyromental",
+      "roles": [
+        {
+          "axis": "creature-sacrifice",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/134",
+          "strength": 3
+        },
+        {
+          "id": "fra/8",
+          "strength": 2
+        },
+        {
+          "id": "fra/270",
+          "strength": 1
+        },
+        {
+          "id": "fra/103",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/136",
+      "name": "Grim Repriser",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "noncombat-damage",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/151",
+          "strength": 3
+        },
+        {
+          "id": "fra/85",
+          "strength": 2
+        },
+        {
+          "id": "fra/270",
+          "strength": 2
+        },
+        {
+          "id": "fra/233",
+          "strength": 2
+        },
+        {
+          "id": "fra/66",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/137",
+      "name": "Ingris Stingerquill",
+      "roles": [
+        {
+          "axis": "noncombat-damage",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/88",
+          "strength": 3
+        },
+        {
+          "id": "fra/253",
+          "strength": 3
+        },
+        {
+          "id": "fra/234",
+          "strength": 2
+        },
+        {
+          "id": "fra/77",
+          "strength": 2
+        },
+        {
+          "id": "fra/164",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/138",
+      "name": "Konstrari Charm",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/196",
+          "strength": 1
+        },
+        {
+          "id": "fra/209",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/139",
+      "name": "Konstrari Improviser // Soul Tether",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/80",
+          "strength": 3
+        },
+        {
+          "id": "fra/168",
+          "strength": 2
+        },
+        {
+          "id": "fra/181",
+          "strength": 2
+        },
+        {
+          "id": "fra/78",
+          "strength": 2
+        },
+        {
+          "id": "fra/154",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/140",
+      "name": "Kwia Vigorbloom",
+      "roles": [
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "life-gain",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/80",
+          "strength": 3
+        },
+        {
+          "id": "fra/78",
+          "strength": 2
+        },
+        {
+          "id": "fra/104",
+          "strength": 2
+        },
+        {
+          "id": "fra/154",
+          "strength": 2
+        },
+        {
+          "id": "fra/173",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/141",
+      "name": "Mind Meanderer",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/142",
+      "name": "Null Summoner",
+      "roles": [
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/144",
+          "strength": 1
+        },
+        {
+          "id": "fra/143",
+          "strength": 1
+        },
+        {
+          "id": "fra/114",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/143",
+      "name": "Paradox Shaper // Omit Variables",
+      "roles": [
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/168",
+          "strength": 3
+        },
+        {
+          "id": "fra/35",
+          "strength": 2
+        },
+        {
+          "id": "fra/26",
+          "strength": 2
+        },
+        {
+          "id": "fra/76",
+          "strength": 2
+        },
+        {
+          "id": "fra/275",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/144",
+      "name": "Primal Witchstalker",
+      "roles": [
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "lands-landfall",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/7",
+          "strength": 3
+        },
+        {
+          "id": "fra/26",
+          "strength": 3
+        },
+        {
+          "id": "fra/100",
+          "strength": 3
+        },
+        {
+          "id": "fra/202",
+          "strength": 2
+        },
+        {
+          "id": "fra/122",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/145",
+      "name": "Proctor of Potential",
+      "roles": [
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "creature-enters",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/128",
+          "strength": 3
+        },
+        {
+          "id": "fra/12",
+          "strength": 2
+        },
+        {
+          "id": "fra/203",
+          "strength": 2
+        },
+        {
+          "id": "fra/118",
+          "strength": 2
+        },
+        {
+          "id": "fra/233",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/146",
+      "name": "Prudent Fateseer // Peer Review",
+      "roles": [
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/168",
+          "strength": 2
+        },
+        {
+          "id": "fra/181",
+          "strength": 2
+        },
+        {
+          "id": "fra/170",
+          "strength": 2
+        },
+        {
+          "id": "fra/42",
+          "strength": 1
+        },
+        {
+          "id": "fra/12",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/147",
+      "name": "Recursive Recruitment",
+      "roles": [
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/93",
+          "strength": 3
+        },
+        {
+          "id": "fra/77",
+          "strength": 1
+        },
+        {
+          "id": "fra/209",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/148",
+      "name": "Solarium Sentry",
+      "roles": [
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/149",
+      "name": "Solitary Cell",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "legendary",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "discard",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/266",
+          "strength": 3
+        },
+        {
+          "id": "fra/6",
+          "strength": 2
+        },
+        {
+          "id": "fra/202",
+          "strength": 1
+        },
+        {
+          "id": "fra/237",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/150",
+      "name": "Stingerquill Charm",
+      "roles": [
+        {
+          "axis": "noncombat-damage",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/253",
+          "strength": 2
+        },
+        {
+          "id": "fra/88",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/151",
+      "name": "Stingerquill Voxmancer // Vicious Verse",
+      "roles": [
+        {
+          "axis": "noncombat-damage",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/77",
+          "strength": 3
+        },
+        {
+          "id": "fra/88",
+          "strength": 3
+        },
+        {
+          "id": "fra/168",
+          "strength": 3
+        },
+        {
+          "id": "fra/253",
+          "strength": 3
+        },
+        {
+          "id": "fra/136",
+          "strength": 3
+        }
+      ]
+    },
+    {
+      "id": "fra/152",
+      "name": "Stinging Vitriol",
+      "roles": [
+        {
+          "axis": "noncombat-damage",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/253",
+          "strength": 2
+        },
+        {
+          "id": "fra/237",
+          "strength": 2
+        },
+        {
+          "id": "fra/88",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/153",
+      "name": "Tam's Resistance",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/154",
+      "name": "Tenured Tethermage",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "lands-landfall",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/80",
+          "strength": 3
+        },
+        {
+          "id": "fra/263",
+          "strength": 2
+        },
+        {
+          "id": "fra/100",
+          "strength": 2
+        },
+        {
+          "id": "fra/144",
+          "strength": 2
+        },
+        {
+          "id": "fra/78",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/155",
+      "name": "Theorix Charm",
+      "roles": [
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/26",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/156",
+      "name": "Theorix Metamage // Omit Variables",
+      "roles": [
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/168",
+          "strength": 2
+        },
+        {
+          "id": "fra/181",
+          "strength": 2
+        },
+        {
+          "id": "fra/26",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/157",
+      "name": "Twinned Vision",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "discard",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/93",
+          "strength": 2
+        },
+        {
+          "id": "fra/75",
+          "strength": 2
+        },
+        {
+          "id": "fra/244",
+          "strength": 2
+        },
+        {
+          "id": "fra/159",
+          "strength": 2
+        },
+        {
+          "id": "fra/237",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/158",
+      "name": "Twisted Fates",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/209",
+          "strength": 2
+        },
+        {
+          "id": "fra/12",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/159",
+      "name": "Uldaros Theorix",
+      "roles": [
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/157",
+          "strength": 2
+        },
+        {
+          "id": "fra/12",
+          "strength": 2
+        },
+        {
+          "id": "fra/38",
+          "strength": 2
+        },
+        {
+          "id": "fra/144",
+          "strength": 1
+        },
+        {
+          "id": "fra/114",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/160",
+      "name": "Vigorbloom Charm",
+      "roles": [
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/106",
+          "strength": 2
+        },
+        {
+          "id": "fra/196",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/161",
+      "name": "Vigorbloom Vanguard // Seed Suture",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/11",
+          "strength": 2
+        },
+        {
+          "id": "fra/209",
+          "strength": 2
+        },
+        {
+          "id": "fra/128",
+          "strength": 2
+        },
+        {
+          "id": "fra/168",
+          "strength": 1
+        },
+        {
+          "id": "fra/181",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/162",
+      "name": "Vindictive Triumph",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/270",
+          "strength": 2
+        },
+        {
+          "id": "fra/66",
+          "strength": 2
+        },
+        {
+          "id": "fra/232",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/163",
+      "name": "Warrior's Blades",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncombat-damage",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/196",
+          "strength": 2
+        },
+        {
+          "id": "fra/253",
+          "strength": 1
+        },
+        {
+          "id": "fra/274",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/164",
+      "name": "Whiplash Wordsmith // Vicious Verse",
+      "roles": [
+        {
+          "axis": "noncombat-damage",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncombat-damage",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/151",
+          "strength": 3
+        },
+        {
+          "id": "fra/168",
+          "strength": 2
+        },
+        {
+          "id": "fra/181",
+          "strength": 2
+        },
+        {
+          "id": "fra/65",
+          "strength": 2
+        },
+        {
+          "id": "fra/137",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/165",
+      "name": "Woodwork Prodigy // Soul Tether",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/80",
+          "strength": 3
+        },
+        {
+          "id": "fra/168",
+          "strength": 3
+        },
+        {
+          "id": "fra/78",
+          "strength": 2
+        },
+        {
+          "id": "fra/154",
+          "strength": 2
+        },
+        {
+          "id": "fra/107",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/166",
+      "name": "Afterthought Sentry",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/167",
+      "name": "Archive Arbiter",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/41",
+          "strength": 2
+        },
+        {
+          "id": "fra/7",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/168",
+      "name": "Codie, Ravenous Codex",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/151",
+          "strength": 3
+        },
+        {
+          "id": "fra/165",
+          "strength": 3
+        },
+        {
+          "id": "fra/143",
+          "strength": 3
+        },
+        {
+          "id": "fra/146",
+          "strength": 2
+        },
+        {
+          "id": "fra/181",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/169",
+      "name": "The Echoverse Fulcrum",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "discard",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/49",
+          "strength": 2
+        },
+        {
+          "id": "fra/53",
+          "strength": 2
+        },
+        {
+          "id": "fra/103",
+          "strength": 2
+        },
+        {
+          "id": "fra/266",
+          "strength": 1
+        },
+        {
+          "id": "fra/20",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/170",
+      "name": "Eye of Jace",
+      "roles": [
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "noncombat-damage",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/128",
+          "strength": 2
+        },
+        {
+          "id": "fra/129",
+          "strength": 2
+        },
+        {
+          "id": "fra/146",
+          "strength": 2
+        },
+        {
+          "id": "fra/203",
+          "strength": 2
+        },
+        {
+          "id": "fra/218",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/171",
+      "name": "Keeper of the Quiet Hour",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/7",
+          "strength": 1
+        },
+        {
+          "id": "fra/202",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/172",
+      "name": "Living Library",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/197",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/173",
+      "name": "Medic's Kitesail",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/124",
+          "strength": 2
+        },
+        {
+          "id": "fra/5",
+          "strength": 2
+        },
+        {
+          "id": "fra/196",
+          "strength": 1
+        },
+        {
+          "id": "fra/195",
+          "strength": 1
+        },
+        {
+          "id": "fra/23",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/174",
+      "name": "Murmuring Volume",
+      "roles": [
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "discard",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/266",
+          "strength": 2
+        },
+        {
+          "id": "fra/237",
+          "strength": 1
+        },
+        {
+          "id": "fra/249",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/175",
+      "name": "Dedicated Commons",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/176",
+      "name": "Deserted Beach",
+      "roles": [],
+      "partners": []
+    },
+    {
+      "id": "fra/177",
+      "name": "Fatehold Annex",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/178",
+      "name": "Formidable Commons",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/179",
+      "name": "Hall of Echoes",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/180",
+      "name": "Haunted Ridge",
+      "roles": [],
+      "partners": []
+    },
+    {
+      "id": "fra/181",
+      "name": "Hexhaven Dueling Arena",
+      "roles": [
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/168",
+          "strength": 2
+        },
+        {
+          "id": "fra/39",
+          "strength": 2
+        },
+        {
+          "id": "fra/105",
+          "strength": 2
+        },
+        {
+          "id": "fra/85",
+          "strength": 2
+        },
+        {
+          "id": "fra/47",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/182",
+      "name": "Innovative Commons",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/183",
+      "name": "Konstrari Annex",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/184",
+      "name": "Meticulous Commons",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/185",
+      "name": "Overgrown Farmland",
+      "roles": [],
+      "partners": []
+    },
+    {
+      "id": "fra/186",
+      "name": "Rockfall Vale",
+      "roles": [],
+      "partners": []
+    },
+    {
+      "id": "fra/187",
+      "name": "Roiling Canopy",
+      "roles": [
+        {
+          "axis": "lands-landfall",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/118",
+          "strength": 3
+        },
+        {
+          "id": "fra/106",
+          "strength": 2
+        },
+        {
+          "id": "fra/113",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/188",
+      "name": "Room of Refuge",
+      "roles": [
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "lands-landfall",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/263",
+          "strength": 2
+        },
+        {
+          "id": "fra/100",
+          "strength": 1
+        },
+        {
+          "id": "fra/144",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/189",
+      "name": "Shipwreck Marsh",
+      "roles": [],
+      "partners": []
+    },
+    {
+      "id": "fra/190",
+      "name": "Stingerquill Annex",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/191",
+      "name": "Theorist's Sanctum",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "lands-landfall",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/216",
+          "strength": 3
+        },
+        {
+          "id": "fra/109",
+          "strength": 2
+        },
+        {
+          "id": "fra/273",
+          "strength": 2
+        },
+        {
+          "id": "fra/122",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/192",
+      "name": "Theorix Annex",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/193",
+      "name": "Transformative Commons",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/194",
+      "name": "Vigorbloom Annex",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/195",
+      "name": "Ajani Resolute",
+      "roles": [
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "life-gain",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/208",
+          "strength": 3
+        },
+        {
+          "id": "fra/124",
+          "strength": 2
+        },
+        {
+          "id": "fra/273",
+          "strength": 2
+        },
+        {
+          "id": "fra/64",
+          "strength": 2
+        },
+        {
+          "id": "fra/267",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/196",
+      "name": "Danitha, Sword of Hope",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/163",
+          "strength": 2
+        },
+        {
+          "id": "fra/108",
+          "strength": 2
+        },
+        {
+          "id": "fra/173",
+          "strength": 1
+        },
+        {
+          "id": "fra/16",
+          "strength": 1
+        },
+        {
+          "id": "fra/57",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/197",
+      "name": "Ghalta the Immovable",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/225",
+          "strength": 3
+        },
+        {
+          "id": "fra/172",
+          "strength": 2
+        },
+        {
+          "id": "fra/42",
+          "strength": 1
+        },
+        {
+          "id": "fra/94",
+          "strength": 1
+        },
+        {
+          "id": "fra/45",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/198",
+      "name": "Gideon's Memorial",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "discard",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/12",
+          "strength": 2
+        },
+        {
+          "id": "fra/118",
+          "strength": 2
+        },
+        {
+          "id": "fra/147",
+          "strength": 2
+        },
+        {
+          "id": "fra/137",
+          "strength": 1
+        },
+        {
+          "id": "fra/149",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/199",
+      "name": "Koth of the Homestead",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "lands-landfall",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/106",
+          "strength": 3
+        },
+        {
+          "id": "fra/118",
+          "strength": 2
+        },
+        {
+          "id": "fra/267",
+          "strength": 1
+        },
+        {
+          "id": "fra/258",
+          "strength": 1
+        },
+        {
+          "id": "fra/113",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/200",
+      "name": "Liliana the Faultless",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "discard",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/12",
+          "strength": 2
+        },
+        {
+          "id": "fra/124",
+          "strength": 2
+        },
+        {
+          "id": "fra/266",
+          "strength": 2
+        },
+        {
+          "id": "fra/195",
+          "strength": 2
+        },
+        {
+          "id": "fra/118",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/201",
+      "name": "Lyra, Archangel of Dawn",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "life-gain",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/3",
+          "strength": 2
+        },
+        {
+          "id": "fra/217",
+          "strength": 2
+        },
+        {
+          "id": "fra/124",
+          "strength": 1
+        },
+        {
+          "id": "fra/104",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/202",
+      "name": "Rescue Girl, First Responder",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/33",
+          "strength": 3
+        },
+        {
+          "id": "fra/144",
+          "strength": 3
+        },
+        {
+          "id": "fra/44",
+          "strength": 2
+        },
+        {
+          "id": "fra/127",
+          "strength": 2
+        },
+        {
+          "id": "fra/15",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/203",
+      "name": "Saheeli, Consul of Oversight",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/170",
+          "strength": 3
+        },
+        {
+          "id": "fra/80",
+          "strength": 3
+        },
+        {
+          "id": "fra/42",
+          "strength": 2
+        },
+        {
+          "id": "fra/146",
+          "strength": 2
+        },
+        {
+          "id": "fra/39",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/204",
+      "name": "Teyo, Lightshield Expert",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/109",
+          "strength": 1
+        },
+        {
+          "id": "fra/216",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/205",
+      "name": "Thalia, the Survivor",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/124",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/206",
+      "name": "Tomik, Orzhov Lawmage",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/11",
+          "strength": 2
+        },
+        {
+          "id": "fra/23",
+          "strength": 1
+        },
+        {
+          "id": "fra/76",
+          "strength": 1
+        },
+        {
+          "id": "fra/154",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/207",
+      "name": "Way of the Healer",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/32",
+          "strength": 2
+        },
+        {
+          "id": "fra/208",
+          "strength": 2
+        },
+        {
+          "id": "fra/128",
+          "strength": 2
+        },
+        {
+          "id": "fra/77",
+          "strength": 1
+        },
+        {
+          "id": "fra/109",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/208",
+      "name": "Way of the Mentor",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "life-gain",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/195",
+          "strength": 3
+        },
+        {
+          "id": "fra/109",
+          "strength": 3
+        },
+        {
+          "id": "fra/104",
+          "strength": 2
+        },
+        {
+          "id": "fra/64",
+          "strength": 2
+        },
+        {
+          "id": "fra/173",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/209",
+      "name": "Yoshimaru, Beloved Companion",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "legendary",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/128",
+          "strength": 3
+        },
+        {
+          "id": "fra/11",
+          "strength": 2
+        },
+        {
+          "id": "fra/16",
+          "strength": 2
+        },
+        {
+          "id": "fra/158",
+          "strength": 2
+        },
+        {
+          "id": "fra/119",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/210",
+      "name": "Yuriko, Blade of the Mighty",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/81",
+          "strength": 2
+        },
+        {
+          "id": "fra/213",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/211",
+      "name": "Arni, Humble Scribe",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "discard",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "creature-enters",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/266",
+          "strength": 2
+        },
+        {
+          "id": "fra/237",
+          "strength": 1
+        },
+        {
+          "id": "fra/215",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/212",
+      "name": "Chandra, Chill of Compliance",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/128",
+          "strength": 3
+        },
+        {
+          "id": "fra/218",
+          "strength": 2
+        },
+        {
+          "id": "fra/203",
+          "strength": 2
+        },
+        {
+          "id": "fra/129",
+          "strength": 2
+        },
+        {
+          "id": "fra/273",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/213",
+      "name": "Fblthp, Impossibly Lost",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/81",
+          "strength": 2
+        },
+        {
+          "id": "fra/273",
+          "strength": 2
+        },
+        {
+          "id": "fra/221",
+          "strength": 2
+        },
+        {
+          "id": "fra/217",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/214",
+      "name": "Geist of Saint Thalia",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/215",
+      "name": "Hapatra, the Desert Frost",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/211",
+          "strength": 2
+        },
+        {
+          "id": "fra/262",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/216",
+      "name": "Jace, Reality Sculptor",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "lands-landfall",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/191",
+          "strength": 3
+        },
+        {
+          "id": "fra/32",
+          "strength": 2
+        },
+        {
+          "id": "fra/109",
+          "strength": 2
+        },
+        {
+          "id": "fra/37",
+          "strength": 1
+        },
+        {
+          "id": "fra/43",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/217",
+      "name": "Lyra, Tolarian Archangel",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/201",
+          "strength": 2
+        },
+        {
+          "id": "fra/41",
+          "strength": 2
+        },
+        {
+          "id": "fra/47",
+          "strength": 2
+        },
+        {
+          "id": "fra/213",
+          "strength": 2
+        },
+        {
+          "id": "fra/37",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/218",
+      "name": "Proft, Consulting Detective",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/170",
+          "strength": 2
+        },
+        {
+          "id": "fra/42",
+          "strength": 2
+        },
+        {
+          "id": "fra/212",
+          "strength": 2
+        },
+        {
+          "id": "fra/209",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/219",
+      "name": "Ruric Thar, Biomagus",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/143",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/220",
+      "name": "Samut, Tyrant of Naktamun",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/221",
+      "name": "Tetsuko Umezawa, Fugitive",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/213",
+          "strength": 2
+        },
+        {
+          "id": "fra/275",
+          "strength": 2
+        },
+        {
+          "id": "fra/250",
+          "strength": 1
+        },
+        {
+          "id": "fra/226",
+          "strength": 1
+        },
+        {
+          "id": "fra/105",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/222",
+      "name": "Traxos, Academy Guardian",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/223",
+      "name": "Way of the Cryomancer",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/32",
+          "strength": 2
+        },
+        {
+          "id": "fra/12",
+          "strength": 2
+        },
+        {
+          "id": "fra/147",
+          "strength": 1
+        },
+        {
+          "id": "fra/51",
+          "strength": 1
+        },
+        {
+          "id": "fra/37",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/224",
+      "name": "Way of the Mind Sculptor",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/32",
+          "strength": 3
+        },
+        {
+          "id": "fra/207",
+          "strength": 2
+        },
+        {
+          "id": "fra/255",
+          "strength": 2
+        },
+        {
+          "id": "fra/268",
+          "strength": 2
+        },
+        {
+          "id": "fra/273",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/225",
+      "name": "Yargle, Goliath of Otaria",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/197",
+          "strength": 3
+        }
+      ]
+    },
+    {
+      "id": "fra/226",
+      "name": "Yuriko, Hope from the Shadows",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/202",
+          "strength": 1
+        },
+        {
+          "id": "fra/7",
+          "strength": 1
+        },
+        {
+          "id": "fra/128",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/227",
+      "name": "Danitha, Spear of Agony",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/151",
+          "strength": 2
+        },
+        {
+          "id": "fra/85",
+          "strength": 1
+        },
+        {
+          "id": "fra/164",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/228",
+      "name": "Gallia, Tragic Host",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/270",
+          "strength": 2
+        },
+        {
+          "id": "fra/38",
+          "strength": 1
+        },
+        {
+          "id": "fra/144",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/229",
+      "name": "Garruk, Veiled Butcher",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/237",
+          "strength": 2
+        },
+        {
+          "id": "fra/270",
+          "strength": 1
+        },
+        {
+          "id": "fra/64",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/230",
+      "name": "Gideon the Oathless",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncombat-damage",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/88",
+          "strength": 2
+        },
+        {
+          "id": "fra/253",
+          "strength": 2
+        },
+        {
+          "id": "fra/234",
+          "strength": 2
+        },
+        {
+          "id": "fra/164",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/231",
+      "name": "Liliana the Repentant",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/12",
+          "strength": 2
+        },
+        {
+          "id": "fra/26",
+          "strength": 2
+        },
+        {
+          "id": "fra/118",
+          "strength": 2
+        },
+        {
+          "id": "fra/52",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/232",
+      "name": "Loot, the Anomaly",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/270",
+          "strength": 2
+        },
+        {
+          "id": "fra/49",
+          "strength": 2
+        },
+        {
+          "id": "fra/53",
+          "strength": 2
+        },
+        {
+          "id": "fra/234",
+          "strength": 2
+        },
+        {
+          "id": "fra/103",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/233",
+      "name": "Mabel, Bitter Recluse",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/136",
+          "strength": 2
+        },
+        {
+          "id": "fra/145",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/234",
+      "name": "Massacre Girl, Most Wanted",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "noncombat-damage",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "noncombat-damage",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/151",
+          "strength": 2
+        },
+        {
+          "id": "fra/270",
+          "strength": 2
+        },
+        {
+          "id": "fra/232",
+          "strength": 2
+        },
+        {
+          "id": "fra/83",
+          "strength": 2
+        },
+        {
+          "id": "fra/253",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/235",
+      "name": "Proft, Sinister Mastermind",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "discard",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/6",
+          "strength": 2
+        },
+        {
+          "id": "fra/237",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/236",
+      "name": "Teyo, Diamondblade Mage",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/109",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/237",
+      "name": "Tinybones, Pocket Nuisance",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncombat-damage",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "discard",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/85",
+          "strength": 3
+        },
+        {
+          "id": "fra/47",
+          "strength": 3
+        },
+        {
+          "id": "fra/38",
+          "strength": 2
+        },
+        {
+          "id": "fra/88",
+          "strength": 2
+        },
+        {
+          "id": "fra/253",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/238",
+      "name": "Way of the Deathbringer",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/32",
+          "strength": 2
+        },
+        {
+          "id": "fra/224",
+          "strength": 2
+        },
+        {
+          "id": "fra/270",
+          "strength": 1
+        },
+        {
+          "id": "fra/44",
+          "strength": 1
+        },
+        {
+          "id": "fra/49",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/239",
+      "name": "Way of the Necromancer",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/109",
+          "strength": 3
+        },
+        {
+          "id": "fra/270",
+          "strength": 2
+        },
+        {
+          "id": "fra/232",
+          "strength": 2
+        },
+        {
+          "id": "fra/83",
+          "strength": 2
+        },
+        {
+          "id": "fra/224",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/240",
+      "name": "Winter, Tormented Loner",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/33",
+          "strength": 2
+        },
+        {
+          "id": "fra/44",
+          "strength": 1
+        },
+        {
+          "id": "fra/123",
+          "strength": 1
+        },
+        {
+          "id": "fra/53",
+          "strength": 1
+        },
+        {
+          "id": "fra/49",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/241",
+      "name": "Yargle, Glutton of Urborg",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/63",
+          "strength": 2
+        },
+        {
+          "id": "fra/260",
+          "strength": 2
+        },
+        {
+          "id": "fra/101",
+          "strength": 2
+        },
+        {
+          "id": "fra/102",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/242",
+      "name": "Ajani Unrelenting",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "discard",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/32",
+          "strength": 2
+        },
+        {
+          "id": "fra/224",
+          "strength": 2
+        },
+        {
+          "id": "fra/77",
+          "strength": 2
+        },
+        {
+          "id": "fra/198",
+          "strength": 2
+        },
+        {
+          "id": "fra/254",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/243",
+      "name": "Arni, Renowned Champion",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/12",
+          "strength": 2
+        },
+        {
+          "id": "fra/98",
+          "strength": 2
+        },
+        {
+          "id": "fra/247",
+          "strength": 2
+        },
+        {
+          "id": "fra/118",
+          "strength": 2
+        },
+        {
+          "id": "fra/83",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/244",
+      "name": "Chandra, Torch of Defiance",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "noncombat-damage",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/157",
+          "strength": 2
+        },
+        {
+          "id": "fra/253",
+          "strength": 2
+        },
+        {
+          "id": "fra/88",
+          "strength": 2
+        },
+        {
+          "id": "fra/234",
+          "strength": 1
+        },
+        {
+          "id": "fra/273",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/245",
+      "name": "Gallia, the Merrymaker",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "creature-enters",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/274",
+          "strength": 2
+        },
+        {
+          "id": "fra/209",
+          "strength": 1
+        },
+        {
+          "id": "fra/12",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/246",
+      "name": "Jiang Yanggu, Alone",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "discard",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "discard",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/47",
+          "strength": 3
+        },
+        {
+          "id": "fra/38",
+          "strength": 2
+        },
+        {
+          "id": "fra/85",
+          "strength": 2
+        },
+        {
+          "id": "fra/81",
+          "strength": 2
+        },
+        {
+          "id": "fra/266",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/247",
+      "name": "Kiora of Fire and Ashes",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/243",
+          "strength": 2
+        },
+        {
+          "id": "fra/259",
+          "strength": 2
+        },
+        {
+          "id": "fra/261",
+          "strength": 1
+        },
+        {
+          "id": "fra/198",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/248",
+      "name": "Koth, the Geomancer",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "lands-landfall",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "noncombat-damage",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/106",
+          "strength": 3
+        },
+        {
+          "id": "fra/118",
+          "strength": 3
+        },
+        {
+          "id": "fra/88",
+          "strength": 2
+        },
+        {
+          "id": "fra/253",
+          "strength": 2
+        },
+        {
+          "id": "fra/267",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/249",
+      "name": "Marwyn, the Clearcutter",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "lands-landfall",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/263",
+          "strength": 2
+        },
+        {
+          "id": "fra/165",
+          "strength": 2
+        },
+        {
+          "id": "fra/105",
+          "strength": 1
+        },
+        {
+          "id": "fra/100",
+          "strength": 1
+        },
+        {
+          "id": "fra/144",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/250",
+      "name": "Pia, Determined Rebuilder",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/80",
+          "strength": 3
+        },
+        {
+          "id": "fra/275",
+          "strength": 2
+        },
+        {
+          "id": "fra/78",
+          "strength": 1
+        },
+        {
+          "id": "fra/7",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/251",
+      "name": "Samut, Hazoret's Champion",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/12",
+          "strength": 1
+        },
+        {
+          "id": "fra/19",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/252",
+      "name": "Tetsuko Umezawa, Pursuer",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "noncombat-damage",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/253",
+      "name": "Tomik, Izzet Sparkmage",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "noncombat-damage",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncombat-damage",
+          "role": "payoff",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/151",
+          "strength": 3
+        },
+        {
+          "id": "fra/137",
+          "strength": 3
+        },
+        {
+          "id": "fra/85",
+          "strength": 2
+        },
+        {
+          "id": "fra/65",
+          "strength": 2
+        },
+        {
+          "id": "fra/248",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/254",
+      "name": "Way of the Pyromancer",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/273",
+          "strength": 2
+        },
+        {
+          "id": "fra/267",
+          "strength": 2
+        },
+        {
+          "id": "fra/242",
+          "strength": 2
+        },
+        {
+          "id": "fra/32",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/255",
+      "name": "Way of the Warlord",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "noncombat-damage",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/32",
+          "strength": 2
+        },
+        {
+          "id": "fra/253",
+          "strength": 2
+        },
+        {
+          "id": "fra/88",
+          "strength": 2
+        },
+        {
+          "id": "fra/224",
+          "strength": 2
+        },
+        {
+          "id": "fra/234",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/256",
+      "name": "Winter, Team Player",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "payoff",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/143",
+          "strength": 1
+        },
+        {
+          "id": "fra/151",
+          "strength": 1
+        },
+        {
+          "id": "fra/12",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/257",
+      "name": "Edgar, Moonlit Sovereign",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/209",
+          "strength": 2
+        },
+        {
+          "id": "fra/11",
+          "strength": 2
+        },
+        {
+          "id": "fra/128",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/258",
+      "name": "Fblthp, Knows the Way",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "lands-landfall",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "lands-landfall",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/199",
+          "strength": 1
+        },
+        {
+          "id": "fra/248",
+          "strength": 1
+        },
+        {
+          "id": "fra/122",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/259",
+      "name": "Garruk, Curse Breaker",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/247",
+          "strength": 2
+        },
+        {
+          "id": "fra/98",
+          "strength": 2
+        },
+        {
+          "id": "fra/78",
+          "strength": 1
+        },
+        {
+          "id": "fra/118",
+          "strength": 1
+        },
+        {
+          "id": "fra/273",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/260",
+      "name": "Ghalta the Unstoppable",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/241",
+          "strength": 2
+        },
+        {
+          "id": "fra/78",
+          "strength": 1
+        },
+        {
+          "id": "fra/87",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/261",
+      "name": "Jiang Yanggu, Never Alone",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/118",
+          "strength": 3
+        },
+        {
+          "id": "fra/12",
+          "strength": 2
+        },
+        {
+          "id": "fra/247",
+          "strength": 2
+        },
+        {
+          "id": "fra/275",
+          "strength": 1
+        },
+        {
+          "id": "fra/242",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/262",
+      "name": "Loot, the Nexus",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/263",
+      "name": "Marwyn, the Preserver",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "lands-landfall",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/100",
+          "strength": 3
+        },
+        {
+          "id": "fra/144",
+          "strength": 2
+        },
+        {
+          "id": "fra/154",
+          "strength": 2
+        },
+        {
+          "id": "fra/249",
+          "strength": 2
+        },
+        {
+          "id": "fra/188",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/264",
+      "name": "Pia, Aether Ascetic",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "discard",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/266",
+          "strength": 2
+        },
+        {
+          "id": "fra/224",
+          "strength": 1
+        },
+        {
+          "id": "fra/110",
+          "strength": 1
+        },
+        {
+          "id": "fra/103",
+          "strength": 1
+        },
+        {
+          "id": "fra/237",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/265",
+      "name": "Ruric Thar, Magecrusher",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/266",
+      "name": "Titanbones, Towering Heart",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "life-gain",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "discard",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/149",
+          "strength": 3
+        },
+        {
+          "id": "fra/85",
+          "strength": 2
+        },
+        {
+          "id": "fra/38",
+          "strength": 2
+        },
+        {
+          "id": "fra/174",
+          "strength": 2
+        },
+        {
+          "id": "fra/211",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/267",
+      "name": "Way of the Paradox",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "lands-landfall",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/122",
+          "strength": 3
+        },
+        {
+          "id": "fra/248",
+          "strength": 2
+        },
+        {
+          "id": "fra/199",
+          "strength": 2
+        },
+        {
+          "id": "fra/32",
+          "strength": 2
+        },
+        {
+          "id": "fra/124",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/268",
+      "name": "Way of the Wildspeaker",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "scry-surveil",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/32",
+          "strength": 2
+        },
+        {
+          "id": "fra/224",
+          "strength": 2
+        },
+        {
+          "id": "fra/259",
+          "strength": 1
+        },
+        {
+          "id": "fra/243",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/269",
+      "name": "Yoshimaru, Scrappy Stray",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/106",
+          "strength": 2
+        },
+        {
+          "id": "fra/209",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/270",
+      "name": "Edgar, Ancient Bloodlord",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "life-gain",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/134",
+          "strength": 3
+        },
+        {
+          "id": "fra/123",
+          "strength": 2
+        },
+        {
+          "id": "fra/53",
+          "strength": 2
+        },
+        {
+          "id": "fra/49",
+          "strength": 2
+        },
+        {
+          "id": "fra/33",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/271",
+      "name": "Hapatra, the Desert Fang",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "graveyard-fill",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/144",
+          "strength": 2
+        },
+        {
+          "id": "fra/114",
+          "strength": 2
+        },
+        {
+          "id": "fra/1",
+          "strength": 2
+        },
+        {
+          "id": "fra/38",
+          "strength": 2
+        },
+        {
+          "id": "fra/12",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/272",
+      "name": "Karn, Gilded Guardian",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/165",
+          "strength": 2
+        },
+        {
+          "id": "fra/105",
+          "strength": 2
+        },
+        {
+          "id": "fra/139",
+          "strength": 2
+        },
+        {
+          "id": "fra/57",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/273",
+      "name": "Kiora of Salt and Sand",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/32",
+          "strength": 2
+        },
+        {
+          "id": "fra/191",
+          "strength": 2
+        },
+        {
+          "id": "fra/33",
+          "strength": 2
+        },
+        {
+          "id": "fra/213",
+          "strength": 2
+        },
+        {
+          "id": "fra/254",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/274",
+      "name": "Mabel, Valley Hero",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 3
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/12",
+          "strength": 2
+        },
+        {
+          "id": "fra/245",
+          "strength": 2
+        },
+        {
+          "id": "fra/209",
+          "strength": 2
+        },
+        {
+          "id": "fra/118",
+          "strength": 2
+        },
+        {
+          "id": "fra/161",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/275",
+      "name": "Saheeli, Jewel of Avishkar",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "creature-enters",
+          "role": "enabler",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/80",
+          "strength": 3
+        },
+        {
+          "id": "fra/143",
+          "strength": 3
+        },
+        {
+          "id": "fra/151",
+          "strength": 2
+        },
+        {
+          "id": "fra/165",
+          "strength": 2
+        },
+        {
+          "id": "fra/221",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "fra/276",
+      "name": "Tam, the Possibility",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "jace-loyalty",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "plus-one-counters",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/216",
+          "strength": 2
+        },
+        {
+          "id": "fra/244",
+          "strength": 1
+        },
+        {
+          "id": "fra/259",
+          "strength": 1
+        },
+        {
+          "id": "fra/242",
+          "strength": 1
+        },
+        {
+          "id": "fra/14",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/277",
+      "name": "Vraska, Soul of Stone",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "noncreature-spells",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 3
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "creature-tokens",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "creature-sacrifice",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/80",
+          "strength": 3
+        },
+        {
+          "id": "fra/143",
+          "strength": 2
+        },
+        {
+          "id": "fra/151",
+          "strength": 2
+        },
+        {
+          "id": "fra/107",
+          "strength": 2
+        },
+        {
+          "id": "fra/249",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/278",
+      "name": "Vraska, the Cutting Glare",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "lands-landfall",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/106",
+          "strength": 2
+        },
+        {
+          "id": "fra/118",
+          "strength": 2
+        },
+        {
+          "id": "fra/113",
+          "strength": 1
+        },
+        {
+          "id": "fra/144",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "fra/279",
+      "name": "Karn, Argent Defender",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        }
+      ],
+      "partners": []
+    },
+    {
+      "id": "fra/280",
+      "name": "Traxos, Scourge Eternal",
+      "roles": [
+        {
+          "axis": "legendary",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "artifacts",
+          "role": "payoff",
+          "strength": 1
+        },
+        {
+          "axis": "creature-enters",
+          "role": "payoff",
+          "strength": 2
+        }
+      ],
+      "partners": [
+        {
+          "id": "fra/123",
+          "strength": 1
+        }
+      ]
+    }
+  ]
+}
