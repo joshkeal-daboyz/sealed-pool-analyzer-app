@@ -1,0 +1,11 @@
+expansion,event_type,draft_id,build_index,main_colors,won,drawn_Bonus Reprint,deck_Sun Knight,sideboard_Sun Knight,deck_Dawn Cleric,sideboard_Dawn Cleric,deck_Tide Caller,sideboard_Tide Caller,deck_Grave Rat,sideboard_Grave Rat,"deck_Sky Marshal, the Bold","sideboard_Sky Marshal, the Bold",deck_Dusk Paladin,sideboard_Dusk Paladin,deck_Iron Golem,sideboard_Iron Golem,deck_Coastal Ruin,sideboard_Coastal Ruin,deck_Plains,sideboard_Plains,deck_Bonus Reprint,sideboard_Bonus Reprint,user_n_games_bucket,user_game_win_rate_bucket
+XYZ,Sealed,d1,0,WU,True,1,2,0,0,1,1,1,0,2,1,0,0,1,1,1,1,0,8,0,0,0,100,0.64
+XYZ,Sealed,d1,0,WU,False,0,2,0,0,1,1,1,0,2,1,0,0,1,1,1,1,0,8,0,0,0,100,0.64
+XYZ,Sealed,d1,1,WB,True,0,1,0,0,1,0,1,2,0,0,0,1,0,0,1,0,0,7,0,0,0,100,0.6
+XYZ,Sealed,d2,0,WU,True,0,2,0,0,1,1,1,0,0,1,0,0,0,1,1,0,0,8,0,1,0,100,0.58
+XYZ,Sealed,d3,0,WU,True,0,2,0,0,1,1,1,0,0,1,0,0,0,1,1,0,0,8,0,0,0,10,
+XYZ,Sealed,d4,0,WUB,True,0,2,0,0,1,1,1,1,0,1,0,0,0,1,1,0,0,8,0,1,0,100,0.66
+XYZ,Sealed,d5,0,WU,False,0,2,0,0,1,1,1,0,0,1,0,0,0,1,1,0,0,8,0,0,1,100,0.62
+XYZ,Sealed,d6,0,WU,True,0,2,0,0,0,1,0,0,2,0,0,0,0,0,0,0,1,8,0,0,0,100,0.7
+XYZ,Sealed,d7,0,W,True,0,2,0,0,1,0,0,0,0,0,0,0,0,1,1,0,0,9,0,0,0,100,0.7
+XYZ,Sealed,d8,0,WU,True,0,0,1,0,0,0,1,2,0,0,0,1,0,0,0,0,0,8,0,0,0,100,0.68
