@@ -1,0 +1,5 @@
+expansion,event_type,draft_id,build_index,main_colors,won,deck_Air Elemental,sideboard_Air Elemental,deck_Doom Blade,sideboard_Doom Blade,deck_Gravedigger,sideboard_Gravedigger,deck_Delver of Secrets,sideboard_Delver of Secrets,deck_Counterspell,sideboard_Counterspell,deck_Mind Stone,sideboard_Mind Stone,deck_Grizzly Bears,sideboard_Grizzly Bears,deck_Murderous Rider,sideboard_Murderous Rider,deck_Swamp,sideboard_Swamp,deck_Island,sideboard_Island,deck_Bonus Reprint,sideboard_Bonus Reprint,user_n_games_bucket,user_game_win_rate_bucket
+SYN,Sealed,c1,0,UB,True,1,0,1,0,1,0,1,0,0,1,0,1,0,2,0,1,8,0,8,0,0,0,100,0.7
+SYN,Sealed,c1,0,UB,False,1,0,1,0,1,0,1,0,0,1,0,1,0,2,0,1,8,0,8,0,0,0,100,0.7
+SYN,Sealed,c2,0,UB,True,1,0,1,0,1,0,1,0,0,1,0,1,0,2,0,1,8,0,8,0,0,0,100,0.5
+SYN,Sealed,c3,0,UB,True,1,0,1,0,1,0,1,0,0,1,0,1,0,2,0,1,8,0,8,0,1,0,100,0.65
