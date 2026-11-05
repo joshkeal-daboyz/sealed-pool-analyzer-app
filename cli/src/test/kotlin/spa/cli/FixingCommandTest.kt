@@ -67,7 +67,7 @@ class FixingCommandTest {
             listOf(
                 "Apex Witchstalker  CYCLING  WUBRG",
                 "Vraska, Soul of Stone  MANA+TREASURE  WUBRG",
-                "Room of Refuge  MANA  WUBRG",
+                "Room of Refuge  MANA  WUBRG  land",
                 "Simulacrum Shaper  SEARCH  WUBRG",
                 "Haunted Ridge  MANA  BR  land",
             ),
