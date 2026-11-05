@@ -221,9 +221,11 @@ class ReviewFilesTest {
         listOf(
                 """[{ "id": "syn/1", "action": "swap-role", "reason": "x" }]""",
                 """[{ "id": "syn/1", "action": "remove-partner", "partner": "syn/2" }]""",
-                """[{ "id": "syn/1", "action": "remove-partner", "partner": "syn/2", "strength": 1, "reason": "x" }]""",
+                """[{ "id": "syn/1", "action": "remove-partner", "partner": "syn/2", "strength": 1,
+                    "reason": "x" }]""",
                 """[{ "id": "syn/1", "action": "add-partner", "partner": "syn/2", "strength": 4, "reason": "x" }]""",
-                """[{ "id": "syn/1", "action": "add-role", "axis": "a", "role": "maker", "strength": 1, "reason": "x" }]""",
+                """[{ "id": "syn/1", "action": "add-role", "axis": "a", "role": "maker",
+                    "strength": 1, "reason": "x" }]""",
                 """[{ "id": "syn/1", "action": "remove-partner", "partner": "syn/2", "reason": "" }]""",
             )
             .forEach { assertTrue(violations(schema, it).isNotEmpty(), it) }

@@ -7,6 +7,7 @@ import java.util.Locale
 import spa.agent.facts.CardFacts
 import spa.agent.grader.GradingPackets
 import spa.agent.grader.GradingPool
+import spa.agent.tags.TagFile
 import spa.agent.tags.TagFiles
 import spa.agent.tags.TagPacketSet
 import spa.agent.tags.review.ReviewPacketException
@@ -31,26 +32,13 @@ object TagsReviewPacketCommand {
             Path.of(
                 parsed.value("out") ?: throw CliFailure("--out <dir> is required", ExitCode.USAGE)
             )
-        val version = parsed.value("prompt") ?: ReviewPrompts.DEFAULT_VERSION
-        val prompt =
-            ReviewPrompts.load(version)
-                ?: throw CliFailure(
-                    "no tags review prompt $version: ${ReviewPrompts.resource(version)} is not " +
-                        "on the classpath",
-                    ExitCode.ERROR,
-                )
+        val prompt = loadPrompt(parsed.value("prompt") ?: ReviewPrompts.DEFAULT_VERSION)
         val data = Commands.dataDir(parsed)
         val tagsPath =
             parsed.value("tags")?.let { Path.of(it) }
                 ?: data.root.resolve("tags").resolve("$set.json")
         val text = Commands.readFile(tagsPath, "tag file")
-        val tags = Commands.guard("invalid tag file $tagsPath") { TagFiles.parse(text) }
-        if (tags.set != set) {
-            throw CliFailure(
-                "tag file $tagsPath is for set '${tags.set}', not '$set'",
-                ExitCode.ERROR,
-            )
-        }
+        val tags = readTags(tagsPath, text, set)
         val index = Commands.loadIndex(data, set)
         val brief = GradePacketCommand.loadBrief(data.briefFile(set))
         val themes = GradePacketCommand.packetThemes(data, index, brief)
@@ -60,12 +48,7 @@ object TagsReviewPacketCommand {
                 TagReviewPackets.sha256(text.toByteArray(Charsets.UTF_8)),
             )
         val packetSet = TagPacketSet(index, brief, themes, CardFacts.load(data.scryfall, index))
-        val packet =
-            try {
-                TagReviewPackets.build(packetSet, prompt, tags, source)
-            } catch (e: ReviewPacketException) {
-                throw CliFailure(e.message.orEmpty(), ExitCode.ERROR, e)
-            }
+        val packet = build(packetSet, prompt, tags, source)
         try {
             TagReviewPackets.write(packet, out)
         } catch (e: IOException) {
@@ -79,4 +62,30 @@ object TagsReviewPacketCommand {
         stdout.flush()
         return ExitCode.OK
     }
+
+    /** The review prompt at [version]; a version with no prompt file is a [CliFailure]. */
+    private fun loadPrompt(version: String): String =
+        ReviewPrompts.load(version)
+            ?: throw CliFailure(
+                "no tags review prompt $version: ${ReviewPrompts.resource(version)} is not " +
+                    "on the classpath",
+                ExitCode.ERROR,
+            )
+
+    /** The tag file in [text], read from [path], checked and for [set]. */
+    private fun readTags(path: Path, text: String, set: String): TagFile {
+        val tags = Commands.guard("invalid tag file $path") { TagFiles.parse(text) }
+        if (tags.set != set) {
+            throw CliFailure("tag file $path is for set '${tags.set}', not '$set'", ExitCode.ERROR)
+        }
+        return tags
+    }
+
+    /** The review packet; a tag file that does not cover the pool exactly is a [CliFailure]. */
+    private fun build(set: TagPacketSet, prompt: String, tags: TagFile, source: ReviewSource) =
+        try {
+            TagReviewPackets.build(set, prompt, tags, source)
+        } catch (e: ReviewPacketException) {
+            throw CliFailure(e.message.orEmpty(), ExitCode.ERROR, e)
+        }
 }

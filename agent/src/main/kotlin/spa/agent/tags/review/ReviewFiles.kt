@@ -81,10 +81,17 @@ object ReviewFiles {
     private fun problem(element: JsonElement, actions: Map<String, ReviewAction>): String? {
         val entry = element as? JsonObject ?: return "not an object"
         val badString = base.firstOrNull { TagJson.string(entry[it]) == null }
-        if (badString != null) return "$badString must be a string"
-        val name = TagJson.string(entry["action"])!!
-        val action =
-            actions[name] ?: return "unknown action '$name'; use ${listing(actions.keys.toList())}"
+        val name = TagJson.string(entry["action"])
+        val action = actions[name]
+        return when {
+            badString != null -> "$badString must be a string"
+            action == null -> "unknown action '$name'; use ${listing(actions.keys.toList())}"
+            else -> fieldProblem(entry, action)
+        }
+    }
+
+    /** Why the fields of [entry], a correction of [action], are not well formed, or null. */
+    private fun fieldProblem(entry: JsonObject, action: ReviewAction): String? {
         val missing = action.fields.firstOrNull { it !in entry }
         val extra = entry.keys.firstOrNull { it !in base && it !in action.fields }
         val badField =

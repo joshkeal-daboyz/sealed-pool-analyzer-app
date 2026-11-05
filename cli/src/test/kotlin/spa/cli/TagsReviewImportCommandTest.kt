@@ -9,6 +9,8 @@ import kotlin.io.path.readText
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.buildJsonObject
+import kotlinx.serialization.json.put
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.io.TempDir
@@ -145,13 +147,55 @@ class TagsReviewImportCommandTest {
 
     private val file = "cards-01.review.json"
 
+    /** One correction as a reviewer writes it: [id], [action], then [fields], then [reason]. */
+    private fun fix(
+        id: String,
+        action: String,
+        vararg fields: Pair<String, Any>,
+        reason: String = "x",
+    ): String = buildJsonObject {
+        put("id", id)
+        put("action", action)
+        fields.forEach { (key, value) ->
+            if (value is Int) put(key, value) else put(key, value.toString())
+        }
+        put("reason", reason)
+    }
+        .toString()
+
     private val five =
         arrayOf(
-            """{ "id": "syn/10", "action": "remove-partner", "partner": "syn/9", "reason": "No link." }""",
-            """{ "id": "syn/3", "action": "add-role", "axis": "flying", "role": "payoff", "strength": 1, "reason": "Rewards fliers." }""",
-            """{ "id": "syn/2", "action": "set-strength", "axis": "flying", "role": "payoff", "strength": 2, "reason": "Clearly better." }""",
-            """{ "id": "syn/10", "action": "remove-role", "axis": "lifegain", "role": "enabler", "reason": "Not the point." }""",
-            """{ "id": "syn/5", "action": "add-partner", "partner": "syn/6", "strength": 2, "reason": "Fills the yard." }""",
+            fix("syn/10", "remove-partner", "partner" to "syn/9", reason = "No link."),
+            fix(
+                "syn/3",
+                "add-role",
+                "axis" to "flying",
+                "role" to "payoff",
+                "strength" to 1,
+                reason = "Rewards fliers.",
+            ),
+            fix(
+                "syn/2",
+                "set-strength",
+                "axis" to "flying",
+                "role" to "payoff",
+                "strength" to 2,
+                reason = "Clearly better.",
+            ),
+            fix(
+                "syn/10",
+                "remove-role",
+                "axis" to "lifegain",
+                "role" to "enabler",
+                reason = "Not the point.",
+            ),
+            fix(
+                "syn/5",
+                "add-partner",
+                "partner" to "syn/6",
+                "strength" to 2,
+                reason = "Fills the yard.",
+            ),
         )
 
     private val suggestion =
@@ -159,7 +203,7 @@ class TagsReviewImportCommandTest {
               "examples": ["syn/9", "syn/10"], "reason": "Several cards gain life." }]"""
 
     @Test
-    fun `a valid review writes the corrected file with its review block, and prints the counts`() {
+    fun `a valid review prints the counts and each fact suggestion`() {
         review(*five)
         Files.writeString(packet.resolve("fact-suggestions.json"), suggestion)
 
@@ -177,73 +221,16 @@ class TagsReviewImportCommandTest {
             ),
             run.stdoutLines(),
         )
-        val cards =
-            base.cards.map {
-                when (it.id) {
-                    "syn/2" -> it.copy(roles = listOf(role("flying", "payoff", 2)))
-                    "syn/3" -> it.copy(roles = listOf(role("flying", "payoff", 1)))
-                    "syn/5" -> it.copy(partners = listOf(TagPartner("syn/6", 2)))
-                    "syn/10" -> it.copy(roles = listOf(), partners = listOf())
-                    else -> it
-                }
-            }
-        val expected =
-            base.copy(
-                cards = cards,
-                review =
-                    TagReview(
-                        provenance,
-                        linkedMapOf(
-                            "add-role" to 1,
-                            "remove-role" to 1,
-                            "set-strength" to 1,
-                            "add-partner" to 1,
-                            "remove-partner" to 1,
-                        ),
-                        listOf(
-                            TagCorrection(
-                                "syn/2",
-                                "set-strength",
-                                "flying",
-                                "payoff",
-                                null,
-                                2,
-                                "Clearly better.",
-                            ),
-                            TagCorrection(
-                                "syn/3",
-                                "add-role",
-                                "flying",
-                                "payoff",
-                                null,
-                                1,
-                                "Rewards fliers.",
-                            ),
-                            TagCorrection(
-                                "syn/5",
-                                "add-partner",
-                                partner = "syn/6",
-                                strength = 2,
-                                reason = "Fills the yard.",
-                            ),
-                            TagCorrection(
-                                "syn/10",
-                                "remove-partner",
-                                partner = "syn/9",
-                                reason = "No link.",
-                            ),
-                            TagCorrection(
-                                "syn/10",
-                                "remove-role",
-                                "lifegain",
-                                "enabler",
-                                reason = "Not the point.",
-                            ),
-                        ),
-                    ),
-            )
+    }
+
+    @Test
+    fun `a valid review writes the corrected file with its review block`() {
+        review(*five)
+
+        assertEquals(ExitCode.OK, import().exit)
+
         val text = tagPath.readText()
-        assertEquals(expected, TagFiles.parse(text))
+        assertEquals(corrected, TagFiles.parse(text))
         assertEquals(emptyList(), TagFiles.validate(Json.parseToJsonElement(text)))
         assertEquals(
             base.provenance,
@@ -251,6 +238,77 @@ class TagsReviewImportCommandTest {
             "the tagging provenance stays",
         )
     }
+
+    /** The tag file the five corrections give, in the order they apply: by card, then as given. */
+    private val corrected: TagFile
+        get() {
+            val cards =
+                base.cards.map {
+                    when (it.id) {
+                        "syn/2" -> it.copy(roles = listOf(role("flying", "payoff", 2)))
+                        "syn/3" -> it.copy(roles = listOf(role("flying", "payoff", 1)))
+                        "syn/5" -> it.copy(partners = listOf(TagPartner("syn/6", 2)))
+                        "syn/10" -> it.copy(roles = listOf(), partners = listOf())
+                        else -> it
+                    }
+                }
+            val expected =
+                base.copy(
+                    cards = cards,
+                    review =
+                        TagReview(
+                            provenance,
+                            linkedMapOf(
+                                "add-role" to 1,
+                                "remove-role" to 1,
+                                "set-strength" to 1,
+                                "add-partner" to 1,
+                                "remove-partner" to 1,
+                            ),
+                            listOf(
+                                TagCorrection(
+                                    "syn/2",
+                                    "set-strength",
+                                    "flying",
+                                    "payoff",
+                                    null,
+                                    2,
+                                    "Clearly better.",
+                                ),
+                                TagCorrection(
+                                    "syn/3",
+                                    "add-role",
+                                    "flying",
+                                    "payoff",
+                                    null,
+                                    1,
+                                    "Rewards fliers.",
+                                ),
+                                TagCorrection(
+                                    "syn/5",
+                                    "add-partner",
+                                    partner = "syn/6",
+                                    strength = 2,
+                                    reason = "Fills the yard.",
+                                ),
+                                TagCorrection(
+                                    "syn/10",
+                                    "remove-partner",
+                                    partner = "syn/9",
+                                    reason = "No link.",
+                                ),
+                                TagCorrection(
+                                    "syn/10",
+                                    "remove-role",
+                                    "lifegain",
+                                    "enabler",
+                                    reason = "Not the point.",
+                                ),
+                            ),
+                        ),
+                )
+            return expected
+        }
 
     @Test
     fun `an empty review is valid, and writes the file unchanged but for a zero review`() {
@@ -280,9 +338,7 @@ class TagsReviewImportCommandTest {
 
     @Test
     fun `removing a missing role`() {
-        review(
-            """{ "id": "syn/2", "action": "remove-role", "axis": "flying", "role": "enabler", "reason": "x" }"""
-        )
+        review(fix("syn/2", "remove-role", "axis" to "flying", "role" to "enabler"))
 
         assertFails("$file: correction 1: syn/2 has no enabler role on flying to remove")
     }
@@ -290,7 +346,7 @@ class TagsReviewImportCommandTest {
     @Test
     fun `setting the strength of a missing role`() {
         review(
-            """{ "id": "syn/1", "action": "set-strength", "axis": "lifegain", "role": "payoff", "strength": 2, "reason": "x" }"""
+            fix("syn/1", "set-strength", "axis" to "lifegain", "role" to "payoff", "strength" to 2)
         )
 
         assertFails(
@@ -310,8 +366,8 @@ class TagsReviewImportCommandTest {
     @Test
     fun `a duplicate add of a role or a partner`() {
         review(
-            """{ "id": "syn/2", "action": "add-role", "axis": "flying", "role": "payoff", "strength": 3, "reason": "x" }""",
-            """{ "id": "syn/6", "action": "add-partner", "partner": "syn/5", "strength": 2, "reason": "x" }""",
+            fix("syn/2", "add-role", "axis" to "flying", "role" to "payoff", "strength" to 3),
+            fix("syn/6", "add-partner", "partner" to "syn/5", "strength" to 2),
         )
 
         assertFails(
@@ -332,7 +388,7 @@ class TagsReviewImportCommandTest {
     @Test
     fun `a result with a strength of 4`() {
         review(
-            """{ "id": "syn/2", "action": "set-strength", "axis": "flying", "role": "payoff", "strength": 4, "reason": "x" }"""
+            fix("syn/2", "set-strength", "axis" to "flying", "role" to "payoff", "strength" to 4)
         )
 
         assertFails("$file: syn/2 strength 4 for payoff on flying is not 1, 2 or 3")
@@ -340,18 +396,14 @@ class TagsReviewImportCommandTest {
 
     @Test
     fun `a result with an unknown axis`() {
-        review(
-            """{ "id": "syn/1", "action": "add-role", "axis": "tokens", "role": "enabler", "strength": 1, "reason": "x" }"""
-        )
+        review(fix("syn/1", "add-role", "axis" to "tokens", "role" to "enabler", "strength" to 1))
 
         assertFails("$file: syn/1 axis 'tokens' is not one of the packet's axes")
     }
 
     @Test
     fun `a result with six partners`() {
-        review(
-            """{ "id": "syn/12", "action": "add-partner", "partner": "syn/6", "strength": 1, "reason": "x" }"""
-        )
+        review(fix("syn/12", "add-partner", "partner" to "syn/6", "strength" to 1))
 
         assertFails("$file: syn/12 has 6 partners; give at most 5")
     }
@@ -359,8 +411,8 @@ class TagsReviewImportCommandTest {
     @Test
     fun `a result with a partner outside the pool, or a bad role`() {
         review(
-            """{ "id": "syn/1", "action": "add-partner", "partner": "syn/99", "strength": 1, "reason": "x" }""",
-            """{ "id": "syn/1", "action": "add-role", "axis": "flying", "role": "maker", "strength": 1, "reason": "x" }""",
+            fix("syn/1", "add-partner", "partner" to "syn/99", "strength" to 1),
+            fix("syn/1", "add-role", "axis" to "flying", "role" to "maker", "strength" to 1),
         )
 
         assertFails(
@@ -373,7 +425,7 @@ class TagsReviewImportCommandTest {
     fun `every problem is named in one run`() {
         review(
             """{ "id": "syn/21", "action": "remove-partner", "partner": "syn/9", "reason": "x" }""",
-            """{ "id": "syn/2", "action": "set-strength", "axis": "flying", "role": "payoff", "strength": 4, "reason": "x" }""",
+            fix("syn/2", "set-strength", "axis" to "flying", "role" to "payoff", "strength" to 4),
             """{ "id": "syn/6", "action": "remove-partner", "partner": "syn/5", "reason": "" }""",
         )
 
