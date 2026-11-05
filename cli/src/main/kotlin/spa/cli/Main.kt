@@ -33,9 +33,11 @@ object Main {
         |      Print the Spearman rank correlation between a model grade file (default
         |      <data>/grades/<code>.json) and a win-rate grade file (default
         |      <data>/winrates/<code>.json), over all cards and by rarity.
-        |  grade-packet <code> --out <dir> [--data <dir>]
+        |  grade-packet <code> --out <dir> [--data <dir>] [--prompt <file>] [--themes]
         |      Write the blind grading packet for the set's sealed pool into <dir>: instructions,
-        |      the format brief, the cards in files of 50, and the response schema.
+        |      the format brief, the cards in files of 50, and the response schema. --prompt uses
+        |      <file> in place of prompt v1; --themes adds the set's theme counts and each card's
+        |      themes.
         |  grade-import <code> --responses <dir> --provenance <text> [--data <dir>]
         |      Check a grader's response files in the packet directory <dir> and write
         |      <data>/grades/<code>.json with source MODEL. Writes nothing on any problem.

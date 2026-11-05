@@ -18,6 +18,8 @@ data class PacketCard(
     val oracleText: String,
     val power: String?,
     val toughness: String?,
+    /** The card's themes, only in a packet built with themes; left out of the JSON when null. */
+    val themes: List<PacketTheme>? = null,
 ) {
     companion object {
         private const val FACE_SEPARATOR = " // "

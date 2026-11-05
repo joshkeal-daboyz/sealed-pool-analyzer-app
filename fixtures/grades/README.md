@@ -15,6 +15,8 @@ No API key and no model call in this repository. The grading itself is a Claude 
 
    `<dir>` gets `instructions.md` (the grading prompt `prompt-v1.md`, then the set's format brief), `response.schema.json`, and the cards in `cards-01.json`, `cards-02.json`, ..., 50 per file. The packet holds no win rates, no 17Lands data and no reviews.
 
+   For a candidate prompt or prompt v2, add `--prompt <file>` (that file's text replaces `prompt-v1.md`) and `--themes` (the set's theme counts after the brief, and each card's themes with role `has` or `refers`). Responses and `grade-import` are the same with or without them.
+
 2. A grading agent (Claude Fable 5.1 in Claude Code) is told to read `<dir>/instructions.md` and follow it. It reads every card file, uses no web or other tool, and writes `cards-NN.response.json` beside each card file. Record the run's token count and the plan's weekly usage before and after.
 
 3. Import and check the responses:
