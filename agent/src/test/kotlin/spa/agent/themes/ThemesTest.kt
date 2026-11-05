@@ -20,7 +20,6 @@ class ThemesTest {
         text: String = "",
         keywords: List<String> = emptyList(),
         colors: Set<Color> = setOf(Color.G),
-        rarity: Rarity = Rarity.COMMON,
     ): ThemeCard {
         val faces = listOf(face(name.substringBefore(" // "), type, text))
         val card =
@@ -36,10 +35,14 @@ class ThemesTest {
                 isCreature = true,
                 isLand = false,
                 isBasicLand = false,
-                rarity = rarity,
+                rarity = Rarity.COMMON,
             )
-        return ThemeCard(card, rarity, keywords)
+        return ThemeCard(card, Rarity.COMMON, keywords)
     }
+
+    /** [this] card at [rarity]. */
+    private fun ThemeCard.at(rarity: Rarity): ThemeCard =
+        copy(card = card.copy(rarity = rarity), rarity = rarity)
 
     /** [front] with a second face, [back]. */
     private fun withBack(front: ThemeCard, back: Face): ThemeCard =
@@ -165,26 +168,21 @@ class ThemesTest {
         val cards =
             listOf(
                 card("W1", type = "Creature — Human", colors = setOf(Color.W)),
+                card("U1", type = "Creature — Human", colors = setOf(Color.U)).at(Rarity.UNCOMMON),
                 card(
-                    "U1",
-                    type = "Creature — Human",
-                    colors = setOf(Color.U),
-                    rarity = Rarity.UNCOMMON,
-                ),
+                        "WU",
+                        type = "Creature — Human",
+                        text = "Other Humans get +1/+1.",
+                        colors = setOf(Color.W, Color.U),
+                    )
+                    .at(Rarity.RARE),
                 card(
-                    "WU",
-                    type = "Creature — Human",
-                    text = "Other Humans get +1/+1.",
-                    colors = setOf(Color.W, Color.U),
-                    rarity = Rarity.RARE,
-                ),
-                card(
-                    "Relic",
-                    type = "Artifact",
-                    text = "Target Human gains flying.",
-                    colors = emptySet(),
-                    rarity = Rarity.MYTHIC,
-                ),
+                        "Relic",
+                        type = "Artifact",
+                        text = "Target Human gains flying.",
+                        colors = emptySet(),
+                    )
+                    .at(Rarity.MYTHIC),
                 card("Bear", colors = setOf(Color.G)),
             )
         return SetThemes.count(cards, emptyList()).single { it.theme == human }
