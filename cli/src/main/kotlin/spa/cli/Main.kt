@@ -11,7 +11,7 @@ import spa.core.cards.ScryfallSetFetcher
 /**
  * The `spa` command line: `analyze`, `validate-brief`, `fetch-set`, `winrates`, `grade-backtest`,
  * `grade-packet`, `grade-import`, `grades`, `themes`, `pool-grades`, `deck-pick`, `fixing`,
- * `tags-packet`, `tags-import`, `synergy-table`, and `synergy`.
+ * `tags-packet`, `tags-import`, `synergy-table`, `synergy`, and `synergy-check`.
  */
 object Main {
     /** The text `spa --help` prints. */
@@ -95,6 +95,11 @@ object Main {
         |      its syn with the rest of the pool, the e of a typical pool, its quantity and name,
         |      then a line naming its strongest partners in the pool. The weight comes from
         |      --weights, else <data>/weights/tag-synergy.json.
+        |  synergy-check --set <code> [--data <dir>]
+        |      Run the owner's held-out synergy checks in <data>/synergy-checks/<code>.json on
+        |      the pair table of the set's tag file: one line per check, in file order, with PASS
+        |      or FAIL, its id, its status (independent or seen) and its numbers, then a line
+        |      counting the checks that pass and how many of those are independent.
         |
         |<data> defaults to ${DataDir.DEFAULT}. Exit codes: 0 ok, 1 error, 2 bad command line.
         |Run 'spa --help' for this text.
@@ -173,6 +178,7 @@ object Main {
             "tags-import" to { a, out, err -> TagsImportCommand().run(a, out, err) },
             "synergy-table" to { a, out, err -> SynergyTableCommand.run(a, out, err) },
             "synergy" to { a, out, err -> SynergyCommand.run(a, out, err) },
+            "synergy-check" to { a, out, err -> SynergyCheckCommand.run(a, out, err) },
         )
 
     private fun usageError(message: String, stderr: PrintStream): Int {
