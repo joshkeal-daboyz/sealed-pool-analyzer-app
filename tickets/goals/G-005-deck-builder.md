@@ -98,14 +98,13 @@ The owner answered on 2026-11-05: "Approve all except 2 and 5. Agents are going 
 - G-004's deck-pick test counted only two-colour builds (`main_colors` of length 2), which are 27% to 58% of strong builds. Its numbers stand for those builds only; this goal's backtest covers every colour count.
 - 17Lands encodes a build's colours as `main_colors` (for example `WUB`) and `splash_colors` (for example `R`). Strong builds per set: `msh` 4,995, `hob` 5,206, `fra` 5,321.
 - G-004's `PoolGrader` hard-codes its three adjustments (a sealed `Part` interface) and a fixed `Weights` class, so it does not meet the alterable-scoring constraint. SPA-043 makes it pluggable with no change to any output.
-- Tickets, one Developer at a time, all serialized (they share `agent`, `cli` and the builder):
-  - SPA-042: fixing tags and `spa fixing`.
-  - SPA-043: pluggable card adjustment parts and weights files, a refactor whose `pool-grades` and `deck-pick` outputs stay byte-identical.
-  - SPA-044: the builder and mana for a given colour set, with pluggable deck parts.
-  - SPA-045: colour configurations, ranking and `spa build`.
-  - SPA-046: the deck backtest and tuning, held out on `fra`.
-  - SPA-047: synergy tags, meaning the tagging packet, `spa tags-import` and the tag schema. Then the Architect's Fable runs on the four sets, `trk` first, before 17Lands publishes its data (expected around 2026-11-20).
-  - SPA-048: the synergy deck part from the tags, tuned on `msh` and `hob`, measured on `fra`.
-- SPA-047 can run before the builder: it needs only the set caches. It goes right after SPA-042, so `trk` is tagged in time.
+- Order (owner, 2026-11-05: "synergy scoring should come after tagging and we should implement it into the build"). One Developer at a time, all serialized, because they share `agent`, `cli` and the builder:
+  1. SPA-042: fixing tags and `spa fixing`.
+  2. SPA-047: synergy tags, meaning the tagging packet, `spa tags-import` and the tag schema. Then the Architect's Fable runs on the four sets, `trk` first, before 17Lands publishes its data (expected around 2026-11-20).
+  3. SPA-048: synergy scoring from the tags. It is a pluggable part that scores a set of cards in given colours, using its payoffs against its enablers relative to a typical pool. `spa synergy <pool-file> --set <code> [--colours <XY>]` prints the groups it finds, with their reasons.
+  4. SPA-043: pluggable card adjustment parts and weights files. It is a refactor whose `pool-grades` and `deck-pick` outputs stay byte-identical.
+  5. SPA-044: the builder and mana for a given colour set, with pluggable deck parts. Synergy (SPA-048) is one of its parts from the first version, not added later.
+  6. SPA-045: colour configurations, ranking and `spa build`.
+  7. SPA-046: the deck backtest and tuning of every part, synergy included, on `msh` and `hob`, held out on `fra`, with synergy on against off.
 
   The Architect completes each ticket, with script-pinned numbers, before dispatching it.
