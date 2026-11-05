@@ -2,6 +2,8 @@
 
 What the Architect learned from merged tickets. One line each, newest first. Read before writing any ticket.
 
+- 2026-11-05 SPA-042: A text rule written with a capitalised keyword (`Add ...`) misses the same words mid-sentence ("Whenever a land enters, add {R} or {G}"). When a rule matches rules text, grep every set for the keyword in any case before pinning numbers. Also, pin multi-face cards by their full printed name (`A // B`): a check on the front name alone can never fail. And give every clause or sentence boundary in a rule its own hand-built test, because the real sets rarely exercise it. Pin lists written from a script should come from a script line that prints every field the output shows (the land flag was missing, so Room of Refuge was pinned wrong).
+
 - 2026-11-05 SPA-039: An independent script must use the same field the engine uses, not a similar one from the raw data. The deck-pick script read Scryfall's top-level `colors`, which covers one face of adventure and modal double-faced cards, so two pinned numbers were off. Check the script against the engine on multi-face cards before pinning.
 - 2026-11-05 SPA-038: Pin numbers from the script's unrounded values, not from a rounded printout. The ticket pinned 2.722 from a printed 2.7215 whose true value rounds to 2.721; the Developer caught it. Print pins with more decimals than the criterion asks for.
 - 2026-11-04 SPA-034: A criterion that counts a pool's entries must say what happens to entries the feature excludes by design. "All 71 entries graded" ignored the three basic lands grade files never hold. Before pinning a count, run the fixture through every rule that filters it.
