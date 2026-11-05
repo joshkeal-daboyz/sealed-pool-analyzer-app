@@ -56,6 +56,9 @@ class TagsImportCommandTest {
                 packet.toString(),
                 "--data",
                 data.toString(),
+                // SPA-051 made v2 the default; these are the v1 tests.
+                "--prompt",
+                "v1",
             )
         assertEquals(ExitCode.OK, run.exit, run.stderr)
         resource("syn/cards-01.response.json").copyTo(response)

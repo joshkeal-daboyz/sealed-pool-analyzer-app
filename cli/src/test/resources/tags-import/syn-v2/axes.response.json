@@ -1,0 +1,6 @@
+[
+  { "id": "flying", "name": "Flying", "definition": "A creature with flying.", "suppliedBy": [{ "fact": "kw:flying", "strength": 3 }] },
+  { "id": "graveyard", "name": "Graveyard", "definition": "Puts creature cards into a graveyard.", "suppliedBy": [{ "fact": "creature", "strength": 1 }] },
+  { "id": "lifegain", "name": "Life gain", "definition": "Gains you life.", "suppliedBy": [] },
+  { "id": "double-faced", "name": "Double-faced cards", "definition": "A card with two faces that transforms.", "suppliedBy": [{ "fact": "kw:transform", "strength": 2 }] }
+]

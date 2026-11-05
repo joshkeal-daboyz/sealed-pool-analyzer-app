@@ -19,7 +19,7 @@
     "axes": {
       "type": "array",
       "minItems": 3,
-      "maxItems": 15,
+      "maxItems": 20,
       "items": { "$ref": "#/$defs/axis" }
     },
     "cards": {
@@ -38,7 +38,20 @@
       "properties": {
         "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
         "name": { "type": "string", "pattern": "\\S" },
-        "definition": { "type": "string", "pattern": "\\S" }
+        "definition": { "type": "string", "pattern": "\\S" },
+        "suppliedBy": {
+          "description": "Tags prompt v2 on: the card facts that supply the axis just by a card having them, each with a strength. Absent in a v1 file.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["fact", "strength"],
+            "properties": {
+              "fact": { "type": "string", "pattern": "\\S" },
+              "strength": { "$ref": "#/$defs/strength" }
+            }
+          }
+        }
       }
     },
     "card": {

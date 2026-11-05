@@ -48,6 +48,9 @@ class TagsBlindPacketTest {
                 rolesPacket.toString(),
                 "--data",
                 Fixtures.data,
+                // SPA-051 made v2 the default; this axes file is v1's (TagsV2CommandTest: v2).
+                "--prompt",
+                "v1",
             )
         assertEquals(ExitCode.OK, pass1.exit, pass1.stderr)
         assertEquals(ExitCode.OK, pass2.exit, pass2.stderr)

@@ -21,8 +21,19 @@ data class PairScore(val first: TagCard, val second: TagCard, val parts: List<In
  * The synergy score of every pair of cards in a set's tag file, each card with itself included
  * (G-005 deliverable 7): the sum of the [terms]. It is computed from the tags, never stored, and is
  * symmetric. An id the tag file does not hold scores 0 with every card.
+ *
+ * [facts] gives each card's facts by tag id ([spa.agent.facts.CardFacts]), for the terms that read
+ * them; each of the given terms is fitted to this table ([PairTerm.forTable]), and [terms] holds
+ * the ones that apply, in order.
  */
-class SynergyTable(val tags: TagFile, val terms: List<PairTerm> = PairTerms.ALL) {
+class SynergyTable(
+    val tags: TagFile,
+    terms: List<PairTerm> = PairTerms.ALL,
+    val facts: Map<String, Set<String>> = emptyMap(),
+) {
+    /** The terms this table sums, in print order. */
+    val terms: List<PairTerm> = terms.mapNotNull { it.forTable(tags, facts) }
+
     /** The tag file's cards, in its (collector) order. */
     val cards: List<TagCard>
         get() = tags.cards
@@ -36,7 +47,8 @@ class SynergyTable(val tags: TagFile, val terms: List<PairTerm> = PairTerms.ALL)
         val table = IntArray(n * n)
         for (i in 0 until n) {
             for (j in i until n) {
-                val score = terms.sumOf { it.score(cards[i], cards[j]) }
+                // this.terms: the fitted terms, not the constructor parameter of the same name.
+                val score = this.terms.sumOf { it.score(cards[i], cards[j]) }
                 table[i * n + j] = score
                 table[j * n + i] = score
             }

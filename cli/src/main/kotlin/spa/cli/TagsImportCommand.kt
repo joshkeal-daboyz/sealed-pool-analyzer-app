@@ -5,6 +5,8 @@ import java.io.PrintStream
 import java.nio.file.Files
 import java.nio.file.Path
 import java.util.Locale
+import spa.agent.facts.CardFacts
+import spa.agent.tags.ImportSet
 import spa.agent.tags.TagCheck
 import spa.agent.tags.TagChecks
 import spa.agent.tags.TagFiles
@@ -13,8 +15,10 @@ import spa.agent.tags.TagImport
 /**
  * `spa tags-import <code> --packet <dir> --provenance <text> [--data <dir>]`: checks a tagger's
  * responses in the pass-2 packet `<dir>` against the packet's axes and [checks], and writes
- * `<data>/tags/<code>.json` (see [spa.agent.tags.TagImport]). On any problem it prints one `spa: `
- * line per problem to stderr, writes nothing, and exits 1. Makes no network or model call.
+ * `<data>/tags/<code>.json` (see [spa.agent.tags.TagImport]). A v2 packet's axes keep their
+ * `suppliedBy`, checked against the set's card facts ([CardFacts]), which the import works out from
+ * the Scryfall cache rather than reading the packet's `facts.json`. On any problem it prints one
+ * `spa: ` line per problem to stderr, writes nothing, and exits 1. Makes no network or model call.
  */
 class TagsImportCommand(private val checks: List<TagCheck> = TagChecks.ALL) {
     fun run(args: List<String>, stdout: PrintStream, stderr: PrintStream): Int {
@@ -27,8 +31,9 @@ class TagsImportCommand(private val checks: List<TagCheck> = TagChecks.ALL) {
             throw CliFailure("packet directory not found: $packet", ExitCode.ERROR)
         }
         val index = Commands.loadIndex(data, set)
+        val importSet = ImportSet(index, set, CardFacts.load(data.scryfall, index))
         val result =
-            io("cannot read $packet") { TagImport.run(packet, index, set, provenance, checks) }
+            io("cannot read $packet") { TagImport.run(packet, importSet, provenance, checks) }
         val file = result.file
         if (file == null) {
             result.problems.forEach { stderr.println("spa: $it") }

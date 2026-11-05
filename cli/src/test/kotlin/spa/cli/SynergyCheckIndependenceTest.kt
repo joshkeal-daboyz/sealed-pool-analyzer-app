@@ -86,6 +86,9 @@ class SynergyCheckIndependenceTest {
                     rolesPacket.toString(),
                     "--data",
                     Fixtures.data,
+                    // SPA-051 made v2 the default; trk's committed axes are v1's.
+                    "--prompt",
+                    "v1",
                 ),
                 runCli(
                     "grade-packet",

@@ -4,12 +4,22 @@ package spa.agent.tags
  * The tagging prompts, one resource file per pass and version under `spa/agent/tags/`:
  * `tags-axes-<version>.md` and `tags-roles-<version>.md`. A new version is a new pair of files,
  * selected with `--prompt <version>`, and needs no code change.
+ *
+ * Version 1 came before card facts. Every later version gets the card facts in its packets and
+ * reads its axes in [AxesFormat.SUPPLIED] (SPA-051).
  */
 object TagPrompts {
     /** The version used when none is given. */
-    const val DEFAULT_VERSION = "v1"
+    const val DEFAULT_VERSION = "v2"
+
+    /** The one version without card facts. */
+    const val PLAIN_VERSION = "v1"
 
     private val versionPattern = Regex("[a-z0-9]+")
+
+    /** The format of an axes file for the prompt [version]. */
+    fun format(version: String): AxesFormat =
+        if (version == PLAIN_VERSION) AxesFormat.PLAIN else AxesFormat.SUPPLIED
 
     /** The two passes: naming the set's axes, then tagging each card's roles and partners. */
     enum class Pass(val stem: String) {

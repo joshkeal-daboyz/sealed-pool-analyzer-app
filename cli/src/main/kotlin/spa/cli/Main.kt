@@ -11,7 +11,7 @@ import spa.core.cards.ScryfallSetFetcher
 /**
  * The `spa` command line: `analyze`, `validate-brief`, `fetch-set`, `winrates`, `grade-backtest`,
  * `grade-packet`, `grade-import`, `grades`, `themes`, `pool-grades`, `deck-pick`, `fixing`,
- * `tags-packet`, `tags-import`, `synergy-table`, `synergy`, and `synergy-check`.
+ * `tags-packet`, `tags-import`, `synergy-table`, `synergy`, `synergy-check`, and `facts`.
  */
 object Main {
     /** The text `spa --help` prints. */
@@ -81,15 +81,18 @@ object Main {
         |      --axes, pass 1: the axes prompt, the format brief and theme counts, the cards in
         |      files of 50, and axes.schema.json. With --axes, pass 2: the file's axes are
         |      checked first, then the roles prompt, the axes, the brief and theme counts, the
-        |      cards, and response.schema.json. --prompt picks the prompt version, default v1.
+        |      cards, and response.schema.json. --prompt picks the prompt version, default v2,
+        |      whose packets add facts.json and whose axes carry suppliedBy (up to 20 axes); v1
+        |      has neither (up to 15).
         |  tags-import <code> --packet <dir> --provenance <text> [--data <dir>]
         |      Check a tagger's response files in the pass-2 packet <dir> and write
         |      <data>/tags/<code>.json. Writes nothing on any problem.
         |  synergy-table --set <code> [--min <score>] [--data <dir>]
         |      Print every pair of cards of the set's tag file <data>/tags/<code>.json, each card
         |      with itself included, scoring at least --min (default 1), highest first: the score,
-        |      its axis and partner parts, and the two cards. The last line counts the pairs, the
-        |      nonzero pairs and diagonal, and gives the maximum.
+        |      its axis and partner parts (and fact part when an axis has suppliedBy), and the
+        |      two cards. The last line counts the pairs, the nonzero pairs and diagonal, and
+        |      gives the maximum.
         |  synergy <pool-file> --set <code> --pair <XY> [--weights <file>] [--data <dir>]
         |      For each pool card castable in the pair, highest first, print its tag synergy part,
         |      its syn with the rest of the pool, the e of a typical pool, its quantity and name,
@@ -100,6 +103,11 @@ object Main {
         |      the pair table of the set's tag file: one line per check, in file order, with PASS
         |      or FAIL, its id, its status (independent or seen) and its numbers, then a line
         |      counting the checks that pass and how many of those are independent.
+        |  facts --set <code> [--card <name or id>] [--data <dir>]
+        |      Print each card fact of the set's sealed pool (card types, legendary, creature
+        |      types, keywords, cheap, enters and dies triggers, makes tokens) with the number of
+        |      cards that have it, most first, then the pool size and the number of facts. With
+        |      --card, that card's facts, sorted.
         |
         |<data> defaults to ${DataDir.DEFAULT}. Exit codes: 0 ok, 1 error, 2 bad command line.
         |Run 'spa --help' for this text.
@@ -179,6 +187,7 @@ object Main {
             "synergy-table" to { a, out, err -> SynergyTableCommand.run(a, out, err) },
             "synergy" to { a, out, err -> SynergyCommand.run(a, out, err) },
             "synergy-check" to { a, out, err -> SynergyCheckCommand.run(a, out, err) },
+            "facts" to { a, out, _ -> FactsCommand.run(a, out) },
         )
 
     private fun usageError(message: String, stderr: PrintStream): Int {

@@ -11,6 +11,16 @@ import spa.agent.grader.GradingPool
 import spa.core.cards.CardIndex
 import spa.core.cards.Printing
 
+/**
+ * The set an import is for: its card [index], its [code], and each card id's [facts] (from tags
+ * prompt v2; none for a v1 packet).
+ */
+data class ImportSet(
+    val index: CardIndex,
+    val code: String,
+    val facts: Map<String, Set<String>> = emptyMap(),
+)
+
 /** What an import gives: the tag [file] when there are no [problems], else null. */
 data class TagImportResult(val file: TagFile?, val problems: List<String>)
 
@@ -19,23 +29,34 @@ data class TagImportResult(val file: TagFile?, val problems: List<String>)
  *
  * The packet's card files must hold exactly the set's [GradingPool], and its `axes.json` must be a
  * valid axes file. Each card file needs its `cards-NN.response.json` beside it, well formed (see
- * [TagResponses]). Then every [TagCheck] in [checks] runs on all the responses together. Every
- * problem is one line; on any problem there is no file.
+ * [TagResponses]). Then every [TagCheck] in [checks] runs on all the responses together, with the
+ * facts the set's cards have ([ImportSet.facts]) for the supply checks. Every problem is one line;
+ * on any problem there is no file.
  */
 object TagImport {
+    /** [run] for the set [setCode] of [index], with no card facts (a v1 packet). */
     fun run(
         packetDir: Path,
         index: CardIndex,
         setCode: String,
         provenance: String,
         checks: List<TagCheck> = TagChecks.ALL,
+    ): TagImportResult = run(packetDir, ImportSet(index, setCode), provenance, checks)
+
+    fun run(
+        packetDir: Path,
+        set: ImportSet,
+        provenance: String,
+        checks: List<TagCheck> = TagChecks.ALL,
     ): TagImportResult {
+        val (index, setCode, facts) = set
         val pool = GradingPool.printings(index)
         val packet = readPacket(packetDir, pool, setCode)
         // The checks run only on a packet that reads whole.
         val problems =
             packet.problems.ifEmpty {
-                val input = TagCheckInput(packet.cardFiles, packet.axes, packet.responses)
+                val known = facts.values.flatten().toSet()
+                val input = TagCheckInput(packet.cardFiles, packet.axes, packet.responses, known)
                 checks.flatMap { it.problems(input) }
             }
         if (problems.isNotEmpty()) return TagImportResult(null, problems)
@@ -64,7 +85,7 @@ object TagImport {
         val axesPath = dir.resolve(TagPackets.AXES)
         val axes =
             if (Files.isRegularFile(axesPath)) {
-                val result = AxesFile.parse(Files.readString(axesPath), TagPackets.AXES)
+                val result = AxesFile.parseDetected(Files.readString(axesPath), TagPackets.AXES)
                 problems += result.problems
                 result.axes.orEmpty()
             } else {

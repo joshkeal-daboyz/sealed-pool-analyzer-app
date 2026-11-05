@@ -65,8 +65,9 @@ class PairTermsTest {
     }
 
     @Test
-    fun `the default list is the axis term then the partner term`() {
-        assertEquals(listOf<PairTerm>(AxisTerm, PartnerTerm), PairTerms.ALL)
-        assertEquals(listOf("axis", "partner"), PairTerms.ALL.map { it.name })
+    fun `the default list is the axis term, the partner term, then the fact supply term`() {
+        // SPA-051 adds FactSupplyTerm; a tag file with no suppliedBy drops it (FactSupplyTermTest).
+        assertEquals(listOf<PairTerm>(AxisTerm, PartnerTerm, FactSupplyTerm), PairTerms.ALL)
+        assertEquals(listOf("axis", "partner", "fact"), PairTerms.ALL.map { it.name })
     }
 }
