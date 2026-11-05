@@ -1,7 +1,7 @@
 ---
 id: G-004
 title: Layered grades, from the set to your pool
-status: open
+status: closed
 owner: human
 target_set_code: trk
 companion_set_codes: [sds]
@@ -101,3 +101,22 @@ The owner approved every default on 2026-11-04.
 - 2026-11-05 SPA-038 integrated (PR #44) on attempt 1: `spa pool-grades`, the pool adjustment with reasons. 5 of 7 tickets integrated. Next: SPA-039 (deck-pick and tuning), completed with script-pinned numbers.
 - 2026-11-05 SPA-039 integrated (PR #45): `spa deck-pick` and tuned weights (synergy 0, curve 0.25, colour 0.5, cap 1.0). Held-out fra: random 0.6584, set grade 0.7642, adjusted 0.7718, +0.76 points against the 2-point target (criterion 6 missed). Counted synergy lowered the overlap at every weight. Reported to the owner; proposed: accept, and move synergy judgement to a later goal. 6 of 7 tickets integrated. Remaining: SPA-040 (trk), waiting for 17Lands data.
 - 2026-11-05 Owner accepted the deck-pick result (criterion 6 miss): tuned weights stand with synergy off; synergy judgement by a model reading the pool moves to the deck-building goal. G-004 stays open only for SPA-040 (trk tests), which waits for 17Lands trk data; if none by 2026-12-01, the goal closes on the fra result (Decided 4).
+- 2026-11-05 Owner closed G-004 ("Close out 4") on the fra result, before any 17Lands trk data exists and ahead of the 2026-12-01 date in Decided 4. SPA-040 stays queued as the trk follow-up ticket that Decided 4 names. The Architect completes and dispatches it when `game_data_public.TRK.PremierDraft.csv.gz` and `.Sealed.csv.gz` appear (expected around 2026-11-20). Criterion 7 stays open until then.
+
+## Metrics at close (2026-11-05)
+
+| Metric | G-004 |
+| --- | --- |
+| Tickets integrated | 6 of 7 (SPA-035, 036, 041, 037, 038, 039), PRs #40 to #45. SPA-040 carried as a follow-up, waiting for trk data |
+| Gate green on first push | 6 of 6 pushed heads (one local red before a push: SPA-038's pinned value) |
+| Bounces by source | Developer to Architect before push: 2 rulings, both Architect errors in the tickets, no attempt used (SPA-038, a rounded pinned value; SPA-039, Scryfall colours instead of core's card colours). Inspector: 0. Acceptance: 0 |
+| Re-plans | 0. One ticket added mid-goal (SPA-041, baselines the backtest sets lacked) |
+| Escalations to the human | 0 from limits. Owner decisions: the judge's picks for the prerelease sheet; accepting the criterion 6 miss; closing before trk data |
+| Lead time | About 4 hours, from SPA-035 dispatched 2026-11-04 21:24 to SPA-039 merged 2026-11-05 01:29 |
+| Criteria | 1: gate green (CI run 42004246921 on main). 2: `core` unchanged (`git diff c0ce95f main -- core/src/main fixtures/golden` is empty). 3: themes pinned by script. 4: trk.v2 frozen before any trk data. 5: pool adjustment sums pinned by tests. 6: missed, and the owner accepted it. 7: open (SPA-040). 8: usage recorded as weekly percentages |
+| Set grades, v1 against v2 (msh, hob, fra) | v1 mean 0.405. v2 (candidate A): msh 0.401, hob 0.392, fra 0.480, mean 0.424. Candidates B 0.392, C 0.419. trk v2 against v1: 232 cards unchanged, 50 higher, 54 lower |
+| Deck-pick, strong players (overlap of top N) | Set grade against random: hob 0.7562 vs 0.6341, msh 0.7449 vs 0.6510, fra 0.7642 vs 0.6584. Held-out fra with tuned weights (synergy 0, curve 0.25, colour 0.5, cap 1.0): 0.7718, +0.76 points against the 2-point target. Counted synergy lowered the overlap at every nonzero weight |
+| trk tests | Not run; waits for 17Lands (SPA-040) |
+| Model usage | Fable on the subscription only: three candidate prompts over three sets, the trk v2 grader, and the blind judge of 104 trk differences. Weekly Fable allowance about 5% to 22%. No API key, no spend |
+| Delivered beyond the tickets | The Star Trek grade sheet, with the judge's picks and the pool ranking; the grade-changes page, with both graders' reasons |
+| Carried to later goals | Synergy judgement by a model reading the pool (deck-building goal). Display fixes for "−0.00" and long theme lists (a UI ticket). Flexible brief format and bonus-sheet detection (multi-set goal) |
