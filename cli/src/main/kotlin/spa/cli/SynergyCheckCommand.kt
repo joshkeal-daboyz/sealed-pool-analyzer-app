@@ -7,22 +7,23 @@ import spa.agent.synergy.check.SynergyCheckFile
 import spa.agent.synergy.check.SynergyChecks
 
 /**
- * `spa synergy-check --set <code> [--data <dir>]`: runs the owner's held-out synergy checks,
- * `<data>/synergy-checks/<code>.json`, on the pair table of the set's tag file, and prints one line
- * per check and a summary ([SynergyChecks.lines]). The check file is read only here, when the
- * command runs. A failing check is a result and exits 0; a missing or invalid check or tag file, an
- * unknown kind or an unknown card id is one line and exit 1, and no check runs. No network or model
- * call.
+ * `spa synergy-check --set <code> [--tags <file>] [--data <dir>]`: runs the owner's held-out
+ * synergy checks, `<data>/synergy-checks/<code>.json`, on the pair table of the set's tag file
+ * (`--tags`, else `<data>/tags/<code>.json`), and prints one line per check and a summary
+ * ([SynergyChecks.lines]). The check file is read only here, when the command runs. A failing check
+ * is a result and exits 0; a missing or invalid check or tag file, an unknown kind or an unknown
+ * card id is one line and exit 1, and no check runs. No network or model call.
  */
 object SynergyCheckCommand {
     fun run(args: List<String>, stdout: PrintStream, stderr: PrintStream): Int {
-        val parsed = Args.parse(args, valueOptions = setOf("set", "data"))
+        val parsed = Args.parse(args, valueOptions = setOf("set", "data", "tags"))
         if (parsed.positionals.isNotEmpty()) {
             throw CliFailure("unexpected argument '${parsed.positionals.first()}'", ExitCode.USAGE)
         }
         val set = Commands.requiredSet(parsed)
         val data = Commands.dataDir(parsed)
-        val table = SynergyTableCommand.table(data, set, SynergyTableCommand.tagFile(data, set))
+        val tags = SynergyTableCommand.tagFile(data, set, SynergyTableCommand.tagsOption(parsed))
+        val table = SynergyTableCommand.table(data, set, tags)
         val path = data.root.resolve("synergy-checks").resolve("$set.json")
         val file = checkFile(path, set)
         val lines = Commands.guard("synergy check file $path") { SynergyChecks.lines(file, table) }

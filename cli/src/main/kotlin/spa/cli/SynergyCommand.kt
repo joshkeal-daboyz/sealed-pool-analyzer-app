@@ -10,12 +10,12 @@ import spa.agent.synergy.SynergyWeight
 import spa.agent.synergy.TagSynergy
 
 /**
- * `spa synergy <pool-file> --set <code> --pair <XY> [--weights <file>] [--data <dir>]`: each
- * distinct candidate of the pool in the pair with its tag synergy part, syn, e, quantity and name,
- * highest part first, and under each a reason line naming its partners ([TagSynergy]). No network
- * or model call.
+ * `spa synergy <pool-file> --set <code> --pair <XY> [--weights <file>] [--tags <file>]
+ * [--data <dir>]`: each distinct candidate of the pool in the pair with its tag synergy part, syn,
+ * e, quantity and name, highest part first, and under each a reason line naming its partners
+ * ([TagSynergy]). No network or model call.
  *
- * The tags come from `<data>/tags/<code>.json`; the weight from `--weights`, else
+ * The tags come from `--tags`, else `<data>/tags/<code>.json`; the weight from `--weights`, else
  * `<data>/weights/tag-synergy.json`. A pool line that does not resolve is listed on stderr and the
  * exit stays 0.
  */
@@ -31,7 +31,8 @@ object SynergyCommand {
 
     /** The result [run] prints for [args]. Unresolved pool lines go to [stderr]. */
     fun compute(args: List<String>, stderr: PrintStream): PoolSynergy {
-        val parsed = Args.parse(args, valueOptions = setOf("set", "data", "pair", "weights"))
+        val parsed =
+            Args.parse(args, valueOptions = setOf("set", "data", "pair", "weights", "tags"))
         val file = Commands.onePositional(parsed, "pool file")
         val set = Commands.requiredSet(parsed)
         val data = Commands.dataDir(parsed)
@@ -41,7 +42,7 @@ object SynergyCommand {
             )
         val text = Commands.readFile(Path.of(file), "pool file")
         val index = Commands.loadIndex(data, set)
-        val tags = SynergyTableCommand.tagFile(data, set)
+        val tags = SynergyTableCommand.tagFile(data, set, SynergyTableCommand.tagsOption(parsed))
         val weight =
             weight(
                 parsed.value("weights")?.let(Path::of)
