@@ -14,23 +14,36 @@ import spa.agent.synergy.PoolSynergy
 import spa.core.metrics.ColorPair
 
 /**
- * SPA-048 criteria 3, 4 and 6: `spa synergy` on trk-manabox-01 in WU with the committed trk tags
- * and weight 0.5, against an independent script's values (scratchpad `tools/synergy.js`,
- * 2026-11-05) to 3 decimals, every printed line, and the errors.
+ * SPA-048 criteria 3, 4 and 6: `spa synergy` on trk-manabox-01 in WU with the v1 trk tags, frozen
+ * since SPA-053 as `fixtures/tags/v1/trk.json`, and weight 0.5, against an independent script's
+ * values (scratchpad `tools/synergy.js`, 2026-11-05) to 3 decimals, every printed line, and the
+ * errors.
  */
 class SynergyCommandTest {
     private val pool = Fixtures.pool("trk-manabox-01.csv")
 
+    private val v1 = listOf("--tags", Fixtures.v1Tags("trk"))
+
     private val wu: PoolSynergy by lazy {
         val err = ByteArrayOutputStream()
         SynergyCommand.compute(
-            listOf(pool, "--set", "trk", "--pair", "WU", "--data", Fixtures.data),
+            listOf(pool, "--set", "trk", "--pair", "WU") + v1 + listOf("--data", Fixtures.data),
             PrintStream(err, true, Charsets.UTF_8),
         )
     }
 
     private val run: CliRun by lazy {
-        runCli("synergy", pool, "--set", "trk", "--pair", "WU", "--data", Fixtures.data)
+        runCli(
+            "synergy",
+            pool,
+            "--set",
+            "trk",
+            "--pair",
+            "WU",
+            *v1.toTypedArray(),
+            "--data",
+            Fixtures.data,
+        )
     }
 
     private fun card(number: String): CardSynergy =

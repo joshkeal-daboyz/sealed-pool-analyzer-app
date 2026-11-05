@@ -13,9 +13,9 @@ import spa.agent.tags.TagFiles
 import spa.agent.tags.TagRole
 
 /**
- * SPA-050 criteria 1, 2 and 4: `spa synergy-check` on the committed trk tags and owner checks,
- * against the Architect's independent script (scratchpad `tools/synergy.js`, 2026-11-05), and its
- * errors on hand-built files.
+ * SPA-050 criteria 1, 2 and 4: `spa synergy-check` on the v1 trk tags (frozen since SPA-053 as
+ * `fixtures/tags/v1/trk.json`) and the committed owner checks, against the Architect's independent
+ * script (scratchpad `tools/synergy.js`, 2026-11-05), and its errors on hand-built files.
  */
 class SynergyCheckCommandTest {
     /**
@@ -25,7 +25,17 @@ class SynergyCheckCommandTest {
      */
     @Test
     fun `trk prints the two original checks passing, with their numbers`() {
-        val run = runCli("synergy-check", "--set", "trk", "--data", Fixtures.data)
+        // The v1 trk tags these numbers were computed from, frozen since SPA-053.
+        val run =
+            runCli(
+                "synergy-check",
+                "--set",
+                "trk",
+                "--tags",
+                Fixtures.v1Tags("trk"),
+                "--data",
+                Fixtures.data,
+            )
         val lines = run.stdoutLines()
         val byId = { id: String -> lines.single { it.split(" ").getOrNull(1) == id } }
 

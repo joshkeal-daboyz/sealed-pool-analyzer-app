@@ -9,12 +9,15 @@ import org.junit.jupiter.api.io.TempDir
 import spa.agent.tags.TagFiles
 
 /**
- * SPA-048 criteria 2 and 6: `spa synergy-table` on the committed `fixtures/tags/trk.json`, against
- * an independent script's numbers (scratchpad `tools/synergy.js`, 2026-11-05), and its errors.
+ * SPA-048 criteria 2 and 6: `spa synergy-table` on the v1 trk tags, frozen since SPA-053 as
+ * `fixtures/tags/v1/trk.json`, against an independent script's numbers (scratchpad
+ * `tools/synergy.js`, 2026-11-05), and its errors.
  */
 class SynergyTableCommandTest {
+    private val v1 = listOf("--tags", Fixtures.v1Tags("trk"))
+
     private val trk: CliRun by lazy {
-        runCli("synergy-table", "--set", "trk", "--data", Fixtures.data)
+        runCli("synergy-table", "--set", "trk", *v1.toTypedArray(), "--data", Fixtures.data)
     }
 
     @Test
@@ -66,14 +69,34 @@ class SynergyTableCommandTest {
 
     @Test
     fun `--min keeps only pairs scoring at least it`() {
-        val run = runCli("synergy-table", "--set", "trk", "--min", "12", "--data", Fixtures.data)
+        val run =
+            runCli(
+                "synergy-table",
+                "--set",
+                "trk",
+                "--min",
+                "12",
+                *v1.toTypedArray(),
+                "--data",
+                Fixtures.data,
+            )
         val pairs = run.stdoutLines().dropLast(1)
 
         assertEquals(ExitCode.OK, run.exit)
         assertTrue(pairs.isNotEmpty())
         assertTrue(pairs.all { it.substringBefore(" ").toInt() >= 12 })
         assertEquals(trk.stdoutLines().last(), run.stdoutLines().last())
-        val all = runCli("synergy-table", "--set", "trk", "--min", "0", "--data", Fixtures.data)
+        val all =
+            runCli(
+                "synergy-table",
+                "--set",
+                "trk",
+                "--min",
+                "0",
+                *v1.toTypedArray(),
+                "--data",
+                Fixtures.data,
+            )
         assertEquals(56616 + 1, all.stdoutLines().size)
     }
 
@@ -83,7 +106,7 @@ class SynergyTableCommandTest {
         val ids = sixes.map { line ->
             Regex("""\(([a-z]+/[0-9a-z]+)\)""").findAll(line).map { it.groupValues[1] }.toList()
         }
-        val order = TagFiles.read(Fixtures.root.resolve("tags/trk.json")).cards.map { it.id }
+        val order = TagFiles.read(Path.of(Fixtures.v1Tags("trk"))).cards.map { it.id }
         val position = { id: String -> order.indexOf(id) }
         val keys = ids.map { position(it.first()) to position(it.last()) }
 
