@@ -90,7 +90,7 @@ object PoolGradesCommand {
             )
     }
 
-    private fun baseline(data: DataDir, set: String): Baseline {
+    internal fun baseline(data: DataDir, set: String): Baseline {
         val path = data.baselineFile(set)
         if (!Files.isRegularFile(path)) {
             throw CliFailure("no baseline for set '$set': $path", ExitCode.ERROR)
@@ -99,7 +99,7 @@ object PoolGradesCommand {
         return Commands.guard("cannot read baseline $path") { Baseline.decode(text) }
     }
 
-    private fun lookup(path: Path, set: String): GradeLookup {
+    internal fun lookup(path: Path, set: String): GradeLookup {
         val text = Commands.readFile(path, "grade file")
         val file = Commands.guard("invalid grade file $path") { GradeFiles.parse(text) }
         if (file.header.setCode != set) {

@@ -31,7 +31,8 @@ object DeckPick {
     const val UNGRADED = -1.0
 
     /** A build's overlap when its candidates are ranked by [setGrade] (null: ungraded). */
-    fun setGradeOverlap(build: Build, setGrade: (Printing) -> Double?): Double = TODO()
+    fun setGradeOverlap(build: Build, setGrade: (Printing) -> Double?): Double =
+        Overlap.of(build) { setGrade(it.printing) ?: UNGRADED }
 
     /**
      * A build's overlap when its candidates are ranked by [grader]'s unrounded adjusted grade for
@@ -41,12 +42,28 @@ object DeckPick {
         build: Build,
         grader: PoolGrader,
         setGrade: (Printing) -> Double?,
-    ): Double = TODO()
+    ): Double {
+        val adjusted =
+            grader.grade(build.pool(), build.pair, setGrade).cards.associate {
+                it.printing.card.oracleId to it.adjusted
+            }
+        return Overlap.of(build) { adjusted[it.printing.card.oracleId] ?: UNGRADED }
+    }
 
     /** The three rankings' mean overlaps over [selection]'s builds. */
     fun measure(
         selection: BuildSelection,
         setGrade: (Printing) -> Double?,
         grader: PoolGrader,
-    ): DeckPickReport = TODO()
+    ): DeckPickReport {
+        val builds = selection.builds
+        require(builds.isNotEmpty()) { "no build is left to measure" }
+        return DeckPickReport(
+            used = builds.size,
+            skipped = selection.skipped,
+            random = builds.map(Overlap::random).average(),
+            setGrade = builds.map { setGradeOverlap(it, setGrade) }.average(),
+            adjusted = builds.map { adjustedOverlap(it, grader, setGrade) }.average(),
+        )
+    }
 }

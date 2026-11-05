@@ -10,7 +10,7 @@ import spa.core.cards.ScryfallSetFetcher
 
 /**
  * The `spa` command line: `analyze`, `validate-brief`, `fetch-set`, `winrates`, `grade-backtest`,
- * `grade-packet`, `grade-import`, `grades`, `themes`, and `pool-grades`.
+ * `grade-packet`, `grade-import`, `grades`, `themes`, `pool-grades`, and `deck-pick`.
  */
 object Main {
     /** The text `spa --help` prints. */
@@ -53,6 +53,18 @@ object Main {
         |      synergy, curve and colour depth, capped, and one reason line per adjustment. Set
         |      grades come from --grades, else <data>/grades/<code>.v2.json, else <code>.json;
         |      weights from --weights, else <data>/weights/default.json.
+        |  deck-pick <sealed-game-data.csv.gz> --set <code> [--grades <file>] [--weights <file>]
+        |          [--data <dir>]
+        |      For each build of a 17Lands Sealed game data file by a strong player (win-rate
+        |      bucket 0.60 or more) in two colours, rank the pool's cards castable in them and
+        |      print the mean share of the top N that were in the deck (N: the deck's copies of
+        |      them), for a random ranking, set grades alone and pool-adjusted grades, and how
+        |      many builds were skipped and why. Grades and weights default as for pool-grades.
+        |  deck-pick <file>... --set <a,b,...> --tune [--grades <a,b,...>] [--out <file>]
+        |          [--data <dir>]
+        |      Measure every combination of the adjustment's weight grid on the files' builds
+        |      pooled (one file per set) and write the best to --out, else
+        |      <data>/weights/tuned.json.
         |  themes <code> [--data <dir>]
         |      Print each theme of the set's sealed pool (a keyword that is not evergreen, or a
         |      subtype) held or referred to by 3 or more cards: the cards that have it, refer to
@@ -119,6 +131,7 @@ object Main {
             "grades" -> GradesCommand.run(rest, stdout, stderr)
             "themes" -> ThemesCommand.run(rest, stdout)
             "pool-grades" -> PoolGradesCommand.run(rest, stdout, stderr)
+            "deck-pick" -> DeckPickCommand.run(rest, stdout)
             null -> usageError("no command given", stderr)
             else -> usageError("unknown command '$command'", stderr)
         }

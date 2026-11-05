@@ -19,6 +19,8 @@ class TuningSet(
 data class GridPoint(val weights: Weights, val overlap: Double)
 
 /** The search for the adjustment's weights (SPA-039). */
+// The grid's values are the ticket's.
+@Suppress("MagicNumber")
 object Tuning {
     val SYNERGY = listOf(0.0, 0.25, 0.5, 0.75, 1.0)
     val CURVE = listOf(0.0, 0.25, 0.5)
@@ -26,14 +28,33 @@ object Tuning {
     const val CAP = 1.0
 
     /** Every combination of [SYNERGY], [CURVE] and [COLOUR], with [CAP]; synergy varies slowest. */
-    val GRID: List<Weights> = TODO()
+    val GRID: List<Weights> = SYNERGY.flatMap { synergy ->
+        CURVE.flatMap { curve -> COLOUR.map { colour -> Weights(synergy, curve, colour, CAP) } }
+    }
 
     /**
      * Each [GRID] combination's mean adjusted overlap over every build of [sets] pooled, in grid
      * order.
      */
-    fun run(sets: List<TuningSet>): List<GridPoint> = TODO()
+    fun run(sets: List<TuningSet>): List<GridPoint> {
+        val builds = sets.sumOf { it.builds.size }
+        require(builds > 0) { "no build to tune on" }
+        return GRID.map { weights ->
+            val total = sets.sumOf { set ->
+                val grader = set.grader(weights)
+                set.builds.sumOf { DeckPick.adjustedOverlap(it, grader, set.setGrade) }
+            }
+            GridPoint(weights, total / builds)
+        }
+    }
 
     /** The point with the highest overlap; ties go to the smaller total weight, then grid order. */
-    fun best(points: List<GridPoint>): GridPoint = TODO()
+    fun best(points: List<GridPoint>): GridPoint {
+        require(points.isNotEmpty()) { "no grid point" }
+        val order =
+            compareByDescending<IndexedValue<GridPoint>> { it.value.overlap }
+                .thenBy { it.value.weights.let { w -> w.synergy + w.curve + w.colour } }
+                .thenBy { it.index }
+        return points.withIndex().sortedWith(order).first().value
+    }
 }
