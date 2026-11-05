@@ -2,6 +2,8 @@
 
 What the Architect learned from merged tickets. One line each, newest first. Read before writing any ticket.
 
+- 2026-11-05 SPA-048: Before adding a word to a blocked list, grep every text it guards for that word. `17 lands` is in the approved grading prompt ("a 40-card deck with 17 lands"), so blocking it broke the blind test. That is the third ticket in a row stopped by a pin or rule the Architect did not run against the real data first.
+
 - 2026-11-05 SPA-047: When a ticket gives text to copy word for word (a prompt), put "matches the given text exactly" in a criterion, so a test pins the whole text. The Background alone let tests pin only the opening words, and two altered prompt sentences survived mutation.
 
 - 2026-11-05 SPA-042: A text rule written with a capitalised keyword (`Add ...`) misses the same words mid-sentence ("Whenever a land enters, add {R} or {G}"). When a rule matches rules text, grep every set for the keyword in any case before pinning numbers. Also, pin multi-face cards by their full printed name (`A // B`): a check on the front name alone can never fail. And give every clause or sentence boundary in a rule its own hand-built test, because the real sets rarely exercise it. Pin lists written from a script should come from a script line that prints every field the output shows (the land flag was missing, so Room of Refuge was pinned wrong).
