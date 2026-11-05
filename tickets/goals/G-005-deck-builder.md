@@ -207,3 +207,10 @@ The owner answered on 2026-11-05: "Approve all except 2 and 5. Agents are going 
   - a "for the opponent" marker (a gift Treasure, "its controller amasses").
 
   trk alone also suggested `modal` (unnamed "Choose one"), beam me up as a fact, a Planet token as a land entering, and a noncreature-artifact fact.
+- 2026-11-05 Owner, on Moopsy: "It is how good the card is and not the synergy; remove this as a test of synergy." The check `moopsy-with-death-payoffs` is removed from `fixtures/synergy-checks/trk.json`, leaving 5 checks. Moopsy's value as a cheap creature that trades up belongs to its set grade. The fact-combination supply the Architect floated for it (for example creature with deathtouch) is dropped from SPA-054's plan.
+- 2026-11-05 Owner, on tags: "Cares about legendary is different from legendary itself", and the tags carry plain names (`legendary`, `creature`, `land`). Planned as SPA-054, after SPA-043:
+  - each card's plain facts (code) are matched against `cares:<fact>` tags that Fable gives each card in a new card pass, with a strength of 1 to 3. A fact needs no theme and no minimum card count to be cared about;
+  - the pair score gains a fact term: one card's fact times the other card's `cares:` strength for that fact;
+  - new facts from the reviews: `draws-card` and `noncreature`;
+  - only trk is retagged and reviewed now (owner: the other sets cost time and are needed only for the backtest). msh, hob and fra are retagged just before SPA-046;
+  - same-name cards (Andromedan Automatons) stay on named partners, so that independent check stays unseen.
