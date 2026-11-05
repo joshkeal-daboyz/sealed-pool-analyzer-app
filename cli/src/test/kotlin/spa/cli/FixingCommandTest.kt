@@ -72,20 +72,23 @@ class FixingCommandTest {
                 "Haunted Ridge  MANA  BR  land",
             ),
         )
-        assertTrue("Carnivorous Cultivator" !in cardLines(setFixing("fra")))
+        // Its land search puts the land into the graveyard. Keyed by its printed name (SPA-049).
+        assertTrue("Carnivorous Cultivator // Enroot" !in cardLines(setFixing("fra")))
     }
 
     @Test
     fun `trk counts, five cards, and a colourless-only land is not fixing`() {
         assertSet(
             "trk",
-            "39 fixing cards: CYCLING 5, MANA 23, SEARCH 5, TREASURE 6",
+            "40 fixing cards: CYCLING 5, MANA 24, SEARCH 5, TREASURE 6",
             listOf(
                 "Humpback Whales  CYCLING  WUBRG",
                 "Final Frontier  SEARCH  WUBRG",
                 "Genesis Effect  MANA  WUBRG",
                 "Savvy Profiteer  TREASURE  WUBRG",
                 "Bajor  MANA  WR  land",
+                // A lowercase add mid-sentence (SPA-049).
+                "Dal R'El, Augment Orphan  MANA  RG",
             ),
         )
         // Isolinear Processor's only Add clause is {C}.
@@ -96,7 +99,7 @@ class FixingCommandTest {
     fun `set lines are sorted by name`() {
         val names = cardLines(setFixing("trk")).keys.toList()
         assertEquals(names.sorted(), names)
-        assertEquals(39, names.size)
+        assertEquals(40, names.size)
     }
 
     @Test
@@ -115,6 +118,7 @@ class FixingCommandTest {
             listOf(
                 "1 Bajor  MANA  WR  land",
                 "1 Cardassia Prime  MANA  WB  land",
+                "1 Dal R'El, Augment Orphan  MANA  RG",
                 "1 Ferenginar  MANA  BG  land",
                 "2 Final Frontier  SEARCH  WUBRG",
                 "1 Humpback Whales  CYCLING  WUBRG",
@@ -122,7 +126,7 @@ class FixingCommandTest {
                 "2 Unexplored Territory  SEARCH  WUBRG  land",
                 "2 Warp Core  SEARCH  WUBRG",
                 "1 Xenobotanist  MANA  WUBRG",
-                "12 fixing copies: W 10, U 9, B 11, R 9, G 9",
+                "13 fixing copies: W 10, U 9, B 11, R 10, G 10",
             ),
             run.stdoutLines(),
         )

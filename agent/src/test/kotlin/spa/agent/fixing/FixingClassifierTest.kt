@@ -167,6 +167,53 @@ class FixingClassifierTest {
     }
 
     @Test
+    fun `a lowercase add mid-sentence is a MANA clause`() {
+        val orphan =
+            fixing(
+                "Orphan Hand",
+                "Legendary Creature — Human",
+                "Whenever a land you control enters, add {R} or {G}.",
+            )
+        assertEquals("MANA RG", summary(orphan))
+        val pair = fixing("Red Pair", "Creature", "Whenever a land you control enters, add {R}{R}.")
+        assertNull(pair)
+    }
+
+    @Test
+    fun `a MANA clause stops at the period`() {
+        assertNull(fixing("Split Mana", "Artifact", "{T}: Add {R}. Spend it only on {G} spells."))
+    }
+
+    @Test
+    fun `a SEARCH clause stops at the period`() {
+        val tutor =
+            fixing(
+                "Tutor",
+                "Sorcery",
+                "Search your library for a card. You may reveal a land card from your hand.",
+            )
+        assertNull(tutor)
+    }
+
+    @Test
+    fun `a TREASURE match stays within one sentence`() {
+        assertNull(fixing("Token Maker", "Sorcery", "Create a token. Sacrifice a Treasure."))
+    }
+
+    @Test
+    fun `a two-faced card whose front face matches and back face does not keeps its kind`() {
+        val mdfc =
+            card(
+                face("Wild Grove", "Land", "{T}: Add {G} or {U}."),
+                face("Wild Ritual", "Instant", "Target creature gets +2/+2 until end of turn."),
+                layout = "modal_dfc",
+            )
+        val fixing = classifier.classify(mdfc)
+        assertEquals("MANA UG", summary(fixing))
+        assertTrue(fixing!!.isLand, "the front face is a land")
+    }
+
+    @Test
     fun `the seam - a test-only rule added to the list gives its kind with no other change`() {
         val scry =
             object : FixingRule {
