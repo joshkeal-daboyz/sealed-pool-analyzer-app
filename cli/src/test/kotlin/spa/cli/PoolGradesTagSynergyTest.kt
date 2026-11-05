@@ -85,10 +85,13 @@ class PoolGradesTagSynergyTest {
         val run = poolGrades("--tags", v1, "--weights", tagOnly())
 
         assertEquals(ExitCode.OK, run.exit, run.stderr)
+        // SPA-048's partner order: contribution, then name. Hemmer (1 x 6) and Starfleet Spanner
+        // Jockey (3 x 2) tie at 6, so Hemmer comes first, as `spa synergy` prints them; the
+        // ticket's Background example lists the same three names with the tie the other way.
         assertEquals(
             listOf(
-                "      tag synergy +0.13: 26 with the pool, 20.69 typical (Starfleet Spanner " +
-                    "Jockey, Hemmer, Fixing What Is Broken, Cetacean Ops)"
+                "      tag synergy +0.13: 26 with the pool, 20.69 typical (Hemmer, Fixing What " +
+                    "Is Broken, Starfleet Spanner Jockey, Cetacean Ops)"
             ),
             reasons(run, "1x Enterprise NX-01 (trk 58)"),
         )

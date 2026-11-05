@@ -151,7 +151,11 @@ object DeckPickCommand {
 
         val setGrade: (Printing) -> Double? = { lookup.grade(it, set)?.score }
 
-        fun grader(weights: Weights) = PoolGrader(setCards, themes, keywords, baseline, weights)
+        /** The set's tags, `<data>/tags/<code>.json`, read only for a `tagSynergy` above 0. */
+        private val tags = PoolGradesCommand.tags(data, set, index, null)
+
+        fun grader(weights: Weights) =
+            PoolGrader(setCards, themes, keywords, baseline, weights, tags)
 
         /** The builds of [file], each name resolved by full or front-face name. */
         fun read(file: Path): BuildSelection {

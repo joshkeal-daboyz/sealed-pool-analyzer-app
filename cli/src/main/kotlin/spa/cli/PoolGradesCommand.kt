@@ -6,8 +6,10 @@ import java.nio.file.Path
 import java.util.Locale
 import spa.agent.grade.GradeFiles
 import spa.agent.grade.GradeLookup
+import spa.agent.grader.GradingPool
 import spa.agent.poolgrade.PairGrades
 import spa.agent.poolgrade.PoolGrader
+import spa.agent.poolgrade.TagInputs
 import spa.agent.poolgrade.Weights
 import spa.agent.themes.PoolThemes
 import spa.agent.themes.SetThemes
@@ -21,11 +23,13 @@ import spa.core.text.Color
 
 /**
  * `spa pool-grades <pool-file> --set <code> [--pair <XY>] [--grades <file>] [--weights <file>]
- * [--data <dir>]`: each pair's candidate cards with their set grades adjusted for this pool, and
- * one reason line per nonzero part ([spa.agent.poolgrade.PoolGrader]). No network or model call.
+ * [--tags <file>] [--data <dir>]`: each pair's candidate cards with their set grades adjusted for
+ * this pool, and one reason line per nonzero part ([spa.agent.poolgrade.PoolGrader]). No network or
+ * model call.
  *
  * Set grades come from `--grades`, else `<data>/grades/<code>.v2.json` if it exists, else
- * `<data>/grades/<code>.json`; weights from `--weights`, else `<data>/weights/default.json`. A pool
+ * `<data>/grades/<code>.json`; weights from `--weights`, else `<data>/weights/default.json`; tags,
+ * read only when `tagSynergy` is above 0, from `--tags`, else `<data>/tags/<code>.json`. A pool
  * line that does not resolve is listed on stderr and the exit stays 0.
  */
 object PoolGradesCommand {
@@ -43,7 +47,10 @@ object PoolGradesCommand {
     /** The pairs [run] prints for [args], in print order. Unresolved pool lines go to [stderr]. */
     fun compute(args: List<String>, stderr: PrintStream): List<PairGrades> {
         val parsed =
-            Args.parse(args, valueOptions = setOf("set", "data", "pair", "grades", "weights"))
+            Args.parse(
+                args,
+                valueOptions = setOf("set", "data", "pair", "grades", "weights", "tags"),
+            )
         val file = Commands.onePositional(parsed, "pool file")
         val set = Commands.requiredSet(parsed)
         val data = Commands.dataDir(parsed)
@@ -60,11 +67,22 @@ object PoolGradesCommand {
         val keywords = PoolThemes.keywords(data.scryfall, index.setCodes)
         val setCards = PoolThemes.cards(index, keywords)
         val themes = SetThemes.count(setCards, ThemesCommand.mechanics(data, set)).map { it.theme }
-        val grader = PoolGrader(setCards, themes, keywords, baseline, weights)
+        val tags = tags(data, set, index, SynergyTableCommand.tagsOption(parsed))
+        val grader = PoolGrader(setCards, themes, keywords, baseline, weights, tags)
         val setGrade = { printing: Printing -> lookup.grade(printing, set)?.score }
         return if (pair == null) grader.gradeAll(pool, setGrade)
         else listOf(grader.grade(pool, pair, setGrade))
     }
+
+    /**
+     * The tags of [set] for the tag synergy part, read on first use only (when its weight is above
+     * 0): [given] (`--tags <file>`) when not null, else `<data>/tags/<code>.json`.
+     */
+    internal fun tags(data: DataDir, set: String, index: CardIndex, given: Path?): Lazy<TagInputs> =
+        lazy {
+            val file = SynergyTableCommand.tagFile(data, set, given)
+            TagInputs(SynergyTableCommand.table(data, set, file), GradingPool.printings(index))
+        }
 
     /**
      * The grade file used without `--grades`: `<code>.v2.json` if it exists, else `<code>.json`.
