@@ -30,10 +30,8 @@ class GradeImportCommand(private val now: () -> Instant = Instant::now) {
         val index = Commands.loadIndex(data, set)
         val createdAt = now().truncatedTo(ChronoUnit.SECONDS).toString()
         val result =
-            try {
+            io("cannot read $responses") {
                 GradeImport.run(responses, index, set, provenance, createdAt)
-            } catch (e: IOException) {
-                throw CliFailure("cannot read $responses: ${e.message}", ExitCode.ERROR, e)
             }
         val file = result.file
         if (file == null) {
@@ -42,11 +40,9 @@ class GradeImportCommand(private val now: () -> Instant = Instant::now) {
             return ExitCode.ERROR
         }
         val out = data.root.resolve("grades").resolve("$set.json")
-        try {
+        io("cannot write $out") {
             Files.createDirectories(out.parent)
             Files.writeString(out, GradeFiles.write(file))
-        } catch (e: IOException) {
-            throw CliFailure("cannot write $out: ${e.message}", ExitCode.ERROR, e)
         }
         val responseFiles =
             Files.list(responses).use { paths ->
@@ -58,6 +54,14 @@ class GradeImportCommand(private val now: () -> Instant = Instant::now) {
         stdout.flush()
         return ExitCode.OK
     }
+
+    /** Runs [block], reporting an I/O error as `<what>: <its message>`. */
+    private fun <T> io(what: String, block: () -> T): T =
+        try {
+            block()
+        } catch (e: IOException) {
+            throw CliFailure("$what: ${e.message}", ExitCode.ERROR, e)
+        }
 
     private fun required(args: Args, name: String, what: String): String =
         args.value(name) ?: throw CliFailure("--$name $what is required", ExitCode.USAGE)

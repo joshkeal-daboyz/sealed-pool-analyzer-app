@@ -46,20 +46,40 @@ object GradeImport {
                 .listDirectoryEntries()
                 .filter { GradingPackets.isCardFile(it.name) }
                 .sortedBy { it.name }
+        val packet = Packet(setCode, GradingPool.printings(index).associateBy(GradingPool::id))
         if (cardFiles.isEmpty()) {
-            return failed(
+            packet.problems +=
                 "$packetDir: no cards-NN.json files; run 'spa grade-packet $setCode' first"
-            )
+        } else {
+            cardFiles.forEach(packet::read)
+            packet.checkAllPacked()
         }
-        val pool = GradingPool.printings(index).associateBy(GradingPool::id)
+        if (packet.problems.isNotEmpty()) return ImportResult(null, packet.problems)
+
+        val file =
+            GradeFile(
+                GradeFileHeader(setCode, GradeSource.MODEL, provenance, createdAt),
+                packet.grades,
+            )
+        return try {
+            ImportResult(GradeFiles.parse(GradeFiles.write(file)), emptyList())
+        } catch (e: GradeFileException) {
+            ImportResult(null, e.problems.map { "grade file: $it" })
+        }
+    }
+
+    /** The card files read so far against the sealed [pool], with their grades and problems. */
+    private class Packet(private val setCode: String, private val pool: Map<String, Printing>) {
         val problems = mutableListOf<String>()
         val grades = mutableListOf<GradeEntry>()
-        val packed = mutableSetOf<String>()
-        for (cardFile in cardFiles) {
+        private val packed = mutableSetOf<String>()
+
+        /** Reads one card file and the response file beside it. */
+        fun read(cardFile: Path) {
             val ids = cardIds(cardFile)
             if (ids == null) {
                 problems += "${cardFile.name}: not a card file"
-                continue
+                return
             }
             packed += ids
             ids.filter { it !in pool }
@@ -77,25 +97,18 @@ object GradeImport {
                 }
             }
         }
-        pool.keys
-            .filter { it !in packed }
-            .forEach {
-                problems +=
-                    "$it is in the sealed pool but in no card file; " +
-                        "run 'spa grade-packet $setCode' again"
-            }
-        if (problems.isNotEmpty()) return ImportResult(null, problems)
 
-        val file =
-            GradeFile(GradeFileHeader(setCode, GradeSource.MODEL, provenance, createdAt), grades)
-        return try {
-            ImportResult(GradeFiles.parse(GradeFiles.write(file)), emptyList())
-        } catch (e: GradeFileException) {
-            ImportResult(null, e.problems.map { "grade file: $it" })
+        /** One problem for each pool card that no card file holds. */
+        fun checkAllPacked() {
+            pool.keys
+                .filter { it !in packed }
+                .forEach {
+                    problems +=
+                        "$it is in the sealed pool but in no card file; " +
+                            "run 'spa grade-packet $setCode' again"
+                }
         }
     }
-
-    private fun failed(problem: String) = ImportResult(null, listOf(problem))
 
     private fun entry(printing: Printing, grade: Pair<Double, Double>) =
         GradeEntry(
@@ -108,10 +121,9 @@ object GradeImport {
 
     /** The ids in a card file, or null when it is not a JSON array of objects with a string id. */
     private fun cardIds(cardFile: Path): List<String>? {
-        val element = parse(Files.readString(cardFile)) ?: return null
-        val cards = element as? JsonArray ?: return null
-        val ids = cards.map { string((it as? JsonObject)?.get("id")) }
-        return if (ids.all { it != null }) ids.filterNotNull() else null
+        val cards = parse(Files.readString(cardFile)) as? JsonArray
+        val ids = cards?.map { string((it as? JsonObject)?.get("id")) }
+        return if (ids != null && ids.all { it != null }) ids.filterNotNull() else null
     }
 
     private fun parse(text: String): JsonElement? =
@@ -142,25 +154,30 @@ object GradeImport {
         }
 
         fun check() {
+            val element = read() ?: return
+            if (element is JsonArray) {
+                element.forEachIndexed { i, entry -> entry(i + 1, entry) }
+                counts
+                    .filterValues { it > 1 }
+                    .forEach { (id, n) -> problem("$id is graded $n times") }
+                ids.filter { it !in counts }.forEach { problem("$it is not graded") }
+            } else {
+                problem("not a JSON array of {id, score, confidence}")
+            }
+        }
+
+        /** The response file's JSON, or null after naming why there is none. */
+        private fun read(): JsonElement? {
             if (!Files.isRegularFile(path)) {
                 problem("missing; grade every card in $cardFileName")
-                return
+                return null
             }
-            val text = Files.readString(path)
-            val element =
-                try {
-                    Json.parseToJsonElement(text)
-                } catch (e: SerializationException) {
-                    problem("not JSON: ${e.message?.lineSequence()?.first()}")
-                    return
-                }
-            if (element !is JsonArray) {
-                problem("not a JSON array of {id, score, confidence}")
-                return
+            return try {
+                Json.parseToJsonElement(Files.readString(path))
+            } catch (e: SerializationException) {
+                problem("not JSON: ${e.message?.lineSequence()?.first()}")
+                null
             }
-            element.forEachIndexed { i, entry -> entry(i + 1, entry) }
-            counts.filterValues { it > 1 }.forEach { (id, n) -> problem("$id is graded $n times") }
-            ids.filter { it !in counts }.forEach { problem("$it is not graded") }
         }
 
         private fun entry(position: Int, element: JsonElement) {

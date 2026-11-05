@@ -11,7 +11,7 @@ import spa.core.cards.Rarity
 class PacketCardTest {
     @Test
     fun `a single-faced card carries its own fields and its printing's rarity`() {
-        val bears = card("Bears", face("Bears", "{1}{G}", "Creature — Bear", "Trample", "2", "2"))
+        val bears = card("Bears", face("Bears", "{1}{G}", "Creature — Bear", "Trample", "2/2"))
 
         assertEquals(
             PacketCard(
@@ -33,8 +33,8 @@ class PacketCardTest {
         val dfc =
             card(
                 "Front // Back",
-                face("Front", "{U}", "Creature — Human", "Flip it.", "1", "1"),
-                face("Back", "", "Creature — Insect", "Flying", "3", "2"),
+                face("Front", "{U}", "Creature — Human", "Flip it.", "1/1"),
+                face("Back", "", "Creature — Insect", "Flying", "3/2"),
             )
 
         assertEquals(
@@ -54,13 +54,12 @@ class PacketCardTest {
 
     @Test
     fun `power and toughness are null when no face has them, and blank on a face without`() {
-        val spell =
-            card("Bolt", face("Bolt", "{R}", "Instant", "Deal 3.", power = null, toughness = null))
+        val spell = card("Bolt", face("Bolt", "{R}", "Instant", "Deal 3.", stats = null))
         val adventure =
             card(
                 "Giant // Stomp",
-                face("Giant", "{2}{R}", "Creature — Giant", "", "4", "3"),
-                face("Stomp", "{1}{R}", "Instant — Adventure", "Deal 2.", null, null),
+                face("Giant", "{2}{R}", "Creature — Giant", "", "4/3"),
+                face("Stomp", "{1}{R}", "Instant — Adventure", "Deal 2.", null),
             )
 
         val bolt = PacketCard.of(printing(spell, "xyz", "1"))

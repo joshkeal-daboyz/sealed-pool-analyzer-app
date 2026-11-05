@@ -13,14 +13,24 @@ import spa.core.cards.Rarity
 
 /** Small hand-made cards, indexes and a brief for the grader's tests. */
 internal object GraderTestCards {
+    /** A face; [stats] is `power/toughness`, or null for a face with neither. */
     fun face(
         name: String,
         cost: String = "{1}{G}",
         type: String = "Creature — Bear",
         text: String = "",
-        power: String? = "2",
-        toughness: String? = "2",
-    ) = Face(name, cost, 2.0, emptySet(), type, text, power, toughness)
+        stats: String? = "2/2",
+    ) =
+        Face(
+            name,
+            cost,
+            2.0,
+            emptySet(),
+            type,
+            text,
+            stats?.substringBefore('/'),
+            stats?.substringAfter('/'),
+        )
 
     fun card(name: String, vararg faces: Face, basic: Boolean = false): Card {
         val all = if (faces.isEmpty()) listOf(face(name)) else faces.toList()
