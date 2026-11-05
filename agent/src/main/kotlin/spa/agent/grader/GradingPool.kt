@@ -14,14 +14,25 @@ object GradingPool {
      * whose card (its Scryfall oracle id) an earlier printing already holds is a variant, such as a
      * showcase or borderless printing, and is left out.
      */
-    fun printings(index: CardIndex): List<Printing> = TODO()
+    fun printings(index: CardIndex): List<Printing> =
+        index.setCodes
+            .flatMap { set ->
+                index.printings(set).sortedWith(compareBy(collectorOrder) { it.collectorNumber })
+            }
+            .filter { !it.card.isBasicLand }
+            .distinctBy { it.card.oracleId }
 
     /** The packet id of [printing]: `<setCode>/<collectorNumber>`. */
-    fun id(printing: Printing): String = TODO()
+    fun id(printing: Printing): String = "${printing.setCode}/${printing.collectorNumber}"
 
     /**
      * Collector order: by the number's leading digits as a number, then by the rest of it, so `9`
-     * comes before `10` and `101` before `101b`.
+     * comes before `10` and `101` before `101b`. A number with no leading digits comes last.
      */
-    val collectorOrder: Comparator<String> = Comparator { _, _ -> TODO() }
+    val collectorOrder: Comparator<String> = compareBy<String> { leadingNumber(it) }.thenBy { it }
+
+    private fun leadingNumber(number: String): Long =
+        number.takeWhile { it.isDigit() }.take(MAX_DIGITS).toLongOrNull() ?: Long.MAX_VALUE
+
+    private const val MAX_DIGITS = 18
 }

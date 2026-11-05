@@ -243,4 +243,13 @@ class GradeImportTest {
 
         assertEquals(listOf("cards-02.json: not a card file"), found.take(1))
     }
+
+    @Test
+    fun `a grade file that would break its schema is reported, not returned`() {
+        val result = GradeImport.run(temp, index, "xyz", " ", createdAt)
+
+        assertNull(result.file)
+        assertEquals(1, result.problems.size, result.problems.toString())
+        assertEquals(true, result.problems[0].startsWith("grade file: /header/provenance"))
+    }
 }

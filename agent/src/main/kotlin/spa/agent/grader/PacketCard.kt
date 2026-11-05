@@ -1,6 +1,7 @@
 package spa.agent.grader
 
 import kotlinx.serialization.Serializable
+import spa.core.cards.Face
 import spa.core.cards.Printing
 
 /**
@@ -19,7 +20,27 @@ data class PacketCard(
     val toughness: String?,
 ) {
     companion object {
+        private const val FACE_SEPARATOR = " // "
+
         /** The packet card for [printing], with its id from [GradingPool.id]. */
-        fun of(printing: Printing): PacketCard = TODO()
+        fun of(printing: Printing): PacketCard {
+            val faces = printing.card.faces
+            return PacketCard(
+                id = GradingPool.id(printing),
+                name = printing.card.name,
+                manaCost = join(faces) { it.manaCost },
+                typeLine = join(faces) { it.typeLine },
+                rarity = printing.rarity.scryfallName,
+                oracleText = join(faces) { it.oracleText },
+                power = joinOptional(faces) { it.power },
+                toughness = joinOptional(faces) { it.toughness },
+            )
+        }
+
+        private fun join(faces: List<Face>, field: (Face) -> String): String =
+            faces.joinToString(FACE_SEPARATOR, transform = field)
+
+        private fun joinOptional(faces: List<Face>, field: (Face) -> String?): String? =
+            if (faces.all { field(it) == null }) null else join(faces) { field(it).orEmpty() }
     }
 }

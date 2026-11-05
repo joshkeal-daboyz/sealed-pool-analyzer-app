@@ -129,7 +129,7 @@ class GradingPacketsTest {
                 "Tether and fly.",
                 "Warden One",
                 "Sacrifice Aggro",
-                "Cinder A, B",
+                "Cinder A; B",
             )
             .forEach { assertTrue(it in rendered, "missing '$it' in:\n$rendered") }
     }
