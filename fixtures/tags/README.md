@@ -2,7 +2,7 @@
 
 Each file, `<code>.json`, is a set's synergy tags (`agent/src/main/resources/spa/agent/tags/tags.schema.json`): the set's synergy axes, each with an id, a name and a one-line definition, and for every card of the sealed pool (the set and its companions, basic lands excluded, one entry per distinct card, in collector order) its roles on those axes, `enabler` or `payoff` with a strength of 1 to 3, and up to 5 named partners, each a card of the pool (the card itself allowed) with a strength of 1 to 3. The provenance names the model, the tags prompt version and the date. The files are read with `TagFiles.read`. From tags prompt v2 each axis also carries `suppliedBy`: the card facts (`spa facts`) that supply it just by a card having them, each with a strength of 1 to 3, possibly none; a set then has 3 to 20 axes. A v1 file has no `suppliedBy` and reads and scores exactly as before. A reviewed file also has a `review` block (pass 3, below), which scoring ignores.
 
-The four committed files, `trk`, `msh`, `hob` and `fra`, were made with tags prompt v1.
+The four committed files, `trk`, `msh`, `hob` and `fra`, were made with tags prompt v2 and reviewed with review prompt v1 (2026-11-05). The earlier v1 files are frozen in `v1/`, as test data for the tests that pin values computed from them.
 
 ## How a tag file is made
 
@@ -59,4 +59,4 @@ After step 5, a fresh agent reviews the tags. Still no API key and no model call
 
    It stops with one line if the tag file changed since step 1. It writes `fixtures/tags/<code>.json` only when every correction names a card of its card file, has a reason, removes or changes only what the card has and adds only what it lacks, and the corrected tags pass every check of step 5. The file keeps its set, axes and tagging provenance, and gets a `review` block: the review provenance, the count of applied corrections by action, and each applied correction with its reason. The fact suggestions are printed, one per line, for the Architect; they are never applied, because facts are code (`spa facts`).
 
-A new prompt version is a new pair of resource files, `tags-axes-<version>.md` and `tags-roles-<version>.md`, used with `--prompt <version>` in steps 1 and 3. The default is `v2`; `--prompt v1` writes the v1 packets, with no facts and no `suppliedBy` (3 to 15 axes), exactly as the committed files were made.
+A new prompt version is a new pair of resource files, `tags-axes-<version>.md` and `tags-roles-<version>.md`, used with `--prompt <version>` in steps 1 and 3. The default is `v2`; `--prompt v1` writes the v1 packets, with no facts and no `suppliedBy` (3 to 15 axes), exactly as the files in `v1/` were made.

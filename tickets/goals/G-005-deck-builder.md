@@ -180,3 +180,30 @@ The owner answered on 2026-11-05: "Approve all except 2 and 5. Agents are going 
   - **Blind.** Like grading: no win rates, no reviews, and none of the owner's synergy checks.
   - **Cost.** About 4% of the weekly Fable allowance per set, so 16% for four sets. With the v2 retag that comes to roughly 60% of the week by the 2026-11-11 reset.
   - **Order.** SPA-050 merges, then SPA-051, then SPA-052. Each set is then tagged with v2, reviewed, and its owner checks run.
+- 2026-11-05 Architect: all four sets retagged with tags prompt v2 and reviewed (review v1) by fresh Fable agents. Each agent read only its packet folder, and none saw the owner's checks. trk was committed while 17Lands still returns 403 for TRK data.
+
+  | Set | Axes | Supply links | Roles | Partners | Untagged | Review corrections |
+  | --- | --- | --- | --- | --- | --- | --- |
+  | trk | 17 | 66 | 456 | 407 | 70 | 7 |
+  | msh | 17 | 37 | 369 | 243 | 41 | 4 |
+  | hob | 20 | 36 | 280 | 242 | 26 | 23 |
+  | fra | 17 | 34 | 399 | 561 | 36 | 8 |
+
+  - There are fewer hand-tagged roles than under v1, and more untagged cards, because facts now supply what roles used to. trk's pair table: 15,333 nonzero pairs (v1: 7,259), maximum 30.
+  - Weekly Fable allowance: 33% to 52%. The 5-hour limit is at 79%.
+- **Owner checks on v2 trk tags: 5 of 6 pass.**
+  - automatons-with-itself (independent): pass, score 3.
+  - enters-with-beam-me-up (independent): pass, 494 of 590, share 0.837 (v1: 0.888).
+  - lands-with-land-mechanics (independent): pass, 504 of 504.
+  - lands-with-landfall (seen): pass, 396 of 396 (v1: 0.194).
+  - moopsy-with-death-payoffs (seen): pass, 5 of 5 (v1: 0 of 5).
+  - legendary-permanents-with-legendary-payoffs (seen): **fail**, 71 of 516, share 0.138 (v1: 0.043). trk v2 still has no legendary axis: pass 1 judged the four legendary payoffs, all sds bonus-sheet cards, too few. This is reported as is; nothing is changed to chase it.
+- **Fact suggestions** from the four reviews are kept in scratchpad `tagging-v2/suggestions/`, for a later fact ticket; none was applied. Suggestions made by two or more sets:
+  - draws-card;
+  - a sacrifice outlet;
+  - puts +1/+1 counters;
+  - adds mana;
+  - makes a creature token only (makes-token now also counts Treasure, Food and Planet tokens, and tokens given to the opponent);
+  - a "for the opponent" marker (a gift Treasure, "its controller amasses").
+
+  trk alone also suggested `modal` (unnamed "Choose one"), beam me up as a fact, a Planet token as a land entering, and a noncreature-artifact fact.

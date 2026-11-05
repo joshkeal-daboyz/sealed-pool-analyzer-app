@@ -1,104 +1,296 @@
 {
   "set": "hob",
-  "provenance": "claude-fable-5-1 via Claude Code, tags prompt v1, 2026-11-05",
+  "provenance": "claude-fable-5-1 via Claude Code, tags prompt v2, 2026-11-05",
   "axes": [
     {
-      "id": "amass-army",
-      "name": "Amass and the Goblin Army",
-      "definition": "A card that amasses Goblins or otherwise puts +1/+1 counters on a Goblin, Orc or Army you control, growing the one Army that Great Ugly-Looking Goblin, The Great Goblin, Goblin Plate Mail and Goblin-town reward."
+      "id": "amass",
+      "name": "Amass",
+      "definition": "Amassing Goblins: creating a Goblin Army token or putting +1/+1 counters on your Army or other Goblins.",
+      "suppliedBy": [
+        {
+          "fact": "kw:amass",
+          "strength": 3
+        }
+      ]
     },
     {
       "id": "goblins",
-      "name": "Goblin creatures",
-      "definition": "A Goblin creature or a card that makes one (the Army token counts), feeding cards that check for or sacrifice another Goblin such as Bolg's Company, The Great Goblin, Along the Crooked Way and Goblin-town."
+      "name": "Goblins",
+      "definition": "Goblin creatures you control, including the Goblin Army token that amass creates.",
+      "suppliedBy": [
+        {
+          "fact": "type:goblin",
+          "strength": 3
+        },
+        {
+          "fact": "kw:amass",
+          "strength": 2
+        }
+      ]
     },
     {
-      "id": "second-card-draw",
-      "name": "Second card each turn",
-      "definition": "A card that draws you a card beyond your draw step on demand: recruit, looting, cantrips, draw-two effects and repeatable draw abilities, which turn on Lakeshore Apothecary, Master's Councillors, Bard the Bowman, Lake-town Toymaker and Ravenhill Flock."
+      "id": "sacrifice-fodder",
+      "name": "Sacrifice fodder",
+      "definition": "Permanents you are happy to sacrifice to an outlet: creature tokens, Treasures, cheap creatures and creatures with dies triggers.",
+      "suppliedBy": [
+        {
+          "fact": "makes-token",
+          "strength": 2
+        },
+        {
+          "fact": "kw:treasure",
+          "strength": 2
+        },
+        {
+          "fact": "dies-trigger",
+          "strength": 2
+        },
+        {
+          "fact": "kw:recruit",
+          "strength": 1
+        }
+      ]
     },
     {
-      "id": "go-wide-tokens",
-      "name": "Creature tokens and wide boards",
-      "definition": "A card that creates creature tokens (recruit Soldiers, Dwarf tokens, Elf tokens, Wolf and Bear tokens) or several cheap bodies, rewarded by token triggers and team-wide effects such as Belladonna Took, Bard King of Dale, Eagle of the Great Shelf, Esgaroth Garrison, Dwarven Provisioner and the anthems."
+      "id": "creature-deaths",
+      "name": "Creature deaths",
+      "definition": "Making creatures die: sacrifice outlets, edicts, creatures that trade or chump freely, and removal that destroys rather than exiles.",
+      "suppliedBy": [
+        {
+          "fact": "creature",
+          "strength": 1
+        }
+      ]
     },
     {
-      "id": "storied",
-      "name": "Storied: artifacts, legendaries and Sagas",
-      "definition": "A permanent that is an artifact, legendary or a Saga, or a card that makes one (Treasures, Equipment tokens, Axes), counting toward the three needed for an enduring story on the nine storied cards."
+      "id": "tokens",
+      "name": "Tokens",
+      "definition": "Creating tokens of any kind under your control: creature tokens, Treasures, Equipment tokens and Goblin Armies.",
+      "suppliedBy": [
+        {
+          "fact": "makes-token",
+          "strength": 3
+        },
+        {
+          "fact": "kw:recruit",
+          "strength": 2
+        },
+        {
+          "fact": "kw:treasure",
+          "strength": 2
+        },
+        {
+          "fact": "kw:amass",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "board-width",
+      "name": "Board width",
+      "definition": "Having many creatures on the battlefield at once: cheap creatures, token makers and creatures that bring a second body.",
+      "suppliedBy": [
+        {
+          "fact": "makes-token",
+          "strength": 2
+        },
+        {
+          "fact": "creature",
+          "strength": 1
+        },
+        {
+          "fact": "kw:recruit",
+          "strength": 1
+        }
+      ]
+    },
+    {
+      "id": "treasures",
+      "name": "Treasures",
+      "definition": "Creating Treasure tokens and keeping them around for Treasure-count and Treasure-mana payoffs.",
+      "suppliedBy": [
+        {
+          "fact": "kw:treasure",
+          "strength": 3
+        }
+      ]
+    },
+    {
+      "id": "artifacts",
+      "name": "Artifacts",
+      "definition": "Artifacts entering or staying under your control: Equipment, Treasures, Vehicles, other artifacts and artifact tokens.",
+      "suppliedBy": [
+        {
+          "fact": "artifact",
+          "strength": 3
+        },
+        {
+          "fact": "kw:treasure",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "enduring-story",
+      "name": "Storied",
+      "definition": "Permanents that count toward storied's enduring story: artifacts, legendary permanents and Sagas you control.",
+      "suppliedBy": [
+        {
+          "fact": "artifact",
+          "strength": 3
+        },
+        {
+          "fact": "legendary",
+          "strength": 3
+        },
+        {
+          "fact": "kw:treasure",
+          "strength": 2
+        }
+      ]
     },
     {
       "id": "equipment",
       "name": "Equipment",
-      "definition": "An Equipment card or a card that creates an Equipment token, which Vow to Erebor, Kili, Dwarven Mauler, Iron Hills Stalwart, Thorin Mountain-king, Dain Ironfoot, Dwalin, Dain's Company and The Lonely Mountain reward."
+      "definition": "Equipment you control: Equipment cards and Equipment tokens to attach, re-attach, count and put hone counters on.",
+      "suppliedBy": [
+        {
+          "fact": "kw:equip",
+          "strength": 3
+        }
+      ]
     },
     {
       "id": "dwarves",
-      "name": "Dwarf creatures",
-      "definition": "A Dwarf creature or a card that makes a Dwarf token, triggering or enabling Fili, Kili, Balin, Bifur, Dain's Company, Dwarven Mattock, Vow to Erebor and Iron Hills."
-    },
-    {
-      "id": "ferocious-power-four",
-      "name": "Ferocious: power 4 or greater",
-      "definition": "A creature with power 4 or greater, or a card that reliably makes one (large Bears, Giants, big pump and counters), which turns on the six ferocious cards and Stone by Sunlight's first mode."
-    },
-    {
-      "id": "wolves-and-bears",
-      "name": "Wolves, Bears and Spiders",
-      "definition": "A creature that is a Wolf, Bear or Spider, or a card that makes a Wolf or Bear token, which Beorn the Fierce, Little Bear, Bejeweled Warg, Chief Warg's Company and Mirkwood reward."
+      "name": "Dwarves",
+      "definition": "Dwarf creatures you control or that enter under your control, including 2/2 Dwarf tokens.",
+      "suppliedBy": [
+        {
+          "fact": "type:dwarf",
+          "strength": 3
+        }
+      ]
     },
     {
       "id": "elves",
-      "name": "Elf creatures",
-      "definition": "An Elf creature or a card that makes Elf tokens, rewarded by Woodland Weavemaster, both Thranduils, Thranduil's Company, Cantankerous Keepers, Down in the Valley, Elvenking's Halls and Elven Passage."
+      "name": "Elves",
+      "definition": "Elf creatures you control, including Elf tokens, and Elf cards in your hand or graveyard.",
+      "suppliedBy": [
+        {
+          "fact": "type:elf",
+          "strength": 3
+        }
+      ]
+    },
+    {
+      "id": "wolves",
+      "name": "Wolves",
+      "definition": "Wolf creatures you control, including 2/2 Wolf tokens.",
+      "suppliedBy": [
+        {
+          "fact": "type:wolf",
+          "strength": 3
+        }
+      ]
+    },
+    {
+      "id": "bears",
+      "name": "Bears",
+      "definition": "Bear creatures you control, including Bear tokens and creatures that become Bears.",
+      "suppliedBy": [
+        {
+          "fact": "type:bear",
+          "strength": 3
+        }
+      ]
+    },
+    {
+      "id": "ferocious",
+      "name": "Ferocious",
+      "definition": "Controlling a creature with power 4 or greater, by printed power, counters or pump, to turn on ferocious.",
+      "suppliedBy": []
     },
     {
       "id": "landfall",
-      "name": "Landfall: lands entering",
-      "definition": "A card that puts extra lands onto the battlefield or lets you play more of them: extra land drops, land fetch to the battlefield, lands returned to hand or flickered, and land-finding, which triggers the nine landfall cards and Last Light of Durin's Day."
+      "name": "Landfall",
+      "definition": "Lands entering under your control: land drops, extra land drops, lands fetched onto the battlefield, and lands bounced or flickered to replay.",
+      "suppliedBy": [
+        {
+          "fact": "land",
+          "strength": 3
+        }
+      ]
     },
     {
-      "id": "treasure",
-      "name": "Treasure tokens",
-      "definition": "A card that creates Treasure tokens, which both Smaugs, The Misty Mountains Cold, Fateful Discovery, storied, and the artifact-sacrifice costs on Stone-Giant, Stir Up Trouble, Snowslope Hunter and Gollum the Abandoned reward."
-    },
-    {
-      "id": "sacrifice-fodder",
-      "name": "Expendable creatures and death triggers",
-      "definition": "A creature or artifact that is cheap to lose or wants to die: tokens, death-trigger creatures like Fearsome Goblin Pair, Front Porch Sentries and Lake-town Lookout, and Treasures, feeding sacrifice outlets (Stir Up Trouble, Bolg, Rhovanion Rampager, Snowslope Hunter, Tom Bert and William, Allure of Power) and creature-died payoffs (Great Fierce Bee, Dreaded Bat-Cloud, The Great Goblin)."
+      "id": "second-draw",
+      "name": "Second card drawn",
+      "definition": "Drawing a second card in a turn on your own turn: recruit, looting, cantrips, draw-two spells and repeatable draw.",
+      "suppliedBy": [
+        {
+          "fact": "kw:recruit",
+          "strength": 3
+        }
+      ]
     },
     {
       "id": "graveyard",
-      "name": "Filling your graveyard",
-      "definition": "A card that puts cards from your library or hand into your graveyard (self-mill, recruit and looting discards, flashback cards, Adventures and spells that die), which threshold, Master's Councillors, The Master of Lake-town, Bilbo Thief in the Night, Gathering of Darkness, Along the Crooked Way, The Mountain-king's Return, Thranduil the Elvenking and the flashback spells reward."
+      "name": "Graveyard",
+      "definition": "Filling your own graveyard: recruit and loot discards, self-mill, cycling and creature cards that die, so threshold, recursion and cast-from-graveyard cards have fuel.",
+      "suppliedBy": [
+        {
+          "fact": "kw:recruit",
+          "strength": 2
+        },
+        {
+          "fact": "kw:mill",
+          "strength": 2
+        },
+        {
+          "fact": "kw:cycling",
+          "strength": 1
+        }
+      ]
     },
     {
       "id": "noncreature-spells",
-      "name": "Casting noncreature spells",
-      "definition": "A cheap instant, sorcery, Adventure half, artifact or enchantment you cast, triggering Bothersome Noisemaker, Gandalf Goblins' Bane, Wizard's Staff prowess, Uncover the Moon-Letters and discounted by Glamdring."
+      "name": "Noncreature spells",
+      "definition": "Casting noncreature spells: instants, sorceries, enchantments, artifacts and the Adventure halves of adventurer cards.",
+      "suppliedBy": [
+        {
+          "fact": "instant",
+          "strength": 3
+        },
+        {
+          "fact": "sorcery",
+          "strength": 3
+        },
+        {
+          "fact": "enchantment",
+          "strength": 2
+        },
+        {
+          "fact": "artifact",
+          "strength": 2
+        }
+      ]
+    },
+    {
+      "id": "enters-triggers",
+      "name": "Enters triggers",
+      "definition": "Permanents with enters-the-battlefield triggers that pay off again when bounced, flickered, reanimated or recast.",
+      "suppliedBy": [
+        {
+          "fact": "enters-trigger",
+          "strength": 3
+        }
+      ]
     }
   ],
   "cards": [
     {
       "id": "hob/1",
       "name": "Long-Bodied Grey Dog",
-      "roles": [
-        {
-          "axis": "treasure",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "sacrifice-fodder",
-          "role": "enabler",
-          "strength": 1
-        }
-      ],
+      "roles": [],
       "partners": []
     },
     {
@@ -123,7 +315,7 @@
           "strength": 2
         },
         {
-          "axis": "sacrifice-fodder",
+          "axis": "creature-deaths",
           "role": "enabler",
           "strength": 1
         }
@@ -140,19 +332,9 @@
       "name": "Belladonna Took",
       "roles": [
         {
-          "axis": "go-wide-tokens",
+          "axis": "tokens",
           "role": "payoff",
           "strength": 3
-        },
-        {
-          "axis": "treasure",
-          "role": "payoff",
-          "strength": 1
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
         }
       ],
       "partners": [
@@ -165,6 +347,14 @@
           "strength": 2
         },
         {
+          "id": "hob/29",
+          "strength": 2
+        },
+        {
+          "id": "hob/12",
+          "strength": 1
+        },
+        {
           "id": "hob/104",
           "strength": 1
         }
@@ -173,67 +363,19 @@
     {
       "id": "hob/5",
       "name": "Bilbo's Gambit",
-      "roles": [
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 1
-        }
-      ],
-      "partners": [
-        {
-          "id": "hob/164",
-          "strength": 1
-        }
-      ]
+      "roles": [],
+      "partners": []
     },
     {
       "id": "hob/6",
       "name": "Bofur, Reliable Guardian // Concerted Care",
-      "roles": [
-        {
-          "axis": "dwarves",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 1
-        }
-      ],
+      "roles": [],
       "partners": []
     },
     {
       "id": "hob/7",
       "name": "Celebrate the Mountain-king",
-      "roles": [
-        {
-          "axis": "second-card-draw",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "go-wide-tokens",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "graveyard",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 1
-        }
-      ],
+      "roles": [],
       "partners": []
     },
     {
@@ -241,18 +383,8 @@
       "name": "Dáin, Lord of the Iron Hills",
       "roles": [
         {
-          "axis": "storied",
+          "axis": "enduring-story",
           "role": "payoff",
-          "strength": 2
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "dwarves",
-          "role": "enabler",
           "strength": 2
         }
       ],
@@ -263,47 +395,41 @@
       "name": "Dwarven Provisioner",
       "roles": [
         {
-          "axis": "dwarves",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "go-wide-tokens",
+          "axis": "board-width",
           "role": "payoff",
           "strength": 2
         }
       ],
-      "partners": []
+      "partners": [
+        {
+          "id": "hob/36",
+          "strength": 1
+        }
+      ]
     },
     {
       "id": "hob/10",
       "name": "Dwarven Shortsword",
       "roles": [
         {
-          "axis": "equipment",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
           "axis": "dwarves",
           "role": "enabler",
           "strength": 2
         },
         {
-          "axis": "go-wide-tokens",
+          "axis": "enters-triggers",
           "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
+          "strength": 2
         }
       ],
       "partners": [
         {
           "id": "hob/17",
           "strength": 2
+        },
+        {
+          "id": "hob/31",
+          "strength": 1
         }
       ]
     },
@@ -312,7 +438,7 @@
       "name": "Eagle of the Great Shelf",
       "roles": [
         {
-          "axis": "go-wide-tokens",
+          "axis": "board-width",
           "role": "payoff",
           "strength": 3
         }
@@ -324,36 +450,22 @@
       "name": "The Eagles Are Coming!",
       "roles": [
         {
-          "axis": "go-wide-tokens",
-          "role": "enabler",
+          "axis": "enters-triggers",
+          "role": "payoff",
           "strength": 2
-        },
-        {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 1
         }
       ],
       "partners": [
         {
+          "id": "hob/4",
+          "strength": 2
+        },
+        {
+          "id": "hob/46",
+          "strength": 2
+        },
+        {
           "id": "hob/142",
-          "strength": 2
-        },
-        {
-          "id": "hob/61",
-          "strength": 2
-        },
-        {
-          "id": "hob/144",
-          "strength": 2
-        },
-        {
-          "id": "hob/97",
           "strength": 1
         }
       ]
@@ -363,24 +475,9 @@
       "name": "Esgaroth Garrison",
       "roles": [
         {
-          "axis": "go-wide-tokens",
+          "axis": "board-width",
           "role": "payoff",
           "strength": 2
-        },
-        {
-          "axis": "go-wide-tokens",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "second-card-draw",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "graveyard",
-          "role": "enabler",
-          "strength": 1
         }
       ],
       "partners": []
@@ -390,34 +487,14 @@
       "name": "Fíli the Pathfinder",
       "roles": [
         {
-          "axis": "storied",
+          "axis": "enduring-story",
           "role": "payoff",
           "strength": 2
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "dwarves",
-          "role": "enabler",
-          "strength": 3
         },
         {
           "axis": "dwarves",
           "role": "payoff",
           "strength": 3
-        },
-        {
-          "axis": "go-wide-tokens",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "go-wide-tokens",
-          "role": "payoff",
-          "strength": 1
         }
       ],
       "partners": [
@@ -431,7 +508,11 @@
         },
         {
           "id": "hob/87",
-          "strength": 2
+          "strength": 1
+        },
+        {
+          "id": "hob/59",
+          "strength": 1
         }
       ]
     },
@@ -440,39 +521,34 @@
       "name": "Gleaming Splendor",
       "roles": [
         {
-          "axis": "second-card-draw",
+          "axis": "second-draw",
           "role": "enabler",
           "strength": 2
-        },
-        {
-          "axis": "treasure",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 1
         }
       ],
-      "partners": []
+      "partners": [
+        {
+          "id": "hob/144",
+          "strength": 1
+        }
+      ]
     },
     {
       "id": "hob/16",
       "name": "Iron Hills Blacksmith",
       "roles": [
         {
-          "axis": "dwarves",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
           "axis": "equipment",
           "role": "enabler",
           "strength": 2
         },
         {
-          "axis": "storied",
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enduring-story",
           "role": "enabler",
           "strength": 1
         }
@@ -483,11 +559,7 @@
           "strength": 1
         },
         {
-          "id": "hob/95",
-          "strength": 1
-        },
-        {
-          "id": "hob/114",
+          "id": "hob/154",
           "strength": 1
         }
       ]
@@ -496,21 +568,6 @@
       "id": "hob/17",
       "name": "Kíli the Resourceful",
       "roles": [
-        {
-          "axis": "storied",
-          "role": "payoff",
-          "strength": 2
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "dwarves",
-          "role": "enabler",
-          "strength": 2
-        },
         {
           "axis": "dwarves",
           "role": "payoff",
@@ -522,22 +579,26 @@
           "strength": 3
         },
         {
-          "axis": "second-card-draw",
-          "role": "enabler",
+          "axis": "enduring-story",
+          "role": "payoff",
           "strength": 2
         }
       ],
       "partners": [
         {
-          "id": "hob/14",
+          "id": "hob/16",
           "strength": 2
         },
         {
           "id": "hob/10",
-          "strength": 1
+          "strength": 2
         },
         {
-          "id": "hob/147",
+          "id": "hob/14",
+          "strength": 2
+        },
+        {
+          "id": "hob/177",
           "strength": 1
         }
       ]
@@ -545,45 +606,15 @@
     {
       "id": "hob/18",
       "name": "Lake-town Lookout",
-      "roles": [
-        {
-          "axis": "sacrifice-fodder",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "second-card-draw",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "go-wide-tokens",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "graveyard",
-          "role": "enabler",
-          "strength": 1
-        }
-      ],
-      "partners": [
-        {
-          "id": "hob/84",
-          "strength": 1
-        },
-        {
-          "id": "hob/169",
-          "strength": 1
-        }
-      ]
+      "roles": [],
+      "partners": []
     },
     {
       "id": "hob/19",
       "name": "Lake-town Toymaker",
       "roles": [
         {
-          "axis": "second-card-draw",
+          "axis": "second-draw",
           "role": "payoff",
           "strength": 3
         }
@@ -595,49 +626,25 @@
       "name": "Magnificent End",
       "roles": [
         {
-          "axis": "noncreature-spells",
+          "axis": "creature-deaths",
           "role": "enabler",
           "strength": 1
         }
       ],
-      "partners": [
-        {
-          "id": "hob/30",
-          "strength": 1
-        },
-        {
-          "id": "hob/37",
-          "strength": 1
-        }
-      ]
+      "partners": []
     },
     {
       "id": "hob/21",
       "name": "Moment of Glory",
       "roles": [
         {
-          "axis": "noncreature-spells",
-          "role": "enabler",
+          "axis": "graveyard",
+          "role": "payoff",
           "strength": 2
         },
         {
-          "axis": "graveyard",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "graveyard",
+          "axis": "board-width",
           "role": "payoff",
-          "strength": 1
-        },
-        {
-          "axis": "go-wide-tokens",
-          "role": "payoff",
-          "strength": 1
-        },
-        {
-          "axis": "amass-army",
-          "role": "enabler",
           "strength": 1
         }
       ],
@@ -653,41 +660,22 @@
       "name": "The Mountain-king's Return",
       "roles": [
         {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "second-card-draw",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "go-wide-tokens",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "graveyard",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
           "axis": "graveyard",
           "role": "payoff",
           "strength": 2
         },
         {
-          "axis": "noncreature-spells",
+          "axis": "enduring-story",
           "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "enters-triggers",
+          "role": "payoff",
           "strength": 1
         }
       ],
       "partners": [
-        {
-          "id": "hob/156",
-          "strength": 1
-        },
         {
           "id": "hob/60",
           "strength": 1
@@ -699,48 +687,22 @@
       "name": "Ori, Keeper of Songs",
       "roles": [
         {
-          "axis": "storied",
+          "axis": "enduring-story",
           "role": "payoff",
-          "strength": 2
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "dwarves",
-          "role": "enabler",
           "strength": 2
         }
       ],
-      "partners": []
+      "partners": [
+        {
+          "id": "hob/175",
+          "strength": 1
+        }
+      ]
     },
     {
       "id": "hob/24",
       "name": "The Queen of Dale",
-      "roles": [
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "second-card-draw",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "go-wide-tokens",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "graveyard",
-          "role": "enabler",
-          "strength": 1
-        }
-      ],
+      "roles": [],
       "partners": []
     },
     {
@@ -748,17 +710,12 @@
       "name": "Roads Go Ever, Ever On",
       "roles": [
         {
-          "axis": "storied",
+          "axis": "enduring-story",
           "role": "enabler",
           "strength": 2
         },
         {
           "axis": "landfall",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "noncreature-spells",
           "role": "enabler",
           "strength": 1
         }
@@ -776,9 +733,14 @@
       "name": "Stone by Sunlight",
       "roles": [
         {
-          "axis": "noncreature-spells",
+          "axis": "creature-deaths",
           "role": "enabler",
-          "strength": 2
+          "strength": 1
+        },
+        {
+          "axis": "enduring-story",
+          "role": "enabler",
+          "strength": 1
         }
       ],
       "partners": []
@@ -788,13 +750,8 @@
       "name": "Thorin's Last Stand",
       "roles": [
         {
-          "axis": "go-wide-tokens",
+          "axis": "board-width",
           "role": "payoff",
-          "strength": 2
-        },
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
           "strength": 1
         }
       ],
@@ -805,33 +762,32 @@
       "name": "An Unexpected Party // At the Door",
       "roles": [
         {
-          "axis": "go-wide-tokens",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "go-wide-tokens",
-          "role": "payoff",
-          "strength": 2
-        },
-        {
           "axis": "dwarves",
           "role": "enabler",
-          "strength": 2
+          "strength": 3
         },
         {
-          "axis": "noncreature-spells",
+          "axis": "board-width",
           "role": "enabler",
-          "strength": 1
+          "strength": 3
+        },
+        {
+          "axis": "board-width",
+          "role": "payoff",
+          "strength": 2
         }
       ],
       "partners": [
         {
-          "id": "hob/144",
-          "strength": 1
+          "id": "hob/4",
+          "strength": 2
         },
         {
-          "id": "hob/14",
+          "id": "hob/144",
+          "strength": 2
+        },
+        {
+          "id": "hob/177",
           "strength": 1
         }
       ]
@@ -839,41 +795,29 @@
     {
       "id": "hob/30",
       "name": "Velvetwing Butterflies // Gaze in Wonder",
-      "roles": [
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 2
-        }
-      ],
-      "partners": [
-        {
-          "id": "hob/20",
-          "strength": 1
-        }
-      ]
+      "roles": [],
+      "partners": []
     },
     {
       "id": "hob/31",
       "name": "Vow to Erebor",
       "roles": [
         {
-          "axis": "noncreature-spells",
-          "role": "enabler",
+          "axis": "dwarves",
+          "role": "payoff",
           "strength": 2
         },
         {
           "axis": "equipment",
           "role": "payoff",
           "strength": 2
-        },
-        {
-          "axis": "dwarves",
-          "role": "payoff",
-          "strength": 2
         }
       ],
       "partners": [
+        {
+          "id": "hob/177",
+          "strength": 1
+        },
         {
           "id": "hob/157",
           "strength": 1
@@ -885,14 +829,9 @@
       "name": "Bilbo, Luckwearer // Burglar's Plot",
       "roles": [
         {
-          "axis": "storied",
+          "axis": "second-draw",
           "role": "enabler",
           "strength": 1
-        },
-        {
-          "axis": "second-card-draw",
-          "role": "enabler",
-          "strength": 2
         },
         {
           "axis": "graveyard",
@@ -907,40 +846,30 @@
       "name": "Bilbo, Thief in the Night",
       "roles": [
         {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
           "axis": "graveyard",
           "role": "payoff",
           "strength": 3
-        },
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 1
         }
       ],
       "partners": [
         {
-          "id": "hob/174",
-          "strength": 3
-        },
-        {
-          "id": "hob/49",
-          "strength": 1
-        },
-        {
           "id": "hob/21",
-          "strength": 1
-        },
-        {
-          "id": "hob/115",
-          "strength": 1
+          "strength": 2
         },
         {
           "id": "hob/51",
+          "strength": 2
+        },
+        {
+          "id": "hob/115",
+          "strength": 2
+        },
+        {
+          "id": "hob/174",
+          "strength": 2
+        },
+        {
+          "id": "hob/49",
           "strength": 1
         }
       ]
@@ -950,28 +879,14 @@
       "name": "Bilbo Baggins, Burglar // Take a Glance",
       "roles": [
         {
-          "axis": "storied",
+          "axis": "second-draw",
           "role": "enabler",
           "strength": 1
-        },
-        {
-          "axis": "second-card-draw",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 2
         }
       ],
       "partners": [
         {
-          "id": "hob/160",
-          "strength": 1
-        },
-        {
-          "id": "hob/12",
+          "id": "hob/175",
           "strength": 1
         }
       ]
@@ -981,17 +896,12 @@
       "name": "Confusticate and Bebother",
       "roles": [
         {
-          "axis": "second-card-draw",
+          "axis": "second-draw",
           "role": "enabler",
           "strength": 2
         },
         {
           "axis": "graveyard",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "noncreature-spells",
           "role": "enabler",
           "strength": 1
         }
@@ -1003,36 +913,31 @@
       "name": "Elrond, Moon-Reader",
       "roles": [
         {
-          "axis": "elves",
+          "axis": "second-draw",
           "role": "enabler",
           "strength": 2
         },
         {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "second-card-draw",
-          "role": "enabler",
+          "axis": "enters-triggers",
+          "role": "payoff",
           "strength": 2
         }
       ],
       "partners": [
         {
-          "id": "hob/143",
-          "strength": 2
+          "id": "hob/9",
+          "strength": 1
+        },
+        {
+          "id": "hob/38",
+          "strength": 1
         },
         {
           "id": "hob/64",
           "strength": 1
         },
         {
-          "id": "hob/112",
-          "strength": 1
-        },
-        {
-          "id": "hob/142",
+          "id": "hob/143",
           "strength": 1
         },
         {
@@ -1046,40 +951,20 @@
       "name": "Elven Raft-Steerer",
       "roles": [
         {
-          "axis": "elves",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
           "axis": "landfall",
           "role": "payoff",
           "strength": 2
         }
       ],
-      "partners": [
-        {
-          "id": "hob/20",
-          "strength": 1
-        }
-      ]
+      "partners": []
     },
     {
       "id": "hob/38",
       "name": "Elvenking's Harper",
-      "roles": [
-        {
-          "axis": "elves",
-          "role": "enabler",
-          "strength": 2
-        }
-      ],
+      "roles": [],
       "partners": [
         {
           "id": "hob/36",
-          "strength": 1
-        },
-        {
-          "id": "hob/177",
           "strength": 1
         }
       ]
@@ -1087,13 +972,7 @@
     {
       "id": "hob/39",
       "name": "Enchanted River's Grasp",
-      "roles": [
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 1
-        }
-      ],
+      "roles": [],
       "partners": []
     },
     {
@@ -1101,32 +980,23 @@
       "name": "Fateful Discovery",
       "roles": [
         {
-          "axis": "treasure",
+          "axis": "artifacts",
           "role": "payoff",
           "strength": 3
         },
         {
-          "axis": "equipment",
-          "role": "payoff",
-          "strength": 2
-        },
-        {
-          "axis": "second-card-draw",
+          "axis": "second-draw",
           "role": "enabler",
-          "strength": 2
+          "strength": 1
         }
       ],
       "partners": [
-        {
-          "id": "hob/110",
-          "strength": 2
-        },
         {
           "id": "hob/104",
           "strength": 2
         },
         {
-          "id": "hob/113",
+          "id": "hob/110",
           "strength": 1
         },
         {
@@ -1134,7 +1004,7 @@
           "strength": 1
         },
         {
-          "id": "hob/91",
+          "id": "hob/113",
           "strength": 1
         }
       ]
@@ -1144,28 +1014,23 @@
       "name": "Gandalf, Wandering Wizard",
       "roles": [
         {
-          "axis": "storied",
+          "axis": "ferocious",
           "role": "enabler",
           "strength": 1
         },
         {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "second-card-draw",
+          "axis": "second-draw",
           "role": "enabler",
           "strength": 1
         }
       ],
       "partners": [
         {
-          "id": "hob/96",
-          "strength": 1
+          "id": "hob/59",
+          "strength": 2
         },
         {
-          "id": "hob/59",
+          "id": "hob/96",
           "strength": 1
         }
       ]
@@ -1175,44 +1040,29 @@
       "name": "Great Gilded Boat",
       "roles": [
         {
-          "axis": "storied",
+          "axis": "tokens",
           "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "second-card-draw",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "go-wide-tokens",
-          "role": "enabler",
-          "strength": 2
+          "strength": 3
         },
         {
           "axis": "graveyard",
           "role": "enabler",
-          "strength": 2
+          "strength": 3
         },
         {
-          "axis": "ferocious-power-four",
+          "axis": "ferocious",
           "role": "enabler",
           "strength": 1
         }
       ],
-      "partners": [
-        {
-          "id": "hob/144",
-          "strength": 1
-        }
-      ]
+      "partners": []
     },
     {
       "id": "hob/43",
       "name": "Lakeshore Apothecary",
       "roles": [
         {
-          "axis": "second-card-draw",
+          "axis": "second-draw",
           "role": "payoff",
           "strength": 3
         }
@@ -1224,17 +1074,17 @@
       "name": "Lake-town Mariners // Gone Fishing",
       "roles": [
         {
+          "axis": "enters-triggers",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
           "axis": "landfall",
           "role": "enabler",
           "strength": 2
         },
         {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "noncreature-spells",
+          "axis": "ferocious",
           "role": "enabler",
           "strength": 1
         }
@@ -1245,11 +1095,7 @@
           "strength": 2
         },
         {
-          "id": "hob/61",
-          "strength": 1
-        },
-        {
-          "id": "hob/121",
+          "id": "hob/97",
           "strength": 1
         }
       ]
@@ -1257,23 +1103,7 @@
     {
       "id": "hob/45",
       "name": "Long Lake Nuisance",
-      "roles": [
-        {
-          "axis": "second-card-draw",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "go-wide-tokens",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "graveyard",
-          "role": "enabler",
-          "strength": 1
-        }
-      ],
+      "roles": [],
       "partners": []
     },
     {
@@ -1281,24 +1111,15 @@
       "name": "The Lord of the Eagles",
       "roles": [
         {
-          "axis": "storied",
+          "axis": "ferocious",
           "role": "enabler",
           "strength": 1
-        },
-        {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
-          "strength": 2
         }
       ],
       "partners": [
         {
           "id": "hob/12",
           "strength": 2
-        },
-        {
-          "id": "hob/11",
-          "strength": 1
         },
         {
           "id": "hob/155",
@@ -1311,18 +1132,13 @@
       "name": "Master's Councillors",
       "roles": [
         {
-          "axis": "second-card-draw",
-          "role": "payoff",
-          "strength": 3
-        },
-        {
-          "axis": "graveyard",
+          "axis": "second-draw",
           "role": "payoff",
           "strength": 2
         },
         {
           "axis": "graveyard",
-          "role": "enabler",
+          "role": "payoff",
           "strength": 2
         }
       ],
@@ -1338,17 +1154,12 @@
       "name": "Mirkwood Meditator",
       "roles": [
         {
-          "axis": "elves",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
           "axis": "landfall",
           "role": "payoff",
           "strength": 2
         },
         {
-          "axis": "ferocious-power-four",
+          "axis": "ferocious",
           "role": "enabler",
           "strength": 1
         }
@@ -1362,16 +1173,6 @@
         {
           "axis": "graveyard",
           "role": "payoff",
-          "strength": 2
-        },
-        {
-          "axis": "graveyard",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
           "strength": 2
         }
       ],
@@ -1387,19 +1188,14 @@
       "name": "Old Fat Spider Can't See Me",
       "roles": [
         {
-          "axis": "storied",
+          "axis": "enduring-story",
           "role": "enabler",
           "strength": 2
         },
         {
-          "axis": "second-card-draw",
+          "axis": "second-draw",
           "role": "enabler",
           "strength": 2
-        },
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 1
         }
       ],
       "partners": []
@@ -1409,30 +1205,20 @@
       "name": "Plunder the Trollshaws",
       "roles": [
         {
-          "axis": "second-card-draw",
+          "axis": "second-draw",
           "role": "enabler",
           "strength": 2
         },
         {
           "axis": "graveyard",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "graveyard",
           "role": "payoff",
-          "strength": 1
-        },
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
           "strength": 2
         }
       ],
       "partners": [
         {
           "id": "hob/33",
-          "strength": 1
+          "strength": 2
         }
       ]
     },
@@ -1441,15 +1227,15 @@
       "name": "Ravenhill Flock",
       "roles": [
         {
-          "axis": "second-card-draw",
+          "axis": "second-draw",
           "role": "payoff",
-          "strength": 3
+          "strength": 2
         }
       ],
       "partners": [
         {
           "id": "hob/144",
-          "strength": 1
+          "strength": 2
         }
       ]
     },
@@ -1458,7 +1244,7 @@
       "name": "Riddles in the Dark",
       "roles": [
         {
-          "axis": "second-card-draw",
+          "axis": "second-draw",
           "role": "enabler",
           "strength": 2
         },
@@ -1466,11 +1252,6 @@
           "axis": "graveyard",
           "role": "enabler",
           "strength": 2
-        },
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 1
         }
       ],
       "partners": []
@@ -1480,19 +1261,19 @@
       "name": "Roll-Roll-Roll-Roll",
       "roles": [
         {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 2
+          "axis": "enters-triggers",
+          "role": "payoff",
+          "strength": 3
         },
         {
           "axis": "landfall",
           "role": "enabler",
-          "strength": 3
+          "strength": 2
         },
         {
-          "axis": "noncreature-spells",
+          "axis": "enduring-story",
           "role": "enabler",
-          "strength": 1
+          "strength": 2
         }
       ],
       "partners": [
@@ -1501,19 +1282,15 @@
           "strength": 2
         },
         {
+          "id": "hob/97",
+          "strength": 2
+        },
+        {
           "id": "hob/61",
           "strength": 1
         },
         {
-          "id": "hob/163",
-          "strength": 1
-        },
-        {
-          "id": "hob/121",
-          "strength": 1
-        },
-        {
-          "id": "hob/97",
+          "id": "hob/113",
           "strength": 1
         }
       ]
@@ -1521,28 +1298,7 @@
     {
       "id": "hob/55",
       "name": "Sound the Trumpets",
-      "roles": [
-        {
-          "axis": "second-card-draw",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "go-wide-tokens",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "graveyard",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 1
-        }
-      ],
+      "roles": [],
       "partners": []
     },
     {
@@ -1561,29 +1317,12 @@
           "strength": 3
         },
         {
-          "axis": "second-card-draw",
+          "axis": "graveyard",
           "role": "enabler",
           "strength": 2
         },
         {
-          "axis": "graveyard",
-          "role": "enabler",
-          "strength": 2
-        }
-      ],
-      "partners": [
-        {
-          "id": "hob/33",
-          "strength": 1
-        }
-      ]
-    },
-    {
-      "id": "hob/58",
-      "name": "Uneasy Partings",
-      "roles": [
-        {
-          "axis": "noncreature-spells",
+          "axis": "second-draw",
           "role": "enabler",
           "strength": 1
         }
@@ -1591,19 +1330,15 @@
       "partners": []
     },
     {
+      "id": "hob/58",
+      "name": "Uneasy Partings",
+      "roles": [],
+      "partners": []
+    },
+    {
       "id": "hob/59",
       "name": "Wizard's Staff",
       "roles": [
-        {
-          "axis": "equipment",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
         {
           "axis": "noncreature-spells",
           "role": "payoff",
@@ -1612,23 +1347,23 @@
       ],
       "partners": [
         {
+          "id": "hob/41",
+          "strength": 2
+        },
+        {
           "id": "hob/96",
-          "strength": 3
-        },
-        {
-          "id": "hob/14",
-          "strength": 2
-        },
-        {
-          "id": "hob/4",
-          "strength": 2
-        },
-        {
-          "id": "hob/105",
           "strength": 2
         },
         {
           "id": "hob/97",
+          "strength": 1
+        },
+        {
+          "id": "hob/136",
+          "strength": 1
+        },
+        {
+          "id": "hob/14",
           "strength": 1
         }
       ]
@@ -1638,43 +1373,28 @@
       "name": "Along the Crooked Way",
       "roles": [
         {
-          "axis": "amass-army",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "goblins",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "goblins",
-          "role": "payoff",
-          "strength": 2
-        },
-        {
           "axis": "graveyard",
           "role": "payoff",
-          "strength": 3
+          "strength": 2
         },
         {
-          "axis": "noncreature-spells",
-          "role": "enabler",
+          "axis": "goblins",
+          "role": "payoff",
           "strength": 1
         }
       ],
       "partners": [
         {
-          "id": "hob/72",
-          "strength": 2
-        },
-        {
           "id": "hob/68",
           "strength": 2
         },
         {
-          "id": "hob/22",
+          "id": "hob/72",
           "strength": 2
+        },
+        {
+          "id": "hob/22",
+          "strength": 1
         },
         {
           "id": "hob/163",
@@ -1687,45 +1407,23 @@
       "name": "Azog, Moria's Ruin",
       "roles": [
         {
-          "axis": "goblins",
+          "axis": "creature-deaths",
           "role": "enabler",
           "strength": 2
-        },
-        {
-          "axis": "amass-army",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
         },
         {
           "axis": "sacrifice-fodder",
           "role": "payoff",
-          "strength": 2
+          "strength": 1
         }
       ],
       "partners": [
         {
           "id": "hob/156",
-          "strength": 3
-        },
-        {
-          "id": "hob/169",
           "strength": 2
         },
         {
-          "id": "hob/67",
-          "strength": 1
-        },
-        {
-          "id": "hob/18",
-          "strength": 1
-        },
-        {
-          "id": "hob/12",
+          "id": "hob/82",
           "strength": 1
         }
       ]
@@ -1735,9 +1433,9 @@
       "name": "Bilbo's Deadly Slice",
       "roles": [
         {
-          "axis": "noncreature-spells",
+          "axis": "creature-deaths",
           "role": "enabler",
-          "strength": 1
+          "strength": 2
         }
       ],
       "partners": []
@@ -1747,41 +1445,26 @@
       "name": "Crude Bent Blade",
       "roles": [
         {
-          "axis": "equipment",
+          "axis": "creature-deaths",
           "role": "enabler",
           "strength": 2
         },
         {
-          "axis": "storied",
+          "axis": "enters-triggers",
           "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 1
+          "strength": 2
         }
       ],
-      "partners": [
-        {
-          "id": "hob/17",
-          "strength": 1
-        }
-      ]
+      "partners": []
     },
     {
       "id": "hob/64",
       "name": "Desolation Prowler",
       "roles": [
         {
-          "axis": "wolves-and-bears",
+          "axis": "ferocious",
           "role": "enabler",
           "strength": 2
-        },
-        {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
-          "strength": 1
         }
       ],
       "partners": [
@@ -1796,24 +1479,9 @@
       "name": "Down, Down to Goblin-town",
       "roles": [
         {
-          "axis": "storied",
+          "axis": "enduring-story",
           "role": "enabler",
           "strength": 2
-        },
-        {
-          "axis": "amass-army",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "goblins",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 1
         }
       ],
       "partners": []
@@ -1823,75 +1491,31 @@
       "name": "Dreaded Bat-Cloud",
       "roles": [
         {
-          "axis": "sacrifice-fodder",
+          "axis": "creature-deaths",
           "role": "payoff",
           "strength": 2
         },
         {
-          "axis": "ferocious-power-four",
+          "axis": "ferocious",
           "role": "enabler",
           "strength": 2
         }
       ],
-      "partners": [
-        {
-          "id": "hob/84",
-          "strength": 1
-        },
-        {
-          "id": "hob/149",
-          "strength": 1
-        }
-      ]
+      "partners": []
     },
     {
       "id": "hob/67",
       "name": "Front Porch Sentries",
-      "roles": [
-        {
-          "axis": "goblins",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "sacrifice-fodder",
-          "role": "enabler",
-          "strength": 2
-        }
-      ],
-      "partners": [
-        {
-          "id": "hob/149",
-          "strength": 1
-        },
-        {
-          "id": "hob/158",
-          "strength": 1
-        }
-      ]
+      "roles": [],
+      "partners": []
     },
     {
       "id": "hob/68",
       "name": "Gathering of Darkness",
       "roles": [
         {
-          "axis": "amass-army",
-          "role": "enabler",
-          "strength": 3
-        },
-        {
-          "axis": "goblins",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
           "axis": "graveyard",
           "role": "payoff",
-          "strength": 2
-        },
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
           "strength": 1
         }
       ],
@@ -1907,28 +1531,22 @@
       "name": "Gnashing of Teeth",
       "roles": [
         {
-          "axis": "noncreature-spells",
+          "axis": "creature-deaths",
           "role": "enabler",
           "strength": 1
         }
       ],
       "partners": [
         {
-          "id": "hob/75",
-          "strength": 1
+          "id": "hob/86",
+          "strength": 2
         }
       ]
     },
     {
       "id": "hob/70",
       "name": "Gollum, Riddle Master",
-      "roles": [
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        }
-      ],
+      "roles": [],
       "partners": []
     },
     {
@@ -1936,51 +1554,31 @@
       "name": "Gollum, Silent Slinker // Meager Meal",
       "roles": [
         {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "ferocious-power-four",
+          "axis": "ferocious",
           "role": "enabler",
           "strength": 2
-        },
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "amass-army",
-          "role": "enabler",
-          "strength": 1
         }
       ],
-      "partners": []
+      "partners": [
+        {
+          "id": "hob/175",
+          "strength": 1
+        }
+      ]
     },
     {
       "id": "hob/72",
       "name": "Gollum the Abandoned",
       "roles": [
         {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
           "axis": "sacrifice-fodder",
           "role": "payoff",
           "strength": 2
         },
         {
-          "axis": "treasure",
-          "role": "payoff",
-          "strength": 1
-        },
-        {
-          "axis": "graveyard",
+          "axis": "creature-deaths",
           "role": "enabler",
-          "strength": 1
+          "strength": 2
         }
       ],
       "partners": [
@@ -1989,15 +1587,11 @@
           "strength": 2
         },
         {
-          "id": "hob/98",
-          "strength": 2
-        },
-        {
           "id": "hob/83",
           "strength": 1
         },
         {
-          "id": "hob/156",
+          "id": "hob/98",
           "strength": 1
         }
       ]
@@ -2007,7 +1601,7 @@
       "name": "Great Fierce Bee",
       "roles": [
         {
-          "axis": "sacrifice-fodder",
+          "axis": "creature-deaths",
           "role": "payoff",
           "strength": 2
         }
@@ -2019,54 +1613,29 @@
       "name": "Great Ugly-Looking Goblin // Clap! Snap!",
       "roles": [
         {
-          "axis": "amass-army",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "amass-army",
+          "axis": "amass",
           "role": "payoff",
           "strength": 2
         },
         {
-          "axis": "goblins",
+          "axis": "ferocious",
           "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 2
-        }
-      ],
-      "partners": [
-        {
-          "id": "hob/141",
           "strength": 1
         }
-      ]
+      ],
+      "partners": []
     },
     {
       "id": "hob/75",
       "name": "Head of the Hunt",
       "roles": [
         {
-          "axis": "wolves-and-bears",
-          "role": "enabler",
+          "axis": "creature-deaths",
+          "role": "payoff",
           "strength": 3
         },
         {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "go-wide-tokens",
+          "axis": "ferocious",
           "role": "enabler",
           "strength": 2
         }
@@ -2074,18 +1643,6 @@
       "partners": [
         {
           "id": "hob/151",
-          "strength": 2
-        },
-        {
-          "id": "hob/69",
-          "strength": 1
-        },
-        {
-          "id": "hob/99",
-          "strength": 1
-        },
-        {
-          "id": "hob/93",
           "strength": 1
         }
       ]
@@ -2100,16 +1657,6 @@
       "id": "hob/77",
       "name": "The Master of Lake-town",
       "roles": [
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "graveyard",
-          "role": "enabler",
-          "strength": 2
-        },
         {
           "axis": "graveyard",
           "role": "payoff",
@@ -2126,15 +1673,7 @@
           "strength": 1
         },
         {
-          "id": "hob/110",
-          "strength": 1
-        },
-        {
-          "id": "hob/158",
-          "strength": 1
-        },
-        {
-          "id": "hob/33",
+          "id": "hob/79",
           "strength": 1
         }
       ]
@@ -2144,12 +1683,7 @@
       "name": "Nighthowl Pursuer",
       "roles": [
         {
-          "axis": "wolves-and-bears",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "ferocious-power-four",
+          "axis": "ferocious",
           "role": "payoff",
           "strength": 3
         }
@@ -2161,22 +1695,7 @@
       "name": "Rage into the Valley",
       "roles": [
         {
-          "axis": "amass-army",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "goblins",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "second-card-draw",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "noncreature-spells",
+          "axis": "second-draw",
           "role": "enabler",
           "strength": 1
         }
@@ -2188,12 +1707,7 @@
       "name": "Ravening Warg",
       "roles": [
         {
-          "axis": "wolves-and-bears",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "ferocious-power-four",
+          "axis": "ferocious",
           "role": "payoff",
           "strength": 2
         }
@@ -2205,69 +1719,37 @@
       "name": "Reverent Howl",
       "roles": [
         {
-          "axis": "second-card-draw",
+          "axis": "second-draw",
           "role": "enabler",
           "strength": 2
-        },
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 1
         }
       ],
-      "partners": [
-        {
-          "id": "hob/77",
-          "strength": 1
-        }
-      ]
+      "partners": []
     },
     {
       "id": "hob/82",
       "name": "Rhovanion Rampager",
       "roles": [
         {
-          "axis": "wolves-and-bears",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
           "axis": "sacrifice-fodder",
           "role": "payoff",
-          "strength": 3
+          "strength": 2
         },
         {
-          "axis": "amass-army",
+          "axis": "creature-deaths",
           "role": "enabler",
           "strength": 2
         },
         {
-          "axis": "goblins",
+          "axis": "ferocious",
           "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
-          "strength": 1
+          "strength": 2
         }
       ],
       "partners": [
         {
           "id": "hob/156",
           "strength": 2
-        },
-        {
-          "id": "hob/169",
-          "strength": 1
-        },
-        {
-          "id": "hob/18",
-          "strength": 1
-        },
-        {
-          "id": "hob/67",
-          "strength": 1
         },
         {
           "id": "hob/158",
@@ -2280,38 +1762,33 @@
       "name": "The Sackville-Bagginses",
       "roles": [
         {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "treasure",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
           "axis": "sacrifice-fodder",
           "role": "payoff",
           "strength": 2
         },
         {
-          "axis": "go-wide-tokens",
+          "axis": "tokens",
           "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "creature-deaths",
+          "role": "enabler",
           "strength": 1
         },
         {
-          "axis": "second-card-draw",
+          "axis": "second-draw",
           "role": "enabler",
           "strength": 1
         }
       ],
       "partners": [
         {
-          "id": "hob/149",
+          "id": "hob/112",
           "strength": 1
         },
         {
-          "id": "hob/84",
+          "id": "hob/149",
           "strength": 1
         },
         {
@@ -2327,34 +1804,21 @@
         {
           "axis": "sacrifice-fodder",
           "role": "payoff",
-          "strength": 3
+          "strength": 2
         },
         {
-          "axis": "treasure",
-          "role": "payoff",
-          "strength": 1
-        },
-        {
-          "axis": "noncreature-spells",
+          "axis": "creature-deaths",
           "role": "enabler",
           "strength": 2
         }
       ],
       "partners": [
         {
-          "id": "hob/156",
-          "strength": 2
-        },
-        {
           "id": "hob/98",
           "strength": 2
         },
         {
-          "id": "hob/18",
-          "strength": 1
-        },
-        {
-          "id": "hob/67",
+          "id": "hob/156",
           "strength": 1
         }
       ]
@@ -2362,41 +1826,20 @@
     {
       "id": "hob/85",
       "name": "Stony-Voiced Goblins",
-      "roles": [
-        {
-          "axis": "goblins",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "sacrifice-fodder",
-          "role": "enabler",
-          "strength": 1
-        }
-      ],
-      "partners": [
-        {
-          "id": "hob/160",
-          "strength": 1
-        }
-      ]
+      "roles": [],
+      "partners": []
     },
     {
       "id": "hob/86",
       "name": "Supper for Spiders",
       "roles": [
         {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 1
+          "axis": "creature-deaths",
+          "role": "payoff",
+          "strength": 3
         },
         {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "sacrifice-fodder",
+          "axis": "artifacts",
           "role": "enabler",
           "strength": 1
         }
@@ -2404,10 +1847,14 @@
       "partners": [
         {
           "id": "hob/69",
-          "strength": 1
+          "strength": 2
         },
         {
           "id": "hob/93",
+          "strength": 2
+        },
+        {
+          "id": "hob/99",
           "strength": 1
         }
       ]
@@ -2417,39 +1864,29 @@
       "name": "Balin, Loremaster",
       "roles": [
         {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "storied",
-          "role": "payoff",
-          "strength": 2
-        },
-        {
-          "axis": "dwarves",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
           "axis": "dwarves",
           "role": "payoff",
           "strength": 3
         },
         {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "second-card-draw",
-          "role": "enabler",
+          "axis": "enduring-story",
+          "role": "payoff",
           "strength": 2
         },
         {
           "axis": "graveyard",
           "role": "enabler",
           "strength": 2
+        },
+        {
+          "axis": "ferocious",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "second-draw",
+          "role": "enabler",
+          "strength": 1
         }
       ],
       "partners": [
@@ -2460,14 +1897,6 @@
         {
           "id": "hob/14",
           "strength": 2
-        },
-        {
-          "id": "hob/187",
-          "strength": 1
-        },
-        {
-          "id": "hob/10",
-          "strength": 1
         }
       ]
     },
@@ -2476,22 +1905,12 @@
       "name": "Bombur, Gentle Dreamer",
       "roles": [
         {
-          "axis": "storied",
+          "axis": "enduring-story",
           "role": "payoff",
           "strength": 3
         },
         {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "dwarves",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "ferocious-power-four",
+          "axis": "ferocious",
           "role": "enabler",
           "strength": 2
         }
@@ -2503,16 +1922,6 @@
       "name": "Bothersome Noisemaker",
       "roles": [
         {
-          "axis": "amass-army",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "goblins",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
           "axis": "noncreature-spells",
           "role": "payoff",
           "strength": 3
@@ -2520,15 +1929,11 @@
       ],
       "partners": [
         {
-          "id": "hob/59",
-          "strength": 2
-        },
-        {
-          "id": "hob/174",
-          "strength": 2
-        },
-        {
           "id": "hob/115",
+          "strength": 1
+        },
+        {
+          "id": "hob/96",
           "strength": 1
         }
       ]
@@ -2538,12 +1943,12 @@
       "name": "Burn, Burn, Tree and Fern",
       "roles": [
         {
-          "axis": "storied",
+          "axis": "enduring-story",
           "role": "enabler",
           "strength": 2
         },
         {
-          "axis": "noncreature-spells",
+          "axis": "creature-deaths",
           "role": "enabler",
           "strength": 1
         }
@@ -2555,11 +1960,6 @@
       "name": "Dáin Ironfoot",
       "roles": [
         {
-          "axis": "dwarves",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
           "axis": "equipment",
           "role": "enabler",
           "strength": 2
@@ -2567,17 +1967,22 @@
         {
           "axis": "equipment",
           "role": "payoff",
-          "strength": 3
+          "strength": 2
         },
         {
-          "axis": "storied",
+          "axis": "artifacts",
+          "role": "enabler",
+          "strength": 1
+        },
+        {
+          "axis": "enters-triggers",
           "role": "enabler",
           "strength": 2
         }
       ],
       "partners": [
         {
-          "id": "hob/95",
+          "id": "hob/16",
           "strength": 1
         },
         {
@@ -2585,15 +1990,7 @@
           "strength": 1
         },
         {
-          "id": "hob/114",
-          "strength": 1
-        },
-        {
           "id": "hob/17",
-          "strength": 1
-        },
-        {
-          "id": "hob/102",
           "strength": 1
         }
       ]
@@ -2603,9 +2000,9 @@
       "name": "Desert Were-Worm",
       "roles": [
         {
-          "axis": "ferocious-power-four",
+          "axis": "ferocious",
           "role": "enabler",
-          "strength": 2
+          "strength": 1
         }
       ],
       "partners": [
@@ -2628,18 +2025,18 @@
       "name": "Desolation of Smaug",
       "roles": [
         {
-          "axis": "noncreature-spells",
+          "axis": "creature-deaths",
           "role": "enabler",
-          "strength": 1
+          "strength": 2
         }
       ],
       "partners": [
         {
-          "id": "hob/110",
+          "id": "hob/109",
           "strength": 2
         },
         {
-          "id": "hob/109",
+          "id": "hob/110",
           "strength": 2
         },
         {
@@ -2651,51 +2048,30 @@
           "strength": 2
         },
         {
-          "id": "hob/75",
-          "strength": 1
+          "id": "hob/86",
+          "strength": 2
         }
       ]
     },
     {
       "id": "hob/94",
       "name": "Dori, Bearer of Friends",
-      "roles": [
+      "roles": [],
+      "partners": [
         {
-          "axis": "dwarves",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "treasure",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "sacrifice-fodder",
-          "role": "enabler",
+          "id": "hob/175",
           "strength": 1
         }
-      ],
-      "partners": []
+      ]
     },
     {
       "id": "hob/95",
       "name": "Dwarven Mauler",
       "roles": [
         {
-          "axis": "dwarves",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
           "axis": "equipment",
           "role": "payoff",
-          "strength": 3
+          "strength": 2
         }
       ],
       "partners": [
@@ -2704,19 +2080,7 @@
           "strength": 1
         },
         {
-          "id": "hob/16",
-          "strength": 1
-        },
-        {
-          "id": "hob/91",
-          "strength": 1
-        },
-        {
           "id": "hob/177",
-          "strength": 1
-        },
-        {
-          "id": "hob/178",
           "strength": 1
         }
       ]
@@ -2726,41 +2090,15 @@
       "name": "Gandalf, Goblins' Bane // Flameshape",
       "roles": [
         {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
           "axis": "noncreature-spells",
           "role": "payoff",
           "strength": 3
-        },
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 2
         }
       ],
       "partners": [
         {
           "id": "hob/59",
-          "strength": 3
-        },
-        {
-          "id": "hob/174",
           "strength": 2
-        },
-        {
-          "id": "hob/41",
-          "strength": 1
-        },
-        {
-          "id": "hob/136",
-          "strength": 1
-        },
-        {
-          "id": "hob/97",
-          "strength": 1
         }
       ]
     },
@@ -2769,31 +2107,22 @@
       "name": "Gandalf, Spark Starter",
       "roles": [
         {
-          "axis": "storied",
+          "axis": "ferocious",
           "role": "enabler",
           "strength": 1
-        },
-        {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
-          "strength": 2
         }
       ],
       "partners": [
         {
-          "id": "hob/59",
-          "strength": 1
-        },
-        {
-          "id": "hob/96",
-          "strength": 1
-        },
-        {
           "id": "hob/54",
-          "strength": 1
+          "strength": 2
         },
         {
           "id": "hob/160",
+          "strength": 1
+        },
+        {
+          "id": "hob/44",
           "strength": 1
         }
       ]
@@ -2803,21 +2132,12 @@
       "name": "Getaway Barrel",
       "roles": [
         {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
           "axis": "sacrifice-fodder",
           "role": "enabler",
           "strength": 2
         }
       ],
       "partners": [
-        {
-          "id": "hob/84",
-          "strength": 2
-        },
         {
           "id": "hob/112",
           "strength": 2
@@ -2827,8 +2147,12 @@
           "strength": 2
         },
         {
-          "id": "hob/72",
+          "id": "hob/84",
           "strength": 2
+        },
+        {
+          "id": "hob/72",
+          "strength": 1
         },
         {
           "id": "hob/83",
@@ -2841,29 +2165,19 @@
       "name": "Glóin the Mighty // Easy Pickings",
       "roles": [
         {
-          "axis": "dwarves",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "storied",
+          "axis": "ferocious",
           "role": "enabler",
           "strength": 1
         },
         {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "noncreature-spells",
+          "axis": "creature-deaths",
           "role": "enabler",
           "strength": 1
         }
       ],
       "partners": [
         {
-          "id": "hob/75",
+          "id": "hob/86",
           "strength": 1
         }
       ]
@@ -2871,42 +2185,17 @@
     {
       "id": "hob/100",
       "name": "Goblin-town Flunkies",
-      "roles": [
-        {
-          "axis": "amass-army",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "goblins",
-          "role": "enabler",
-          "strength": 2
-        }
-      ],
-      "partners": [
-        {
-          "id": "hob/160",
-          "strength": 1
-        },
-        {
-          "id": "hob/149",
-          "strength": 1
-        }
-      ]
+      "roles": [],
+      "partners": []
     },
     {
       "id": "hob/101",
       "name": "Gundabad Opportunist",
       "roles": [
         {
-          "axis": "goblins",
+          "axis": "ferocious",
           "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
-          "strength": 2
+          "strength": 1
         }
       ],
       "partners": []
@@ -2916,32 +2205,19 @@
       "name": "Iron Hills Stalwart",
       "roles": [
         {
-          "axis": "dwarves",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
           "axis": "equipment",
           "role": "payoff",
           "strength": 2
+        },
+        {
+          "axis": "ferocious",
+          "role": "enabler",
+          "strength": 1
         }
       ],
       "partners": [
         {
-          "id": "hob/157",
-          "strength": 1
-        },
-        {
-          "id": "hob/177",
-          "strength": 1
-        },
-        {
-          "id": "hob/178",
+          "id": "hob/147",
           "strength": 1
         }
       ]
@@ -2954,25 +2230,11 @@
           "axis": "landfall",
           "role": "payoff",
           "strength": 2
-        },
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "graveyard",
-          "role": "enabler",
-          "strength": 1
         }
       ],
       "partners": [
         {
-          "id": "hob/110",
-          "strength": 2
-        },
-        {
-          "id": "hob/164",
+          "id": "hob/92",
           "strength": 2
         },
         {
@@ -2980,7 +2242,11 @@
           "strength": 2
         },
         {
-          "id": "hob/92",
+          "id": "hob/110",
+          "strength": 2
+        },
+        {
+          "id": "hob/164",
           "strength": 2
         },
         {
@@ -2994,34 +2260,14 @@
       "name": "The Misty Mountains Cold",
       "roles": [
         {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 3
-        },
-        {
-          "axis": "treasure",
-          "role": "enabler",
-          "strength": 3
-        },
-        {
-          "axis": "treasure",
+          "axis": "treasures",
           "role": "payoff",
-          "strength": 2
-        },
-        {
-          "axis": "sacrifice-fodder",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
           "strength": 1
         },
         {
-          "axis": "noncreature-spells",
+          "axis": "enduring-story",
           "role": "enabler",
-          "strength": 1
+          "strength": 2
         }
       ],
       "partners": [
@@ -3034,16 +2280,8 @@
           "strength": 2
         },
         {
-          "id": "hob/144",
+          "id": "hob/164",
           "strength": 2
-        },
-        {
-          "id": "hob/4",
-          "strength": 1
-        },
-        {
-          "id": "hob/94",
-          "strength": 1
         }
       ]
     },
@@ -3052,69 +2290,36 @@
       "name": "Misty Mountains Raider",
       "roles": [
         {
-          "axis": "amass-army",
+          "axis": "ferocious",
           "role": "enabler",
-          "strength": 3
-        },
-        {
-          "axis": "goblins",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
-          "strength": 2
+          "strength": 1
         }
       ],
-      "partners": [
-        {
-          "id": "hob/59",
-          "strength": 2
-        }
-      ]
+      "partners": []
     },
     {
       "id": "hob/106",
       "name": "Óin the Brave",
       "roles": [
         {
-          "axis": "storied",
+          "axis": "enduring-story",
           "role": "payoff",
-          "strength": 2
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "dwarves",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "second-card-draw",
-          "role": "enabler",
           "strength": 2
         },
         {
           "axis": "graveyard",
           "role": "enabler",
-          "strength": 2
+          "strength": 1
+        },
+        {
+          "axis": "second-draw",
+          "role": "enabler",
+          "strength": 1
         }
       ],
       "partners": [
         {
-          "id": "hob/21",
-          "strength": 1
-        },
-        {
-          "id": "hob/115",
-          "strength": 1
-        },
-        {
-          "id": "hob/155",
+          "id": "hob/175",
           "strength": 1
         }
       ]
@@ -3122,13 +2327,7 @@
     {
       "id": "hob/107",
       "name": "Pinecone Strike",
-      "roles": [
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 2
-        }
-      ],
+      "roles": [],
       "partners": []
     },
     {
@@ -3136,17 +2335,7 @@
       "name": "Ragged Short Spear",
       "roles": [
         {
-          "axis": "equipment",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "second-card-draw",
+          "axis": "second-draw",
           "role": "enabler",
           "strength": 2
         },
@@ -3156,35 +2345,26 @@
           "strength": 1
         },
         {
-          "axis": "noncreature-spells",
+          "axis": "enters-triggers",
           "role": "enabler",
           "strength": 2
         }
       ],
-      "partners": [
-        {
-          "id": "hob/17",
-          "strength": 1
-        },
-        {
-          "id": "hob/155",
-          "strength": 1
-        }
-      ]
+      "partners": []
     },
     {
       "id": "hob/109",
       "name": "Smaug, the Great Calamity // Spew Flame",
       "roles": [
         {
-          "axis": "storied",
+          "axis": "ferocious",
           "role": "enabler",
           "strength": 1
         },
         {
-          "axis": "ferocious-power-four",
+          "axis": "creature-deaths",
           "role": "enabler",
-          "strength": 2
+          "strength": 1
         }
       ],
       "partners": [
@@ -3195,6 +2375,10 @@
         {
           "id": "hob/103",
           "strength": 2
+        },
+        {
+          "id": "hob/175",
+          "strength": 1
         }
       ]
     },
@@ -3203,29 +2387,14 @@
       "name": "Smaug the Magnificent",
       "roles": [
         {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 3
-        },
-        {
-          "axis": "treasure",
-          "role": "enabler",
-          "strength": 3
-        },
-        {
-          "axis": "treasure",
+          "axis": "treasures",
           "role": "payoff",
           "strength": 3
         },
         {
-          "axis": "ferocious-power-four",
+          "axis": "ferocious",
           "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "sacrifice-fodder",
-          "role": "enabler",
-          "strength": 2
+          "strength": 1
         }
       ],
       "partners": [
@@ -3234,20 +2403,20 @@
           "strength": 2
         },
         {
-          "id": "hob/40",
-          "strength": 2
-        },
-        {
           "id": "hob/93",
           "strength": 2
         },
         {
-          "id": "hob/103",
-          "strength": 2
+          "id": "hob/164",
+          "strength": 1
         },
         {
-          "id": "hob/113",
+          "id": "hob/177",
           "strength": 1
+        },
+        {
+          "id": "hob/103",
+          "strength": 2
         }
       ]
     },
@@ -3256,40 +2425,25 @@
       "name": "Smaug's Fury",
       "roles": [
         {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "ferocious-power-four",
+          "axis": "ferocious",
           "role": "enabler",
           "strength": 1
         }
       ],
-      "partners": [
-        {
-          "id": "hob/135",
-          "strength": 1
-        }
-      ]
+      "partners": []
     },
     {
       "id": "hob/112",
       "name": "Snowslope Hunter",
       "roles": [
         {
-          "axis": "goblins",
-          "role": "enabler",
+          "axis": "sacrifice-fodder",
+          "role": "payoff",
           "strength": 2
         },
         {
-          "axis": "sacrifice-fodder",
-          "role": "payoff",
-          "strength": 3
-        },
-        {
-          "axis": "treasure",
-          "role": "payoff",
+          "axis": "creature-deaths",
+          "role": "enabler",
           "strength": 2
         }
       ],
@@ -3303,14 +2457,6 @@
           "strength": 2
         },
         {
-          "id": "hob/36",
-          "strength": 1
-        },
-        {
-          "id": "hob/18",
-          "strength": 1
-        },
-        {
           "id": "hob/158",
           "strength": 1
         }
@@ -3321,22 +2467,7 @@
       "name": "Stone-Giant of High Pass",
       "roles": [
         {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
-          "strength": 3
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "go-wide-tokens",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "sacrifice-fodder",
+          "axis": "artifacts",
           "role": "enabler",
           "strength": 2
         },
@@ -3346,22 +2477,18 @@
           "strength": 2
         },
         {
-          "axis": "treasure",
-          "role": "payoff",
-          "strength": 2
+          "axis": "ferocious",
+          "role": "enabler",
+          "strength": 1
         }
       ],
       "partners": [
         {
-          "id": "hob/40",
+          "id": "hob/98",
           "strength": 2
         },
         {
-          "id": "hob/98",
-          "strength": 1
-        },
-        {
-          "id": "hob/83",
+          "id": "hob/40",
           "strength": 1
         }
       ]
@@ -3371,16 +2498,6 @@
       "name": "Thorin, Mountain-king",
       "roles": [
         {
-          "axis": "dwarves",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
           "axis": "equipment",
           "role": "payoff",
           "strength": 3
@@ -3388,23 +2505,15 @@
       ],
       "partners": [
         {
-          "id": "hob/157",
-          "strength": 1
-        },
-        {
           "id": "hob/177",
           "strength": 1
         },
         {
-          "id": "hob/172",
+          "id": "hob/157",
           "strength": 1
         },
         {
-          "id": "hob/91",
-          "strength": 1
-        },
-        {
-          "id": "hob/178",
+          "id": "hob/147",
           "strength": 1
         }
       ]
@@ -3414,28 +2523,8 @@
       "name": "Tidings of War",
       "roles": [
         {
-          "axis": "amass-army",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "goblins",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "graveyard",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
           "axis": "graveyard",
           "role": "payoff",
-          "strength": 1
-        },
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
           "strength": 2
         }
       ],
@@ -3447,10 +2536,6 @@
         {
           "id": "hob/89",
           "strength": 1
-        },
-        {
-          "id": "hob/106",
-          "strength": 1
         }
       ]
     },
@@ -3458,11 +2543,6 @@
       "id": "hob/116",
       "name": "Attercop",
       "roles": [
-        {
-          "axis": "wolves-and-bears",
-          "role": "enabler",
-          "strength": 2
-        },
         {
           "axis": "landfall",
           "role": "payoff",
@@ -3476,70 +2556,31 @@
       "name": "Bejeweled Warg",
       "roles": [
         {
-          "axis": "wolves-and-bears",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "wolves-and-bears",
+          "axis": "wolves",
           "role": "payoff",
-          "strength": 2
-        },
-        {
-          "axis": "treasure",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
           "strength": 1
         }
       ],
-      "partners": [
-        {
-          "id": "hob/151",
-          "strength": 1
-        }
-      ]
+      "partners": []
     },
     {
       "id": "hob/118",
       "name": "Beorn, Reluctant Host // Till and Tend",
       "roles": [
         {
-          "axis": "wolves-and-bears",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
           "axis": "landfall",
           "role": "enabler",
           "strength": 2
         },
         {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "noncreature-spells",
+          "axis": "ferocious",
           "role": "enabler",
           "strength": 2
         }
       ],
       "partners": [
         {
-          "id": "hob/119",
-          "strength": 2
-        },
-        {
-          "id": "hob/128",
+          "id": "hob/175",
           "strength": 1
         }
       ]
@@ -3549,50 +2590,36 @@
       "name": "Beorn the Fierce",
       "roles": [
         {
-          "axis": "wolves-and-bears",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "wolves-and-bears",
+          "axis": "bears",
           "role": "payoff",
           "strength": 3
         },
         {
-          "axis": "ferocious-power-four",
+          "axis": "ferocious",
           "role": "enabler",
           "strength": 3
         },
         {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "second-card-draw",
+          "axis": "second-draw",
           "role": "enabler",
           "strength": 1
         }
       ],
       "partners": [
         {
-          "id": "hob/123",
-          "strength": 2
-        },
-        {
           "id": "hob/128",
           "strength": 2
         },
         {
-          "id": "hob/133",
+          "id": "hob/123",
           "strength": 2
+        },
+        {
+          "id": "hob/133",
+          "strength": 1
         },
         {
           "id": "hob/159",
-          "strength": 2
-        },
-        {
-          "id": "hob/118",
           "strength": 1
         }
       ]
@@ -3607,53 +2634,24 @@
           "strength": 3
         },
         {
-          "axis": "wolves-and-bears",
+          "axis": "bears",
           "role": "enabler",
           "strength": 1
-        },
-        {
-          "axis": "amass-army",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 2
         }
       ],
-      "partners": [
-        {
-          "id": "hob/119",
-          "strength": 1
-        },
-        {
-          "id": "hob/137",
-          "strength": 2
-        }
-      ]
+      "partners": []
     },
     {
       "id": "hob/121",
       "name": "Boughside Wanderers",
       "roles": [
         {
-          "axis": "elves",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
           "axis": "landfall",
           "role": "payoff",
           "strength": 2
         },
         {
-          "axis": "ferocious-power-four",
+          "axis": "ferocious",
           "role": "enabler",
           "strength": 2
         }
@@ -3666,21 +2664,11 @@
       "roles": [
         {
           "axis": "elves",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "elves",
           "role": "payoff",
           "strength": 3
         },
         {
-          "axis": "graveyard",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "ferocious-power-four",
+          "axis": "ferocious",
           "role": "enabler",
           "strength": 2
         }
@@ -3689,10 +2677,6 @@
         {
           "id": "hob/167",
           "strength": 2
-        },
-        {
-          "id": "hob/143",
-          "strength": 1
         }
       ]
     },
@@ -3706,46 +2690,20 @@
           "strength": 3
         },
         {
-          "axis": "wolves-and-bears",
-          "role": "enabler",
-          "strength": 3
-        },
-        {
-          "axis": "go-wide-tokens",
-          "role": "enabler",
-          "strength": 3
-        },
-        {
-          "axis": "ferocious-power-four",
+          "axis": "bears",
           "role": "enabler",
           "strength": 2
         },
         {
-          "axis": "amass-army",
+          "axis": "ferocious",
           "role": "enabler",
-          "strength": 1
+          "strength": 2
         }
       ],
       "partners": [
         {
           "id": "hob/119",
-          "strength": 3
-        },
-        {
-          "id": "hob/137",
           "strength": 2
-        },
-        {
-          "id": "hob/128",
-          "strength": 1
-        },
-        {
-          "id": "hob/144",
-          "strength": 1
-        },
-        {
-          "id": "hob/136",
-          "strength": 1
         }
       ]
     },
@@ -3754,83 +2712,46 @@
       "name": "Down in the Valley",
       "roles": [
         {
-          "axis": "storied",
+          "axis": "enduring-story",
           "role": "enabler",
           "strength": 2
         },
         {
           "axis": "landfall",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "elves",
           "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "elves",
+          "role": "payoff",
           "strength": 1
         },
         {
           "axis": "landfall",
-          "role": "payoff",
-          "strength": 2
-        },
-        {
-          "axis": "elves",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "elves",
-          "role": "payoff",
-          "strength": 2
-        },
-        {
-          "axis": "go-wide-tokens",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "noncreature-spells",
           "role": "enabler",
           "strength": 1
         }
       ],
-      "partners": [
-        {
-          "id": "hob/166",
-          "strength": 2
-        },
-        {
-          "id": "hob/143",
-          "strength": 1
-        },
-        {
-          "id": "hob/144",
-          "strength": 1
-        }
-      ]
+      "partners": []
     },
     {
       "id": "hob/125",
       "name": "Galion, Elvenking's Butler",
       "roles": [
         {
-          "axis": "elves",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "ferocious-power-four",
+          "axis": "ferocious",
           "role": "enabler",
           "strength": 2
         }
       ],
       "partners": [
         {
-          "id": "hob/143",
-          "strength": 1
-        },
-        {
-          "id": "hob/168",
+          "id": "hob/167",
           "strength": 1
         }
       ]
@@ -3840,60 +2761,25 @@
       "name": "Gigantic Big Bear",
       "roles": [
         {
-          "axis": "wolves-and-bears",
+          "axis": "ferocious",
           "role": "enabler",
           "strength": 2
-        },
-        {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
-          "strength": 3
         }
       ],
-      "partners": [
-        {
-          "id": "hob/119",
-          "strength": 1
-        }
-      ]
+      "partners": []
     },
     {
       "id": "hob/127",
       "name": "Guardian of the Halls",
-      "roles": [
-        {
-          "axis": "elves",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
-          "strength": 1
-        }
-      ],
-      "partners": [
-        {
-          "id": "hob/36",
-          "strength": 1
-        },
-        {
-          "id": "hob/143",
-          "strength": 1
-        }
-      ]
+      "roles": [],
+      "partners": []
     },
     {
       "id": "hob/128",
       "name": "Little Bear",
       "roles": [
         {
-          "axis": "wolves-and-bears",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "wolves-and-bears",
+          "axis": "bears",
           "role": "payoff",
           "strength": 2
         }
@@ -3901,15 +2787,7 @@
       "partners": [
         {
           "id": "hob/119",
-          "strength": 1
-        },
-        {
-          "id": "hob/133",
-          "strength": 1
-        },
-        {
-          "id": "hob/159",
-          "strength": 1
+          "strength": 2
         }
       ]
     },
@@ -3918,38 +2796,24 @@
       "name": "Mirkwood Pathmaker",
       "roles": [
         {
-          "axis": "elves",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
           "axis": "landfall",
           "role": "payoff",
-          "strength": 1
-        }
-      ],
-      "partners": [
-        {
-          "id": "hob/137",
           "strength": 2
         },
         {
-          "id": "hob/142",
-          "strength": 1
+          "axis": "ferocious",
+          "role": "enabler",
+          "strength": 2
         }
-      ]
+      ],
+      "partners": []
     },
     {
       "id": "hob/130",
       "name": "Nasty Little Rabbit",
       "roles": [
         {
-          "axis": "ferocious-power-four",
+          "axis": "ferocious",
           "role": "payoff",
           "strength": 3
         }
@@ -3961,19 +2825,9 @@
       "name": "The Notary Hobbits",
       "roles": [
         {
-          "axis": "storied",
+          "axis": "board-width",
           "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "go-wide-tokens",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "sacrifice-fodder",
-          "role": "enabler",
-          "strength": 1
+          "strength": 3
         }
       ],
       "partners": [
@@ -3983,14 +2837,10 @@
         },
         {
           "id": "hob/144",
-          "strength": 2
-        },
-        {
-          "id": "hob/36",
           "strength": 1
         },
         {
-          "id": "hob/184",
+          "id": "hob/36",
           "strength": 1
         }
       ]
@@ -4000,14 +2850,9 @@
       "name": "Old Fat Spider",
       "roles": [
         {
-          "axis": "wolves-and-bears",
+          "axis": "ferocious",
           "role": "enabler",
           "strength": 2
-        },
-        {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
-          "strength": 3
         }
       ],
       "partners": []
@@ -4017,57 +2862,30 @@
       "name": "Ordinary Bear",
       "roles": [
         {
-          "axis": "wolves-and-bears",
+          "axis": "ferocious",
           "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
-          "strength": 2
+          "strength": 3
         }
       ],
-      "partners": [
-        {
-          "id": "hob/119",
-          "strength": 1
-        },
-        {
-          "id": "hob/128",
-          "strength": 1
-        }
-      ]
+      "partners": []
     },
     {
       "id": "hob/134",
       "name": "Part in Friendship",
       "roles": [
         {
-          "axis": "sacrifice-fodder",
+          "axis": "creature-deaths",
           "role": "payoff",
           "strength": 2
-        },
-        {
-          "axis": "landfall",
-          "role": "payoff",
-          "strength": 1
         }
       ],
       "partners": [
         {
+          "id": "hob/169",
+          "strength": 1
+        },
+        {
           "id": "hob/3",
-          "strength": 1
-        },
-        {
-          "id": "hob/18",
-          "strength": 1
-        },
-        {
-          "id": "hob/82",
-          "strength": 1
-        },
-        {
-          "id": "hob/156",
           "strength": 1
         }
       ]
@@ -4077,48 +2895,25 @@
       "name": "Quarrel",
       "roles": [
         {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 2
+          "axis": "ferocious",
+          "role": "payoff",
+          "strength": 1
         },
         {
-          "axis": "ferocious-power-four",
-          "role": "payoff",
+          "axis": "creature-deaths",
+          "role": "enabler",
           "strength": 1
         }
       ],
-      "partners": [
-        {
-          "id": "hob/126",
-          "strength": 1
-        },
-        {
-          "id": "hob/111",
-          "strength": 1
-        }
-      ]
+      "partners": []
     },
     {
       "id": "hob/136",
       "name": "Radagast of Rhosgobel",
-      "roles": [
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        }
-      ],
+      "roles": [],
       "partners": [
         {
           "id": "hob/59",
-          "strength": 1
-        },
-        {
-          "id": "hob/96",
-          "strength": 1
-        },
-        {
-          "id": "hob/123",
           "strength": 1
         }
       ]
@@ -4133,45 +2928,19 @@
           "strength": 3
         }
       ],
-      "partners": [
-        {
-          "id": "hob/129",
-          "strength": 2
-        },
-        {
-          "id": "hob/120",
-          "strength": 2
-        },
-        {
-          "id": "hob/123",
-          "strength": 2
-        },
-        {
-          "id": "hob/166",
-          "strength": 2
-        },
-        {
-          "id": "hob/168",
-          "strength": 1
-        }
-      ]
+      "partners": []
     },
     {
       "id": "hob/138",
       "name": "Troll Negotiations",
       "roles": [
         {
-          "axis": "noncreature-spells",
+          "axis": "ferocious",
           "role": "enabler",
           "strength": 1
         },
         {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "amass-army",
+          "axis": "creature-deaths",
           "role": "enabler",
           "strength": 1
         }
@@ -4183,12 +2952,7 @@
       "name": "Warg Tactics",
       "roles": [
         {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "amass-army",
+          "axis": "creature-deaths",
           "role": "enabler",
           "strength": 1
         }
@@ -4200,19 +2964,9 @@
       "name": "Wargling",
       "roles": [
         {
-          "axis": "wolves-and-bears",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "ferocious-power-four",
+          "axis": "ferocious",
           "role": "payoff",
-          "strength": 2
-        },
-        {
-          "axis": "go-wide-tokens",
-          "role": "payoff",
-          "strength": 1
+          "strength": 3
         }
       ],
       "partners": []
@@ -4222,42 +2976,22 @@
       "name": "Wilderland Scrounger",
       "roles": [
         {
-          "axis": "wolves-and-bears",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "ferocious-power-four",
+          "axis": "ferocious",
           "role": "payoff",
           "strength": 3
         },
         {
-          "axis": "go-wide-tokens",
+          "axis": "board-width",
           "role": "payoff",
-          "strength": 2
-        },
-        {
-          "axis": "amass-army",
-          "role": "enabler",
           "strength": 1
         }
       ],
-      "partners": [
-        {
-          "id": "hob/74",
-          "strength": 1
-        }
-      ]
+      "partners": []
     },
     {
       "id": "hob/142",
       "name": "Wood Elves",
       "roles": [
-        {
-          "axis": "elves",
-          "role": "enabler",
-          "strength": 2
-        },
         {
           "axis": "landfall",
           "role": "enabler",
@@ -4265,6 +2999,10 @@
         }
       ],
       "partners": [
+        {
+          "id": "hob/160",
+          "strength": 2
+        },
         {
           "id": "hob/54",
           "strength": 2
@@ -4274,15 +3012,7 @@
           "strength": 2
         },
         {
-          "id": "hob/160",
-          "strength": 2
-        },
-        {
           "id": "hob/12",
-          "strength": 1
-        },
-        {
-          "id": "hob/36",
           "strength": 1
         }
       ]
@@ -4293,11 +3023,6 @@
       "roles": [
         {
           "axis": "elves",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "elves",
           "role": "payoff",
           "strength": 3
         }
@@ -4305,22 +3030,10 @@
       "partners": [
         {
           "id": "hob/36",
-          "strength": 2
+          "strength": 1
         },
         {
           "id": "hob/167",
-          "strength": 1
-        },
-        {
-          "id": "hob/122",
-          "strength": 1
-        },
-        {
-          "id": "hob/127",
-          "strength": 1
-        },
-        {
-          "id": "hob/168",
           "strength": 1
         }
       ]
@@ -4330,55 +3043,35 @@
       "name": "Bard, King of Dale",
       "roles": [
         {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "second-card-draw",
+          "axis": "second-draw",
           "role": "enabler",
           "strength": 3
         },
         {
-          "axis": "second-card-draw",
-          "role": "payoff",
-          "strength": 2
-        },
-        {
-          "axis": "go-wide-tokens",
+          "axis": "tokens",
           "role": "payoff",
           "strength": 3
-        },
-        {
-          "axis": "go-wide-tokens",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "treasure",
-          "role": "payoff",
-          "strength": 1
         }
       ],
       "partners": [
         {
           "id": "hob/4",
-          "strength": 3
+          "strength": 2
         },
         {
-          "id": "hob/104",
+          "id": "hob/52",
+          "strength": 2
+        },
+        {
+          "id": "hob/29",
           "strength": 2
         },
         {
           "id": "hob/131",
-          "strength": 2
-        },
-        {
-          "id": "hob/110",
           "strength": 1
         },
         {
-          "id": "hob/75",
+          "id": "hob/15",
           "strength": 1
         }
       ]
@@ -4388,19 +3081,9 @@
       "name": "Bard the Bowman",
       "roles": [
         {
-          "axis": "second-card-draw",
+          "axis": "second-draw",
           "role": "payoff",
           "strength": 3
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "amass-army",
-          "role": "enabler",
-          "strength": 1
         }
       ],
       "partners": []
@@ -4410,72 +3093,42 @@
       "name": "Bard's Company",
       "roles": [
         {
-          "axis": "go-wide-tokens",
+          "axis": "board-width",
           "role": "payoff",
           "strength": 2
         },
         {
-          "axis": "go-wide-tokens",
+          "axis": "tokens",
           "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "second-card-draw",
-          "role": "enabler",
-          "strength": 2
+          "strength": 3
         },
         {
           "axis": "graveyard",
           "role": "enabler",
-          "strength": 2
+          "strength": 3
         }
       ],
-      "partners": [
-        {
-          "id": "hob/144",
-          "strength": 1
-        }
-      ]
+      "partners": []
     },
     {
       "id": "hob/147",
       "name": "Bifur, Melodic Rider",
       "roles": [
         {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "storied",
-          "role": "payoff",
-          "strength": 3
-        },
-        {
-          "axis": "dwarves",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
           "axis": "dwarves",
           "role": "payoff",
           "strength": 3
         },
         {
-          "axis": "amass-army",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
+          "axis": "enduring-story",
+          "role": "payoff",
           "strength": 2
         }
       ],
       "partners": [
         {
           "id": "hob/14",
-          "strength": 3
+          "strength": 2
         },
         {
           "id": "hob/87",
@@ -4490,7 +3143,7 @@
           "strength": 1
         },
         {
-          "id": "hob/59",
+          "id": "hob/102",
           "strength": 1
         }
       ]
@@ -4500,27 +3153,17 @@
       "name": "Bolg of the North",
       "roles": [
         {
-          "axis": "goblins",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
           "axis": "sacrifice-fodder",
           "role": "payoff",
           "strength": 2
         },
         {
-          "axis": "amass-army",
+          "axis": "creature-deaths",
           "role": "enabler",
-          "strength": 1
+          "strength": 2
         },
         {
-          "axis": "ferocious-power-four",
+          "axis": "ferocious",
           "role": "enabler",
           "strength": 2
         }
@@ -4531,11 +3174,7 @@
           "strength": 2
         },
         {
-          "id": "hob/169",
-          "strength": 1
-        },
-        {
-          "id": "hob/18",
+          "id": "hob/82",
           "strength": 1
         }
       ]
@@ -4546,39 +3185,31 @@
       "roles": [
         {
           "axis": "goblins",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "goblins",
           "role": "payoff",
           "strength": 3
         },
         {
+          "axis": "creature-deaths",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
           "axis": "sacrifice-fodder",
           "role": "payoff",
-          "strength": 2
+          "strength": 1
         }
       ],
       "partners": [
         {
           "id": "hob/156",
-          "strength": 3
-        },
-        {
-          "id": "hob/67",
           "strength": 2
         },
         {
           "id": "hob/158",
-          "strength": 2
-        },
-        {
-          "id": "hob/100",
           "strength": 1
         },
         {
-          "id": "hob/83",
+          "id": "hob/157",
           "strength": 1
         }
       ]
@@ -4588,22 +3219,12 @@
       "name": "The Chief Warg",
       "roles": [
         {
-          "axis": "wolves-and-bears",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "ferocious-power-four",
+          "axis": "ferocious",
           "role": "payoff",
           "strength": 3
         },
         {
-          "axis": "second-card-draw",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "storied",
+          "axis": "second-draw",
           "role": "enabler",
           "strength": 1
         }
@@ -4615,42 +3236,28 @@
       "name": "Chief Warg's Company",
       "roles": [
         {
-          "axis": "wolves-and-bears",
+          "axis": "wolves",
+          "role": "payoff",
+          "strength": 3
+        },
+        {
+          "axis": "ferocious",
           "role": "enabler",
           "strength": 3
         },
         {
-          "axis": "wolves-and-bears",
-          "role": "payoff",
-          "strength": 2
-        },
-        {
-          "axis": "go-wide-tokens",
+          "axis": "board-width",
           "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "sacrifice-fodder",
-          "role": "enabler",
-          "strength": 1
+          "strength": 3
         }
       ],
       "partners": [
         {
           "id": "hob/75",
-          "strength": 2
-        },
-        {
-          "id": "hob/117",
           "strength": 1
         },
         {
-          "id": "hob/144",
+          "id": "hob/169",
           "strength": 1
         }
       ]
@@ -4659,11 +3266,6 @@
       "id": "hob/152",
       "name": "Dáin's Company",
       "roles": [
-        {
-          "axis": "dwarves",
-          "role": "enabler",
-          "strength": 2
-        },
         {
           "axis": "dwarves",
           "role": "payoff",
@@ -4679,6 +3281,10 @@
         {
           "id": "hob/147",
           "strength": 1
+        },
+        {
+          "id": "hob/172",
+          "strength": 1
         }
       ]
     },
@@ -4687,17 +3293,7 @@
       "name": "Duskwatch Hunter",
       "roles": [
         {
-          "axis": "wolves-and-bears",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "amass-army",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "ferocious-power-four",
+          "axis": "ferocious",
           "role": "enabler",
           "strength": 1
         }
@@ -4708,16 +3304,6 @@
       "id": "hob/154",
       "name": "Dwalin, Weaponmaster",
       "roles": [
-        {
-          "axis": "dwarves",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
         {
           "axis": "equipment",
           "role": "payoff",
@@ -4736,14 +3322,6 @@
         {
           "id": "hob/91",
           "strength": 1
-        },
-        {
-          "id": "hob/178",
-          "strength": 1
-        },
-        {
-          "id": "hob/172",
-          "strength": 1
         }
       ]
     },
@@ -4752,27 +3330,14 @@
       "name": "Eagle's Rescue",
       "roles": [
         {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
           "axis": "graveyard",
           "role": "payoff",
-          "strength": 2
+          "strength": 1
         }
       ],
       "partners": [
         {
-          "id": "hob/106",
-          "strength": 1
-        },
-        {
-          "id": "hob/108",
-          "strength": 1
-        },
-        {
-          "id": "hob/32",
+          "id": "hob/46",
           "strength": 1
         }
       ]
@@ -4782,17 +3347,7 @@
       "name": "Fearsome Goblin Pair",
       "roles": [
         {
-          "axis": "goblins",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
           "axis": "sacrifice-fodder",
-          "role": "enabler",
-          "strength": 3
-        },
-        {
-          "axis": "amass-army",
           "role": "enabler",
           "strength": 3
         }
@@ -4800,14 +3355,10 @@
       "partners": [
         {
           "id": "hob/61",
-          "strength": 3
+          "strength": 2
         },
         {
-          "id": "hob/149",
-          "strength": 3
-        },
-        {
-          "id": "hob/84",
+          "id": "hob/148",
           "strength": 2
         },
         {
@@ -4817,54 +3368,24 @@
         {
           "id": "hob/112",
           "strength": 2
+        },
+        {
+          "id": "hob/149",
+          "strength": 2
         }
       ]
     },
     {
       "id": "hob/157",
       "name": "Goblin Plate Mail",
-      "roles": [
-        {
-          "axis": "equipment",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "amass-army",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "amass-army",
-          "role": "payoff",
-          "strength": 2
-        },
-        {
-          "axis": "goblins",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        }
-      ],
+      "roles": [],
       "partners": [
         {
-          "id": "hob/95",
-          "strength": 1
-        },
-        {
-          "id": "hob/102",
-          "strength": 1
-        },
-        {
-          "id": "hob/17",
-          "strength": 1
-        },
-        {
           "id": "hob/114",
+          "strength": 1
+        },
+        {
+          "id": "hob/95",
           "strength": 1
         }
       ]
@@ -4874,40 +3395,17 @@
       "name": "The Great Goblin",
       "roles": [
         {
-          "axis": "amass-army",
+          "axis": "amass",
           "role": "payoff",
           "strength": 3
         },
         {
           "axis": "goblins",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "goblins",
           "role": "payoff",
           "strength": 3
-        },
-        {
-          "axis": "sacrifice-fodder",
-          "role": "payoff",
-          "strength": 2
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
         }
       ],
       "partners": [
-        {
-          "id": "hob/156",
-          "strength": 2
-        },
-        {
-          "id": "hob/105",
-          "strength": 2
-        },
         {
           "id": "hob/149",
           "strength": 2
@@ -4917,7 +3415,11 @@
           "strength": 1
         },
         {
-          "id": "hob/89",
+          "id": "hob/156",
+          "strength": 1
+        },
+        {
+          "id": "hob/112",
           "strength": 1
         }
       ]
@@ -4927,40 +3429,31 @@
       "name": "Large Bear",
       "roles": [
         {
-          "axis": "wolves-and-bears",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "ferocious-power-four",
+          "axis": "ferocious",
           "role": "enabler",
           "strength": 3
         }
       ],
-      "partners": [
-        {
-          "id": "hob/119",
-          "strength": 1
-        },
-        {
-          "id": "hob/128",
-          "strength": 1
-        }
-      ]
+      "partners": []
     },
     {
       "id": "hob/160",
       "name": "Mirkwood Nurturer",
       "roles": [
         {
-          "axis": "elves",
-          "role": "enabler",
+          "axis": "enters-triggers",
+          "role": "payoff",
           "strength": 2
         },
         {
           "axis": "landfall",
           "role": "enabler",
           "strength": 2
+        },
+        {
+          "axis": "ferocious",
+          "role": "enabler",
+          "strength": 1
         }
       ],
       "partners": [
@@ -4969,19 +3462,15 @@
           "strength": 2
         },
         {
-          "id": "hob/61",
-          "strength": 1
-        },
-        {
-          "id": "hob/85",
-          "strength": 1
-        },
-        {
           "id": "hob/97",
           "strength": 1
         },
         {
-          "id": "hob/34",
+          "id": "hob/61",
+          "strength": 1
+        },
+        {
+          "id": "hob/163",
           "strength": 1
         }
       ]
@@ -4989,51 +3478,24 @@
     {
       "id": "hob/161",
       "name": "Nori, Teller of Tales",
-      "roles": [
+      "roles": [],
+      "partners": [
         {
-          "axis": "dwarves",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
+          "id": "hob/175",
           "strength": 1
         }
-      ],
-      "partners": []
+      ]
     },
     {
       "id": "hob/162",
       "name": "Patient Instructor",
-      "roles": [
-        {
-          "axis": "second-card-draw",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "go-wide-tokens",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "graveyard",
-          "role": "enabler",
-          "strength": 1
-        }
-      ],
+      "roles": [],
       "partners": []
     },
     {
       "id": "hob/163",
       "name": "Silvan Reveler",
       "roles": [
-        {
-          "axis": "elves",
-          "role": "enabler",
-          "strength": 2
-        },
         {
           "axis": "landfall",
           "role": "enabler",
@@ -5045,32 +3507,23 @@
           "strength": 2
         },
         {
-          "axis": "second-card-draw",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
           "axis": "graveyard",
           "role": "enabler",
-          "strength": 2
+          "strength": 1
         },
         {
-          "axis": "sacrifice-fodder",
+          "axis": "second-draw",
           "role": "enabler",
           "strength": 1
         }
       ],
       "partners": [
         {
-          "id": "hob/60",
-          "strength": 1
-        },
-        {
-          "id": "hob/169",
-          "strength": 1
-        },
-        {
           "id": "hob/160",
+          "strength": 1
+        },
+        {
+          "id": "hob/60",
           "strength": 1
         }
       ]
@@ -5080,51 +3533,28 @@
       "name": "Smaug, Wicked Worm",
       "roles": [
         {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "treasure",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "treasure",
+          "axis": "treasures",
           "role": "payoff",
-          "strength": 3
-        },
-        {
-          "axis": "second-card-draw",
-          "role": "enabler",
           "strength": 2
         },
         {
-          "axis": "ferocious-power-four",
+          "axis": "ferocious",
           "role": "enabler",
-          "strength": 2
+          "strength": 1
         }
       ],
       "partners": [
-        {
-          "id": "hob/110",
-          "strength": 2
-        },
         {
           "id": "hob/104",
           "strength": 2
         },
         {
-          "id": "hob/5",
+          "id": "hob/110",
           "strength": 1
         },
         {
-          "id": "hob/94",
-          "strength": 1
-        },
-        {
-          "id": "hob/93",
-          "strength": 1
+          "id": "hob/103",
+          "strength": 2
         }
       ]
     },
@@ -5133,18 +3563,8 @@
       "name": "Thorin Oakenshield",
       "roles": [
         {
-          "axis": "storied",
+          "axis": "enduring-story",
           "role": "payoff",
-          "strength": 2
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "dwarves",
-          "role": "enabler",
           "strength": 2
         }
       ],
@@ -5156,13 +3576,8 @@
       "roles": [
         {
           "axis": "elves",
-          "role": "enabler",
-          "strength": 3
-        },
-        {
-          "axis": "elves",
           "role": "payoff",
-          "strength": 3
+          "strength": 2
         },
         {
           "axis": "landfall",
@@ -5171,31 +3586,6 @@
         },
         {
           "axis": "landfall",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "go-wide-tokens",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "go-wide-tokens",
-          "role": "payoff",
-          "strength": 1
-        },
-        {
-          "axis": "graveyard",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "noncreature-spells",
           "role": "enabler",
           "strength": 1
         }
@@ -5206,19 +3596,7 @@
           "strength": 2
         },
         {
-          "id": "hob/137",
-          "strength": 2
-        },
-        {
-          "id": "hob/144",
-          "strength": 1
-        },
-        {
           "id": "hob/167",
-          "strength": 1
-        },
-        {
-          "id": "hob/124",
           "strength": 1
         }
       ]
@@ -5229,38 +3607,23 @@
       "roles": [
         {
           "axis": "elves",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "elves",
-          "role": "payoff",
-          "strength": 3
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "graveyard",
           "role": "payoff",
           "strength": 3
         },
         {
           "axis": "graveyard",
+          "role": "payoff",
+          "strength": 2
+        },
+        {
+          "axis": "ferocious",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "second-draw",
           "role": "enabler",
           "strength": 1
-        },
-        {
-          "axis": "second-card-draw",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
-          "strength": 2
         }
       ],
       "partners": [
@@ -5269,19 +3632,19 @@
           "strength": 2
         },
         {
-          "id": "hob/143",
+          "id": "hob/166",
           "strength": 2
         },
         {
           "id": "hob/36",
-          "strength": 2
-        },
-        {
-          "id": "hob/166",
           "strength": 1
         },
         {
-          "id": "hob/38",
+          "id": "hob/125",
+          "strength": 1
+        },
+        {
+          "id": "hob/143",
           "strength": 1
         }
       ]
@@ -5292,17 +3655,7 @@
       "roles": [
         {
           "axis": "elves",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "elves",
           "role": "payoff",
-          "strength": 2
-        },
-        {
-          "axis": "landfall",
-          "role": "enabler",
           "strength": 2
         },
         {
@@ -5311,32 +3664,15 @@
           "strength": 3
         },
         {
-          "axis": "ferocious-power-four",
+          "axis": "landfall",
           "role": "enabler",
           "strength": 2
-        },
-        {
-          "axis": "amass-army",
-          "role": "enabler",
-          "strength": 1
         }
       ],
       "partners": [
         {
           "id": "hob/166",
           "strength": 2
-        },
-        {
-          "id": "hob/137",
-          "strength": 1
-        },
-        {
-          "id": "hob/163",
-          "strength": 1
-        },
-        {
-          "id": "hob/125",
-          "strength": 1
         }
       ]
     },
@@ -5350,24 +3686,24 @@
           "strength": 3
         },
         {
-          "axis": "second-card-draw",
+          "axis": "creature-deaths",
           "role": "enabler",
           "strength": 3
+        },
+        {
+          "axis": "second-draw",
+          "role": "enabler",
+          "strength": 2
+        },
+        {
+          "axis": "ferocious",
+          "role": "enabler",
+          "strength": 2
         },
         {
           "axis": "graveyard",
           "role": "enabler",
           "strength": 1
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
-          "strength": 2
         }
       ],
       "partners": [
@@ -5376,19 +3712,11 @@
           "strength": 2
         },
         {
-          "id": "hob/61",
-          "strength": 2
-        },
-        {
-          "id": "hob/163",
+          "id": "hob/151",
           "strength": 1
         },
         {
-          "id": "hob/18",
-          "strength": 1
-        },
-        {
-          "id": "hob/144",
+          "id": "hob/134",
           "strength": 1
         }
       ]
@@ -5398,96 +3726,42 @@
       "name": "The Arkenstone // Seek the Heart",
       "roles": [
         {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "go-wide-tokens",
+          "axis": "board-width",
           "role": "payoff",
           "strength": 2
         },
         {
-          "axis": "second-card-draw",
+          "axis": "second-draw",
           "role": "enabler",
           "strength": 2
         },
         {
-          "axis": "noncreature-spells",
+          "axis": "enduring-story",
           "role": "enabler",
           "strength": 1
         }
       ],
-      "partners": [
-        {
-          "id": "hob/110",
-          "strength": 1
-        },
-        {
-          "id": "hob/119",
-          "strength": 1
-        }
-      ]
+      "partners": []
     },
     {
       "id": "hob/171",
       "name": "The Black Arrow",
-      "roles": [
-        {
-          "axis": "equipment",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 1
-        }
-      ],
-      "partners": [
-        {
-          "id": "hob/17",
-          "strength": 1
-        }
-      ]
+      "roles": [],
+      "partners": []
     },
     {
       "id": "hob/172",
       "name": "Dwarven Mattock",
       "roles": [
         {
-          "axis": "equipment",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
           "axis": "dwarves",
           "role": "payoff",
-          "strength": 2
-        },
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
           "strength": 2
         }
       ],
       "partners": [
         {
-          "id": "hob/17",
-          "strength": 1
-        },
-        {
-          "id": "hob/154",
+          "id": "hob/152",
           "strength": 1
         }
       ]
@@ -5495,79 +3769,22 @@
     {
       "id": "hob/173",
       "name": "Giant's Boulder",
-      "roles": [
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "sacrifice-fodder",
-          "role": "enabler",
-          "strength": 1
-        }
-      ],
-      "partners": [
-        {
-          "id": "hob/40",
-          "strength": 1
-        },
-        {
-          "id": "hob/112",
-          "strength": 1
-        },
-        {
-          "id": "hob/113",
-          "strength": 1
-        }
-      ]
+      "roles": [],
+      "partners": []
     },
     {
       "id": "hob/174",
       "name": "Glamdring, Foe-hammer // Gleam of Death",
       "roles": [
         {
-          "axis": "equipment",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
           "axis": "noncreature-spells",
           "role": "payoff",
-          "strength": 3
-        },
-        {
-          "axis": "graveyard",
-          "role": "enabler",
-          "strength": 3
-        },
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 1
+          "strength": 2
         }
       ],
       "partners": [
         {
           "id": "hob/33",
-          "strength": 3
-        },
-        {
-          "id": "hob/96",
-          "strength": 2
-        },
-        {
-          "id": "hob/89",
           "strength": 2
         },
         {
@@ -5575,7 +3792,7 @@
           "strength": 1
         },
         {
-          "id": "hob/47",
+          "id": "hob/59",
           "strength": 1
         }
       ]
@@ -5585,24 +3802,9 @@
       "name": "Key to the Side-Door",
       "roles": [
         {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "second-card-draw",
+          "axis": "second-draw",
           "role": "enabler",
           "strength": 1
-        },
-        {
-          "axis": "graveyard",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 2
         }
       ],
       "partners": [
@@ -5611,11 +3813,11 @@
           "strength": 1
         },
         {
-          "id": "hob/106",
+          "id": "hob/94",
           "strength": 1
         },
         {
-          "id": "hob/94",
+          "id": "hob/106",
           "strength": 1
         },
         {
@@ -5623,7 +3825,7 @@
           "strength": 1
         },
         {
-          "id": "hob/177",
+          "id": "hob/34",
           "strength": 1
         }
       ]
@@ -5633,27 +3835,17 @@
       "name": "My Precious // Allure of Power",
       "roles": [
         {
-          "axis": "equipment",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
           "axis": "sacrifice-fodder",
           "role": "payoff",
           "strength": 2
         },
         {
-          "axis": "second-card-draw",
+          "axis": "creature-deaths",
           "role": "enabler",
           "strength": 2
         },
         {
-          "axis": "noncreature-spells",
+          "axis": "second-draw",
           "role": "enabler",
           "strength": 2
         }
@@ -5661,10 +3853,6 @@
       "partners": [
         {
           "id": "hob/156",
-          "strength": 2
-        },
-        {
-          "id": "hob/18",
           "strength": 1
         }
       ]
@@ -5674,82 +3862,22 @@
       "name": "Orcrist, Goblin-cleaver",
       "roles": [
         {
-          "axis": "equipment",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "treasure",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "go-wide-tokens",
+          "axis": "board-width",
           "role": "payoff",
           "strength": 2
-        },
-        {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
-          "strength": 1
         }
       ],
       "partners": [
         {
-          "id": "hob/38",
-          "strength": 1
-        },
-        {
-          "id": "hob/175",
-          "strength": 1
-        },
-        {
-          "id": "hob/14",
-          "strength": 1
-        },
-        {
-          "id": "hob/166",
-          "strength": 1
-        }
-      ]
-    },
-    {
-      "id": "hob/178",
-      "name": "Sting, Bilbo's Sword",
-      "roles": [
-        {
-          "axis": "equipment",
-          "role": "enabler",
+          "id": "hob/110",
           "strength": 2
         },
         {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
+          "id": "hob/164",
           "strength": 1
         },
         {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 2
-        }
-      ],
-      "partners": [
-        {
-          "id": "hob/154",
-          "strength": 1
-        },
-        {
-          "id": "hob/95",
+          "id": "hob/29",
           "strength": 1
         },
         {
@@ -5759,76 +3887,38 @@
       ]
     },
     {
+      "id": "hob/178",
+      "name": "Sting, Bilbo's Sword",
+      "roles": [],
+      "partners": []
+    },
+    {
       "id": "hob/179",
       "name": "Thrór's Map",
       "roles": [
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 2
-        },
         {
           "axis": "landfall",
           "role": "enabler",
           "strength": 1
         },
         {
-          "axis": "second-card-draw",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
           "axis": "graveyard",
           "role": "enabler",
-          "strength": 2
+          "strength": 1
         },
         {
-          "axis": "noncreature-spells",
+          "axis": "second-draw",
           "role": "enabler",
-          "strength": 2
+          "strength": 1
         }
       ],
-      "partners": [
-        {
-          "id": "hob/21",
-          "strength": 1
-        },
-        {
-          "id": "hob/115",
-          "strength": 1
-        },
-        {
-          "id": "hob/155",
-          "strength": 1
-        }
-      ]
+      "partners": []
     },
     {
       "id": "hob/180",
       "name": "Well-Worn Spatula",
-      "roles": [
-        {
-          "axis": "equipment",
-          "role": "enabler",
-          "strength": 2
-        },
-        {
-          "axis": "storied",
-          "role": "enabler",
-          "strength": 1
-        },
-        {
-          "axis": "noncreature-spells",
-          "role": "enabler",
-          "strength": 2
-        }
-      ],
-      "partners": [
-        {
-          "id": "hob/17",
-          "strength": 1
-        }
-      ]
+      "roles": [],
+      "partners": []
     },
     {
       "id": "hob/181",
@@ -5854,7 +3944,7 @@
         {
           "axis": "elves",
           "role": "payoff",
-          "strength": 2
+          "strength": 1
         }
       ],
       "partners": []
@@ -5866,18 +3956,13 @@
         {
           "axis": "goblins",
           "role": "payoff",
-          "strength": 2
-        },
-        {
-          "axis": "amass-army",
-          "role": "enabler",
-          "strength": 2
+          "strength": 1
         }
       ],
       "partners": [
         {
           "id": "hob/158",
-          "strength": 2
+          "strength": 1
         }
       ]
     },
@@ -5889,19 +3974,9 @@
           "axis": "landfall",
           "role": "enabler",
           "strength": 2
-        },
-        {
-          "axis": "graveyard",
-          "role": "enabler",
-          "strength": 1
         }
       ],
-      "partners": [
-        {
-          "id": "hob/131",
-          "strength": 1
-        }
-      ]
+      "partners": []
     },
     {
       "id": "hob/185",
@@ -5910,7 +3985,7 @@
         {
           "axis": "dwarves",
           "role": "payoff",
-          "strength": 2
+          "strength": 1
         }
       ],
       "partners": []
@@ -5928,17 +4003,12 @@
         {
           "axis": "equipment",
           "role": "payoff",
-          "strength": 3
+          "strength": 2
         },
         {
           "axis": "dwarves",
           "role": "enabler",
           "strength": 2
-        },
-        {
-          "axis": "go-wide-tokens",
-          "role": "enabler",
-          "strength": 1
         }
       ],
       "partners": [
@@ -5947,11 +4017,7 @@
           "strength": 1
         },
         {
-          "id": "hob/87",
-          "strength": 1
-        },
-        {
-          "id": "hob/17",
+          "id": "hob/92",
           "strength": 1
         }
       ]
@@ -5961,17 +4027,212 @@
       "name": "Mirkwood",
       "roles": [
         {
-          "axis": "wolves-and-bears",
+          "axis": "wolves",
           "role": "payoff",
-          "strength": 2
+          "strength": 1
         },
         {
-          "axis": "ferocious-power-four",
-          "role": "enabler",
+          "axis": "bears",
+          "role": "payoff",
           "strength": 1
         }
       ],
       "partners": []
     }
-  ]
+  ],
+  "review": {
+    "provenance": "claude-fable-5-1 via Claude Code, tags review v1, 2026-11-05",
+    "counts": {
+      "add-role": 21,
+      "remove-role": 0,
+      "set-strength": 1,
+      "add-partner": 1,
+      "remove-partner": 0
+    },
+    "corrections": [
+      {
+        "id": "hob/27",
+        "action": "add-role",
+        "axis": "creature-deaths",
+        "role": "enabler",
+        "strength": 1,
+        "reason": "First mode destroys a creature with power 4 or greater, so it makes a creature die rather than exiling it."
+      },
+      {
+        "id": "hob/27",
+        "action": "add-role",
+        "axis": "enduring-story",
+        "role": "enabler",
+        "strength": 1,
+        "reason": "Second mode makes a creature an artifact until end of turn, which can push you to three artifacts/legendaries/Sagas and storied's enduring story lasts for the rest of the game."
+      },
+      {
+        "id": "hob/69",
+        "action": "add-role",
+        "axis": "creature-deaths",
+        "role": "enabler",
+        "strength": 1,
+        "reason": "Second mode gives all of a player's creatures -1/-1, killing 1-toughness creatures and tokens; it is already partnered with Supper for Spiders on that basis."
+      },
+      {
+        "id": "hob/83",
+        "action": "add-role",
+        "axis": "second-draw",
+        "role": "enabler",
+        "strength": 1,
+        "reason": "Enters trigger draws a card on your own turn, the same reason Bilbo Baggins, Burglar carries second-draw enabler 1."
+      },
+      {
+        "id": "hob/87",
+        "action": "add-role",
+        "axis": "ferocious",
+        "role": "enabler",
+        "strength": 1,
+        "reason": "A 4/4 body turns on ferocious; every other printed 4-power creature in the set carries this role."
+      },
+      {
+        "id": "hob/87",
+        "action": "add-role",
+        "axis": "second-draw",
+        "role": "enabler",
+        "strength": 1,
+        "reason": "Discarding your hand to draw that many cards on a Dwarf entering draws two or more on your own turn."
+      },
+      {
+        "id": "hob/88",
+        "action": "set-strength",
+        "axis": "ferocious",
+        "role": "enabler",
+        "strength": 2,
+        "reason": "Ferocious only checks that you control a creature with power 4 or greater; a tapped 5-power body for three mana still turns it on every turn, so not untapping does not weaken it."
+      },
+      {
+        "id": "hob/91",
+        "action": "add-partner",
+        "partner": "hob/17",
+        "strength": 1,
+        "reason": "Dain's Axe token is an Equipment entering under your control, which triggers Kili's draw; Iron Hills Blacksmith is partnered with Kili for the same reason."
+      },
+      {
+        "id": "hob/99",
+        "action": "add-role",
+        "axis": "creature-deaths",
+        "role": "enabler",
+        "strength": 1,
+        "reason": "Easy Pickings deals 1 damage to each opposing creature, killing 1-toughness creatures and tokens; it is already partnered with Supper for Spiders on that basis."
+      },
+      {
+        "id": "hob/106",
+        "action": "add-role",
+        "axis": "second-draw",
+        "role": "enabler",
+        "strength": 1,
+        "reason": "Its {1}, {T}, discard: draw ability is a repeatable loot on your own turn; Thror's Map carries second-draw enabler 1 for the same ability."
+      },
+      {
+        "id": "hob/109",
+        "action": "add-role",
+        "axis": "creature-deaths",
+        "role": "enabler",
+        "strength": 1,
+        "reason": "Spew Flame deals 5 damage to target creature, the same effect Magnificent End carries creature-deaths enabler 1 for."
+      },
+      {
+        "id": "hob/119",
+        "action": "add-role",
+        "axis": "second-draw",
+        "role": "enabler",
+        "strength": 1,
+        "reason": "Drawing two cards at the beginning of combat on your turn when you control three Bears is a second draw on your own turn."
+      },
+      {
+        "id": "hob/135",
+        "action": "add-role",
+        "axis": "creature-deaths",
+        "role": "enabler",
+        "strength": 1,
+        "reason": "Bite removal kills the opposing creature with damage rather than exile, like Magnificent End."
+      },
+      {
+        "id": "hob/138",
+        "action": "add-role",
+        "axis": "creature-deaths",
+        "role": "enabler",
+        "strength": 1,
+        "reason": "Fight removal kills the opposing creature with damage rather than exile, like Magnificent End."
+      },
+      {
+        "id": "hob/139",
+        "action": "add-role",
+        "axis": "creature-deaths",
+        "role": "enabler",
+        "strength": 1,
+        "reason": "First mode destroys a creature with flying, conditional destroy removal like Stone by Sunlight."
+      },
+      {
+        "id": "hob/149",
+        "action": "add-role",
+        "axis": "sacrifice-fodder",
+        "role": "payoff",
+        "strength": 1,
+        "reason": "{T}, Sacrifice another Goblin is a sacrifice outlet for the Goblin Army token and Fearsome Goblin Pair, which it is already partnered with."
+      },
+      {
+        "id": "hob/150",
+        "action": "add-role",
+        "axis": "second-draw",
+        "role": "enabler",
+        "strength": 1,
+        "reason": "Drawing a card whenever you attack while ferocious is repeatable draw on your own turn; Rage into the Valley carries second-draw enabler 1 for a single draw."
+      },
+      {
+        "id": "hob/153",
+        "action": "add-role",
+        "axis": "ferocious",
+        "role": "enabler",
+        "strength": 1,
+        "reason": "Its enters trigger can put the +1/+1 counter on itself, making a 4/2 Wolf for three mana in the ferocious colours."
+      },
+      {
+        "id": "hob/160",
+        "action": "add-role",
+        "axis": "ferocious",
+        "role": "enabler",
+        "strength": 1,
+        "reason": "Bouncing a permanent on entering puts a +1/+1 counter on it, making it a 4/3; Mirkwood Meditator carries ferocious enabler 1 for a similar conditional 4-power."
+      },
+      {
+        "id": "hob/163",
+        "action": "add-role",
+        "axis": "second-draw",
+        "role": "enabler",
+        "strength": 1,
+        "reason": "Its enters trigger is a loot (draw, then discard) on your own turn, the same reason Bilbo, Luckwearer carries second-draw enabler 1."
+      },
+      {
+        "id": "hob/167",
+        "action": "add-role",
+        "axis": "ferocious",
+        "role": "enabler",
+        "strength": 2,
+        "reason": "A 5/6 for five mana in black and green turns on ferocious, the same as Beorn, Reluctant Host at strength 2."
+      },
+      {
+        "id": "hob/167",
+        "action": "add-role",
+        "axis": "second-draw",
+        "role": "enabler",
+        "strength": 1,
+        "reason": "Drawing two cards whenever another legendary Elf enters is a second draw on your own turn."
+      },
+      {
+        "id": "hob/169",
+        "action": "add-role",
+        "axis": "graveyard",
+        "role": "enabler",
+        "strength": 1,
+        "reason": "Every activation discards a card after drawing, filling your graveyard; Bilbo, Luckwearer carries graveyard enabler 1 for its loot."
+      }
+    ]
+  }
 }
