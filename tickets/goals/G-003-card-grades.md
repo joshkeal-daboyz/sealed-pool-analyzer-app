@@ -1,7 +1,7 @@
 ---
 id: G-003
 title: Card grades, the first model call
-status: open
+status: closed
 owner: human
 target_set_code: trk
 companion_set_codes: [sds]
@@ -108,3 +108,20 @@ The owner approved every default on 2026-11-04. Each item keeps the question and
 - 2026-11-04 SPA-033 integrated (PR #38): grading packet, import, prompt v1. Fable graded msh, hob, fra and trk in parallel (5% of the weekly Fable allowance). Preview backtest mean 0.405 (msh 0.385, hob 0.359, fra 0.472), below the 0.45 target: strong on rares and mythics, weak on commons and uncommons. Star Trek grade sheet published for the owner. 5 of 6 tickets integrated. Next: SPA-034 (import, spa grades, backtest record).
 - 2026-11-04 SPA-034 integrated (PR #39) on attempt 2 after re-plan 1 (basic lands): the four grade files, `spa grades`, and the backtest record. **6 of 6 tickets integrated.** Goal criterion 6: backtest mean 0.405 (msh 0.385, hob 0.359, fra 0.472) against the 0.45 target, a miss. Reported to the owner with one proposal: after the prerelease, a prompt v2 developed on msh, hob and fra (now spent as test sets) and both versions measured on `trk` once 17Lands publishes its data, the clean held-out test. Default if no answer: that plan. The goal closes when the owner rules on the miss.
 - 2026-11-04 Owner direction for the next goal: layered grading. Layer 1, the set grade (this goal). Then grades that adjust for synergy with the other cards in your pool and for cost. Architect's sketch: set-level synergy counts added to the grading packet (layer 2); pool adjustments for synergy, curve and colour depth, deterministic from the metric engine where possible and a model only for synergy judgement (layer 3); adjusted grades feed the deck builder. To be drafted as G-004 after the Friday prerelease, together with the prompt v2 proposal.
+- 2026-11-04 Owner approved G-004 with defaults, which takes the proposal on the criterion 6 miss: prompt v2 developed on `msh`, `hob` and `fra`, and v1 and v2 measured on `trk` once its data exists. G-003 closed with all 6 tickets integrated.
+
+### Metrics (2026-11-04)
+
+| Metric | G-003 |
+| --- | --- |
+| Tickets integrated | 6 (SPA-029 to SPA-034), PRs #34 to #39 |
+| Gate green on first push | 6 of 6 pushed heads (local red runs before a push: 5, all detekt or coverage) |
+| Bounces by source | Developer to Architect before code: 3 (SPA-030 hob factions, SPA-031 schema and endpoints, SPA-034 basic lands). Inspector: 1 (SPA-032, win rates ranked by score, a ticket ambiguity). Acceptance: 0. All four were gaps in the tickets, none code defects |
+| Re-plans | 3 (SPA-030, 031, 034, one each); plus one ruling (SPA-033 criterion 2) and one clarification (SPA-032) |
+| Escalations to the human | 0 from limits. Owner decisions: grade with Fable on the subscription; the backtest miss (via G-004) |
+| Lead time | About 7 hours, SPA-029 dispatched 16:20 to SPA-034 merged, 2026-11-04 |
+| Criteria proven by deterministic tests | 5 of 9 (1, 2, 3, 4, 9); 3 by data checks or reruns (5, 8, 6's numbers); 7 by usage records |
+| Backtest (criterion 6) | msh 0.385, hob 0.359, fra 0.472, mean 0.405 against 0.45: a miss. Strong on rares and mythics (0.49 to 0.81), weak on commons and uncommons (0.15 to 0.40) |
+| Model usage | Four Fable graders: 600,319 tokens in total; weekly Fable allowance 0% to 5%; no API key, no spend |
+| Recorded responses replayed by the gate | 2 (SPA-029's hand-written replay recordings) |
+| Delivered beyond the tickets | The Star Trek grade sheet page for the 6 Nov prerelease |
