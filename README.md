@@ -145,6 +145,16 @@ cli/build/install/spa/bin/spa fixing --set fra
 cli/build/install/spa/bin/spa fixing fixtures/pools/trk-manabox-01.csv --set trk
 ```
 
+**tags-packet** writes a blind synergy tagging packet for the set's sealed pool into `--out <dir>`, in two passes. Pass 1 (no `--axes`) writes `instructions.md` (the axes prompt `agent/src/main/resources/spa/agent/tags/tags-axes-v1.md`, then the set's format brief as `grade-packet` renders it, the `## Themes in this set` section as `grade-packet --themes` writes it, and a description of the files), `axes.schema.json`, and the card files `cards-01.json`, ... byte for byte as `grade-packet` writes them without `--themes`. The tagger writes `axes.response.json`: a JSON array of 3 to 15 `{ "id", "name", "definition" }`, each id lowercase letters, digits and hyphens, the ids distinct. Pass 2, `--axes <file>`, checks that file first; on any problem it prints one line per problem, writes nothing, and exits 1. It then writes `instructions.md` (the roles prompt `tags-roles-v1.md`, then the axes as a list in the given order, then the brief, theme counts and files), `axes.json` (the axes, which `tags-import` reads), `response.schema.json`, and the same card files. The tagger writes `cards-NN.response.json` beside each card file: a JSON array of `{ "id", "roles": [{ "axis", "role": "enabler" | "payoff", "strength": 1 | 2 | 3 }], "partners": [{ "id", "strength": 1 | 2 | 3 }] }`. Neither packet holds a win rate or review text. `--prompt <version>` (default `v1`) picks the prompt files `tags-axes-<version>.md` and `tags-roles-<version>.md`, so a new prompt is a new resource file; a version with no file prints one line and exits 1. The same inputs always give the same bytes; earlier packet files in `<dir>` are replaced and response files are kept.
+
+**tags-import** reads the pass-2 packet in `--packet <dir>`, its `axes.json` and every response, and writes `<data>/tags/<code>.json`, a tag file (`agent/src/main/resources/spa/agent/tags/tags.schema.json`): `{ "set", "provenance", "axes", "cards": [{ "id", "name", "roles", "partners" }] }` in collector order, with the given `--provenance`. It checks that every card of the pool is tagged exactly once and no id is unknown, every axis is one of the packet's, every role is `enabler` or `payoff` and every strength 1, 2 or 3, no card gives the same axis and role twice, and every partner is a card of the pool (the card itself allowed), at most 5 and none twice. Each check is its own class in `agent/src/main/kotlin/spa/agent/tags/`, listed in `TagChecks.ALL`. On any problem it prints one line per problem, naming the file and the card, writes nothing, and exits 1. `fixtures/tags/README.md` describes the tagging run. Neither command calls a model.
+
+```bash
+cli/build/install/spa/bin/spa tags-packet trk --out ../tags-trk
+cli/build/install/spa/bin/spa tags-packet trk --axes ../tags-trk/axes.response.json --out ../tags-trk
+cli/build/install/spa/bin/spa tags-import trk --packet ../tags-trk --provenance "claude-fable-5-1 via Claude Code, tags prompt v1, <yyyy-mm-dd>"
+```
+
 ## Android app
 
 The `app` module builds the Android app, a debug APK signed with the build machine's debug key. It needs the JDK and the Android SDK in [Toolchain](#toolchain).

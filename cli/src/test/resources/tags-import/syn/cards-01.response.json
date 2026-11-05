@@ -1,0 +1,22 @@
+[
+  { "id": "syn/1", "roles": [], "partners": [] },
+  { "id": "syn/2", "roles": [{ "axis": "flying", "role": "enabler", "strength": 2 }], "partners": [] },
+  { "id": "syn/3", "roles": [{ "axis": "flying", "role": "enabler", "strength": 2 }], "partners": [] },
+  { "id": "syn/4", "roles": [], "partners": [] },
+  { "id": "syn/5", "roles": [{ "axis": "graveyard", "role": "enabler", "strength": 1 }], "partners": [] },
+  { "id": "syn/6", "roles": [{ "axis": "graveyard", "role": "payoff", "strength": 2 }, { "axis": "graveyard", "role": "enabler", "strength": 1 }], "partners": [{ "id": "syn/5", "strength": 1 }] },
+  { "id": "syn/7", "roles": [], "partners": [] },
+  { "id": "syn/8", "roles": [], "partners": [] },
+  { "id": "syn/9", "roles": [{ "axis": "lifegain", "role": "enabler", "strength": 2 }], "partners": [] },
+  { "id": "syn/10", "roles": [{ "axis": "lifegain", "role": "enabler", "strength": 1 }], "partners": [{ "id": "syn/9", "strength": 1 }] },
+  { "id": "syn/11", "roles": [{ "axis": "double-faced", "role": "enabler", "strength": 1 }], "partners": [] },
+  { "id": "syn/12", "roles": [{ "axis": "lifegain", "role": "enabler", "strength": 2 }, { "axis": "double-faced", "role": "enabler", "strength": 1 }], "partners": [{ "id": "syn/12", "strength": 1 }] },
+  { "id": "syn/13", "roles": [], "partners": [] },
+  { "id": "syn/14", "roles": [], "partners": [] },
+  { "id": "syn/15", "roles": [{ "axis": "graveyard", "role": "enabler", "strength": 1 }], "partners": [] },
+  { "id": "syn/16", "roles": [], "partners": [] },
+  { "id": "syn/17", "roles": [], "partners": [] },
+  { "id": "syn/18", "roles": [], "partners": [] },
+  { "id": "syn/19", "roles": [], "partners": [] },
+  { "id": "syn/20", "roles": [], "partners": [] }
+]

@@ -10,7 +10,8 @@ import spa.core.cards.ScryfallSetFetcher
 
 /**
  * The `spa` command line: `analyze`, `validate-brief`, `fetch-set`, `winrates`, `grade-backtest`,
- * `grade-packet`, `grade-import`, `grades`, `themes`, `pool-grades`, `deck-pick`, and `fixing`.
+ * `grade-packet`, `grade-import`, `grades`, `themes`, `pool-grades`, `deck-pick`, `fixing`,
+ * `tags-packet`, and `tags-import`.
  */
 object Main {
     /** The text `spa --help` prints. */
@@ -75,6 +76,15 @@ object Main {
         |      kinds, the colours it can supply and 'land' for a land, then the count of each
         |      kind. With a pool file, only the pool's fixing cards with their quantities, then
         |      the copies that can supply each colour.
+        |  tags-packet <code> --out <dir> [--axes <file>] [--prompt <version>] [--data <dir>]
+        |      Write a blind synergy tagging packet for the set's sealed pool into <dir>. Without
+        |      --axes, pass 1: the axes prompt, the format brief and theme counts, the cards in
+        |      files of 50, and axes.schema.json. With --axes, pass 2: the file's axes are
+        |      checked first, then the roles prompt, the axes, the brief and theme counts, the
+        |      cards, and response.schema.json. --prompt picks the prompt version, default v1.
+        |  tags-import <code> --packet <dir> --provenance <text> [--data <dir>]
+        |      Check a tagger's response files in the pass-2 packet <dir> and write
+        |      <data>/tags/<code>.json. Writes nothing on any problem.
         |
         |<data> defaults to ${DataDir.DEFAULT}. Exit codes: 0 ok, 1 error, 2 bad command line.
         |Run 'spa --help' for this text.
@@ -149,6 +159,8 @@ object Main {
             "pool-grades" to { a, out, err -> PoolGradesCommand.run(a, out, err) },
             "deck-pick" to { a, out, _ -> DeckPickCommand.run(a, out) },
             "fixing" to { a, out, err -> FixingCommand.run(a, out, err) },
+            "tags-packet" to { a, out, err -> TagsPacketCommand.run(a, out, err) },
+            "tags-import" to { a, out, err -> TagsImportCommand().run(a, out, err) },
         )
 
     private fun usageError(message: String, stderr: PrintStream): Int {

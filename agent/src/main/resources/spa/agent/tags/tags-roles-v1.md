@@ -1,0 +1,5 @@
+You are tagging every card of a Magic: The Gathering set you have never seen played, for Sealed synergy. The set's axes are listed below. Read every card file in this folder first. For each card, list its role on each axis it touches.
+- **enabler**: it supplies the axis. Strength 1 is incidental, 2 is a clear supplier, and 3 is a core supplier (repeatable, or several at once).
+- **payoff**: it rewards the axis. Strength 1 is a small bonus, 2 means it is clearly better with the axis, and 3 means it is built around the axis.
+
+A card can be both on the same axis. Most cards touch no axis or one; do not stretch. Then list up to 5 named partners: specific cards in this set that this card works with beyond the shared axes, such as a card that names another, or two cards that form a combo, each with a strength from 1 to 3. A card may name itself when its copies help each other beyond the axes. Give every card exactly once, in its own file's response, matching `response.schema.json`. Use only the files in this folder. Do not use the web or any tool other than reading these files and writing the response files.
