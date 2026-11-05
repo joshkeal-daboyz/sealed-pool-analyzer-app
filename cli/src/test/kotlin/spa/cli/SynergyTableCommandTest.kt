@@ -144,4 +144,45 @@ class SynergyTableCommandTest {
     fun `help lists the command`() {
         assertTrue("synergy-table --set <code>" in Main.USAGE)
     }
+
+    @Test
+    fun `--tags reads that file, as if it were the data directory's tag file`(@TempDir dir: Path) {
+        val tagged =
+            runCli(
+                "synergy-table",
+                "--set",
+                "trk",
+                "--tags",
+                Fixtures.v1Tags("trk"),
+                "--data",
+                "$dir",
+            )
+        writeFile(dir, "tags/trk.json", Files.readString(Path.of(Fixtures.v1Tags("trk"))))
+        val default = runCli("synergy-table", "--set", "trk", "--data", "$dir")
+
+        assertEquals(ExitCode.OK, tagged.exit, tagged.stderr)
+        assertEquals(
+            "336 cards, 56616 pairs with the diagonal, 7259 nonzero, 41 nonzero on the diagonal, " +
+                "maximum 18",
+            tagged.stdoutLines().last(),
+        )
+        assertEquals(ExitCode.OK, default.exit, default.stderr)
+        assertEquals(default.stdout, tagged.stdout)
+    }
+
+    @Test
+    fun `a missing --tags file is one line and exit 1`(@TempDir dir: Path) {
+        val none = dir.resolve("none.json")
+        val run =
+            runCli("synergy-table", "--set", "trk", "--tags", "$none", "--data", Fixtures.data)
+
+        assertEquals(ExitCode.ERROR, run.exit)
+        assertEquals("", run.stdout)
+        assertEquals(listOf("spa: tag file not found: $none"), run.stderrLines())
+    }
+
+    @Test
+    fun `help names --tags`() {
+        assertTrue("synergy-table --set <code> [--min <score>] [--tags <file>]" in Main.USAGE)
+    }
 }

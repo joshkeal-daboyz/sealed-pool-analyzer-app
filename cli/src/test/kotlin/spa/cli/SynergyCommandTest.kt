@@ -207,4 +207,33 @@ class SynergyCommandTest {
     fun `help lists the command`() {
         assertTrue("synergy <pool-file> --set <code> --pair <XY>" in Main.USAGE)
     }
+
+    @Test
+    fun `--tags reads that file instead of the data directory's tag file`(@TempDir dir: Path) {
+        val tags = dir.resolve("elsewhere.json")
+        java.nio.file.Files.copy(Path.of(Fixtures.v1Tags("trk")), tags)
+        val run = synergy(extra = listOf("--tags", "$tags"))
+
+        assertEquals(ExitCode.OK, run.exit, run.stderr)
+        assertEquals(
+            "+0.128  syn 26  e 20.690  1 Enterprise NX-01",
+            run.stdoutLines().single { it.endsWith(" Enterprise NX-01") },
+        )
+    }
+
+    @Test
+    fun `a missing --tags file is one line and exit 1`(@TempDir dir: Path) {
+        val none = dir.resolve("none.json")
+        val run = synergy(extra = listOf("--tags", "$none"))
+
+        assertOneLine(run, "tag file not found: $none")
+    }
+
+    @Test
+    fun `help names --tags`() {
+        assertTrue(
+            "synergy <pool-file> --set <code> --pair <XY> [--weights <file>] [--tags <file>]" in
+                Main.USAGE
+        )
+    }
 }
