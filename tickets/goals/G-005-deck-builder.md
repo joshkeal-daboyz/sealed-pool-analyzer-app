@@ -36,9 +36,17 @@ The owner asked for this goal on 2026-11-05 ("Go ahead and start five"), right a
    It also reports the same numbers for a baseline builder that uses set grades alone and two-colour pairs only.
 7. **Synergy tags for every card in the set** (owner, 2026-11-05; replaces the per-pool synergy agent of Decided 4). Once per set, Fable reads the whole set, blind, as in G-003's grading, in two passes:
    - **The set's synergy axes.** It names the set's synergy axes from the cards themselves (for example: sacrifice, tokens, +1/+1 counters, artifacts, spells cast, Spacecraft and Station, a tribe), each with a one-line definition.
-   - **Card roles.** It tags each card with its role on each axis it touches: an **enabler** (it supplies the thing), a **payoff** (it rewards having the thing), or both, each with a strength of 1 to 3.
+   - **Card roles and named partners.** It tags each card with its role on each axis it touches: an **enabler** (it supplies the thing), a **payoff** (it rewards having the thing), or both, each with a strength of 1 to 3. It also lists **named partners**: specific cards in the set the card works with beyond its axes, such as a card that names another, or a two-card combo, each with a strength of 1 to 3.
 
-   The tags are validated by `spa tags-import` (every card exactly once, only the set's own axes) and committed as `fixtures/tags/<code>.json`, with the model, prompt version and date. A deterministic synergy part then scores a deck's payoffs by the enablers it plays, and its enablers by the payoffs, against what a typical pool of the set offers. It is pluggable and weighted like every other part. Because the tags are a file, synergy works offline on the phone, costs nothing per pool, and is measured over every backtest build, not a sample. `trk` is tagged before any 17Lands `trk` data exists, so its later test stays blind.
+   The tags are validated by `spa tags-import` (every card exactly once, only the set's own axes, partners only cards in the set) and committed as `fixtures/tags/<code>.json`, with the model, prompt version and date.
+
+   **A synergy score for every pair of cards in the set** (owner, 2026-11-05: "each card in the set should have a score associated with each other card in the set to identify synergy"). Code derives the score for each pair, a and b, from the tags:
+   - for each shared axis, a's enabler strength times b's payoff strength, plus b's enabler strength times a's payoff strength;
+   - plus any named-partner strength, in either direction.
+
+   The result is a symmetric set-by-set table, `spa synergy-table --set <code>`, with most pairs at 0. It is computed from the tag file rather than stored, so a change to the formula needs no new model run.
+
+   **A card's synergy in your pool** (owner, 2026-11-05: "synergy should be scored based on the card and the cards in your pool") is the sum of its pair scores with the other cards in the pool, in the deck's colours. It is compared with the same sum over a typical pool of the set, so a card is raised only when your pool backs it more than usual. A deck's synergy is the sum over its cards. Both are pluggable and weighted like every other part, and the formula's numbers live in the weights file. Because the tags are a file, synergy works offline on the phone, costs nothing per pool, and is measured over every backtest build, not a sample. `trk` is tagged before any 17Lands `trk` data exists, so its later test stays blind.
 8. **The Star Trek grade sheet page** gets a "Decks" view: paste a pool, see the ranked decks (Decided 1). The Architect updates it; it is not a repo ticket.
 
 ## Goal-level acceptance criteria
@@ -101,7 +109,12 @@ The owner answered on 2026-11-05: "Approve all except 2 and 5. Agents are going 
 - Order (owner, 2026-11-05: "synergy scoring should come after tagging and we should implement it into the build"). One Developer at a time, all serialized, because they share `agent`, `cli` and the builder:
   1. SPA-042: fixing tags and `spa fixing`.
   2. SPA-047: synergy tags, meaning the tagging packet, `spa tags-import` and the tag schema. Then the Architect's Fable runs on the four sets, `trk` first, before 17Lands publishes its data (expected around 2026-11-20).
-  3. SPA-048: synergy scoring from the tags. It is a pluggable part that scores a set of cards in given colours, using its payoffs against its enablers relative to a typical pool. `spa synergy <pool-file> --set <code> [--colours <XY>]` prints the groups it finds, with their reasons.
+  3. SPA-048: synergy scoring from the tags. It covers:
+     - the pair table for every two cards in the set (`spa synergy-table`);
+     - each card's synergy with the rest of a pool in given colours, against a typical pool;
+     - `spa synergy <pool-file> --set <code> [--colours <XY>]`, which prints each card's synergy and its strongest partners in the pool, with reasons.
+
+     It is a pluggable part, for both the card adjustment and the deck score.
   4. SPA-043: pluggable card adjustment parts and weights files. It is a refactor whose `pool-grades` and `deck-pick` outputs stay byte-identical.
   5. SPA-044: the builder and mana for a given colour set, with pluggable deck parts. Synergy (SPA-048) is one of its parts from the first version, not added later.
   6. SPA-045: colour configurations, ranking and `spa build`.
