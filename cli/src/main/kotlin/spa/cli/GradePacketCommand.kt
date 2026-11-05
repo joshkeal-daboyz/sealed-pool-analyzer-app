@@ -17,7 +17,12 @@ import spa.core.brief.FormatBrief
  */
 object GradePacketCommand {
     fun run(args: List<String>, stdout: PrintStream): Int {
-        val parsed = Args.parse(args, valueOptions = setOf("out", "data"))
+        val parsed =
+            Args.parse(
+                args,
+                valueOptions = setOf("out", "data", "prompt"),
+                flagOptions = setOf("themes"),
+            )
         val set = Commands.onePositional(parsed, "set code").lowercase(Locale.ROOT)
         val out =
             Path.of(

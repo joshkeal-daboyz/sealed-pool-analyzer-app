@@ -94,11 +94,17 @@ object GradingPackets {
     /** True when [fileName] is a card file's name, `cards-<digits>.json`. */
     fun isCardFile(fileName: String): Boolean = cardFilePattern.matches(fileName)
 
-    /** The packet for [index]'s sealed pool and its [brief], [cardsPerFile] cards per card file. */
+    /**
+     * The packet for [index]'s sealed pool and its [brief], [cardsPerFile] cards per card file.
+     * [prompt] is the text at the top of `instructions.md`, [promptText] by default. With [themes],
+     * the instructions carry the themes section after the brief and each card its `themes`.
+     */
     fun build(
         index: CardIndex,
         brief: FormatBrief,
         cardsPerFile: Int = CARDS_PER_FILE,
+        prompt: String = promptText,
+        themes: PacketThemes? = null,
     ): GradingPacket {
         require(cardsPerFile > 0) { "cardsPerFile must be positive, got $cardsPerFile" }
         val cards = GradingPool.printings(index).map(PacketCard::of)
