@@ -2,6 +2,8 @@
 
 What the Architect learned from merged tickets. One line each, newest first. Read before writing any ticket.
 
+- 2026-11-06 SPA-065: A Developer started a second gate run while a background one was still going; both went red on a shared build directory, not on tests. The dispatch template cannot say so (nothing is added to it), so the ticket's Background should say it when the gate is slow. A test that pins the list of agents (`ReviewResourcesTest`, `AnalysisAgentsTest`) breaks in each ticket that adds agents; name it in the ticket.
+
 - 2026-11-06 SPA-071: A command that composes other commands' code can show two grade lookups side by side (`grades` reads the win-rate file first, `build` reads `<code>.v2.json`); they agree for trk but can differ for hob, msh and fra. A ticket that composes commands should name which lookup each section uses.
 
 - 2026-11-06 SPA-061: A flag that thins a sample ("--limit n") must say whether it acts before or after skipping builds: `--limit 30` scored 14 to 16 builds, and 45% to 55% of builds were skipped as off-colour with no known cause. Run the skip rules over the full real data before pinning what a check will report, and name the sample size after skips in the criterion.
