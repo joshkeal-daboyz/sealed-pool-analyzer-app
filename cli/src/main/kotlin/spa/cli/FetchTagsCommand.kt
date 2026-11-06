@@ -125,18 +125,8 @@ class FetchTagsCommand(
 
     /** The `oracle_tags` entry of the bulk data [index]: its JSON lines URI and `updated_at`. */
     private fun entry(index: String): Pair<URI, Instant> {
-        val tags =
-            try {
-                (Json.parseToJsonElement(index) as? JsonObject)?.get("data") as? JsonArray
-            } catch (e: SerializationException) {
-                throw CliFailure(
-                    "invalid Scryfall bulk data index: ${e.message}",
-                    ExitCode.ERROR,
-                    e,
-                )
-            }
         val entry =
-            tags?.filterIsInstance<JsonObject>()?.firstOrNull {
+            entries(index).firstOrNull {
                 text(it, "type") == TYPE && text(it, "jsonl_download_uri") != null
             }
                 ?: throw CliFailure(
@@ -150,6 +140,21 @@ class FetchTagsCommand(
                 throw CliFailure("invalid updated_at in Scryfall's $TYPE entry", ExitCode.ERROR, e)
             }
         return URI.create(text(entry, "jsonl_download_uri")) to updated
+    }
+
+    /** The objects of the bulk data [index]'s `data` list (none when it has none). */
+    private fun entries(index: String): List<JsonObject> {
+        val data =
+            try {
+                (Json.parseToJsonElement(index) as? JsonObject)?.get("data") as? JsonArray
+            } catch (e: SerializationException) {
+                throw CliFailure(
+                    "invalid Scryfall bulk data index: ${e.message}",
+                    ExitCode.ERROR,
+                    e,
+                )
+            }
+        return data.orEmpty().filterIsInstance<JsonObject>()
     }
 
     private fun text(entry: JsonObject, key: String): String? =

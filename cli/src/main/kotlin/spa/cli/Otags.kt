@@ -40,9 +40,12 @@ internal object Otags {
      * or for another set is one line and exit 1.
      */
     fun load(data: DataDir, set: String, given: String?): OtagInputs? {
-        if (given == NONE) return null
         val path = given?.let { Path.of(it) } ?: data.root.resolve("otags").resolve("$set.json")
-        if (given == null && !Files.isRegularFile(path)) return null
+        val none = given == NONE || (given == null && !Files.isRegularFile(path))
+        return if (none) null else read(data, set, path)
+    }
+
+    private fun read(data: DataDir, set: String, path: Path): OtagInputs {
         val text = Commands.readFile(path, "otags file")
         val file = Commands.guard("invalid otags file $path") { OtagFile.parse(text) }
         if (file.set != set) {
