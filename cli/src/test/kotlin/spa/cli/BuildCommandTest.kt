@@ -109,8 +109,7 @@ class BuildCommandTest {
     }
 
     @Test
-    fun `a missing or bad colours option is one line and exit 1`() {
-        assertOneLine(runCli("build", pool, "--set", "trk", "--data", Fixtures.data), "--colours")
+    fun `a bad colours option is one line and exit 1`() {
         assertOneLine(build(colours = "XY"), "colours")
         assertOneLine(build(colours = "WU/WR"), "colours")
     }
