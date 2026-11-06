@@ -2,6 +2,8 @@
 
 What the Architect learned from merged tickets. One line each, newest first. Read before writing any ticket.
 
+- 2026-11-06 SPA-058: `--otags <file>` alone does not keep a set's Fable cares file out of a test: `Otags.read` also looks at `<data>/otags/<set>.fable.json`. A test that must not see the Fable file calls `Otags.load(..., fable = false)` or builds a temporary data directory without it. A ticket that freezes data for a test should say which of the two. Data a later ticket will regenerate needs the freeze first, and the held file is committed only after it.
+
 - 2026-11-06 SPA-045: A criterion "every earlier test passes unchanged" collides with a criterion that changes a command's contract (`--colours` became optional, so SPA-044's "missing --colours is exit 1" assertion had to go). When a ticket changes behaviour an earlier test pins, name that test and its new expectation in the criteria. Also: the same Developer run found the whole fixture-pool property test takes 84 s; say which pools a property test covers so it stays under a minute.
 
 - 2026-11-06 SPA-044: Before a criterion pins a count the data may not allow, run the case. "Lands L as the rule gives" fails when a pool can fill only 22 or 23 spells, and the Developer had to rule on it; say what happens at the edge. Also check a new package name against `.gitignore` (the `build/` pattern ignored `spa/agent/build/`).
