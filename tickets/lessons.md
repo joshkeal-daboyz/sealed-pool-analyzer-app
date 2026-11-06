@@ -2,6 +2,8 @@
 
 What the Architect learned from merged tickets. One line each, newest first. Read before writing any ticket.
 
+- 2026-11-06 SPA-045: A criterion "every earlier test passes unchanged" collides with a criterion that changes a command's contract (`--colours` became optional, so SPA-044's "missing --colours is exit 1" assertion had to go). When a ticket changes behaviour an earlier test pins, name that test and its new expectation in the criteria. Also: the same Developer run found the whole fixture-pool property test takes 84 s; say which pools a property test covers so it stays under a minute.
+
 - 2026-11-06 SPA-044: Before a criterion pins a count the data may not allow, run the case. "Lands L as the rule gives" fails when a pool can fill only 22 or 23 spells, and the Developer had to rule on it; say what happens at the edge. Also check a new package name against `.gitignore` (the `build/` pattern ignored `spa/agent/build/`).
 
 - 2026-11-06 SPA-055: A ticket must not name an input that lives in a session scratchpad. SPA-055 pinned its numbers on a bulk file in a previous session's scratchpad, which was deleted before the Developer started; Scryfall happened to still serve the same file. Put an input a ticket needs under `.cache/` in the main checkout (gitignored), keep its modification time when a committed file records it, and check the path exists before dispatch. Write a ticket's acceptance scenarios into its test plan with the exact command, so the tester reads one file.
