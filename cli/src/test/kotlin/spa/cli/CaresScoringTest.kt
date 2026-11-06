@@ -178,19 +178,21 @@ class CaresScoringTest {
         val root = Fixtures.root
         for (sub in listOf("scryfall", "briefs", "synergy-checks")) {
             val from = root.resolve(sub)
-            if (!Files.exists(from)) continue
-            Files.walk(from).use { paths ->
-                paths.forEach { p ->
-                    val to = dir.resolve(sub).resolve(from.relativize(p).toString())
-                    if (Files.isDirectory(p)) Files.createDirectories(to)
-                    else Files.copy(p, Files.createDirectories(to.parent).resolve(to.fileName))
-                }
-            }
+            if (Files.exists(from)) copyTree(from, dir.resolve(sub))
         }
         val otags = Files.createDirectories(dir.resolve("otags"))
         Files.copy(root.resolve("otags/cares.json"), otags.resolve("cares.json"))
         Files.copy(root.resolve("otags/v1/trk.json"), otags.resolve("trk.json"))
         return dir
+    }
+
+    private fun copyTree(from: Path, to: Path) {
+        val files = Files.walk(from).use { stream -> stream.filter(Files::isRegularFile).toList() }
+        for (file in files) {
+            val target = to.resolve(from.relativize(file).toString())
+            Files.createDirectories(target.parent)
+            Files.copy(file, target)
+        }
     }
 
     private fun sha256(text: String): String =
