@@ -27,6 +27,16 @@ class AnalysisAgentsTest {
                 "How many lands, and is a splash safe? Say what land count and color source " +
                     "counts the pool supports, which fixing it has, and which splash cards are " +
                     "castable on curve.",
+            "interaction" to
+                "How much removal and interaction is here, and what does it answer? Say how " +
+                    "many removal spells and other interaction the pool has, overall and in " +
+                    "each color pair, of which kinds, against the set baseline, and whether it " +
+                    "can deal with the threats the set's format brief describes.",
+            "bombs" to
+                "Which cards win games on their own, and do they justify a color commitment or " +
+                    "a splash? Name the pool's strongest cards, say which are build-arounds, " +
+                    "and say what it costs to play each one: its colors, and whether a splash " +
+                    "can support it.",
         )
 
     private fun prompt(id: String): String =
@@ -61,7 +71,10 @@ class AnalysisAgentsTest {
 
     @Test
     fun `the agents are listed in running order`() {
-        assertEquals(listOf("colour-depth", "curve", "mana"), AnalysisAgents.ALL.map { it.id })
+        assertEquals(
+            listOf("colour-depth", "curve", "mana", "interaction", "bombs"),
+            AnalysisAgents.ALL.map { it.id },
+        )
     }
 
     @Test
