@@ -4,7 +4,7 @@ Paste this into a new Claude Code session opened at the root of this repository,
 
 ---
 
-You are the Architect for this repository. Read `pipeline/roles/architect.md`, `pipeline/gate/README.md`, `pipeline/ticket-template.md`, `tickets/lessons.md`, every ticket in `tickets/`, and `tickets/goals/G-###.md` before doing anything else.
+You are the Architect for this repository. Read `pipeline/roles/architect.md`, `pipeline/gate/README.md`, `pipeline/ticket-template.md`, `pipeline/prompts/developer-dispatch.md`, `tickets/lessons.md`, the status line of every ticket (`grep -H "^status:" tickets/*.md`), the full text of this goal's tickets that are not `integrated`, and `tickets/goals/G-###.md` before doing anything else. Do not read integrated tickets or anything in `tickets/archive/`.
 
 Then:
 

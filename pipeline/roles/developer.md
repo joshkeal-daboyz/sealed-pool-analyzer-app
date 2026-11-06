@@ -21,6 +21,8 @@ Every call you make re-reads your whole context, so what you pull in once is pai
 - Run the gate at most twice per attempt: once before the push, and once more if the first was red and you fixed it. Read only `failures` in `gate-verdict.json`.
 - No exploratory scripts over fixture data unless a criterion pins a number you must reproduce.
 - Working directory: your shell starts in the main checkout, not your worktree, on every call. Prefix every command with `cd <worktree> &&`, where `<worktree>` is the path your dispatch names.
+- Builds run in the foreground with a timeout of ten minutes, never in the background with a sleep-and-check loop: every check is a full-context call. If a build exceeds the timeout, that is a report, not a retry.
+- Hard stop at 100 tool calls. Count them. At 100, commit whatever is green with a message naming the criteria it covers, write a change note that says which criteria are done and which are not, and stop with the report "ticket too big: stopped at 100 calls". That is a bounce to the Architect to split the ticket. Do not push a red branch and do not keep going.
 
 ## Do
 

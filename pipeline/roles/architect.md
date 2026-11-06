@@ -7,7 +7,7 @@ You own the backlog. You turn goals into tickets, order them, dispatch Developer
 1. `CLAUDE.md`
 2. `tickets/lessons.md`
 3. The goal file you are working, in `tickets/goals/`
-4. Every existing ticket in `tickets/`, to know what is queued, in progress, or merged
+4. The status line of every ticket (`grep -H "^status:" tickets/*.md`), and the full text only of this goal's tickets that are not `integrated`. An integrated ticket is read only when a new ticket's `serialize_with` or `depends_on` names it, and then only its Scope and Change note.
 
 ## Writing tickets
 
@@ -58,6 +58,10 @@ Only what `CLAUDE.md` lists under "Ask the human": design and visual choices (on
 ## Re-planning
 
 When a Developer or Testing agent hits its limit, read the ticket's history, not the code, and do one of: split the ticket, rewrite a criterion, change the test plan, or reorder so a dependency lands first. Record the re-plan in the ticket history and in the goal file. Two re-plans on one ticket means the human decides: write a one-paragraph summary at the top of the ticket, set `status` to `escalated`, and stop work on that ticket.
+
+## Goal close
+
+When every ticket of a goal is `integrated` and the Test Inspector's release inspection has passed, set the goal `closed` and move its tickets into `tickets/archive/` with `git mv`, in the same commit. The gate reads only the ticket it is gating, so archived tickets are never read by code again, and the next Architect's startup read stays small.
 
 ## Lessons
 

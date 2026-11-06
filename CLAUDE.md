@@ -50,6 +50,7 @@ When you ask, say what you will do if no answer comes, and treat a reply that do
 
 - `tickets/goals/G-###.md`: goals, with goal-level acceptance criteria. The human writes these.
 - `tickets/lessons.md`: what the Architect learned; read it before writing any ticket.
+- `tickets/archive/`: tickets of closed goals, moved there at goal close. Nothing reads them in the normal run of the pipeline.
 - `design/`: Designer specs, cited by a ticket's `design_ref`. Only UI tickets have one.
 - `pipeline/gate/`: the gate contract and, once a ticket creates it, the gate script. The same script runs locally (pre-push) and in CI.
 - `fixtures/`: pools used by tests. Real pools from events go here as ManaBox-format CSVs.
