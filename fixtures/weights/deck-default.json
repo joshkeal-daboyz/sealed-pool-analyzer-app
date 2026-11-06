@@ -15,5 +15,11 @@
     "removal": { "cap": 6 }
   },
   "lands": { "lowCurve": 2.6, "highCurve": 3.4, "low": 16, "normal": 17, "high": 18 },
-  "splash": { "maxCards": 3, "maxPips": 1 }
+  "splash": { "maxCards": 3, "maxPips": 1 },
+  "configs": {
+    "pairs": { "enabled": true },
+    "pairSplash": { "enabled": true, "maxSplashColours": 2 },
+    "triples": { "enabled": true, "tripleSplash": true },
+    "fourColour": { "enabled": true, "minFixing": 4 }
+  }
 }

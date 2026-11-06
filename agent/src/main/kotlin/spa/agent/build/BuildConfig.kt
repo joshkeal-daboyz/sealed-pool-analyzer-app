@@ -32,7 +32,8 @@ class BuildConfig(main: Set<Color>, splash: Set<Color> = emptySet()) {
             if (splash.isEmpty()) "" else "/" + splash.joinToString("") { "${it.symbol}" }
 
     companion object {
-        private const val MAX_SPLASH = 2
+        /** The most splash colours a configuration has. */
+        const val MAX_SPLASH = 2
         private const val HASH = 31
 
         /**

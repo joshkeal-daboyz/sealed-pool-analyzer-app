@@ -5,6 +5,7 @@ import kotlin.math.abs
 import spa.agent.build.BuildSetup
 import spa.agent.build.Candidate
 import spa.agent.build.DeckCard
+import spa.agent.build.RankedDeck
 import spa.agent.build.ScoredDeck
 import spa.core.text.Color
 
@@ -26,6 +27,14 @@ internal object BuildLines {
             Color.R to "Mountain",
             Color.G to "Forest",
         )
+
+    /**
+     * The heading of the deck at [rank] in a ranking: its configuration, and any it shares cards
+     * with.
+     */
+    fun rank(rank: Int, deck: RankedDeck): String =
+        "Rank $rank: ${deck.config}" +
+            if (deck.sameAs.isEmpty()) "" else " (same cards as ${deck.sameAs.joinToString(", ")})"
 
     fun lines(setup: BuildSetup, scored: ScoredDeck): List<String> {
         val deck = scored.deck

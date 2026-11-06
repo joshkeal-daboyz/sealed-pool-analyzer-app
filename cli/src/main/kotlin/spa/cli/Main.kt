@@ -81,7 +81,12 @@ object Main {
         |      the copies that can supply each colour.
         |  build <pool-file> --set <code> --colours <main[/splash]> [--weights <file>] [--tags <file>]
         |          [--otags <file>] [--data <dir>]
-        |      Build the best 40 card deck the pool makes in the colours, by search with no model
+        |  build <pool-file> --set <code> [--top <n>] [--weights <file>] [--tags <file>]
+        |          [--otags <file>] [--data <dir>]
+        |      With --colours, build the best 40 card deck the pool makes in those colours; without
+        |      it, try every colour configuration the pool supports, rank the decks by score and
+        |      print the top <n> (default 3), each headed with its rank and colours; --top is
+        |      ignored with --colours. The build is by search with no model
         |      call: --colours is the main colours then, after a /, up to two splash colours (WU,
         |      WU/R, WUB). The score is the sum of the deck parts (grades, curve, creatures,
         |      removal, castability, fixing, synergy), weighted from --weights, else
