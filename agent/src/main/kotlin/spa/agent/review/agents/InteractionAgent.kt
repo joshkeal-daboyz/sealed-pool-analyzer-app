@@ -40,17 +40,16 @@ object InteractionAgent : AnalysisAgent {
                         }
                     Triple(card.name, tags, same.sumOf { it.count })
                 }
-        val lines =
-            TAGS.map { tag ->
-                val tagged = cards.filter { tag in it.second }.sortedBy { it.first }
-                val text =
-                    if (tagged.isEmpty()) {
-                        "none"
-                    } else {
-                        tagged.joinToString(", ") { (name, _, copies) -> "$name x$copies" }
-                    }
-                "${tag.name} (${tagged.sumOf { it.third }} copies): $text"
-            }
+        val lines = TAGS.map { tag ->
+            val tagged = cards.filter { tag in it.second }.sortedBy { it.first }
+            val text =
+                if (tagged.isEmpty()) {
+                    "none"
+                } else {
+                    tagged.joinToString(", ") { (name, _, copies) -> "$name x$copies" }
+                }
+            "${tag.name} (${tagged.sumOf { it.third }} copies): $text"
+        }
         return (listOf("Cards by tag:") + lines).joinToString("\n")
     }
 
