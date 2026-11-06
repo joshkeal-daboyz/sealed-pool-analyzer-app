@@ -1,6 +1,5 @@
 package spa.cli
 
-import java.nio.file.Files
 import java.nio.file.Path
 import spa.agent.build.BuildConfig
 import spa.agent.build.BuildSetup
@@ -86,8 +85,7 @@ private constructor(
         /**
          * A session for [set] under [data]: [weightsFile] (else the default), the grade file as
          * `pool-grades` finds it, and the tags and otags as `synergy-table` reads them ([tagsFile],
-         * [otags]; read only when the synergy weight is above 0). With [tagsOptional], a set with
-         * no tag file and no [tagsFile] scores no synergy instead of failing (SPA-071).
+         * [otags]; read only when the synergy weight is above 0).
          */
         fun open(
             data: DataDir,
@@ -95,7 +93,20 @@ private constructor(
             weightsFile: Path? = null,
             tagsFile: Path? = null,
             otags: String? = null,
-            tagsOptional: Boolean = false,
+        ): BuildSession =
+            create(data, set, weightsFile) { index ->
+                lazy { synergy(data, set, index, tagsFile, otags) }
+            }
+
+        /** [open] for a set with no tag file: the synergy part scores 0 (SPA-071). */
+        fun openWithoutTags(data: DataDir, set: String, weightsFile: Path? = null): BuildSession =
+            create(data, set, weightsFile) { lazyOf(PairScorer.NONE) }
+
+        private fun create(
+            data: DataDir,
+            set: String,
+            weightsFile: Path?,
+            pairs: (CardIndex) -> Lazy<PairScorer>,
         ): BuildSession {
             val path = weightsFile ?: defaultWeights(data)
             val text = Commands.readFile(path, "weights file")
@@ -103,14 +114,7 @@ private constructor(
             val index = Commands.loadIndex(data, set)
             val lookup =
                 PoolGradesCommand.lookup(PoolGradesCommand.defaultGradesFile(data, set), set)
-            val noTags =
-                tagsOptional &&
-                    tagsFile == null &&
-                    !Files.isRegularFile(data.root.resolve("tags").resolve("$set.json"))
-            val pairs =
-                if (noTags) lazyOf(PairScorer.NONE)
-                else lazy { synergy(data, set, index, tagsFile, otags) }
-            return BuildSession(set, index, weights, lookup, pairs)
+            return BuildSession(set, index, weights, lookup, pairs(index))
         }
 
         private fun synergy(

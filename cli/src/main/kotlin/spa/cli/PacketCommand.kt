@@ -8,6 +8,7 @@ import spa.agent.fixing.FixingClassifier
 import spa.agent.grade.GradeLookup
 import spa.agent.grader.GradingPool
 import spa.core.baseline.MetricFlattener
+import spa.core.cards.Pool
 import spa.core.intake.PoolParser
 import spa.core.metrics.MetricEngine
 
@@ -35,15 +36,14 @@ object PacketCommand {
         val tagsFile = SynergyTableCommand.tagsOption(parsed)
 
         val poolText = Commands.readFile(Path.of(file), "pool file")
+        val weights = parsed.value("weights")?.let(Path::of) ?: data.root.resolve(TUNED)
+        val hasTags = tagsFile != null || Files.isRegularFile(data.root.resolve("tags/$set.json"))
         val session =
-            BuildSession.open(
-                data,
-                set,
-                parsed.value("weights")?.let(Path::of) ?: data.root.resolve(TUNED),
-                tagsFile,
-                parsed.value(Otags.OPTION),
-                tagsOptional = true,
-            )
+            if (hasTags) {
+                BuildSession.open(data, set, weights, tagsFile, parsed.value(Otags.OPTION))
+            } else {
+                BuildSession.openWithoutTags(data, set, weights)
+            }
         val index = session.index
         val brief =
             AnalyzeCommand.loadBrief(parsed.value("brief")?.let(Path::of) ?: data.briefFile(set))
@@ -66,30 +66,27 @@ object PacketCommand {
                 PacketText.pool(set, brief.setName, pool, lookup),
                 PacketText.numbers(MetricFlattener.flatten(MetricEngine.compute(pool)), baseline),
                 fixing(pool),
-                synergy(parsed, data, set, session, pool, tagsFile),
+                if (hasTags) synergy(parsed, data, session, pool, tagsFile)
+                else listOf(PacketText.NO_TAGS),
                 decks.ifEmpty { listOf(PacketText.NO_DECK) },
             )
         return emit(text, parsed.value("out"), stdout, stderr)
     }
 
-    private fun fixing(pool: spa.core.cards.Pool): List<String> {
+    private fun fixing(pool: Pool): List<String> {
         val lines = FixingCommand.poolLines(FixingClassifier(), pool)
         return if (lines.size > 1) lines else listOf(PacketText.NO_FIXING)
     }
 
-    /**
-     * The synergy section's lines; `No synergy tags for this set.` when the set has no tag file.
-     */
+    /** The synergy section's lines, for a set that has a tag file. */
     private fun synergy(
         parsed: Args,
         data: DataDir,
-        set: String,
         session: BuildSession,
-        pool: spa.core.cards.Pool,
+        pool: Pool,
         tagsFile: Path?,
     ): List<String> {
-        val hasTags = tagsFile != null || Files.isRegularFile(data.root.resolve("tags/$set.json"))
-        if (!hasTags) return listOf(PacketText.NO_TAGS)
+        val set = session.set
         val tags = SynergyTableCommand.tagFile(data, set, tagsFile)
         val table =
             SynergyTableCommand.table(data, set, tags, SynergyTableCommand.otags(data, set, parsed))
