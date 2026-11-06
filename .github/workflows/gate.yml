@@ -37,7 +37,9 @@ jobs:
           # A pull request checks out a detached merge commit, so name the head branch for the
           # ticket-id lookup (SPA-### in the branch name). On a push to main this is "main".
           GATE_BRANCH: ${{ github.head_ref || github.ref_name }}
-        run: pipeline/gate/run.sh
+        # CI always runs the full gate: every module, the app and the build-logic tests included,
+        # whatever the change touched (the local run checks only what a change can affect).
+        run: pipeline/gate/run.sh --full
 
       - name: Upload the verdict
         if: always()

@@ -53,6 +53,9 @@ abstract class GateUnitTestsTask : GateStepTask() {
 
     @get:Internal var sources: List<ResultSource> = emptyList()
 
+    /** The modules whose tests this run wired, for the pass note. */
+    @get:Internal var modules: List<String> = emptyList()
+
     @TaskAction
     fun evaluate() {
         val failures = sources.flatMap { source ->
@@ -79,6 +82,9 @@ abstract class GateUnitTestsTask : GateStepTask() {
             }
         }
         failIfAny(GateStep.UNIT_TESTS, failures)
+        val note = GateScope.unitTestsNote(modules)
+        logger.lifecycle("unit-tests: $note")
+        service.get().run.pass(GateStep.UNIT_TESTS, note)
     }
 
     private fun toGateFailure(failure: TestFailure, source: ResultSource) =
@@ -94,11 +100,15 @@ abstract class GateUnitTestsTask : GateStepTask() {
 /**
  * `ui-tests`: the app's JVM Compose UI tests and snapshot verification (Robolectric and Roborazzi,
  * no emulator), read from the JUnit XML and Roborazzi's results summary. It never records a
- * baseline. Without an app module it passes with a note.
+ * baseline. Without an app module, or when the change does not reach the app, it passes with a
+ * note.
  */
 @DisableCachingByDefault(because = "A gate step must evaluate on every run")
 abstract class GateUiTestsTask : GateStepTask() {
     @get:Internal var hasAppModule: Boolean = false
+
+    /** Whether this run's scope includes the app. */
+    @get:Internal var appInScope: Boolean = true
 
     /** Where the app's test task writes its XML, its source roots, and the rerun command. */
     @get:Internal var results: GateUnitTestsTask.ResultSource? = null
@@ -109,9 +119,12 @@ abstract class GateUiTestsTask : GateStepTask() {
     @TaskAction
     fun evaluate() {
         val source = results
-        if (!hasAppModule || source == null) {
-            logger.lifecycle("ui-tests: $NO_APP_MODULE")
-            service.get().run.pass(GateStep.UI_TESTS, NO_APP_MODULE)
+        val skipped =
+            if (source == null) UiTests.NO_APP_MODULE
+            else UiTests.skipNote(hasAppModule, appInScope)
+        if (source == null || skipped != null) {
+            logger.lifecycle("ui-tests: $skipped")
+            service.get().run.pass(GateStep.UI_TESTS, skipped)
             return
         }
         val reports =
@@ -152,7 +165,7 @@ abstract class GateUiTestsTask : GateStepTask() {
     private fun relative(file: File) = RepoPaths.relative(root.path, file.path)
 
     companion object {
-        const val NO_APP_MODULE = "skipped: no app module"
+        const val NO_APP_MODULE = UiTests.NO_APP_MODULE
     }
 }
 
