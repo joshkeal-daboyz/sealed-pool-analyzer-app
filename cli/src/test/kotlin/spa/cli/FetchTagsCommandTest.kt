@@ -110,7 +110,7 @@ class FetchTagsCommandTest {
         val path = data.resolve("otags").resolve("syn.json")
         assertEquals(
             listOf("syn: 20 cards, 3 with tags, 6 tags with parents, 4 distinct, written to $path"),
-            run.stdoutLines(),
+            run.stdoutLines().take(1), // SPA-055: a second line names the tags file
         )
         val lines = written(data).lines()
         assertEquals(

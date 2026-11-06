@@ -12,7 +12,7 @@ import spa.core.cards.ScryfallSetFetcher
  * The `spa` command line: `analyze`, `validate-brief`, `fetch-set`, `winrates`, `grade-backtest`,
  * `grade-packet`, `grade-import`, `grades`, `themes`, `pool-grades`, `deck-pick`, `fixing`,
  * `tags-packet`, `tags-import`, `tags-review-packet`, `tags-review-import`, `synergy-table`,
- * `synergy`, `synergy-check`, `facts`, and `fetch-tags`.
+ * `synergy`, `synergy-check`, `facts`, `fetch-tags`, `cares-packet`, and `cares-import`.
  */
 object Main {
     /** The text `spa --help` prints. */
@@ -131,10 +131,22 @@ object Main {
         |      With --card, that card's facts, sorted, then its cares tags as cares:<fact>=<n>.
         |  fetch-tags --set <code> [--bulk <file>] [--data <dir>]
         |      Write <data>/otags/<code>.json, each sealed-pool card's Scryfall Tagger oracle tags
-        |      with their parents, from the Oracle Tags bulk file --bulk (.jsonl or .jsonl.gz),
-        |      else the current one, downloaded to .cache/otags (needs the network). Checks every
-        |      fact of <data>/otags/cares.json first, naming each unknown one, and writes nothing
-        |      if any is unknown.
+        |      with their parents, and <data>/otags/<code>.tags.json, each tag in it with its
+        |      description and parents, from the Oracle Tags bulk file --bulk (.jsonl or
+        |      .jsonl.gz), else the current one, downloaded to .cache/otags (needs the network).
+        |      Checks every fact of <data>/otags/cares.json first, naming each unknown one, and
+        |      writes nothing if any is unknown.
+        |  cares-packet <code> --out <dir> [--otags <file>] [--data <dir>]
+        |      Write a blind cares-gaps packet for the set's sealed pool into <dir>: the prompt
+        |      and the cares table (<data>/otags/cares.json), the brief and theme counts, the
+        |      cards in files of 50 with each file's current cares tags beside it as cares-NN.json,
+        |      facts.json, vocabulary.json (every fact name with its description; name tags left
+        |      out, from <data>/otags/<code>.tags.json) and the response schemas.
+        |  cares-import <code> --packet <dir> --provenance <text> [--data <dir>]
+        |      Check Fable's cards-NN.cares.json responses (cares tags to add, each with a reason)
+        |      in <dir> and write <data>/otags/<code>.fable.json, which the synergy commands join
+        |      with the cares table's cares tags. Prints the count of additions and each
+        |      suggestion for the cares table (never applied). Writes nothing on any problem.
         |
         |<data> defaults to ${DataDir.DEFAULT}. Exit codes: 0 ok, 1 error, 2 bad command line.
         |Run 'spa --help' for this text.
@@ -221,6 +233,8 @@ object Main {
                 { a, out, err ->
                     FetchTagsCommand({ ScryfallOtagSource() }).run(a, out, err)
                 },
+            "cares-packet" to { a, out, _ -> CaresPacketCommand.run(a, out) },
+            "cares-import" to { a, out, err -> CaresImportCommand().run(a, out, err) },
         )
 
     private fun usageError(message: String, stderr: PrintStream): Int {

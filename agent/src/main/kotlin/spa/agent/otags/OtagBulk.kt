@@ -17,7 +17,8 @@ data class OtagTagging(@SerialName("oracle_id") val oracleId: String, val weight
 
 /**
  * One line of Scryfall's Oracle Tags bulk file: a Tagger tag, with its [id], [slug], [type]
- * (`oracle` for the tags this tool reads), its parents' ids and the cards it tags.
+ * (`oracle` for the tags this tool reads), its [description] (null when Scryfall has none), its
+ * parents' ids and the cards it tags.
  */
 @Serializable
 data class OtagTag(
@@ -26,6 +27,7 @@ data class OtagTag(
     val type: String,
     @SerialName("parent_ids") val parentIds: List<String> = emptyList(),
     val taggings: List<OtagTagging> = emptyList(),
+    val description: String? = null,
 )
 
 /**
@@ -56,6 +58,22 @@ class OtagBulk(val tags: List<OtagTag>) {
         }
         return seen.map { oracle.getValue(it).slug }.sorted()
     }
+
+    /**
+     * The oracle tags whose slugs are in [slugs], sorted by slug, each with its description and the
+     * slugs of its parents that are oracle tags too, sorted (the parents [otags] follows).
+     */
+    fun tagInfos(slugs: Set<String>): List<OtagTagInfo> =
+        oracle.values
+            .filter { it.slug in slugs }
+            .map { tag ->
+                OtagTagInfo(
+                    tag.slug,
+                    tag.description,
+                    tag.parentIds.mapNotNull { oracle[it]?.slug }.sorted(),
+                )
+            }
+            .sortedBy { it.slug }
 
     companion object {
         /** The tag type this tool reads. */
