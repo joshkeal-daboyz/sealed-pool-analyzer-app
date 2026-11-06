@@ -15,8 +15,8 @@ import spa.core.text.Color
  * agreement, averaged over the sets.
  */
 class TuneObjectiveTest {
-    private val blue = setOf(Color.U)
-    private val white = setOf(Color.W)
+    private val blue = setOf(Color.U, Color.B)
+    private val white = setOf(Color.W, Color.B)
 
     private fun outcome(
         player: Set<Color>,

@@ -1,0 +1,15 @@
+{
+  "weights.curve": [0, 0.5, 1, 2],
+  "weights.creatures": [0, 0.5, 1, 2],
+  "weights.removal": [0, 0.5, 1, 2],
+  "weights.castability": [0, 0.5, 1, 2],
+  "weights.fixing": [0, 0.5, 1, 2],
+  "weights.synergy": [0, 0.05, 0.1, 0.2, 0.4],
+  "params.creatures.minCreatures": [12, 13, 14, 15],
+  "params.removal.cap": [4, 6, 8],
+  "lands.lowCurve": [2.4, 2.6, 2.8],
+  "lands.highCurve": [3.2, 3.4, 3.6],
+  "splash.maxCards": [2, 3, 4],
+  "splash.maxPips": [1, 2],
+  "configs.fourColour.minFixing": [2, 4, 6]
+}

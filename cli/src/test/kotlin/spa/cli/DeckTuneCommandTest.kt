@@ -46,8 +46,7 @@ class DeckTuneCommandTest {
             "syn",
             "--data",
             data.toString(),
-            "--grid",
-            grid,
+            *(if ("--grid" in extra) emptyArray() else arrayOf("--grid", grid)),
             "--out",
             out.toString(),
             *extra,
@@ -294,7 +293,10 @@ class DeckTuneCommandTest {
 
         val run = tune(all, "--start", synergy)
 
-        assertOneLine(run, "no tag file")
+        // The Sealed file was read before the search began, so stdout is not empty.
+        assertEquals(1, run.exit, run.stderr)
+        assertEquals(1, run.stderrLines().size, run.stderr)
+        assertTrue("no tag file" in run.stderr, run.stderr)
     }
 
     @Test

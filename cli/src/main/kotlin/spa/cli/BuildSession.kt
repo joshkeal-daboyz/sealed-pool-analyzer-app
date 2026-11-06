@@ -35,6 +35,13 @@ private constructor(
 
     private val classifier = FixingClassifier()
 
+    /**
+     * This session with other deck [weights] (SPA-060): the same card index, grades and synergy
+     * table, read once, so a tuner can try many weights without reading them again.
+     */
+    fun withWeights(weights: DeckWeights): BuildSession =
+        BuildSession(set, index, weights, lookup, pairs)
+
     /** [pool]'s nonbasic cards as candidates, with their grades and fixing. */
     fun candidates(pool: Pool): List<Candidate> {
         val counts = pool.cardCounts()

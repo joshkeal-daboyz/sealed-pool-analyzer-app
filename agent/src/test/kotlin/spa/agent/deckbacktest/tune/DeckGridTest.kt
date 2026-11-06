@@ -50,8 +50,8 @@ class DeckGridTest {
         val negative = reject(gridText("weights.curve" to listOf(0, -1)))
         assertTrue("weights.curve" in negative && "-1" in negative, negative)
 
-        val fraction = reject(gridText("params.creatures.minCreatures" to listOf(13.5)))
-        assertTrue("params.creatures.minCreatures" in fraction && "13.5" in fraction, fraction)
+        val fraction = reject(gridText("lands.normal" to listOf(17.5)))
+        assertTrue("lands.normal" in fraction && "17.5" in fraction, fraction)
 
         val order = reject(gridText("lands.low" to listOf(20)))
         assertTrue("lands.low" in order, order)

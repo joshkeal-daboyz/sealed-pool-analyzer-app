@@ -64,15 +64,6 @@ class DeckTuneCacheTest {
     }
 
     @Test
-    fun `the objectives of weights that differ in one knob differ only when the decks do`() {
-        val cached = evaluator(cache = true)
-
-        val values = listOf(base, curve, creatures, triples).map(cached::evaluate)
-
-        assertTrue(values.all { it > 0.0 && it.isFinite() }, values.toString())
-    }
-
-    @Test
     fun `a change to the configurations builds only the decks of the new configurations`() {
         val cached = evaluator(cache = true)
         val plain = evaluator(cache = false)

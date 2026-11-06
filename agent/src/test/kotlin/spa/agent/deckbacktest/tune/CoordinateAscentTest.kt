@@ -35,12 +35,12 @@ class CoordinateAscentTest {
     fun `a knob moves to a strictly better value`() {
         val run =
             search(grid("weights.curve" to listOf(0, 1, 2, 3))) {
-                -abs(read(it, "weights.curve") - 2.0)
+                10.0 - abs(read(it, "weights.curve") - 2.0)
             }
 
         assertEquals(2.0, curve(run))
-        assertEquals(-1.0, run.result.startObjective)
-        assertEquals(0.0, run.result.finalObjective)
+        assertEquals(9.0, run.result.startObjective)
+        assertEquals(10.0, run.result.finalObjective)
     }
 
     @Test
@@ -111,7 +111,7 @@ class CoordinateAscentTest {
         // Round 1 moves the knob; round 2 changes nothing; round 3 is never run.
         val run =
             search(grid("weights.curve" to listOf(0, 1, 2)), rounds = 5) {
-                -abs(read(it, "weights.curve") - 2.0)
+                10.0 - abs(read(it, "weights.curve") - 2.0)
             }
 
         assertEquals(2, run.lines.maxOf { it.round })
