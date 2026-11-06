@@ -21,7 +21,7 @@ The owner asked for this goal on 2026-11-06: "Let's build out the analysis agent
 ## Deliverables
 
 1. **The model seam, ready for a review** (`agent`, package `spa.agent.model`). A request can carry a shared, cacheable context block placed before the agent's own instructions, so the seven analysts share one cached pool bundle. A budget wraps any `ModelClient` and enforces token caps. A recording wrapper writes every exchange as a `Recording` file so a live run becomes a test fixture.
-2. **The pool bundle** (`spa.agent.review`). One deterministic text built by code from the resolved pool: every card with quantity, cost, type line, rarity, rules text and set grade; the metric engine's numbers for the pool; the set's baseline beside them; the set's format brief (mechanics, ten archetypes with signposts, speed); the pool's kit warnings. Same input, same bytes (a cache needs that). It holds no other agent's output and no deck.
+2. **The pool bundle** (`spa.agent.review`). One deterministic text built by code from the resolved pool: every card with quantity, cost, type line, rarity, rules text and set grade; the set's format brief (mechanics, ten archetypes with signposts, speed); the pool's kit warnings. Same input, same bytes (a cache needs that). It holds no other agent's output, no deck and no metric numbers: the metric engine's numbers and the baseline reach each agent through its own number table (deliverable 3), so the cached prefix stays small.
 3. **A number table per agent.** Code builds, for each agent, a keyed table of the numbers that agent may quote, each with the pool's value and the set baseline's median, 10th and 90th percentile (from `Baseline.stats`, keyed by the JSON pointers `MetricFlattener` makes). An agent's finding states numbers only by key; the review prints the value from the table, never the model's own digits, and a finding that names a key with a value the table does not hold is dropped.
 4. **The analysis agents** (`spa.agent.review.agents`, one class and one prompt file each, listed in `AnalysisAgents.ALL`). Seven, from the brief's roster, each returning the shared output schema:
    - **Colour Depth Analyst**: which colours are deep enough to play, thin-colour warnings, each against the set baseline.
@@ -36,7 +36,7 @@ The owner asked for this goal on 2026-11-06: "Let's build out the analysis agent
 5. **The shared output schema and its checks.** Each agent returns JSON: `agent`, `confidence` (0 to 1), `summary`, and `findings`, each with `claim`, `pair` (a colour pair or null), `severity` (`info`, `warn` or `key`), `cards` (names) and `numbers` (keys with the values the model read). Code validates it: the schema; every card named is in the pool; a finding that cites no card is dropped (brief: "A finding that names no card is dropped before it reaches the Judge"); every number key is in the agent's table and its value equals the table's. Dropped findings are counted per agent and shown.
 6. **The runner.** The first analyst runs alone and writes the cache; the other six then run in parallel. An invalid answer gets one retry with the error named; a second failure, a timeout, or a spent budget drops that agent for the run and the review says so. Failure of every agent still gives a review: the decks, with a Missing line.
 7. **The Explainer.** One call that reads every surviving finding and the builder's top three decks and writes the verdict, a short note per deck, and a list of disagreements between agents (each naming at least two agents and at least one card), validated the same way. The Judge's ranking is the builder's deck score; the Explainer restates it and does not reorder it.
-8. **`spa review <pool-file> --set <code>`** and what it prints (Decided 3). `--dry-run` plans the calls with no key and no network. `--json` prints the structured review. `--record <dir>` writes every exchange as a recording. `--model`, `--max-input-tokens`, `--max-output-tokens`, `--config <file>` and `--data` as for the other commands.
+8. **`spa review <pool-file> --set <code>`** and what it prints (Decided 3). `--dry-run` plans the calls with no key and no network. `--json` prints the structured review. `--record <dir>` writes every exchange as a recording, and `--replay <dir>` answers from recordings with no key and no network (committed canned recordings let the command run end to end offline). `--show-input` prints what the agents are given (the bundle, each number table and facts) with no key and no network. `--model`, `--max-input-tokens`, `--max-output-tokens`, `--config <file>` and `--data` as for the other commands.
 9. **A versioned config file**, `fixtures/agents/review.json`: the model id, token caps, per-call timeout, parallelism, retries, and for each agent its id, whether it is on, its max output tokens and its prompt version. Prompts are resource files, `agent/src/main/resources/spa/agent/review/<agent>-v1.md`; a new prompt is a new file, as in G-005's tagging.
 
 ## Goal-level acceptance criteria
@@ -97,7 +97,7 @@ The owner answered on 2026-11-06 by approving every default.
    - Deck weights for the review: `fixtures/weights/deck-tuned.json` (frozen in G-005), `--weights` overrides.
    - One retry per agent on an invalid answer; a per-call timeout of 120 seconds; at most 6 calls in parallel; at most 8 findings per agent; analyst output cap 3,000 tokens, Explainer 6,000.
    - Findings are checked by code as in deliverable 5; free-text numbers in a claim are not checked (a known limit: only keyed numbers are audited).
-   - The recording wrapper names files `NN-<agent>.json` in call order.
+   - The recording wrapper names files `<label>.json` (the agent id, `<id>-retry1` for a retry, `explainer`), since parallel calls have no stable order.
    - The tests for the agents use hand-built answers; the real answers come only from the live run, whose recording is the one committed fixture of a model's actual output.
    - `trk` is the target set; the command works for any set that has a Scryfall cache, a brief, a baseline and a grade file (the tag file is needed only by the Synergy Detector).
 
@@ -111,6 +111,10 @@ The owner answered on 2026-11-06 by approving every default.
   4. SPA-065: Colour Depth, Curve and Mana Engineer agents.
   5. SPA-066: Interaction Analyst and Bomb Assessor.
   6. SPA-067: Archetype Matcher and Synergy Detector.
-  7. SPA-068: the Explainer and the review assembly (decks, disagreements, missing, usage, text and JSON rendering).
-  8. SPA-069: `spa review` (wiring, dry run, key, record, README).
+  7. SPA-068: the Explainer (prompt, schema, checks, runner).
+  8. SPA-069: the review assembly (deck summaries, the run, text and JSON rendering).
+  9. SPA-070: `spa review` (wiring, dry run, show-input, key, record and replay, canned recordings, README).
+  10. SPA-071, only if a live run happens (criterion 14): commit the live recording as `fixtures/recordings/review-trk-manabox-01/` and add the test that replays it. Written when the recording exists.
+- Library tests (SPA-062 to 069) build pools by hand, as the other `agent` tests do; the real `trk-manabox-01` numbers are pinned through `spa review --show-input` in SPA-070.
+- Criterion 14's "a test replays it to the same review" needs the live recording's requests to match what the code builds now; a later prompt, config or weights change makes it stale and the test names the file to re-record.
 - Real numbers for `trk-manabox-01` (from `spa analyze`, 2026-11-06): 71 resolved entries, 85 cards, 71 nonland copies, 5 basic and 9 nonbasic lands, `removalTotal` 9 (baseline median 8, mean 7.938, 2,000 kits), `interactionTotal` 1, 6 fixing sources; pair WU: 33 castable cards, 19 creatures, 2 removal, 0 interaction, 4 fixing sources; the baseline holds 448 pointers.
