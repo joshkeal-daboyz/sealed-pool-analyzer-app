@@ -4,9 +4,18 @@ package spa.agent.facts
 internal object Triggers {
     /**
      * True when [card]'s front face says `When` or `Whenever`, then one of [subjects] or the card's
-     * full or short name, then [event] as a word (`enters`, `dies`).
+     * names ([FactCard.subjects]), then [event] as a word (`enters`, `dies`). With [orAnother], "or
+     * another …" may come between the subject and the event in the same sentence (SPA-056:
+     * "Whenever Captain Janeway or another creature you control enters").
      */
-    fun has(card: FactCard, subjects: List<String>, event: String): Boolean =
-        Regex("\\b(?:When|Whenever)\\s+${card.subjects(subjects)}\\s+$event\\b")
+    fun has(
+        card: FactCard,
+        subjects: List<String>,
+        event: String,
+        orAnother: Boolean = false,
+    ): Boolean {
+        val another = if (orAnother) "(?:\\s+or\\s+another\\b[^.\\n]*?)?" else ""
+        return Regex("\\b(?:When|Whenever)\\s+${card.subjects(subjects)}$another\\s+$event\\b")
             .containsMatchIn(card.frontText)
+    }
 }

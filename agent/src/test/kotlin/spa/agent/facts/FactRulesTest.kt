@@ -207,6 +207,111 @@ class FactRulesTest {
         assertFalse("dies-trigger" in facts(text = "Whenever another creature dies, draw a card."))
     }
 
+    // SPA-056: the shortened legendary name, first and last word of the name before its comma.
+    private val legendary = "Legendary Creature — Human Soldier"
+    private val kirkText =
+        "When Captain Kirk enters, draw a card.\n" +
+            "When Captain Kirk dies, scry 1.\n" +
+            "Captain Kirk has flying as long as you control a Starship."
+
+    @Test
+    fun `a legendary three-word name shortened gives enters, dies and a self-granted keyword`() {
+        val facts = facts(name = "Captain James T. Kirk", type = legendary, text = kirkText)
+
+        assertTrue("enters-trigger" in facts)
+        assertTrue("dies-trigger" in facts)
+        assertTrue("kw:flying" in facts)
+        assertTrue(
+            "enters-trigger" in
+                facts(
+                    name = "Dr. Leonard \"Bones\" McCoy",
+                    type = legendary,
+                    text = "When Dr. McCoy enters, you gain 2 life.",
+                )
+        )
+    }
+
+    @Test
+    fun `a non-legendary three-word name shortened gives nothing`() {
+        assertEquals(
+            setOf("creature", "type:human", "type:soldier"),
+            facts(
+                name = "Captain James T. Kirk",
+                type = "Creature — Human Soldier",
+                text = kirkText,
+            ),
+        )
+    }
+
+    @Test
+    fun `the part after a comma is never in the shortened name`() {
+        val miles = "Miles O'Brien, Transporter Ops"
+        assertFalse(
+            "enters-trigger" in
+                facts(name = miles, type = legendary, text = "When Miles Ops enters, scry 1.")
+        )
+        assertTrue(
+            "enters-trigger" in
+                facts(name = miles, type = legendary, text = "When Miles O'Brien enters, scry 1.")
+        )
+        val bob = "Bob Q. Bear, the Mighty"
+        assertTrue(
+            "enters-trigger" in
+                facts(name = bob, type = legendary, text = "When Bob Bear enters, scry 1.")
+        )
+        assertFalse(
+            "enters-trigger" in
+                facts(name = bob, type = legendary, text = "When Bob Mighty enters, scry 1.")
+        )
+    }
+
+    @Test
+    fun `a two-word legendary name is unchanged`() {
+        val name = "Gowron Smith"
+        assertTrue(
+            "enters-trigger" in
+                facts(name = name, type = legendary, text = "When Gowron Smith enters, scry 1.")
+        )
+        assertFalse(
+            "enters-trigger" in
+                facts(name = name, type = legendary, text = "When Gowron enters, scry 1.")
+        )
+        assertFalse(
+            "enters-trigger" in
+                facts(name = name, type = legendary, text = "When Smith enters, scry 1.")
+        )
+    }
+
+    @Test
+    fun `self or another creature you control entering is an enters trigger`() {
+        assertTrue(
+            "enters-trigger" in
+                facts(
+                    name = "Captain Kathryn Janeway",
+                    type = legendary,
+                    text =
+                        "Whenever Captain Janeway or another creature you control enters, " +
+                            "scry 1.",
+                )
+        )
+        assertTrue(
+            "enters-trigger" in
+                facts(
+                    text =
+                        "Whenever this creature or another creature you control enters, " +
+                            "you gain 1 life."
+                )
+        )
+        assertFalse(
+            "enters-trigger" in
+                facts(text = "Whenever another creature you control enters, you gain 1 life.")
+        )
+        assertFalse(
+            "enters-trigger" in
+                facts(text = "Whenever another creature enters, put a +1/+1 counter on it.")
+        )
+    }
+
     @Test
     fun `makes-token when create is followed by token in the same sentence, on any face`() {
         assertTrue("makes-token" in facts(text = "Create a 1/1 white Soldier creature token."))
