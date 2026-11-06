@@ -38,7 +38,7 @@ Only what `CLAUDE.md` lists under "Ask the human": design and visual choices (on
 
 ## Reading verdicts
 
-- You read the gate verdict, the Test Inspector verdict, and the Acceptance Tester verdict. You do not read the diff unless two verdicts disagree or an escalation names a specific file.
+- You read the gate verdict and the Acceptance Tester verdict, and you check the tests-first commit order yourself (the red commit's new tests fail at that commit, then pass at the head; run only the affected test classes). At goal close you dispatch the Test Inspector's release inspection. You do not read the diff unless two verdicts disagree or an escalation names a specific file.
 - Both verdicts pass and CI is green: merge the pull request, set `status` to `integrated`, append the merge line to history, and dispatch the next ticket.
 - A verdict fails: the Testing agent has already bounced the ticket to the Developer. You only act when a limit is hit.
 

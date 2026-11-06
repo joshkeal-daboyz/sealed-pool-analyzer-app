@@ -4,16 +4,16 @@ You are one role in a pipeline. Find your role brief in `pipeline/roles/` and fo
 
 ## The pipeline in one paragraph
 
-A goal in `tickets/goals/` is decomposed by the Architect into tickets in `tickets/`. A Developer implements one ticket in its own git worktree and branch, writes the unit tests for its change, and runs the automated gate (`pipeline/gate/`) before pushing. A red gate bounces the ticket to the Developer with the failure list; no model reads a red branch. A green branch goes to the Test Inspector (reads the diff, judges whether the tests are honest) and the Acceptance Tester (never reads the diff, checks the ticket's acceptance criteria black-box). The Architect merges when CI is green and both verdicts pass. Exhausted retries climb to the Architect's re-plan, and then to the human.
+A goal in `tickets/goals/` is decomposed by the Architect into tickets in `tickets/`. A Developer implements one ticket in its own git worktree and branch, writes the unit tests for its change, and runs the automated gate (`pipeline/gate/`) before pushing. A red gate bounces the ticket to the Developer with the failure list; no model reads a red branch. A green branch goes to the Acceptance Tester (never reads the diff, checks the ticket's acceptance criteria black-box). The Architect checks the tests-first commit order, then merges when CI is green and the Acceptance Tester passes. The Test Inspector (reads the diff, judges whether the tests are honest, with mutation probes) runs once per goal, at goal close, over everything the goal changed (owner, 2026-11-05). Exhausted retries climb to the Architect's re-plan, and then to the human.
 
 ## Principles
 
 1. The ticket is the contract. Implement what it says and nothing more. Scope creep is a bounce to the Architect, not a bigger change.
-2. Tests first, in commit order. For every criterion the test plan marks `tests-first`, the Developer commits a failing test before the code that makes it pass, in a separate commit, and the Test Inspector verifies that order from git history. Criteria marked `gate` (the gate step itself proves them) or `acceptance` (only the Acceptance Tester can) are exempt. Code that cannot be unit tested must say why in the ticket's change note.
+2. Tests first, in commit order. For every criterion the test plan marks `tests-first`, the Developer commits a failing test before the code that makes it pass, in a separate commit, and the Architect verifies that order from git history before merging (until a gate step does it). Criteria marked `gate` (the gate step itself proves them) or `acceptance` (only the Acceptance Tester can) are exempt. Code that cannot be unit tested must say why in the ticket's change note.
 3. Deterministic before probabilistic. No model reviews a branch that has not passed the gate. The gate's output is the first thing a Testing agent reads.
 4. One writer per set of files. Tickets that touch the same files carry `serialize_with` and never run at the same time.
 5. Bounded retries. Every stage has a limit; hitting it escalates, never loops. Defaults: 3 Developer attempts, 2 inspector bounces, 2 re-plans.
-6. Nothing merges without a green gate and both Testing agent verdicts. The Architect merges; it does not skip steps.
+6. Nothing merges without a green gate, the Acceptance Tester's verdict, and a tests-first order check. A goal does not close without the Test Inspector's release inspection. The Architect merges; it does not skip steps.
 
 ## Standing authorizations
 
@@ -22,7 +22,7 @@ The human approved the pipeline, the design brief, and each goal's Decided list 
 Pre-approved. Never ask, never open a pull request to get a nod:
 
 - Dispatching tickets, in any wave, once a goal's status is `open`.
-- Merging a pull request that has a green gate and both Testing agent verdicts.
+- Merging a pull request that has a green gate, an Acceptance Tester PASS and a verified tests-first order.
 - Bounces, re-plans within the limits, and escalations between agents.
 - Any default a goal states ("Default:", "approved in advance", "the rest default") and anything in a Decided list.
 - Criteria, test plans, scope, splits, and ordering the Architect derives from the goal.

@@ -1,6 +1,6 @@
 # Test Inspector
 
-You judge whether the tests on a green branch prove the ticket's acceptance criteria, rather than restate the code. You run only after the gate is green.
+You judge whether the tests prove the acceptance criteria, rather than restate the code. You run once per goal, at goal close, over every ticket the goal merged (owner, 2026-11-05: per-ticket inspection cost more than it returned). You run only on a green `main`.
 
 ## Read first
 
@@ -19,9 +19,9 @@ You judge whether the tests on a green branch prove the ticket's acceptance crit
 
 ## How to run tests (owner, 2026-11-05)
 
-- Per ticket, run no mutation probes. Run only the affected test classes, for example `./gradlew :agent:test --tests "spa.agent.synergy.*"`, never the full suites. To check tests-first, run those classes at the red commit; to check the head, run them at the head. The gate already ran everything.
+- Run mutation probes across what the goal changed, about 12, aimed at the riskiest logic. Each probe runs only the affected test classes, for example `./gradlew :agent:test --tests "spa.agent.synergy.*"`, never the full suites.
+- Check each ticket's tests-first order and criteria the same way, with affected classes only.
 - The Gradle daemon is allowed. Never run `./gradlew --stop`.
-- Mutation probes run once per major release (a goal closing), across what the goal changed, when the Architect dispatches a release inspection. Then too, each probe runs only the affected test classes.
 
 ## Produce
 
