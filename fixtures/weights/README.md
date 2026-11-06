@@ -77,3 +77,13 @@ Adding a part adds its key to `weights` (and its numbers to `params` if it reads
 `weights.grades` stays 1, since it sets the scale. These are starting choices: the grid may be revised after the first run, as G-004's was. Before any run the tuner checks that the start file (`--start`, default `deck-default.json`) parses as deck weights and that every value, put at its path in the start file, still parses. A path whose first part is not `weights`, `params`, `lands`, `splash` or `configs`, a path or value that does not parse, an empty list, or a value that is not a number makes the command print one line naming the knob and exit 1. Only numbers can be tuned; the `enabled` and `tripleSplash` switches of `configs` are not.
 
 The tuner's own output, `deck-tuned.json` (written by the Architect's run on `msh` and `hob`, not by SPA-060), is in the format of `deck-default.json`, so `spa build --weights` and `spa deck-backtest --weights` read it.
+
+## `deck-tuned.json`
+
+The deck weights `spa deck-tune` found on `msh` and `hob` (SPA-060), frozen on 2026-11-06: `weights.curve` 0 (was 1), `weights.creatures` 2 (was 1), `params.creatures.minCreatures` 15 (was 14), `lands.lowCurve` 2.8 (was 2.6); every other value is `deck-default.json`'s. `fra` and `trk` were not used.
+
+It was written by `spa deck-tune MSH.Sealed.csv.gz HOB.Sealed.csv.gz --set msh,hob --limit 60 --threads 3 --rounds 2` on 17Lands' public Sealed data (not committed) with `fixtures/weights/deck-grid.json`:
+
+- Objective (mean over the two sets of mean main-deck overlap share plus colour agreement): 0.796 at the start, 0.851 at the end, after 67 evaluations in 9,226 s.
+- On the 60 builds per set it tuned on, the builder agrees with the player's main colours in 3.3% of `msh` builds and 33.3% of `hob` builds, has the player's colours in its top three in 16.7% and 51.7%, and its deck shares 15.69 and 15.32 of the player's 23.22 nonland cards on average. These are well short of G-005's targets (colour agreement 50%, top three 80%, overlap 16). Agreement with strong players is a sanity check, not a measure of how good a deck is (owner, 2026-11-06).
+- The held-out `fra` measurement was dropped by the owner, so the weights have no measurement outside the two tuning sets.

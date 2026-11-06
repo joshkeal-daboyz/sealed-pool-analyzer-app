@@ -1,0 +1,56 @@
+{
+    "version": 1,
+    "weights": {
+        "grades": 1.0,
+        "curve": 0,
+        "creatures": 2,
+        "removal": 1.0,
+        "castability": 1.0,
+        "fixing": 1.0,
+        "synergy": 0.1
+    },
+    "params": {
+        "curve": {
+            "target1": 1,
+            "target2": 5,
+            "target3": 4,
+            "target4": 3,
+            "target5": 2,
+            "target6": 1
+        },
+        "creatures": {
+            "minCreatures": 15
+        },
+        "removal": {
+            "cap": 6
+        }
+    },
+    "lands": {
+        "lowCurve": 2.8,
+        "highCurve": 3.4,
+        "low": 16,
+        "normal": 17,
+        "high": 18
+    },
+    "splash": {
+        "maxCards": 3,
+        "maxPips": 1
+    },
+    "configs": {
+        "pairs": {
+            "enabled": true
+        },
+        "pairSplash": {
+            "enabled": true,
+            "maxSplashColours": 2
+        },
+        "triples": {
+            "enabled": true,
+            "tripleSplash": true
+        },
+        "fourColour": {
+            "enabled": true,
+            "minFixing": 4
+        }
+    }
+}
