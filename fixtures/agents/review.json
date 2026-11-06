@@ -10,7 +10,9 @@
   "agents": [
     { "id": "colour-depth", "enabled": true, "maxTokens": 3000, "prompt": "v1" },
     { "id": "curve", "enabled": true, "maxTokens": 3000, "prompt": "v1" },
-    { "id": "mana", "enabled": true, "maxTokens": 3000, "prompt": "v1" }
+    { "id": "mana", "enabled": true, "maxTokens": 3000, "prompt": "v1" },
+    { "id": "interaction", "enabled": true, "maxTokens": 3000, "prompt": "v1" },
+    { "id": "bombs", "enabled": true, "maxTokens": 3000, "prompt": "v1" }
   ],
   "explainer": { "enabled": true, "maxTokens": 6000, "prompt": "v1" }
 }

@@ -128,7 +128,7 @@ class BombAgentTest {
                     PoolEntry(ReviewTestCards.printing(vex, "b"), 1),
                 )
             )
-        val twiceInput = input(twice).copy(gradeOf = { if (it.id == "a") 4.0 else 4.5 })
+        val twiceInput = input(twice).copy(gradeOf = { if (it.scryfallId == "a") 4.0 else 4.5 })
 
         val kept = BombAgent.numbers(twiceInput).entries.filter { it.key.startsWith("/grades/") }
 
