@@ -5,9 +5,9 @@ import java.nio.file.Path
 import kotlin.io.path.createDirectories
 
 /**
- * A data directory for set `syn` and hand-built Sealed files for `spa deck-backtest` (SPA-046):
- * the committed `syn` Scryfall cache, the `syn` model grades, a pairs-only deck weights file with
- * the synergy part off as `deck-default.json`, and the committed `deck-baseline.json`.
+ * A data directory for set `syn` and hand-built Sealed files for `spa deck-backtest` (SPA-046): the
+ * committed `syn` Scryfall cache, the `syn` model grades, a pairs-only deck weights file with the
+ * synergy part off as `deck-default.json`, and the committed `deck-baseline.json`.
  */
 internal object BacktestSyn {
     /** The deck builder's weights for the tests: the default numbers, pairs only, no synergy. */
@@ -106,7 +106,8 @@ internal object BacktestSyn {
         )
 
     /** Two colours: 23 blue and black spells, 17 lands, three more cards aside. */
-    val TWO = row("t1", "UB", deck = BLUE_BLACK, side = mapOf("Air Elemental" to 2, "Mind Stone" to 1))
+    val TWO =
+        row("t1", "UB", deck = BLUE_BLACK, side = mapOf("Air Elemental" to 2, "Mind Stone" to 1))
 
     /** Two plus a splash: the same cards, with a splash of red the pool has no cards for. */
     val SPLASH =

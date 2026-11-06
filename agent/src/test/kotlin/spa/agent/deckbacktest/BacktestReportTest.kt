@@ -15,7 +15,12 @@ class BacktestReportTest {
 
     private fun outcome(player: String, top: String?, built: BuiltDeck? = null) =
         BuildOutcome(
-            Player(colours(player.substringBefore('/')), colours(player.substringAfter('/', "")), emptyMap(), 17),
+            Player(
+                colours(player.substringBefore('/')),
+                colours(player.substringAfter('/', "")),
+                emptyMap(),
+                17,
+            ),
             listOfNotNull(top).map { RankedColours(colours(it), emptySet()) },
             built,
         )
@@ -81,7 +86,10 @@ class BacktestReportTest {
         val outcome = Backtest.outcome(player, ranked, scored)
 
         assertEquals(listOf(RankedColours(colours("WU"), colours("R"))), outcome.ranked)
-        assertEquals(BuiltDeck(mapOf("oracle-${a.name}" to 2, "oracle-${b.name}" to 1), 17), outcome.built)
+        assertEquals(
+            BuiltDeck(mapOf("oracle-${a.name}" to 2, "oracle-${b.name}" to 1), 17),
+            outcome.built,
+        )
         assertEquals(null, Backtest.outcome(player, emptyList(), null).built)
         assertEquals(player, outcome.player)
     }

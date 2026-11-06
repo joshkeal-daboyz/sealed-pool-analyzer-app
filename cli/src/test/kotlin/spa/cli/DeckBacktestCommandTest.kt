@@ -56,7 +56,7 @@ class DeckBacktestCommandTest {
 
         assertEquals(0, run.exit, run.stderr)
         val lines = run.stdoutLines()
-        assertEquals(12, lines.size, run.stdout)
+        assertEquals(11, lines.size, run.stdout)
         assertEquals(
             "read 8 strong builds: two 4, splash 1, multi 1; " +
                 "skipped one-colour 1, five-colour 1, unresolved 1, no-choice 1",
@@ -117,7 +117,9 @@ class DeckBacktestCommandTest {
     fun `a gzipped file reads the same as a plain one`() {
         val plain = backtest(all)
         val zipped = Path.of(temp.toString(), "sealed.csv.gz")
-        GZIPOutputStream(Files.newOutputStream(zipped)).use { it.write(Files.readAllBytes(Path.of(all))) }
+        GZIPOutputStream(Files.newOutputStream(zipped)).use {
+            it.write(Files.readAllBytes(Path.of(all)))
+        }
 
         assertEquals(plain.numbers(), backtest(zipped.toString()).numbers())
     }
@@ -179,6 +181,16 @@ class DeckBacktestCommandTest {
 
     private companion object {
         /** The group lines of [BacktestSyn.KEPT] with the test weights, builder then baseline. */
-        val PINNED: List<String> = listOf("TBD")
+        val PINNED: List<String> =
+            listOf(
+                "builder overall n 4 colour 50.0 top3 50.0 splash 75.0 overlap 21.33 of 22.67 lands 100.0",
+                "builder two n 2 colour 50.0 top3 50.0 splash 100.0 overlap 21.00 of 23.00 lands 100.0",
+                "builder splash n 1 colour 100.0 top3 100.0 splash 0.0 overlap 23.00 of 23.00 lands 100.0",
+                "builder multi n 1 colour 0.0 top3 0.0 splash 100.0 overlap 20.00 of 22.00 lands 100.0",
+                "baseline overall n 4 colour 50.0 top3 50.0 splash 75.0 overlap 21.00 of 23.00 lands 100.0",
+                "baseline two n 2 colour 50.0 top3 50.0 splash 100.0 overlap 20.50 of 23.50 lands 100.0",
+                "baseline splash n 1 colour 100.0 top3 100.0 splash 0.0 overlap 23.00 of 23.00 lands 100.0",
+                "baseline multi n 1 colour 0.0 top3 0.0 splash 100.0 overlap 20.00 of 22.00 lands 100.0",
+            )
     }
 }

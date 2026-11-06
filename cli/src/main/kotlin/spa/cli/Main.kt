@@ -11,9 +11,9 @@ import spa.core.cards.ScryfallSetFetcher
 /**
  * The `spa` command line: `analyze`, `validate-brief`, `fetch-set`, `winrates`, `grade-backtest`,
  * `grade-packet`, `grade-import`, `grades`, `themes`, `pool-grades`, `deck-pick`, `fixing`,
- * `build`, `tags-packet`, `tags-import`, `tags-review-packet`, `tags-review-import`,
- * `synergy-table`, `synergy`, `synergy-check`, `facts`, `fetch-tags`, `cares-packet`, and
- * `cares-import`.
+ * `build`, `deck-backtest`, `tags-packet`, `tags-import`, `tags-review-packet`,
+ * `tags-review-import`, `synergy-table`, `synergy`, `synergy-check`, `facts`, `fetch-tags`,
+ * `cares-packet`, and `cares-import`.
  */
 object Main {
     /** The text `spa --help` prints. */
@@ -96,6 +96,21 @@ object Main {
         |      pool-grades; the synergy table, read only when its weight is above 0, from --tags
         |      and --otags as for synergy-table. Too few candidates for 22 spells is one line and
         |      exit 1.
+        |  deck-backtest <sealed-game-data.csv.gz> --set <code> [--limit <n>] [--threads <t>]
+        |          [--weights <file>] [--baseline <file>] [--tags <file>] [--otags <file>]
+        |          [--data <dir>]
+        |      Run the deck builder on the pool of every strong player's build (win-rate bucket 0.60
+        |      or more, two to four main colours, with or without a splash) in a 17Lands Sealed game
+        |      data file, and print how often it agrees with the player, overall and for decks of two
+        |      colours, two plus a splash, and three or more main colours: the top deck's main
+        |      colours (colour), the player's among the top three decks' (top3), the top deck
+        |      splashing when the player did (splash), the mean number of the player's nonland cards
+        |      the builder's deck in the player's colours plays beside the mean number registered
+        |      (overlap), and a land count within one of the player's (lands). The same numbers
+        |      follow for a baseline builder with --baseline, else
+        |      <data>/weights/deck-baseline.json (set grades alone, two-colour pairs). --limit n
+        |      keeps n builds spread evenly through the kept ones; --threads (default 2) changes
+        |      the time, never a number. Weights default as for build.
         |  tags-packet <code> --out <dir> [--axes <file>] [--prompt <version>] [--data <dir>]
         |      Write a blind synergy tagging packet for the set's sealed pool into <dir>. Without
         |      --axes, pass 1: the axes prompt, the format brief and theme counts, the cards in
@@ -240,6 +255,7 @@ object Main {
             "deck-pick" to { a, out, _ -> DeckPickCommand.run(a, out) },
             "fixing" to { a, out, err -> FixingCommand.run(a, out, err) },
             "build" to { a, out, err -> BuildCommand.run(a, out, err) },
+            "deck-backtest" to { a, out, _ -> DeckBacktestCommand.run(a, out) },
             "tags-packet" to { a, out, err -> TagsPacketCommand.run(a, out, err) },
             "tags-import" to { a, out, err -> TagsImportCommand().run(a, out, err) },
             "tags-review-packet" to { a, out, _ -> TagsReviewPacketCommand.run(a, out) },

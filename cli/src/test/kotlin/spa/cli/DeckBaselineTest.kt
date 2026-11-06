@@ -27,9 +27,8 @@ class DeckBaselineTest {
         val weights = DeckWeights.parse(Files.readString(file))
 
         assertEquals(1.0, weights.weight("grades"))
-        DeckParts.ALL.filter { it.key != "grades" }.forEach {
-            assertEquals(0.0, weights.weight(it.key), it.key)
-        }
+        DeckParts.ALL.filter { it.key != "grades" }
+            .forEach { assertEquals(0.0, weights.weight(it.key), it.key) }
     }
 
     @Test
@@ -43,7 +42,7 @@ class DeckBaselineTest {
 
     @Test
     fun `its ranked decks are all pairs with no splash, scored by the grades of the spells`() {
-        val session = BuildSession.open(BacktestSyn.data(temp), "syn", file)
+        val session = BuildSession.open(DataDir(BacktestSyn.data(temp)), "syn", file)
         val pool =
             Pool(
                 listOf("Serra Angel", "Air Elemental", "Doom Blade", "Grizzly Bears").map { name ->

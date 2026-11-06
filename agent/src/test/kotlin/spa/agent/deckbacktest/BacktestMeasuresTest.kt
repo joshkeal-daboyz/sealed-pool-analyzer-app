@@ -12,15 +12,21 @@ import spa.core.text.Color
 class BacktestMeasuresTest {
     private fun colours(text: String): Set<Color> = text.mapNotNull { Color.fromSymbol(it) }.toSet()
 
-    private fun ranked(vararg decks: String): List<RankedColours> =
-        decks.map { RankedColours(colours(it.substringBefore('/')), colours(it.substringAfter('/', ""))) }
+    private fun ranked(vararg decks: String): List<RankedColours> = decks.map {
+        RankedColours(colours(it.substringBefore('/')), colours(it.substringAfter('/', "")))
+    }
 
     private fun player(
         deck: String,
         spells: Map<String, Int> = emptyMap(),
         lands: Int = 17,
     ): Player =
-        Player(colours(deck.substringBefore('/')), colours(deck.substringAfter('/', "")), spells, lands)
+        Player(
+            colours(deck.substringBefore('/')),
+            colours(deck.substringAfter('/', "")),
+            spells,
+            lands,
+        )
 
     private fun outcome(
         player: String,
@@ -74,7 +80,9 @@ class BacktestMeasuresTest {
     @Test
     fun `land count is within one of the player's`() {
         fun lands(player: Int, built: Int) =
-            LandCount.value(outcome("WU", "WU", lands = player, built = BuiltDeck(emptyMap(), built)))
+            LandCount.value(
+                outcome("WU", "WU", lands = player, built = BuiltDeck(emptyMap(), built))
+            )
 
         assertEquals(1.0, lands(17, 17))
         assertEquals(1.0, lands(17, 16))
@@ -144,6 +152,9 @@ class BacktestMeasuresTest {
 
         assertEquals(listOf("overall", "two", "splash", "multi"), groups.keys.toList())
         assertEquals(listOf(6, 3, 1, 2), groups.values.map { it.size })
-        assertEquals(groups.getValue("overall").size, groups.filterKeys { it != "overall" }.values.sumOf { it.size })
+        assertEquals(
+            groups.getValue("overall").size,
+            groups.filterKeys { it != "overall" }.values.sumOf { it.size },
+        )
     }
 }
