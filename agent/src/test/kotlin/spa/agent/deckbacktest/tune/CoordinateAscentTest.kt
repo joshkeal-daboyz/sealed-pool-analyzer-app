@@ -10,7 +10,8 @@ import spa.agent.build.DeckWeights
  * knobs it cares about from the weights text it is given.
  */
 class CoordinateAscentTest {
-    private fun read(text: String, path: String): Double = checkNotNull(WeightsEdit.read(text, path))
+    private fun read(text: String, path: String): Double =
+        checkNotNull(WeightsEdit.read(text, path))
 
     private fun grid(vararg knobs: Pair<String, List<Number>>) =
         DeckGrid.parse(gridText(*knobs), START)
@@ -74,8 +75,7 @@ class CoordinateAscentTest {
 
     @Test
     fun `a better value later in the grid beats an earlier better one`() {
-        val run =
-            search(grid("weights.curve" to listOf(0, 1, 2, 5))) { read(it, "weights.curve") }
+        val run = search(grid("weights.curve" to listOf(0, 1, 2, 5))) { read(it, "weights.curve") }
 
         assertEquals(5.0, curve(run))
     }
@@ -183,8 +183,7 @@ class CoordinateAscentTest {
 
     @Test
     fun `a knob the start file lacks is created and tried at every value`() {
-        val run =
-            search(grid("configs.fourColour.minFixing" to listOf(2, 4)), rounds = 1) { 1.0 }
+        val run = search(grid("configs.fourColour.minFixing" to listOf(2, 4)), rounds = 1) { 1.0 }
 
         assertEquals(3, run.result.evaluations)
     }

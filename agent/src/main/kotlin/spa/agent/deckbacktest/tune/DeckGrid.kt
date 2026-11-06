@@ -11,9 +11,8 @@ import spa.agent.build.Fields
 class Knob(val path: String, val values: List<Double>)
 
 /**
- * The grid the tuner searches (SPA-060, `fixtures/weights/deck-grid.json`): a JSON object of
- * knobs, each a path into the deck weights JSON and the list of numbers to try there, in file
- * order.
+ * The grid the tuner searches (SPA-060, `fixtures/weights/deck-grid.json`): a JSON object of knobs,
+ * each a path into the deck weights JSON and the list of numbers to try there, in file order.
  */
 class DeckGrid(val knobs: List<Knob>) {
     companion object {
@@ -47,15 +46,14 @@ class DeckGrid(val knobs: List<Knob>) {
             }
             val values = element as? JsonArray
             require(!values.isNullOrEmpty()) { "grid knob '$path' needs a list of numbers" }
-            val numbers =
-                values.map { value ->
-                    val primitive = value as? JsonPrimitive
-                    val number = primitive?.takeUnless { it.isString }?.doubleOrNull
-                    require(number != null && number.isFinite()) {
-                        "grid knob '$path' has a value that is not a number: $value"
-                    }
-                    number
+            val numbers = values.map { value ->
+                val primitive = value as? JsonPrimitive
+                val number = primitive?.takeUnless { it.isString }?.doubleOrNull
+                require(number != null && number.isFinite()) {
+                    "grid knob '$path' has a value that is not a number: $value"
                 }
+                number
+            }
             numbers.forEach { check(path, it, start) }
             return Knob(path, numbers.distinct())
         }

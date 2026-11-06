@@ -63,9 +63,9 @@ class DeckTuneCommandTest {
         Regex("""^round (\d+) (\S+) (?:(\S+) )?objective (-?\d+\.\d{6})$""")
 
     private fun evaluations(run: CliRun) =
-        run.stdoutLines().filter { it.startsWith("round ") }.map {
-            requireNotNull(evaluationLine.matchEntire(it)) { it }
-        }
+        run.stdoutLines()
+            .filter { it.startsWith("round ") }
+            .map { requireNotNull(evaluationLine.matchEntire(it)) { it } }
 
     /** The objective of the builder's overall line `colour <c> ... overlap <x> of <y>`. */
     private fun objectiveOf(line: String): Double {
@@ -75,7 +75,16 @@ class DeckTuneCommandTest {
     }
 
     private fun backtestBuilder(weights: String): List<String> =
-        runCli("deck-backtest", all, "--set", "syn", "--data", data.toString(), "--weights", weights)
+        runCli(
+                "deck-backtest",
+                all,
+                "--set",
+                "syn",
+                "--data",
+                data.toString(),
+                "--weights",
+                weights,
+            )
             .stdoutLines()
             .filter { it.startsWith("builder ") }
 
@@ -119,18 +128,30 @@ class DeckTuneCommandTest {
         // The start, then creatures 0 and 2, then minCreatures 10.
         val steps = evaluations(run)
         assertEquals(
-            listOf("0 start", "1 weights.creatures", "1 weights.creatures", "1 params.creatures.minCreatures"),
+            listOf(
+                "0 start",
+                "1 weights.creatures",
+                "1 weights.creatures",
+                "1 params.creatures.minCreatures",
+            ),
             steps.map { "${it.groupValues[1]} ${it.groupValues[2]}" },
         )
         assertEquals(listOf("0", "2", "10"), steps.drop(1).map { it.groupValues[3] })
 
-        val block = lines.subList(lines.indexOfFirst { it.startsWith("start objective") }, lines.size)
+        val block =
+            lines.subList(lines.indexOfFirst { it.startsWith("start objective") }, lines.size)
         assertTrue(Regex("""^start objective \d+\.\d{6}$""").matches(block[0]), block[0])
         assertTrue(Regex("""^final objective \d+\.\d{6}$""").matches(block[1]), block[1])
         assertEquals("syn start", block[2])
-        assertEquals(listOf("overall", "two", "splash", "multi"), block.subList(3, 7).map { it.split(' ')[1] })
+        assertEquals(
+            listOf("overall", "two", "splash", "multi"),
+            block.subList(3, 7).map { it.split(' ')[1] },
+        )
         assertEquals("syn final", block[7])
-        assertEquals(listOf("overall", "two", "splash", "multi"), block.subList(8, 12).map { it.split(' ')[1] })
+        assertEquals(
+            listOf("overall", "two", "splash", "multi"),
+            block.subList(8, 12).map { it.split(' ')[1] },
+        )
         assertTrue(Regex("""^evaluations 4, time \d+\.\d s$""").matches(block[12]), block[12])
         assertEquals(13, block.size)
         assertTrue(out.toFile().isFile)
@@ -165,14 +186,16 @@ class DeckTuneCommandTest {
         val written = Files.readString(out)
         val second = tune(all)
 
-        fun numbers(run: CliRun) = run.stdoutLines().map { it.replace(Regex("""time \d+\.\d s"""), "") }
+        fun numbers(run: CliRun) =
+            run.stdoutLines().map { it.replace(Regex("""time \d+\.\d s"""), "") }
         assertEquals(numbers(first), numbers(second))
         assertEquals(written, Files.readString(out))
     }
 
     @Test
     fun `one thread and two threads print identical numbers`() {
-        fun numbers(run: CliRun) = run.stdoutLines().map { it.replace(Regex("""time \d+\.\d s"""), "") }
+        fun numbers(run: CliRun) =
+            run.stdoutLines().map { it.replace(Regex("""time \d+\.\d s"""), "") }
 
         assertEquals(numbers(tune(all, "--threads", "1")), numbers(tune(all, "--threads", "2")))
     }
@@ -181,10 +204,19 @@ class DeckTuneCommandTest {
     fun `the weights are written before the first evaluation ends the run, and with no move too`() {
         // A one-value grid: nothing to try. The start weights are still written.
         val still = writeFile(temp, "still.json", """{"weights.creatures": [1]}""")
-        val run = runCli(
-            "deck-tune", all, "--set", "syn", "--data", data.toString(),
-            "--grid", still, "--out", out.toString(),
-        )
+        val run =
+            runCli(
+                "deck-tune",
+                all,
+                "--set",
+                "syn",
+                "--data",
+                data.toString(),
+                "--grid",
+                still,
+                "--out",
+                out.toString(),
+            )
 
         assertEquals(0, run.exit, run.stderr)
         assertEquals(1, evaluations(run).size)
@@ -203,13 +235,32 @@ class DeckTuneCommandTest {
     fun `the held-out sets are refused`() {
         for (set in listOf("fra", "trk", "FRA")) {
             val run =
-                runCli("deck-tune", all, "--set", set, "--out", out.toString(), "--data", data.toString())
+                runCli(
+                    "deck-tune",
+                    all,
+                    "--set",
+                    set,
+                    "--out",
+                    out.toString(),
+                    "--data",
+                    data.toString(),
+                )
 
             assertOneLine(run, set.lowercase())
             assertTrue("held out" in run.stderr, run.stderr)
         }
         val mixed =
-            runCli("deck-tune", all, all, "--set", "syn,fra", "--out", out.toString(), "--data", data.toString())
+            runCli(
+                "deck-tune",
+                all,
+                all,
+                "--set",
+                "syn,fra",
+                "--out",
+                out.toString(),
+                "--data",
+                data.toString(),
+            )
         assertOneLine(mixed, "fra")
         assertTrue(Files.notExists(out))
     }
@@ -217,10 +268,23 @@ class DeckTuneCommandTest {
     @Test
     fun `a set given twice, a missing set and a missing out are one line each`() {
         assertOneLine(
-            runCli("deck-tune", all, all, "--set", "syn,syn", "--out", out.toString(), "--data", data.toString()),
+            runCli(
+                "deck-tune",
+                all,
+                all,
+                "--set",
+                "syn,syn",
+                "--out",
+                out.toString(),
+                "--data",
+                data.toString(),
+            ),
             "syn",
         )
-        assertOneLine(runCli("deck-tune", all, "--out", out.toString(), "--data", data.toString()), "--set")
+        assertOneLine(
+            runCli("deck-tune", all, "--out", out.toString(), "--data", data.toString()),
+            "--set",
+        )
         assertOneLine(runCli("deck-tune", all, "--set", "syn", "--data", data.toString()), "--out")
     }
 
@@ -236,7 +300,16 @@ class DeckTuneCommandTest {
     fun `a number of files that differs from the number of sets is one line`() {
         assertOneLine(tune(all, all), "1 set")
         assertOneLine(
-            runCli("deck-tune", all, "--set", "syn,hob", "--out", out.toString(), "--data", data.toString()),
+            runCli(
+                "deck-tune",
+                all,
+                "--set",
+                "syn,hob",
+                "--out",
+                out.toString(),
+                "--data",
+                data.toString(),
+            ),
             "2 sets",
         )
         assertOneLine(
@@ -268,8 +341,16 @@ class DeckTuneCommandTest {
         val badGrid = writeFile(temp, "bad-grid.json", """{"weights.bogus": [1]}""")
         val withBad =
             runCli(
-                "deck-tune", all, "--set", "syn", "--data", data.toString(),
-                "--grid", badGrid, "--out", out.toString(),
+                "deck-tune",
+                all,
+                "--set",
+                "syn",
+                "--data",
+                data.toString(),
+                "--grid",
+                badGrid,
+                "--out",
+                out.toString(),
             )
         assertOneLine(withBad, "bad-grid.json")
         assertTrue("weights.bogus" in withBad.stderr, withBad.stderr)
@@ -277,7 +358,10 @@ class DeckTuneCommandTest {
         val badStart = writeFile(temp, "bad-start.json", """{"version": 2}""")
         assertOneLine(tune(all, "--start", badStart), "bad-start.json")
         assertOneLine(tune(all, "--start", temp.resolve("none.json").toString()), "none.json")
-        assertOneLine(tune(all, "--grid", temp.resolve("none-grid.json").toString()), "none-grid.json")
+        assertOneLine(
+            tune(all, "--grid", temp.resolve("none-grid.json").toString()),
+            "none-grid.json",
+        )
     }
 
     @Test

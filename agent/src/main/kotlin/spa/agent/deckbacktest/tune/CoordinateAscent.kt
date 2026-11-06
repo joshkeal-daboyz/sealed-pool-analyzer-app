@@ -17,9 +17,12 @@ data class TuneEvaluation(
     val value: Double?,
     val objective: Double,
 ) {
-    /** The report line: `round <r> <path> <value> objective <x>`, or `round 0 start objective <x>`. */
+    /**
+     * The report line: `round <r> <path> <value> objective <x>`, or `round 0 start objective <x>`.
+     */
     fun line(): String {
-        val what = if (path == null || value == null) "start" else "$path ${WeightsEdit.text(value)}"
+        val what =
+            if (path == null || value == null) "start" else "$path ${WeightsEdit.text(value)}"
         return String.format(Locale.ROOT, "round %d %s objective %.6f", round, what, objective)
     }
 }
@@ -37,9 +40,9 @@ data class TuneResult(
 /**
  * Coordinate ascent over a [grid] (SPA-060). From the [start] weights and their objective, a round
  * visits the knobs in grid order; for each it tries every other value with the other knobs as they
- * stand, and moves to the value with the best objective if that beats the current one by more
- * than a billionth (a tie keeps the current value; among equal better values the first in grid
- * order wins). It stops when a round changes nothing or after [rounds] rounds. It is deterministic.
+ * stand, and moves to the value with the best objective if that beats the current one by more than
+ * a billionth (a tie keeps the current value; among equal better values the first in grid order
+ * wins). It stops when a round changes nothing or after [rounds] rounds. It is deterministic.
  *
  * [onEvaluation] hears every evaluation, in order, the start's included. [onBest] gets the weights
  * text for the start and again after every move, so a caller that writes it always holds the best

@@ -13,8 +13,8 @@ import spa.agent.deckbacktest.tune.TuneResult
 
 /**
  * `spa deck-tune <sealed-file>... --set <code,...> [--limit <n>] [--threads <t>] [--grid <file>]
- * [--start <weights file>] [--rounds <r>] --out <file> [--tags <file>] [--otags <file>] [--data
- * <dir>]`: a deterministic coordinate ascent over the grid of deck weights (SPA-060), each
+ * [--start <weights file>] [--rounds <r>] --out <file> [--tags <file>] [--otags <file>]
+ * [--data <dir>]`: a deterministic coordinate ascent over the grid of deck weights (SPA-060), each
  * candidate scored by running the deck backtest ([DeckTuneEvaluator]) on the Sealed files, one per
  * set. The weights found are written to `--out` after every move. Only the tuning sets may be
  * named: `fra` and `trk` are held out. No network or model call.
@@ -71,19 +71,19 @@ object DeckTuneCommand {
         val startText = Commands.readFile(startFile, "weights file")
         Commands.guard("invalid weights file $startFile") { DeckWeights.parse(startText) }
         val gridText = Commands.readFile(gridFile, "grid file")
-        val grid = Commands.guard("invalid grid file $gridFile") { DeckGrid.parse(gridText, startText) }
+        val grid =
+            Commands.guard("invalid grid file $gridFile") { DeckGrid.parse(gridText, startText) }
 
         val tags = SynergyTableCommand.tagsOption(parsed)
         val otags = parsed.value(Otags.OPTION)
-        val tuneSets =
-            sets.mapIndexed { i, code ->
-                val session = BuildSession.open(data, code, startFile, tags, otags)
-                val selection = DeckBacktestCommand.read(files[i], session)
-                stdout.println("$code: ${selection.summary()}")
-                val builds = limit?.let(selection::limited) ?: selection.builds
-                stdout.println("$code: used ${builds.size} builds")
-                TuneSet(code, session, builds)
-            }
+        val tuneSets = sets.mapIndexed { i, code ->
+            val session = BuildSession.open(data, code, startFile, tags, otags)
+            val selection = DeckBacktestCommand.read(files[i], session)
+            stdout.println("$code: ${selection.summary()}")
+            val builds = limit?.let(selection::limited) ?: selection.builds
+            stdout.println("$code: used ${builds.size} builds")
+            TuneSet(code, session, builds)
+        }
         stdout.flush()
 
         val pool = ForkJoinPool(threads)
@@ -114,7 +114,11 @@ object DeckTuneCommand {
     }
 
     /** The final block: both objectives, each set builder lines for the start and the result. */
-    private fun block(result: TuneResult, evaluator: DeckTuneEvaluator, seconds: Double): List<String> {
+    private fun block(
+        result: TuneResult,
+        evaluator: DeckTuneEvaluator,
+        seconds: Double,
+    ): List<String> {
         val start = evaluator.run(result.startWeights)
         val final = evaluator.run(result.weights)
         val lines = mutableListOf(objectiveLine("start", result.startObjective))
@@ -125,7 +129,8 @@ object DeckTuneCommand {
                 lines += report
             }
         }
-        lines += String.format(Locale.ROOT, "evaluations %d, time %.1f s", result.evaluations, seconds)
+        lines +=
+            String.format(Locale.ROOT, "evaluations %d, time %.1f s", result.evaluations, seconds)
         return lines
     }
 
@@ -177,7 +182,9 @@ object DeckTuneCommand {
      */
     internal fun oneLine(e: Throwable): CliFailure {
         val causes = generateSequence(e) { it.cause }.take(MAX_CAUSES).toList()
-        causes.filterIsInstance<CliFailure>().firstOrNull()?.let { return it }
+        causes.filterIsInstance<CliFailure>().firstOrNull()?.let {
+            return it
+        }
         val root = causes.last()
         return CliFailure(
             "deck-tune failed: ${root.javaClass.simpleName}: ${firstLine(root.message)}",

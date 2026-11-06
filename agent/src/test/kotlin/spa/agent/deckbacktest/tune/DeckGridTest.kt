@@ -42,7 +42,9 @@ class DeckGridTest {
     @Test
     fun `a bad path is rejected naming it`() {
         assertTrue("weights.bogus" in reject(gridText("weights.bogus" to listOf(1))))
-        assertTrue("params.creatures.nope" in reject(gridText("params.creatures.nope" to listOf(1))))
+        assertTrue(
+            "params.creatures.nope" in reject(gridText("params.creatures.nope" to listOf(1)))
+        )
     }
 
     @Test

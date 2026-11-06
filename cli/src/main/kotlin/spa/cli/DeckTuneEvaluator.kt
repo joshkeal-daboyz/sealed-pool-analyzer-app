@@ -77,7 +77,10 @@ internal class DeckTuneEvaluator(
 
     /** [weights] evaluated on every build of every set. */
     fun run(weights: String): Evaluation {
-        if (cache) memo[weights]?.let { return it }
+        if (cache)
+            memo[weights]?.let {
+                return it
+            }
         val parsed = DeckWeights.parse(weights)
         val sessions = sets.map { it.session.withWeights(parsed) }
         val table =
@@ -164,7 +167,11 @@ internal class DeckTuneEvaluator(
         counter.incrementAndGet()
         val scored = session.builder.build(session.setup(pooled, config)) ?: return null
         val copies = scored.deck.spells.groupingBy { it.card.oracleId }.eachCount()
-        return DeckResult(scored.total, cards(scored.deck), BuiltDeck(copies, scored.deck.landCount))
+        return DeckResult(
+            scored.total,
+            cards(scored.deck),
+            BuiltDeck(copies, scored.deck.landCount),
+        )
     }
 
     /** The deck's cards as text, as `DeckRanking` compares decks: same copies, same text. */

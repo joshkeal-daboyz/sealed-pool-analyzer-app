@@ -49,7 +49,8 @@ class TuneObjectiveTest {
 
     @Test
     fun `the objective is the mean over the sets`() {
-        val value = TuneObjectives.DEFAULT.value(linkedMapOf("a" to listOf(a1, a2), "b" to listOf(b1)))
+        val value =
+            TuneObjectives.DEFAULT.value(linkedMapOf("a" to listOf(a1, a2), "b" to listOf(b1)))
 
         assertEquals(((2.0 / 3.5 + 0.5) + 1.75) / 2, value, 1e-12)
     }
@@ -59,7 +60,11 @@ class TuneObjectiveTest {
         val unbuilt = outcome(blue, white, mapOf("m" to 9), null)
 
         // Colour 1 of 3; overlap and registered cards over the two built ones only.
-        assertEquals(2.0 / 3.5 + 1.0 / 3, OverlapAndColour.forSet("a", listOf(a1, a2, unbuilt)), 1e-12)
+        assertEquals(
+            2.0 / 3.5 + 1.0 / 3,
+            OverlapAndColour.forSet("a", listOf(a1, a2, unbuilt)),
+            1e-12,
+        )
     }
 
     @Test
