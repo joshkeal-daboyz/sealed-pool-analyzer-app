@@ -168,6 +168,33 @@ class CaresScoringTest {
         assertTrue("invalid Fable cares file" in strong.stderr, strong.stderr)
     }
 
+    /**
+     * A data directory under the temp directory that holds trk as SPA-054 left it: its Scryfall
+     * cache, brief and checks, the cares table, and the frozen otags (SPA-058, `otags/v1/trk.json`)
+     * as `otags/trk.json`, with no Fable file beside them.
+     */
+    private fun frozenTrkData(): Path {
+        val dir = Files.createDirectories(temp.resolve("frozen"))
+        val root = Fixtures.root
+        for (sub in listOf("scryfall", "briefs", "synergy-checks")) {
+            val from = root.resolve(sub)
+            if (Files.exists(from)) copyTree(from, dir.resolve(sub))
+        }
+        val otags = Files.createDirectories(dir.resolve("otags"))
+        Files.copy(root.resolve("otags/cares.json"), otags.resolve("cares.json"))
+        Files.copy(root.resolve("otags/v1/trk.json"), otags.resolve("trk.json"))
+        return dir
+    }
+
+    private fun copyTree(from: Path, to: Path) {
+        val files = Files.walk(from).use { stream -> stream.filter(Files::isRegularFile).toList() }
+        for (file in files) {
+            val target = to.resolve(from.relativize(file).toString())
+            Files.createDirectories(target.parent)
+            Files.copy(file, target)
+        }
+    }
+
     private fun sha256(text: String): String =
         MessageDigest.getInstance("SHA-256")
             .digest(text.replace("\r\n", "\n").toByteArray(Charsets.UTF_8))
@@ -181,8 +208,10 @@ class CaresScoringTest {
      */
     @Test
     fun `trk has no Fable file, and its table and checks are unchanged`() {
-        assertFalse(Files.exists(Fixtures.root.resolve("otags/trk.fable.json")))
-        val v1 = arrayOf("--tags", Fixtures.v1Tags("trk"), "--data", Fixtures.data)
+        val frozen = frozenTrkData()
+        assertFalse(Files.exists(Fixtures.root.resolve("otags/v1").resolve("trk.fable.json")))
+        assertFalse(Files.exists(frozen.resolve("otags/trk.fable.json")))
+        val v1 = arrayOf("--tags", Fixtures.v1Tags("trk"), "--data", frozen.toString())
 
         val table = runCli("synergy-table", "--set", "trk", *v1)
         assertEquals(ExitCode.OK, table.exit, table.stderr)

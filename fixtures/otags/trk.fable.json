@@ -1,0 +1,1431 @@
+{
+  "set": "trk",
+  "provenance": "Claude Fable 5.1 on the subscription, cares-gaps prompt v1, fresh agent reading only its packet folder, 2026-11-06",
+  "cards": [
+    {
+      "id": "trk/5",
+      "cares": [
+        {
+          "fact": "kw:station",
+          "strength": 2,
+          "reason": "Tapping him to station a Spacecraft triggers his bonus, so the charge counters placed get one more."
+        },
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 2,
+          "reason": "While his bonus is on, every batch of +1/+1 counters put on a permanent you control is one bigger."
+        },
+        {
+          "fact": "otag:tap-outlet",
+          "strength": 1,
+          "reason": "Any other way to tap him turns on the counter bonus."
+        }
+      ]
+    },
+    {
+      "id": "trk/6",
+      "cares": [
+        {
+          "fact": "type:officer",
+          "strength": 2,
+          "reason": "His activated ability casts spells with mana value up to the number of Officers you control."
+        }
+      ]
+    },
+    {
+      "id": "trk/7",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 2,
+          "reason": "Creates an Officer token whenever you cast a creature spell."
+        },
+        {
+          "fact": "type:officer",
+          "strength": 2,
+          "reason": "Taps seven untapped Officers you control to put a Spacecraft onto the battlefield."
+        }
+      ]
+    },
+    {
+      "id": "trk/11",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 2,
+          "reason": "Each other creature you control enters with an additional +1/+1 counter."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Creature tokens entering under your control also get the extra counter."
+        }
+      ]
+    },
+    {
+      "id": "trk/12",
+      "cares": [
+        {
+          "fact": "kw:station",
+          "strength": 2,
+          "reason": "Untaps a creature that was tapped to station a Spacecraft so it can attack or station again."
+        },
+        {
+          "fact": "otag:uninspired",
+          "strength": 1,
+          "reason": "Untapping lets creatures with becomes-tapped triggers tap and trigger again."
+        }
+      ]
+    },
+    {
+      "id": "trk/14",
+      "cares": [
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 2,
+          "reason": "Saves another creature with a +1/+1 counter from being destroyed; more counters mean more creatures protected."
+        }
+      ]
+    },
+    {
+      "id": "trk/16",
+      "cares": [
+        {
+          "fact": "otag:sacrifice-outlet",
+          "strength": 1,
+          "reason": "Puts a +1/+1 counter whenever a creature you control dies; outlets make that happen on demand."
+        }
+      ]
+    },
+    {
+      "id": "trk/17",
+      "cares": [
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 1,
+          "reason": "The draw mode needs a permanent you control with a counter on it."
+        }
+      ]
+    },
+    {
+      "id": "trk/18",
+      "cares": [
+        {
+          "fact": "kw:equip",
+          "strength": 2,
+          "reason": "Searches your library for an Equipment card."
+        },
+        {
+          "fact": "kw:station",
+          "strength": 2,
+          "reason": "Searches your library for a Spacecraft card."
+        },
+        {
+          "fact": "kw:enchant",
+          "strength": 1,
+          "reason": "Searches your library for an Aura card."
+        },
+        {
+          "fact": "enters-trigger",
+          "strength": 1,
+          "reason": "Beam me up returns a creature you control to hand, letting you recast it for its enters trigger."
+        }
+      ]
+    },
+    {
+      "id": "trk/20",
+      "cares": [
+        {
+          "fact": "enters-trigger",
+          "strength": 2,
+          "reason": "Flickers another nonland permanent you control, re-triggering its enters ability at end step."
+        }
+      ]
+    },
+    {
+      "id": "trk/21",
+      "cares": [
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Token creatures add bodies toward the total power 8 its attack trigger needs."
+        },
+        {
+          "fact": "otag:power-boost-to-all",
+          "strength": 1,
+          "reason": "Team pumps reach total power 8 with fewer creatures."
+        }
+      ]
+    },
+    {
+      "id": "trk/24",
+      "cares": [
+        {
+          "fact": "enters-trigger",
+          "strength": 2,
+          "reason": "Returns another creature or artifact you control to hand so you can recast it for its enters trigger."
+        },
+        {
+          "fact": "otag:rescue",
+          "strength": 2,
+          "reason": "Draws a card at each end step if a permanent was returned to your hand, including beam me up costs."
+        }
+      ]
+    },
+    {
+      "id": "trk/25",
+      "cares": [
+        {
+          "fact": "makes-token",
+          "strength": 2,
+          "reason": "Casting it requires sacrificing a creature; tokens are the cheapest fodder."
+        },
+        {
+          "fact": "otag:death-trigger-self",
+          "strength": 1,
+          "reason": "Sacrificing a creature that wants to die gets value from the additional cost."
+        }
+      ]
+    },
+    {
+      "id": "trk/31",
+      "cares": [
+        {
+          "fact": "enters-trigger",
+          "strength": 1,
+          "reason": "Beam me up returns a creature you control to hand, letting you recast it for its enters trigger."
+        }
+      ]
+    },
+    {
+      "id": "trk/32",
+      "cares": [
+        {
+          "fact": "artifact",
+          "strength": 2,
+          "reason": "Looks at the top six cards to put an artifact card into your hand when he enters."
+        }
+      ]
+    },
+    {
+      "id": "trk/33",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 2,
+          "reason": "Federation deals damage equal to the number of creature types among non-Borg creatures you control."
+        }
+      ]
+    },
+    {
+      "id": "trk/36",
+      "cares": [
+        {
+          "fact": "kw:station",
+          "strength": 2,
+          "reason": "Tapping it to station a Spacecraft gains 2 life."
+        },
+        {
+          "fact": "otag:tap-outlet",
+          "strength": 1,
+          "reason": "Any other way to tap it also gains 2 life."
+        }
+      ]
+    },
+    {
+      "id": "trk/38",
+      "cares": [
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Token creatures add bodies toward the total power 8 its attack trigger needs."
+        },
+        {
+          "fact": "otag:power-boost-to-all",
+          "strength": 1,
+          "reason": "Team pumps reach total power 8 with fewer creatures."
+        }
+      ]
+    },
+    {
+      "id": "trk/40",
+      "cares": [
+        {
+          "fact": "enters-trigger",
+          "strength": 1,
+          "reason": "Beam me up returns a creature you control to hand, letting you recast it for its enters trigger."
+        }
+      ]
+    },
+    {
+      "id": "trk/42",
+      "cares": [
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Token creatures add bodies toward the total power 8 her attack trigger needs."
+        },
+        {
+          "fact": "otag:power-boost-to-all",
+          "strength": 1,
+          "reason": "Team pumps reach total power 8 with fewer creatures."
+        }
+      ]
+    },
+    {
+      "id": "trk/56",
+      "cares": [
+        {
+          "fact": "enters-trigger",
+          "strength": 1,
+          "reason": "Beam me up returns a creature you control to hand, letting you recast it for its enters trigger."
+        }
+      ]
+    },
+    {
+      "id": "trk/63",
+      "cares": [
+        {
+          "fact": "type:whale",
+          "strength": 3,
+          "reason": "Searches for a Whale card on entering and takes an extra turn only if you control a Whale."
+        }
+      ]
+    },
+    {
+      "id": "trk/64",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 2,
+          "reason": "Federation looks at X cards where X is the number of creature types among non-Borg creatures you control."
+        }
+      ]
+    },
+    {
+      "id": "trk/67",
+      "cares": [
+        {
+          "fact": "kw:station",
+          "strength": 2,
+          "reason": "Tapping her to station a Spacecraft triggers her surveil or draw."
+        },
+        {
+          "fact": "otag:tap-outlet",
+          "strength": 1,
+          "reason": "Any other way to tap her also triggers the surveil or draw."
+        }
+      ]
+    },
+    {
+      "id": "trk/69",
+      "cares": [
+        {
+          "fact": "instant",
+          "strength": 2,
+          "reason": "Gets a +1/+1 counter whenever a player casts a noncreature spell."
+        },
+        {
+          "fact": "sorcery",
+          "strength": 2,
+          "reason": "Gets a +1/+1 counter whenever a player casts a noncreature spell."
+        },
+        {
+          "fact": "artifact",
+          "strength": 1,
+          "reason": "Noncreature artifact spells also trigger the counter."
+        },
+        {
+          "fact": "enchantment",
+          "strength": 1,
+          "reason": "Enchantment spells also trigger the counter."
+        },
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 2,
+          "reason": "Removes three counters from among creatures you control to draw a card."
+        }
+      ]
+    },
+    {
+      "id": "trk/70",
+      "cares": [
+        {
+          "fact": "kw:station",
+          "strength": 3,
+          "reason": "Doubles the charge counters put on artifacts you control, so every station puts twice as many on a Spacecraft."
+        },
+        {
+          "fact": "otag:gives-charge-counter",
+          "strength": 2,
+          "reason": "Charge counters from Warp Core and similar effects are doubled too."
+        }
+      ]
+    },
+    {
+      "id": "trk/71",
+      "cares": [
+        {
+          "fact": "kw:station",
+          "strength": 1,
+          "reason": "First mode untaps a permanent you control, such as a creature tapped to station."
+        }
+      ]
+    },
+    {
+      "id": "trk/76",
+      "cares": [
+        {
+          "fact": "enters-trigger",
+          "strength": 1,
+          "reason": "Beam me up returns a creature you control to hand, letting you recast it for its enters trigger."
+        }
+      ]
+    },
+    {
+      "id": "trk/79",
+      "cares": [
+        {
+          "fact": "enters-trigger",
+          "strength": 1,
+          "reason": "Casting from your graveyard his way returns another creature you control to hand to recast for its enters trigger."
+        },
+        {
+          "fact": "otag:mill-self",
+          "strength": 1,
+          "reason": "Mill and surveil fill your graveyard with instants and sorceries to beam up."
+        }
+      ]
+    },
+    {
+      "id": "trk/85",
+      "cares": [
+        {
+          "fact": "enters-trigger",
+          "strength": 1,
+          "reason": "Power to Life Support flickers a creature you control, re-triggering its enters ability."
+        }
+      ]
+    },
+    {
+      "id": "trk/93",
+      "cares": [
+        {
+          "fact": "makes-token",
+          "strength": 2,
+          "reason": "Sacrifices another creature or artifact on attack to draw; tokens are free fodder."
+        },
+        {
+          "fact": "otag:death-trigger-self",
+          "strength": 2,
+          "reason": "Sacrificing a creature that wants to die gets its death trigger and the card."
+        }
+      ]
+    },
+    {
+      "id": "trk/95",
+      "cares": [
+        {
+          "fact": "otag:sacrifice-outlet",
+          "strength": 2,
+          "reason": "Grows whenever another creature dies; sacrifice outlets make that happen every turn."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Tokens die freely to grow it."
+        }
+      ]
+    },
+    {
+      "id": "trk/96",
+      "cares": [
+        {
+          "fact": "otag:mill-self",
+          "strength": 2,
+          "reason": "Its enters ability needs a creature card with mana value 3 or less in your graveyard to copy."
+        },
+        {
+          "fact": "otag:castable-from-graveyard",
+          "strength": 2,
+          "reason": "Cards cast from your graveyard leave it, triggering its drain."
+        },
+        {
+          "fact": "otag:graveyard-fuel",
+          "strength": 2,
+          "reason": "Exiling cards from your graveyard as a cost makes them leave it, triggering its drain."
+        }
+      ]
+    },
+    {
+      "id": "trk/101",
+      "cares": [
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "The edict mode makes each player sacrifice a creature; a token pays your side."
+        },
+        {
+          "fact": "otag:death-trigger-self",
+          "strength": 1,
+          "reason": "A creature that wants to die pays your side of the edict for value."
+        }
+      ]
+    },
+    {
+      "id": "trk/102",
+      "cares": [
+        {
+          "fact": "otag:mill-self",
+          "strength": 1,
+          "reason": "Assimilates a creature card from a graveyard each end step; filling your own graveyard gives it targets."
+        }
+      ]
+    },
+    {
+      "id": "trk/104",
+      "cares": [
+        {
+          "fact": "otag:mill-self",
+          "strength": 2,
+          "reason": "Threshold exiles the enchanted creature only with seven or more cards in your graveyard."
+        }
+      ]
+    },
+    {
+      "id": "trk/105",
+      "cares": [
+        {
+          "fact": "makes-token",
+          "strength": 2,
+          "reason": "Kicker sacrifices an artifact or creature for -6/-6; tokens are free fodder."
+        },
+        {
+          "fact": "otag:death-trigger-self",
+          "strength": 1,
+          "reason": "Sacrificing a creature that wants to die gets its death trigger and the kicked effect."
+        }
+      ]
+    },
+    {
+      "id": "trk/109",
+      "cares": [
+        {
+          "fact": "type:klingon",
+          "strength": 3,
+          "reason": "Puts a +1/+1 counter on each Klingon you control."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 2,
+          "reason": "Each activation sacrifices a creature; tokens are the fodder."
+        },
+        {
+          "fact": "otag:death-trigger-self",
+          "strength": 2,
+          "reason": "Sacrificing creatures that want to die turns the cost into value."
+        }
+      ]
+    },
+    {
+      "id": "trk/112",
+      "cares": [
+        {
+          "fact": "kw:treasure",
+          "strength": 2,
+          "reason": "Gets +1/+1 for each Treasure you control."
+        },
+        {
+          "fact": "otag:sacrifice-outlet",
+          "strength": 2,
+          "reason": "Makes a Treasure whenever another creature dies; outlets make that happen each turn."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Tokens die freely to make Treasures."
+        }
+      ]
+    },
+    {
+      "id": "trk/113",
+      "cares": [
+        {
+          "fact": "otag:opponent-loses-life",
+          "strength": 2,
+          "reason": "At each end step each opponent loses life equal to the life they lost this turn."
+        },
+        {
+          "fact": "otag:burn-player",
+          "strength": 2,
+          "reason": "Damage to opponents is life lost that he repeats and gains."
+        }
+      ]
+    },
+    {
+      "id": "trk/119",
+      "cares": [
+        {
+          "fact": "makes-token",
+          "strength": 2,
+          "reason": "Sacrifices another creature or artifact on entering to draw two cards; tokens are free fodder."
+        },
+        {
+          "fact": "otag:death-trigger-self",
+          "strength": 1,
+          "reason": "Sacrificing a creature that wants to die gets its death trigger and the cards."
+        }
+      ]
+    },
+    {
+      "id": "trk/122",
+      "cares": [
+        {
+          "fact": "artifact",
+          "strength": 2,
+          "reason": "Lets you cast an artifact creature spell from your graveyard each turn."
+        },
+        {
+          "fact": "otag:mill-self",
+          "strength": 1,
+          "reason": "Filling your graveyard gives it artifact creatures to cast."
+        }
+      ]
+    },
+    {
+      "id": "trk/123",
+      "cares": [
+        {
+          "fact": "enters-trigger",
+          "strength": 1,
+          "reason": "Beam me up returns a creature you control to hand, letting you recast it for its enters trigger."
+        }
+      ]
+    },
+    {
+      "id": "trk/125",
+      "cares": [
+        {
+          "fact": "artifact",
+          "strength": 1,
+          "reason": "Second mode returns an artifact creature card with mana value 3 or less from your graveyard to the battlefield."
+        }
+      ]
+    },
+    {
+      "id": "trk/128",
+      "cares": [
+        {
+          "fact": "otag:castable-from-graveyard",
+          "strength": 2,
+          "reason": "Cards cast from your graveyard leave it, creating a Romulan token."
+        },
+        {
+          "fact": "otag:graveyard-fuel",
+          "strength": 2,
+          "reason": "Exiling cards from your graveyard as a cost makes them leave it, creating a Romulan token."
+        },
+        {
+          "fact": "otag:mill-self",
+          "strength": 1,
+          "reason": "Filling your graveyard gives cards to leave it."
+        }
+      ]
+    },
+    {
+      "id": "trk/135",
+      "cares": [
+        {
+          "fact": "otag:mill-self",
+          "strength": 2,
+          "reason": "Returns a creature card with mana value 4 or less from your graveyard; mill and surveil put them there."
+        }
+      ]
+    },
+    {
+      "id": "trk/136",
+      "cares": [
+        {
+          "fact": "otag:sacrifice-outlet",
+          "strength": 2,
+          "reason": "Drains whenever a creature dies; outlets make that happen every turn."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Tokens die freely to drain."
+        }
+      ]
+    },
+    {
+      "id": "trk/137",
+      "cares": [
+        {
+          "fact": "makes-token",
+          "strength": 2,
+          "reason": "Gets +1/+0 for each Officer token you control."
+        }
+      ]
+    },
+    {
+      "id": "trk/138",
+      "cares": [
+        {
+          "fact": "kw:station",
+          "strength": 2,
+          "reason": "Tapping her to station a Spacecraft adds a promotion counter."
+        },
+        {
+          "fact": "otag:tap-outlet",
+          "strength": 1,
+          "reason": "Any other way to tap her also adds a promotion counter."
+        }
+      ]
+    },
+    {
+      "id": "trk/139",
+      "cares": [
+        {
+          "fact": "enters-trigger",
+          "strength": 1,
+          "reason": "Beam me up returns a creature you control to hand, letting you recast it for its enters trigger."
+        }
+      ]
+    },
+    {
+      "id": "trk/141",
+      "cares": [
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Token creatures add bodies toward the total power 8 that grants menace."
+        },
+        {
+          "fact": "otag:power-boost-to-all",
+          "strength": 1,
+          "reason": "Team pumps reach total power 8 with fewer creatures."
+        }
+      ]
+    },
+    {
+      "id": "trk/143",
+      "cares": [
+        {
+          "fact": "otag:land-ramp",
+          "strength": 2,
+          "reason": "The second landfall each turn adds a +1/+1 counter; ramp puts the second land in."
+        }
+      ]
+    },
+    {
+      "id": "trk/146",
+      "cares": [
+        {
+          "fact": "makes-token",
+          "strength": 2,
+          "reason": "Sacrifices another nonland permanent on entering to deal 2 damage; tokens are free fodder."
+        },
+        {
+          "fact": "otag:death-trigger-self",
+          "strength": 1,
+          "reason": "Sacrificing a creature that wants to die gets its death trigger and the damage."
+        }
+      ]
+    },
+    {
+      "id": "trk/149",
+      "cares": [
+        {
+          "fact": "kw:station",
+          "strength": 2,
+          "reason": "Tapping her to station a Spacecraft puts a land from hand onto the battlefield."
+        },
+        {
+          "fact": "kw:landfall",
+          "strength": 2,
+          "reason": "Puts a land onto the battlefield each time she is tapped, triggering landfall."
+        },
+        {
+          "fact": "land",
+          "strength": 2,
+          "reason": "Needs land cards in hand to put onto the battlefield."
+        }
+      ]
+    },
+    {
+      "id": "trk/153",
+      "cares": [
+        {
+          "fact": "instant",
+          "strength": 2,
+          "reason": "Copies an instant or sorcery card from your graveyard X times."
+        },
+        {
+          "fact": "sorcery",
+          "strength": 2,
+          "reason": "Copies an instant or sorcery card from your graveyard X times."
+        },
+        {
+          "fact": "creature",
+          "strength": 2,
+          "reason": "Federation sets X to the number of creature types among non-Borg creatures you control."
+        }
+      ]
+    },
+    {
+      "id": "trk/156",
+      "cares": [
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Token creatures add bodies toward the total power 8 her attack trigger needs."
+        },
+        {
+          "fact": "otag:power-boost-to-all",
+          "strength": 1,
+          "reason": "Team pumps reach total power 8 with fewer creatures."
+        }
+      ]
+    },
+    {
+      "id": "trk/157",
+      "cares": [
+        {
+          "fact": "kw:landfall",
+          "strength": 2,
+          "reason": "Doubles the chosen creature's triggered abilities, so its landfall triggers twice per land."
+        },
+        {
+          "fact": "otag:attack-trigger",
+          "strength": 1,
+          "reason": "The chosen creature's attack trigger fires twice."
+        }
+      ]
+    },
+    {
+      "id": "trk/162",
+      "cares": [
+        {
+          "fact": "otag:sacrifice-outlet",
+          "strength": 1,
+          "reason": "Deals 4 instead of 2 if a creature died this turn."
+        }
+      ]
+    },
+    {
+      "id": "trk/167",
+      "cares": [
+        {
+          "fact": "otag:mill-self",
+          "strength": 1,
+          "reason": "Mill and surveil put noncreature, nonland cards in your graveyard to reduce its cost."
+        }
+      ]
+    },
+    {
+      "id": "trk/170",
+      "cares": [
+        {
+          "fact": "otag:sacrifice-outlet",
+          "strength": 2,
+          "reason": "Gets a charge counter whenever a creature dies; outlets make that happen every turn."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Tokens die freely to charge it."
+        }
+      ]
+    },
+    {
+      "id": "trk/173",
+      "cares": [
+        {
+          "fact": "otag:sacrifice-outlet",
+          "strength": 1,
+          "reason": "Investigates when it dies during your turn; an outlet makes that happen on demand."
+        }
+      ]
+    },
+    {
+      "id": "trk/175",
+      "cares": [
+        {
+          "fact": "makes-token",
+          "strength": 2,
+          "reason": "Must sacrifice a nonland permanent after attacking; tokens pay the cost."
+        },
+        {
+          "fact": "otag:death-trigger-self",
+          "strength": 2,
+          "reason": "Sacrificing a creature that wants to die turns the drawback into value."
+        }
+      ]
+    },
+    {
+      "id": "trk/177",
+      "cares": [
+        {
+          "fact": "type:klingon",
+          "strength": 2,
+          "reason": "I Am Klingon mode gives +1/+1 and double strike to a Klingon."
+        }
+      ]
+    },
+    {
+      "id": "trk/178",
+      "cares": [
+        {
+          "fact": "enters-trigger",
+          "strength": 1,
+          "reason": "Beam me up returns a creature you control to hand, letting you recast it for its enters trigger."
+        }
+      ]
+    },
+    {
+      "id": "trk/179",
+      "cares": [
+        {
+          "fact": "kw:landfall",
+          "strength": 3,
+          "reason": "Puts two lands onto the battlefield every combat, triggering landfall twice each turn."
+        }
+      ]
+    },
+    {
+      "id": "trk/182",
+      "cares": [
+        {
+          "fact": "enters-trigger",
+          "strength": 1,
+          "reason": "Beam me up returns a creature you control to hand, letting you recast it for its enters trigger."
+        }
+      ]
+    },
+    {
+      "id": "trk/186",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 2,
+          "reason": "Federation pumps by the number of creature types among non-Borg creatures you control."
+        }
+      ]
+    },
+    {
+      "id": "trk/187",
+      "cares": [
+        {
+          "fact": "land",
+          "strength": 2,
+          "reason": "Lets you play an additional land each turn."
+        },
+        {
+          "fact": "kw:landfall",
+          "strength": 2,
+          "reason": "The extra land drop gives a second landfall trigger each turn."
+        },
+        {
+          "fact": "creature",
+          "strength": 1,
+          "reason": "Each creature entering under your control explores."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Creature tokens entering also explore."
+        }
+      ]
+    },
+    {
+      "id": "trk/195",
+      "cares": [
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 2,
+          "reason": "Creatures you control with counters on them have trample."
+        }
+      ]
+    },
+    {
+      "id": "trk/196",
+      "cares": [
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 3,
+          "reason": "Doubles counters put on your creatures and gives creatures with counters hexproof."
+        }
+      ]
+    },
+    {
+      "id": "trk/198",
+      "cares": [
+        {
+          "fact": "kw:landfall",
+          "strength": 2,
+          "reason": "Puts a land onto the battlefield, and again from the graveyard via beam me up."
+        },
+        {
+          "fact": "enters-trigger",
+          "strength": 1,
+          "reason": "Beam me up returns a creature you control to hand, letting you recast it for its enters trigger."
+        }
+      ]
+    },
+    {
+      "id": "trk/200",
+      "cares": [
+        {
+          "fact": "kw:landfall",
+          "strength": 2,
+          "reason": "Puts a land onto the battlefield on entering and several more when sacrificed."
+        }
+      ]
+    },
+    {
+      "id": "trk/202",
+      "cares": [
+        {
+          "fact": "otag:castable-from-graveyard",
+          "strength": 2,
+          "reason": "Cards cast from your graveyard leave it, creating a 3/3 Illusion each turn."
+        },
+        {
+          "fact": "otag:graveyard-fuel",
+          "strength": 2,
+          "reason": "Exiling cards from your graveyard as a cost makes them leave it, creating a 3/3 Illusion."
+        },
+        {
+          "fact": "otag:mill-self",
+          "strength": 1,
+          "reason": "Filling your graveyard gives it a permanent card to return and cards to leave."
+        }
+      ]
+    },
+    {
+      "id": "trk/204",
+      "cares": [
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 2,
+          "reason": "Adds {G} equal to the number of counters on her, so other counter sources add mana."
+        }
+      ]
+    },
+    {
+      "id": "trk/205",
+      "cares": [
+        {
+          "fact": "otag:land-ramp",
+          "strength": 2,
+          "reason": "The second landfall each turn investigates; ramp puts the second land in."
+        }
+      ]
+    },
+    {
+      "id": "trk/211",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 2,
+          "reason": "Every creature you control taps for {G}{G}."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 2,
+          "reason": "Creature tokens also tap for {G}{G}."
+        }
+      ]
+    },
+    {
+      "id": "trk/215",
+      "cares": [
+        {
+          "fact": "kw:landfall",
+          "strength": 3,
+          "reason": "Creates a Planet land token every time you attack, triggering landfall each turn."
+        }
+      ]
+    },
+    {
+      "id": "trk/216",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 2,
+          "reason": "Puts +1/+1 counters whenever a creature you control enters."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 2,
+          "reason": "Creature tokens entering also trigger it and grow the quest."
+        }
+      ]
+    },
+    {
+      "id": "trk/217",
+      "cares": [
+        {
+          "fact": "otag:mill-self",
+          "strength": 2,
+          "reason": "Exiles a card from your graveyard each combat as a cost; mill and surveil keep it fed."
+        }
+      ]
+    },
+    {
+      "id": "trk/232",
+      "cares": [
+        {
+          "fact": "otag:mill-self",
+          "strength": 1,
+          "reason": "Returns a creature card from your graveyard on entering; filling the graveyard gives targets."
+        }
+      ]
+    },
+    {
+      "id": "trk/234",
+      "cares": [
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 2,
+          "reason": "Puts a +1/+1 counter on each creature you control that already has a counter."
+        }
+      ]
+    },
+    {
+      "id": "trk/236",
+      "cares": [
+        {
+          "fact": "kw:station",
+          "strength": 2,
+          "reason": "Untaps another permanent, such as a creature tapped to station a Spacecraft."
+        },
+        {
+          "fact": "otag:uninspired",
+          "strength": 1,
+          "reason": "Untapping lets creatures with becomes-tapped triggers tap and trigger again."
+        }
+      ]
+    },
+    {
+      "id": "trk/237",
+      "cares": [
+        {
+          "fact": "type:klingon",
+          "strength": 2,
+          "reason": "Sacrificing a Klingon to him draws a card."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 2,
+          "reason": "Sacrifices another creature for trample; Klingon Warrior tokens are the fodder."
+        },
+        {
+          "fact": "otag:death-trigger-self",
+          "strength": 2,
+          "reason": "Creatures that want to die pay for trample, trigger their own ability and grow him."
+        }
+      ]
+    },
+    {
+      "id": "trk/242",
+      "cares": [
+        {
+          "fact": "makes-token",
+          "strength": 2,
+          "reason": "Creature tokens made during combat enter tapped and attacking with +1/+1."
+        },
+        {
+          "fact": "kw:flash",
+          "strength": 2,
+          "reason": "Flash creatures cast while attacking enter attacking."
+        }
+      ]
+    },
+    {
+      "id": "trk/243",
+      "cares": [
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Token creatures add bodies toward the total power 8 his attack trigger needs."
+        },
+        {
+          "fact": "otag:power-boost-to-all",
+          "strength": 1,
+          "reason": "Team pumps reach total power 8 with fewer creatures."
+        }
+      ]
+    },
+    {
+      "id": "trk/247",
+      "cares": [
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Sacrifices another creature or artifact to surveil; tokens are fodder."
+        },
+        {
+          "fact": "otag:death-trigger-self",
+          "strength": 1,
+          "reason": "Sacrificing a creature that wants to die gets its death trigger and the surveil."
+        }
+      ]
+    },
+    {
+      "id": "trk/249",
+      "cares": [
+        {
+          "fact": "land",
+          "strength": 2,
+          "reason": "As an Officer he plays lands from your graveyard and an additional land each turn."
+        },
+        {
+          "fact": "kw:landfall",
+          "strength": 2,
+          "reason": "Extra land drops give extra landfall triggers."
+        },
+        {
+          "fact": "otag:mill-self",
+          "strength": 1,
+          "reason": "Mill puts land cards in the graveyard for him to play."
+        }
+      ]
+    },
+    {
+      "id": "trk/250",
+      "cares": [
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 2,
+          "reason": "Draws when a creature you control with a counter deals combat damage to a player."
+        }
+      ]
+    },
+    {
+      "id": "trk/251",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 2,
+          "reason": "Federation draws a card for every five creature types among non-Borg creatures you control."
+        }
+      ]
+    },
+    {
+      "id": "trk/253",
+      "cares": [
+        {
+          "fact": "instant",
+          "strength": 2,
+          "reason": "Digs four cards for a noncreature, nonland card to put into your hand."
+        },
+        {
+          "fact": "sorcery",
+          "strength": 2,
+          "reason": "Digs four cards for a noncreature, nonland card to put into your hand."
+        },
+        {
+          "fact": "artifact",
+          "strength": 1,
+          "reason": "Artifact cards are noncreature, nonland hits for his dig."
+        },
+        {
+          "fact": "enchantment",
+          "strength": 1,
+          "reason": "Enchantment cards are noncreature, nonland hits for his dig."
+        }
+      ]
+    },
+    {
+      "id": "trk/255",
+      "cares": [
+        {
+          "fact": "otag:castable-from-graveyard",
+          "strength": 2,
+          "reason": "Cards cast from your graveyard leave it, drawing a card each turn."
+        },
+        {
+          "fact": "otag:graveyard-fuel",
+          "strength": 2,
+          "reason": "Exiling cards from your graveyard as a cost makes them leave it, drawing a card."
+        }
+      ]
+    },
+    {
+      "id": "trk/256",
+      "cares": [
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Token creatures add bodies toward the total power 8 his attack trigger needs and can be tapped for his counter."
+        },
+        {
+          "fact": "otag:power-boost-to-all",
+          "strength": 1,
+          "reason": "Team pumps reach total power 8 with fewer creatures."
+        }
+      ]
+    },
+    {
+      "id": "trk/267",
+      "cares": [
+        {
+          "fact": "makes-token",
+          "strength": 3,
+          "reason": "Copies a token you control every turn."
+        }
+      ]
+    },
+    {
+      "id": "trk/268",
+      "cares": [
+        {
+          "fact": "makes-token",
+          "strength": 2,
+          "reason": "Gains life whenever a creature enters, including each token, and the counters scale with life gained."
+        },
+        {
+          "fact": "creature",
+          "strength": 1,
+          "reason": "Each creature entering gains life, growing the combat counters."
+        }
+      ]
+    },
+    {
+      "id": "trk/273",
+      "cares": [
+        {
+          "fact": "otag:gives-charge-counter",
+          "strength": 2,
+          "reason": "Warp Core and similar effects put charge counters on it for a free card without tapping a creature."
+        }
+      ]
+    },
+    {
+      "id": "trk/297",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 2,
+          "reason": "Federation adds mana equal to the number of creature types among non-Borg creatures you control."
+        }
+      ]
+    },
+    {
+      "id": "sds/10",
+      "cares": [
+        {
+          "fact": "otag:death-trigger",
+          "strength": 3,
+          "reason": "Any triggered ability caused by a creature dying triggers an additional time."
+        },
+        {
+          "fact": "otag:sacrifice-outlet",
+          "strength": 2,
+          "reason": "Outlets make creatures die on demand to double their death triggers."
+        }
+      ]
+    },
+    {
+      "id": "sds/12",
+      "cares": [
+        {
+          "fact": "otag:burn",
+          "strength": 1,
+          "reason": "Red damage sources you control deal 2 more to opponents and their permanents."
+        }
+      ]
+    },
+    {
+      "id": "sds/14",
+      "cares": [
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 2,
+          "reason": "Each creature you control with a counter on it taps for {G}."
+        }
+      ]
+    },
+    {
+      "id": "sds/15",
+      "cares": [
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 2,
+          "reason": "Doubles the +1/+1 counters on each creature you control."
+        }
+      ]
+    },
+    {
+      "id": "sds/19",
+      "cares": [
+        {
+          "fact": "otag:attack-trigger",
+          "strength": 3,
+          "reason": "Any triggered ability caused by a creature attacking triggers an additional time."
+        }
+      ]
+    },
+    {
+      "id": "sds/22",
+      "cares": [
+        {
+          "fact": "legendary",
+          "strength": 3,
+          "reason": "Taps to search your library for a legendary card."
+        }
+      ]
+    },
+    {
+      "id": "sds/24",
+      "cares": [
+        {
+          "fact": "otag:impulsive-draw",
+          "strength": 2,
+          "reason": "Creates a Treasure whenever you play a card from exile."
+        },
+        {
+          "fact": "otag:gives-castable-from-exile",
+          "strength": 2,
+          "reason": "Effects that let you play cards from exile each make a Treasure."
+        }
+      ]
+    },
+    {
+      "id": "sds/25",
+      "cares": [
+        {
+          "fact": "cheap",
+          "strength": 2,
+          "reason": "Needs a second spell each turn and three spells to copy; cheap spells get there."
+        },
+        {
+          "fact": "instant",
+          "strength": 2,
+          "reason": "Taps to copy an instant or sorcery spell you control."
+        },
+        {
+          "fact": "sorcery",
+          "strength": 2,
+          "reason": "Taps to copy an instant or sorcery spell you control."
+        }
+      ]
+    },
+    {
+      "id": "sds/29",
+      "cares": [
+        {
+          "fact": "otag:death-trigger-self",
+          "strength": 2,
+          "reason": "Sacrifices a creature for {B}{B}; a creature that wants to die makes it free value."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Tokens are free fodder for its sacrifice."
+        }
+      ]
+    }
+  ]
+}
