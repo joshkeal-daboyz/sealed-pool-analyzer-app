@@ -21,7 +21,9 @@ object CurveAgent : AnalysisAgent {
     override fun numbers(input: ReviewInput): NumberTable =
         NumberTables.fromMetrics(input, PATTERNS)
 
-    /** Per pair, the castable creatures of mana value 2 or less and cards of mana value 5 or more. */
+    /**
+     * Per pair, the castable creatures of mana value 2 or less and cards of mana value 5 or more.
+     */
     override fun facts(input: ReviewInput): String {
         val cards =
             input.pool.entries

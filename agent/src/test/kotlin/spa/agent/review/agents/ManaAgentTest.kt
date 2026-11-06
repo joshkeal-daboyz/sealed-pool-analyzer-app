@@ -34,7 +34,13 @@ class ManaAgentTest {
     // Torch is a red removal spell with one red pip: a splash for every pair without red.
     private val pool =
         Pool(
-            listOf(entry(plains, 4), entry(azure, 2), entry(dusk, 1), entry(torch, 1), entry(bear, 3))
+            listOf(
+                entry(plains, 4),
+                entry(azure, 2),
+                entry(dusk, 1),
+                entry(torch, 1),
+                entry(bear, 3),
+            )
         )
 
     private val wuFixing = Stat(median = 3.0, p10 = 1.0, p90 = 5.0, mean = 3.0)
