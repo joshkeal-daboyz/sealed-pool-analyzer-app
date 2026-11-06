@@ -13,7 +13,7 @@ import spa.core.cards.ScryfallSetFetcher
  * `grade-packet`, `grade-import`, `grades`, `themes`, `pool-grades`, `deck-pick`, `fixing`,
  * `build`, `deck-backtest`, `score-backtest`, `deck-tune`, `tags-packet`, `tags-import`,
  * `tags-review-packet`, `tags-review-import`, `synergy-table`, `synergy`, `synergy-check`, `facts`,
- * `fetch-tags`, `cares-packet`, `cares-import`, and `packet`.
+ * `fetch-tags`, `cares-packet`, `cares-import`, `packet`, and `review`.
  */
 object Main {
     /** The text `spa --help` prints. */
@@ -216,6 +216,23 @@ object Main {
         |      strongest synergies and the top <n> decks (default 3) the deck builder finds with
         |      --weights, else <data>/weights/deck-tuned.json. Goes to --out, and stdout then
         |      says 'Packet written to <file>', else to stdout.
+        |  review <pool-file> --set <code> [--data <dir>] [--format manabox|text|collector]
+        |          [--brief <file>] [--weights <file>] [--tags <file>] [--otags <file>|none]
+        |          [--config <file>] [--model <id>] [--max-input-tokens <n>]
+        |          [--max-output-tokens <n>] [--json] [--dry-run] [--show-input]
+        |          [--record <dir>] [--replay <dir>]
+        |      Review a pool with model agents (needs ANTHROPIC_API_KEY): the top three decks the
+        |      builder finds with --weights, else <data>/weights/deck-tuned.json, seven analysts
+        |      (colour depth, curve, mana, interaction, bombs, archetypes, synergy) that each
+        |      read the pool and a table of its numbers, and an explainer that writes the verdict
+        |      and the disagreements. The settings come from --config, else
+        |      <data>/agents/review.json; --model, --max-input-tokens and --max-output-tokens
+        |      replace the model and the caps for one review (300000 input and 60000 output by
+        |      default). --json prints the structured review. --dry-run plans the calls with their
+        |      estimated size and sends none; --show-input prints what the agents are given;
+        |      neither needs a key. --record writes every exchange into <dir>; --replay answers
+        |      from such a directory with no key and no network. A set with no tag file reviews
+        |      without the synergy agent.
         |
         |<data> defaults to ${DataDir.DEFAULT}. Exit codes: 0 ok, 1 error, 2 bad command line.
         |Run 'spa --help' for this text.
@@ -309,6 +326,7 @@ object Main {
             "cares-packet" to { a, out, _ -> CaresPacketCommand.run(a, out) },
             "cares-import" to { a, out, err -> CaresImportCommand().run(a, out, err) },
             "packet" to { a, out, err -> PacketCommand.run(a, out, err) },
+            "review" to { a, out, err -> ReviewCommand.run(a, out, err) },
         )
 
     private fun usageError(message: String, stderr: PrintStream): Int {
