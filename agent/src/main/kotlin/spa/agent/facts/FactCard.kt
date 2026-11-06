@@ -43,16 +43,31 @@ class FactCard(
     val shortName: String
         get() = fullName.substringBefore(',')
 
+    /**
+     * For a legendary front face only (owner, 2026-11-05; SPA-056), the first and last words of
+     * [shortName] joined by one space, when it has three or more words: "Captain Kirk" for Captain
+     * James T. Kirk. Null otherwise.
+     */
+    val legendaryShortName: String?
+        get() {
+            val words = words(shortName)
+            return if ("legendary" in frontTypes && words.size >= 3) {
+                "${words.first()} ${words.last()}"
+            } else {
+                null
+            }
+        }
+
     /** True when the front face is a land. */
     val isLand: Boolean
         get() = "land" in frontTypes
 
     /**
-     * A regex group matching any of [phrases], the full name or the short name, longest first, so
-     * that a rule's "this creature, its full name or its short name" is one pattern.
+     * A regex group matching any of [phrases], the full name, the short name or the legendary short
+     * name, longest first, so that a rule's "this creature or its names" is one pattern.
      */
     fun subjects(phrases: List<String>): String =
-        (phrases + fullName + shortName)
+        (phrases + fullName + shortName + listOfNotNull(legendaryShortName))
             .filter { it.isNotBlank() }
             .distinct()
             .sortedByDescending { it.length }
