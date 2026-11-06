@@ -1,0 +1,911 @@
+{
+  "set": "hob",
+  "provenance": "Claude Fable 5.1 on the subscription, cares-gaps prompt v1, fresh agent reading only its packet folder, 2026-11-06",
+  "cards": [
+    {
+      "id": "hob/4",
+      "cares": [
+        {
+          "fact": "kw:recruit",
+          "strength": 2,
+          "reason": "Triggers whenever a token you control enters; recruit's Human Soldier tokens are not counted by makes-token."
+        }
+      ]
+    },
+    {
+      "id": "hob/12",
+      "cares": [
+        {
+          "fact": "enters-trigger",
+          "strength": 1,
+          "reason": "Returns your creatures to hand, so creatures with enters triggers can be recast for their effect while you still get the 4/4 Birds."
+        }
+      ]
+    },
+    {
+      "id": "hob/14",
+      "cares": [
+        {
+          "fact": "type:dwarf",
+          "strength": 3,
+          "reason": "Whenever another nontoken Dwarf you control enters, create a 2/2 Dwarf token."
+        }
+      ]
+    },
+    {
+      "id": "hob/17",
+      "cares": [
+        {
+          "fact": "type:dwarf",
+          "strength": 2,
+          "reason": "Whenever another Dwarf or Equipment you control enters, draw a card."
+        }
+      ]
+    },
+    {
+      "id": "hob/22",
+      "cares": [
+        {
+          "fact": "cheap",
+          "strength": 2,
+          "reason": "Chapter II returns a creature card with mana value 3 or less from your graveyard to the battlefield."
+        }
+      ]
+    },
+    {
+      "id": "hob/29",
+      "cares": [
+        {
+          "fact": "type:dwarf",
+          "strength": 1,
+          "reason": "The Adventure makes Dwarf tokens and the enchantment pumps a chosen creature type, so Dwarf cards make choosing Dwarf stronger."
+        }
+      ]
+    },
+    {
+      "id": "hob/31",
+      "cares": [
+        {
+          "fact": "type:dwarf",
+          "strength": 2,
+          "reason": "If the untapped creature is a Dwarf, you may attach an Equipment you control to it."
+        }
+      ]
+    },
+    {
+      "id": "hob/33",
+      "cares": [
+        {
+          "fact": "kw:flashback",
+          "strength": 2,
+          "reason": "Spells cast from anywhere other than your hand cost {1} less; flashback casts from the graveyard."
+        },
+        {
+          "fact": "otag:castable-from-exile",
+          "strength": 2,
+          "reason": "Spells cast from anywhere other than your hand cost {1} less; Adventure creatures are cast from exile."
+        }
+      ]
+    },
+    {
+      "id": "hob/36",
+      "cares": [
+        {
+          "fact": "otag:activated-ability",
+          "strength": 2,
+          "reason": "Whenever you activate an ability of a creature, draw a card (once each turn)."
+        }
+      ]
+    },
+    {
+      "id": "hob/40",
+      "cares": [
+        {
+          "fact": "kw:treasure",
+          "strength": 2,
+          "reason": "Whenever an artifact you control enters, draw a card; each Treasure token created is an artifact entering."
+        }
+      ]
+    },
+    {
+      "id": "hob/44",
+      "cares": [
+        {
+          "fact": "enters-trigger",
+          "strength": 2,
+          "reason": "Gone Fishing exiles and returns two creatures and/or lands you control, re-triggering their enters abilities."
+        },
+        {
+          "fact": "kw:landfall",
+          "strength": 2,
+          "reason": "Gone Fishing can flicker your lands, and each land re-entering triggers landfall."
+        }
+      ]
+    },
+    {
+      "id": "hob/46",
+      "cares": [
+        {
+          "fact": "kw:flying",
+          "strength": 3,
+          "reason": "Costs {X} less where X is the total power of creatures you control with flying."
+        }
+      ]
+    },
+    {
+      "id": "hob/47",
+      "cares": [
+        {
+          "fact": "otag:mill",
+          "strength": 2,
+          "reason": "Gets +2/+0 for each graveyard with seven or more cards; mill fills graveyards."
+        }
+      ]
+    },
+    {
+      "id": "hob/49",
+      "cares": [
+        {
+          "fact": "otag:mill",
+          "strength": 2,
+          "reason": "Threshold gives +1/+1 with seven or more cards in your graveyard; mill fills it."
+        },
+        {
+          "fact": "instant",
+          "strength": 2,
+          "reason": "Speak Secrets mills four and puts an instant or sorcery card from among them into your hand."
+        },
+        {
+          "fact": "sorcery",
+          "strength": 2,
+          "reason": "Speak Secrets mills four and puts an instant or sorcery card from among them into your hand."
+        }
+      ]
+    },
+    {
+      "id": "hob/54",
+      "cares": [
+        {
+          "fact": "enters-trigger",
+          "strength": 3,
+          "reason": "Each chapter exiles a creature or land you control and returns it at end step, re-triggering its enters ability."
+        },
+        {
+          "fact": "kw:landfall",
+          "strength": 2,
+          "reason": "Each chapter can flicker a land you control, and the land re-entering triggers landfall."
+        }
+      ]
+    },
+    {
+      "id": "hob/59",
+      "cares": [
+        {
+          "fact": "otag:triggered-ability",
+          "strength": 2,
+          "reason": "If a triggered ability of equipped creature triggers, it triggers an additional time."
+        },
+        {
+          "fact": "type:wizard",
+          "strength": 2,
+          "reason": "Equip Wizard {1} instead of Equip {3}."
+        }
+      ]
+    },
+    {
+      "id": "hob/60",
+      "cares": [
+        {
+          "fact": "type:goblin",
+          "strength": 1,
+          "reason": "{1}{B}: Goblins and Orcs you control gain menace until end of turn."
+        }
+      ]
+    },
+    {
+      "id": "hob/66",
+      "cares": [
+        {
+          "fact": "otag:sacrifice-outlet",
+          "strength": 1,
+          "reason": "Costs {3} less if a creature died this turn; sacrifice outlets make that happen on demand."
+        }
+      ]
+    },
+    {
+      "id": "hob/72",
+      "cares": [
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "{2}, Sacrifice an artifact or creature: return from graveyard; tokens are cheap fodder for the cost."
+        }
+      ]
+    },
+    {
+      "id": "hob/74",
+      "cares": [
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 2,
+          "reason": "Each creature you control with a +1/+1 counter on it has menace."
+        },
+        {
+          "fact": "kw:amass",
+          "strength": 2,
+          "reason": "Amass puts +1/+1 counters on the Army, which then gets menace from this creature."
+        }
+      ]
+    },
+    {
+      "id": "hob/75",
+      "cares": [
+        {
+          "fact": "otag:removal-creature",
+          "strength": 1,
+          "reason": "Whenever a creature an opponent controls would die, exile it and create a 2/2 Wolf; removal makes that happen."
+        }
+      ]
+    },
+    {
+      "id": "hob/78",
+      "cares": [
+        {
+          "fact": "type:bear",
+          "strength": 1,
+          "reason": "Ferocious needs a creature with power 4 or greater; no power fact exists, and this set's Bears are the big creatures (proxy)."
+        }
+      ]
+    },
+    {
+      "id": "hob/80",
+      "cares": [
+        {
+          "fact": "type:bear",
+          "strength": 1,
+          "reason": "Ferocious needs a creature with power 4 or greater; no power fact exists, and this set's Bears are the big creatures (proxy)."
+        }
+      ]
+    },
+    {
+      "id": "hob/82",
+      "cares": [
+        {
+          "fact": "dies-trigger",
+          "strength": 2,
+          "reason": "Whenever it attacks you may sacrifice another creature for counters; creatures with their own death triggers are the best fodder."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Tokens are spare bodies to sacrifice to its attack trigger."
+        }
+      ]
+    },
+    {
+      "id": "hob/83",
+      "cares": [
+        {
+          "fact": "kw:treasure",
+          "strength": 2,
+          "reason": "Whenever you sacrifice a token, target opponent loses 1 life; Treasures sacrifice themselves for mana."
+        },
+        {
+          "fact": "otag:sacrifice-outlet",
+          "strength": 1,
+          "reason": "Sacrifice outlets turn tokens into life loss through the sacrifice trigger."
+        },
+        {
+          "fact": "kw:recruit",
+          "strength": 1,
+          "reason": "Recruit's Human Soldier tokens are more tokens to sacrifice; makes-token does not count them."
+        }
+      ]
+    },
+    {
+      "id": "hob/84",
+      "cares": [
+        {
+          "fact": "kw:treasure",
+          "strength": 2,
+          "reason": "Additional cost sacrifices an artifact or creature or pays {4}; a Treasure is the cheapest thing to sacrifice."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Tokens are cheap fodder for the sacrifice cost."
+        },
+        {
+          "fact": "dies-trigger",
+          "strength": 1,
+          "reason": "Sacrificing a creature with a death trigger gets value from the additional cost."
+        }
+      ]
+    },
+    {
+      "id": "hob/86",
+      "cares": [
+        {
+          "fact": "otag:removal-creature",
+          "strength": 2,
+          "reason": "Takes all creature cards that went to opponents' graveyards from the battlefield this turn; removal makes that happen."
+        }
+      ]
+    },
+    {
+      "id": "hob/87",
+      "cares": [
+        {
+          "fact": "type:dwarf",
+          "strength": 3,
+          "reason": "Whenever Balin or another Dwarf you control enters, discard your hand and draw that many, dealing damage with an enduring story."
+        }
+      ]
+    },
+    {
+      "id": "hob/93",
+      "cares": [
+        {
+          "fact": "type:dragon",
+          "strength": 3,
+          "reason": "Deals 3 damage to each non-Dragon creature and adds four mana to spend only on Dragon spells."
+        }
+      ]
+    },
+    {
+      "id": "hob/96",
+      "cares": [
+        {
+          "fact": "type:wizard",
+          "strength": 2,
+          "reason": "Flameshape's exiled cards can be played only while you control a Wizard."
+        }
+      ]
+    },
+    {
+      "id": "hob/98",
+      "cares": [
+        {
+          "fact": "otag:sacrifice-outlet",
+          "strength": 2,
+          "reason": "Triggers when put into a graveyard from the battlefield; artifact sacrifice outlets cash it in on demand."
+        },
+        {
+          "fact": "creature",
+          "strength": 1,
+          "reason": "Puts a random creature card from the top thirteen onto the battlefield; more creatures mean a hit."
+        }
+      ]
+    },
+    {
+      "id": "hob/102",
+      "cares": [
+        {
+          "fact": "kw:equip",
+          "strength": 2,
+          "reason": "When it enters, attach target Equipment you control to up to one target creature you control."
+        }
+      ]
+    },
+    {
+      "id": "hob/103",
+      "cares": [
+        {
+          "fact": "type:dragon",
+          "strength": 3,
+          "reason": "At six quest counters, search your hand and/or library for a Dragon card and put it onto the battlefield."
+        }
+      ]
+    },
+    {
+      "id": "hob/104",
+      "cares": [
+        {
+          "fact": "kw:treasure",
+          "strength": 2,
+          "reason": "Each chapter makes a Treasure; with four or more Treasures it becomes a 6/6 flying Dragon, so other Treasure makers speed it up."
+        }
+      ]
+    },
+    {
+      "id": "hob/110",
+      "cares": [
+        {
+          "fact": "kw:treasure",
+          "strength": 3,
+          "reason": "Whenever Smaug attacks, he deals damage equal to the number of Treasures you control to any target."
+        }
+      ]
+    },
+    {
+      "id": "hob/112",
+      "cares": [
+        {
+          "fact": "kw:treasure",
+          "strength": 2,
+          "reason": "Sacrifice another creature or artifact to exile and play the top card; Treasures are fodder."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 2,
+          "reason": "Repeatable sacrifice ability wants spare tokens to feed it."
+        },
+        {
+          "fact": "dies-trigger",
+          "strength": 1,
+          "reason": "Sacrificing a creature with a death trigger adds value to the sacrifice."
+        }
+      ]
+    },
+    {
+      "id": "hob/113",
+      "cares": [
+        {
+          "fact": "kw:treasure",
+          "strength": 2,
+          "reason": "{2}{R}, Sacrifice an artifact: deal 4 damage to any target; Treasures are artifacts to sacrifice."
+        }
+      ]
+    },
+    {
+      "id": "hob/114",
+      "cares": [
+        {
+          "fact": "kw:equip",
+          "strength": 3,
+          "reason": "When Thorin enters, attach any number of Equipment you control to a creature, which then deals damage equal to its power."
+        }
+      ]
+    },
+    {
+      "id": "hob/117",
+      "cares": [
+        {
+          "fact": "type:wolf",
+          "strength": 1,
+          "reason": "Combat damage trigger can put a +1/+1 counter on target Wolf you control."
+        }
+      ]
+    },
+    {
+      "id": "hob/119",
+      "cares": [
+        {
+          "fact": "type:bear",
+          "strength": 3,
+          "reason": "Other Bears you control get +2/+2, and with three or more Bears you draw two cards each combat."
+        }
+      ]
+    },
+    {
+      "id": "hob/122",
+      "cares": [
+        {
+          "fact": "type:elf",
+          "strength": 3,
+          "reason": "Affinity for Elves, and when it enters it mills four and puts all Elf cards among them into your hand."
+        }
+      ]
+    },
+    {
+      "id": "hob/123",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 2,
+          "reason": "Whenever you cast a creature spell, put +1/+1 counters equal to its mana value on a creature you control."
+        }
+      ]
+    },
+    {
+      "id": "hob/124",
+      "cares": [
+        {
+          "fact": "type:elf",
+          "strength": 1,
+          "reason": "Chapters III and IV give Elves you control +1/+0 and vigilance."
+        }
+      ]
+    },
+    {
+      "id": "hob/128",
+      "cares": [
+        {
+          "fact": "type:bear",
+          "strength": 1,
+          "reason": "When it enters, untap another creature; if that creature is a Bear, put a +1/+1 counter on it."
+        }
+      ]
+    },
+    {
+      "id": "hob/130",
+      "cares": [
+        {
+          "fact": "type:bear",
+          "strength": 1,
+          "reason": "Ferocious needs a creature with power 4 or greater; no power fact exists, and this set's Bears are the big creatures (proxy)."
+        }
+      ]
+    },
+    {
+      "id": "hob/131",
+      "cares": [
+        {
+          "fact": "type:halfling",
+          "strength": 2,
+          "reason": "{T}: Add {C} for each Halfling you control."
+        }
+      ]
+    },
+    {
+      "id": "hob/134",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 2,
+          "reason": "When a nontoken creature you control dies, reveal until a creature card and put it onto the battlefield or into hand."
+        },
+        {
+          "fact": "otag:sacrifice-outlet",
+          "strength": 1,
+          "reason": "Sacrifice outlets trigger the death clause on demand."
+        }
+      ]
+    },
+    {
+      "id": "hob/136",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 2,
+          "reason": "The first creature spell you cast each turn costs {2} less and has flash."
+        }
+      ]
+    },
+    {
+      "id": "hob/140",
+      "cares": [
+        {
+          "fact": "type:bear",
+          "strength": 1,
+          "reason": "Ferocious needs a creature with power 4 or greater; no power fact exists, and this set's Bears are the big creatures (proxy)."
+        }
+      ]
+    },
+    {
+      "id": "hob/141",
+      "cares": [
+        {
+          "fact": "type:bear",
+          "strength": 1,
+          "reason": "Ferocious needs a creature with power 4 or greater; no power fact exists, and this set's Bears are the big creatures (proxy)."
+        }
+      ]
+    },
+    {
+      "id": "hob/143",
+      "cares": [
+        {
+          "fact": "type:elf",
+          "strength": 3,
+          "reason": "Grows whenever another Elf you control enters, and its mana can be spent only on Elf spells and Elf abilities."
+        }
+      ]
+    },
+    {
+      "id": "hob/144",
+      "cares": [
+        {
+          "fact": "makes-token",
+          "strength": 3,
+          "reason": "If tokens would be created under your control, twice that many are created instead."
+        },
+        {
+          "fact": "kw:recruit",
+          "strength": 2,
+          "reason": "Recruit's Human Soldier tokens are doubled too; makes-token does not count them."
+        }
+      ]
+    },
+    {
+      "id": "hob/146",
+      "cares": [
+        {
+          "fact": "type:human",
+          "strength": 1,
+          "reason": "You may cast it as though it had flash if you control a Human."
+        }
+      ]
+    },
+    {
+      "id": "hob/147",
+      "cares": [
+        {
+          "fact": "type:dwarf",
+          "strength": 3,
+          "reason": "With an enduring story, triggered abilities of Dwarves you control trigger an additional time."
+        }
+      ]
+    },
+    {
+      "id": "hob/148",
+      "cares": [
+        {
+          "fact": "dies-trigger",
+          "strength": 1,
+          "reason": "When Bolg enters you may sacrifice another creature to deal damage; fodder with a death trigger adds value."
+        }
+      ]
+    },
+    {
+      "id": "hob/149",
+      "cares": [
+        {
+          "fact": "type:goblin",
+          "strength": 3,
+          "reason": "Has haste while you control another Goblin, and sacrifices another Goblin for {B}{R}."
+        },
+        {
+          "fact": "kw:amass",
+          "strength": 2,
+          "reason": "The Goblin Army token counts as another Goblin for haste and can be sacrificed for mana."
+        }
+      ]
+    },
+    {
+      "id": "hob/150",
+      "cares": [
+        {
+          "fact": "type:bear",
+          "strength": 1,
+          "reason": "Ferocious needs a creature with power 4 or greater; no power fact exists, and this set's Bears are the big creatures (proxy)."
+        }
+      ]
+    },
+    {
+      "id": "hob/151",
+      "cares": [
+        {
+          "fact": "type:wolf",
+          "strength": 3,
+          "reason": "Can't attack unless you control two or more other Wolves."
+        }
+      ]
+    },
+    {
+      "id": "hob/152",
+      "cares": [
+        {
+          "fact": "type:dwarf",
+          "strength": 2,
+          "reason": "Has lifelink while you control another Dwarf, and its enters trigger digs for a Dwarf or Equipment card."
+        },
+        {
+          "fact": "kw:equip",
+          "strength": 2,
+          "reason": "Its enters trigger looks at the top four and takes a Dwarf or Equipment card."
+        }
+      ]
+    },
+    {
+      "id": "hob/155",
+      "cares": [
+        {
+          "fact": "kw:recruit",
+          "strength": 1,
+          "reason": "Returns from the graveyard attached to a creature with power 1 or less; recruit's 1/1 Human Soldiers qualify."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Small tokens are creatures with power 1 or less for the graveyard return."
+        }
+      ]
+    },
+    {
+      "id": "hob/158",
+      "cares": [
+        {
+          "fact": "kw:amass",
+          "strength": 3,
+          "reason": "Whenever you put counters on a Goblin, Orc, or Army you control, deal 2 damage to target opponent; amass does exactly that."
+        },
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 2,
+          "reason": "Any +1/+1 counter placed on a Goblin, Orc, or Army you control triggers the 2 damage."
+        },
+        {
+          "fact": "type:goblin",
+          "strength": 2,
+          "reason": "Whenever another Goblin, Orc, or Army you control dies, exile the top card and you may play it."
+        }
+      ]
+    },
+    {
+      "id": "hob/160",
+      "cares": [
+        {
+          "fact": "enters-trigger",
+          "strength": 2,
+          "reason": "When it enters, return another permanent you control to hand, letting you recast a creature with an enters trigger."
+        },
+        {
+          "fact": "kw:landfall",
+          "strength": 1,
+          "reason": "Returning a land to hand lets you replay it for another landfall trigger."
+        }
+      ]
+    },
+    {
+      "id": "hob/164",
+      "cares": [
+        {
+          "fact": "kw:treasure",
+          "strength": 3,
+          "reason": "Whenever you cast a spell, if mana from a Treasure was spent to cast it, draw a card and lose 1 life."
+        }
+      ]
+    },
+    {
+      "id": "hob/166",
+      "cares": [
+        {
+          "fact": "type:elf",
+          "strength": 2,
+          "reason": "Other Elves you control get +1/+1."
+        }
+      ]
+    },
+    {
+      "id": "hob/167",
+      "cares": [
+        {
+          "fact": "type:elf",
+          "strength": 3,
+          "reason": "Has all activated abilities of Elf cards in your graveyard, and draws two whenever another legendary Elf enters."
+        },
+        {
+          "fact": "otag:activated-ability",
+          "strength": 1,
+          "reason": "Gains the activated abilities of Elf cards in your graveyard, so Elves with activated abilities give it something to copy."
+        }
+      ]
+    },
+    {
+      "id": "hob/168",
+      "cares": [
+        {
+          "fact": "type:elf",
+          "strength": 2,
+          "reason": "As long as you control another Elf, you may play an additional land each turn."
+        }
+      ]
+    },
+    {
+      "id": "hob/169",
+      "cares": [
+        {
+          "fact": "dies-trigger",
+          "strength": 1,
+          "reason": "{1}, Sacrifice another creature: draw cards equal to its power; fodder with a death trigger adds value."
+        }
+      ]
+    },
+    {
+      "id": "hob/170",
+      "cares": [
+        {
+          "fact": "legendary",
+          "strength": 2,
+          "reason": "Seek the Heart searches your library for a legendary creature card and puts it into your hand."
+        }
+      ]
+    },
+    {
+      "id": "hob/172",
+      "cares": [
+        {
+          "fact": "type:dwarf",
+          "strength": 2,
+          "reason": "When this Equipment enters, attach it to target Dwarf you control."
+        }
+      ]
+    },
+    {
+      "id": "hob/176",
+      "cares": [
+        {
+          "fact": "dies-trigger",
+          "strength": 1,
+          "reason": "Allure of Power's additional cost sacrifices a creature; one with a death trigger adds value."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Tokens are cheap fodder for Allure of Power's sacrifice cost."
+        }
+      ]
+    },
+    {
+      "id": "hob/181",
+      "cares": [
+        {
+          "fact": "type:elf",
+          "strength": 2,
+          "reason": "If you behold an Elf, the fetched land enters untapped."
+        }
+      ]
+    },
+    {
+      "id": "hob/182",
+      "cares": [
+        {
+          "fact": "type:elf",
+          "strength": 2,
+          "reason": "Sacrifice ability puts two +1/+1 counters on target Elf you control."
+        }
+      ]
+    },
+    {
+      "id": "hob/183",
+      "cares": [
+        {
+          "fact": "type:goblin",
+          "strength": 2,
+          "reason": "Sacrifice ability puts two +1/+1 counters on target Goblin or Orc you control."
+        }
+      ]
+    },
+    {
+      "id": "hob/184",
+      "cares": [
+        {
+          "fact": "type:halfling",
+          "strength": 2,
+          "reason": "Halflingcycling {4} searches your library for a Halfling card."
+        }
+      ]
+    },
+    {
+      "id": "hob/185",
+      "cares": [
+        {
+          "fact": "type:dwarf",
+          "strength": 2,
+          "reason": "Sacrifice ability puts two +1/+1 counters on target Dwarf you control."
+        }
+      ]
+    },
+    {
+      "id": "hob/186",
+      "cares": [
+        {
+          "fact": "type:human",
+          "strength": 2,
+          "reason": "Sacrifice ability puts two +1/+1 counters on target Human you control."
+        }
+      ]
+    },
+    {
+      "id": "hob/188",
+      "cares": [
+        {
+          "fact": "type:bear",
+          "strength": 2,
+          "reason": "Sacrifice ability puts two +1/+1 counters on target Bear, Spider, or Wolf you control."
+        },
+        {
+          "fact": "type:spider",
+          "strength": 2,
+          "reason": "Sacrifice ability puts two +1/+1 counters on target Bear, Spider, or Wolf you control."
+        },
+        {
+          "fact": "type:wolf",
+          "strength": 2,
+          "reason": "Sacrifice ability puts two +1/+1 counters on target Bear, Spider, or Wolf you control."
+        }
+      ]
+    }
+  ]
+}

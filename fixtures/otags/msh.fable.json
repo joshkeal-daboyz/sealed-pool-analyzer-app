@@ -1,0 +1,1091 @@
+{
+  "set": "msh",
+  "provenance": "Claude Fable 5.1 on the subscription, cares-gaps prompt v1, fresh agent reading only its packet folder, 2026-11-06",
+  "cards": [
+    {
+      "id": "msh/2",
+      "cares": [
+        {
+          "fact": "kw:teamwork",
+          "strength": 3,
+          "reason": "Triggers only when she is tapped to pay a teamwork cost, so she needs teamwork spells."
+        }
+      ]
+    },
+    {
+      "id": "msh/4",
+      "cares": [
+        {
+          "fact": "type:hero",
+          "strength": 3,
+          "reason": "Puts a +1/+1 counter on each other Hero you control; does nothing without Heroes."
+        }
+      ]
+    },
+    {
+      "id": "msh/6",
+      "cares": [
+        {
+          "fact": "type:hero",
+          "strength": 3,
+          "reason": "Heroes get +2/+2 and attacking with or playing a Hero draws a card."
+        }
+      ]
+    },
+    {
+      "id": "msh/9",
+      "cares": [
+        {
+          "fact": "type:hero",
+          "strength": 2,
+          "reason": "Gives hexproof to other Heroes you control while he has a shield counter."
+        }
+      ]
+    },
+    {
+      "id": "msh/10",
+      "cares": [
+        {
+          "fact": "type:hero",
+          "strength": 3,
+          "reason": "Each other Hero you control gets +X/+X when he attacks."
+        }
+      ]
+    },
+    {
+      "id": "msh/13",
+      "cares": [
+        {
+          "fact": "otag:combat-trick",
+          "strength": 2,
+          "reason": "Grows and scries whenever you cast a spell that targets a creature you control."
+        },
+        {
+          "fact": "kw:enchant",
+          "strength": 1,
+          "reason": "Casting an Aura on your own creature is a spell that targets a creature you control."
+        }
+      ]
+    },
+    {
+      "id": "msh/16",
+      "cares": [
+        {
+          "fact": "type:hero",
+          "strength": 1,
+          "reason": "Gains 2 life on entering if you control another Hero."
+        }
+      ]
+    },
+    {
+      "id": "msh/17",
+      "cares": [
+        {
+          "fact": "type:hero",
+          "strength": 2,
+          "reason": "Makes a Wall whenever +1/+1 counters are put on other Heroes you control."
+        },
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 2,
+          "reason": "Needs other cards to put +1/+1 counters on your Heroes to trigger."
+        }
+      ]
+    },
+    {
+      "id": "msh/21",
+      "cares": [
+        {
+          "fact": "enters-trigger",
+          "strength": 2,
+          "reason": "Once harnessed, flickers one of your nonland permanents each end step, re-triggering its enter ability."
+        }
+      ]
+    },
+    {
+      "id": "msh/22",
+      "cares": [
+        {
+          "fact": "otag:combat-trick",
+          "strength": 2,
+          "reason": "Gets a +1/+1 counter whenever you cast a spell that targets a creature you control."
+        },
+        {
+          "fact": "kw:enchant",
+          "strength": 1,
+          "reason": "Casting an Aura on your own creature is a spell that targets a creature you control."
+        }
+      ]
+    },
+    {
+      "id": "msh/25",
+      "cares": [
+        {
+          "fact": "type:hero",
+          "strength": 2,
+          "reason": "Power-up digs seven cards for a Hero, Equipment, or Vehicle to put onto the battlefield."
+        },
+        {
+          "fact": "kw:equip",
+          "strength": 1,
+          "reason": "Power-up can put an Equipment card from the top seven onto the battlefield."
+        },
+        {
+          "fact": "kw:crew",
+          "strength": 1,
+          "reason": "Power-up can put a Vehicle card from the top seven onto the battlefield."
+        }
+      ]
+    },
+    {
+      "id": "msh/28",
+      "cares": [
+        {
+          "fact": "type:hero",
+          "strength": 2,
+          "reason": "Chapter II puts a Hero creature card with mana value 3 or less from hand onto the battlefield."
+        }
+      ]
+    },
+    {
+      "id": "msh/31",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 2,
+          "reason": "Scries and adds a plan counter whenever a creature you control enters; four creatures finish it."
+        }
+      ]
+    },
+    {
+      "id": "msh/37",
+      "cares": [
+        {
+          "fact": "otag:tapper",
+          "strength": 2,
+          "reason": "Can only exile a tapped creature, so tappers let it hit any creature at instant speed."
+        }
+      ]
+    },
+    {
+      "id": "msh/38",
+      "cares": [
+        {
+          "fact": "kw:equip",
+          "strength": 2,
+          "reason": "Attaches any number of your Equipment to the enchanted creature whenever it attacks or blocks."
+        }
+      ]
+    },
+    {
+      "id": "msh/47",
+      "cares": [
+        {
+          "fact": "type:merfolk",
+          "strength": 3,
+          "reason": "Other Merfolk get +1/+1 and attacking Merfolk draw cards."
+        }
+      ]
+    },
+    {
+      "id": "msh/51",
+      "cares": [
+        {
+          "fact": "kw:power-up",
+          "strength": 2,
+          "reason": "Copies an activated or triggered ability of a creature you control; copying a power-up doubles its payoff."
+        },
+        {
+          "fact": "enters-trigger",
+          "strength": 1,
+          "reason": "Can copy a creature's enter trigger while it is on the stack."
+        }
+      ]
+    },
+    {
+      "id": "msh/61",
+      "cares": [
+        {
+          "fact": "otag:rescue",
+          "strength": 2,
+          "reason": "Gets a +1/+1 counter whenever another nonland permanent you control is returned to its owner's hand."
+        }
+      ]
+    },
+    {
+      "id": "msh/63",
+      "cares": [
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 2,
+          "reason": "Creatures you put +1/+1 counters on this turn have hexproof."
+        }
+      ]
+    },
+    {
+      "id": "msh/64",
+      "cares": [
+        {
+          "fact": "kw:connive",
+          "strength": 3,
+          "reason": "Adds a card draw in front of every connive by a creature you control."
+        }
+      ]
+    },
+    {
+      "id": "msh/65",
+      "cares": [
+        {
+          "fact": "kw:equip",
+          "strength": 2,
+          "reason": "Draws when an ability you control targets; equip abilities target a creature every turn."
+        },
+        {
+          "fact": "otag:activated-ability",
+          "strength": 1,
+          "reason": "Any targeted activated ability you control draws a card once per turn."
+        }
+      ]
+    },
+    {
+      "id": "msh/67",
+      "cares": [
+        {
+          "fact": "otag:combat-trick",
+          "strength": 2,
+          "reason": "Draws a card and grows whenever you cast a spell that targets a creature you control."
+        },
+        {
+          "fact": "kw:enchant",
+          "strength": 1,
+          "reason": "Casting an Aura on your own creature is a spell that targets a creature you control."
+        }
+      ]
+    },
+    {
+      "id": "msh/68",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 2,
+          "reason": "Creates a token copy of each nontoken creature you control; more creatures, more copies."
+        }
+      ]
+    },
+    {
+      "id": "msh/69",
+      "cares": [
+        {
+          "fact": "type:merfolk",
+          "strength": 2,
+          "reason": "His power equals the number of Merfolk you control."
+        }
+      ]
+    },
+    {
+      "id": "msh/71",
+      "cares": [
+        {
+          "fact": "kw:teamwork",
+          "strength": 2,
+          "reason": "Loots and adds a plan counter whenever your creatures become tapped; teamwork taps them at will."
+        },
+        {
+          "fact": "kw:crew",
+          "strength": 2,
+          "reason": "Crewing a Vehicle taps your creatures, triggering the loot and plan counter."
+        },
+        {
+          "fact": "instant",
+          "strength": 1,
+          "reason": "Payoff returns up to two instant and/or sorcery cards from your graveyard."
+        },
+        {
+          "fact": "sorcery",
+          "strength": 1,
+          "reason": "Payoff returns up to two instant and/or sorcery cards from your graveyard."
+        }
+      ]
+    },
+    {
+      "id": "msh/74",
+      "cares": [
+        {
+          "fact": "enters-trigger",
+          "strength": 2,
+          "reason": "Exiles one of your creatures and returns it at end step, re-triggering its enter ability."
+        }
+      ]
+    },
+    {
+      "id": "msh/80",
+      "cares": [
+        {
+          "fact": "artifact",
+          "strength": 2,
+          "reason": "Front face digs for an artifact card; back face puts an artifact from hand onto the battlefield each combat."
+        }
+      ]
+    },
+    {
+      "id": "msh/86",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 1,
+          "reason": "Activates only with two or more creature cards in your graveyard."
+        },
+        {
+          "fact": "otag:mill",
+          "strength": 2,
+          "reason": "Milling fills the graveyard with the creature cards the ability needs."
+        }
+      ]
+    },
+    {
+      "id": "msh/88",
+      "cares": [
+        {
+          "fact": "type:villain",
+          "strength": 3,
+          "reason": "Villain spells cost less and each other Villain entering can connive."
+        }
+      ]
+    },
+    {
+      "id": "msh/91",
+      "cares": [
+        {
+          "fact": "type:villain",
+          "strength": 3,
+          "reason": "Grows and deals 2 damage to each opponent whenever another Villain enters."
+        }
+      ]
+    },
+    {
+      "id": "msh/94",
+      "cares": [
+        {
+          "fact": "type:hero",
+          "strength": 1,
+          "reason": "One mode returns a Hero card from your graveyard to your hand."
+        },
+        {
+          "fact": "type:villain",
+          "strength": 1,
+          "reason": "One mode returns a Villain card from your graveyard to your hand."
+        }
+      ]
+    },
+    {
+      "id": "msh/96",
+      "cares": [
+        {
+          "fact": "type:villain",
+          "strength": 3,
+          "reason": "Drains and adds a plan counter whenever a Villain you control enters."
+        }
+      ]
+    },
+    {
+      "id": "msh/98",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 1,
+          "reason": "Attack trigger reanimates a creature card from your graveyard."
+        },
+        {
+          "fact": "otag:mill",
+          "strength": 1,
+          "reason": "Milling puts creature cards in the graveyard for the attack trigger to return."
+        }
+      ]
+    },
+    {
+      "id": "msh/101",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 1,
+          "reason": "Makes a Villain token only with two or more creature cards in your graveyard."
+        },
+        {
+          "fact": "otag:mill",
+          "strength": 2,
+          "reason": "Milling fills the graveyard with the creature cards that turn on the token."
+        }
+      ]
+    },
+    {
+      "id": "msh/102",
+      "cares": [
+        {
+          "fact": "artifact",
+          "strength": 1,
+          "reason": "Sacrifices an artifact or creature to draw; spare artifact tokens are fuel."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Tokens are free fodder for its sacrifice-to-draw ability."
+        }
+      ]
+    },
+    {
+      "id": "msh/103",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 1,
+          "reason": "Reveals one card more for each creature card in your graveyard."
+        },
+        {
+          "fact": "otag:mill",
+          "strength": 2,
+          "reason": "Milling fills the graveyard with creature cards that make the discard bigger."
+        }
+      ]
+    },
+    {
+      "id": "msh/105",
+      "cares": [
+        {
+          "fact": "type:villain",
+          "strength": 2,
+          "reason": "Other Villains you control get +2/+1."
+        }
+      ]
+    },
+    {
+      "id": "msh/107",
+      "cares": [
+        {
+          "fact": "otag:discard-outlet",
+          "strength": 3,
+          "reason": "Every card you discard can be exiled and played later; discard outlets are the engine."
+        },
+        {
+          "fact": "kw:connive",
+          "strength": 2,
+          "reason": "Connive discards a card, which she lets you play."
+        },
+        {
+          "fact": "kw:cycling",
+          "strength": 1,
+          "reason": "Cycling discards the card, which she lets you play."
+        }
+      ]
+    },
+    {
+      "id": "msh/111",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 2,
+          "reason": "Draws and adds a plan counter whenever creature cards go to your graveyard from anywhere."
+        }
+      ]
+    },
+    {
+      "id": "msh/116",
+      "cares": [
+        {
+          "fact": "type:villain",
+          "strength": 2,
+          "reason": "Another Villain entering lets him move an Equipment onto a creature."
+        }
+      ]
+    },
+    {
+      "id": "msh/117",
+      "cares": [
+        {
+          "fact": "type:villain",
+          "strength": 3,
+          "reason": "Returns each Villain you control that dies to the battlefield."
+        },
+        {
+          "fact": "enters-trigger",
+          "strength": 1,
+          "reason": "Returned Villains trigger their enter abilities again."
+        }
+      ]
+    },
+    {
+      "id": "msh/118",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 2,
+          "reason": "Reanimates a creature card from your graveyard."
+        },
+        {
+          "fact": "otag:mill",
+          "strength": 1,
+          "reason": "Milling puts creature cards in the graveyard to return."
+        }
+      ]
+    },
+    {
+      "id": "msh/119",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 1,
+          "reason": "Power-up returns a creature card from your graveyard to your hand."
+        }
+      ]
+    },
+    {
+      "id": "msh/120",
+      "cares": [
+        {
+          "fact": "type:villain",
+          "strength": 1,
+          "reason": "Costs {1} less if you control a Villain."
+        }
+      ]
+    },
+    {
+      "id": "msh/123",
+      "cares": [
+        {
+          "fact": "type:villain",
+          "strength": 3,
+          "reason": "Gets +1/+0 and lifelink whenever another Villain you control enters."
+        }
+      ]
+    },
+    {
+      "id": "msh/128",
+      "cares": [
+        {
+          "fact": "type:villain",
+          "strength": 1,
+          "reason": "Keeps the stolen creature an extra turn if you control a Villain with greater mana value."
+        }
+      ]
+    },
+    {
+      "id": "msh/130",
+      "cares": [
+        {
+          "fact": "kw:teamwork",
+          "strength": 2,
+          "reason": "Trick Arrows trigger whenever he becomes tapped; teamwork taps him on demand."
+        },
+        {
+          "fact": "kw:crew",
+          "strength": 1,
+          "reason": "Crewing a Vehicle taps him for another Trick Arrows trigger."
+        }
+      ]
+    },
+    {
+      "id": "msh/131",
+      "cares": [
+        {
+          "fact": "otag:burn",
+          "strength": 2,
+          "reason": "Adds his power to every noncombat damage your sources deal to opponents or their permanents."
+        }
+      ]
+    },
+    {
+      "id": "msh/132",
+      "cares": [
+        {
+          "fact": "kw:teamwork",
+          "strength": 2,
+          "reason": "Equipped creature pings each opponent whenever it becomes tapped; teamwork taps it on demand."
+        },
+        {
+          "fact": "kw:crew",
+          "strength": 1,
+          "reason": "Crewing a Vehicle taps the equipped creature for another ping."
+        }
+      ]
+    },
+    {
+      "id": "msh/136",
+      "cares": [
+        {
+          "fact": "type:hero",
+          "strength": 2,
+          "reason": "Pings only if you control another Hero when you draw."
+        }
+      ]
+    },
+    {
+      "id": "msh/137",
+      "cares": [
+        {
+          "fact": "type:villain",
+          "strength": 2,
+          "reason": "Deals 1 damage whenever another Villain you control enters."
+        }
+      ]
+    },
+    {
+      "id": "msh/138",
+      "cares": [
+        {
+          "fact": "otag:combat-trick",
+          "strength": 2,
+          "reason": "Gains a tap-to-damage ability whenever you cast a spell that targets a creature you control."
+        },
+        {
+          "fact": "kw:enchant",
+          "strength": 1,
+          "reason": "Casting an Aura on your own creature is a spell that targets a creature you control."
+        }
+      ]
+    },
+    {
+      "id": "msh/140",
+      "cares": [
+        {
+          "fact": "artifact",
+          "strength": 1,
+          "reason": "Can sacrifice an artifact instead of discarding to draw a card."
+        }
+      ]
+    },
+    {
+      "id": "msh/143",
+      "cares": [
+        {
+          "fact": "instant",
+          "strength": 2,
+          "reason": "Copies your next instant or sorcery spell with mana value up to his power."
+        },
+        {
+          "fact": "sorcery",
+          "strength": 2,
+          "reason": "Copies your next instant or sorcery spell with mana value up to his power."
+        }
+      ]
+    },
+    {
+      "id": "msh/145",
+      "cares": [
+        {
+          "fact": "otag:discard-outlet",
+          "strength": 2,
+          "reason": "Draws a card for each card discarded this turn, so earlier discards add draws."
+        },
+        {
+          "fact": "kw:connive",
+          "strength": 1,
+          "reason": "A connive earlier in the turn is a discard that adds a draw."
+        }
+      ]
+    },
+    {
+      "id": "msh/149",
+      "cares": [
+        {
+          "fact": "kw:fight",
+          "strength": 1,
+          "reason": "Enrage triggers when he is dealt damage, which your own fight spells can cause."
+        }
+      ]
+    },
+    {
+      "id": "msh/152",
+      "cares": [
+        {
+          "fact": "kw:haste",
+          "strength": 2,
+          "reason": "The unblockable effect targets a creature with haste."
+        }
+      ]
+    },
+    {
+      "id": "msh/157",
+      "cares": [
+        {
+          "fact": "kw:crew",
+          "strength": 2,
+          "reason": "Costs {2} less if you control a Vehicle."
+        }
+      ]
+    },
+    {
+      "id": "msh/160",
+      "cares": [
+        {
+          "fact": "kw:power-up",
+          "strength": 3,
+          "reason": "Each power-up ability of your permanents can be activated an additional time."
+        }
+      ]
+    },
+    {
+      "id": "msh/164",
+      "cares": [
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 2,
+          "reason": "Adds one more of each kind of counter you put on your permanents."
+        },
+        {
+          "fact": "kw:power-up",
+          "strength": 1,
+          "reason": "Most power-up abilities put +1/+1 counters, which he increases."
+        }
+      ]
+    },
+    {
+      "id": "msh/165",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 2,
+          "reason": "Puts creature cards from the top eight onto the battlefield; more creatures, bigger payoff."
+        }
+      ]
+    },
+    {
+      "id": "msh/175",
+      "cares": [
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 3,
+          "reason": "Gets a +1/+1 counter whenever you put one on another creature."
+        }
+      ]
+    },
+    {
+      "id": "msh/176",
+      "cares": [
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 1,
+          "reason": "Removes a counter from a creature you control to draw; other counter sources feed it."
+        }
+      ]
+    },
+    {
+      "id": "msh/177",
+      "cares": [
+        {
+          "fact": "otag:mill",
+          "strength": 1,
+          "reason": "Lets you play lands from your graveyard, so milled lands become extra landfall triggers."
+        }
+      ]
+    },
+    {
+      "id": "msh/179",
+      "cares": [
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 2,
+          "reason": "Adds another counter of each kind already on a permanent; needs counters placed first."
+        }
+      ]
+    },
+    {
+      "id": "msh/180",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 1,
+          "reason": "Costs {2} less with two or more creature cards in your graveyard."
+        },
+        {
+          "fact": "otag:mill",
+          "strength": 2,
+          "reason": "Milling fills the graveyard with the creature cards that make it cheap."
+        }
+      ]
+    },
+    {
+      "id": "msh/184",
+      "cares": [
+        {
+          "fact": "type:hero",
+          "strength": 2,
+          "reason": "Mills four and picks up a Hero or enchantment card from among them."
+        },
+        {
+          "fact": "enchantment",
+          "strength": 1,
+          "reason": "Mills four and picks up a Hero or enchantment card from among them."
+        }
+      ]
+    },
+    {
+      "id": "msh/187",
+      "cares": [
+        {
+          "fact": "kw:power-up",
+          "strength": 2,
+          "reason": "Makes mana only for creature abilities and lets them be activated at once; power-ups are the set's creature abilities."
+        },
+        {
+          "fact": "otag:activated-ability",
+          "strength": 1,
+          "reason": "His mana can be spent only on abilities of creature sources."
+        }
+      ]
+    },
+    {
+      "id": "msh/190",
+      "cares": [
+        {
+          "fact": "type:hero",
+          "strength": 2,
+          "reason": "Gets two +1/+1 counters whenever your Heroes deal damage to a player."
+        }
+      ]
+    },
+    {
+      "id": "msh/192",
+      "cares": [
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 2,
+          "reason": "Your creatures with +1/+1 counters have trample; more counter sources spread it."
+        }
+      ]
+    },
+    {
+      "id": "msh/194",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 1,
+          "reason": "Gets +2/+2 only with two or more creature cards in your graveyard."
+        },
+        {
+          "fact": "otag:mill",
+          "strength": 2,
+          "reason": "Milling fills the graveyard with the creature cards that turn on the bonus."
+        }
+      ]
+    },
+    {
+      "id": "msh/195",
+      "cares": [
+        {
+          "fact": "type:hero",
+          "strength": 1,
+          "reason": "Puts two +1/+1 counters instead of one if the target is another Hero."
+        }
+      ]
+    },
+    {
+      "id": "msh/201",
+      "cares": [
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 3,
+          "reason": "Makes an Insect whenever you put a +1/+1 counter on a creature."
+        }
+      ]
+    },
+    {
+      "id": "msh/204",
+      "cares": [
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 1,
+          "reason": "Removes his +1/+1 counters to make Insects; other counter sources add fuel."
+        }
+      ]
+    },
+    {
+      "id": "msh/205",
+      "cares": [
+        {
+          "fact": "type:villain",
+          "strength": 1,
+          "reason": "Chapter III makes a Treasure per Villain and chapter II spares Villains."
+        }
+      ]
+    },
+    {
+      "id": "msh/206",
+      "cares": [
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 3,
+          "reason": "Has flying only on turns you put a +1/+1 counter on him."
+        }
+      ]
+    },
+    {
+      "id": "msh/207",
+      "cares": [
+        {
+          "fact": "type:hero",
+          "strength": 3,
+          "reason": "Makes a Soldier or pumps the team whenever another nontoken Hero enters."
+        }
+      ]
+    },
+    {
+      "id": "msh/209",
+      "cares": [
+        {
+          "fact": "artifact",
+          "strength": 2,
+          "reason": "Sacrifices an artifact to deal 2 damage, on entering and repeatably."
+        }
+      ]
+    },
+    {
+      "id": "msh/210",
+      "cares": [
+        {
+          "fact": "kw:teamwork",
+          "strength": 2,
+          "reason": "Untaps creatures the first time they are tapped each turn, so teamwork costs are free."
+        },
+        {
+          "fact": "kw:crew",
+          "strength": 2,
+          "reason": "Untaps creatures the first time they are tapped each turn, so crewing is free."
+        }
+      ]
+    },
+    {
+      "id": "msh/213",
+      "cares": [
+        {
+          "fact": "type:hero",
+          "strength": 2,
+          "reason": "Gets +2/+1 when the card exiled on attack is a Hero card."
+        }
+      ]
+    },
+    {
+      "id": "msh/215",
+      "cares": [
+        {
+          "fact": "kw:power-up",
+          "strength": 3,
+          "reason": "Power-up abilities of your other creatures cost {3} less."
+        }
+      ]
+    },
+    {
+      "id": "msh/218",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 1,
+          "reason": "Sacrifices another creature on entering and gets +2/+1 with two creature cards in your graveyard."
+        },
+        {
+          "fact": "otag:mill",
+          "strength": 2,
+          "reason": "Milling fills the graveyard with the creature cards that turn on the bonus."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Tokens are free fodder for his sacrifice on entering."
+        }
+      ]
+    },
+    {
+      "id": "msh/221",
+      "cares": [
+        {
+          "fact": "type:villain",
+          "strength": 3,
+          "reason": "Makes a 2/1 menace Villain whenever you cast a Villain spell."
+        }
+      ]
+    },
+    {
+      "id": "msh/222",
+      "cares": [
+        {
+          "fact": "enters-trigger",
+          "strength": 1,
+          "reason": "Attack trigger can exile and return one of your own creatures, re-triggering its enter ability."
+        }
+      ]
+    },
+    {
+      "id": "msh/226",
+      "cares": [
+        {
+          "fact": "kw:deathtouch",
+          "strength": 3,
+          "reason": "Each opponent sacrifices a creature whenever another creature you control with deathtouch dies."
+        }
+      ]
+    },
+    {
+      "id": "msh/227",
+      "cares": [
+        {
+          "fact": "otag:combat-trick",
+          "strength": 2,
+          "reason": "Gets +2/+2 whenever a spell targets him; your own cheap targeted spells trigger it."
+        }
+      ]
+    },
+    {
+      "id": "msh/230",
+      "cares": [
+        {
+          "fact": "otag:combat-trick",
+          "strength": 2,
+          "reason": "Creatures targeted by your spells gain flying until end of turn."
+        },
+        {
+          "fact": "kw:enchant",
+          "strength": 1,
+          "reason": "Casting an Aura on a creature gives it flying for the turn."
+        }
+      ]
+    },
+    {
+      "id": "msh/237",
+      "cares": [
+        {
+          "fact": "artifact",
+          "strength": 2,
+          "reason": "Searches library or graveyard for an artifact creature card to put onto the battlefield."
+        }
+      ]
+    },
+    {
+      "id": "msh/247",
+      "cares": [
+        {
+          "fact": "land",
+          "strength": 1,
+          "reason": "On entering, lets you put a land card from your hand onto the battlefield."
+        }
+      ]
+    },
+    {
+      "id": "msh/260",
+      "cares": [
+        {
+          "fact": "type:hero",
+          "strength": 3,
+          "reason": "Makes colored mana only for Hero spells and abilities and digs for a Hero card."
+        }
+      ]
+    },
+    {
+      "id": "msh/276",
+      "cares": [
+        {
+          "fact": "type:villain",
+          "strength": 3,
+          "reason": "Makes colored mana only for Villain spells and abilities and lets a Villain connive."
+        }
+      ]
+    }
+  ]
+}

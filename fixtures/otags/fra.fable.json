@@ -1,0 +1,1501 @@
+{
+  "set": "fra",
+  "provenance": "Claude Fable 5.1 on the subscription, cares-gaps prompt v1, fresh agent reading only its packet folder, 2026-11-06",
+  "cards": [
+    {
+      "id": "fra/6",
+      "cares": [
+        {
+          "fact": "legendary",
+          "strength": 2,
+          "reason": "Its first mode returns a legendary card from your graveyard to your hand; without legendary cards only the counter mode works."
+        }
+      ]
+    },
+    {
+      "id": "fra/7",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 2,
+          "reason": "Triggers whenever you cast a creature spell, so it wants a creature-dense deck."
+        },
+        {
+          "fact": "enters-trigger",
+          "strength": 3,
+          "reason": "Each trigger flickers another creature you control, re-triggering its enters ability."
+        }
+      ]
+    },
+    {
+      "id": "fra/8",
+      "cares": [
+        {
+          "fact": "cheap",
+          "strength": 2,
+          "reason": "Only returns creature cards with mana value 3 or less, so cheap creatures are what it brings back."
+        }
+      ]
+    },
+    {
+      "id": "fra/14",
+      "cares": [
+        {
+          "fact": "planeswalker",
+          "strength": 3,
+          "reason": "Searches your library for a planeswalker card; does nothing without one."
+        }
+      ]
+    },
+    {
+      "id": "fra/20",
+      "cares": [
+        {
+          "fact": "otag:mill-self",
+          "strength": 2,
+          "reason": "Returns all nonland permanent cards from your graveyard, so self-mill fills it with more to return."
+        }
+      ]
+    },
+    {
+      "id": "fra/25",
+      "cares": [
+        {
+          "fact": "kw:empower-jace",
+          "strength": 1,
+          "reason": "Beholding a Jace (a Jace token counts) replaces the extra {1} in its cost."
+        }
+      ]
+    },
+    {
+      "id": "fra/27",
+      "cares": [
+        {
+          "fact": "kw:prepared",
+          "strength": 1,
+          "reason": "Casting a copy of a prepared creature's spell is a noncreature spell that triggers prowess."
+        }
+      ]
+    },
+    {
+      "id": "fra/28",
+      "cares": [
+        {
+          "fact": "kw:surveil",
+          "strength": 2,
+          "reason": "Gets +1/+1 whenever you scry or surveil, so each surveil source pumps it."
+        }
+      ]
+    },
+    {
+      "id": "fra/35",
+      "cares": [
+        {
+          "fact": "kw:prepared",
+          "strength": 1,
+          "reason": "A copy of a prepared creature's spell is a noncreature spell that can be the first one each turn."
+        }
+      ]
+    },
+    {
+      "id": "fra/41",
+      "cares": [
+        {
+          "fact": "type:sphinx",
+          "strength": 2,
+          "reason": "With five copies exiled it searches for a Sphinx creature card and puts it onto the battlefield."
+        }
+      ]
+    },
+    {
+      "id": "fra/42",
+      "cares": [
+        {
+          "fact": "kw:surveil",
+          "strength": 2,
+          "reason": "Can attack only if you have scried or surveilled this turn; other surveil sources turn it on without paying {3}{U}."
+        }
+      ]
+    },
+    {
+      "id": "fra/47",
+      "cares": [
+        {
+          "fact": "kw:prepared",
+          "strength": 1,
+          "reason": "Casting a copy of a prepared creature's spell is a noncreature spell that triggers prowess."
+        }
+      ]
+    },
+    {
+      "id": "fra/49",
+      "cares": [
+        {
+          "fact": "otag:sacrifice-outlet",
+          "strength": 2,
+          "reason": "Becomes prepared only if three or more creatures died this turn; sacrifice outlets make that happen."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Tokens are cheap bodies to feed the three-deaths condition."
+        }
+      ]
+    },
+    {
+      "id": "fra/52",
+      "cares": [
+        {
+          "fact": "otag:mill-self",
+          "strength": 2,
+          "reason": "Gets +2/+0 for every seven cards in your graveyard, so self-mill grows it."
+        }
+      ]
+    },
+    {
+      "id": "fra/53",
+      "cares": [
+        {
+          "fact": "otag:sacrifice-outlet",
+          "strength": 2,
+          "reason": "Returns from the graveyard only if two or more creatures died this turn; sacrifice outlets make that reliable."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Tokens are cheap bodies to feed the two-deaths condition."
+        }
+      ]
+    },
+    {
+      "id": "fra/64",
+      "cares": [
+        {
+          "fact": "planeswalker",
+          "strength": 2,
+          "reason": "Gives every planeswalker you control a [+2] drain ability and keeps them alive at 0 loyalty."
+        },
+        {
+          "fact": "kw:empower-jace",
+          "strength": 2,
+          "reason": "Empower makes and grows the Jace token that carries its granted ability; more loyalty means more activations."
+        }
+      ]
+    },
+    {
+      "id": "fra/66",
+      "cares": [
+        {
+          "fact": "dies-trigger",
+          "strength": 1,
+          "reason": "Sacrificing a creature pays its additional cost, so a creature with a dies trigger turns the cost into value."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Tokens are cheap fodder for the sacrifice cost instead of paying {3}."
+        }
+      ]
+    },
+    {
+      "id": "fra/70",
+      "cares": [
+        {
+          "fact": "otag:mill-self",
+          "strength": 2,
+          "reason": "Threshold needs seven cards in your graveyard; self-mill gets there fast."
+        }
+      ]
+    },
+    {
+      "id": "fra/76",
+      "cares": [
+        {
+          "fact": "kw:prepared",
+          "strength": 1,
+          "reason": "Casting a copy of a prepared creature's spell is a noncreature spell that adds a +1/+1 counter."
+        }
+      ]
+    },
+    {
+      "id": "fra/77",
+      "cares": [
+        {
+          "fact": "makes-token",
+          "strength": 2,
+          "reason": "Puts a +1/+1 counter on each other Wizard token you control, so Cadet makers multiply its value."
+        },
+        {
+          "fact": "otag:burn-player",
+          "strength": 3,
+          "reason": "Returns from the graveyard each upkeep only if an opponent was dealt noncombat damage last turn."
+        }
+      ]
+    },
+    {
+      "id": "fra/83",
+      "cares": [
+        {
+          "fact": "planeswalker",
+          "strength": 2,
+          "reason": "The copies are sacrificed at end step unless you control a planeswalker."
+        },
+        {
+          "fact": "kw:empower-jace",
+          "strength": 2,
+          "reason": "A Jace token from empower is a planeswalker that lets you keep the copies."
+        }
+      ]
+    },
+    {
+      "id": "fra/87",
+      "cares": [
+        {
+          "fact": "makes-token",
+          "strength": 2,
+          "reason": "Exiling a token you control trades it for a real creature or planeswalker card from your library."
+        },
+        {
+          "fact": "creature",
+          "strength": 1,
+          "reason": "Reveals until a creature or planeswalker card, so a creature-dense library finds one sooner."
+        }
+      ]
+    },
+    {
+      "id": "fra/88",
+      "cares": [
+        {
+          "fact": "otag:burn-player",
+          "strength": 3,
+          "reason": "Pumps your team whenever an opponent is dealt noncombat damage."
+        }
+      ]
+    },
+    {
+      "id": "fra/90",
+      "cares": [
+        {
+          "fact": "kw:prepared",
+          "strength": 1,
+          "reason": "Casting a copy of a prepared creature's spell is a noncreature spell that triggers prowess."
+        }
+      ]
+    },
+    {
+      "id": "fra/91",
+      "cares": [
+        {
+          "fact": "kw:prepared",
+          "strength": 1,
+          "reason": "Casting a copy of a prepared creature's spell is a noncreature spell that triggers prowess."
+        }
+      ]
+    },
+    {
+      "id": "fra/101",
+      "cares": [
+        {
+          "fact": "planeswalker",
+          "strength": 1,
+          "reason": "Its second mode has a planeswalker you control deal damage equal to its loyalty."
+        },
+        {
+          "fact": "kw:empower-jace",
+          "strength": 1,
+          "reason": "A well-empowered Jace token has high loyalty for the planeswalker mode."
+        }
+      ]
+    },
+    {
+      "id": "fra/103",
+      "cares": [
+        {
+          "fact": "otag:sacrifice-outlet",
+          "strength": 2,
+          "reason": "Gains a charge counter whenever a creature you control dies; sacrifice outlets make that happen on demand."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Tokens are cheap creatures to die for charge counters."
+        }
+      ]
+    },
+    {
+      "id": "fra/104",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 1,
+          "reason": "Gains 1 life whenever another creature you control enters."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Each token entering is another life-gain trigger."
+        }
+      ]
+    },
+    {
+      "id": "fra/107",
+      "cares": [
+        {
+          "fact": "artifact",
+          "strength": 2,
+          "reason": "Sacrifices another artifact to grow and gain trample, hexproof or haste."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Heartwood, Treasure and Thopter tokens are artifacts to sacrifice."
+        }
+      ]
+    },
+    {
+      "id": "fra/109",
+      "cares": [
+        {
+          "fact": "kw:empower-jace",
+          "strength": 3,
+          "reason": "Gets a +1/+1 counter whenever you put loyalty counters on a planeswalker; every empower is a trigger."
+        },
+        {
+          "fact": "planeswalker",
+          "strength": 2,
+          "reason": "Plus loyalty abilities also put loyalty counters on a planeswalker and trigger it."
+        }
+      ]
+    },
+    {
+      "id": "fra/111",
+      "cares": [
+        {
+          "fact": "artifact",
+          "strength": 2,
+          "reason": "Needs an artifact or non-Aura enchantment to enchant and turn into a 5/5."
+        },
+        {
+          "fact": "enchantment",
+          "strength": 2,
+          "reason": "Needs an artifact or non-Aura enchantment to enchant and turn into a 5/5."
+        }
+      ]
+    },
+    {
+      "id": "fra/116",
+      "cares": [
+        {
+          "fact": "otag:mill-self",
+          "strength": 2,
+          "reason": "Power counts card types among cards in graveyards; self-mill fills them with varied cards."
+        },
+        {
+          "fact": "artifact",
+          "strength": 1,
+          "reason": "An artifact in a graveyard is an extra card type for its power."
+        },
+        {
+          "fact": "enchantment",
+          "strength": 1,
+          "reason": "An enchantment in a graveyard is an extra card type for its power."
+        }
+      ]
+    },
+    {
+      "id": "fra/122",
+      "cares": [
+        {
+          "fact": "planeswalker",
+          "strength": 1,
+          "reason": "Grants planeswalkers you control a [−10] ability."
+        },
+        {
+          "fact": "kw:empower-jace",
+          "strength": 1,
+          "reason": "Other empower sources raise the Jace token toward the ten loyalty its granted ability costs."
+        }
+      ]
+    },
+    {
+      "id": "fra/128",
+      "cares": [
+        {
+          "fact": "kw:surveil",
+          "strength": 3,
+          "reason": "Puts a +1/+1 counter on each creature you control whenever you scry or surveil."
+        }
+      ]
+    },
+    {
+      "id": "fra/129",
+      "cares": [
+        {
+          "fact": "kw:surveil",
+          "strength": 2,
+          "reason": "Its combat pump becomes a permanent +1/+1 counter if you scried or surveilled this turn."
+        }
+      ]
+    },
+    {
+      "id": "fra/131",
+      "cares": [
+        {
+          "fact": "planeswalker",
+          "strength": 3,
+          "reason": "Sacrifices a planeswalker to search your library for another; needs planeswalker cards on both ends."
+        }
+      ]
+    },
+    {
+      "id": "fra/136",
+      "cares": [
+        {
+          "fact": "otag:burn-player",
+          "strength": 3,
+          "reason": "Returns from the graveyard only if an opponent has been dealt noncombat damage this turn."
+        },
+        {
+          "fact": "kw:prepared",
+          "strength": 1,
+          "reason": "Casting a copy of a prepared creature's spell is a noncreature spell that triggers prowess."
+        }
+      ]
+    },
+    {
+      "id": "fra/137",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 1,
+          "reason": "Each attacking creature you control deals 1 damage to each opponent, so more attackers means more damage."
+        }
+      ]
+    },
+    {
+      "id": "fra/141",
+      "cares": [
+        {
+          "fact": "kw:empower-jace",
+          "strength": 2,
+          "reason": "Has vigilance only while you control a Jace planeswalker; empower creates the Jace token."
+        }
+      ]
+    },
+    {
+      "id": "fra/142",
+      "cares": [
+        {
+          "fact": "otag:mill-self",
+          "strength": 2,
+          "reason": "Threshold lets you cast the exiled card; self-mill reaches seven graveyard cards."
+        }
+      ]
+    },
+    {
+      "id": "fra/145",
+      "cares": [
+        {
+          "fact": "kw:surveil",
+          "strength": 2,
+          "reason": "Its graveyard recursion can be activated only if you scried or surveilled this turn."
+        },
+        {
+          "fact": "creature",
+          "strength": 1,
+          "reason": "Surveils whenever another creature you control enters."
+        }
+      ]
+    },
+    {
+      "id": "fra/146",
+      "cares": [
+        {
+          "fact": "kw:surveil",
+          "strength": 2,
+          "reason": "Pumps your team once each turn when you scry or surveil, so it wants a surveil source every turn."
+        }
+      ]
+    },
+    {
+      "id": "fra/147",
+      "cares": [
+        {
+          "fact": "otag:mill-self",
+          "strength": 2,
+          "reason": "When flashed back, each Cadet gets a counter for every three cards in your graveyard."
+        }
+      ]
+    },
+    {
+      "id": "fra/149",
+      "cares": [
+        {
+          "fact": "legendary",
+          "strength": 2,
+          "reason": "Its draw ability costs discarding a legendary card."
+        }
+      ]
+    },
+    {
+      "id": "fra/156",
+      "cares": [
+        {
+          "fact": "otag:mill-self",
+          "strength": 2,
+          "reason": "Threshold gives it +1/+0 and flying; self-mill reaches seven graveyard cards."
+        }
+      ]
+    },
+    {
+      "id": "fra/159",
+      "cares": [
+        {
+          "fact": "otag:mill-self",
+          "strength": 2,
+          "reason": "Exiles and copies one nonland card of each type from your graveyard; self-mill stocks it."
+        },
+        {
+          "fact": "artifact",
+          "strength": 1,
+          "reason": "An artifact card in the graveyard is an extra card type to copy and cast."
+        },
+        {
+          "fact": "enchantment",
+          "strength": 1,
+          "reason": "An enchantment card in the graveyard is an extra card type to copy and cast."
+        }
+      ]
+    },
+    {
+      "id": "fra/161",
+      "cares": [
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 2,
+          "reason": "Gives vigilance to each creature you control with a +1/+1 counter on it."
+        }
+      ]
+    },
+    {
+      "id": "fra/163",
+      "cares": [
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 2,
+          "reason": "Equip costs {1} less for each +1/+1 counter on the target."
+        }
+      ]
+    },
+    {
+      "id": "fra/164",
+      "cares": [
+        {
+          "fact": "otag:burn-player",
+          "strength": 3,
+          "reason": "Has flying and haste only while an opponent was dealt noncombat damage this turn."
+        }
+      ]
+    },
+    {
+      "id": "fra/168",
+      "cares": [
+        {
+          "fact": "kw:prepared",
+          "strength": 3,
+          "reason": "Copies every prepared spell you cast and can re-prepare all your creatures."
+        }
+      ]
+    },
+    {
+      "id": "fra/170",
+      "cares": [
+        {
+          "fact": "otag:mill-self",
+          "strength": 2,
+          "reason": "Fires its drain only once there are seven or more cards in your graveyard."
+        }
+      ]
+    },
+    {
+      "id": "fra/175",
+      "cares": [
+        {
+          "fact": "planeswalker",
+          "strength": 1,
+          "reason": "Enters untapped only if you control a planeswalker."
+        },
+        {
+          "fact": "kw:empower-jace",
+          "strength": 1,
+          "reason": "A Jace token from empower is a planeswalker that lets it enter untapped."
+        }
+      ]
+    },
+    {
+      "id": "fra/177",
+      "cares": [
+        {
+          "fact": "planeswalker",
+          "strength": 1,
+          "reason": "Enters untapped only if you control a planeswalker."
+        },
+        {
+          "fact": "kw:empower-jace",
+          "strength": 1,
+          "reason": "A Jace token from empower is a planeswalker that lets it enter untapped."
+        }
+      ]
+    },
+    {
+      "id": "fra/178",
+      "cares": [
+        {
+          "fact": "planeswalker",
+          "strength": 1,
+          "reason": "Enters untapped only if you control a planeswalker."
+        },
+        {
+          "fact": "kw:empower-jace",
+          "strength": 1,
+          "reason": "A Jace token from empower is a planeswalker that lets it enter untapped."
+        }
+      ]
+    },
+    {
+      "id": "fra/181",
+      "cares": [
+        {
+          "fact": "kw:prepared",
+          "strength": 3,
+          "reason": "Both of its abilities make a creature prepared; only creatures with prepare spells can be."
+        }
+      ]
+    },
+    {
+      "id": "fra/182",
+      "cares": [
+        {
+          "fact": "planeswalker",
+          "strength": 1,
+          "reason": "Enters untapped only if you control a planeswalker."
+        },
+        {
+          "fact": "kw:empower-jace",
+          "strength": 1,
+          "reason": "A Jace token from empower is a planeswalker that lets it enter untapped."
+        }
+      ]
+    },
+    {
+      "id": "fra/183",
+      "cares": [
+        {
+          "fact": "planeswalker",
+          "strength": 1,
+          "reason": "Enters untapped only if you control a planeswalker."
+        },
+        {
+          "fact": "kw:empower-jace",
+          "strength": 1,
+          "reason": "A Jace token from empower is a planeswalker that lets it enter untapped."
+        }
+      ]
+    },
+    {
+      "id": "fra/184",
+      "cares": [
+        {
+          "fact": "planeswalker",
+          "strength": 1,
+          "reason": "Enters untapped only if you control a planeswalker."
+        },
+        {
+          "fact": "kw:empower-jace",
+          "strength": 1,
+          "reason": "A Jace token from empower is a planeswalker that lets it enter untapped."
+        }
+      ]
+    },
+    {
+      "id": "fra/190",
+      "cares": [
+        {
+          "fact": "planeswalker",
+          "strength": 1,
+          "reason": "Enters untapped only if you control a planeswalker."
+        },
+        {
+          "fact": "kw:empower-jace",
+          "strength": 1,
+          "reason": "A Jace token from empower is a planeswalker that lets it enter untapped."
+        }
+      ]
+    },
+    {
+      "id": "fra/191",
+      "cares": [
+        {
+          "fact": "kw:empower-jace",
+          "strength": 1,
+          "reason": "Enters untapped only if you behold a Jace; a Jace token from empower counts."
+        }
+      ]
+    },
+    {
+      "id": "fra/192",
+      "cares": [
+        {
+          "fact": "planeswalker",
+          "strength": 1,
+          "reason": "Enters untapped only if you control a planeswalker."
+        },
+        {
+          "fact": "kw:empower-jace",
+          "strength": 1,
+          "reason": "A Jace token from empower is a planeswalker that lets it enter untapped."
+        }
+      ]
+    },
+    {
+      "id": "fra/193",
+      "cares": [
+        {
+          "fact": "planeswalker",
+          "strength": 1,
+          "reason": "Enters untapped only if you control a planeswalker."
+        },
+        {
+          "fact": "kw:empower-jace",
+          "strength": 1,
+          "reason": "A Jace token from empower is a planeswalker that lets it enter untapped."
+        }
+      ]
+    },
+    {
+      "id": "fra/194",
+      "cares": [
+        {
+          "fact": "planeswalker",
+          "strength": 1,
+          "reason": "Enters untapped only if you control a planeswalker."
+        },
+        {
+          "fact": "kw:empower-jace",
+          "strength": 1,
+          "reason": "A Jace token from empower is a planeswalker that lets it enter untapped."
+        }
+      ]
+    },
+    {
+      "id": "fra/196",
+      "cares": [
+        {
+          "fact": "otag:combat-trick",
+          "strength": 2,
+          "reason": "Draws a card whenever you cast a spell that targets a creature you control; tricks are the usual such spell."
+        },
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 1,
+          "reason": "Counter spells that target your own creature also draw a card."
+        },
+        {
+          "fact": "kw:enchant",
+          "strength": 1,
+          "reason": "Casting an Aura on your own creature targets it and draws a card."
+        }
+      ]
+    },
+    {
+      "id": "fra/197",
+      "cares": [
+        {
+          "fact": "kw:defender",
+          "strength": 1,
+          "reason": "Lets your creatures attack as though they didn't have defender, and high-toughness defenders hit for their toughness."
+        }
+      ]
+    },
+    {
+      "id": "fra/198",
+      "cares": [
+        {
+          "fact": "planeswalker",
+          "strength": 2,
+          "reason": "Its mana can be spent only on planeswalker spells."
+        }
+      ]
+    },
+    {
+      "id": "fra/200",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 1,
+          "reason": "Gains 1 life whenever another creature or planeswalker you control enters."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Each token entering is another life-gain trigger."
+        }
+      ]
+    },
+    {
+      "id": "fra/201",
+      "cares": [
+        {
+          "fact": "type:angel",
+          "strength": 2,
+          "reason": "Puts a +1/+1 counter on each Angel you control whenever you gain life."
+        }
+      ]
+    },
+    {
+      "id": "fra/202",
+      "cares": [
+        {
+          "fact": "enters-trigger",
+          "strength": 2,
+          "reason": "Taps to return a permanent you control to hand so you can replay it for its enters trigger."
+        }
+      ]
+    },
+    {
+      "id": "fra/203",
+      "cares": [
+        {
+          "fact": "kw:surveil",
+          "strength": 2,
+          "reason": "Makes a Thopter once each turn when you scry or surveil, so it wants a surveil source every turn."
+        }
+      ]
+    },
+    {
+      "id": "fra/206",
+      "cares": [
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 2,
+          "reason": "Its tap ability gives flying only to a creature with a +1/+1 counter on it."
+        },
+        {
+          "fact": "planeswalker",
+          "strength": 1,
+          "reason": "Protects planeswalkers you control from being attacked by more than one creature."
+        },
+        {
+          "fact": "kw:empower-jace",
+          "strength": 1,
+          "reason": "The Jace token from empower is a planeswalker it protects."
+        }
+      ]
+    },
+    {
+      "id": "fra/207",
+      "cares": [
+        {
+          "fact": "planeswalker",
+          "strength": 1,
+          "reason": "Grants every planeswalker you control a [−2] Cadet-and-surveil ability."
+        },
+        {
+          "fact": "kw:empower-jace",
+          "strength": 2,
+          "reason": "More empower means more loyalty on the Jace token to spend on its granted ability."
+        }
+      ]
+    },
+    {
+      "id": "fra/208",
+      "cares": [
+        {
+          "fact": "planeswalker",
+          "strength": 1,
+          "reason": "Puts a loyalty counter on each planeswalker you control whenever you gain life."
+        },
+        {
+          "fact": "kw:empower-jace",
+          "strength": 2,
+          "reason": "Empower creates and grows the Jace token its life-gain trigger adds loyalty to."
+        }
+      ]
+    },
+    {
+      "id": "fra/209",
+      "cares": [
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 3,
+          "reason": "Adds one more +1/+1 counter whenever counters are put on a creature you control."
+        }
+      ]
+    },
+    {
+      "id": "fra/211",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 2,
+          "reason": "Untaps to loot again whenever another nontoken creature you control enters."
+        }
+      ]
+    },
+    {
+      "id": "fra/214",
+      "cares": [
+        {
+          "fact": "kw:prepared",
+          "strength": 1,
+          "reason": "A copy of a prepared creature's spell is a noncreature spell that costs {1} less."
+        }
+      ]
+    },
+    {
+      "id": "fra/216",
+      "cares": [
+        {
+          "fact": "kw:empower-jace",
+          "strength": 2,
+          "reason": "Its 0 ability needs twenty-five loyalty counters among Jaces you control; other empower cards add to that total."
+        }
+      ]
+    },
+    {
+      "id": "fra/218",
+      "cares": [
+        {
+          "fact": "kw:surveil",
+          "strength": 2,
+          "reason": "Grows and draws whenever you scry or surveil, so it wants surveil every turn."
+        }
+      ]
+    },
+    {
+      "id": "fra/219",
+      "cares": [
+        {
+          "fact": "kw:prepared",
+          "strength": 1,
+          "reason": "Casting a copy of a prepared creature's spell is a noncreature spell that triggers prowess twice."
+        }
+      ]
+    },
+    {
+      "id": "fra/222",
+      "cares": [
+        {
+          "fact": "kw:prepared",
+          "strength": 1,
+          "reason": "A copy of a prepared creature's spell is a noncreature spell for its discount and its prowess."
+        }
+      ]
+    },
+    {
+      "id": "fra/223",
+      "cares": [
+        {
+          "fact": "planeswalker",
+          "strength": 1,
+          "reason": "Grants every planeswalker you control a [−3] spell-copy ability."
+        },
+        {
+          "fact": "kw:empower-jace",
+          "strength": 2,
+          "reason": "More empower means more loyalty on the Jace token to spend on its granted ability."
+        },
+        {
+          "fact": "instant",
+          "strength": 2,
+          "reason": "Its granted ability copies the next instant or sorcery you cast."
+        },
+        {
+          "fact": "sorcery",
+          "strength": 2,
+          "reason": "Its granted ability copies the next instant or sorcery you cast."
+        }
+      ]
+    },
+    {
+      "id": "fra/224",
+      "cares": [
+        {
+          "fact": "planeswalker",
+          "strength": 1,
+          "reason": "Draws whenever you activate a loyalty ability that removes two or more counters."
+        },
+        {
+          "fact": "kw:empower-jace",
+          "strength": 2,
+          "reason": "Empower keeps the Jace token stocked with loyalty for its [−3] draw, each activation drawing again."
+        }
+      ]
+    },
+    {
+      "id": "fra/226",
+      "cares": [
+        {
+          "fact": "otag:mill-self",
+          "strength": 2,
+          "reason": "Its shrink mode is -X/-0 where X is the number of cards in your graveyard."
+        }
+      ]
+    },
+    {
+      "id": "fra/227",
+      "cares": [
+        {
+          "fact": "otag:removal",
+          "strength": 2,
+          "reason": "Grows whenever you cast a spell that targets an opponent or a creature they control; removal spells do that."
+        },
+        {
+          "fact": "otag:burn-player",
+          "strength": 1,
+          "reason": "Spells that target an opponent also trigger it."
+        }
+      ]
+    },
+    {
+      "id": "fra/228",
+      "cares": [
+        {
+          "fact": "otag:mill-self",
+          "strength": 1,
+          "reason": "Her recursion costs exiling another creature card from your graveyard; self-mill supplies one."
+        }
+      ]
+    },
+    {
+      "id": "fra/229",
+      "cares": [
+        {
+          "fact": "dies-trigger",
+          "strength": 1,
+          "reason": "His −2 has each player sacrifice a creature; a creature with a dies trigger turns yours into value."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "A token is a cheap creature to sacrifice to his −2 for the 4/4 Beast."
+        }
+      ]
+    },
+    {
+      "id": "fra/232",
+      "cares": [
+        {
+          "fact": "otag:mill-self",
+          "strength": 2,
+          "reason": "His threshold ability works only with seven or more cards in your graveyard."
+        },
+        {
+          "fact": "dies-trigger",
+          "strength": 1,
+          "reason": "His ability sacrifices another creature, so creatures with dies triggers turn the cost into value."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Tokens are cheap fodder for his sacrifice ability."
+        }
+      ]
+    },
+    {
+      "id": "fra/234",
+      "cares": [
+        {
+          "fact": "otag:sacrifice-outlet",
+          "strength": 2,
+          "reason": "Drains whenever another creature or planeswalker you control dies; sacrifice outlets trigger it on demand."
+        },
+        {
+          "fact": "otag:burn-player",
+          "strength": 2,
+          "reason": "Gets a +1/+1 counter whenever an opponent is dealt noncombat damage."
+        }
+      ]
+    },
+    {
+      "id": "fra/235",
+      "cares": [
+        {
+          "fact": "otag:mill-self",
+          "strength": 2,
+          "reason": "Cannot be cast until there are seven or more cards in your graveyard."
+        }
+      ]
+    },
+    {
+      "id": "fra/237",
+      "cares": [
+        {
+          "fact": "otag:discard-outlet",
+          "strength": 2,
+          "reason": "Deals 1 damage to each opponent whenever any player discards, so your own discard outlets ping."
+        },
+        {
+          "fact": "otag:discard",
+          "strength": 2,
+          "reason": "Making opponents discard also triggers his ping."
+        },
+        {
+          "fact": "kw:cycling",
+          "strength": 1,
+          "reason": "Cycling discards a card and triggers him."
+        }
+      ]
+    },
+    {
+      "id": "fra/238",
+      "cares": [
+        {
+          "fact": "planeswalker",
+          "strength": 1,
+          "reason": "Grants every planeswalker you control a [−2] sacrifice-for-a-Beast ability."
+        },
+        {
+          "fact": "kw:empower-jace",
+          "strength": 2,
+          "reason": "More empower means more loyalty on the Jace token to spend on its granted ability."
+        },
+        {
+          "fact": "dies-trigger",
+          "strength": 1,
+          "reason": "The granted ability sacrifices a creature; one with a dies trigger adds value."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Tokens are cheap creatures to sacrifice for the 4/4 Beast."
+        }
+      ]
+    },
+    {
+      "id": "fra/239",
+      "cares": [
+        {
+          "fact": "planeswalker",
+          "strength": 1,
+          "reason": "Puts a loyalty counter on each planeswalker you control whenever a creature you control dies."
+        },
+        {
+          "fact": "kw:empower-jace",
+          "strength": 2,
+          "reason": "Empower creates and grows the Jace token its death trigger adds loyalty to."
+        },
+        {
+          "fact": "otag:sacrifice-outlet",
+          "strength": 2,
+          "reason": "Sacrifice outlets make creatures die on demand for its loyalty trigger."
+        }
+      ]
+    },
+    {
+      "id": "fra/240",
+      "cares": [
+        {
+          "fact": "otag:mill-self",
+          "strength": 2,
+          "reason": "Gets +1/+0 for each creature and planeswalker card in your graveyard."
+        },
+        {
+          "fact": "dies-trigger",
+          "strength": 1,
+          "reason": "Her enters ability sacrifices a creature; one with a dies trigger adds value."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "A token is a cheap creature to sacrifice to her enters ability."
+        }
+      ]
+    },
+    {
+      "id": "fra/243",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 2,
+          "reason": "Gets +X/+0 whenever another creature you control enters, so he wants creatures every turn."
+        }
+      ]
+    },
+    {
+      "id": "fra/245",
+      "cares": [
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 2,
+          "reason": "Gives haste to each other creature you control with a +1/+1 counter on it."
+        },
+        {
+          "fact": "creature",
+          "strength": 1,
+          "reason": "Her tap ability puts a counter on a creature that entered this turn."
+        }
+      ]
+    },
+    {
+      "id": "fra/249",
+      "cares": [
+        {
+          "fact": "artifact",
+          "strength": 1,
+          "reason": "Sacrifices an artifact or land to draw a card."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 1,
+          "reason": "Heartwood and Treasure tokens are artifacts to sacrifice for cards."
+        }
+      ]
+    },
+    {
+      "id": "fra/252",
+      "cares": [
+        {
+          "fact": "kw:prepared",
+          "strength": 1,
+          "reason": "Casting a copy of a prepared creature's spell is a noncreature spell that triggers prowess."
+        }
+      ]
+    },
+    {
+      "id": "fra/253",
+      "cares": [
+        {
+          "fact": "otag:burn",
+          "strength": 2,
+          "reason": "Adds 1 to every noncombat damage a source you control deals to an opponent or their permanents."
+        },
+        {
+          "fact": "kw:prepared",
+          "strength": 1,
+          "reason": "Casting a copy of a prepared creature's spell is a noncreature spell that triggers prowess."
+        }
+      ]
+    },
+    {
+      "id": "fra/254",
+      "cares": [
+        {
+          "fact": "planeswalker",
+          "strength": 1,
+          "reason": "Grants every planeswalker you control a [+1] mana ability."
+        },
+        {
+          "fact": "kw:empower-jace",
+          "strength": 2,
+          "reason": "Empower creates the Jace token that carries its granted ability."
+        }
+      ]
+    },
+    {
+      "id": "fra/255",
+      "cares": [
+        {
+          "fact": "planeswalker",
+          "strength": 1,
+          "reason": "Grants every planeswalker you control a [−4] damage ability."
+        },
+        {
+          "fact": "kw:empower-jace",
+          "strength": 2,
+          "reason": "More empower means more loyalty on the Jace token to spend on its granted ability."
+        }
+      ]
+    },
+    {
+      "id": "fra/256",
+      "cares": [
+        {
+          "fact": "kw:prepared",
+          "strength": 1,
+          "reason": "Casting a copy of a prepared creature's spell is a noncreature spell that pumps your team."
+        }
+      ]
+    },
+    {
+      "id": "fra/257",
+      "cares": [
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 2,
+          "reason": "His activated ability adds a counter only to creatures that already have a +1/+1 counter."
+        }
+      ]
+    },
+    {
+      "id": "fra/258",
+      "cares": [
+        {
+          "fact": "kw:basic-landcycling",
+          "strength": 1,
+          "reason": "Domain power counts basic land types; basic landcycling fetches off-type basics."
+        }
+      ]
+    },
+    {
+      "id": "fra/264",
+      "cares": [
+        {
+          "fact": "enchantment",
+          "strength": 3,
+          "reason": "Her enters ability searches your library for an enchantment card; without one she is a bear."
+        }
+      ]
+    },
+    {
+      "id": "fra/266",
+      "cares": [
+        {
+          "fact": "otag:discard-outlet",
+          "strength": 2,
+          "reason": "Gains 3 life when discarded, which also triggers his own counter ability."
+        }
+      ]
+    },
+    {
+      "id": "fra/267",
+      "cares": [
+        {
+          "fact": "planeswalker",
+          "strength": 1,
+          "reason": "Gains life and an extra land drop whenever you activate a loyalty ability."
+        },
+        {
+          "fact": "kw:empower-jace",
+          "strength": 2,
+          "reason": "Empower keeps the Jace token stocked with loyalty to activate every turn."
+        }
+      ]
+    },
+    {
+      "id": "fra/268",
+      "cares": [
+        {
+          "fact": "planeswalker",
+          "strength": 1,
+          "reason": "Grants every planeswalker you control a [−4] Beast-making ability."
+        },
+        {
+          "fact": "kw:empower-jace",
+          "strength": 2,
+          "reason": "More empower means more loyalty on the Jace token to spend on its granted ability."
+        }
+      ]
+    },
+    {
+      "id": "fra/270",
+      "cares": [
+        {
+          "fact": "otag:sacrifice-outlet",
+          "strength": 2,
+          "reason": "Gains life whenever another creature or planeswalker you control dies."
+        },
+        {
+          "fact": "dies-trigger",
+          "strength": 2,
+          "reason": "His own sacrifice ability turns creatures with dies triggers into counters plus value."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 2,
+          "reason": "Tokens are cheap fodder for his sacrifice ability and his life-gain trigger."
+        }
+      ]
+    },
+    {
+      "id": "fra/271",
+      "cares": [
+        {
+          "fact": "otag:mill-self",
+          "strength": 2,
+          "reason": "X is the greatest mana value among cards in your graveyard; self-mill puts expensive cards there."
+        },
+        {
+          "fact": "kw:basic-landcycling",
+          "strength": 2,
+          "reason": "Basic landcycling discards a 5- or 6-mana card early, setting a high X."
+        }
+      ]
+    },
+    {
+      "id": "fra/273",
+      "cares": [
+        {
+          "fact": "planeswalker",
+          "strength": 2,
+          "reason": "Her attack trigger needs a loyalty ability activated this turn and she grants planeswalkers a [−8]."
+        },
+        {
+          "fact": "kw:empower-jace",
+          "strength": 2,
+          "reason": "Empower creates and grows the Jace token whose loyalty abilities turn her on."
+        }
+      ]
+    },
+    {
+      "id": "fra/274",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 2,
+          "reason": "Puts a +1/+1 counter whenever another creature you control enters."
+        },
+        {
+          "fact": "makes-token",
+          "strength": 2,
+          "reason": "Tokens entering also trigger her and can receive the counter."
+        }
+      ]
+    },
+    {
+      "id": "fra/275",
+      "cares": [
+        {
+          "fact": "kw:prepared",
+          "strength": 1,
+          "reason": "Casting a copy of a prepared creature's spell is a noncreature spell that makes a Thopter."
+        }
+      ]
+    },
+    {
+      "id": "fra/276",
+      "cares": [
+        {
+          "fact": "planeswalker",
+          "strength": 3,
+          "reason": "Discounts planeswalker spells and proliferates once per planeswalker type you control."
+        },
+        {
+          "fact": "otag:gives-pp-counters",
+          "strength": 1,
+          "reason": "Proliferate adds to +1/+1 counters already on your creatures."
+        }
+      ]
+    },
+    {
+      "id": "fra/277",
+      "cares": [
+        {
+          "fact": "kw:prepared",
+          "strength": 1,
+          "reason": "Casting a copy of a prepared creature's spell is a noncreature spell that makes a Sculpture Treasure."
+        }
+      ]
+    },
+    {
+      "id": "fra/280",
+      "cares": [
+        {
+          "fact": "creature",
+          "strength": 1,
+          "reason": "Untaps whenever you cast an artifact or creature spell, so creature spells let it attack again."
+        }
+      ]
+    }
+  ]
+}
