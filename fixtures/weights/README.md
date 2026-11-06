@@ -25,3 +25,25 @@ It was written by `spa deck-pick MSH.Sealed.csv.gz HOB.Sealed.csv.gz --set msh,h
 - Grid: synergy {0, 0.25, 0.5, 0.75, 1.0}, curve {0, 0.25, 0.5}, colour {0, 0.25, 0.5}, cap 1.0: 45 combinations.
 - Sets: `msh` (2,815 builds) and `hob` (4,697 builds), 7,512 builds pooled. `fra` is held out and `trk` was not used.
 - Pick: the highest mean adjusted overlap over the pooled builds, ties to the smaller total weight. The winner's pooled overlap is 0.7583, against 0.7519 with every weight 0 (set grades alone) and 0.7514 with the default weights.
+
+## `deck-default.json`
+
+`spa build` reads the deck builder's weights from `deck-default.json` here unless `--weights <file>` names another file (SPA-044). It is versioned (`"version": 1`) and holds `weights`, `params`, `lands` and `splash`. These are starting values, untuned; SPA-046 tunes them. Each rule is its own class in `spa.agent.build` (`DeckParts.ALL`), reads its weight by key, and a part with weight 0, or missing from `weights`, is off.
+
+| Section | Key | Default | Meaning |
+| --- | --- | --- | --- |
+| `weights` | `grades` | 1.0 | Times the sum of the spells' set grades. |
+| `weights` | `curve` | 1.0 | Minus this per spell short of a mana value target, 1 to 6 or more. |
+| `weights` | `creatures` | 1.0 | Minus this per creature spell below `minCreatures`. |
+| `weights` | `removal` | 1.0 | Per removal spell, up to `cap`. |
+| `weights` | `castability` | 1.0 | Minus this times grade times the chance a spell is not castable on curve. |
+| `weights` | `fixing` | 1.0 | Times `(k - 2)` times the share of the deck's `k` colours a fixing card supplies, summed over fixing cards (0 at two colours). |
+| `weights` | `synergy` | 0.1 | Times the sum of every pair of spell copies' synergy score, over the spells. The tag file is read only when this is above 0. |
+| `params.curve` | `target1` to `target6` | 1, 5, 4, 3, 2, 1 | The spells wanted at each mana value; `target6` is 6 or more. |
+| `params.creatures` | `minCreatures` | 14 | The creature spells wanted. |
+| `params.removal` | `cap` | 6 | The most removal spells that count. |
+| `lands` | `lowCurve`, `highCurve` | 2.6, 3.4 | The mean mana value cutoffs. |
+| `lands` | `low`, `normal`, `high` | 16, 17, 18 | Lands when the mean is at or below `lowCurve`; otherwise; and when the deck has three or more colours and the mean is at or above `highCurve` (G-005 Decided 3). |
+| `splash` | `maxCards`, `maxPips` | 3, 1 | At most this many splash cards, each with at most this many pips of splash colours. |
+
+Adding a part adds its key to `weights` (and its numbers to `params` if it reads any). An unknown key anywhere, a missing number, a negative number, a count out of order or a wrong `version` makes the command print one line naming it and exit 1.
