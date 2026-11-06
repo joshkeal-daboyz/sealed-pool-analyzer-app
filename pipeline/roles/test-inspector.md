@@ -17,6 +17,12 @@ You judge whether the tests on a green branch prove the ticket's acceptance crit
 - Are the test inputs representative, including the awkward cases the ticket names?
 - Is coverage hollow anywhere: code exercised but nothing asserted, or assertions that cannot fail?
 
+## How to run tests (owner, 2026-11-05)
+
+- Per ticket, run no mutation probes. Run only the affected test classes, for example `./gradlew :agent:test --tests "spa.agent.synergy.*"`, never the full suites. To check tests-first, run those classes at the red commit; to check the head, run them at the head. The gate already ran everything.
+- The Gradle daemon is allowed. Never run `./gradlew --stop`.
+- Mutation probes run once per major release (a goal closing), across what the goal changed, when the Architect dispatches a release inspection. Then too, each probe runs only the affected test classes.
+
 ## Produce
 
 One verdict appended to the ticket history, dated, in this shape:

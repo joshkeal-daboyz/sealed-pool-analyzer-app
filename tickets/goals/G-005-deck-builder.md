@@ -219,3 +219,4 @@ The owner answered on 2026-11-05: "Approve all except 2 and 5. Agents are going 
   - The planned Fable cares pass is replaced by this.
   - Owner: "Fable needs to fill in the gaps where the Scryfall tags haven't been applied." That is SPA-055, after SPA-054: a Fable pass, trk only for now, that adds `cares:` tags only where Scryfall gives none for that idea.
   - The Moopsy check's removal waits for SPA-054, which frees `SynergyV1UnchangedTest` from the live check file.
+- 2026-11-05 Owner: mutation probes only at a major release (goal close); per ticket, the Test Inspector runs only the affected test classes. `pipeline/roles/test-inspector.md` updated. G-005's close includes a release inspection with probes.
