@@ -45,9 +45,9 @@ data class NumberTable(val entries: List<NumberEntry>) {
         }
     }
 
-    private companion object {
-        const val TOLERANCE = 0.00005
-        const val DECIMALS = 4
+    internal companion object {
+        private const val TOLERANCE = 0.00005
+        private const val DECIMALS = 4
 
         /** [number] with at most 4 decimals, no trailing zero and no point when whole. */
         fun format(number: Double): String =

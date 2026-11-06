@@ -40,7 +40,7 @@ object AgentRequests {
         )
     }
 
-    private fun resource(name: String): String {
+    internal fun resource(name: String): String {
         val stream =
             checkNotNull(AgentRequests::class.java.getResourceAsStream(RESOURCE_DIR + name)) {
                 "missing resource $name"
