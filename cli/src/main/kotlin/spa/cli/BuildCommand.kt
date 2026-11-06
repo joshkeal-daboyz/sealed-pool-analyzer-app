@@ -3,13 +3,15 @@ package spa.cli
 import java.io.PrintStream
 import java.nio.file.Path
 import spa.agent.build.BuildConfig
+import spa.agent.build.Deck
+import spa.agent.build.RankedDeck
 import spa.core.cards.Pool
 import spa.core.math.LandMath
 
 /**
  * `spa build <pool-file> --set <code> [--colours <main[/splash]>] [--top <n>] [--weights <file>]
- * [--tags <file>] [--otags <file>] [--data <dir>]`: the best 40 card deck the pool makes, by search
- * ([spa.agent.build.DeckBuilder]); no network or model call (SPA-044, SPA-045).
+ * [--tags <file>] [--otags <file>] [--export <dir>] [--data <dir>]`: the best 40 card deck the pool
+ * makes, by search ([spa.agent.build.DeckBuilder]); no network or model call (SPA-044, SPA-045).
  *
  * With `--colours`, the best deck in those colours: the main colours then, after a `/`, one or two
  * splash colours, such as `WU`, `WU/R` or `WUB`; `--top` is ignored. Without it, every colour
@@ -19,6 +21,10 @@ import spa.core.math.LandMath
  * the synergy table, read only when the synergy weight is above 0, from `--tags` and `--otags` as
  * for `synergy-table`. A pool with too few candidates, a bad `--colours` or `--top` and a bad
  * weights file are one line and exit 1. Pool lines that do not resolve are listed on stderr.
+ *
+ * With `--export <dir>` each deck printed is also written there as a ManaBox importable `.csv` and
+ * a `.txt` ([DeckExport], SPA-072); stdout is unchanged and each file written is one line on
+ * stderr.
  */
 object BuildCommand {
     private const val DEFAULT_TOP = 3
@@ -28,7 +34,16 @@ object BuildCommand {
             Args.parse(
                 args,
                 valueOptions =
-                    setOf("set", "data", "colours", "weights", "tags", "top", Otags.OPTION),
+                    setOf(
+                        "set",
+                        "data",
+                        "colours",
+                        "weights",
+                        "tags",
+                        "top",
+                        "export",
+                        Otags.OPTION,
+                    ),
             )
         val file = Commands.onePositional(parsed, "pool file")
         val set = Commands.requiredSet(parsed)
@@ -48,8 +63,9 @@ object BuildCommand {
                 parsed.value(Otags.OPTION),
             )
         val pool = PoolGradesCommand.pool(poolText, file, session.index, stderr)
-        if (config == null) ranked(session, pool, top, stdout)
-        else single(session, pool, config, stdout)
+        val export = parsed.value("export")?.let { Export(Path.of(it), data, set, stderr) }
+        if (config == null) ranked(session, pool, top, stdout, export)
+        else single(session, pool, config, stdout, export)
         stdout.flush()
         stderr.flush()
         return ExitCode.OK
@@ -65,12 +81,38 @@ object BuildCommand {
         return top
     }
 
-    private fun ranked(session: BuildSession, pool: Pool, top: Int, stdout: PrintStream) {
-        val lines = rankedLines(session, pool, top)
-        if (lines.isEmpty()) {
+    /** Where `--export` writes, and the set name its `.csv` rows carry (from the set's brief). */
+    private class Export(
+        val dir: Path,
+        data: DataDir,
+        set: String,
+        private val stderr: PrintStream,
+    ) {
+        private val setName = AnalyzeCommand.loadBrief(data.briefFile(set)).setName
+
+        fun write(prefix: String, config: BuildConfig, session: BuildSession, deck: Deck) =
+            DeckExport.write(
+                dir,
+                DeckExport.files(DeckExport.stem(prefix, config), session.index, setName, deck),
+                stderr,
+            )
+    }
+
+    private fun ranked(
+        session: BuildSession,
+        pool: Pool,
+        top: Int,
+        stdout: PrintStream,
+        export: Export?,
+    ) {
+        val decks = session.rank(pool).take(top)
+        if (decks.isEmpty()) {
             throw CliFailure("no configuration can be built from this pool", ExitCode.ERROR)
         }
-        lines.forEach(stdout::println)
+        decks.forEachIndexed { i, d ->
+            export?.write("rank-${i + 1}", d.config, session, d.scored.deck)
+        }
+        rankedLines(decks).forEach(stdout::println)
     }
 
     /**
@@ -78,7 +120,10 @@ object BuildCommand {
      * decks; empty when no configuration can be built.
      */
     internal fun rankedLines(session: BuildSession, pool: Pool, top: Int): List<String> =
-        session.rank(pool).take(top).flatMapIndexed { i, deck ->
+        rankedLines(session.rank(pool).take(top))
+
+    private fun rankedLines(decks: List<RankedDeck>): List<String> =
+        decks.flatMapIndexed { i, deck ->
             buildList {
                 if (i > 0) add("")
                 add(BuildLines.rank(i + 1, deck))
@@ -91,6 +136,7 @@ object BuildCommand {
         pool: Pool,
         config: BuildConfig,
         stdout: PrintStream,
+        export: Export?,
     ) {
         val setup = session.setup(pool, config)
         val built = session.builder.build(setup)
@@ -106,6 +152,7 @@ object BuildCommand {
                 ExitCode.ERROR,
             )
         }
+        export?.write("deck", config, session, built.deck)
         BuildLines.lines(setup, built).forEach(stdout::println)
     }
 }

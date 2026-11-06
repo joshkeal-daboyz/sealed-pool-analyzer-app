@@ -80,9 +80,9 @@ object Main {
         |      kind. With a pool file, only the pool's fixing cards with their quantities, then
         |      the copies that can supply each colour.
         |  build <pool-file> --set <code> --colours <main[/splash]> [--weights <file>] [--tags <file>]
-        |          [--otags <file>] [--data <dir>]
+        |          [--otags <file>] [--export <dir>] [--data <dir>]
         |  build <pool-file> --set <code> [--top <n>] [--weights <file>] [--tags <file>]
-        |          [--otags <file>] [--data <dir>]
+        |          [--otags <file>] [--export <dir>] [--data <dir>]
         |      With --colours, build the best 40 card deck the pool makes in those colours; without
         |      it, try every colour configuration the pool supports, rank the decks by score and
         |      print the top <n> (default 3), each headed with its rank and colours; --top is
@@ -95,7 +95,11 @@ object Main {
         |      lands, the sideboard, and the off-colour cards by colour. Set grades come as for
         |      pool-grades; the synergy table, read only when its weight is above 0, from --tags
         |      and --otags as for synergy-table. Too few candidates for 22 spells is one line and
-        |      exit 1.
+        |      exit 1. With --export <dir>, also write each deck printed into <dir> (created if
+        |      missing) as rank-<n>-<colours>.csv and .txt (deck-<colours> with --colours; WU/R is
+        |      WU+R): the .csv in ManaBox's export format, to import into ManaBox, and the .txt
+        |      as '<quantity> <name> (<SET>) <number>' lines if that fails. stdout is unchanged;
+        |      each file written is one 'Wrote <path>' line on stderr.
         |  deck-backtest <sealed-game-data.csv.gz> --set <code> [--limit <n>] [--threads <t>]
         |          [--weights <file>] [--baseline <file>] [--tags <file>] [--otags <file>]
         |          [--data <dir>]
