@@ -74,7 +74,7 @@ object GradesCommand {
     }
 
     /** The set's win-rate and model grade files under [data] that exist. */
-    private fun gradeFiles(data: DataDir, set: String): List<GradeFile> {
+    internal fun gradeFiles(data: DataDir, set: String): List<GradeFile> {
         val model = data.root.resolve("grades").resolve("$set.json")
         val winRates = data.root.resolve("winrates").resolve("$set.json")
         val files = listOf(winRates, model).filter(Files::isRegularFile)

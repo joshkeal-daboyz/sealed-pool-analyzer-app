@@ -5,6 +5,7 @@ import java.nio.file.Path
 import spa.agent.fixing.CardFixing
 import spa.agent.fixing.FixingClassifier
 import spa.core.cards.CardIndex
+import spa.core.cards.Pool
 import spa.core.intake.PoolParser
 import spa.core.text.Color
 
@@ -73,9 +74,14 @@ object FixingCommand {
                 "spa: line ${it.lineNumber} unresolved (${it.reason.code}): ${it.rawLine}"
             )
         }
-        val copies = result.pool.cardCounts()
+        return poolLines(classifier, result.pool)
+    }
+
+    /** The pool form's lines for [pool]: each fixing card with its quantity, then the totals. */
+    internal fun poolLines(classifier: FixingClassifier, pool: Pool): List<String> {
+        val copies = pool.cardCounts()
         val fixing =
-            result.pool.entries
+            pool.entries
                 .map { it.printing.card }
                 .distinctBy { it.oracleId }
                 .mapNotNull { classifier.classify(it) }

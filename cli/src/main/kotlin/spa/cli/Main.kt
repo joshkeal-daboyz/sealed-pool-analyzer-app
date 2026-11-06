@@ -13,7 +13,7 @@ import spa.core.cards.ScryfallSetFetcher
  * `grade-packet`, `grade-import`, `grades`, `themes`, `pool-grades`, `deck-pick`, `fixing`,
  * `build`, `deck-backtest`, `score-backtest`, `deck-tune`, `tags-packet`, `tags-import`,
  * `tags-review-packet`, `tags-review-import`, `synergy-table`, `synergy`, `synergy-check`, `facts`,
- * `fetch-tags`, `cares-packet`, and `cares-import`.
+ * `fetch-tags`, `cares-packet`, `cares-import`, and `packet`.
  */
 object Main {
     /** The text `spa --help` prints. */
@@ -204,6 +204,14 @@ object Main {
         |      in <dir> and write <data>/otags/<code>.fable.json, which the synergy commands join
         |      with the cares table's cares tags. Prints the count of additions and each
         |      suggestion for the cares table (never applied). Writes nothing on any problem.
+        |  packet <pool-file> --set <code> [--data <dir>] [--format manabox|text|collector]
+        |          [--brief <file>] [--weights <file>] [--tags <file>] [--otags <file>|none]
+        |          [--top <n>] [--out <file>]
+        |      Write one paste-ready text file for a Claude chat, with no model call: a request, the
+        |      pool's cards with grades, its numbers beside a typical pool's, its fixing, its
+        |      strongest synergies and the top <n> decks (default 3) the deck builder finds with
+        |      --weights, else <data>/weights/deck-tuned.json. Goes to --out, and stdout then
+        |      says 'Packet written to <file>', else to stdout.
         |
         |<data> defaults to ${DataDir.DEFAULT}. Exit codes: 0 ok, 1 error, 2 bad command line.
         |Run 'spa --help' for this text.
@@ -296,6 +304,7 @@ object Main {
                 },
             "cares-packet" to { a, out, _ -> CaresPacketCommand.run(a, out) },
             "cares-import" to { a, out, err -> CaresImportCommand().run(a, out, err) },
+            "packet" to { a, out, err -> PacketCommand.run(a, out, err) },
         )
 
     private fun usageError(message: String, stderr: PrintStream): Int {

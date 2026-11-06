@@ -93,6 +93,20 @@ private constructor(
             weightsFile: Path? = null,
             tagsFile: Path? = null,
             otags: String? = null,
+        ): BuildSession =
+            create(data, set, weightsFile) { index ->
+                lazy { synergy(data, set, index, tagsFile, otags) }
+            }
+
+        /** [open] for a set with no tag file: the synergy part scores 0 (SPA-071). */
+        fun openWithoutTags(data: DataDir, set: String, weightsFile: Path? = null): BuildSession =
+            create(data, set, weightsFile) { lazyOf(PairScorer.NONE) }
+
+        private fun create(
+            data: DataDir,
+            set: String,
+            weightsFile: Path?,
+            pairs: (CardIndex) -> Lazy<PairScorer>,
         ): BuildSession {
             val path = weightsFile ?: defaultWeights(data)
             val text = Commands.readFile(path, "weights file")
@@ -100,8 +114,7 @@ private constructor(
             val index = Commands.loadIndex(data, set)
             val lookup =
                 PoolGradesCommand.lookup(PoolGradesCommand.defaultGradesFile(data, set), set)
-            val pairs = lazy { synergy(data, set, index, tagsFile, otags) }
-            return BuildSession(set, index, weights, lookup, pairs)
+            return BuildSession(set, index, weights, lookup, pairs(index))
         }
 
         private fun synergy(

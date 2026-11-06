@@ -55,7 +55,8 @@ object BuildCommand {
         return ExitCode.OK
     }
 
-    private fun top(parsed: Args): Int {
+    /** `--top`: a whole number, 1 or more, three when not given. */
+    internal fun top(parsed: Args): Int {
         val text = parsed.value("top") ?: return DEFAULT_TOP
         val top = text.toIntOrNull()
         if (top == null || top < 1) {
@@ -65,16 +66,25 @@ object BuildCommand {
     }
 
     private fun ranked(session: BuildSession, pool: Pool, top: Int, stdout: PrintStream) {
-        val decks = session.rank(pool)
-        if (decks.isEmpty()) {
+        val lines = rankedLines(session, pool, top)
+        if (lines.isEmpty()) {
             throw CliFailure("no configuration can be built from this pool", ExitCode.ERROR)
         }
-        decks.take(top).forEachIndexed { i, deck ->
-            if (i > 0) stdout.println()
-            stdout.println(BuildLines.rank(i + 1, deck))
-            BuildLines.lines(deck.setup, deck.scored).forEach(stdout::println)
-        }
+        lines.forEach(stdout::println)
     }
+
+    /**
+     * The lines `spa build` prints for the top [top] ranked decks of [pool], a blank line between
+     * decks; empty when no configuration can be built.
+     */
+    internal fun rankedLines(session: BuildSession, pool: Pool, top: Int): List<String> =
+        session.rank(pool).take(top).flatMapIndexed { i, deck ->
+            buildList {
+                if (i > 0) add("")
+                add(BuildLines.rank(i + 1, deck))
+                addAll(BuildLines.lines(deck.setup, deck.scored))
+            }
+        }
 
     private fun single(
         session: BuildSession,
