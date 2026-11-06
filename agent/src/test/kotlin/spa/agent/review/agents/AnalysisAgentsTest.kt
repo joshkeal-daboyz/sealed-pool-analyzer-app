@@ -37,6 +37,15 @@ class AnalysisAgentsTest {
                     "a splash? Name the pool's strongest cards, say which are build-arounds, " +
                     "and say what it costs to play each one: its colors, and whether a splash " +
                     "can support it.",
+            "archetypes" to
+                "Which of the set's designed archetypes does this pool support? Say, for each " +
+                    "of the ten color pairs, how well the pool fits the pair's designed " +
+                    "archetype, which signpost uncommons and key commons are present, and what " +
+                    "is missing.",
+            "synergy" to
+                "Which mechanics and tribes have both enablers and payoffs here? Say which of " +
+                    "the set's synergy axes the pool supports, with how many enablers and " +
+                    "payoffs, and which cards work best together.",
         )
 
     private fun prompt(id: String): String =
@@ -72,7 +81,15 @@ class AnalysisAgentsTest {
     @Test
     fun `the agents are listed in running order`() {
         assertEquals(
-            listOf("colour-depth", "curve", "mana", "interaction", "bombs"),
+            listOf(
+                "colour-depth",
+                "curve",
+                "mana",
+                "interaction",
+                "bombs",
+                "archetypes",
+                "synergy",
+            ),
             AnalysisAgents.ALL.map { it.id },
         )
     }
