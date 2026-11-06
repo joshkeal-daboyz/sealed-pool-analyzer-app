@@ -69,7 +69,10 @@ class ScoreStatisticsTest {
     fun `tied scores stay in file order when the quarters are cut`() {
         val tied = builds(listOf(1.0, 1.0, 1.0, 1.0), listOf(0.5, 0.4, 0.6, 0.7))
 
-        assertEquals("top-quarter 0.700 bottom-quarter 0.500 gap 0.200", QuarterStatistic.cell(tied))
+        assertEquals(
+            "top-quarter 0.700 bottom-quarter 0.500 gap 0.200",
+            QuarterStatistic.cell(tied),
+        )
     }
 
     @Test
@@ -85,7 +88,7 @@ class ScoreStatisticsTest {
     fun `the list holds both statistics in report order`() {
         assertEquals(listOf(SpearmanStatistic, QuarterStatistic), ScoreStatistics.ALL)
         assertEquals(
-            "spearman 1.000 se 0.500 top-quarter 0.700 bottom-quarter 0.300 gap 0.400",
+            "builder: spearman 1.000 se 0.500 top-quarter 0.700 bottom-quarter 0.300 gap 0.400",
             ScoreReport.line("builder", builds(listOf(1.0, 2.0, 3.0, 4.0, 5.0), rising)),
         )
     }

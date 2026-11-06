@@ -9,7 +9,7 @@ import spa.core.text.Color
 /**
  * One build of a strong player, a `(draft_id, build_index)` of a 17Lands Sealed file: its [main]
  * and [splash] colours and every card with a deck or sideboard count above 0, in the file column
- * order.
+ * order. Its [bucket] is the player win rate bucket of its first row (SPA-061).
  */
 data class BacktestBuild(
     val draftId: String,
@@ -17,6 +17,7 @@ data class BacktestBuild(
     val main: Set<Color>,
     val splash: Set<Color>,
     val cards: List<BuildCard>,
+    val bucket: Double = 0.0,
 ) {
     /** The build deck shape; null for one main colour or five. */
     val shape: DeckShape?

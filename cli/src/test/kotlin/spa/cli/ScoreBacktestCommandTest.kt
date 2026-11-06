@@ -151,7 +151,16 @@ class ScoreBacktestCommandTest {
 
         assertOneLine(score(temp.resolve("missing.csv").toString()), "missing.csv")
         assertOneLine(
-            runCli("score-backtest", mixed, "--set", "nope", "--data", data.toString()),
+            runCli(
+                "score-backtest",
+                mixed,
+                "--set",
+                "nope",
+                "--data",
+                data.toString(),
+                "--weights",
+                weights,
+            ),
             "nope",
         )
         assertOneLine(score(mixed, "--limit", "x"), "--limit")

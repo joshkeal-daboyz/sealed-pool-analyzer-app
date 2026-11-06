@@ -61,11 +61,10 @@ class RegisteredDeckTest {
                 "Gravedigger" to 4,
                 "Murderous Rider" to 2,
             )
-        val spells: List<DeckCard> =
-            copies.flatMap { (name, n) ->
-                val card = setup.spells.first { it.card.name.startsWith(name) }.card
-                List(n) { card }
-            }
+        val spells: List<DeckCard> = copies.flatMap { (name, n) ->
+            val card = setup.spells.first { it.card.name.startsWith(name) }.card
+            List(n) { card }
+        }
 
         val expected = builder.builder.evaluate(setup, spells, 17).total
         val outcome = scored(build, builder) as ScoreOutcome.Scored

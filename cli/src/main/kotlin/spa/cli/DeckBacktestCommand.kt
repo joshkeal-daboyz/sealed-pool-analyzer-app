@@ -16,6 +16,7 @@ import spa.agent.deckbacktest.BacktestSelection
 import spa.agent.deckbacktest.BuildOutcome
 import spa.agent.deckbacktest.Measure
 import spa.agent.deckbacktest.Measures
+import spa.agent.deckpick.SealedBuilds
 import spa.core.cards.Printing
 
 /**
@@ -97,15 +98,21 @@ object DeckBacktestCommand {
     }
 
     /** The builds of [file], each name resolved by full or front-face name. */
-    internal fun read(file: Path, session: BuildSession): BacktestSelection {
+    internal fun read(
+        file: Path,
+        session: BuildSession,
+        minBucket: Double = SealedBuilds.STRONG_BUCKET,
+    ): BacktestSelection {
         if (!Files.isRegularFile(file)) {
             throw CliFailure("cannot read Sealed file $file: no such file", ExitCode.ERROR)
         }
         val printings = printings(session)
         return Commands.guard("cannot read Sealed file $file") {
-            BacktestBuilds.read(file) { name ->
-                session.index.byName(name)?.let { printings[it.oracleId] }
-            }
+            BacktestBuilds.read(
+                file,
+                { name -> session.index.byName(name)?.let { printings[it.oracleId] } },
+                minBucket,
+            )
         }
     }
 
