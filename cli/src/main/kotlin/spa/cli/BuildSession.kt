@@ -4,10 +4,13 @@ import java.nio.file.Path
 import spa.agent.build.BuildConfig
 import spa.agent.build.BuildSetup
 import spa.agent.build.Candidate
+import spa.agent.build.ConfigRules
 import spa.agent.build.DeckBuilder
 import spa.agent.build.DeckCard
+import spa.agent.build.DeckRanking
 import spa.agent.build.DeckWeights
 import spa.agent.build.PairScorer
+import spa.agent.build.RankedDeck
 import spa.agent.build.SynergyDeckPart
 import spa.agent.fixing.FixingClassifier
 import spa.agent.grade.GradeLookup
@@ -32,28 +35,39 @@ private constructor(
 
     private val classifier = FixingClassifier()
 
-    /** [pool]'s nonbasic cards as candidates for [config], with their grades and fixing. */
-    fun setup(pool: Pool, config: BuildConfig): BuildSetup {
+    /** [pool]'s nonbasic cards as candidates, with their grades and fixing. */
+    fun candidates(pool: Pool): List<Candidate> {
         val counts = pool.cardCounts()
-        val candidates =
-            pool.entries
-                .filter { !it.printing.card.isBasicLand }
-                .distinctBy { it.printing.card.oracleId }
-                .map {
-                    val card = it.printing.card
-                    val grade = lookup.grade(it.printing, set)?.score ?: 0.0
-                    val deckCard =
-                        DeckCard(
-                            GradingPool.id(it.printing),
-                            card,
-                            grade,
-                            classifier.classify(card),
-                        )
-                    Candidate(deckCard, counts.getValue(card.oracleId))
-                }
+        return pool.entries
+            .filter { !it.printing.card.isBasicLand }
+            .distinctBy { it.printing.card.oracleId }
+            .map {
+                val card = it.printing.card
+                val grade = lookup.grade(it.printing, set)?.score ?: 0.0
+                val deckCard =
+                    DeckCard(GradingPool.id(it.printing), card, grade, classifier.classify(card))
+                Candidate(deckCard, counts.getValue(card.oracleId))
+            }
+    }
+
+    /** The nonbasic cards [candidates] as a [BuildSetup] for [config]. */
+    fun setup(candidates: List<Candidate>, config: BuildConfig): BuildSetup {
         val scorer =
             if (weights.weight(SynergyDeckPart.KEY) == 0.0) PairScorer.NONE else pairs.value
         return BuildSetup(config, weights.splash, candidates, scorer)
+    }
+
+    /** [pool]'s nonbasic cards as a [BuildSetup] for [config]. */
+    fun setup(pool: Pool, config: BuildConfig): BuildSetup = setup(candidates(pool), config)
+
+    /** The configurations the weights' rules give for [candidates]. */
+    fun configs(candidates: List<Candidate>): List<BuildConfig> =
+        ConfigRules.configs(candidates, weights.configs)
+
+    /** The ranked decks of every configuration [pool] supports. */
+    fun rank(pool: Pool): List<RankedDeck> {
+        val candidates = candidates(pool)
+        return DeckRanking(builder).rank(configs(candidates)) { setup(candidates, it) }
     }
 
     companion object {

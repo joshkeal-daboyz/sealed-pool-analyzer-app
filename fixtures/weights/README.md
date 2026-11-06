@@ -28,7 +28,7 @@ It was written by `spa deck-pick MSH.Sealed.csv.gz HOB.Sealed.csv.gz --set msh,h
 
 ## `deck-default.json`
 
-`spa build` reads the deck builder's weights from `deck-default.json` here unless `--weights <file>` names another file (SPA-044). It is versioned (`"version": 1`) and holds `weights`, `params`, `lands` and `splash`. These are starting values, untuned; SPA-046 tunes them. Each rule is its own class in `spa.agent.build` (`DeckParts.ALL`), reads its weight by key, and a part with weight 0, or missing from `weights`, is off.
+`spa build` reads the deck builder's weights from `deck-default.json` here unless `--weights <file>` names another file (SPA-044). It is versioned (`"version": 1`) and holds `weights`, `params`, `lands`, `splash` and `configs`. These are starting values, untuned; SPA-046 tunes them. Each rule is its own class in `spa.agent.build` (`DeckParts.ALL`), reads its weight by key, and a part with weight 0, or missing from `weights`, is off.
 
 | Section | Key | Default | Meaning |
 | --- | --- | --- | --- |
@@ -45,5 +45,11 @@ It was written by `spa deck-pick MSH.Sealed.csv.gz HOB.Sealed.csv.gz --set msh,h
 | `lands` | `lowCurve`, `highCurve` | 2.6, 3.4 | The mean mana value cutoffs. |
 | `lands` | `low`, `normal`, `high` | 16, 17, 18 | Lands when the mean is at or below `lowCurve`; otherwise; and when the deck has three or more colours and the mean is at or above `highCurve` (G-005 Decided 3). |
 | `splash` | `maxCards`, `maxPips` | 3, 1 | At most this many splash cards, each with at most this many pips of splash colours. |
+| `configs.pairs` | `enabled` | true | The 10 two-colour pairs, no splash. |
+| `configs.pairSplash` | `enabled`, `maxSplashColours` | true, 2 | Each pair with 1 splash colour and, when `maxSplashColours` is 2, with 2 (at most 2). |
+| `configs.triples` | `enabled`, `tripleSplash` | true, true | The 10 three-colour sets, and with `tripleSplash` each also with 1 splash colour. |
+| `configs.fourColour` | `enabled`, `minFixing` | true, 4 | A four-colour set, only when the pool holds at least `minFixing` copies of cards (lands or spells) that supply two or more of its colours. |
+
+The `configs` section is optional: without it no configuration is tried, so `spa build` needs `--colours`. A rule missing from it is off; `enabled` defaults to true; every other key a rule names must be given. Adding a configuration rule adds its key here. SPA-046 tunes the starting values.
 
 Adding a part adds its key to `weights` (and its numbers to `params` if it reads any). An unknown key anywhere, a missing number, a negative number, a count out of order or a wrong `version` makes the command print one line naming it and exit 1.

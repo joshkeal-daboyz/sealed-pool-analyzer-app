@@ -40,7 +40,10 @@ class BuildConfigsLegalityTest {
                     .forEach { (id, copies) ->
                         val inPool = counts[id]
                         assertNotNull(inPool, "$name: $id is not in the pool")
-                        assertTrue(copies <= inPool, "$name: $copies copies of $id, pool has $inPool")
+                        assertTrue(
+                            copies <= inPool,
+                            "$name: $copies copies of $id, pool has $inPool",
+                        )
                     }
                 assertEquals(deck.landCount, deck.nonbasics.size + deck.basics.values.sum(), name)
                 val ruled = rule.count(deck.meanManaValue, config.colours.size)

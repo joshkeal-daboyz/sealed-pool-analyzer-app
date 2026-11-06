@@ -64,6 +64,7 @@ data class DeckWeights(
     val partParams: Map<String, Map<String, Double>>,
     val lands: LandRule,
     val splash: SplashRule,
+    val configs: ConfigWeights = ConfigWeights(),
 ) {
     /** The weight of the part with [key]: 0 when it has none. */
     fun weight(key: String): Double = weights[key] ?: 0.0
@@ -75,16 +76,22 @@ data class DeckWeights(
         /** The only file version there is. */
         const val VERSION = 1
 
-        private val TOP = listOf("version", "weights", "params", "lands", "splash")
+        private val TOP = listOf("version", "weights", "params", "lands", "splash", "configs")
         private val LAND_KEYS = listOf("lowCurve", "highCurve", "low", "normal", "high")
         private val SPLASH_KEYS = listOf("maxCards", "maxPips")
 
         /**
          * The weights in [text]: `version` (1), `weights` (a number, 0 or more, per key of
          * [parts]), `params` (each part's numbers, by [DeckPart.parameters]), `lands` and `splash`.
-         * Anything else, an unknown key among them, is an [IllegalArgumentException] naming it.
+         * `configs` (SPA-045, optional): the settings of each of [rules], see
+         * [ConfigWeights.parse]. Anything else, an unknown key among them, is an
+         * [IllegalArgumentException] naming it.
          */
-        fun parse(text: String, parts: List<DeckPart> = DeckParts.ALL): DeckWeights {
+        fun parse(
+            text: String,
+            parts: List<DeckPart> = DeckParts.ALL,
+            rules: List<ConfigRule> = ConfigRules.ALL,
+        ): DeckWeights {
             val root = Fields.obj(Fields.parseJson(text), "the file")
             Fields.unknown(root, TOP, "the file")
             val version = (root["version"] as? JsonPrimitive)?.doubleOrNull
@@ -96,6 +103,8 @@ data class DeckWeights(
                 params,
                 lands(Fields.section(root, "lands")),
                 splash(Fields.section(root, "splash")),
+                root["configs"]?.let { ConfigWeights.parse(Fields.obj(it, "'configs'"), rules) }
+                    ?: ConfigWeights(),
             )
         }
 
@@ -164,7 +173,7 @@ data class DeckWeights(
 }
 
 /** The JSON reading steps the weights file shares, each failing with a one line message. */
-private object Fields {
+internal object Fields {
     fun parseJson(text: String): JsonElement =
         try {
             Json.parseToJsonElement(text)

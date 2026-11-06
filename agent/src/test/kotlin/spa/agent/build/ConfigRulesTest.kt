@@ -41,8 +41,7 @@ class ConfigRulesTest {
         pool: List<Candidate>,
         section: String = ConfigTestWeights.DEFAULT,
         rules: List<ConfigRule> = ConfigRules.ALL,
-    ): List<BuildConfig> =
-        ConfigRules.configs(pool, ConfigTestWeights.parse(section, rules), rules)
+    ): List<BuildConfig> = ConfigRules.configs(pool, ConfigTestWeights.parse(section, rules), rules)
 
     private fun fourColour(all: List<BuildConfig>) = all.filter { it.main.size == 4 }
 
@@ -130,7 +129,7 @@ class ConfigRulesTest {
 
         assertTrue("pairz" in failure(default.replace("\"pairs\"", "\"pairz\"")))
         assertTrue("minFixingz" in failure(default.replace("\"minFixing\"", "\"minFixingz\"")))
-        assertTrue("maxSplashColours" in failure(default.replace("\"maxSplashColours\": 2", "")))
+        assertTrue("maxSplashColours" in failure(default.replace(", \"maxSplashColours\": 2", "")))
     }
 
     @Test

@@ -118,7 +118,8 @@ class BuildRankCommandTest {
         starts.forEachIndexed { n, start ->
             val end = starts.getOrElse(n + 1) { lines.size }
             val deck = lines.subList(start, end)
-            val head = requireNotNull(heading.matchEntire(deck.first())) { "$name: ${deck.first()}" }
+            val head =
+                requireNotNull(heading.matchEntire(deck.first())) { "$name: ${deck.first()}" }
             val parts =
                 deck
                     .drop(1)
