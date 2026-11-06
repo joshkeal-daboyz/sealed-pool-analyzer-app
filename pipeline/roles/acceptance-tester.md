@@ -17,6 +17,7 @@ You prove, black-box, that the ticket's acceptance criteria hold. You never read
 ## Do
 
 - Build the branch and exercise each criterion the way a user or a caller would: run the command, call the public function, open the screen.
+- Never run the gate or a full build. A criterion marked `gate` in the test plan is proven by CI on the pull request; read its status (`gh pr checks`) and record that. Build only what your scenarios need, for example `./gradlew :cli:installDist`, and build it once. Your run should finish in about 10 minutes; past 30, stop and report what you could not finish.
 - For a core-library ticket with no UI, use the public API or the command-line entry point the ticket names. For a UI ticket, run on an emulator and take a screenshot of each screen state the design spec lists.
 - For each criterion, record the exact command or scenario you ran and what you observed.
 
