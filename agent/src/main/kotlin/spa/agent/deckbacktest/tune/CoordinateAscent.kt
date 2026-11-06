@@ -62,43 +62,61 @@ class CoordinateAscent(
 
     /** Runs the search. */
     fun run(): TuneResult {
-        val choice = linkedMapOf<String, Double>()
-        val startText = WeightsEdit.apply(start, choice)
-        val startObjective = evaluator.evaluate(startText)
-        onEvaluation(TuneEvaluation(0, null, null, startObjective))
-        onBest(startText)
-        var objective = startObjective
-        var best = startText
-        var evaluations = 1
+        val climb = Climb()
         var round = 0
         var changed = true
         while (changed && round < rounds) {
             round++
-            changed = false
-            for (knob in grid.knobs) {
-                val current = choice[knob.path] ?: WeightsEdit.read(start, knob.path)
-                var bestValue: Double? = null
-                var bestObjective = objective
-                for (value in knob.values.filter { it != current }) {
-                    val trial = WeightsEdit.apply(start, choice + (knob.path to value))
-                    val result = evaluator.evaluate(trial)
-                    evaluations++
-                    onEvaluation(TuneEvaluation(round, knob.path, value, result))
-                    if (result > bestObjective + EPSILON) {
-                        bestValue = value
-                        bestObjective = result
-                    }
-                }
-                if (bestValue != null) {
-                    choice[knob.path] = bestValue
-                    objective = bestObjective
-                    best = WeightsEdit.apply(start, choice)
-                    onBest(best)
-                    changed = true
+            changed = climb.round(round)
+        }
+        return TuneResult(
+            climb.startObjective,
+            climb.objective,
+            climb.startText,
+            climb.best,
+            climb.evaluations,
+            round,
+        )
+    }
+
+    /** The state of one search: the knobs moved so far and the best weights found. */
+    private inner class Climb {
+        private val choice = linkedMapOf<String, Double>()
+        val startText = WeightsEdit.apply(start, choice)
+        val startObjective = evaluator.evaluate(startText)
+        var objective = startObjective
+        var best = startText
+        var evaluations = 1
+
+        init {
+            onEvaluation(TuneEvaluation(0, null, null, startObjective))
+            onBest(startText)
+        }
+
+        /** Visits every knob once; true when one of them moved. */
+        fun round(round: Int): Boolean = grid.knobs.map { visit(round, it) }.any { it }
+
+        private fun visit(round: Int, knob: Knob): Boolean {
+            val current = choice[knob.path] ?: WeightsEdit.read(start, knob.path)
+            var bestValue: Double? = null
+            var bestObjective = objective
+            for (value in knob.values.filter { it != current }) {
+                val result =
+                    evaluator.evaluate(WeightsEdit.apply(start, choice + (knob.path to value)))
+                evaluations++
+                onEvaluation(TuneEvaluation(round, knob.path, value, result))
+                if (result > bestObjective + EPSILON) {
+                    bestValue = value
+                    bestObjective = result
                 }
             }
+            if (bestValue == null) return false
+            choice[knob.path] = bestValue
+            objective = bestObjective
+            best = WeightsEdit.apply(start, choice)
+            onBest(best)
+            return true
         }
-        return TuneResult(startObjective, objective, startText, best, evaluations, round)
     }
 
     private companion object {
