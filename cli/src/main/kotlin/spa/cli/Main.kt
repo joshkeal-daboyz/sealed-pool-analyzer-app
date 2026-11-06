@@ -207,6 +207,10 @@ object Main {
             "synergy" to { a, out, err -> SynergyCommand.run(a, out, err) },
             "synergy-check" to { a, out, err -> SynergyCheckCommand.run(a, out, err) },
             "facts" to { a, out, _ -> FactsCommand.run(a, out) },
+            "fetch-tags" to
+                { a, out, err ->
+                    FetchTagsCommand({ ScryfallOtagSource() }).run(a, out, err)
+                },
         )
 
     private fun usageError(message: String, stderr: PrintStream): Int {

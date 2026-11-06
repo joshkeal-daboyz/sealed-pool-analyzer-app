@@ -22,17 +22,19 @@ data class PairScore(val first: TagCard, val second: TagCard, val parts: List<In
  * (G-005 deliverable 7): the sum of the [terms]. It is computed from the tags, never stored, and is
  * symmetric. An id the tag file does not hold scores 0 with every card.
  *
- * [facts] gives each card's facts by tag id ([spa.agent.facts.CardFacts]), for the terms that read
- * them; each of the given terms is fitted to this table ([PairTerm.forTable]), and [terms] holds
- * the ones that apply, in order.
+ * [facts] gives each card's facts by tag id ([spa.agent.facts.CardFacts]), and [cares] its cares
+ * tags by tag id (fact to strength, [spa.agent.otags.CaresTable]), for the terms that read them;
+ * each of the given terms is fitted to this table ([PairTerm.forTable]), and [terms] holds the ones
+ * that apply, in order.
  */
 class SynergyTable(
     val tags: TagFile,
     terms: List<PairTerm> = PairTerms.ALL,
     val facts: Map<String, Set<String>> = emptyMap(),
+    val cares: Map<String, Map<String, Int>> = emptyMap(),
 ) {
     /** The terms this table sums, in print order. */
-    val terms: List<PairTerm> = terms.mapNotNull { it.forTable(tags, facts) }
+    val terms: List<PairTerm> = terms.mapNotNull { it.forTable(tags, facts, cares) }
 
     /** The tag file's cards, in its (collector) order. */
     val cards: List<TagCard>

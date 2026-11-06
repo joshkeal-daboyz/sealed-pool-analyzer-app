@@ -257,7 +257,8 @@ class FactRulesTest {
     }
 
     @Test
-    fun `the default rules are the nine families in order`() {
+    fun `the default rules are the nine families in order, then the otag facts`() {
+        // SPA-054 adds OtagFactRule last.
         assertEquals(
             listOf(
                 CardTypeRule,
@@ -269,6 +270,7 @@ class FactRulesTest {
                 EntersTriggerRule,
                 DiesTriggerRule,
                 MakesTokenRule,
+                OtagFactRule,
             ),
             FactRules.ALL,
         )

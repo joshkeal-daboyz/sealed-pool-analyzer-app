@@ -25,9 +25,23 @@ interface PairTerm {
      * adds nothing to [tags] returns null, so it is not printed.
      */
     fun forTable(tags: TagFile, facts: Map<String, Set<String>>): PairTerm? = this
+
+    /**
+     * [forTable], also given each card's cares tags by tag id ([cares]: fact to strength, SPA-054).
+     * By default the cares tags are not read.
+     */
+    fun forTable(
+        tags: TagFile,
+        facts: Map<String, Set<String>>,
+        cares: Map<String, Map<String, Int>>,
+    ): PairTerm? = forTable(tags, facts)
+
+    /** False for a term whose part `spa synergy-table` prints only when it is not 0. */
+    val printsZero: Boolean
+        get() = true
 }
 
 /** The terms a pair's score sums, in print order. A new term is one file and one entry here. */
 object PairTerms {
-    val ALL: List<PairTerm> = listOf(AxisTerm, PartnerTerm, FactSupplyTerm)
+    val ALL: List<PairTerm> = listOf(AxisTerm, PartnerTerm, FactSupplyTerm, CaresTerm)
 }
