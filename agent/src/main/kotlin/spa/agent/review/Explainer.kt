@@ -77,6 +77,7 @@ object Explainer {
      * [deckRanks] are the ranks of the decks in [decksText]. Retries, timeout and errors follow the
      * analysts' rules.
      */
+    @Suppress("LongParameterList") // the signature is fixed by SPA-068
     fun run(
         client: ModelClient,
         config: ReviewConfig,
@@ -90,29 +91,29 @@ object Explainer {
             answered.none { it.answer.findings.isNotEmpty() } ->
                 ExplainerOutcome.Missing("no findings to explain")
             !config.explainer.enabled -> ExplainerOutcome.Missing("switched off in the config")
-            else -> explain(client, config, input, decksText, answered, deckRanks)
+            else -> {
+                val names = input.pool.entries.map { it.printing.card.name }
+                val ids = answered.map { it.agent.id }
+                send(client, config, request(input, decksText, answered, config)) { text ->
+                    ExplainerChecker.check(text, names, deckRanks, ids)
+                }
+            }
         }
     }
 
-    private fun explain(
+    /** Sends [request] under the call rules and hands each reply text to [check]. */
+    private fun send(
         client: ModelClient,
         config: ReviewConfig,
-        input: ReviewInput,
-        decksText: String,
-        answered: List<AgentOutcome.Answered>,
-        deckRanks: List<Int>,
+        request: ModelRequest,
+        check: (String) -> CheckedExplainer,
     ): ExplainerOutcome {
         val pool = Executors.newCachedThreadPool { task -> Thread(task).apply { isDaemon = true } }
         try {
             val calls = ModelCalls(client, config, pool, Semaphore(1))
             return calls.guarded({ ExplainerOutcome.Missing(it) }) {
-                val names = input.pool.entries.map { it.printing.card.name }
-                val ids = answered.map { it.agent.id }
                 try {
-                    val checked =
-                        calls.checked(request(input, decksText, answered, config)) { text ->
-                            ExplainerChecker.check(text, names, deckRanks, ids)
-                        }
+                    val checked = calls.checked(request, check)
                     ExplainerOutcome.Explained(checked.result, checked.dropped)
                 } catch (error: SchemaError) {
                     ExplainerOutcome.Missing("invalid answer: ${error.message}")
