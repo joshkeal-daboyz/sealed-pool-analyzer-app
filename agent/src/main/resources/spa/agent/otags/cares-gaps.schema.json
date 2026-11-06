@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Cares gaps",
+  "description": "One response file, cards-NN.cares.json: for the cards of cards-NN.json, the cares tags to add; an empty array when no card needs one. Each entry names a card of cards-NN.json and lists what it cares about, each fact exactly as it appears in vocabulary.json, at most once per card and never one the card already cares about in cares-NN.json.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["id", "add"],
+    "properties": {
+      "id": {
+        "description": "A card id, copied exactly from the card file.",
+        "type": "string"
+      },
+      "add": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["fact", "strength", "reason"],
+          "properties": {
+            "fact": {
+              "description": "A fact name, copied exactly from vocabulary.json.",
+              "type": "string"
+            },
+            "strength": {
+              "description": "1 a small bonus, 2 clearly better with it, 3 built around it.",
+              "enum": [1, 2, 3]
+            },
+            "reason": {
+              "description": "One line: why the card cares about the fact, from its rules text.",
+              "type": "string",
+              "pattern": "\\S"
+            }
+          }
+        }
+      }
+    }
+  }
+}

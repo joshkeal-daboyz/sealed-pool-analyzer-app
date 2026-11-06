@@ -20,12 +20,15 @@ import kotlinx.serialization.json.JsonPrimitive
 import spa.agent.grader.GradingPool
 import spa.agent.otags.OtagBulk
 import spa.agent.otags.OtagFile
+import spa.agent.otags.OtagTagsFile
 
 /**
  * `spa fetch-tags --set <code> [--bulk <file>] [--data <dir>]` (SPA-054): writes the set's otags
- * file, `<data>/otags/<code>.json` ([OtagFile]), from Scryfall's Oracle Tags bulk file: `--bulk`
- * (JSON lines, plain or gzipped), else the current file, downloaded through [source] into
- * [cacheDir] and dated by Scryfall. Only the download uses the network.
+ * file, `<data>/otags/<code>.json` ([OtagFile]), and (SPA-055) its tags file,
+ * `<data>/otags/<code>.tags.json` ([OtagTagsFile]: each tag in it with its description and
+ * parents), from Scryfall's Oracle Tags bulk file: `--bulk` (JSON lines, plain or gzipped), else
+ * the current file, downloaded through [source] into [cacheDir] and dated by Scryfall. Only the
+ * download uses the network.
  *
  * It first checks every fact of `<data>/otags/cares.json` against the code fact families and the
  * bulk file's tags; an unknown one is named on stderr, one line each, and nothing is written (exit
@@ -64,9 +67,16 @@ class FetchTagsCommand(
             )
         val out = data.root.resolve("otags").resolve("$set.json")
         write(out, file.encode())
+        val tags = OtagTagsFile.build(file, bulk)
+        val tagsOut = Otags.tagsFile(data, set)
+        write(tagsOut, tags.encode())
         stdout.println(
             "$set: ${file.cards.size} cards, ${file.tagged} with tags, " +
                 "${file.total} tags with parents, ${file.distinct} distinct, written to $out"
+        )
+        stdout.println(
+            "$set: ${tags.tags.size} tags, ${tags.described} with a description, " +
+                "written to $tagsOut"
         )
         stdout.flush()
         return ExitCode.OK

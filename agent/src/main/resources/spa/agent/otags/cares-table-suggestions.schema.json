@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Cares table suggestions",
+  "description": "cares-table-suggestions.json, optional: Scryfall tags that mean caring about something and are not in the cares table, each with the facts it cares about. Suggestions are reported, not applied.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["tag", "facts", "reason"],
+    "properties": {
+      "tag": {
+        "description": "A Scryfall tag's slug, as in vocabulary.json without its otag: prefix.",
+        "type": "string",
+        "pattern": "\\S"
+      },
+      "facts": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["fact", "strength"],
+          "properties": {
+            "fact": {
+              "description": "A fact name, copied exactly from vocabulary.json.",
+              "type": "string"
+            },
+            "strength": {
+              "description": "1 a small bonus, 2 clearly better with it, 3 built around it.",
+              "enum": [1, 2, 3]
+            }
+          }
+        }
+      },
+      "reason": {
+        "description": "One line: why the tag means caring about those facts.",
+        "type": "string",
+        "pattern": "\\S"
+      }
+    }
+  }
+}

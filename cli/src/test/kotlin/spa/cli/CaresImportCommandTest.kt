@@ -66,16 +66,15 @@ class CaresImportCommandTest {
             *more,
         )
 
-    /** Asserts one `spa: ` line for each of [problems], containing the given text, and no file. */
-    private fun assertFails(vararg problems: String) {
+    /** Asserts exactly one `spa: ` line, containing every text of [texts], and no file. */
+    private fun assertFails(vararg texts: String) {
         val run = import()
         assertEquals(ExitCode.ERROR, run.exit, run.stdout)
         assertEquals("", run.stdout)
-        assertEquals(problems.size, run.stderrLines().size, run.stderr)
-        problems.forEachIndexed { i, text ->
-            val line = run.stderrLines()[i]
-            assertTrue(line.startsWith("spa: ") && text in line, "'$text' not in '$line'")
-        }
+        assertEquals(1, run.stderrLines().size, run.stderr)
+        val line = run.stderrLines().single()
+        assertTrue(line.startsWith("spa: "), line)
+        texts.forEach { assertTrue(it in line, "'$it' not in '$line'") }
         assertTrue(Files.notExists(fableFile), "nothing is written")
     }
 

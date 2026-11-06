@@ -2,6 +2,8 @@ package spa.cli
 
 import java.nio.file.Files
 import java.nio.file.Path
+import kotlin.io.path.copyTo
+import kotlin.io.path.createDirectories
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import org.junit.jupiter.api.Test
@@ -24,9 +26,12 @@ class SynergyCheckCommandTest {
      * hand-built files.
      */
     @Test
-    fun `trk prints the two original checks passing, with their numbers`() {
+    fun `trk prints the two original checks passing, with their numbers`(@TempDir dir: Path) {
         // The v1 trk tags these numbers were computed from, frozen since SPA-053, and no otags
-        // (SPA-054).
+        // (SPA-054). The checks are the frozen v1 file, copied into a data directory of its own
+        // (SPA-055), so the owner can change the live file.
+        val checks = dir.resolve("synergy-checks").createDirectories().resolve("trk.json")
+        Fixtures.root.resolve("synergy-checks/v1/trk.json").copyTo(checks)
         val run =
             runCli(
                 "synergy-check",
@@ -37,7 +42,7 @@ class SynergyCheckCommandTest {
                 "--otags",
                 Otags.NONE,
                 "--data",
-                Fixtures.data,
+                dir.toString(),
             )
         val lines = run.stdoutLines()
         val byId = { id: String -> lines.single { it.split(" ").getOrNull(1) == id } }

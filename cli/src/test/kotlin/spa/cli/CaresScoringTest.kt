@@ -197,11 +197,11 @@ class CaresScoringTest {
         val lines =
             check.stdoutLines().map { it.replace(Regex(" (independent|seen) "), " STATUS ") }
         assertEquals(
-            "PASS automatons-with-itself STATUS score 3  axis 0  partner 3  cares 0",
+            "PASS automatons-with-itself STATUS  score 3  axis 0  partner 3  cares 0",
             lines[0],
         )
         assertEquals(
-            "PASS enters-with-beam-me-up STATUS 590 pairs  524 meeting min 1  share 0.8881  mean 1.7068",
+            "PASS enters-with-beam-me-up STATUS  590 pairs  524 meeting min 1  share 0.8881  mean 1.7068",
             lines[1],
         )
     }

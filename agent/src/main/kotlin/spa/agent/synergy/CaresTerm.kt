@@ -11,7 +11,8 @@ import spa.agent.tags.TagFile
  *
  * It needs the table's facts and cares tags, so [forTable] gives the working term; when no card has
  * a cares tag (a set with no otags file) it gives null, and the table scores and prints exactly as
- * before. This object on its own scores 0. Its part is printed only when it is not 0.
+ * before. This object on its own scores 0. Its part is printed only when it is not 0. The cares
+ * tags are the cares table's joined with the Fable cares file's ([merged], SPA-055).
  */
 object CaresTerm : PairTerm {
     override val name = "cares"
@@ -19,6 +20,24 @@ object CaresTerm : PairTerm {
     override val printsZero = false
 
     override fun score(a: TagCard, b: TagCard): Int = 0
+
+    /**
+     * The cares tags of [scryfall] (from the cares table) joined with those of [fable] (the Fable
+     * cares file, SPA-055), both by card id: each card has every fact either gives it, at the
+     * larger strength when both do. With no [fable] cares it is [scryfall] itself.
+     */
+    fun merged(
+        scryfall: Map<String, Map<String, Int>>,
+        fable: Map<String, Map<String, Int>>,
+    ): Map<String, Map<String, Int>> {
+        if (fable.isEmpty()) return scryfall
+        val joined = scryfall.mapValues { it.value.toMutableMap() }.toMutableMap()
+        for ((id, facts) in fable) {
+            val card = joined.getOrPut(id) { mutableMapOf() }
+            for ((fact, strength) in facts) card.merge(fact, strength, ::maxOf)
+        }
+        return joined
+    }
 
     /** Without cares tags there is no cares term. */
     override fun forTable(tags: TagFile, facts: Map<String, Set<String>>): PairTerm? = null
