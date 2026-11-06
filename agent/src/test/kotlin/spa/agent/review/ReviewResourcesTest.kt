@@ -53,7 +53,7 @@ class ReviewResourcesTest {
     }
 
     @Test
-    fun `the agent list starts empty`() {
-        assertEquals(emptyList(), AnalysisAgents.ALL)
+    fun `the agent list holds the first three analysts`() {
+        assertEquals(listOf("colour-depth", "curve", "mana"), AnalysisAgents.ALL.map { it.id })
     }
 }

@@ -1,6 +1,10 @@
 package spa.agent.review
 
-/** The analysts the review runs, in the order they run and print. Empty until SPA-065 to 067. */
+import spa.agent.review.agents.ColourDepthAgent
+import spa.agent.review.agents.CurveAgent
+import spa.agent.review.agents.ManaAgent
+
+/** The analysts the review runs, in the order they run and print. */
 object AnalysisAgents {
-    val ALL: List<AnalysisAgent> = emptyList()
+    val ALL: List<AnalysisAgent> = listOf(ColourDepthAgent, CurveAgent, ManaAgent)
 }
