@@ -187,6 +187,6 @@ class DeckExportTest {
         val failure = runCatching { DeckExport.rows(stripped, decks.first()) }.exceptionOrNull()
 
         assertTrue(failure is CliFailure, failure.toString())
-        assertEquals(1, (failure as CliFailure).exitCode)
+        assertEquals(1, failure.exitCode)
     }
 }
