@@ -228,6 +228,12 @@ cli/build/install/spa/bin/spa synergy-check --set trk --tags fixtures/tags/v1/tr
 
 `fixtures/tags/v1/` holds the four v1 tag files frozen as test data (see its README): a test that pins a number or line computed from tags reads them through `--tags`, so the live tag files can change. Such a test also passes `--otags none`, and `fixtures/synergy-checks/v1/trk.json` is the check file frozen at SPA-054 (a byte copy of the live one then), which `SynergyV1UnchangedTest` reads, so the owner's live check file can change too.
 
+**packet** writes one paste-ready text file for a pool, with no model call, so the pool can be reviewed in a Claude chat: `spa packet <pool-file> --set <code> [--data <dir>] [--format manabox|text|collector] [--brief <file>] [--weights <file>] [--tags <file>] [--otags <file>|none] [--top <n>] [--out <file>]`. The file is UTF-8 with line feeds only and has seven sections in this order: `# Sealed pool review packet` (a request to Claude), `## Pool` (every distinct card by name with its quantity, mana cost, type, rarity, grade with its letter and rules text, as `grades` grades it), `## Numbers` (the metric engine's number for each pointer except the curve's, beside the set's typical median, p10 and p90 when the set has a baseline), `## Fixing` (as `fixing` prints it for a pool), `## Synergy` (the 20 highest card pairs of the pool scoring 1 or more, or a line saying the set has no tag file), `## Decks` (exactly what `build` prints for the top `--top` decks, three by default) and `## Sources`. The decks use `--weights`, else `<data>/weights/deck-tuned.json`, not the default deck weights; a pool that builds no deck is not an error and says so. The packet goes to `--out`, and stdout then says `Packet written to <file>`; without `--out` it goes to stdout. Nothing is written when the command fails. Exit codes are as for the other commands: 0 ok, 1 an error (a missing pool file, set cache, brief or grade file, or a bad `--top`), 2 a bad command line. Paste the file into a Claude chat to have the pool reviewed.
+
+```bash
+cli/build/install/spa/bin/spa packet fixtures/pools/trk-manabox-01.csv --set trk --out packet.md
+```
+
 ## Android app
 
 The `app` module builds the Android app, a debug APK signed with the build machine's debug key. It needs the JDK and the Android SDK in [Toolchain](#toolchain).
