@@ -20,7 +20,8 @@ import spa.agent.tags.TagFile
  */
 class OtagsFixturesTest {
     private val data = DataDir(Fixtures.root)
-    private val frozenTrk = Fixtures.root.resolve("otags/v1/trk.json").toString()
+
+    private fun frozen(set: String): String = Fixtures.root.resolve("otags/v1/$set.json").toString()
 
     private fun file(set: String): OtagFile =
         OtagFile.parse(Files.readString(Fixtures.root.resolve("otags/$set.json")))
@@ -66,12 +67,8 @@ class OtagsFixturesTest {
 
     private fun load(set: String): Pool {
         val index = Commands.loadIndex(data, set)
-        // trk is read from its frozen copy, without its Fable file (SPA-058); the others have none.
-        val inputs =
-            assertNotNull(
-                if (set == "trk") Otags.load(data, set, frozenTrk, fable = false)
-                else Otags.load(data, set, null)
-            )
+        // Every set is read from its frozen copy, without its Fable file (SPA-058, SPA-059).
+        val inputs = assertNotNull(Otags.load(data, set, frozen(set), fable = false))
         val facts = CardFacts.load(data.scryfall, index, otags = inputs.otags)
         val cards =
             GradingPool.printings(index).map {

@@ -18,3 +18,8 @@ The four committed set files were generated from the Oracle Tags bulk file of 20
 
 - `v1/trk.json`: a byte copy of `trk.json` as committed by SPA-054, with no Fable file beside it. Tests that pin numbers on trk's otags without Fable's cares (`CaresScoringTest`, `OtagsFixturesTest`) read it, so `trk.json` can be regenerated. A test compares the two files byte for byte until that happens; the regeneration ticket then drops that comparison.
 - `trk.fable.json`: trk's Fable cares file, 105 cards with 180 additions, from a Claude Fable 5.1 run of 2026-11-06 written by `spa cares-import`. A test pins its SHA-256 and counts, and that the live trk otags with it give 186 cards with a cares tag, against 109 without.
+
+## Frozen msh, hob and fra otags and their Fable files (SPA-059)
+
+- `v1/msh.json`, `v1/hob.json`, `v1/fra.json`: byte copies of the live files as committed by SPA-054, with no Fable file beside them; `OtagsFixturesTest` reads them, so the live files can be regenerated. `SetFableCaresTest` compares each with its live file until that happens.
+- `msh.fable.json` (91 cards, 126 additions), `hob.fable.json` (77, 104) and `fra.fable.json` (115, 184): Fable cares files from a Claude Fable 5.1 run of 2026-11-06 written by `spa cares-import`. `SetFableCaresTest` pins each by SHA-256 and counts.
