@@ -44,7 +44,7 @@ coverage_threshold: 80
 | 1 | unit test / Compose UI test / snapshot test / Acceptance Tester scenario / cannot be automated because ... | tests-first / gate / acceptance |
 | 2 | ... | ... |
 
-`tests-first`: a failing test is committed before the code, the default for every unit, Compose UI, and snapshot test. `gate`: a gate step proves it on its own (toolchain, build, and wiring criteria). `acceptance`: only the Acceptance Tester can prove it. A ticket written before this column existed is read as `tests-first` for every unit, Compose UI, or snapshot test it names.
+`tests-first`: a failing test is committed before the code, the default for every unit, Compose UI, and snapshot test. `gate`: a gate step proves it on its own (toolchain, build, and wiring criteria). `acceptance`: only the Acceptance Tester can prove it, and its `Proven by` cell holds the exact command or scenario and the expected observation, so the tester runs it rather than designs it. A ticket written before this column existed is read as `tests-first` for every unit, Compose UI, or snapshot test it names.
 
 ## Change note
 

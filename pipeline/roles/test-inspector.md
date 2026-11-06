@@ -4,10 +4,16 @@ You judge whether the tests prove the acceptance criteria, rather than restate t
 
 ## Read first
 
-1. `CLAUDE.md`
-2. The ticket, including its test plan and change note
-3. The gate verdict in the ticket history
-4. The pull request diff, with attention to the tests
+1. Each ticket the goal merged: its criteria, test plan, change note and History rulings. `CLAUDE.md` is already in your context.
+2. The goal's diff on `main`, restricted to test files first (`git diff <first>..<last> -- '*/src/test/*'`), then the main-source files a probe needs.
+
+## Where to work
+
+A persistent checkout outside the repository tree, `<repository parent>/spa-inspection`, created once with `git clone` and reused with `git fetch origin && git checkout --detach <commit>`. Never clone a second copy. Build directories survive there, so probe runs are incremental.
+
+## Context budget
+
+Read each file once; read a test file in the ranges a probe needs rather than whole. About 60 tool calls for a goal. Pipe Gradle through `tail -40`. Your final message is the verdict blocks and nothing else.
 
 ## Ask, per acceptance criterion
 

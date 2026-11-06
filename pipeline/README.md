@@ -13,6 +13,8 @@ This folder holds the pipeline's own artifacts. The design behind it is in the d
 | `ticket-template.md` | The ticket contract as a file |
 | `prompts/architect-kickoff.md` | What the human pastes to start a goal |
 | `prompts/developer-dispatch.md` | The Developer's entire brief; the Architect fills it and adds nothing |
+| `prompts/acceptance-dispatch.md` | The Acceptance Tester's entire brief, per ticket; scenarios live in the ticket's test plan |
+| `prompts/inspector-dispatch.md` | The Test Inspector's entire brief, once per goal at goal close |
 
 Budgets and limits, as defaults the Architect tunes per ticket:
 
