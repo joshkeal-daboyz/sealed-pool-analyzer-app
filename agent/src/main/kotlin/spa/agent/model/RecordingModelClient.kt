@@ -32,13 +32,14 @@ class RecordingModelClient(private val inner: ModelClient, private val directory
                 "recording $claimedName already exists in $directory"
             }
         }
+        var recordedOk = false
         try {
             val response = inner.send(request)
             write(claimedName, Recording(request, response))
+            recordedOk = true
             return response
-        } catch (e: Throwable) {
-            if (claimedName != null) claimed.remove(claimedName)
-            throw e
+        } finally {
+            if (!recordedOk && claimedName != null) claimed.remove(claimedName)
         }
     }
 

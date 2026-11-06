@@ -48,13 +48,12 @@ class BudgetedModelClient(
         val reservedInput = TokenEstimate.of(request)
         val reservedOutput = request.maxTokens
         reserve(reservedInput, reservedOutput)
-        val response =
-            try {
-                inner.send(request)
-            } catch (e: Throwable) {
-                release(reservedInput, reservedOutput)
-                throw e
-            }
+        var response: ModelResponse? = null
+        try {
+            response = inner.send(request)
+        } finally {
+            if (response == null) release(reservedInput, reservedOutput)
+        }
         settle(reservedInput, reservedOutput, response.usage)
         return response
     }
