@@ -719,45 +719,6 @@
       ]
     },
     {
-      "id": "moopsy-with-death-payoffs",
-      "owner": "Moopsy should have synergy with cards that care about creatures dying. Moopsy is a tempo boost for decks that care about creatures dying: the card is cheap, trades up and triggers on death.",
-      "added": "2026-11-05",
-      "status": "seen",
-      "kind": "groups",
-      "share": 0.5,
-      "min": 1,
-      "listRule": "groupA: Moopsy; groupB: cards with \"whenever a/another/one or more ... creature(s) ... die(s)\". Card text only.",
-      "groupA": [
-        {
-          "id": "trk/207",
-          "name": "Moopsy"
-        }
-      ],
-      "groupB": [
-        {
-          "id": "trk/95",
-          "name": "Battle-Scarred Survivalist"
-        },
-        {
-          "id": "trk/112",
-          "name": "Grand Nagus Zek"
-        },
-        {
-          "id": "trk/136",
-          "name": "Vengeance Mission"
-        },
-        {
-          "id": "trk/170",
-          "name": "Sarcophagus, Ship of the Dead"
-        },
-        {
-          "id": "trk/237",
-          "name": "Gowron, Eager for Battle"
-        }
-      ],
-      "seenBy": "SPA-051 card facts and tags prompt v2 (owner approved 2026-11-05), designed after these checks failed"
-    },
-    {
       "id": "legendary-permanents-with-legendary-payoffs",
       "owner": "Star Trek has loads of legendary permanents.",
       "added": "2026-11-05",
