@@ -1,7 +1,7 @@
 ---
 id: G-006
 title: Analysis agents, a pool reviewed from the command line
-status: open
+status: closed
 owner: human
 target_set_code: trk
 companion_set_codes: [sds]
@@ -124,3 +124,18 @@ The owner answered on 2026-11-06 by approving every default.
 - Library tests (SPA-062 to 069) build pools by hand, as the other `agent` tests do; the real `trk-manabox-01` numbers are pinned through `spa review --show-input` in SPA-070.
 - Criterion 14's "a test replays it to the same review" needs the live recording's requests to match what the code builds now; a later prompt, config or weights change makes it stale and the test names the file to re-record.
 - Real numbers for `trk-manabox-01` (from `spa analyze`, 2026-11-06): 71 resolved entries, 85 cards, 71 nonland copies, 5 basic and 9 nonbasic lands, `removalTotal` 9 (baseline median 8, mean 7.938, 2,000 kits), `interactionTotal` 1, 6 fixing sources; pair WU: 33 castable cards, 19 creatures, 2 removal, 0 interaction, 4 fixing sources; the baseline holds 448 pointers.
+- 2026-11-06 Architect, goal close:
+  - **Merged:** SPA-071 (`spa packet`, PR #66), SPA-072 (`spa build --export`, PR #67), SPA-062 (model seam, PR #68), SPA-063 (bundle and number tables, PR #69), SPA-064 (agent framework, PR #70), SPA-065 to SPA-067 (the seven analysts, PRs #71 to #73), SPA-068 (Explainer, PR #74), SPA-069 (review assembly, PR #75), SPA-070 (`spa review`, PR #76). Each had a green gate, a verified tests-first order and an Acceptance Tester PASS. CI on `main` at c36c85a: success.
+  - **Test Inspector release inspection** (SPA-062, 064, 068, 070, 071, 072; Claude Sonnet 5.5, effort high, about 43 of 80 tool calls): PASS on all six; 8 of 8 mutation probes killed (budget input counting, reservation release, cap boundary, output cap, basic-land choice in the export, quote doubling, retry bound, key check under `--replay`). Verdicts are in the report; nothing was edited.
+  - **Criteria measured:** 1 (gate; `core` unchanged: the diff against 3f19d16 touches no `core/` file), 2 (no key: `ANTHROPIC_API_KEY is not set`, exit 1; no `sk-ant-` in the repository), 3 (dry run on `trk-manabox-01`: 8 calls, about 68,800 input tokens and 27,000 output tokens, within the caps), 4 (canned replay prints every section in order, `Missing: none`, same bytes twice), 5 (decks equal `spa build` with the tuned weights), 6 to 9, 11, 12, 13 (unit tests and the Acceptance Tester's runs).
+  - **Not measured:** criterion 10's replay of a real recording and criteria 14, 15 and 16 (the live run, the owner's five-pool spot-check, live usage): no `ANTHROPIC_API_KEY` was set in the Architect's session. They are the owner's. To run: `ANTHROPIC_API_KEY=<key> spa review <pool> --set trk --record <dir>`; the recording then becomes SPA-073 (a replay test and the committed fixture). The prompts have never been run against a real model; the committed recordings are canned.
+  - **Metrics:** findings kept and dropped per agent and the live time are not measured (no live run). Dry-run time not measured.
+  - **Before the deadline:** SPA-071 and SPA-072 merged first (owner's ordering), so `spa packet` and `spa build --export` were usable for the trk prerelease at 3PM.
+  - **Open items for a later goal (from the inspection and the Developers):**
+    - SPA-062: the locking in `BudgetedModelClient` is covered by one thread test, not probed.
+    - SPA-071: no test shows the 20-line synergy cap biting (needs a pool with more than 20 pairs); the Pool section reads grades through `grades` (win-rate file first) while the Decks section reads `build`'s lookup (`<code>.v2.json`), which can differ for hob, msh and fra.
+    - SPA-072: the ManaBox import of the CSV is unverified (owner tries it); multi-face names are tested only on a synthetic printing.
+    - `AnalysisAgent` outcomes hold the agent object; `PoolNames`, `NumberTable.format` and `ModelCalls` are shared internals.
+    - Fable-style free-text numbers in a claim are not audited (only keyed numbers are).
+  - **For the owner (a rule change, not made):** the Acceptance Tester on the nine library tickets could only re-run the Developers' unit tests and read CI. A rule that skips the tester when no criterion is marked `acceptance` would save about 60K tokens per ticket; it changes `CLAUDE.md` and so is the owner's call.
+  - Goal closed, its integrated tickets (SPA-062 to SPA-072) moved to `tickets/archive/`.
