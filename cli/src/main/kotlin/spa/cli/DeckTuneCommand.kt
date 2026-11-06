@@ -4,12 +4,11 @@ import java.io.IOException
 import java.io.PrintStream
 import java.nio.file.Files
 import java.nio.file.Path
-import java.util.Locale
 import java.util.concurrent.ForkJoinPool
 import spa.agent.build.DeckWeights
 import spa.agent.deckbacktest.tune.CoordinateAscent
 import spa.agent.deckbacktest.tune.DeckGrid
-import spa.agent.deckbacktest.tune.TuneResult
+import spa.agent.deckbacktest.tune.TuneEvaluation
 
 /**
  * `spa deck-tune <sealed-file>... --set <code,...> [--limit <n>] [--threads <t>] [--grid <file>]
@@ -26,7 +25,65 @@ object DeckTuneCommand {
     private const val DEFAULT_ROUNDS = 3
     private const val NANOS_PER_SECOND = 1e9
 
+    /** The sample and the search limits: `--limit` (per set), `--threads` and `--rounds`. */
+    private class Limits(val limit: Int?, val threads: Int, val rounds: Int)
+
+    /** What a [BuildSession] opens: the data directory, the start weights, `--tags`, `--otags`. */
+    private class Source(val data: DataDir, val start: Path, val tags: Path?, val otags: String?)
+
+    /** What the command line asked for, checked: the sets with their Sealed files, and the rest. */
+    private class Options(
+        val sealed: List<Pair<String, Path>>,
+        val limits: Limits,
+        val out: Path,
+        val source: Source,
+        val grid: Path,
+    )
+
     fun run(args: List<String>, stdout: PrintStream): Int {
+        val options = options(args)
+        val startText = Commands.readFile(options.source.start, "weights file")
+        Commands.guard("invalid weights file ${options.source.start}") {
+            DeckWeights.parse(startText)
+        }
+        val gridText = Commands.readFile(options.grid, "grid file")
+        val grid =
+            Commands.guard("invalid grid file ${options.grid}") {
+                DeckGrid.parse(gridText, startText)
+            }
+        val tuneSets = open(options, stdout)
+        val pool = ForkJoinPool(options.limits.threads)
+        try {
+            val evaluator = DeckTuneEvaluator(tuneSets, pool)
+            val listen = { evaluation: TuneEvaluation ->
+                stdout.println(evaluation.line())
+                stdout.flush()
+            }
+            val search =
+                CoordinateAscent(
+                    grid,
+                    startText,
+                    options.limits.rounds,
+                    evaluator,
+                    listen,
+                    { write(options.out, it) },
+                )
+            val began = System.nanoTime()
+            val result = DeckTuneFailures.guarded { search.run() }
+            val seconds = (System.nanoTime() - began) / NANOS_PER_SECOND
+            DeckTuneFailures.guarded { DeckTuneReport.block(result, evaluator, seconds) }
+                .forEach(stdout::println)
+        } finally {
+            pool.shutdown()
+        }
+        stdout.flush()
+        return ExitCode.OK
+    }
+
+    /**
+     * The options in [args], each checked: the sets first, then the files, the numbers, `--out`.
+     */
+    private fun options(args: List<String>): Options {
         val parsed =
             Args.parse(
                 args,
@@ -45,6 +102,27 @@ object DeckTuneCommand {
                     ),
             )
         val sets = sets(parsed)
+        val sealed = sets.zip(sealedFiles(parsed, sets))
+        val limits =
+            Limits(
+                DeckBacktestCommand.whole(parsed, "limit"),
+                DeckBacktestCommand.whole(parsed, "threads") ?: DEFAULT_THREADS,
+                DeckBacktestCommand.whole(parsed, "rounds") ?: DEFAULT_ROUNDS,
+            )
+        val out =
+            parsed.value("out")?.let(Path::of)
+                ?: throw CliFailure("--out <file> is required", ExitCode.ERROR)
+        val data = Commands.dataDir(parsed)
+        val weights = data.root.resolve("weights")
+        val start = parsed.value("start")?.let(Path::of) ?: weights.resolve("deck-default.json")
+        val grid = parsed.value("grid")?.let(Path::of) ?: weights.resolve("deck-grid.json")
+        val source =
+            Source(data, start, SynergyTableCommand.tagsOption(parsed), parsed.value(Otags.OPTION))
+        return Options(sealed, limits, out, source, grid)
+    }
+
+    /** The Sealed files, one per set in [sets], each an existing file. */
+    private fun sealedFiles(parsed: Args, sets: List<String>): List<Path> {
         val files = parsed.positionals.map(Path::of)
         if (files.size != sets.size) {
             throw CliFailure(
@@ -53,89 +131,30 @@ object DeckTuneCommand {
                 ExitCode.ERROR,
             )
         }
-        val limit = DeckBacktestCommand.whole(parsed, "limit")
-        val threads = DeckBacktestCommand.whole(parsed, "threads") ?: DEFAULT_THREADS
-        val rounds = DeckBacktestCommand.whole(parsed, "rounds") ?: DEFAULT_ROUNDS
-        val out =
-            parsed.value("out")?.let(Path::of)
-                ?: throw CliFailure("--out <file> is required", ExitCode.ERROR)
         files.forEach {
             if (!Files.isRegularFile(it)) {
                 throw CliFailure("cannot read Sealed file $it: no such file", ExitCode.ERROR)
             }
         }
-        val data = Commands.dataDir(parsed)
-        val weights = data.root.resolve("weights")
-        val startFile = parsed.value("start")?.let(Path::of) ?: weights.resolve("deck-default.json")
-        val gridFile = parsed.value("grid")?.let(Path::of) ?: weights.resolve("deck-grid.json")
-        val startText = Commands.readFile(startFile, "weights file")
-        Commands.guard("invalid weights file $startFile") { DeckWeights.parse(startText) }
-        val gridText = Commands.readFile(gridFile, "grid file")
-        val grid =
-            Commands.guard("invalid grid file $gridFile") { DeckGrid.parse(gridText, startText) }
-
-        val tags = SynergyTableCommand.tagsOption(parsed)
-        val otags = parsed.value(Otags.OPTION)
-        val tuneSets = sets.mapIndexed { i, code ->
-            val session = BuildSession.open(data, code, startFile, tags, otags)
-            val selection = DeckBacktestCommand.read(files[i], session)
-            stdout.println("$code: ${selection.summary()}")
-            val builds = limit?.let(selection::limited) ?: selection.builds
-            stdout.println("$code: used ${builds.size} builds")
-            TuneSet(code, session, builds)
-        }
-        stdout.flush()
-
-        val pool = ForkJoinPool(threads)
-        try {
-            val evaluator = DeckTuneEvaluator(tuneSets, pool)
-            val search =
-                CoordinateAscent(
-                    grid,
-                    startText,
-                    rounds,
-                    evaluator,
-                    {
-                        stdout.println(it.line())
-                        stdout.flush()
-                    },
-                    { write(out, it) },
-                )
-            val began = System.nanoTime()
-            val result = guarded { search.run() }
-            val seconds = (System.nanoTime() - began) / NANOS_PER_SECOND
-            val report = guarded { block(result, evaluator, seconds) }
-            report.forEach(stdout::println)
-        } finally {
-            pool.shutdown()
-        }
-        stdout.flush()
-        return ExitCode.OK
+        return files
     }
 
-    /** The final block: both objectives, each set builder lines for the start and the result. */
-    private fun block(
-        result: TuneResult,
-        evaluator: DeckTuneEvaluator,
-        seconds: Double,
-    ): List<String> {
-        val start = evaluator.run(result.startWeights)
-        val final = evaluator.run(result.weights)
-        val lines = mutableListOf(objectiveLine("start", result.startObjective))
-        lines += objectiveLine("final", result.finalObjective)
-        for ((label, evaluation) in listOf("start" to start, "final" to final)) {
-            evaluation.report.forEach { (set, report) ->
-                lines += "$set $label"
-                lines += report
+    /** A session for each set under the start weights, and its builds, as `deck-backtest` reads. */
+    private fun open(options: Options, stdout: PrintStream): List<TuneSet> {
+        val source = options.source
+        val sets =
+            options.sealed.map { (code, file) ->
+                val session =
+                    BuildSession.open(source.data, code, source.start, source.tags, source.otags)
+                val selection = DeckBacktestCommand.read(file, session)
+                stdout.println("$code: ${selection.summary()}")
+                val builds = options.limits.limit?.let(selection::limited) ?: selection.builds
+                stdout.println("$code: used ${builds.size} builds")
+                TuneSet(code, session, builds)
             }
-        }
-        lines +=
-            String.format(Locale.ROOT, "evaluations %d, time %.1f s", result.evaluations, seconds)
-        return lines
+        stdout.flush()
+        return sets
     }
-
-    private fun objectiveLine(label: String, value: Double): String =
-        String.format(Locale.ROOT, "%s objective %.6f", label, value)
 
     /** The sets of `--set`, each one that may be tuned, none twice, in the order given. */
     private fun sets(parsed: Args): List<String> {
@@ -162,38 +181,4 @@ object DeckTuneCommand {
             throw CliFailure("cannot write $path: ${e.message}", ExitCode.ERROR, e)
         }
     }
-
-    /** [block], with a failure on a worker thread, or in the search, turned into a [CliFailure]. */
-    @Suppress("TooGenericExceptionCaught")
-    private fun <T> guarded(block: () -> T): T =
-        try {
-            block()
-        } catch (e: CliFailure) {
-            throw e
-        } catch (e: IllegalArgumentException) {
-            throw CliFailure("deck-tune: ${firstLine(e.message)}", ExitCode.ERROR, e)
-        } catch (e: Exception) {
-            throw oneLine(e)
-        }
-
-    /**
-     * The failure [e] as one line: the first [CliFailure] among its causes as it is, else the root
-     * cause, named, as `deck-tune failed: <class>: <message>`.
-     */
-    internal fun oneLine(e: Throwable): CliFailure {
-        val causes = generateSequence(e) { it.cause }.take(MAX_CAUSES).toList()
-        causes.filterIsInstance<CliFailure>().firstOrNull()?.let {
-            return it
-        }
-        val root = causes.last()
-        return CliFailure(
-            "deck-tune failed: ${root.javaClass.simpleName}: ${firstLine(root.message)}",
-            ExitCode.ERROR,
-            e,
-        )
-    }
-
-    private fun firstLine(text: String?): String = text.orEmpty().lineSequence().first()
-
-    private const val MAX_CAUSES = 20
 }

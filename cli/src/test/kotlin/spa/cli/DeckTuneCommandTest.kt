@@ -387,8 +387,9 @@ class DeckTuneCommandTest {
     fun `a worker failure is reached through its causes, and any other failure is named`() {
         val cli = CliFailure("no tag file for set 'syn'", ExitCode.ERROR)
 
-        assertSame(cli, DeckTuneCommand.oneLine(ExecutionException(RuntimeException("x", cli))))
-        val other = DeckTuneCommand.oneLine(ExecutionException(IllegalStateException("boom\nmore")))
+        assertSame(cli, DeckTuneFailures.oneLine(ExecutionException(RuntimeException("x", cli))))
+        val other =
+            DeckTuneFailures.oneLine(ExecutionException(IllegalStateException("boom\nmore")))
         assertEquals(ExitCode.ERROR, other.exitCode)
         assertEquals("deck-tune failed: IllegalStateException: boom", other.message)
     }
