@@ -30,7 +30,11 @@ object CardFacts {
     ): Map<String, Set<String>> =
         GradingPool.printings(index).associate {
             val id = GradingPool.id(it)
-            id to of(FactCard(it.card, keywords[it.card.oracleId].orEmpty()), rules)
+            id to
+                of(
+                    FactCard(it.card, keywords[it.card.oracleId].orEmpty(), otags[id].orEmpty()),
+                    rules,
+                )
         }
 
     /** [pool], with the keywords read from the Scryfall caches under [scryfallDir]. */

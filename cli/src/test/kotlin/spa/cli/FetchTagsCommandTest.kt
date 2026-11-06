@@ -54,8 +54,11 @@ class FetchTagsCommandTest {
         } }
         """
 
+    private var dataDirs = 0
+
+    /** A fresh data directory for `syn`, with [caresText] as its cares table when not null. */
     private fun data(caresText: String? = cares): Path {
-        val data = Fixtures.synDataDir(temp.resolve("data"))
+        val data = Fixtures.synDataDir(temp.resolve("data-${++dataDirs}"))
         if (caresText != null) writeFile(data, "otags/cares.json", caresText)
         return data
     }

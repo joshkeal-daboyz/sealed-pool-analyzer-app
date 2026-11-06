@@ -5,6 +5,8 @@ package spa.agent.facts
  * "token" or "tokens", in any case. A sentence ends at a full stop or a line break.
  */
 object MakesTokenRule : FactRule {
+    override fun knows(fact: String): Boolean = fact == "makes-token"
+
     private val sentenceEnd = Regex("[.\n]")
     private val creates = Regex("\\bcreates?\\b.*\\btokens?\\b", RegexOption.IGNORE_CASE)
 

@@ -9,7 +9,10 @@ import org.junit.jupiter.api.Test
  * (scratchpad `tools/facts.js`, 2026-11-05).
  */
 class FactsCommandTest {
-    private fun facts(vararg args: String): CliRun = runCli("facts", *args, "--data", Fixtures.data)
+    // Since SPA-054 the pins read no otags: the four sets have otags files, whose otag facts
+    // would add to the counts (OtagsCommandsTest covers them).
+    private fun facts(vararg args: String): CliRun =
+        runCli("facts", *args, "--otags", Otags.NONE, "--data", Fixtures.data)
 
     /** The `<fact> <count>` lines of [run], as a map, and its summary line. */
     private fun counts(run: CliRun): Map<String, Int> =
@@ -179,6 +182,9 @@ class FactsCommandTest {
     fun `help lists the command`() {
         val help = runCli("--help").stdout
 
-        assertTrue("facts --set <code> [--card <name or id>] [--data <dir>]" in help)
+        // SPA-054 adds --otags.
+        assertTrue(
+            "facts --set <code> [--card <name or id>] [--otags <file>] [--data <dir>]" in help
+        )
     }
 }

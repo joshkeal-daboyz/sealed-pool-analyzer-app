@@ -113,6 +113,11 @@ class ScryfallOtagSourceTest {
     }
 
     @Test
+    fun `the default client is made without sending anything`() {
+        assertEquals(ScryfallOtagSource::class, ScryfallOtagSource()::class)
+    }
+
+    @Test
     fun `a status other than 200 is an IOException naming it`() {
         val error =
             assertFailsWith<IOException> { ScryfallOtagSource(FakeClient(404, "gone")).get(uri) }

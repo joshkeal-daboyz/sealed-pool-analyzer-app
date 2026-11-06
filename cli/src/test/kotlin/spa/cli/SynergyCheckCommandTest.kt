@@ -25,7 +25,8 @@ class SynergyCheckCommandTest {
      */
     @Test
     fun `trk prints the two original checks passing, with their numbers`() {
-        // The v1 trk tags these numbers were computed from, frozen since SPA-053.
+        // The v1 trk tags these numbers were computed from, frozen since SPA-053, and no otags
+        // (SPA-054).
         val run =
             runCli(
                 "synergy-check",
@@ -33,6 +34,8 @@ class SynergyCheckCommandTest {
                 "trk",
                 "--tags",
                 Fixtures.v1Tags("trk"),
+                "--otags",
+                Otags.NONE,
                 "--data",
                 Fixtures.data,
             )

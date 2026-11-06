@@ -11,13 +11,13 @@ import spa.agent.synergy.TagSynergy
 
 /**
  * `spa synergy <pool-file> --set <code> --pair <XY> [--weights <file>] [--tags <file>]
- * [--data <dir>]`: each distinct candidate of the pool in the pair with its tag synergy part, syn,
- * e, quantity and name, highest part first, and under each a reason line naming its partners
- * ([TagSynergy]). No network or model call.
+ * [--otags <file>] [--data <dir>]`: each distinct candidate of the pool in the pair with its tag
+ * synergy part, syn, e, quantity and name, highest part first, and under each a reason line naming
+ * its partners ([TagSynergy]). No network or model call.
  *
- * The tags come from `--tags`, else `<data>/tags/<code>.json`; the weight from `--weights`, else
- * `<data>/weights/tag-synergy.json`. A pool line that does not resolve is listed on stderr and the
- * exit stays 0.
+ * The tags come from `--tags`, else `<data>/tags/<code>.json`; the otags from `--otags` ([Otags]);
+ * the weight from `--weights`, else `<data>/weights/tag-synergy.json`. A pool line that does not
+ * resolve is listed on stderr and the exit stays 0.
  */
 object SynergyCommand {
     private const val SEP = "  "
@@ -32,7 +32,10 @@ object SynergyCommand {
     /** The result [run] prints for [args]. Unresolved pool lines go to [stderr]. */
     fun compute(args: List<String>, stderr: PrintStream): PoolSynergy {
         val parsed =
-            Args.parse(args, valueOptions = setOf("set", "data", "pair", "weights", "tags"))
+            Args.parse(
+                args,
+                valueOptions = setOf("set", "data", "pair", "weights", "tags", Otags.OPTION),
+            )
         val file = Commands.onePositional(parsed, "pool file")
         val set = Commands.requiredSet(parsed)
         val data = Commands.dataDir(parsed)
@@ -43,6 +46,7 @@ object SynergyCommand {
         val text = Commands.readFile(Path.of(file), "pool file")
         val index = Commands.loadIndex(data, set)
         val tags = SynergyTableCommand.tagFile(data, set, SynergyTableCommand.tagsOption(parsed))
+        val otags = SynergyTableCommand.otags(data, set, parsed)
         val weight =
             weight(
                 parsed.value("weights")?.let(Path::of)
@@ -50,7 +54,7 @@ object SynergyCommand {
             )
         val pool = PoolGradesCommand.pool(text, file, index, stderr)
         return TagSynergy(
-                SynergyTableCommand.table(data, set, tags),
+                SynergyTableCommand.table(data, set, tags, otags),
                 GradingPool.printings(index),
                 weight,
             )

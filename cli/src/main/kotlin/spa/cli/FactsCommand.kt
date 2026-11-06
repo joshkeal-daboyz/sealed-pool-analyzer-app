@@ -7,25 +7,28 @@ import spa.agent.grader.GradingPool
 import spa.core.cards.CardIndex
 
 /**
- * `spa facts --set <code> [--card <name or id>] [--data <dir>]`: the card facts of the set's sealed
- * pool ([CardFacts]). Each fact with the number of cards that have it, `<fact> <count>`, most
- * common first, then by name, and a last line giving the pool size and the number of distinct
- * facts. With `--card`, one line: the card's name, its id and its facts, sorted. A card is found by
- * its id (`trk/207`, any case) or by its name; one the pool does not hold is one line and exit 1.
- * No network or model call.
+ * `spa facts --set <code> [--card <name or id>] [--otags <file>] [--data <dir>]`: the card facts of
+ * the set's sealed pool ([CardFacts]), with each card's otag facts when the set has otags
+ * (`--otags`, [Otags]; SPA-054). Each fact with the number of cards that have it, `<fact> <count>`,
+ * most common first, then by name, and a last line giving the pool size and the number of distinct
+ * facts. With `--card`, one line: the card's name, its id and its facts, sorted, then its cares
+ * tags, each `cares:<fact>=<strength>`, sorted by fact. A card is found by its id (`trk/207`, any
+ * case) or by its name; one the pool does not hold is one line and exit 1. No network or model
+ * call.
  */
 object FactsCommand {
     fun run(args: List<String>, stdout: PrintStream): Int {
-        val parsed = Args.parse(args, valueOptions = setOf("set", "data", "card"))
+        val parsed = Args.parse(args, valueOptions = setOf("set", "data", "card", Otags.OPTION))
         if (parsed.positionals.isNotEmpty()) {
             throw CliFailure("unexpected argument '${parsed.positionals.first()}'", ExitCode.USAGE)
         }
         val set = Commands.requiredSet(parsed)
         val data = Commands.dataDir(parsed)
         val index = Commands.loadIndex(data, set)
-        val facts = CardFacts.load(data.scryfall, index)
+        val otags = Otags.load(data, set, parsed.value(Otags.OPTION))
+        val facts = CardFacts.load(data.scryfall, index, otags = otags?.otags.orEmpty())
         val card = parsed.value("card")
-        lines(index, facts, set, card).forEach(stdout::println)
+        lines(index, facts, otags?.cares.orEmpty(), set, card).forEach(stdout::println)
         stdout.flush()
         return ExitCode.OK
     }
@@ -33,6 +36,7 @@ object FactsCommand {
     private fun lines(
         index: CardIndex,
         facts: Map<String, Set<String>>,
+        cares: Map<String, Map<String, Int>>,
         set: String,
         card: String?,
     ): List<String> {
@@ -45,9 +49,10 @@ object FactsCommand {
             find(index, card)
                 ?: throw CliFailure("no card '$card' in the sealed pool of $set", ExitCode.ERROR)
         val id = GradingPool.id(printing)
-        return listOf(
-            "${printing.card.name} ($id): ${facts.getValue(id).sorted().joinToString(" ")}"
-        )
+        val tags =
+            facts.getValue(id).sorted() +
+                cares[id].orEmpty().toSortedMap().map { (fact, n) -> "cares:$fact=$n" }
+        return listOf("${printing.card.name} ($id): ${tags.joinToString(" ")}")
     }
 
     /** The pool printing whose id is [card] in any case, else the one of the card named [card]. */

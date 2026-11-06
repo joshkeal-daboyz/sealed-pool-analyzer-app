@@ -5,6 +5,8 @@ package spa.agent.facts
  * creature", its full name or its short name, then "dies".
  */
 object DiesTriggerRule : FactRule {
+    override fun knows(fact: String): Boolean = fact == "dies-trigger"
+
     override fun facts(card: FactCard): Set<String> =
         if (Triggers.has(card, listOf("this creature"), "dies")) setOf("dies-trigger")
         else emptySet()

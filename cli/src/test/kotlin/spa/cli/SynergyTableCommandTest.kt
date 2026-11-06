@@ -14,7 +14,8 @@ import spa.agent.tags.TagFiles
  * `tools/synergy.js`, 2026-11-05), and its errors.
  */
 class SynergyTableCommandTest {
-    private val v1 = listOf("--tags", Fixtures.v1Tags("trk"))
+    // Since SPA-054 the pinned runs read no otags, as these numbers were computed without them.
+    private val v1 = listOf("--tags", Fixtures.v1Tags("trk"), "--otags", Otags.NONE)
 
     private val trk: CliRun by lazy {
         runCli("synergy-table", "--set", "trk", *v1.toTypedArray(), "--data", Fixtures.data)

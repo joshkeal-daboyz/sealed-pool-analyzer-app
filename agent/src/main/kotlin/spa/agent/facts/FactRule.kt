@@ -34,7 +34,11 @@ object FactRules {
         )
 
     /** True when a rule of [rules] knows [fact] ([FactRule.knows]). */
-    fun knows(fact: String, rules: List<FactRule> = ALL): Boolean = false
+    fun knows(fact: String, rules: List<FactRule> = ALL): Boolean = rules.any { it.knows(fact) }
+
+    /** True when [fact] is [prefix] followed by at least one character (`kw:flying`). */
+    fun prefixed(fact: String, prefix: String): Boolean =
+        fact.startsWith(prefix) && fact.length > prefix.length
 
     /** [text] lowercased, with every character that is not a letter or digit turned into `-`. */
     fun slug(text: String): String =

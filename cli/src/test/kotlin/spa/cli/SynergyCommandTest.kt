@@ -22,7 +22,8 @@ import spa.core.metrics.ColorPair
 class SynergyCommandTest {
     private val pool = Fixtures.pool("trk-manabox-01.csv")
 
-    private val v1 = listOf("--tags", Fixtures.v1Tags("trk"))
+    // Since SPA-054 the pinned runs read no otags, as these numbers were computed without them.
+    private val v1 = listOf("--tags", Fixtures.v1Tags("trk"), "--otags", Otags.NONE)
 
     private val wu: PoolSynergy by lazy {
         val err = ByteArrayOutputStream()
@@ -225,7 +226,7 @@ class SynergyCommandTest {
     fun `--tags reads that file instead of the data directory's tag file`(@TempDir dir: Path) {
         val tags = dir.resolve("elsewhere.json")
         java.nio.file.Files.copy(Path.of(Fixtures.v1Tags("trk")), tags)
-        val run = synergy(extra = listOf("--tags", "$tags"))
+        val run = synergy(extra = listOf("--tags", "$tags", "--otags", Otags.NONE))
 
         assertEquals(ExitCode.OK, run.exit, run.stderr)
         assertEquals(
