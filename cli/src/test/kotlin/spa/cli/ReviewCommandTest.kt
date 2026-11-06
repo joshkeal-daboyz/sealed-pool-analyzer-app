@@ -42,7 +42,8 @@ class ReviewCommandTest {
         val run = runReview("no-such-pool.csv", *data)
 
         assertEquals(ExitCode.ERROR, run.exit)
-        assertEquals("ANTHROPIC_API_KEY is not set\n", run.stderr)
+        assertEquals("ANTHROPIC_API_KEY is not set", run.stderr.trimEnd())
+        assertEquals(1, run.stderrLines().size)
         assertEquals("", run.stdout)
     }
 
@@ -51,7 +52,7 @@ class ReviewCommandTest {
         val run = runReview(pool, *data, env = mapOf("ANTHROPIC_API_KEY" to "  "))
 
         assertEquals(ExitCode.ERROR, run.exit)
-        assertEquals("ANTHROPIC_API_KEY is not set\n", run.stderr)
+        assertEquals("ANTHROPIC_API_KEY is not set", run.stderr.trimEnd())
     }
 
     @Test
@@ -206,7 +207,9 @@ class ReviewCommandTest {
         assertEquals(ExitCode.OK, first.exit, first.stderr)
         assertEquals(first.stdout, second.stdout)
         val lines = first.stdout.lines()
-        val at = headings.map { heading -> lines.indexOfFirst { it == heading } }
+        val at = headings.map { heading ->
+            lines.indexOfFirst { it == heading || it.startsWith("$heading  (") }
+        }
         assertTrue(at.all { it >= 0 } && at == at.sorted(), "headings at $at")
         assertTrue("Missing: none" in lines)
         assertTrue(lines.any { it.startsWith("Usage: 8 calls") })
@@ -480,7 +483,7 @@ class ReviewCommandTest {
 
         assertEquals(ExitCode.OK, run.exit, run.stderr)
         assertTrue("probe" in client.requests.map { it.label })
-        assertTrue("Probe notes" in run.stdout.lines())
+        assertTrue(run.stdout.lines().any { it.startsWith("Probe notes  (") })
         assertTrue(run.stdout.lines().any { it.startsWith("Usage: 9 calls") })
         assertTrue("Missing: none" in run.stdout.lines())
     }

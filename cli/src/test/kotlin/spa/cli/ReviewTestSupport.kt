@@ -154,7 +154,8 @@ internal class CannedClient(private val extra: Map<String, Script> = emptyMap())
                 JsonElement.serializer(),
                 if (request.label == "explainer") explainer() else analyst(request),
             )
-        val usage = ModelUsage(TokenEstimate.of(request), text.length / CHARACTERS_PER_TOKEN)
+        val usage =
+            ModelUsage(TokenEstimate.of(request), (text.length / CHARACTERS_PER_TOKEN).toLong())
         return ModelResponse(request.model, text, "end_turn", usage)
     }
 
