@@ -48,6 +48,9 @@ val fixtures = rootProject.layout.projectDirectory.dir("fixtures")
 // `-PupdateGoldens=true` makes GoldenTest rewrite fixtures/golden from the current output.
 val updateGoldens = providers.gradleProperty("updateGoldens").orElse("false").get()
 
+// `-PupdateRecordings=true` makes CannedRecordingsTest rewrite fixtures/recordings (SPA-070).
+val updateRecordings = providers.gradleProperty("updateRecordings").orElse("false").get()
+
 tasks.test {
     useJUnitPlatform()
     // Tests run the commands in-process against the committed fixtures; they never reach the
@@ -56,6 +59,8 @@ tasks.test {
     systemProperty("spa.fixtures", fixtures.asFile.absolutePath)
     inputs.property("updateGoldens", updateGoldens)
     systemProperty("spa.updateGoldens", updateGoldens)
+    inputs.property("updateRecordings", updateRecordings)
+    systemProperty("spa.updateRecordings", updateRecordings)
 }
 
 ktfmt { kotlinLangStyle() }
