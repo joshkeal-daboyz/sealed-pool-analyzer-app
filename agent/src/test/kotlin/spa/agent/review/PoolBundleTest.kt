@@ -40,19 +40,16 @@ class PoolBundleTest {
         ReviewTestCards.card(
             "Plains",
             cost = "",
-            mv = 0.0,
             type = "Basic Land — Plains",
             text = "({T}: Add {W}.)",
-            basic = true,
         )
-    private val ghost = ReviewTestCards.card("Ghost Card", setOf(Color.U), "{U}", 1.0)
-    private val twin = ReviewTestCards.card("Twin Printed", setOf(Color.R), "{R}", 1.0)
+    private val ghost = ReviewTestCards.card("Ghost Card", setOf(Color.U), "{U}")
+    private val twin = ReviewTestCards.card("Twin Printed", setOf(Color.R), "{R}")
     private val lineBreaker =
         ReviewTestCards.card(
             "Line Breaker",
             setOf(Color.G),
             "{2}{G}",
-            3.0,
             text = "Flying\nWhen it dies, draw a card.",
         )
 

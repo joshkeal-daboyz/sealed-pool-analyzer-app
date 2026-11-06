@@ -21,16 +21,19 @@ import spa.core.text.Color
 
 /** Small hand-built cards, pools, a brief and a baseline for the review package's tests. */
 internal object ReviewTestCards {
+    /** The mana value of [cost]: each number counts as itself, each other symbol as one. */
+    private fun manaValue(cost: String): Double =
+        Regex("\\{([^}]*)}").findAll(cost).sumOf { it.groupValues[1].toIntOrNull() ?: 1 }.toDouble()
+
     /** A single-faced card. [cost] is the face's mana cost, which may be empty. */
     fun card(
         name: String,
         colors: Set<Color> = emptySet(),
         cost: String = "{2}",
-        mv: Double = 2.0,
         type: String = "Creature — Bear",
         text: String = "",
-        basic: Boolean = false,
     ): Card {
+        val mv = manaValue(cost)
         val face = Face(name, cost, mv, colors, type, text, null, null)
         return Card(
             oracleId = "oracle-$name",
@@ -43,7 +46,7 @@ internal object ReviewTestCards {
             typeLine = type,
             isCreature = type.startsWith("Creature"),
             isLand = type.contains("Land"),
-            isBasicLand = basic,
+            isBasicLand = type.startsWith("Basic Land"),
             rarity = Rarity.COMMON,
         )
     }
@@ -147,10 +150,8 @@ internal object ReviewTestCards {
                     card(
                         "Plains",
                         cost = "",
-                        mv = 0.0,
                         type = "Basic Land — Plains",
                         text = "({T}: Add {W}.)",
-                        basic = true,
                     ),
                     5,
                 ),
