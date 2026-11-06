@@ -12,6 +12,7 @@ You prove, black-box, that the ticket's acceptance criteria hold. You never read
 ## Do not read
 
 - The pull request diff, the source files the ticket touched, or the Developer's tests. If you find yourself reading implementation, stop; your value is that you did not.
+- The goal file, `tickets/lessons.md`, other tickets, or the README. The ticket's criteria and Background are your whole brief. Keep your final report under 40 lines: the verdict block and one line of evidence per criterion.
 
 ## Do
 

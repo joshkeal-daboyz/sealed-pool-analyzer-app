@@ -16,6 +16,7 @@ You own the backlog. You turn goals into tickets, order them, dispatch Developer
 - Acceptance criteria are numbered and each is checkable by a command or a scenario. "Works correctly" is not a criterion.
 - The test plan says, per criterion, how it is proven: unit test, Compose UI or snapshot test, Acceptance Tester scenario, or "cannot be automated because ..." with the reason. It also says the order: every unit, Compose UI, or snapshot test is `tests-first` unless the ticket says why not; toolchain, build, and wiring criteria are `gate`; device-only criteria are `acceptance`.
 - `scope` lists the files or modules expected to change and an explicit "not in scope" list.
+- The ticket is self-contained. Its Background section quotes, word for word, everything the Developer needs from the goal file, `tickets/lessons.md`, earlier tickets, the README and the design brief, and names the exact source files to read. A Developer never opens those sources; a ticket that points at them instead of quoting them is bounced back to you unread. Keep the quoted material to what the criteria need: a Background over about 60 lines usually means the ticket should split.
 - `serialize_with` names every ticket that touches the same files. Those never run at the same time.
 - `depends_on` names tickets that must merge first.
 - The first ticket of a goal with no toolchain yet is the toolchain and gate ticket. Nothing else dispatches until the gate runs green on an empty module.
@@ -27,10 +28,20 @@ You own the backlog. You turn goals into tickets, order them, dispatch Developer
 
 ## Dispatching
 
-- Start one Developer session per ticket, in its own git worktree and branch named after the ticket id, with the ticket file as its entire brief plus `CLAUDE.md` and `pipeline/roles/developer.md`.
-- At most three Developers at once, and never two whose tickets share a `serialize_with` entry.
+- Start one Developer per ticket, in its own git worktree and branch named after the ticket id, from the template in `pipeline/prompts/developer-dispatch.md`, filled in and nothing added. The Developer reads `pipeline/roles/developer.md`, the ticket and `pipeline/gate/README.md`; `CLAUDE.md` loads on its own. Do not add a reading list, a goal summary, pointers to other tickets or lessons, or rules the role brief already states. If you find yourself writing background into the prompt, it belongs in the ticket; commit it there first.
+- Developers, Acceptance Testers and Test Inspectors run on Claude Sonnet 5.5 (kickoff prompt) unless a ticket's `budget` says otherwise. Record the model in the dispatch line of the ticket history.
+- One Developer at a time on this PC (owner, 2026-11-04): a second ticket starts only when the current one is merged or stopped. A ticket's testers run after its Developer has finished, never alongside a build.
 - Set the ticket `status` to `in_progress` by commit, and append a dated dispatch line to its history.
-- Dispatch does not wait for the human. When the backlog is committed, show it and start the first wave in the same message. The human stops you with "hold" and resumes you with "go"; otherwise you keep dispatching waves until the goal's criteria all pass or a limit sends something to the human.
+- Dispatch does not wait for the human. When the backlog is committed, show it and start the first ticket in the same message. The human stops you with "hold" and resumes you with "go"; otherwise you keep dispatching tickets, one at a time, until the goal's criteria all pass or a limit sends something to the human.
+
+## Your own context
+
+You are the most expensive agent in the pipeline because you run longest. Every call re-reads your whole context.
+
+- Start each goal in a fresh session from `pipeline/prompts/architect-kickoff.md`. Never fork or continue a previous Architect session: the tickets, histories and `tickets/lessons.md` are the memory, and they are on `main`.
+- A subagent's final report is your only view of its work. Do not read diffs, Gradle output, gate logs or transcripts; the verdicts and the ticket history are what you act on. When two verdicts disagree, read the one file the disagreement names.
+- Write tickets from the goal file and the lessons, not from recollection of earlier sessions.
+- When your context passes about 300K tokens, finish the ticket in flight, write a dated status line into the goal file, commit, and tell the human to start a fresh Architect with the kickoff prompt.
 
 ## What needs the human
 

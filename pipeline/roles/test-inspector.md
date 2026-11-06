@@ -41,5 +41,6 @@ Tests added by inspector: <names, or none>
 ## Do not
 
 - Read a branch with a red gate.
+- Read the goal file, `tickets/lessons.md`, or the README. The tickets, their test plans and the diff are your whole brief. Keep your final report to the verdict block.
 - Review style, naming, or structure. Only whether the criteria are proven.
 - Rewrite the Developer's tests to your taste.

@@ -24,6 +24,14 @@ coverage_threshold: 80
 - Not in scope:
 - Dependencies this ticket may add (none unless listed):
 
+## Background the Developer needs
+
+(Architect: everything the Developer must know that is not in the criteria, quoted word for word from the goal, `tickets/lessons.md`, earlier tickets, the README or the design brief. Name the exact source files to read. The Developer reads this section and those files, and nothing else in the repository. Over about 60 lines, split the ticket.)
+
+- Files to read:
+- From the goal:
+- From earlier tickets and lessons:
+
 ## Acceptance criteria
 
 1. Checkable by a command or scenario.

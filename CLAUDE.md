@@ -60,6 +60,7 @@ When you ask, say what you will do if no answer comes, and treat a reply that do
 - Re-run the gate hoping it passes this time. A flaky test is a ticket.
 - Read the whole repository to find a failure. The gate verdict names the file and line.
 - Lower a coverage threshold, delete a failing test, or edit a stored snapshot baseline without the ticket saying so.
+- As a Developer or a Testing agent, read anything the ticket does not name: not the goal file, not `tickets/lessons.md`, not another ticket, not the README. The ticket quotes what its agents need; a ticket that only points is bounced to the Architect.
 
 ## Product constraints that bind every ticket
 

@@ -12,6 +12,7 @@ This folder holds the pipeline's own artifacts. The design behind it is in the d
 | `gate/README.md` | What the gate runs, in order, and the verdict it writes |
 | `ticket-template.md` | The ticket contract as a file |
 | `prompts/architect-kickoff.md` | What the human pastes to start a goal |
+| `prompts/developer-dispatch.md` | The Developer's entire brief; the Architect fills it and adds nothing |
 
 Budgets and limits, as defaults the Architect tunes per ticket:
 
@@ -21,4 +22,5 @@ Budgets and limits, as defaults the Architect tunes per ticket:
 | Test Inspector bounce | 2 bounces | Escalate to Architect: the test plan was likely wrong |
 | Acceptance Tester bounce | 2 bounces | Escalate to Architect: a criterion is likely untestable or ambiguous |
 | Architect re-plan | 2 per ticket | Escalate to the human with the full history |
-| Developers running at once | 3 | Queue the rest |
+| Developers running at once | 1 (owner, 2026-11-04) | Queue the rest |
+| Developer tool calls per attempt | about 100 | Over it, the ticket was too big or its Background too thin: a lesson for the Architect |
