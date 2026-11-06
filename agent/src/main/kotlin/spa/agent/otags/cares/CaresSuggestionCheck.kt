@@ -8,11 +8,11 @@ import spa.agent.facts.OtagFactRule
  */
 object CaresSuggestionCheck : CaresCheck {
     override fun problems(input: CaresCheckInput): List<String> =
-        input.suggestions.flatMap { suggestion ->
+        input.table.suggestions.flatMap { suggestion ->
             val where = "${CaresPackets.SUGGESTIONS}: '${suggestion.tag}'"
             val tag =
                 when {
-                    suggestion.tag in input.tableTags -> listOf("$where: already in cares.json")
+                    suggestion.tag in input.table.tags -> listOf("$where: already in cares.json")
                     OtagFactRule.PREFIX + suggestion.tag !in input.vocabulary ->
                         listOf("$where: not a Scryfall tag of this set")
                     else -> emptyList()

@@ -83,12 +83,17 @@ internal object Otags {
      */
     fun load(data: DataDir, set: String, given: String?, fable: Boolean = true): OtagInputs? {
         val path = given?.let { Path.of(it) } ?: data.root.resolve("otags").resolve("$set.json")
-        if (given == NONE) return null
-        if (given == null && !Files.isRegularFile(path)) {
-            val added = if (fable) fableCares(data, set) else emptyMap()
-            return if (added.isEmpty()) null else OtagInputs(emptyMap(), added)
+        return when {
+            given == NONE -> null
+            given == null && !Files.isRegularFile(path) -> fableOnly(data, set, fable)
+            else -> read(data, set, path, fable)
         }
-        return read(data, set, path, fable)
+    }
+
+    /** The Fable cares alone, for a set with no otags file; null when it has none. */
+    private fun fableOnly(data: DataDir, set: String, fable: Boolean): OtagInputs? {
+        val added = if (fable) fableCares(data, set) else emptyMap()
+        return if (added.isEmpty()) null else OtagInputs(emptyMap(), added)
     }
 
     private fun read(data: DataDir, set: String, path: Path, fable: Boolean): OtagInputs {

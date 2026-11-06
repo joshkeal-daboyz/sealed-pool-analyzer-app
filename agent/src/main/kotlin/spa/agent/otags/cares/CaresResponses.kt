@@ -53,22 +53,28 @@ object CaresResponses {
         if (!Files.isRegularFile(path)) return emptyList<CaresSuggestion>() to emptyList()
         val name = path.name
         val parsed = TagJson.parse(Files.readString(path))
-        val element = parsed.getOrNull()
-        if (element == null) {
-            return emptyList<CaresSuggestion>() to
-                listOf("$name: not JSON: ${parsed.exceptionOrNull()?.message}")
+        return when (val element = parsed.getOrNull()) {
+            null -> unreadable("$name: not JSON: ${parsed.exceptionOrNull()?.message}")
+            !is JsonArray -> unreadable("$name: not a JSON array of { tag, facts, reason }")
+            else -> suggestionEntries(name, element)
         }
-        if (element !is JsonArray) {
-            return emptyList<CaresSuggestion>() to
-                listOf("$name: not a JSON array of { tag, facts, reason }")
-        }
+    }
+
+    private fun unreadable(problem: String) = emptyList<CaresSuggestion>() to listOf(problem)
+
+    private fun suggestionEntries(
+        name: String,
+        element: JsonArray,
+    ): Pair<List<CaresSuggestion>, List<String>> {
         val suggestions = mutableListOf<CaresSuggestion>()
         val problems = mutableListOf<String>()
         element.forEachIndexed { i, entry ->
             val suggestion = suggestion(entry)
-            if (suggestion == null)
+            if (suggestion == null) {
                 problems += "$name: entry ${i + 1}: needs a tag, facts and a reason"
-            else suggestions += suggestion
+            } else {
+                suggestions += suggestion
+            }
         }
         return suggestions to problems
     }
@@ -112,8 +118,9 @@ object CaresResponses {
         val fields = element as? JsonObject ?: return null
         val tag = TagJson.string(fields["tag"])
         val reason = TagJson.string(fields["reason"])
-        val facts = (fields["facts"] as? JsonArray)?.map(::suggested)
-        return if (tag == null || reason == null || facts == null || facts.any { it == null }) null
+        val facts =
+            (fields["facts"] as? JsonArray)?.map(::suggested)?.takeIf { f -> f.none { it == null } }
+        return if (tag == null || reason == null || facts == null) null
         else CaresSuggestion(tag, facts.filterNotNull(), reason)
     }
 

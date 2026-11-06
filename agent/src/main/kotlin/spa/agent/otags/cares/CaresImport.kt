@@ -25,6 +25,12 @@ class CaresImportResult(
 )
 
 /**
+ * The set an import is for: its [code], the card ids of its sealed pool in collector order
+ * ([poolIds]) and the tags of its cares table ([tableTags]).
+ */
+class CaresImportSet(val code: String, val poolIds: List<String>, val tableTags: Set<String>)
+
+/**
  * Turns the responses in a cares packet (see [CaresPackets]) into a Fable cares file (SPA-055).
  *
  * The packet must hold the set's sealed pool in its card files, `vocabulary.json`, and a
@@ -35,19 +41,27 @@ object CaresImport {
     private val json = Json
 
     /**
-     * [run] for the set [setCode] whose sealed pool holds the card ids [poolIds] in collector
-     * order, and whose cares table has the tags [tableTags], with [provenance] on the file.
+     * Checks the responses in [packetDir] for [set] with [checks] and, when all pass, gives the
+     * Fable cares file with [provenance].
      */
     fun run(
         packetDir: Path,
-        setCode: String,
-        poolIds: List<String>,
-        tableTags: Set<String>,
+        set: CaresImportSet,
         provenance: String,
         checks: List<CaresCheck> = CaresChecks.ALL,
     ): CaresImportResult {
-        val packet = readPacket(packetDir, setCode, poolIds)
-        if (packet.problems.isNotEmpty()) return CaresImportResult(null, packet.problems)
+        val packet = readPacket(packetDir, set.code, set.poolIds)
+        return if (packet.problems.isNotEmpty()) CaresImportResult(null, packet.problems)
+        else respond(packetDir, packet, set, provenance, checks)
+    }
+
+    private fun respond(
+        packetDir: Path,
+        packet: Packet,
+        set: CaresImportSet,
+        provenance: String,
+        checks: List<CaresCheck>,
+    ): CaresImportResult {
         val (suggestions, suggestionProblems) = CaresResponses.suggestions(packetDir)
         val responses = packet.cardFiles.map { CaresResponses.read(packetDir.resolve(it.name)) }
         val input =
@@ -57,8 +71,7 @@ object CaresImport {
                 responses.flatMap { it.cards },
                 packet.vocabulary,
                 packet.cares,
-                tableTags,
-                suggestions,
+                CaresTableInput(set.tableTags, suggestions),
             )
         val problems =
             responses.flatMap { it.problems } +
@@ -68,7 +81,7 @@ object CaresImport {
 
         val adds = input.responses.groupBy({ it.id }, { it.add }).mapValues { it.value.flatten() }
         val cards =
-            poolIds
+            set.poolIds
                 .filter { adds[it].orEmpty().isNotEmpty() }
                 .map { id ->
                     FableCard(
@@ -78,7 +91,7 @@ object CaresImport {
                         },
                     )
                 }
-        val file = FableCaresFile(setCode, provenance, cards)
+        val file = FableCaresFile(set.code, provenance, cards)
         return CaresImportResult(file, emptyList(), cards.sumOf { it.cares.size }, suggestions)
     }
 

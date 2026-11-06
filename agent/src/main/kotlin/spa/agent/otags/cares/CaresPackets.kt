@@ -14,12 +14,11 @@ import spa.agent.facts.OtagFactRule
 import spa.agent.grader.GradingPacket
 import spa.agent.grader.GradingPackets
 import spa.agent.grader.PacketFile
-import spa.agent.grader.PacketThemes
 import spa.agent.otags.CaresTable
 import spa.agent.otags.OtagTagsFile
+import spa.agent.tags.TagPacketSet
 import spa.agent.tags.TagPacketText
 import spa.agent.tags.TagPackets
-import spa.core.brief.FormatBrief
 import spa.core.cards.CardIndex
 
 /** One cares tag in a `cares-NN.json`: the [fact] and its [strength], 1 to 3. */
@@ -29,15 +28,12 @@ import spa.core.cards.CardIndex
 @Serializable data class PacketCaresCard(val id: String, val cares: List<PacketCare>)
 
 /**
- * What a cares packet is built from: the set's card [index], its [brief] and theme counts
- * ([themes], or none), each card id's [facts] (code facts and every `otag:` fact), its Scryfall
- * tags [otags] by card id, the [table] (`cares.json`) and the set's [tags] file.
+ * What a cares packet is built from: the set ([set]: its card index, brief, theme counts and each
+ * card id's facts, code facts and every `otag:` fact), its Scryfall tags [otags] by card id, the
+ * [table] (`cares.json`) and the set's [tags] file.
  */
 class CaresPacketSet(
-    val index: CardIndex,
-    val brief: FormatBrief,
-    val themes: PacketThemes?,
-    val facts: Map<String, Set<String>>,
+    val set: TagPacketSet,
     val otags: Map<String, List<String>>,
     val table: CaresTable,
     val tags: OtagTagsFile,
@@ -85,11 +81,11 @@ object CaresPackets {
     /** The cares-gaps packet for [set], with the prompt [prompt]. */
     fun build(set: CaresPacketSet, prompt: String): GradingPacket {
         val cardFiles =
-            GradingPackets.build(set.index, set.brief).files.filter {
+            GradingPackets.build(set.set.index, set.set.brief).files.filter {
                 GradingPackets.isCardFile(it.name)
             }
         val names = set.tags.nameTags().map { OtagFactRule.PREFIX + it }.toSet()
-        val facts = set.facts.mapValues { (_, facts) -> facts - names }
+        val facts = set.set.facts.orEmpty().mapValues { (_, facts) -> facts - names }
         val codeFacts = facts.values.flatten().filterNot { it.startsWith(OtagFactRule.PREFIX) }
         val vocabulary = CaresVocabulary.build(codeFacts.toSet(), set.tags)
         val caresFiles = cardFiles.map { file ->
@@ -104,10 +100,10 @@ object CaresPackets {
                 "\n\n" +
                 renderTable(set.table) +
                 "\n" +
-                GradingPackets.renderBrief(set.brief) +
+                GradingPackets.renderBrief(set.set.brief) +
                 "\n" +
-                set.themes?.let { it.render() + "\n" }.orEmpty() +
-                describeFiles(set.index, cardFiles.map { it.name })
+                set.set.themes?.let { it.render() + "\n" }.orEmpty() +
+                describeFiles(set.set.index, cardFiles.map { it.name })
         return GradingPacket(
             listOf(
                 PacketFile(INSTRUCTIONS, instructions),

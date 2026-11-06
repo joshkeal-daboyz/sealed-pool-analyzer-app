@@ -55,22 +55,25 @@ class SynergyCheckIndependenceTest {
                 }
         }
 
+    /** The pass-2 packet is v1's, so its axes are the v1 trk axes, frozen since SPA-053. */
+    private fun v1AxesFile(): String {
+        val axes = TagFiles.read(Path.of(Fixtures.v1Tags("trk"))).axes
+        return writeFile(
+            temp,
+            "trk-axes.json",
+            axes.joinToString(",\n", "[\n", "\n]") {
+                """{ "id": ${q(it.id)}, "name": ${q(it.name)}, "definition": ${q(it.definition)} }"""
+            },
+        )
+    }
+
     private fun packets(): List<Path> {
         val axesPacket = temp.resolve("axes")
         val rolesPacket = temp.resolve("roles")
         val gradePacket = temp.resolve("grades")
         val reviewPacket = temp.resolve("review")
         val caresPacket = temp.resolve("cares")
-        // The pass-2 packet is v1's, so its axes are the v1 trk axes, frozen since SPA-053.
-        val axes = TagFiles.read(Path.of(Fixtures.v1Tags("trk"))).axes
-        val axesFile =
-            writeFile(
-                temp,
-                "trk-axes.json",
-                axes.joinToString(",\n", "[\n", "\n]") {
-                    """{ "id": ${q(it.id)}, "name": ${q(it.name)}, "definition": ${q(it.definition)} }"""
-                },
-            )
+        val axesFile = v1AxesFile()
         val runs =
             listOf(
                 runCli(

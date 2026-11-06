@@ -10,6 +10,7 @@ import spa.agent.grader.GradingPool
 import spa.agent.otags.cares.CaresPacketSet
 import spa.agent.otags.cares.CaresPackets
 import spa.agent.otags.cares.CaresResources
+import spa.agent.tags.TagPacketSet
 
 /**
  * `spa cares-packet <code> --out <dir> [--otags <file>] [--data <dir>]` (SPA-055): writes the blind
@@ -23,18 +24,9 @@ object CaresPacketCommand {
     fun run(args: List<String>, stdout: PrintStream): Int {
         val parsed = Args.parse(args, valueOptions = setOf("out", "data", Otags.OPTION))
         val set = Commands.onePositional(parsed, "set code").lowercase(Locale.ROOT)
-        val out =
-            Path.of(
-                parsed.value("out") ?: throw CliFailure("--out <dir> is required", ExitCode.USAGE)
-            )
+        val out = outDir(parsed)
         val data = Commands.dataDir(parsed)
-        val otags =
-            Otags.load(data, set, parsed.value(Otags.OPTION), fable = false)
-                ?: throw CliFailure(
-                    "no otags for set '$set': run 'spa fetch-tags --set $set' to write " +
-                        "${data.root.resolve("otags").resolve("$set.json")}",
-                    ExitCode.ERROR,
-                )
+        val otags = otags(data, set, parsed.value(Otags.OPTION))
         val tags = Otags.tags(data, set)
         val index = Commands.loadIndex(data, set)
         val brief = GradePacketCommand.loadBrief(data.briefFile(set))
@@ -42,10 +34,7 @@ object CaresPacketCommand {
         val facts = CardFacts.load(data.scryfall, index, otags = otags.otags)
         val packetSet =
             CaresPacketSet(
-                index,
-                brief,
-                themes,
-                facts,
+                TagPacketSet(index, brief, themes, facts),
                 otags.otags,
                 Otags.caresTable(data),
                 tags,
@@ -64,4 +53,16 @@ object CaresPacketCommand {
         stdout.flush()
         return ExitCode.OK
     }
+
+    private fun outDir(parsed: Args): Path =
+        Path.of(parsed.value("out") ?: throw CliFailure("--out <dir> is required", ExitCode.USAGE))
+
+    /** The set's otags, without the Fable cares; none is one line and exit 1. */
+    private fun otags(data: DataDir, set: String, given: String?): OtagInputs =
+        Otags.load(data, set, given, fable = false)
+            ?: throw CliFailure(
+                "no otags for set '$set': run 'spa fetch-tags --set $set' to write " +
+                    "${data.root.resolve("otags").resolve("$set.json")}",
+                ExitCode.ERROR,
+            )
 }

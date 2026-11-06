@@ -9,6 +9,7 @@ import spa.agent.grader.GradingPool
 import spa.agent.otags.cares.CaresCheck
 import spa.agent.otags.cares.CaresChecks
 import spa.agent.otags.cares.CaresImport
+import spa.agent.otags.cares.CaresImportSet
 
 /**
  * `spa cares-import <code> --packet <dir> --provenance <text> [--data <dir>]` (SPA-055): checks
@@ -33,7 +34,7 @@ class CaresImportCommand(private val checks: List<CaresCheck> = CaresChecks.ALL)
         val table = Otags.caresTable(data).cares.keys
         val result =
             io("cannot read $packet") {
-                CaresImport.run(packet, set, pool, table, provenance, checks)
+                CaresImport.run(packet, CaresImportSet(set, pool, table), provenance, checks)
             }
         val file = result.file
         if (file == null) {

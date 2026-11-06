@@ -33,43 +33,41 @@ import org.junit.jupiter.api.io.TempDir
 class FetchTagsTagsFileTest {
     @TempDir lateinit var temp: Path
 
+    /** One bulk-file line; the tag's id is `t-<slug>`, and [parents] are slugs. */
     private fun line(
-        id: String,
         slug: String,
         description: String?,
         type: String = "oracle",
         parents: List<String> = emptyList(),
         cards: List<String> = emptyList(),
     ): String {
-        val parentIds = parents.joinToString(",") { "\"$it\"" }
+        val parentIds = parents.joinToString(",") { "\"t-$it\"" }
         val taggings = cards.joinToString(",") { "{\"oracle_id\":\"$it\",\"weight\":\"median\"}" }
         val text = description?.let { "\"$it\"" } ?: "null"
-        return "{\"object\":\"tag\",\"id\":\"$id\",\"label\":\"$slug\",\"slug\":\"$slug\"," +
+        return "{\"object\":\"tag\",\"id\":\"t-$slug\",\"label\":\"$slug\",\"slug\":\"$slug\"," +
             "\"type\":\"$type\",\"description\":$text,\"parent_ids\":[$parentIds]," +
             "\"child_ids\":[],\"aliases\":[],\"taggings\":[$taggings]}"
     }
 
     private val bulkText =
         listOf(
-                line("t1", "card-advantage", "Gains cards."),
-                line("t2", "draw", "Draws cards.", parents = listOf("t1"), cards = listOf(AIR)),
-                line("t3", "cantrip", null, parents = listOf("t2"), cards = listOf(BEARS)),
+                line("card-advantage", "Gains cards."),
                 line(
-                    "t4",
-                    "bear-art",
-                    "Art of bears.",
-                    type = "illustration",
-                    cards = listOf(BEARS),
+                    "draw",
+                    "Draws cards.",
+                    parents = listOf("card-advantage"),
+                    cards = listOf(AIR),
                 ),
+                line("cantrip", null, parents = listOf("draw"), cards = listOf(BEARS)),
+                line("bear-art", "Art of bears.", type = "illustration", cards = listOf(BEARS)),
                 line(
-                    "t5",
                     "bear-theme",
                     "Bear things.",
-                    parents = listOf("t4", "t1"),
+                    parents = listOf("bear-art", "card-advantage"),
                     cards = listOf(BEARS),
                 ),
-                line("t6", "legends-matter", "Cares about \\\"legends\\\".", cards = listOf(SERRA)),
-                line("t7", "basic", "A basic land.", cards = listOf(PLAINS)),
+                line("legends-matter", "Cares about \\\"legends\\\".", cards = listOf(SERRA)),
+                line("basic", "A basic land.", cards = listOf(PLAINS)),
             )
             .joinToString("\n", postfix = "\n")
 
