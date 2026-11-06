@@ -1,15 +1,9 @@
 package spa.agent.review
 
-import java.util.concurrent.ExecutionException
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.Semaphore
-import java.util.concurrent.TimeUnit
-import java.util.concurrent.TimeoutException
-import spa.agent.model.BudgetExceededException
 import spa.agent.model.ModelClient
-import spa.agent.model.ModelRequest
-import spa.agent.model.ModelResponse
 
 /**
  * Runs the analysts of a review through [client]. It sees only [AnalysisAgent]: which agents run
@@ -22,21 +16,8 @@ class AgentRunner(
     private val config: ReviewConfig,
     private val agents: List<AnalysisAgent>,
 ) {
-    /** What one run shares: the thread pool, the limit on calls in flight, and the pool's names. */
-    private class Run(
-        val input: ReviewInput,
-        val pool: ExecutorService,
-        val permits: Semaphore,
-        val names: Set<String>,
-    )
-
-    /** One agent's work: its first request [base], its number [table], and the shared [run]. */
-    private class Job(
-        val agent: AnalysisAgent,
-        val base: ModelRequest,
-        val table: NumberTable,
-        val run: Run,
-    )
+    /** What one run shares: the input, the call rules on their thread pool, the pool's names. */
+    private class Run(val input: ReviewInput, val calls: ModelCalls, val names: Set<String>)
 
     private val enabled: List<AnalysisAgent>
         get() = agents.filter { config.setting(it.id)?.enabled == true }
@@ -55,13 +36,7 @@ class AgentRunner(
         val pool = Executors.newCachedThreadPool { task -> Thread(task).apply { isDaemon = true } }
         val results = mutableMapOf<AnalysisAgent, AgentOutcome>()
         try {
-            val run =
-                Run(
-                    input,
-                    pool,
-                    Semaphore(config.parallel),
-                    input.pool.entries.map { it.printing.card.name }.toSet(),
-                )
+            val run = newRun(input, pool)
             ready.firstOrNull()?.let { results[it] = answer(it, run) }
             val rest =
                 ready.drop(1).map { agent ->
@@ -74,89 +49,33 @@ class AgentRunner(
         return listed.map { early[it] ?: results.getValue(it) }
     }
 
+    private fun newRun(input: ReviewInput, pool: ExecutorService): Run =
+        Run(
+            input,
+            ModelCalls(client, config, pool, Semaphore(config.parallel)),
+            input.pool.entries.map { it.printing.card.name }.toSet(),
+        )
+
     @Suppress("TooGenericExceptionCaught")
     private fun unavailableOutcome(agent: AnalysisAgent, input: ReviewInput): AgentOutcome? =
         try {
             agent.unavailable(input)?.let { AgentOutcome.Missing(agent, it) }
         } catch (error: Exception) {
-            AgentOutcome.Missing(agent, describe(error))
+            AgentOutcome.Missing(agent, ModelCalls.describe(error))
         }
 
     private fun answer(agent: AnalysisAgent, run: Run): AgentOutcome =
-        guarded(agent) {
+        run.calls.guarded({ AgentOutcome.Missing(agent, it) }) {
             val table = agent.numbers(run.input)
             val base = AgentRequests.of(agent, run.input, config)
-            attempt(Job(agent, base, table, run), 0, null)
-        }
-
-    /** Sends the request of attempt [number] (0 is the first) and checks the reply. */
-    private fun attempt(job: Job, number: Int, previous: SchemaError?): AgentOutcome {
-        val request = if (previous == null) job.base else retryRequest(job.base, number, previous)
-        val text = send(request, job.run).text
-        return try {
-            val checked =
-                AnswerChecker.check(
-                    text,
-                    job.agent,
-                    job.run.names,
-                    job.table,
-                    config.maxFindings,
-                )
-            AgentOutcome.Answered(job.agent, checked.answer, checked.dropped)
-        } catch (error: SchemaError) {
-            if (number < config.retries) {
-                attempt(job, number + 1, error)
-            } else {
-                AgentOutcome.Missing(job.agent, "invalid answer: ${error.message}")
+            try {
+                val checked =
+                    run.calls.checked(base) { text ->
+                        AnswerChecker.check(text, agent, run.names, table, config.maxFindings)
+                    }
+                AgentOutcome.Answered(agent, checked.answer, checked.dropped)
+            } catch (error: SchemaError) {
+                AgentOutcome.Missing(agent, "invalid answer: ${error.message}")
             }
         }
-    }
-
-    private fun retryRequest(base: ModelRequest, number: Int, error: SchemaError): ModelRequest =
-        base.copy(
-            label = "${base.label}-retry$number",
-            userMessage =
-                base.userMessage +
-                    "\n\nYour previous answer was rejected: ${error.message}. " +
-                    "Answer again with the JSON object only.",
-        )
-
-    /** One call, at most `parallel` at once, cancelled after the config's timeout. */
-    private fun send(request: ModelRequest, run: Run): ModelResponse {
-        run.permits.acquire()
-        try {
-            val future = run.pool.submit<ModelResponse> { client.send(request) }
-            return try {
-                future.get(config.callTimeoutSeconds.toLong(), TimeUnit.SECONDS)
-            } catch (expected: TimeoutException) {
-                future.cancel(true)
-                throw expected
-            } catch (error: ExecutionException) {
-                throw error.cause ?: error
-            }
-        } finally {
-            run.permits.release()
-        }
-    }
-
-    @Suppress("TooGenericExceptionCaught")
-    private fun guarded(agent: AnalysisAgent, body: () -> AgentOutcome): AgentOutcome =
-        try {
-            body()
-        } catch (error: BudgetExceededException) {
-            AgentOutcome.Missing(agent, error.message.orEmpty())
-        } catch (expected: TimeoutException) {
-            AgentOutcome.Missing(agent, "timed out after ${config.callTimeoutSeconds}s")
-        } catch (error: Exception) {
-            AgentOutcome.Missing(agent, describe(error))
-        }
-
-    private fun describe(error: Exception): String {
-        val firstLine = error.message.orEmpty().lines().first().take(MESSAGE_LIMIT)
-        return "error: ${error.javaClass.simpleName}: $firstLine"
-    }
-
-    private companion object {
-        const val MESSAGE_LIMIT = 200
-    }
 }

@@ -10,7 +10,6 @@ import kotlinx.serialization.json.JsonObject
  * counted.
  */
 object AnswerChecker {
-    private const val FACE_JOIN = " // "
     private val ANSWER_KEYS = setOf("agent", "confidence", "summary", "findings")
     private val FINDING_KEYS = setOf("claim", "pair", "severity", "cards", "numbers")
     private val NUMBER_KEYS = setOf("key", "value")
@@ -46,7 +45,7 @@ object AnswerChecker {
         val summary = answer.string("summary")
         val raw = answer.objects("findings", FINDING_KEYS).map(::rawFinding)
 
-        val names = Names(poolNames)
+        val names = PoolNames(poolNames)
         val kept = mutableListOf<Finding>()
         val dropped = mutableListOf<DroppedFinding>()
         for (finding in raw) {
@@ -95,20 +94,7 @@ object AnswerChecker {
         )
     }
 
-    /** The pool's card names: a full name, or the front face's name of a multi-face card. */
-    private class Names(poolNames: Collection<String>) {
-        private val full = poolNames.toSet()
-        private val fronts =
-            poolNames
-                .filter { FACE_JOIN in it }
-                .groupBy { it.substringBefore(FACE_JOIN) }
-                .mapValues { it.value.first() }
-
-        /** The full name [name] stands for, or null when it names no pool card. */
-        fun resolve(name: String): String? = if (name in full) name else fronts[name]
-    }
-
-    private fun dropReason(finding: RawFinding, names: Names, table: NumberTable): DropReason? =
+    private fun dropReason(finding: RawFinding, names: PoolNames, table: NumberTable): DropReason? =
         when {
             finding.cards.isEmpty() -> DropReason.NO_CARD
             finding.cards.any { names.resolve(it) == null } -> DropReason.UNKNOWN_CARD
@@ -122,7 +108,7 @@ object AnswerChecker {
                 }
         }
 
-    private fun keep(finding: RawFinding, names: Names, table: NumberTable): Finding =
+    private fun keep(finding: RawFinding, names: PoolNames, table: NumberTable): Finding =
         Finding(
             claim = finding.claim,
             pair = finding.pair,
