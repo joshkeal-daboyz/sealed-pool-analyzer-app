@@ -49,8 +49,7 @@ class TuneObjectiveTest {
 
     @Test
     fun `the objective is the mean over the sets`() {
-        val value =
-            TuneObjectives.DEFAULT.value(linkedMapOf("a" to listOf(a1, a2), "b" to listOf(b1)))
+        val value = TuneObjectives.value(linkedMapOf("a" to listOf(a1, a2), "b" to listOf(b1)))
 
         assertEquals(((2.0 / 3.5 + 0.5) + 1.75) / 2, value, 1e-12)
     }
@@ -78,7 +77,7 @@ class TuneObjectiveTest {
     fun `a set with no used builds is an error naming it`() {
         val failure =
             assertFailsWith<IllegalArgumentException> {
-                TuneObjectives.DEFAULT.value(linkedMapOf("msh" to listOf(a1), "hob" to emptyList()))
+                TuneObjectives.value(linkedMapOf("msh" to listOf(a1), "hob" to emptyList()))
             }
 
         val message = failure.message.orEmpty()
@@ -87,7 +86,7 @@ class TuneObjectiveTest {
 
     @Test
     fun `no sets is an error`() {
-        assertFailsWith<IllegalArgumentException> { TuneObjectives.DEFAULT.value(emptyMap()) }
+        assertFailsWith<IllegalArgumentException> { TuneObjectives.value(emptyMap()) }
     }
 
     @Test

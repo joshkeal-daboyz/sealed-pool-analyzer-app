@@ -97,7 +97,7 @@ internal class DeckTuneEvaluator(
             }
         val evaluation =
             Evaluation(
-                objective.value(bySet),
+                TuneObjectives.value(bySet, objective),
                 bySet.mapValues { (_, list) -> BacktestReport.lines("builder", list) },
             )
         if (cache) memo[weights] = evaluation

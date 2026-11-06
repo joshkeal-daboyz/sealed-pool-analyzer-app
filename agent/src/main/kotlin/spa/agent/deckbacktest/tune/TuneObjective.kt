@@ -15,10 +15,4 @@ interface TuneObjective {
      * [IllegalArgumentException] naming the set when it has no used builds.
      */
     fun forSet(set: String, outcomes: List<BuildOutcome>): Double
-
-    /** The mean of [forSet] over the [sets], by set code; higher is better. */
-    fun value(sets: Map<String, List<BuildOutcome>>): Double {
-        require(sets.isNotEmpty()) { "no set to tune on" }
-        return sets.map { (set, outcomes) -> forSet(set, outcomes) }.average()
-    }
 }
