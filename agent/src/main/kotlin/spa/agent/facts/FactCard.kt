@@ -51,7 +51,7 @@ class FactCard(
     val legendaryShortName: String?
         get() {
             val words = words(shortName)
-            return if ("legendary" in frontTypes && words.size >= 3) {
+            return if ("legendary" in frontTypes && words.size >= SHORTENED_MIN_WORDS) {
                 "${words.first()} ${words.last()}"
             } else {
                 null
@@ -77,5 +77,8 @@ class FactCard(
 
     private companion object {
         const val DASH = '—'
+
+        /** The fewest words of a name before its comma that a legendary card shortens. */
+        const val SHORTENED_MIN_WORDS = 3
     }
 }
