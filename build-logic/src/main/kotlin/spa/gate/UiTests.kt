@@ -26,6 +26,20 @@ object UiTests {
     fun reproduceCommand(appPath: String): String =
         "./gradlew $appPath:testDebugUnitTest -Proborazzi.test.verify=true"
 
+    /** The note when there is no app module to test. */
+    const val NO_APP_MODULE = "skipped: no app module"
+
+    /** The note when the app exists but the change does not reach it. */
+    const val NO_APP_CHANGES = "skipped: no app changes"
+
+    /** Why the step is skipped, or null when it runs the app's tests. */
+    fun skipNote(hasAppModule: Boolean, appInScope: Boolean): String? =
+        when {
+            !hasAppModule -> NO_APP_MODULE
+            !appInScope -> NO_APP_CHANGES
+            else -> null
+        }
+
     /** The pass note: how many UI tests and snapshots ran. */
     fun note(tests: Int, snapshots: Int): String =
         "${plural(tests, "UI test")} and ${plural(snapshots, "snapshot")} ran"

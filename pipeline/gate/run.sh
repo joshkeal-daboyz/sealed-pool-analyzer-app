@@ -1,12 +1,16 @@
 #!/usr/bin/env bash
 # The gate: runs ./gradlew check for one ticket and leaves gate-verdict.json at the repository root.
-# Usage: pipeline/gate/run.sh [--ticket SPA-###]
-# Exits 0 on pass, 1 on fail, 2 on a usage error.
+# Usage: pipeline/gate/run.sh [--ticket SPA-###] [--full]
+# Exits 0 on pass, 1 on fail, 2 on a usage error. --full checks every module (CI always passes it).
 #
 # The steps, their order, and the verdict are the spa.gate plugin's job (build-logic/). This script
 # only passes the ticket through and guarantees a verdict exists afterwards: if Gradle dies before
 # the plugin can write one (a broken build script, build-logic that does not compile, no JDK), it
 # writes a fail verdict from the Gradle log.
+#
+# Scope: without --full, the plugin checks only the modules the change can affect (spa.gate.GateScope).
+# A change made only of documentation paths (under tickets/ or design/, or ending in .md) skips the
+# gate here, before Gradle starts, with a pass verdict whose steps are all not_run.
 set -uo pipefail
 
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
@@ -19,8 +23,10 @@ log="build/gate/gradle.log"
 usage() { sed -n '3,4p' "${BASH_SOURCE[0]}" | sed 's/^# //'; }
 
 ticket=""
+full=false
 while [ $# -gt 0 ]; do
   case "$1" in
+    --full) full=true; shift ;;
     --ticket)
       [ $# -ge 2 ] || { usage >&2; exit 2; }
       ticket="$2"
@@ -92,10 +98,63 @@ write_fallback_verdict() {
 JSON
 }
 
+# The files the change touched, as spa.gate.Git reads them: the working tree against
+# merge-base origin/main HEAD (falling back to main), plus untracked files. Fails without a base.
+changed_files() {
+  local base
+  base="$(git merge-base origin/main HEAD 2>/dev/null || git merge-base main HEAD 2>/dev/null)" || return 1
+  [ -n "$base" ] || return 1
+  { git diff --name-only "$base" && git ls-files --others --exclude-standard; } | grep -v '^[[:space:]]*$'
+}
+
+# Documentation paths, matching spa.gate.GateScope.isDocumentation.
+is_documentation() {
+  case "$1" in
+    tickets/* | design/* | *.md) return 0 ;;
+    *) return 1 ;;
+  esac
+}
+
+# True when there is at least one changed file and every one is a documentation path.
+docs_only() {
+  local files path
+  files="$(changed_files)" || return 1
+  [ -n "$files" ] || return 1
+  while IFS= read -r path; do
+    is_documentation "$path" || return 1
+  done <<<"$files"
+  return 0
+}
+
+write_docs_only_verdict() {
+  local steps="" step
+  for step in format lint compile unit-tests ui-tests coverage dependencies; do
+    steps="$steps${steps:+,}
+    { \"step\": \"$step\", \"result\": \"not_run\", \"note\": \"skipped: docs-only change\" }"
+  done
+  cat >"$verdict" <<JSON
+{
+  "ticket": "$(json_string "$(resolve_ticket)")",
+  "commit": "$(git rev-parse --short HEAD 2>/dev/null || echo unknown)",
+  "result": "pass",
+  "failures": [],
+  "steps": [$steps
+  ]
+}
+JSON
+}
+
 rm -f "$verdict"
+if ! $full && docs_only; then
+  write_docs_only_verdict
+  echo "Gate: skipped, only tickets, design or Markdown files changed."
+  exit 0
+fi
+
 mkdir -p "$(dirname "$log")"
 args=(check --console=plain)
 [ -n "$ticket" ] && args+=("-Pticket=$ticket")
+$full && args+=("-Pgate.full=true")
 ./gradlew "${args[@]}" 2>&1 | tee "$log"
 gradle_status=${PIPESTATUS[0]}
 

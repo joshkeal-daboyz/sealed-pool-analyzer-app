@@ -47,9 +47,13 @@ abstract class GatePlugin @Inject constructor(private val listeners: BuildEvents
         val ticket = ticketProvider(project)
         steps.coverage.configure { it.ticket.set(ticket) }
         steps.dependencies.configure { it.ticket.set(ticket) }
+        val scope = scopeOf(project)
+        project.logger.lifecycle(describe(scope))
+        excludeOutOfScopeChecks(project, scope)
         val app = project.findProject(APP)
         steps.uiTests.configure { task ->
             task.hasAppModule = app != null
+            task.appInScope = scope.runsApp
             if (app != null) {
                 task.results =
                     GateUnitTestsTask.ResultSource(
@@ -63,8 +67,11 @@ abstract class GatePlugin @Inject constructor(private val listeners: BuildEvents
             }
         }
 
-        project.allprojects { wireProject(it, steps, service) }
-        val buildLogic = project.gradle.includedBuilds.firstOrNull { it.name == BUILD_LOGIC }
+        project.allprojects { wireProject(it, steps, service, inScope(it, scope)) }
+        val buildLogic =
+            project.gradle.includedBuilds
+                .firstOrNull { it.name == BUILD_LOGIC }
+                .takeIf { scope.full }
         if (buildLogic != null) steps.unitTests.configure { it.dependsOn(buildLogic.task(":test")) }
 
         project.gradle.taskGraph.whenReady { graph ->
@@ -74,7 +81,10 @@ abstract class GatePlugin @Inject constructor(private val listeners: BuildEvents
                 // step
                 // failure with file and line instead of stopping the build inside the test task.
                 graph.allTasks.filterIsInstance<Test>().forEach { it.ignoreFailures = true }
-                unitTests.sources = testSources(project, buildLogic?.projectDir)
+                val tested = project.subprojects.filter { it.path != APP && inScope(it, scope) }
+                unitTests.sources = testSources(project, tested, buildLogic?.projectDir)
+                unitTests.modules =
+                    tested.map { it.name } + listOfNotNull(buildLogic?.let { BUILD_LOGIC })
             }
             if (graph.hasTask(gate.get()))
                 service.get().start(ticket.get(), Git(project.rootDir).shortHead())
@@ -85,6 +95,7 @@ abstract class GatePlugin @Inject constructor(private val listeners: BuildEvents
         project: Project,
         steps: StepTasks,
         service: Provider<GateService>,
+        inScope: Boolean,
     ) {
         val isApp = project.path == APP
         project.tasks.configureEach { task ->
@@ -103,6 +114,8 @@ abstract class GatePlugin @Inject constructor(private val listeners: BuildEvents
                 )
             }
         }
+        // A module out of this run's scope feeds no step: none of its tools enter the graph.
+        if (!inScope) return
         if (isApp) {
             wireApp(project.path, steps)
             return
@@ -138,24 +151,22 @@ abstract class GatePlugin @Inject constructor(private val listeners: BuildEvents
 
     private fun testSources(
         project: Project,
+        tested: List<Project>,
         buildLogicDir: File?,
     ): List<GateUnitTestsTask.ResultSource> {
         val root = project.rootDir.path
-        val mainBuild =
-            project.allprojects
-                .filter { it.path != APP }
-                .flatMap { p ->
-                    val roots = TEST_SOURCE_DIRS.map {
-                        RepoPaths.relative(root, File(p.projectDir, it).path)
-                    }
-                    p.tasks.withType(Test::class.java).map { test ->
-                        GateUnitTestsTask.ResultSource(
-                            test.reports.junitXml.outputLocation.get().asFile,
-                            roots,
-                            "./gradlew ${test.path}",
-                        )
-                    }
-                }
+        val mainBuild = tested.flatMap { p ->
+            val roots = TEST_SOURCE_DIRS.map {
+                RepoPaths.relative(root, File(p.projectDir, it).path)
+            }
+            p.tasks.withType(Test::class.java).map { test ->
+                GateUnitTestsTask.ResultSource(
+                    test.reports.junitXml.outputLocation.get().asFile,
+                    roots,
+                    "./gradlew ${test.path}",
+                )
+            }
+        }
         val gateBuild = buildLogicDir?.let { dir ->
             GateUnitTestsTask.ResultSource(
                 File(dir, "build/test-results/test"),
@@ -164,6 +175,42 @@ abstract class GatePlugin @Inject constructor(private val listeners: BuildEvents
             )
         }
         return mainBuild + listOfNotNull(gateBuild)
+    }
+
+    /**
+     * The modules this run checks (see [GateScope]): from `-Pgate.full=true` and the files changed
+     * since the merge-base with `main`, the same list the coverage step reads.
+     */
+    private fun scopeOf(project: Project): GateScope {
+        val full = project.providers.gradleProperty(FULL_PROPERTY).orNull == "true"
+        if (full) return GateScope.of(emptyList(), fullFlag = true, hasMergeBase = true)
+        val git = Git(project.rootDir)
+        val base = git.mergeBase()
+        val changed = if (base == null) emptyList() else git.changedSince(base)
+        return GateScope.of(changed, fullFlag = false, hasMergeBase = base != null)
+    }
+
+    private fun describe(scope: GateScope): String =
+        if (scope.full) "Gate scope: full (every module)."
+        else "Gate scope: ${scope.modules.sortedBy { GateScope.ALL_MODULES.indexOf(it) }}."
+
+    /** The root project is the build-logic sources' format and lint; it runs only when full. */
+    private fun inScope(project: Project, scope: GateScope): Boolean =
+        scope.full || (project != project.rootProject && project.name in scope.modules)
+
+    /**
+     * `./gradlew check` selects every project's own `check`, which pulls in that project's tests,
+     * lint and coverage apart from the gate. Out-of-scope projects' `check` is excluded, as `-x`
+     * would, so neither it nor what only it needs enters the graph. A module a run needs still
+     * builds its main classes and jar for the modules that depend on it.
+     */
+    private fun excludeOutOfScopeChecks(project: Project, scope: GateScope) {
+        if (scope.full) return
+        val start = project.gradle.startParameter
+        if (CHECK !in start.taskNames) return
+        val excluded =
+            project.subprojects.filterNot { inScope(it, scope) }.map { "${it.path}:$CHECK" }
+        start.setExcludedTaskNames(start.excludedTaskNames + excluded)
     }
 
     private fun ticketProvider(project: Project): Provider<String> {
@@ -223,7 +270,9 @@ abstract class GatePlugin @Inject constructor(private val listeners: BuildEvents
 
     private companion object {
         const val GROUP = "gate"
-        const val BUILD_LOGIC = "build-logic"
+        const val BUILD_LOGIC = GateScope.BUILD_LOGIC
+        const val FULL_PROPERTY = "gate.full"
+        const val CHECK = "check"
         const val APP = ":app"
         const val APP_TEST_RESULTS = "build/test-results/testDebugUnitTest"
         const val APP_SNAPSHOT_SUMMARY = "build/test-results/roborazzi/debug/results-summary.json"
