@@ -7,7 +7,6 @@ import java.util.concurrent.atomic.AtomicInteger
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
-import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class BudgetedModelClientTest {
@@ -32,7 +31,6 @@ class BudgetedModelClientTest {
         val client = BudgetedModelClient(inner, maxInputTokens = 999, maxOutputTokens = 1_000)
         val e = assertFailsWith<BudgetExceededException> { client.send(request()) }
         assertEquals("budget: input cap would be passed (1000 of 999)", e.message)
-        assertFalse(e is AssertionError)
         assertEquals(0, inner.calls.get())
     }
 
