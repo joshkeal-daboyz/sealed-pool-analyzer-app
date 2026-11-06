@@ -119,25 +119,21 @@ internal object DeckExport {
     fun stem(prefix: String, config: BuildConfig): String =
         "$prefix-${config.toString().replace('/', '+')}"
 
-    /**
-     * Writes `<stem>.csv` and `<stem>.txt` for [deck] into [dir], created if missing and replacing
-     * files of those names, and says `Wrote <path>` on [stderr] for each. A file that cannot be
-     * written is a [CliFailure].
-     */
-    fun write(
-        dir: Path,
-        stem: String,
-        index: CardIndex,
-        setName: String,
-        deck: Deck,
-        stderr: PrintStream,
-    ) {
+    /** The files of [deck] named for [stem]: `<stem>.csv` and `<stem>.txt`, each with its text. */
+    fun files(stem: String, index: CardIndex, setName: String, deck: Deck): Map<String, String> {
         val rows = rows(index, deck)
-        val files =
-            mapOf(
-                "$stem.csv" to csv(rows, index.setCodes.first(), setName),
-                "$stem.txt" to txt(rows),
-            )
+        return mapOf(
+            "$stem.csv" to csv(rows, index.setCodes.first(), setName),
+            "$stem.txt" to txt(rows),
+        )
+    }
+
+    /**
+     * Writes [files] (name to text) into [dir], created if missing and replacing files of those
+     * names, and says `Wrote <path>` on [stderr] for each. A file that cannot be written is a
+     * [CliFailure].
+     */
+    fun write(dir: Path, files: Map<String, String>, stderr: PrintStream) {
         try {
             Files.createDirectories(dir)
             files.forEach { (name, text) ->

@@ -93,10 +93,7 @@ object BuildCommand {
         fun write(prefix: String, config: BuildConfig, session: BuildSession, deck: Deck) =
             DeckExport.write(
                 dir,
-                DeckExport.stem(prefix, config),
-                session.index,
-                setName,
-                deck,
+                DeckExport.files(DeckExport.stem(prefix, config), session.index, setName, deck),
                 stderr,
             )
     }
