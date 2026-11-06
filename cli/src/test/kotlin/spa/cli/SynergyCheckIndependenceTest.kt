@@ -21,9 +21,10 @@ import org.junit.jupiter.api.io.TempDir
 import spa.agent.tags.TagFiles
 
 /**
- * SPA-050 criterion 3: the owner's checks stay held out. No file of the `trk` tags packets (both
- * passes) or the `trk` grade packet, and no prompt resource on the classpath (every resource under
- * `spa/agent/`), contains a check id from `fixtures/synergy-checks/` or the word `synergy-checks`.
+ * SPA-050 criterion 3, extended by SPA-055 to the cares packet: the owner's checks stay held out.
+ * No file of the `trk` tags packets (both passes) or the `trk` grade packet, and no prompt resource
+ * on the classpath (every resource under `spa/agent/`), contains a check id from
+ * `fixtures/synergy-checks/` or the word `synergy-checks`.
  */
 class SynergyCheckIndependenceTest {
     @TempDir lateinit var temp: Path
@@ -59,6 +60,7 @@ class SynergyCheckIndependenceTest {
         val rolesPacket = temp.resolve("roles")
         val gradePacket = temp.resolve("grades")
         val reviewPacket = temp.resolve("review")
+        val caresPacket = temp.resolve("cares")
         // The pass-2 packet is v1's, so its axes are the v1 trk axes, frozen since SPA-053.
         val axes = TagFiles.read(Path.of(Fixtures.v1Tags("trk"))).axes
         val axesFile =
@@ -109,9 +111,18 @@ class SynergyCheckIndependenceTest {
                     "--data",
                     Fixtures.data,
                 ),
+                // SPA-055: the cares-gaps packet, built from the committed trk otags files.
+                runCli(
+                    "cares-packet",
+                    "trk",
+                    "--out",
+                    caresPacket.toString(),
+                    "--data",
+                    Fixtures.data,
+                ),
             )
         runs.forEach { assertEquals(ExitCode.OK, it.exit, it.stderr) }
-        return listOf(axesPacket, rolesPacket, gradePacket, reviewPacket)
+        return listOf(axesPacket, rolesPacket, gradePacket, reviewPacket, caresPacket)
     }
 
     private fun q(text: String) = Json.encodeToString(String.serializer(), text)
@@ -164,6 +175,9 @@ class SynergyCheckIndependenceTest {
                     "tags-axes-v1.md",
                     "tags-roles-v1.md",
                     "tags-review-v1.md",
+                    "cares-gaps-v1.md",
+                    "cares-gaps.schema.json",
+                    "cares-table-suggestions.schema.json",
                 )
             ),
             "${found.first}",
