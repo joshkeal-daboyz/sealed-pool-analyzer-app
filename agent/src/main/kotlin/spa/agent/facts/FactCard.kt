@@ -6,10 +6,15 @@ import spa.core.cards.Card
 import spa.core.cards.Face
 
 /**
- * One card as the fact rules read it: the [card] and its Scryfall [keywords], which `core`'s [Card]
- * does not keep. The rules read the front face's type line and text, with reminder text removed.
+ * One card as the fact rules read it: the [card], its Scryfall [keywords], which `core`'s [Card]
+ * does not keep, and its Scryfall Tagger [otags] (SPA-054; none when the set has no otags file).
+ * The rules read the front face's type line and text, with reminder text removed.
  */
-class FactCard(val card: Card, val keywords: List<String> = emptyList()) {
+class FactCard(
+    val card: Card,
+    val keywords: List<String> = emptyList(),
+    val otags: List<String> = emptyList(),
+) {
     /** The front face. */
     val front: Face
         get() = card.faces.first()

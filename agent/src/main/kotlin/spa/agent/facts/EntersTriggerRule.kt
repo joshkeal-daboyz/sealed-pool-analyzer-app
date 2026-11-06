@@ -6,6 +6,8 @@ package spa.agent.facts
  * short name, then "enters".
  */
 object EntersTriggerRule : FactRule {
+    override fun knows(fact: String): Boolean = fact == "enters-trigger"
+
     /** The "this ..." subjects of an own enters trigger, besides the card's names. */
     val SUBJECTS =
         listOf(

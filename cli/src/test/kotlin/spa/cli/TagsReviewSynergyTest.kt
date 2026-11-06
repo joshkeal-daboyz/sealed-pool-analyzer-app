@@ -78,7 +78,7 @@ class TagsReviewSynergyTest {
 
     @Test
     fun `a review block changes neither command's output on trk`() {
-        val v1 = arrayOf("--tags", v1Path.toString())
+        val v1 = arrayOf("--tags", v1Path.toString(), "--otags", Otags.NONE)
         val before =
             runCli("synergy-table", "--set", "trk", *v1, "--data", Fixtures.data) to
                 runCli("synergy-check", "--set", "trk", *v1, "--data", Fixtures.data)

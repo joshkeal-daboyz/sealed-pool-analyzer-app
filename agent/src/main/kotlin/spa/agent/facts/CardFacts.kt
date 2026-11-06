@@ -19,15 +19,22 @@ object CardFacts {
 
     /**
      * Each card of [index]'s sealed pool ([GradingPool]) by its packet id, in pool order, with its
-     * facts, its Scryfall keywords taken from [keywords] by oracle id (none when absent).
+     * facts, its Scryfall keywords taken from [keywords] by oracle id (none when absent), and its
+     * Scryfall Tagger tags taken from [otags] by packet id (none when absent; SPA-054).
      */
     fun pool(
         index: CardIndex,
         keywords: Map<String, List<String>>,
         rules: List<FactRule> = FactRules.ALL,
+        otags: Map<String, List<String>> = emptyMap(),
     ): Map<String, Set<String>> =
         GradingPool.printings(index).associate {
-            GradingPool.id(it) to of(FactCard(it.card, keywords[it.card.oracleId].orEmpty()), rules)
+            val id = GradingPool.id(it)
+            id to
+                of(
+                    FactCard(it.card, keywords[it.card.oracleId].orEmpty(), otags[id].orEmpty()),
+                    rules,
+                )
         }
 
     /** [pool], with the keywords read from the Scryfall caches under [scryfallDir]. */
@@ -35,8 +42,9 @@ object CardFacts {
         scryfallDir: Path,
         index: CardIndex,
         rules: List<FactRule> = FactRules.ALL,
+        otags: Map<String, List<String>> = emptyMap(),
     ): Map<String, Set<String>> =
-        pool(index, PoolThemes.keywords(scryfallDir, index.setCodes), rules)
+        pool(index, PoolThemes.keywords(scryfallDir, index.setCodes), rules, otags)
 
     /** Each fact of [facts] with the number of cards that have it, most first, then by name. */
     fun counts(facts: Map<String, Set<String>>): List<FactCount> =

@@ -7,6 +7,8 @@ package spa.agent.facts
  * "This creature gains flying and haste until end of turn" gives `kw:flying` and `kw:haste`.
  */
 object SelfGrantedKeywordRule : FactRule {
+    override fun knows(fact: String): Boolean = KEYWORDS.any { fact == "kw:${FactRules.slug(it)}" }
+
     /** The keywords a card can grant itself, as printed. */
     val KEYWORDS =
         listOf(
