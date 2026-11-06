@@ -5,6 +5,11 @@ import kotlinx.serialization.Serializable
 /**
  * One Messages API request as the agent layer sends it: one system prompt and one user turn. It is
  * also the key a [ReplayModelClient] looks its recordings up by, so it holds only plain data.
+ *
+ * [cachedContext] is text shared by several requests (a pool bundle): it is sent as the first
+ * system block with ephemeral cache control, and [system], the agent's own instructions, follows it
+ * as a second block. [label] names the caller (an agent id such as `curve`, or `curve-retry1`); it
+ * is never sent to the API. Both are part of equality, so they are part of the replay key.
  */
 @Serializable
 data class ModelRequest(
@@ -12,6 +17,8 @@ data class ModelRequest(
     val maxTokens: Long,
     val system: String,
     val userMessage: String,
+    val cachedContext: String? = null,
+    val label: String = "",
 )
 
 /** Token counts for one response, as the API reports them. */

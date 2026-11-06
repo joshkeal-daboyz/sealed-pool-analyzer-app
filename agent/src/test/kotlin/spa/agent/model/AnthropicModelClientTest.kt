@@ -10,6 +10,8 @@ import java.util.Optional
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 import spa.agent.MissingApiKeyException
 
 /** No test here sends a request: the SDK client is built but never called. */
@@ -66,6 +68,33 @@ class AnthropicModelClientTest {
         assertEquals(1, messages.size)
         assertEquals("user", messages[0].role().asString())
         assertEquals("Grade Battle-Scarred Survivalist (trk 95).", messages[0].content().asString())
+    }
+
+    @Test
+    fun `a cached context becomes a first system block with ephemeral cache control`() {
+        val params =
+            AnthropicModelClient.toParams(
+                request.copy(cachedContext = "The pool.", label = "curve")
+            )
+        val blocks = params.system().get().asTextBlockParams()
+        assertEquals(2, blocks.size)
+        assertEquals("The pool.", blocks[0].text())
+        assertTrue(blocks[0].cacheControl().isPresent)
+        assertEquals("You grade cards.", blocks[1].text())
+        assertFalse(blocks[1].cacheControl().isPresent)
+        assertEquals(1, params.messages().size)
+    }
+
+    @Test
+    fun `the label appears nowhere in the params`() {
+        val labelled = AnthropicModelClient.toParams(request.copy(label = "curve-retry1"))
+        assertEquals(AnthropicModelClient.toParams(request), labelled)
+        assertFalse("curve-retry1" in labelled.toString())
+        val withContext =
+            AnthropicModelClient.toParams(
+                request.copy(cachedContext = "The pool.", label = "curve-retry1")
+            )
+        assertFalse("curve-retry1" in withContext.toString())
     }
 
     @Test

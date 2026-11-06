@@ -88,6 +88,38 @@ class ReplayModelClientTest {
         assertTrue("a.json" in e.message.orEmpty() && "b.json" in e.message.orEmpty(), e.message)
     }
 
+    private fun recordedResponse() =
+        ModelResponse("claude-opus-5-5", "recorded", "end_turn", ModelUsage(1, 1))
+
+    @Test
+    fun `requests differing only in cachedContext or label are different keys`() {
+        val withContext = request("Grade He's Dead, Jim (trk 114).").copy(cachedContext = "pool")
+        val client = ReplayModelClient(listOf(Recording(withContext, recordedResponse())))
+        assertEquals("recorded", client.send(withContext).text)
+        assertFailsWith<UnrecordedRequestException> {
+            client.send(withContext.copy(cachedContext = "other pool"))
+        }
+        assertFailsWith<UnrecordedRequestException> {
+            client.send(withContext.copy(cachedContext = null))
+        }
+        assertFailsWith<UnrecordedRequestException> {
+            client.send(withContext.copy(label = "curve"))
+        }
+    }
+
+    @Test
+    fun `a request with a label and cached context replays from a directory`(@TempDir dir: Path) {
+        val labelled = request("Grade X.").copy(cachedContext = "pool", label = "curve")
+        Files.writeString(
+            dir.resolve("a.json"),
+            kotlinx.serialization.json.Json.encodeToString(
+                Recording.serializer(),
+                Recording(labelled, recordedResponse()),
+            ),
+        )
+        assertEquals("recorded", ReplayModelClient.fromDirectory(dir).send(labelled).text)
+    }
+
     @Test
     fun `files that are not json recordings are ignored`(@TempDir dir: Path) {
         Files.writeString(dir.resolve("README.txt"), "not a recording")
