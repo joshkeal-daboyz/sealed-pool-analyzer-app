@@ -39,25 +39,36 @@ sealed interface ScoreOutcome {
 object RegisteredDeck {
     /** The score of [build]'s registered deck with each of [scorers], or the reason it has none. */
     fun score(build: BacktestBuild, scorers: List<DeckScorer>): ScoreOutcome {
-        val config = build.config ?: return ScoreOutcome.Skipped(ScoreSkip.NO_CONFIG)
+        val config = build.config
         val copies =
             build.cards
                 .filter { !it.printing.card.isLand && it.deck > 0 }
                 .groupBy { it.printing.card.oracleId }
                 .mapValues { (_, cards) -> cards.sumOf { it.deck } }
         val landCount = build.cards.filter { it.printing.card.isLand }.sumOf { it.deck }
-        if (copies.values.sum() + landCount != LandMath.DEFAULT_DECK_SIZE) {
-            return ScoreOutcome.Skipped(ScoreSkip.NOT_40)
+        return when {
+            config == null -> ScoreOutcome.Skipped(ScoreSkip.NO_CONFIG)
+            copies.values.sum() + landCount != LandMath.DEFAULT_DECK_SIZE ->
+                ScoreOutcome.Skipped(ScoreSkip.NOT_40)
+            else ->
+                scores(config, copies, landCount, scorers)?.let { ScoreOutcome.Scored(it) }
+                    ?: ScoreOutcome.Skipped(ScoreSkip.OFF_COLOUR)
         }
-        val scores = scorers.map { scorer ->
-            val setup = scorer.setup(config)
-            val candidates = setup.spells.associateBy { it.card.card.oracleId }
-            val spells = copies.flatMap { (id, n) ->
-                val candidate = candidates[id] ?: return ScoreOutcome.Skipped(ScoreSkip.OFF_COLOUR)
-                List(n) { candidate.card }
-            }
-            scorer.builder.evaluate(setup, spells, landCount).total
+    }
+
+    /** One score per scorer of [copies] (by oracle id) and [landCount]; null when off-colour. */
+    private fun scores(
+        config: BuildConfig,
+        copies: Map<String, Int>,
+        landCount: Int,
+        scorers: List<DeckScorer>,
+    ): List<Double>? = scorers.map { scorer ->
+        val setup = scorer.setup(config)
+        val candidates = setup.spells.associateBy { it.card.card.oracleId }
+        val spells = copies.flatMap { (id, n) ->
+            val candidate = candidates[id] ?: return null
+            List(n) { candidate.card }
         }
-        return ScoreOutcome.Scored(scores)
+        scorer.builder.evaluate(setup, spells, landCount).total
     }
 }

@@ -12,6 +12,7 @@ internal object ScoreSyn {
     /** Eight Islands and nine Swamps: 17 lands. */
     val LANDS = mapOf("Island" to 8, "Swamp" to 9)
 
+    @Suppress("LongParameterList")
     fun build(
         draft: String,
         bucket: String,

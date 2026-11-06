@@ -5,6 +5,7 @@ import java.io.PrintStream
 import java.nio.charset.StandardCharsets
 import java.nio.file.Files
 import java.nio.file.Path
+import java.util.Locale
 import java.util.zip.GZIPOutputStream
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
@@ -108,7 +109,7 @@ class ScoreBacktestCommandTest {
             val stone = 22 - 3 * i
             ScoreSyn.build(
                 "g$i",
-                String.format("%.2f", 0.30 + 0.06 * i),
+                String.format(Locale.ROOT, "%.2f", 0.30 + 0.06 * i),
                 mapOf("Mind Stone" to stone, "Counterspell" to 23 - stone),
             )
         }

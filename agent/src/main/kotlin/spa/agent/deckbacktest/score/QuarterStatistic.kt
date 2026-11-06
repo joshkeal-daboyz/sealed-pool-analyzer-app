@@ -9,10 +9,12 @@ import kotlin.math.max
  * builds.
  */
 object QuarterStatistic : ScoreStatistic {
+    private const val QUARTERS = 4
+
     override val key = "top-quarter"
 
     /** The builds in each quarter of [n] builds. */
-    fun quarter(n: Int): Int = max(1, n / 4)
+    fun quarter(n: Int): Int = max(1, n / QUARTERS)
 
     override fun cell(builds: List<ScoredBuild>): String {
         if (builds.size < ScoreStatistics.MIN_BUILDS) {
