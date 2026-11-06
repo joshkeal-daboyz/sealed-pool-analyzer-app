@@ -1,0 +1,63 @@
+package spa.cli
+
+import java.io.PrintStream
+import java.nio.file.Path
+import spa.agent.build.BuildConfig
+import spa.core.math.LandMath
+
+/**
+ * `spa build <pool-file> --set <code> --colours <main[/splash]> [--weights <file>] [--tags <file>]
+ * [--otags <file>] [--data <dir>]`: the best 40 card deck the pool makes in the colours, by search
+ * ([spa.agent.build.DeckBuilder]); no network or model call (SPA-044).
+ *
+ * `--colours` is the main colours then, after a `/`, one or two splash colours, such as `WU`,
+ * `WU/R` or `WUB`. Weights come from `--weights`, else `<data>/weights/deck-default.json`; set
+ * grades as for `pool-grades`; the synergy table, read only when the synergy weight is above 0,
+ * from `--tags` and `--otags` as for `synergy-table`. A pool with too few candidates for 22 spells,
+ * a bad `--colours` and a bad weights file are one line and exit 1. Pool lines that do not resolve
+ * are listed on stderr.
+ */
+object BuildCommand {
+    fun run(args: List<String>, stdout: PrintStream, stderr: PrintStream): Int {
+        val parsed =
+            Args.parse(
+                args,
+                valueOptions = setOf("set", "data", "colours", "weights", "tags", Otags.OPTION),
+            )
+        val file = Commands.onePositional(parsed, "pool file")
+        val set = Commands.requiredSet(parsed)
+        val data = Commands.dataDir(parsed)
+        val text =
+            parsed.value("colours")
+                ?: throw CliFailure("--colours <main[/splash]> is required", ExitCode.ERROR)
+        val config = Commands.guard("bad --colours") { BuildConfig.parse(text) }
+        val poolText = Commands.readFile(Path.of(file), "pool file")
+        val session =
+            BuildSession.open(
+                data,
+                set,
+                parsed.value("weights")?.let(Path::of),
+                SynergyTableCommand.tagsOption(parsed),
+                parsed.value(Otags.OPTION),
+            )
+        val pool = PoolGradesCommand.pool(poolText, file, session.index, stderr)
+        val setup = session.setup(pool, config)
+        val built = session.builder.build(setup)
+        if (built == null) {
+            val minimum = LandMath.DEFAULT_DECK_SIZE - session.weights.lands.high
+            val copies = setup.capacity
+            throw CliFailure(
+                if (copies < minimum) {
+                    "too few candidates for $config: $copies copies, need $minimum spells"
+                } else {
+                    "no 40 card deck in $config agrees with the land rule ($copies candidate copies)"
+                },
+                ExitCode.ERROR,
+            )
+        }
+        BuildLines.lines(setup, built).forEach(stdout::println)
+        stdout.flush()
+        stderr.flush()
+        return ExitCode.OK
+    }
+}

@@ -11,8 +11,9 @@ import spa.core.cards.ScryfallSetFetcher
 /**
  * The `spa` command line: `analyze`, `validate-brief`, `fetch-set`, `winrates`, `grade-backtest`,
  * `grade-packet`, `grade-import`, `grades`, `themes`, `pool-grades`, `deck-pick`, `fixing`,
- * `tags-packet`, `tags-import`, `tags-review-packet`, `tags-review-import`, `synergy-table`,
- * `synergy`, `synergy-check`, `facts`, `fetch-tags`, `cares-packet`, and `cares-import`.
+ * `build`, `tags-packet`, `tags-import`, `tags-review-packet`, `tags-review-import`,
+ * `synergy-table`, `synergy`, `synergy-check`, `facts`, `fetch-tags`, `cares-packet`, and
+ * `cares-import`.
  */
 object Main {
     /** The text `spa --help` prints. */
@@ -78,6 +79,18 @@ object Main {
         |      kinds, the colours it can supply and 'land' for a land, then the count of each
         |      kind. With a pool file, only the pool's fixing cards with their quantities, then
         |      the copies that can supply each colour.
+        |  build <pool-file> --set <code> --colours <main[/splash]> [--weights <file>] [--tags <file>]
+        |          [--otags <file>] [--data <dir>]
+        |      Build the best 40 card deck the pool makes in the colours, by search with no model
+        |      call: --colours is the main colours then, after a /, up to two splash colours (WU,
+        |      WU/R, WUB). The score is the sum of the deck parts (grades, curve, creatures,
+        |      removal, castability, fixing, synergy), weighted from --weights, else
+        |      <data>/weights/deck-default.json. Print the heading with the score and each part's
+        |      value and reason, the spells by mana value each with its grade and reason, the
+        |      lands, the sideboard, and the off-colour cards by colour. Set grades come as for
+        |      pool-grades; the synergy table, read only when its weight is above 0, from --tags
+        |      and --otags as for synergy-table. Too few candidates for 22 spells is one line and
+        |      exit 1.
         |  tags-packet <code> --out <dir> [--axes <file>] [--prompt <version>] [--data <dir>]
         |      Write a blind synergy tagging packet for the set's sealed pool into <dir>. Without
         |      --axes, pass 1: the axes prompt, the format brief and theme counts, the cards in
@@ -221,6 +234,7 @@ object Main {
             "pool-grades" to { a, out, err -> PoolGradesCommand.run(a, out, err) },
             "deck-pick" to { a, out, _ -> DeckPickCommand.run(a, out) },
             "fixing" to { a, out, err -> FixingCommand.run(a, out, err) },
+            "build" to { a, out, err -> BuildCommand.run(a, out, err) },
             "tags-packet" to { a, out, err -> TagsPacketCommand.run(a, out, err) },
             "tags-import" to { a, out, err -> TagsImportCommand().run(a, out, err) },
             "tags-review-packet" to { a, out, _ -> TagsReviewPacketCommand.run(a, out) },
