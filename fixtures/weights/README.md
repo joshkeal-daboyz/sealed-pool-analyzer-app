@@ -57,3 +57,23 @@ Adding a part adds its key to `weights` (and its numbers to `params` if it reads
 ## `deck-baseline.json`
 
 `spa deck-backtest` measures a baseline builder with `deck-baseline.json` here unless `--baseline <file>` names another deck weights file (SPA-046). It is in the format of `deck-default.json`: set grades alone and two-colour pairs only. Its `grades` weight is 1 and every other weight is 0, so a deck scores the sum of its spells' set grades; its `configs` enable `pairs` and switch `pairSplash`, `triples` and `fourColour` off (their numbers are given, as the format asks), so every ranked deck is a pair with no splash. The `lands` and `splash` rules are `deck-default.json`'s: they decide the land count and do not enter the score.
+
+## `deck-grid.json`
+
+`spa deck-tune` searches the grid in `deck-grid.json` here unless `--grid <file>` names another (SPA-060). It is one JSON object of knobs. A key is a path into the deck weights JSON (`weights.curve`, `params.creatures.minCreatures`, `configs.fourColour.minFixing`), and its value is the list of numbers to try there, in the order tried:
+
+| Path | Values |
+| --- | --- |
+| `weights.curve`, `weights.creatures`, `weights.removal`, `weights.castability`, `weights.fixing` | 0, 0.5, 1, 2 |
+| `weights.synergy` | 0, 0.05, 0.1, 0.2, 0.4 |
+| `params.creatures.minCreatures` | 12, 13, 14, 15 |
+| `params.removal.cap` | 4, 6, 8 |
+| `lands.lowCurve` | 2.4, 2.6, 2.8 |
+| `lands.highCurve` | 3.2, 3.4, 3.6 |
+| `splash.maxCards` | 2, 3, 4 |
+| `splash.maxPips` | 1, 2 |
+| `configs.fourColour.minFixing` | 2, 4, 6 |
+
+`weights.grades` stays 1, since it sets the scale. These are starting choices: the grid may be revised after the first run, as G-004's was. Before any run the tuner checks that the start file (`--start`, default `deck-default.json`) parses as deck weights and that every value, put at its path in the start file, still parses. A path whose first part is not `weights`, `params`, `lands`, `splash` or `configs`, a path or value that does not parse, an empty list, or a value that is not a number makes the command print one line naming the knob and exit 1. Only numbers can be tuned; the `enabled` and `tripleSplash` switches of `configs` are not.
+
+The tuner's own output, `deck-tuned.json` (written by the Architect's run on `msh` and `hob`, not by SPA-060), is in the format of `deck-default.json`, so `spa build --weights` and `spa deck-backtest --weights` read it.

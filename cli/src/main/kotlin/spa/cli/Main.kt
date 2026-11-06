@@ -11,7 +11,7 @@ import spa.core.cards.ScryfallSetFetcher
 /**
  * The `spa` command line: `analyze`, `validate-brief`, `fetch-set`, `winrates`, `grade-backtest`,
  * `grade-packet`, `grade-import`, `grades`, `themes`, `pool-grades`, `deck-pick`, `fixing`,
- * `build`, `deck-backtest`, `tags-packet`, `tags-import`, `tags-review-packet`,
+ * `build`, `deck-backtest`, `deck-tune`, `tags-packet`, `tags-import`, `tags-review-packet`,
  * `tags-review-import`, `synergy-table`, `synergy`, `synergy-check`, `facts`, `fetch-tags`,
  * `cares-packet`, and `cares-import`.
  */
@@ -111,6 +111,20 @@ object Main {
         |      <data>/weights/deck-baseline.json (set grades alone, two-colour pairs). --limit n
         |      keeps n builds spread evenly through the kept ones; --threads (default 2) changes
         |      the time, never a number. Weights default as for build.
+        |  deck-tune <sealed-game-data.csv.gz>... --set <code,...> --out <file> [--limit <n>]
+        |          [--threads <t>] [--grid <file>] [--start <weights file>] [--rounds <r>]
+        |          [--tags <file>] [--otags <file>] [--data <dir>]
+        |      Tune the deck builder's weights by coordinate ascent: one Sealed file per set, in the
+        |      order of --set, which may name msh and hob (fra and trk are held out). Starting from
+        |      --start (default <data>/weights/deck-default.json), each round visits the knobs of
+        |      --grid (default <data>/weights/deck-grid.json) in file order, tries every other
+        |      value of a knob with the rest as they stand, and moves to the best if it beats the
+        |      current by more than a billionth; it stops when a round changes nothing or after
+        |      --rounds rounds (default 3). A weights file scores overlap share (the builder's mean
+        |      main-deck overlap over the mean cards the players registered) plus colour agreement,
+        |      averaged over the sets. Prints one line per evaluation, then both objectives and
+        |      each set's builder lines for the start and the result; --out is written after every
+        |      move. --limit is per set; --threads (default 2) changes the time, never a number.
         |  tags-packet <code> --out <dir> [--axes <file>] [--prompt <version>] [--data <dir>]
         |      Write a blind synergy tagging packet for the set's sealed pool into <dir>. Without
         |      --axes, pass 1: the axes prompt, the format brief and theme counts, the cards in
@@ -256,6 +270,7 @@ object Main {
             "fixing" to { a, out, err -> FixingCommand.run(a, out, err) },
             "build" to { a, out, err -> BuildCommand.run(a, out, err) },
             "deck-backtest" to { a, out, _ -> DeckBacktestCommand.run(a, out) },
+            "deck-tune" to { a, out, _ -> DeckTuneCommand.run(a, out) },
             "tags-packet" to { a, out, err -> TagsPacketCommand.run(a, out, err) },
             "tags-import" to { a, out, err -> TagsImportCommand().run(a, out, err) },
             "tags-review-packet" to { a, out, _ -> TagsReviewPacketCommand.run(a, out) },

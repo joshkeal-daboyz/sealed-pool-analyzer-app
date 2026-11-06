@@ -87,7 +87,7 @@ object DeckBacktestCommand {
     }
 
     /** The positive whole number of option [name], or null when it is not given. */
-    private fun whole(parsed: Args, name: String): Int? {
+    internal fun whole(parsed: Args, name: String): Int? {
         val text = parsed.value(name) ?: return null
         val value = text.toIntOrNull()
         if (value == null || value < 1) {
@@ -97,7 +97,7 @@ object DeckBacktestCommand {
     }
 
     /** The builds of [file], each name resolved by full or front-face name. */
-    private fun read(file: Path, session: BuildSession): BacktestSelection {
+    internal fun read(file: Path, session: BuildSession): BacktestSelection {
         if (!Files.isRegularFile(file)) {
             throw CliFailure("cannot read Sealed file $file: no such file", ExitCode.ERROR)
         }
