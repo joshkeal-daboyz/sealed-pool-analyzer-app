@@ -20,6 +20,7 @@ import spa.agent.tags.TagFile
  */
 class OtagsFixturesTest {
     private val data = DataDir(Fixtures.root)
+
     private fun frozen(set: String): String = Fixtures.root.resolve("otags/v1/$set.json").toString()
 
     private fun file(set: String): OtagFile =
