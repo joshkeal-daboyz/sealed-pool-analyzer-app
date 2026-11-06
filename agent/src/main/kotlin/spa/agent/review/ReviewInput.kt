@@ -10,7 +10,8 @@ import spa.core.metrics.PoolMetrics
 /**
  * Everything the pool review reads, resolved: the [set] code, the [pool], its [metrics], the set's
  * [baseline] (null when none is built), the set's format [brief], the set grade of a printing
- * ([gradeOf], null when it has none), and the pool's [kitWarnings].
+ * ([gradeOf], null when it has none), the pool's [kitWarnings], and the set's [synergy] data (null
+ * when it has no tag file).
  */
 data class ReviewInput(
     val set: String,
@@ -20,4 +21,5 @@ data class ReviewInput(
     val brief: FormatBrief,
     val gradeOf: (Printing) -> Double?,
     val kitWarnings: List<KitWarning>,
+    val synergy: SynergyView? = null,
 )

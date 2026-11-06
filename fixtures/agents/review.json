@@ -12,7 +12,9 @@
     { "id": "curve", "enabled": true, "maxTokens": 3000, "prompt": "v1" },
     { "id": "mana", "enabled": true, "maxTokens": 3000, "prompt": "v1" },
     { "id": "interaction", "enabled": true, "maxTokens": 3000, "prompt": "v1" },
-    { "id": "bombs", "enabled": true, "maxTokens": 3000, "prompt": "v1" }
+    { "id": "bombs", "enabled": true, "maxTokens": 3000, "prompt": "v1" },
+    { "id": "archetypes", "enabled": true, "maxTokens": 3000, "prompt": "v1" },
+    { "id": "synergy", "enabled": true, "maxTokens": 3000, "prompt": "v1" }
   ],
   "explainer": { "enabled": true, "maxTokens": 6000, "prompt": "v1" }
 }

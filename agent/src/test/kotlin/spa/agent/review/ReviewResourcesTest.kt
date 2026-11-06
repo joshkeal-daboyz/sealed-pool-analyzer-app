@@ -53,9 +53,17 @@ class ReviewResourcesTest {
     }
 
     @Test
-    fun `the agent list holds the five analysts`() {
+    fun `the agent list holds the seven analysts`() {
         assertEquals(
-            listOf("colour-depth", "curve", "mana", "interaction", "bombs"),
+            listOf(
+                "colour-depth",
+                "curve",
+                "mana",
+                "interaction",
+                "bombs",
+                "archetypes",
+                "synergy",
+            ),
             AnalysisAgents.ALL.map { it.id },
         )
     }
