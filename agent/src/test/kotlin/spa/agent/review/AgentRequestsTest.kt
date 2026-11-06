@@ -63,7 +63,8 @@ class AgentRequestsTest {
     @Test
     fun `facts add a facts section after the table`() {
         val table = NumberTable(listOf(NumberEntry("/a", 1.0, null)))
-        val request = AgentRequests.of(FakeAgent("fake-a", table, "Bear is a fine card."), input, config)
+        val request =
+            AgentRequests.of(FakeAgent("fake-a", table, "Bear is a fine card."), input, config)
 
         assertEquals(
             "## Number table\n/a = 1\n\n## Facts\nBear is a fine card.\n\n" +

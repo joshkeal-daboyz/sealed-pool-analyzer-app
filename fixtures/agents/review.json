@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-sonnet-5-5",
+  "maxInputTokens": 300000,
+  "maxOutputTokens": 60000,
+  "callTimeoutSeconds": 120,
+  "parallel": 6,
+  "retries": 1,
+  "maxFindings": 8,
+  "agents": [],
+  "explainer": { "enabled": true, "maxTokens": 6000, "prompt": "v1" }
+}

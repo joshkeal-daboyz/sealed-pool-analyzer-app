@@ -37,7 +37,11 @@ internal object ReviewTestAnswers {
     val table =
         NumberTable(
             listOf(
-                NumberEntry("/curve/twoDrops", 5.0, Stat(median = 4.0, p10 = 2.0, p90 = 6.0, mean = 4.0)),
+                NumberEntry(
+                    "/curve/twoDrops",
+                    5.0,
+                    Stat(median = 4.0, p10 = 2.0, p90 = 6.0, mean = 4.0),
+                ),
                 NumberEntry("/removal/count", 2.0, null),
             )
         )
@@ -59,5 +63,6 @@ internal object ReviewTestAnswers {
         confidence: String = "0.8",
         summary: String = "A summary.",
     ): String =
-        """{"agent": "$agentId", "confidence": $confidence, "summary": "$summary", "findings": [${findings.joinToString(", ")}]}"""
+        """{"agent": "$agentId", "confidence": $confidence, "summary": "$summary", """ +
+            """"findings": [${findings.joinToString(", ")}]}"""
 }

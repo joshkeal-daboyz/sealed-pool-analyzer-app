@@ -56,8 +56,11 @@ class AgentRunnerTest {
     private fun validFor(id: String, marker: String = "marker-$id") =
         answer(finding("Claim $marker."), agentId = id, summary = "Summary $marker.")
 
-    private fun runner(client: ModelClient, config: ReviewConfig = config(), list: List<AnalysisAgent> = agents) =
-        AgentRunner(client, config, list)
+    private fun runner(
+        client: ModelClient,
+        config: ReviewConfig = config(),
+        list: List<AnalysisAgent> = agents,
+    ) = AgentRunner(client, config, list)
 
     @Test
     fun `the first agent is answered before any other request is sent, then the rest run together`() {
@@ -89,19 +92,25 @@ class AgentRunnerTest {
 
     @Test
     fun `an invalid answer then a valid one is answered with the retry request as specified`() {
-        val client =
-            RecordingClient { request ->
-                if (request.label == "fake-a") "not json at all" else validFor("fake-a")
-            }
+        val client = RecordingClient { request ->
+            if (request.label == "fake-a") "not json at all" else validFor("fake-a")
+        }
         val outcomes = runner(client, list = agents.take(1)).run(input)
 
         val outcome = assertIs<AgentOutcome.Answered>(outcomes.single())
         assertEquals(1, outcome.answer.findings.size)
         val (first, second) = client.requests
         assertEquals(listOf("fake-a", "fake-a-retry1"), client.requests.map { it.label })
-        val error = assertFailsWith<SchemaError> {
-            AnswerChecker.check("not json at all", agents[0], emptySet(), NumberTable(emptyList()), 8)
-        }
+        val error =
+            assertFailsWith<SchemaError> {
+                AnswerChecker.check(
+                    "not json at all",
+                    agents[0],
+                    emptySet(),
+                    NumberTable(emptyList()),
+                    8,
+                )
+            }
         assertEquals(
             first.userMessage +
                 "\n\nYour previous answer was rejected: ${error.message}. " +
@@ -127,17 +136,25 @@ class AgentRunnerTest {
 
         val twice = RecordingClient { "still not json" }
         runner(twice, config(retries = 2), agents.take(1)).run(input)
-        assertEquals(listOf("fake-a", "fake-a-retry1", "fake-a-retry2"), twice.requests.map { it.label })
+        assertEquals(
+            listOf("fake-a", "fake-a-retry1", "fake-a-retry2"),
+            twice.requests.map { it.label },
+        )
         assertTrue(twice.requests[2].userMessage.startsWith(twice.requests[0].userMessage))
         assertEquals(1, Regex("rejected").findAll(twice.requests[2].userMessage).count())
     }
 
     @Test
     fun `a spent budget is missing with its message and is not retried`() {
-        val client = RecordingClient { throw BudgetExceededException("budget: input cap would be passed (9 of 8)") }
+        val client = RecordingClient {
+            throw BudgetExceededException("budget: input cap would be passed (9 of 8)")
+        }
         val outcome = runner(client, list = agents.take(1)).run(input).single()
 
-        assertEquals(AgentOutcome.Missing(agents[0], "budget: input cap would be passed (9 of 8)"), outcome)
+        assertEquals(
+            AgentOutcome.Missing(agents[0], "budget: input cap would be passed (9 of 8)"),
+            outcome,
+        )
         assertEquals(1, client.requests.size)
     }
 
@@ -170,10 +187,9 @@ class AgentRunnerTest {
 
     @Test
     fun `one failing agent does not stop the others`() {
-        val client =
-            RecordingClient { request ->
-                if (idOf(request) == "fake-c") throw IllegalStateException("down") else validFor(idOf(request))
-            }
+        val client = RecordingClient { request ->
+            if (idOf(request) == "fake-c") error("down") else validFor(idOf(request))
+        }
         val outcomes = runner(client).run(input)
 
         assertEquals(6, outcomes.size)
@@ -214,7 +230,8 @@ class AgentRunnerTest {
 
     @Test
     fun `when the first agent is unavailable the next one is still sent first and alone`() {
-        val list = listOf(FakeAgent("fake-a", reason = "off"), FakeAgent("fake-b"), FakeAgent("fake-c"))
+        val list =
+            listOf(FakeAgent("fake-a", reason = "off"), FakeAgent("fake-b"), FakeAgent("fake-c"))
         val client = RecordingClient { validFor(idOf(it)) }
         val outcomes = runner(client, config(ids = list.map { it.id }), list).run(input)
 
@@ -248,9 +265,13 @@ class AgentRunnerTest {
 
     @Test
     fun `dropped findings are reported with the answer`() {
-        val text = answer(finding("Good."), finding("Bad.", cards = "[\"Ghost\"]"), agentId = "fake-a")
+        val text =
+            answer(finding("Good."), finding("Bad.", cards = "[\"Ghost\"]"), agentId = "fake-a")
         val client = RecordingClient { text }
-        val outcome = assertIs<AgentOutcome.Answered>(runner(client, list = agents.take(1)).run(input).single())
+        val outcome =
+            assertIs<AgentOutcome.Answered>(
+                runner(client, list = agents.take(1)).run(input).single()
+            )
 
         assertEquals(listOf("Good."), outcome.answer.findings.map { it.claim })
         assertEquals(listOf(DroppedFinding(DropReason.UNKNOWN_CARD, "Bad.")), outcome.dropped)
@@ -263,7 +284,9 @@ class AgentRunnerTest {
 
         val markers = agents.map { "marker-${it.id}" }
         for (request in client.requests) {
-            val text = listOf(request.system, request.userMessage, request.cachedContext.orEmpty()).joinToString("\n")
+            val text =
+                listOf(request.system, request.userMessage, request.cachedContext.orEmpty())
+                    .joinToString("\n")
             assertTrue(markers.none { text.contains(it) }, "${request.label} saw an answer")
         }
         assertEquals(6, client.requests.size)
@@ -275,7 +298,8 @@ class AgentRunnerTest {
         val extra = FakeAgent("fake-f", table, "Extra fact.")
         val client = RecordingClient { validFor(idOf(it)) }
 
-        val outcomes = runner(client, config(ids = listOf("fake-f")), AnalysisAgents.ALL + extra).run(input)
+        val outcomes =
+            runner(client, config(ids = listOf("fake-f")), AnalysisAgents.ALL + extra).run(input)
 
         assertIs<AgentOutcome.Answered>(outcomes.single())
         val request = client.requests.single()

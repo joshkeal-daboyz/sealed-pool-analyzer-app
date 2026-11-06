@@ -68,10 +68,14 @@ class ReviewConfigTest {
 
     @Test
     fun `agent entries parse in order and can be switched off`() {
-        val entries = "[${agentEntry("fake-b", enabled = "false", maxTokens = "2000")}, ${agentEntry()}]"
+        val entries =
+            "[${agentEntry("fake-b", enabled = "false", maxTokens = "2000")}, ${agentEntry()}]"
         val config = parse(with("agents", entries))
         assertEquals(
-            listOf(AgentSetting("fake-b", false, 2000, "v1"), AgentSetting("fake-a", true, 3000, "v1")),
+            listOf(
+                AgentSetting("fake-b", false, 2000, "v1"),
+                AgentSetting("fake-a", true, 3000, "v1"),
+            ),
             config.agents,
         )
         assertEquals(AgentSetting("fake-a", true, 3000, "v1"), config.setting("fake-a"))
@@ -121,7 +125,13 @@ class ReviewConfigTest {
     @Test
     fun `a zero or negative count and retries over 3 are rejected naming the key`() {
         val counts =
-            listOf("maxInputTokens", "maxOutputTokens", "callTimeoutSeconds", "parallel", "maxFindings")
+            listOf(
+                "maxInputTokens",
+                "maxOutputTokens",
+                "callTimeoutSeconds",
+                "parallel",
+                "maxFindings",
+            )
         for (key in counts) {
             assertRejected(key, with(key, "0"))
             assertRejected(key, with(key, "-1"))

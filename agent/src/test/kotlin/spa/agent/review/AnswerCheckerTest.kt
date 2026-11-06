@@ -189,7 +189,10 @@ class AnswerCheckerTest {
         assertEquals(emptyList(), checked.answer.findings[0].numbers)
         val typical = Stat(median = 4.0, p10 = 2.0, p90 = 6.0, mean = 4.0)
         assertEquals(
-            listOf(AnswerNumber("/curve/twoDrops", 5.0, typical), AnswerNumber("/removal/count", 2.0, null)),
+            listOf(
+                AnswerNumber("/curve/twoDrops", 5.0, typical),
+                AnswerNumber("/removal/count", 2.0, null),
+            ),
             checked.answer.findings[1].numbers,
         )
     }
@@ -203,10 +206,14 @@ class AnswerCheckerTest {
         assertTrue(checked.dropped.all { it.reason == DropReason.OVER_LIMIT })
 
         val good = (0 until 9).map { finding("g$it") }
-        val mixed = check(answer(finding("bad", cards = "[]"), *good.toTypedArray()), maxFindings = 8)
+        val mixed =
+            check(answer(finding("bad", cards = "[]"), *good.toTypedArray()), maxFindings = 8)
         assertEquals(8, mixed.answer.findings.size)
         assertEquals(
-            listOf(DroppedFinding(DropReason.NO_CARD, "bad"), DroppedFinding(DropReason.OVER_LIMIT, "g8")),
+            listOf(
+                DroppedFinding(DropReason.NO_CARD, "bad"),
+                DroppedFinding(DropReason.OVER_LIMIT, "g8"),
+            ),
             mixed.dropped,
         )
     }
