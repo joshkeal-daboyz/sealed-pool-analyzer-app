@@ -3,12 +3,10 @@ package spa.agent.review
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonElement
-import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put
-import kotlinx.serialization.json.putJsonArray
 import kotlinx.serialization.json.putJsonObject
 
 /**
@@ -25,8 +23,8 @@ object ReviewJson {
             put("setName", review.header.setName)
             put("pool", pool(review.header))
             put("decks", JsonArray(review.decks.map(::deck)))
-            put("verdict", verdict(review.verdict))
-            put("agents", JsonArray(review.sections.map(::agent)))
+            put("verdict", AnswerJson.verdict(review.verdict))
+            put("agents", JsonArray(review.sections.map(AnswerJson::agent)))
             put("disagreements", JsonArray(review.disagreements.map(::disagreement)))
             put("missing", JsonArray(review.missing.map(::missing)))
             putJsonObject("usage") {
@@ -42,7 +40,8 @@ object ReviewJson {
         return printer.encodeToString(JsonElement.serializer(), root) + "\n"
     }
 
-    private fun strings(values: List<String>): JsonArray =
+    /** A JSON array of [values]. */
+    internal fun strings(values: List<String>): JsonArray =
         JsonArray(values.map { JsonPrimitive(it) })
 
     private fun pool(header: ReviewHeader): JsonObject = buildJsonObject {
@@ -71,96 +70,6 @@ object ReviewJson {
         put("landCount", deck.landCount)
         put("lands", counts(deck.lands))
         put("why", deck.why)
-    }
-
-    private fun verdict(outcome: ExplainerOutcome): JsonObject = buildJsonObject {
-        when (outcome) {
-            is ExplainerOutcome.Missing -> {
-                put("status", "missing")
-                put("reason", outcome.reason)
-            }
-            is ExplainerOutcome.Explained -> {
-                put("status", "explained")
-                put("text", outcome.result.verdict)
-                put("confidence", outcome.result.confidence)
-                putJsonArray("deckNotes") {
-                    outcome.result.decks.forEach {
-                        add(
-                            buildJsonObject {
-                                put("rank", it.rank)
-                                put("note", it.note)
-                                put("cards", strings(it.cards))
-                            }
-                        )
-                    }
-                }
-                putJsonArray("dropped") {
-                    outcome.dropped.forEach {
-                        add(
-                            buildJsonObject {
-                                put("kind", it.kind.name.lowercase())
-                                put("reason", ReviewText.noteWords(it.reason))
-                                put("text", it.text)
-                            }
-                        )
-                    }
-                }
-            }
-        }
-    }
-
-    private fun agent(outcome: AgentOutcome): JsonObject = buildJsonObject {
-        put("id", outcome.agent.id)
-        put("title", outcome.agent.title)
-        when (outcome) {
-            is AgentOutcome.Missing -> {
-                put("status", "missing")
-                put("reason", outcome.reason)
-            }
-            is AgentOutcome.Answered -> {
-                put("status", "answered")
-                put("confidence", outcome.answer.confidence)
-                put("summary", outcome.answer.summary)
-                put("findings", JsonArray(outcome.answer.findings.map(::finding)))
-                putJsonArray("dropped") {
-                    outcome.dropped.forEach {
-                        add(
-                            buildJsonObject {
-                                put("reason", ReviewText.findingWords(it.reason))
-                                put("claim", it.claim)
-                            }
-                        )
-                    }
-                }
-            }
-        }
-    }
-
-    private fun finding(finding: Finding): JsonObject = buildJsonObject {
-        put("severity", finding.severity.label)
-        put("pair", finding.pair)
-        put("claim", finding.claim)
-        put("cards", strings(finding.cards))
-        put("numbers", JsonArray(finding.numbers.map(::number)))
-    }
-
-    private fun number(number: AnswerNumber): JsonObject = buildJsonObject {
-        put("key", number.key)
-        put("value", number.value)
-        val typical = number.typical
-        put(
-            "typical",
-            if (typical == null) {
-                JsonNull
-            } else {
-                buildJsonObject {
-                    put("median", typical.median)
-                    put("p10", typical.p10)
-                    put("p90", typical.p90)
-                    put("mean", typical.mean)
-                }
-            },
-        )
     }
 
     private fun disagreement(disagreement: Disagreement): JsonObject = buildJsonObject {
