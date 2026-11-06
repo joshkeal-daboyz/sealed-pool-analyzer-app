@@ -28,14 +28,7 @@ object AnalyzeCommand {
                 flagOptions = setOf("no-baseline"),
             )
         val file = Commands.onePositional(parsed, "pool file")
-        val format =
-            parsed.value("format")?.let { name ->
-                formats[name.lowercase(Locale.ROOT)]
-                    ?: throw CliFailure(
-                        "--format must be manabox, text, or collector, not '$name'",
-                        ExitCode.USAGE,
-                    )
-            }
+        val format = format(parsed)
         val set = Commands.requiredSet(parsed)
         val data = Commands.dataDir(parsed)
 
@@ -66,7 +59,17 @@ object AnalyzeCommand {
         return ExitCode.OK
     }
 
-    private fun loadBrief(path: Path): FormatBrief {
+    /** `--format`, or null to detect the pool's format; anything else is exit 2. */
+    internal fun format(parsed: Args): PoolFormat? =
+        parsed.value("format")?.let { name ->
+            formats[name.lowercase(Locale.ROOT)]
+                ?: throw CliFailure(
+                    "--format must be manabox, text, or collector, not '$name'",
+                    ExitCode.USAGE,
+                )
+        }
+
+    internal fun loadBrief(path: Path): FormatBrief {
         val text = Commands.readFile(path, "brief")
         return try {
             BriefLoader.parse(text)
@@ -80,7 +83,7 @@ object AnalyzeCommand {
         }
     }
 
-    private fun loadBaseline(path: Path, set: String, stderr: PrintStream): Baseline? {
+    internal fun loadBaseline(path: Path, set: String, stderr: PrintStream): Baseline? {
         if (!Files.isRegularFile(path)) {
             stderr.println("baseline: none for set '$set' (no file at $path)")
             return null

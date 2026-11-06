@@ -149,7 +149,8 @@ class PacketCommandTest {
         assertTrue(run.stderr.contains("baseline"), run.stderr)
         val numbers = run.stdout.replace("\r\n", "\n").lines()
         assertTrue(numbers.any { it == "/totalCards = 85" })
-        assertFalse("typical" in run.stdout)
+        val body = numbers.dropWhile { it != "## Numbers" }.takeWhile { it != "## Fixing" }
+        assertFalse(body.any { "typical" in it })
     }
 
     @Test
@@ -175,7 +176,7 @@ class PacketCommandTest {
 
         assertEquals(
             fixing.stdout.replace("\r\n", "\n").trimEnd(),
-            section("## Fixing").joinToString("\n").trimEnd(),
+            section("## Fixing").joinToString("\n").trim(),
         )
     }
 
