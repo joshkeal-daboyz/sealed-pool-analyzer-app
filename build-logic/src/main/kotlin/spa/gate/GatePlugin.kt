@@ -48,24 +48,9 @@ abstract class GatePlugin @Inject constructor(private val listeners: BuildEvents
         steps.coverage.configure { it.ticket.set(ticket) }
         steps.dependencies.configure { it.ticket.set(ticket) }
         val scope = scopeOf(project)
-        project.logger.lifecycle(describe(scope))
+        project.logger.lifecycle(scope.summary)
         excludeOutOfScopeChecks(project, scope)
-        val app = project.findProject(APP)
-        steps.uiTests.configure { task ->
-            task.hasAppModule = app != null
-            task.appInScope = scope.runsApp
-            if (app != null) {
-                task.results =
-                    GateUnitTestsTask.ResultSource(
-                        File(app.projectDir, APP_TEST_RESULTS),
-                        TEST_SOURCE_DIRS.map {
-                            RepoPaths.relative(project.rootDir.path, File(app.projectDir, it).path)
-                        },
-                        UiTests.reproduceCommand(app.path),
-                    )
-                task.snapshotSummary = File(app.projectDir, APP_SNAPSHOT_SUMMARY)
-            }
-        }
+        configureUiTests(project, steps, scope)
 
         project.allprojects { wireProject(it, steps, service, inScope(it, scope)) }
         val buildLogic =
@@ -88,6 +73,25 @@ abstract class GatePlugin @Inject constructor(private val listeners: BuildEvents
             }
             if (graph.hasTask(gate.get()))
                 service.get().start(ticket.get(), Git(project.rootDir).shortHead())
+        }
+    }
+
+    private fun configureUiTests(project: Project, steps: StepTasks, scope: GateScope) {
+        val app = project.findProject(APP)
+        steps.uiTests.configure { task ->
+            task.hasAppModule = app != null
+            task.appInScope = scope.runsApp
+            if (app != null) {
+                task.results =
+                    GateUnitTestsTask.ResultSource(
+                        File(app.projectDir, APP_TEST_RESULTS),
+                        TEST_SOURCE_DIRS.map {
+                            RepoPaths.relative(project.rootDir.path, File(app.projectDir, it).path)
+                        },
+                        UiTests.reproduceCommand(app.path),
+                    )
+                task.snapshotSummary = File(app.projectDir, APP_SNAPSHOT_SUMMARY)
+            }
         }
     }
 
@@ -189,10 +193,6 @@ abstract class GatePlugin @Inject constructor(private val listeners: BuildEvents
         val changed = if (base == null) emptyList() else git.changedSince(base)
         return GateScope.of(changed, fullFlag = false, hasMergeBase = base != null)
     }
-
-    private fun describe(scope: GateScope): String =
-        if (scope.full) "Gate scope: full (every module)."
-        else "Gate scope: ${scope.modules.sortedBy { GateScope.ALL_MODULES.indexOf(it) }}."
 
     /** The root project is the build-logic sources' format and lint; it runs only when full. */
     private fun inScope(project: Project, scope: GateScope): Boolean =
