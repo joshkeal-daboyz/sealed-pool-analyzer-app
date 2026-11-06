@@ -31,13 +31,14 @@ enum class BacktestSkip(val label: String) {
 /**
  * The builds a Sealed file keeps ([builds], in file order), how many strong builds it holds
  * ([strong]), the [shapes] of the strong builds with two to four main colours, and the [skipped]
- * strong builds by reason.
+ * strong builds by reason, and the number of builds with a blank [blank] bucket (SPA-061).
  */
 class BacktestSelection(
     val strong: Int,
     val shapes: Map<DeckShape, Int>,
     val skipped: Map<BacktestSkip, Int>,
     val builds: List<BacktestBuild>,
+    val blank: Int = 0,
 ) {
     /** The `read` line of the report. */
     fun summary(): String =
@@ -63,10 +64,10 @@ class BacktestSelection(
  * its first row. Unlike [SealedBuilds] it keeps builds of two to four main colours with their
  * splash colours.
  *
- * A build is strong when its `user_game_win_rate_bucket` is a number of at least
- * [SealedBuilds.STRONG_BUCKET]. A strong build is skipped, under the first reason that applies,
- * when it has fewer than two or five main colours, a deck or sideboard name with a copy that
- * resolves to no card, or no nonland card inside its main and splash colours.
+ * A build is strong when its `user_game_win_rate_bucket` is a number of at least the minimum, by
+ * default [SealedBuilds.STRONG_BUCKET]. A strong build is skipped, under the first reason that
+ * applies, when it has fewer than two or five main colours, a deck or sideboard name with a copy
+ * that resolves to no card, or no nonland card inside its main and splash colours.
  */
 object BacktestBuilds {
     private const val DRAFT = "draft_id"
@@ -80,11 +81,18 @@ object BacktestBuilds {
     private const val ALL_COLOURS = 5
 
     /** The builds of the file at [path], gzipped or plain, each name resolved by [resolve]. */
-    fun read(path: Path, resolve: (String) -> Printing?): BacktestSelection =
-        Files.newInputStream(path).use { read(it, resolve) }
+    fun read(
+        path: Path,
+        resolve: (String) -> Printing?,
+        minBucket: Double = SealedBuilds.STRONG_BUCKET,
+    ): BacktestSelection = Files.newInputStream(path).use { read(it, resolve, minBucket) }
 
     /** The builds of the CSV in [input], gzipped or plain. */
-    fun read(input: InputStream, resolve: (String) -> Printing?): BacktestSelection {
+    fun read(
+        input: InputStream,
+        resolve: (String) -> Printing?,
+        minBucket: Double = SealedBuilds.STRONG_BUCKET,
+    ): BacktestSelection {
         val buffered = BufferedInputStream(input)
         buffered.mark(2)
         val magic = (buffered.read() shl Byte.SIZE_BITS) or buffered.read()
@@ -92,11 +100,15 @@ object BacktestBuilds {
         val stream = if (magic == GZIP_MAGIC) GZIPInputStream(buffered) else buffered
         val csv = CsvReader(InputStreamReader(stream, StandardCharsets.UTF_8))
         val header = requireNotNull(csv.next()) { "the file is empty" }
-        return Reader(header, resolve).readAll(csv)
+        return Reader(header, resolve, minBucket).readAll(csv)
     }
 
     /** Reads one file rows against its header. */
-    private class Reader(header: List<String>, private val resolve: (String) -> Printing?) {
+    private class Reader(
+        header: List<String>,
+        private val resolve: (String) -> Printing?,
+        private val minBucket: Double,
+    ) {
         private val draft = column(header, DRAFT)
         private val build = column(header, BUILD)
         private val main = column(header, MAIN)
@@ -118,6 +130,7 @@ object BacktestBuilds {
         private val width = header.size
 
         private var strong = 0
+        private var blank = 0
         private val shapes = DeckShape.entries.associateWith { 0 }.toMutableMap()
         private val skipped = BacktestSkip.entries.associateWith { 0 }.toMutableMap()
         private val builds = mutableListOf<BacktestBuild>()
@@ -136,13 +149,14 @@ object BacktestBuilds {
                 if (!blank && seen.add(row[draft] to row[build])) take(row, line)
                 row = csv.next()
             }
-            return BacktestSelection(strong, shapes, skipped, builds)
+            return BacktestSelection(strong, shapes, skipped, builds, blank)
         }
 
         /** Counts the build in [row], and keeps it unless it is weak or skipped. */
         private fun take(row: List<String>, line: Int) {
             val value = row[bucket].trim().toDoubleOrNull()
-            if (value == null || value < SealedBuilds.STRONG_BUCKET) return
+            if (value == null) blank++
+            if (value == null || value < minBucket) return
             strong++
             val mainColours = colours(row[main], line)
             val splashColours = colours(row[splash], line)
@@ -163,6 +177,7 @@ object BacktestBuilds {
                     mainColours,
                     splashColours,
                     cards.filterNotNull(),
+                    value,
                 )
             when {
                 null in cards -> skipped.merge(BacktestSkip.UNRESOLVED, 1, Int::plus)

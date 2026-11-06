@@ -11,9 +11,9 @@ import spa.core.cards.ScryfallSetFetcher
 /**
  * The `spa` command line: `analyze`, `validate-brief`, `fetch-set`, `winrates`, `grade-backtest`,
  * `grade-packet`, `grade-import`, `grades`, `themes`, `pool-grades`, `deck-pick`, `fixing`,
- * `build`, `deck-backtest`, `deck-tune`, `tags-packet`, `tags-import`, `tags-review-packet`,
- * `tags-review-import`, `synergy-table`, `synergy`, `synergy-check`, `facts`, `fetch-tags`,
- * `cares-packet`, and `cares-import`.
+ * `build`, `deck-backtest`, `score-backtest`, `deck-tune`, `tags-packet`, `tags-import`,
+ * `tags-review-packet`, `tags-review-import`, `synergy-table`, `synergy`, `synergy-check`, `facts`,
+ * `fetch-tags`, `cares-packet`, and `cares-import`.
  */
 object Main {
     /** The text `spa --help` prints. */
@@ -111,6 +111,16 @@ object Main {
         |      <data>/weights/deck-baseline.json (set grades alone, two-colour pairs). --limit n
         |      keeps n builds spread evenly through the kept ones; --threads (default 2) changes
         |      the time, never a number. Weights default as for build.
+        |  score-backtest <sealed-game-data.csv.gz> --set <code> [--limit <n>] [--weights <file>]
+        |          [--baseline <file>] [--tags <file>] [--otags <file>] [--data <dir>]
+        |      Score the deck each player registered, in every build of a 17Lands Sealed game data
+        |      file that has a win-rate bucket, with the deck builder's parts (--weights, else
+        |      <data>/weights/deck-tuned.json) and with set grades alone (--baseline, else
+        |      <data>/weights/deck-baseline.json), no search. Print the builds read and skipped, the
+        |      builds scored, and for each scorer the Spearman rank correlation between score and
+        |      bucket with its rough standard error, the mean bucket of the top and bottom quarter
+        |      of builds by score and their gap. --limit n keeps n builds spread evenly through the
+        |      kept ones. A player's win rate carries the player's skill as well as the deck.
         |  deck-tune <sealed-game-data.csv.gz>... --set <code,...> --out <file> [--limit <n>]
         |          [--threads <t>] [--grid <file>] [--start <weights file>] [--rounds <r>]
         |          [--tags <file>] [--otags <file>] [--data <dir>]
@@ -270,6 +280,7 @@ object Main {
             "fixing" to { a, out, err -> FixingCommand.run(a, out, err) },
             "build" to { a, out, err -> BuildCommand.run(a, out, err) },
             "deck-backtest" to { a, out, _ -> DeckBacktestCommand.run(a, out) },
+            "score-backtest" to { a, out, _ -> ScoreBacktestCommand.run(a, out) },
             "deck-tune" to { a, out, _ -> DeckTuneCommand.run(a, out) },
             "tags-packet" to { a, out, err -> TagsPacketCommand.run(a, out, err) },
             "tags-import" to { a, out, err -> TagsImportCommand().run(a, out, err) },
