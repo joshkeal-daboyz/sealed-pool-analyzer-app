@@ -37,9 +37,13 @@ The owner asked for this goal on 2026-11-06: "Let's build out the analysis agent
 6. **The runner.** The first analyst runs alone and writes the cache; the other six then run in parallel. An invalid answer gets one retry with the error named; a second failure, a timeout, or a spent budget drops that agent for the run and the review says so. Failure of every agent still gives a review: the decks, with a Missing line.
 7. **The Explainer.** One call that reads every surviving finding and the builder's top three decks and writes the verdict, a short note per deck, and a list of disagreements between agents (each naming at least two agents and at least one card), validated the same way. The Judge's ranking is the builder's deck score; the Explainer restates it and does not reorder it.
 8. **`spa review <pool-file> --set <code>`** and what it prints (Decided 3). `--dry-run` plans the calls with no key and no network. `--json` prints the structured review. `--record <dir>` writes every exchange as a recording, and `--replay <dir>` answers from recordings with no key and no network (committed canned recordings let the command run end to end offline). `--show-input` prints what the agents are given (the bundle, each number table and facts) with no key and no network. `--model`, `--max-input-tokens`, `--max-output-tokens`, `--config <file>` and `--data` as for the other commands.
-9. **A versioned config file**, `fixtures/agents/review.json`: the model id, token caps, per-call timeout, parallelism, retries, and for each agent its id, whether it is on, its max output tokens and its prompt version. Prompts are resource files, `agent/src/main/resources/spa/agent/review/<agent>-v1.md`; a new prompt is a new file, as in G-005's tagging.
+9. **A model-free review packet** (owner, 2026-11-06, for the trk prerelease at 3PM): `spa packet <pool-file> --set <code>` writes one text file holding a request for a review, the pool with grades, the pool's numbers beside the set baseline, its fixing, its strongest synergies and the builder's top three decks with their reasons, ready to paste into a Claude chat. It makes no model call and needs no key. It is the first ticket to merge (SPA-071).
+10. **A ManaBox-importable deck export** (owner, 2026-11-06: "I can import the deck back into manabox"): `spa build ... --export <dir>` writes each ranked deck as a ManaBox CSV (the owner's export format, basics added as the set's basic lands) and a plain `N Name (SET) number` list as a fallback. Model-free; second to merge (SPA-072).
+11. **A versioned config file**, `fixtures/agents/review.json`: the model id, token caps, per-call timeout, parallelism, retries, and for each agent its id, whether it is on, its max output tokens and its prompt version. Prompts are resource files, `agent/src/main/resources/spa/agent/review/<agent>-v1.md`; a new prompt is a new file, as in G-005's tagging.
 
 ## Goal-level acceptance criteria
+
+0. **Usable before the agents.** By the trk prerelease (3PM, 2026-11-06), `spa packet` and `spa build --export` are merged on `main`, so a pool exported from ManaBox can be turned into a paste-ready packet and a ManaBox-importable deck with no model and no key.
 
 1. **Gate.** Green on `main` at goal close, locally and in CI. No test calls a model or the network; model calls in tests run against `ReplayModelClient` recordings or a fake `ModelClient`. `core` is unchanged: `git diff --stat 3f19d16..HEAD -- core/` is empty.
 2. **No key in the repository.** `spa review` without `ANTHROPIC_API_KEY` and without `--dry-run` prints one line `ANTHROPIC_API_KEY is not set` on stderr and exits 1, before any other work. A search of the repository's tracked files for `sk-ant-` finds nothing.
@@ -79,7 +83,7 @@ The owner asked for this goal on 2026-11-06: "Let's build out the analysis agent
 
 ## Out of scope for this goal
 
-The Red Team, the Sideboard Planner, a model Judge, the Format Scout, reruns with edited grades or forced pairs, the Android app, photo intake, a dollar cost figure (the usage line is tokens), any `core` change, and a held-out backtest of the review (the builder's ranking is already backtested; the agents explain it). Per-pool prompts that name cards from the owner's examples.
+Photo intake (owner, 2026-11-06: "Don't worry about the photo agent. I'll manage the photo and generation of the CSV"): the owner supplies a ManaBox-style CSV or a plain text list. The Red Team, the Sideboard Planner, a model Judge, the Format Scout, reruns with edited grades or forced pairs, the Android app, photo intake, a dollar cost figure (the usage line is tokens), any `core` change, and a held-out backtest of the review (the builder's ranking is already backtested; the agents explain it). Per-pool prompts that name cards from the owner's examples.
 
 ## Metrics to report when the goal closes
 
@@ -93,7 +97,8 @@ The owner answered on 2026-11-06 by approving every default.
 2. **Key, model, cost.** `ANTHROPIC_API_KEY` from the environment only. Claude Sonnet 5.5 (`claude-sonnet-5-5`) for every agent, `--model` overrides. Prompt caching on the shared pool bundle; the first analyst runs alone to write the cache, then the other six in parallel. Token caps per review, 300,000 input (cache reads counted in full) and 60,000 output; a call that would pass a cap is skipped and named on the Missing line. `--dry-run` prints the plan and an estimate with no network. A usage line ends every review. No dollar figure.
 3. **Output.** Plain text: header (set, pool size, unresolved lines), the builder's top three decks in compact form (colours, score, spells by name and count, lands, one line on why the deck ranks where it does), the Explainer's verdict, one section per analyst (findings with the cited cards and the numbers beside the set baseline), Disagreements, Missing, usage, attribution. `--json` prints the full structured review. The per-card `spa build` listing stays a separate command.
 4. **What "reviewed" means.** Structural, tested on every review (schema, citations, number audit, decks equal the builder's); one live run on `trk-manabox-01` with the owner's key, within the caps and 60 seconds, recorded as a fixture; and the owner's spot-check of five `trk` pools, reported as a first reading. If no key is set in the Architect's session at close, the live run and the spot-check are the owner's and are reported as not measured.
-5. **Defaults the Architect set** (all within the standing authorization to derive scope and criteria):
+5. **Ordering for the 3PM trk prerelease** (owner, 2026-11-06, relayed: "I'm worried about the 3PM deadline. At least we'll know the engine works"): the model-free packet (SPA-071) merges first, the deck export (SPA-072) second, and the model-calling agents follow. SPA-062 was dispatched first and stopped before any commit.
+6. **Defaults the Architect set** (all within the standing authorization to derive scope and criteria):
    - Deck weights for the review: `fixtures/weights/deck-tuned.json` (frozen in G-005), `--weights` overrides.
    - One retry per agent on an invalid answer; a per-call timeout of 120 seconds; at most 6 calls in parallel; at most 8 findings per agent; analyst output cap 3,000 tokens, Explainer 6,000.
    - Findings are checked by code as in deliverable 5; free-text numbers in a claim are not checked (a known limit: only keyed numbers are audited).
@@ -104,7 +109,8 @@ The owner answered on 2026-11-06 by approving every default.
 ## Architect notes (2026-11-06)
 
 - G-006 start commit for criterion 1: 3f19d16.
-- Order (all serialized; the tickets share `agent` and `cli`):
+- Order (all serialized; the tickets share `agent` and `cli`). The owner's ordering of 2026-11-06 puts SPA-071 and SPA-072 first; the rest follow in id order:
+  0. SPA-071: `spa packet`, the paste-ready review packet, no model. Then SPA-072: `spa build --export`, ManaBox-importable decks.
   1. SPA-062: model seam (cached context, budget, recording wrapper).
   2. SPA-063: pool bundle and number tables.
   3. SPA-064: agent interface, output schema, validation, runner, config file, the seam-proof test agent.
@@ -114,7 +120,7 @@ The owner answered on 2026-11-06 by approving every default.
   7. SPA-068: the Explainer (prompt, schema, checks, runner).
   8. SPA-069: the review assembly (deck summaries, the run, text and JSON rendering).
   9. SPA-070: `spa review` (wiring, dry run, show-input, key, record and replay, canned recordings, README).
-  10. SPA-071, only if a live run happens (criterion 14): commit the live recording as `fixtures/recordings/review-trk-manabox-01/` and add the test that replays it. Written when the recording exists.
+  10. SPA-073, only if a live run happens (criterion 14): commit the live recording as `fixtures/recordings/review-trk-manabox-01/` and add the test that replays it. Written when the recording exists.
 - Library tests (SPA-062 to 069) build pools by hand, as the other `agent` tests do; the real `trk-manabox-01` numbers are pinned through `spa review --show-input` in SPA-070.
 - Criterion 14's "a test replays it to the same review" needs the live recording's requests to match what the code builds now; a later prompt, config or weights change makes it stale and the test names the file to re-record.
 - Real numbers for `trk-manabox-01` (from `spa analyze`, 2026-11-06): 71 resolved entries, 85 cards, 71 nonland copies, 5 basic and 9 nonbasic lands, `removalTotal` 9 (baseline median 8, mean 7.938, 2,000 kits), `interactionTotal` 1, 6 fixing sources; pair WU: 33 castable cards, 19 creatures, 2 removal, 0 interaction, 4 fixing sources; the baseline holds 448 pointers.
