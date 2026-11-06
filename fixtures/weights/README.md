@@ -53,3 +53,7 @@ It was written by `spa deck-pick MSH.Sealed.csv.gz HOB.Sealed.csv.gz --set msh,h
 The `configs` section is optional: without it no configuration is tried, so `spa build` needs `--colours`. A rule missing from it is off; `enabled` defaults to true; every other key a rule names must be given. Adding a configuration rule adds its key here. SPA-046 tunes the starting values.
 
 Adding a part adds its key to `weights` (and its numbers to `params` if it reads any). An unknown key anywhere, a missing number, a negative number, a count out of order or a wrong `version` makes the command print one line naming it and exit 1.
+
+## `deck-baseline.json`
+
+`spa deck-backtest` measures a baseline builder with `deck-baseline.json` here unless `--baseline <file>` names another deck weights file (SPA-046). It is in the format of `deck-default.json`: set grades alone and two-colour pairs only. Its `grades` weight is 1 and every other weight is 0, so a deck scores the sum of its spells' set grades; its `configs` enable `pairs` and switch `pairSplash`, `triples` and `fourColour` off (their numbers are given, as the format asks), so every ranked deck is a pair with no splash. The `lands` and `splash` rules are `deck-default.json`'s: they decide the land count and do not enter the score.

@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "weights": {
+    "grades": 1.0,
+    "curve": 0,
+    "creatures": 0,
+    "removal": 0,
+    "castability": 0,
+    "fixing": 0,
+    "synergy": 0
+  },
+  "params": {},
+  "lands": { "lowCurve": 2.6, "highCurve": 3.4, "low": 16, "normal": 17, "high": 18 },
+  "splash": { "maxCards": 3, "maxPips": 1 },
+  "configs": {
+    "pairs": { "enabled": true },
+    "pairSplash": { "enabled": false, "maxSplashColours": 2 },
+    "triples": { "enabled": false, "tripleSplash": true },
+    "fourColour": { "enabled": false, "minFixing": 4 }
+  }
+}
