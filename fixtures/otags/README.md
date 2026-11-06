@@ -13,3 +13,8 @@ The four committed set files were generated from the Oracle Tags bulk file of 20
 
 - `<code>.tags.json`: each tag present in the set's `<code>.json` (ancestors included), sorted by slug, with Scryfall's `description` (null when it has none) and its `parents` (slugs, sorted). Written by `spa fetch-tags` from the same bulk file, with the same `source`, `updatedAt` and `attribution`, so the same bulk file gives the same bytes. `spa cares-packet` reads it for `vocabulary.json` and to find the name tags: `name-matters` and every tag whose parents lead to it, which stay out of the packet's vocabulary and `otag:` facts.
 - `<code>.fable.json`: the cares tags Fable added where Scryfall's tags leave a gap, `{ "set", "provenance", "cards": [{ "id", "cares": [{ "fact", "strength", "reason" }] }] }`, only the cards with additions. Written by `spa cares-import` after a checked run of `spa cares-packet`; the synergy commands and `spa facts` join its cares with the cares table's, keeping the larger strength per fact. A set without the file scores as before.
+
+## Frozen trk otags and trk's Fable file (SPA-058)
+
+- `v1/trk.json`: a byte copy of `trk.json` as committed by SPA-054, with no Fable file beside it. Tests that pin numbers on trk's otags without Fable's cares (`CaresScoringTest`, `OtagsFixturesTest`) read it, so `trk.json` can be regenerated. A test compares the two files byte for byte until that happens; the regeneration ticket then drops that comparison.
+- `trk.fable.json`: trk's Fable cares file, 105 cards with 180 additions, from a Claude Fable 5.1 run of 2026-11-06 written by `spa cares-import`. A test pins its SHA-256 and counts, and that the live trk otags with it give 186 cards with a cares tag, against 109 without.
